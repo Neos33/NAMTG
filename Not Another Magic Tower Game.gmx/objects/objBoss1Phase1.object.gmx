@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -154,10 +168,14 @@ for(j=0;j&lt;2;j+=1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x!=player.x image_xscale = sign(x-player.x);
-if !instance_exists(player){
+            <string>if !instance_exists(player)
+{
+    if x!=player.x
+    { 
+        image_xscale = sign(x-player.x)
+    }
     timeline_running = 0;
-    alarm[0..11] = 0;
+    stop_all_alarms();
 }
 </string>
           </argument>

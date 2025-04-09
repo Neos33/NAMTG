@@ -44,8 +44,8 @@ if(global.currentFloor &lt; global.minFloor)
     global.minFloor = global.currentFloor;
 }
 player.visible = false;
-transition_steps = 50;
-transition_kind = 17;
+//transition_steps = 50;
+//transition_kind = 17;
 event_inherited();
 </string>
           </argument>

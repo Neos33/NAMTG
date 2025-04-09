@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name="Steel"
+            <string>event_inherited();
+name="Steel"
 x=384;
 y=288;
 image_xscale=2;

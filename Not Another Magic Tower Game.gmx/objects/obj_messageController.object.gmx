@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1410065406</depth>
+  <depth>-1000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,6 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>shakeSize = 3;
+
+drawingBlack = 0;
+dialogBlack = 0;
+
+pauseImg = noone;
 </string>
           </argument>
         </arguments>
@@ -272,7 +277,7 @@ if(is_message()) {
 
     if(!sprite_exists(pauseImg)) {
         //Get an image of the screen
-        pauseImg = sprite_create_from_screen(0, 0, 800, 608, false, false, 0, 0);
+        pauseImg = sprite_create_from_surface(application_surface, 0, 0, 800, 608, false, false, 0, 0);
         //And stop all actions, not including this one
         if(instance_exists(obj_fairyTailFogController))
         {

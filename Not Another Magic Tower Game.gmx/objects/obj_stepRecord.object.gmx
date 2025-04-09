@@ -306,8 +306,8 @@ if(obj_jkExitDoor.transport)
 if(keyboard_check_released(vk_backspace))
 {
     start = false;
-    transition_kind = 21;
-    transition_steps = 100;
+    //transition_kind = 21;
+    //transition_steps = 100;
     room_goto(ExtraJKPortal);
     player.x = global.JKBackX;
     player.y = global.JKBackY;

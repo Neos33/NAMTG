@@ -25,14 +25,60 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>ind = 0;
+isOpen = false;
+type = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>image_speed = 0;
-switch(type)
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>switch(type)
 {
-    case 0: if(global.yellowDoors[ind]) instance_destroy();break;
-    case 1: if(global.blueDoors[ind]) instance_destroy();break;
-    case 2: if(global.redDoors[ind]) instance_destroy();break;
-    case 3: if(global.greenDoors[ind]) instance_destroy();break;
-    case 4: if(global.ironDoors[ind]) instance_destroy();break;
+    case Key_Type.Yellow: if(global.yellowDoors[ind]) instance_destroy();break;
+    case Key_Type.Blue: if(global.blueDoors[ind]) instance_destroy();break;
+    case Key_Type.Red: if(global.redDoors[ind]) instance_destroy();break;
+    case Key_Type.Green: if(global.greenDoors[ind]) instance_destroy();break;
+    case Key_Type.Iron: if(global.ironDoors[ind]) instance_destroy();break;
     default: break;
 }
 </string>

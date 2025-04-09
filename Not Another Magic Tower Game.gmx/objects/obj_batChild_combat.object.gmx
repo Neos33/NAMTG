@@ -25,13 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=1/8;
+            <string>event_inherited();
+image_speed=1/8;
 name = "Child Bat"
 friction = 0;
 alarm[5] = 1;
 maxSpd = 7;
 x=600;
 y=300;
+
+
+dir = 0;
+hspd = 0;
+vspd = 0;
+hgap = 0;
+vgap = 0;
 </string>
           </argument>
         </arguments>
@@ -78,7 +86,10 @@ direction = point_direction(x,y,player.x,player.y);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir = point_direction(x,y,player.x,player.y);
+            <string>if !instance_exists(player)
+    exit;
+    
+dir = point_direction(x,y,player.x,player.y);
 
 hspd = maxSpd * cos(degtorad(dir));
 vspd = -maxSpd * sin(degtorad(dir));

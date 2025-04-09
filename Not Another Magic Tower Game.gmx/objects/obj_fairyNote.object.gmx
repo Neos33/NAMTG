@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ind=1;
+            <string>event_inherited();
+ind=1;
 </string>
           </argument>
         </arguments>
@@ -51,7 +52,7 @@
             <string>obj_storyTrigger.x = player.x - 17;
 obj_storyTrigger.y = player.y - 23;
 obj_messageController.alarm[0] = 10;
-SS_PauseSound(global.currentBGM);
+FMODInstanceSetPaused(global.currentBGM, true);
 sound_loop(sndQuake);
 obj_specialControllerForSecret1.trigger = true;
 event_inherited();

@@ -1,5 +1,8 @@
 //�Q�[����Z�[�u
 //�Z�[�u�f�[�^�Ȃǂ͊�{�I�Ƀo�C�i���`���ŕۑ�����Ă��܂�
+tempCurrent = 0;
+tempMin = 0;
+tempMax = 0;
 var f,tem;
 f = file_bin_open("save"+string(global.savenum),1);
 tem = room;

@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale = 2.5;
+            <string>event_inherited();
+
+image_xscale = 2.5;
 image_yscale = 2.5;
 atk=9999;
 def=9999;
@@ -35,7 +37,7 @@ name = "The Fabla";
 combatObj = obj_evilDragon_combat;
 mybattleroom = getBattleRoom();
 //mybattleroom = rDragonStart;
-event_inherited();
+
 </string>
           </argument>
         </arguments>

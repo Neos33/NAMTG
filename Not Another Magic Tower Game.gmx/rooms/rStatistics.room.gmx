@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="obj_statistics" x="126" y="48" name="inst_92AB22E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_amount_drawer" x="64" y="128" name="inst_AE2F9247" locked="0" code="SS_StopSound(global.currentBGM);&#xA;global.currentBGM = global.BGM_Null;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_amount_drawer" x="64" y="128" name="inst_AE2F9247" locked="0" code="FMODInstanceStop(global.currentBGM);&#xA;global.currentBGM = global.BGM_Null;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_amount_timeline" x="576" y="96" name="inst_127A158B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cheater" x="400" y="304" name="inst_202BF454" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="block" x="0" y="640" name="inst_531709DB" locked="0" code="player.frozen = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

@@ -25,9 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>type = 2;
+            <string>event_inherited();
+type = Power_Up.Health;
 ammount = 8;
-event_inherited();
+
 </string>
           </argument>
         </arguments>

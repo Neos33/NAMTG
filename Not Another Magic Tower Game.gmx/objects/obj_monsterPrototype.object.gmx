@@ -25,14 +25,71 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>ind = 0;
+sample = false;
+onCollide = false;
+status = 0;
+ex = 0;
+
+isBoss = false;
+
+mybattleroom = battleroom;
+
+alarm[11] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>image_speed = 1/8;
-if(global.monsters[ind] &amp;&amp; !global.inGallery &amp;&amp; !sample)
+/*if(global.monsters[ind] &amp;&amp; !global.inGallery &amp;&amp; !sample)
 {
     instance_destroy();
 }
 
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.monsters[ind] &amp;&amp; !global.inGallery &amp;&amp; !sample)
+{
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -76,32 +133,36 @@ global.stageRoom = room;
 
 //global.stageMusic = global.currentBGM;
 sound_stop_all();
-SS_PauseSound(global.currentBGM);
+//print("music paused = ", FMODInstanceGetPaused(global.curMusic));
+//FMODInstanceSetPaused(global.currentBGM, true);
+FMODInstanceSetPaused(global.curMusic, true);
+//print("musica supuestamente se pauso");
+//print("music paused = ", FMODInstanceGetPaused(global.curMusic));
 if(isBoss || object_index == obj_demonLead)
 {
     sound_fix(sndgras);
-    transition_kind = 104;
+    //transition_kind = 104;
     if(object_index == obj_faShiLiu)
     {
-        transition_steps = 60;
+        //transition_steps = 60;
         //transition_kind = 21;
     }
     else
     {     
-        transition_kind = 104;
+        //transition_kind = 104;
     }
 }
 else
 {
     if(object_index == obj_silverEvilSlime || object_index == obj_goldEvilSlime)
     {
-        transition_steps = 150;
-        transition_kind = 104;
+        //transition_steps = 150;
+        //transition_kind = 104;
     }
     else
     {
-        transition_steps = 50;
-        transition_kind = choose(101,102,103);
+        //transition_steps = 50;
+        //transition_kind = choose(101,102,103);
     }
 }
 if(global.special[6])

@@ -25,6 +25,49 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>callSC = 0;
+callSCTime = 0;
+rspd = 0;
+rSound = 0;
+
+p1Count = 0;
+b1 = 0;
+b2 = 0;
+b3 = 0;
+finalEndCount = 0;
+finalEnd = 0;
+
+p1R = 0;
+
+p2R1 = 0;
+p2R2 = 0;
+p2Dir1 = 0;
+p2Dir2 = 0;
+p2Rdir = 0;
+p2Adir = 0;
+p2RNum = 0;
+p2ANum = 0;
+p2Start = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>totalTime = 0;
 timeAlpha = 0;
 timeColor = c_white;
@@ -49,6 +92,8 @@ p2.dir = 330;
 p2.r = 96;
 sound_fix(snd_touhou_1UP);
 alarm[11] = 1;
+
+
 
 </string>
           </argument>
@@ -163,14 +208,15 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.inCombat = false;
+            <string>/// Battle finished
+global.inCombat = false;
 if(global.GalleryBossFight)
 {
     if(global.GalleryBossFightNum &gt; 1 &amp;&amp; global.GalleryBossFightInd &lt; global.GalleryBossFightNum - 1)
     {
         global.GalleryBossFight = true;
-        transition_kind = 21;
-        transition_steps = 100;
+        //transition_kind = 21;
+        //transition_steps = 100;
         global.GalleryBossFightInd += 1;
         global.combatObj = global.brObj[global.GalleryBossFightInd];
         global.mHp = global.brMHp[global.GalleryBossFightInd];
@@ -187,7 +233,7 @@ if(global.GalleryBossFight)
             global.GalleryBossFightInd = 0;
             global.BR_Status = 1;
         }
-        transition_kind = 21;
+        //transition_kind = 21;
         room_goto(global.stageRoom);
         player.x = global.roomX;
         player.y = global.roomY;
@@ -208,7 +254,7 @@ else
             global.achievements[19] = 1;
         }
     }
-    transition_kind = 21;
+    //transition_kind = 21;
     room_goto(r10F);   
     player.x = 480 + 17;
     player.y = 192 + 23;
@@ -900,6 +946,9 @@ if(totalTime &lt; limitTime)
     //draw_set_font(font12);
     //draw_text(112,16,totalTime);
 }
+
+draw_set_color(c_white);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

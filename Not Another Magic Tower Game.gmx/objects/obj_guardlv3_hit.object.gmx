@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -26,6 +40,8 @@
           <argument>
             <kind>1</kind>
             <string>hspeed=-2;
+
+sss = 0;
 </string>
           </argument>
         </arguments>
@@ -48,9 +64,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(sss==1)
+            <string>if instance_exists(obj_guardlv3_combat)
 {
-direction=point_direction(x,y,obj_guardlv3_combat.x+16,obj_guardlv3_combat.y+16);
+    if(sss==1)
+    {
+    direction=point_direction(x,y,obj_guardlv3_combat.x+16,obj_guardlv3_combat.y+16);
+    }
 }
 
 </string>

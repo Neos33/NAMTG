@@ -53,8 +53,8 @@ event_inherited();
 //global.gdFile = "GD_Design\GD01.gdmap";
 //global.img_blend = c_blue;
 //global.targetImageBlend = c_blue;
-transition_steps = 50;
-transition_kind = 21;
+//transition_steps = 50;
+//transition_kind = 21;
 with(player)
 {
     instance_destroy();

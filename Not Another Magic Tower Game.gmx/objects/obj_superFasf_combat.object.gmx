@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "SUPER FASF!!!";
+            <string>event_inherited();
+name = "SUPER FASF!!!";
 image_speed =0;
 image_xscale=3;
 image_yscale=3;
@@ -41,7 +42,8 @@ audio_loopmusic_volume(global.BGMsupfasf);
 
 alarm[3]=100; //orginal 150;
 volume=10000;
-SS_SetSoundVol(global.BGMsupfasf,volume);
+//SS_SetSoundVol(global.BGMsupfasf,volume);
+FMODInstanceSetVolume(global.BGMsupfasf,volume);
 animation=1;
 </string>
           </argument>
@@ -96,7 +98,8 @@ alarm[10]=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>SS_SetSoundVol(global.BGMsupfasf,volume)
+            <string>//SS_SetSoundVol(global.BGMsupfasf,volume)
+FMODInstanceSetVolume(global.BGMsupfasf, volume);
 if(volume&lt;=10000)
 {
 volume+=1000;
@@ -126,7 +129,8 @@ alarm[10]=2;
             <kind>1</kind>
             <string>if(volume&gt;200)
 {
-SS_SetSoundVol(global.BGMsupfasf,volume);
+//SS_SetSoundVol(global.BGMsupfasf,volume);
+FMODInstanceSetVolume(global.BGMsupfasf, volume);
 volume-=150;
 alarm[7]=1;
 }
@@ -141,10 +145,11 @@ visible=0;
 x=100;
 y=100;
 image_speed = 1/8;
-SS_PauseSound(global.BGMsupfasf);
+//SS_PauseSound(global.BGMsupfasf);
+FMODInstanceSetPaused(global.BGMsupfasf, true);
 room_goto(Roomavoidence);
-transition_steps = 20;
-transition_kind=21;
+//transition_steps = 20;
+//transition_kind=21;
 }
 </string>
           </argument>

@@ -35,6 +35,8 @@ isLoading = false;
 musicIndex = 0;
 musicCount = 46;
 
+musicLoadEnd = false;
+
 song[0] = "Death.ogg";
 song[1] = "Null.ogg";
 song[2] = "BGM1.ogg";type[2]=1;
@@ -176,8 +178,8 @@ instance_create(768, 560, obj_start);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>execute_string("globalvar " + name[musicIndex]);
-execute_string(name[musicIndex] + '=SS_LoadSound(working_directory+"\BGM\' + song[musicIndex] + '",'+ string(1-type[musicIndex]) +');');
+            <string>//execute_string("globalvar " + name[musicIndex]);
+//execute_string(name[musicIndex] + '=SS_LoadSound(working_directory+"\BGM\' + song[musicIndex] + '",'+ string(1-type[musicIndex]) +');');
 event_user(0);
 </string>
           </argument>
@@ -203,7 +205,7 @@ event_user(0);
             <kind>1</kind>
             <string>if(musicPer &lt; targetPer)
 {
-    musicPer += 1;
+    musicPer += 10;
 }
 else 
 {

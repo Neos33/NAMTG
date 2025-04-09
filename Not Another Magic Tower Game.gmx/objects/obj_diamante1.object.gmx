@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>atk=233;
+            <string>event_inherited();
+atk=233;
 def=120;
 hp=100;
 ex=120;
@@ -34,15 +35,40 @@ combatObj = obj_diamante_combat;
 //mybattleroom = getBattleRoom();
 mybattleroom = rDiamante;
 
-if(!global.clearItem[10] &amp;&amp; global.monsters[ind])
+alarm[11] = 1;
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!global.clearItem[10] &amp;&amp; global.monsters[ind])
 {
     global.clearItem[10] = true;
     itemController = instance_create(0,0,obj_msgItemController);
     itemController.itemInd = spr_diamondKey;
     itemController.msg = "You've got the diamond key. You can open the specific diamond door now.";
 }
-event_inherited();
 
+event_inherited();
 </string>
           </argument>
         </arguments>

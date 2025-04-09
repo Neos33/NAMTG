@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>SS_StopSound(global.BGM_MMMFingers);
+            <string>FMODInstanceStop(global.BGM_MMMFingers);
 step = 0;
 alpha = 0;
 width = 13;
@@ -266,15 +266,15 @@ if(mouse_check_button_pressed(mb_left))
             {
                 instance_create(32 + 17, 96 + 23, player);
             }
-            transition_kind = 21;
-            transition_steps = 80;
+            //transition_kind = 21;
+            //transition_steps = 80;
             room_goto(rMMMBonus);
         }
         else if(selectedIndex == 2)
         {
             instance_create(256 + 17, 96 + 23, player);
-            transition_steps = 50;
-            transition_kind = 21;
+            //transition_steps = 50;
+            //transition_kind = 21;
             room_goto(r10F);
         }
     }

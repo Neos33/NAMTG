@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//���ʂ̕ǁi���j
+            <string>sp = 0;
+//���ʂ̕ǁi���j
 /*
 if object_index=block{
 if room=rStage01 {
@@ -37,6 +38,8 @@ if room=rStage01 {
     }
 }
 }
+
+
 </string>
           </argument>
         </arguments>

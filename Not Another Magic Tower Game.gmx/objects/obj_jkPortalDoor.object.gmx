@@ -173,17 +173,19 @@ if(go)
         {
          instance_destroy();
         }
-        transition_kind = 21;
-        transition_steps = 80;
+        //transition_kind = 21;
+        //transition_steps = 80;
         if(ind &gt; 0)
         {
          if(ind &lt; 10)
          {
-            execute_string("room_goto(ExtraJK0" + string(ind) +")");
+            //execute_string("room_goto(ExtraJK0" + string(ind) +")");
+            room_goto(asset_get_index("ExtraJK0" + string(ind)));
          }
          else
          {
-            execute_string("room_goto(ExtraJK" + string(ind) +")");
+            //execute_string("room_goto(ExtraJK" + string(ind) +")");
+            room_goto(asset_get_index("ExtraJK" + string(ind)));
          }
         }
         else

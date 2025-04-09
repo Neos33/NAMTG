@@ -59,9 +59,9 @@ else
     m.ex = global.mEx;
 }
 global.cooldown = false;
-if(!SS_IsSoundPaused(global.currentBGM))
+if(!FMODInstanceGetPaused(global.currentBGM))
 {
-    SS_PauseSound(global.currentBGM);
+    FMODInstanceSetPaused(global.currentBGM, true);
 }
 if(global.currentFloor &lt;= 10)
 {
@@ -89,50 +89,50 @@ sound_loop(battleBGM);
 else if(room == battlefasfroom)
 {
     global.currentBGM = global.BGMsupfasf;
-    if(SS_IsSoundPaused(global.BGMsupfasf))
+    if(FMODInstanceGetPaused(global.BGMsupfasf))
     {
         audio_resumemusic_volume(global.BGMsupfasf);
     }
-    else if(!SS_IsSoundPlaying(global.BGMsupfasf))
+    else if(!FMODInstanceIsPlaying(global.BGMsupfasf))
     {
         audio_loopmusic_volume(global.BGMsupfasf);   
     }
-    else if(!SS_IsSoundLooping(global.BGMsupfasf))
+    /*else if(!SS_IsSoundLooping(global.BGMsupfasf))
     {
         audio_loopmusic_volume(global.BGMsupfasf);
-    }
+    }*/
 }
 else if(room == battleroom12)
 {
     global.currentBGM = global.BGM_RedKey;
-    if(SS_IsSoundPaused(global.BGM_RedKey))
+    if(FMODInstanceGetPaused(global.BGM_RedKey))
     {
         audio_resumemusic_volume(global.BGM_RedKey);
     }
-    else if(!SS_IsSoundPlaying(global.BGM_RedKey))
+    else if(!FMODInstanceIsPlaying(global.BGM_RedKey))
     {
         audio_loopmusic_volume(global.BGM_RedKey);   
     }
-    else if(!SS_IsSoundLooping(global.BGM_RedKey))
+    /*else if(!SS_IsSoundLooping(global.BGM_RedKey))
     {
         audio_loopmusic_volume(global.BGM_RedKey);
-    }
+    }*/
 }
 else if(room == rDracula)
 {
     global.currentBGM = global.BGMDracula;
-    if(SS_IsSoundPaused(global.BGMDracula))
+    if(FMODInstanceGetPaused(global.BGMDracula))
     {
         audio_resumemusic_volume(global.BGMDracula);
     }
-    else if(!SS_IsSoundPlaying(global.BGMDracula))
+    else if(!FMODInstanceIsPlaying(global.BGMDracula))
     {
         audio_loopmusic_volume(global.BGMDracula);   
     }
-    else if(!SS_IsSoundLooping(global.BGMDracula))
+    /*else if(!SS_IsSoundLooping(global.BGMDracula))
     {
         audio_loopmusic_volume(global.BGMDracula);
-    }
+    }*/
 }
 
 
@@ -176,7 +176,7 @@ if(instance_exists(player) &amp;&amp; player.x &gt; 0)
     
     if(!global.isRandom)
     {
-        transition_kind = 21;
+        //transition_kind = 21;
     }
     room_goto(global.stageRoom);
     if(global.special[2])

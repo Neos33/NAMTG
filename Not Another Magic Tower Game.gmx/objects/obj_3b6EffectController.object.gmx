@@ -98,7 +98,7 @@ background_y[0] = random_range(-3,3);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>SS_StopSound(global.BGM_BEBoss);
+            <string>FMODInstanceStop(global.BGM_BEBoss);
 </string>
           </argument>
         </arguments>

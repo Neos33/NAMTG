@@ -104,7 +104,7 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(SS_IsSoundPlaying(bgm))
+            <string>if(FMODInstanceIsPlaying(bgm))
 {
     with(player)
     {
@@ -141,7 +141,7 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(SS_IsSoundPlaying(bgm))
+            <string>if(FMODInstanceIsPlaying(bgm))
 {
     with(player)
     {
@@ -179,7 +179,7 @@ alarm[0] = 1;
           <argument>
             <kind>1</kind>
             <string>
-if(SS_IsSoundPlaying(bgm))
+if(FMODInstanceIsPlaying(bgm))
 {
     with(player)
     {
@@ -208,7 +208,7 @@ if(checkMouse(view_xview[0] + 100 , 32, view_xview[0] + 700, 48))
     {
         mouseDown = false;
         currentPos = floor((mouse_x - view_xview[0] - 100) / 600 * size);
-        if(!soundPaused &amp;&amp; !SS_IsSoundPlaying(bgm))
+        if(!soundPaused &amp;&amp; !FMODInstanceIsPlaying(bgm))
         {
             audio_resumemusic_volume(bgm);
         }
@@ -230,15 +230,15 @@ if(checkMouse(view_xview[0] + 100 , 32, view_xview[0] + 700, 48))
             }
             instance_create(room_width - global.dashSpd * (size - currentPos) + 32,304,player)
         }
-        if(!SS_IsSoundPlaying(bgm))
+        if(!FMODInstanceIsPlaying(bgm))
         {
             audio_resumemusic_volume(bgm);
-            SS_SetSoundPosition(bgm, ds_list_find_value(list, currentPos));
-            SS_PauseSound(bgm);
+            FMODInstanceSetPosition(bgm, ds_list_find_value(list, currentPos));
+            FMODInstanceSetPaused(bgm, true);
         }
         else
         {
-            SS_SetSoundPosition(bgm, ds_list_find_value(list, currentPos));
+            FMODInstanceSetPosition(bgm, ds_list_find_value(list, currentPos));
         }
         with(all)
         {

@@ -42,8 +42,17 @@ image_xscale = h;
   //�����Ă����Ԃɂ���
   if(!place_meeting(x,y+4,slipblock)){
   hspeed = maxSpeed*h;
-  }else{
-  if((h=1 && hspeed<maxSpeed) || (h=-1 && hspeed>-maxSpeed))hspeed +=(instance_position(x,y+10,slipblock).slip)*h
+  }else
+  {
+      //if instance_exists(slipblock)
+      {
+          if((h=1 && hspeed<maxSpeed) || (h=-1 && hspeed>-maxSpeed))
+          {
+            var _inst = instance_position(x,y+10,slipblock);
+            if _inst != noone
+                hspeed +=(_inst.slip)*h
+          }
+      }
   }
   //�����Ă���摜�ɕύX
   sprite_index = sprPlayerRunning;
@@ -54,7 +63,14 @@ image_xscale = h;
   //������Ԃɂ���
   hspeed = 0;
   }else{
-  if(hspeed!=0)hspeed-=(instance_position(x,y+10,slipblock).slip)*sign(hspeed)
+  if(hspeed!=0)
+  {
+    var _inst = instance_position(x,y+10,slipblock);
+    if _inst != noone
+    {
+    hspeed-=(_inst.slip)*sign(hspeed)
+    }
+  }
   }
   //�����摜�ɕύX
   sprite_index = sprPlayerIdle;
@@ -106,6 +122,9 @@ else{
 if(abs(vspeed) > maxVspeed){
   vspeed = sign(vspeed)*maxVspeed;
 }
+
+// ---------------------------------------------------------------------------------------------------- //
+// ---------------------------------------------------------------------------------------------------- //
 
 if(place_meeting(x, y, obj_wayDown))
 {

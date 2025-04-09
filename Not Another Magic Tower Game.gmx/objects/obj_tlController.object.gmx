@@ -25,7 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(0,0,obj_tlBlinkBlack);
+            <string>time = 0;
+explodeAmmount1 = 0;
+explodeSpd1 = 0;
+explodeAmmount2 = 0;
+explodeSpd2 = 0;
+f1 = 0;
+f2 = 0;
+p = 0;
+
+tempSign = 0;
+p1 = 0;
+blackOut = 0;
+
+startX = 0;
+startY = 0;
+b = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Room list
+instance_create(0,0,obj_tlBlinkBlack);
 currentStep = 0;
 explodeSpd1 = 6;
 explodeSpd2 = 7;
@@ -67,7 +104,8 @@ ds_list_shuffle(rngRoomList);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>step[0] = 1;    //Start Bullet
+            <string>/// Steps
+step[0] = 1;    //Start Bullet
 step[1] = 245;  //explode1
 step[2] = 340; //explode2_1
 step[3] = 350; //explode2_2
@@ -154,7 +192,8 @@ else if(global.part == 2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ps = part_system_create();
+            <string>/// Particle
+ps = part_system_create();
 part_system_depth(ps,-50)
 
 part1 = part_type_create();   //StartFire
@@ -174,7 +213,7 @@ beam = part_type_create();
 part_type_blend(beam,1);
 part_type_color1(beam,make_color_rgb(255,128,64));
 part_type_sprite(beam,sprBeam,0,0,0);
-sprite_set_alpha_from_sprite(sprBeam,sprBeam);
+//sprite_set_alpha_from_sprite(sprBeam,sprBeam);
 part_type_orientation(beam,0,360,0,0,0);
 part_type_size(beam,0,0,0.5,1);
 
@@ -294,26 +333,27 @@ ds_list_destroy(rngRoomList);
             <string>SS_StopAll();
 sound_stop_all();
 audio_playmusic_volume(global.BGM_DemonLead);
-global.currentBGM = global.BGM_DemonLead;
+//global.currentBGM = global.BGM_DemonLead;
+global.curMusic = global.BGM_DemonLead;
 if(global.part == 1)
 {
-    SS_SetSoundPosition(global.BGM_DemonLead, 8666536); //to monster room
+    FMODInstanceSetPosition(global.BGM_DemonLead, 8666536); //to monster room
 }
 else if(global.part == 2)
 {
     room_goto(rDemonLeadMonsters);
-    SS_SetSoundPosition(global.BGM_DemonLead, 19038852);
+    FMODInstanceSetPosition(global.BGM_DemonLead, 19038852);
 }
 else if(global.part == 3)
 {
     room_goto(rDemonLeadTouhou);
-    SS_SetSoundPosition(global.BGM_DemonLead, 24708352);
+    FMODInstanceSetPosition(global.BGM_DemonLead, 24708352);
     currentStep = 54;
 }
 else if(global.part == 4)
 {
     room_goto(rDemonLeadFinalPhase);
-    SS_SetSoundPosition(global.BGM_DemonLead, 33533648);
+    FMODInstanceSetPosition(global.BGM_DemonLead, 33533648);
     currentStep = 54;
 }
 </string>

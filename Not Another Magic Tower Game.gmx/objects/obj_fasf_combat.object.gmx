@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0;
+            <string>event_inherited();
+image_speed=0;
 image_index=0;
 
 name="F A S F !!!";
@@ -35,6 +36,8 @@ y=200;
 alarm[3]=50;
 i=0;
 j=0;
+
+spddd = 0;
 </string>
           </argument>
         </arguments>
@@ -157,24 +160,24 @@ alarm[6]=50;
             <kind>1</kind>
             <string>if spddd=1
 {
-aa=instance_create(x,y,fasf_ball)
-aa.direction=random_range(1,359);
-aa.speed=random_range(4,8)
-sound_fix(sndShoot);
-alarm[4]=3;
+    aa=instance_create(x,y,fasf_ball)
+    aa.direction=random_range(1,359);
+    aa.speed=random_range(4,8)
+    sound_fix(sndShoot);
+    alarm[4]=3;
 }
 else
 {
-image_speed=0;
-image_index=0;
-instance_create(0,0,white_flash1);
-with(fasf_ball)
-{
-move_towards_point(400,302,3);
-friction=-0.15;
+    image_speed=0;
+    image_index=0;
+    instance_create(0,0,white_flash1);
+    with(fasf_ball)
+    {
+        move_towards_point(400,302,3);
+        friction=-0.15;
 
-}
-alarm[5]=120;
+    }
+    alarm[5]=120;
 }
 
 </string>

@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>type = 4;
+            <string>event_inherited();
+
+type = Key_Type.Iron;
 ammount = 1;
-event_inherited();
+event_user(0);
 </string>
           </argument>
         </arguments>

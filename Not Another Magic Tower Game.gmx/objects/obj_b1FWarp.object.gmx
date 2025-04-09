@@ -36,8 +36,8 @@ if(global.currentFloor &lt; global.minFloor)
 {
     global.minFloor = global.currentFloor;
 }
-transition_kind = 21;
-transition_steps = 150;
+//transition_kind = 21;
+//transition_steps = 150;
 event_inherited();
 </string>
           </argument>

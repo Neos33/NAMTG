@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>global.currentBGM = global.BGMFaShiLiu;
-if(!SS_IsSoundPlaying(global.BGMFaShiLiu))
+if(!FMODInstanceIsPlaying(global.BGMFaShiLiu))
 {
     //sound_stop_all();
     SS_StopAll();

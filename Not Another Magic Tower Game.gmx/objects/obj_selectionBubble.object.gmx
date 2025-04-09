@@ -181,8 +181,8 @@ y = py + sin(degtorad(angle));
         if(mouse_check_button_released(mb_left))
         {
             global.stageIndex = ind;
-            transition_steps = 80;
-            transition_kind = 21;
+            //transition_steps = 80;
+            //transition_kind = 21;
             room_goto(roomTo);
             sound_fix(sndDecide);
         }

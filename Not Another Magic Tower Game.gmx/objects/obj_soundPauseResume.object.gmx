@@ -79,7 +79,7 @@ y = 24;
         {
             with(obj_soundProgressControl)
             {
-                SS_PauseSound(bgm);
+                FMODInstanceSetPaused(bgm, true);
                 soundPaused = true;
             }
             image_index = 1;

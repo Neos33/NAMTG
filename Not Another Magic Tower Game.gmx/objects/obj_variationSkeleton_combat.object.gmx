@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Variation Skeleton";
+            <string>event_inherited();
+name = "Variation Skeleton";
 image_speed = 1/8;
 x = 400;
 y = 304;

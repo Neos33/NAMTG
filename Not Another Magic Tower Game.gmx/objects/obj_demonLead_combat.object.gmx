@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "The Tower Lead";
+            <string>event_inherited();
+name = "The Tower Lead";
 if(room == rDemonLead)
 {
     x = 400;
@@ -35,6 +36,39 @@ hp = 6666;
 image_speed = 1/8;
 circle = instance_create(x,y,obj_tlMagicCircle);
 circle.target = id;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>final = 0;
+start = 0;
+ox = 0;
+oy = 0;
+dep = 0;
+dead = 0;
+s = 0;
+
+finalStart = 0;
+timer = 0;
+shake = 0;
+per = 0;
+
 </string>
           </argument>
         </arguments>

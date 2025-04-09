@@ -184,7 +184,7 @@ if (surface_exists(surfScreen)){
     if(pat==0){
         draw_surface_ext_center(surfScreen,400,304,xs,xs,rt,c_white,alp);
     }
-    screen_refresh();
+    //screen_refresh();
 }
 else{
     surfScreen = surface_create(view_wview[0], view_hview[0]);

@@ -25,14 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>atk=199;
+            <string>event_inherited();
+atk=199;
 def=101;
 hp=111;
 ex=150;
 name = "Evil Black Magician";
 combatObj = obj_blackDevilMagician_combat;
 mybattleroom = rEvilBlackMagician;
-event_inherited();
 
 </string>
           </argument>

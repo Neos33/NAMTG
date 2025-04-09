@@ -506,7 +506,7 @@ instance_create(startX + 16 * 6, startY - 16 * 13, obj_phaseFinalBlock1);
             <kind>1</kind>
             <string>if(room == rFaShiliu07)
 {
-    SS_StopSound(global.BGMFaShiLiu);
+    FMODInstanceStop(global.BGMFaShiLiu);
 }
 </string>
           </argument>

@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>player.image_alpha = 1;
-player2.image_alpha = 1;
+            <string>if instance_exists(player) player.image_alpha = 1;
+if instance_exists(player2) player2.image_alpha = 1;
 global.cooldown = false;
 </string>
           </argument>
@@ -98,8 +98,8 @@ global.cooldown = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>player.image_alpha = 1;
-player2.image_alpha = 1;
+            <string>if instance_exists(player) player.image_alpha = 1;
+if instance_exists(player2) player2.image_alpha = 1;
 global.cooldown = false;
 
 </string>

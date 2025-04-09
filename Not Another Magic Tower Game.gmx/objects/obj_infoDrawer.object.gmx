@@ -51,8 +51,8 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>transition_kind = 21;
-transition_steps = 150;
+            <string>//transition_kind = 21;
+//transition_steps = 150;
 room_goto(rStatistics);
 </string>
           </argument>

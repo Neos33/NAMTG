@@ -25,14 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>atk=233;
+            <string>event_inherited();
+atk=233;
 def=120;
 hp=1;
 ex=120;
 name = "Mr.Trebole";
 combatObj = obj_trebole_combat;
 mybattleroom = rTrebole;
-if(!global.clearItem[11] &amp;&amp; global.monsters[ind])
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!global.clearItem[11] &amp;&amp; global.monsters[ind])
 {
     global.clearItem[11] = true;
     itemController = instance_create(0,0,obj_msgItemController);

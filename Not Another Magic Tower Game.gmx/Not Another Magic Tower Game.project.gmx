@@ -3,7 +3,863 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
+  <datafiles number="50" name="datafiles">
+    <datafiles number="50" name="BGM">
+      <datafile>
+        <name>BGM_battle1.ogg</name>
+        <exists>-1</exists>
+        <size>5489385</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_battle1.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_BE.ogg</name>
+        <exists>-1</exists>
+        <size>3121507</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_BE.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_BEBoss.ogg</name>
+        <exists>-1</exists>
+        <size>3471634</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_BEBoss.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_BubbleStage.ogg</name>
+        <exists>-1</exists>
+        <size>800224</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_BubbleStage.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_BubbleStageSelection.ogg</name>
+        <exists>-1</exists>
+        <size>885619</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_BubbleStageSelection.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Burning.ogg</name>
+        <exists>-1</exists>
+        <size>3578188</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Burning.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_BurningFasf.ogg</name>
+        <exists>-1</exists>
+        <size>3128714</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_BurningFasf.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Corazone.ogg</name>
+        <exists>-1</exists>
+        <size>738885</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Corazone.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Corridor.ogg</name>
+        <exists>-1</exists>
+        <size>370856</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Corridor.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_DecisiveBattle.ogg</name>
+        <exists>-1</exists>
+        <size>3468763</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_DecisiveBattle.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_DemonLead.ogg</name>
+        <exists>-1</exists>
+        <size>3868526</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_DemonLead.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Diamante.ogg</name>
+        <exists>-1</exists>
+        <size>2312112</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Diamante.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Dracula.ogg</name>
+        <exists>-1</exists>
+        <size>2371450</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Dracula.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_FairyTail.ogg</name>
+        <exists>-1</exists>
+        <size>168497</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_FairyTail.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Fapple.ogg</name>
+        <exists>-1</exists>
+        <size>3715789</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Fapple.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Faro.ogg</name>
+        <exists>-1</exists>
+        <size>3182050</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Faro.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_FAShiLiu.ogg</name>
+        <exists>-1</exists>
+        <size>7857043</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_FAShiLiu.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Fear.ogg</name>
+        <exists>-1</exists>
+        <size>276506</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Fear.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Finals.mp3</name>
+        <exists>-1</exists>
+        <size>6726563</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Finals.mp3</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Finals.ogg</name>
+        <exists>-1</exists>
+        <size>1856978</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Finals.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_FloorStage.ogg</name>
+        <exists>-1</exists>
+        <size>4489939</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_FloorStage.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Freezing.ogg</name>
+        <exists>-1</exists>
+        <size>3983486</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Freezing.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Gallery.ogg</name>
+        <exists>-1</exists>
+        <size>3061933</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Gallery.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_GE.ogg</name>
+        <exists>-1</exists>
+        <size>4636771</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_GE.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_JKStage.ogg</name>
+        <exists>-1</exists>
+        <size>2456182</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_JKStage.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_JKStageSelection.ogg</name>
+        <exists>-1</exists>
+        <size>3130909</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_JKStageSelection.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Luka.ogg</name>
+        <exists>-1</exists>
+        <size>1262849</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Luka.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_MMMFingers.ogg</name>
+        <exists>-1</exists>
+        <size>3922961</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_MMMFingers.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Pica.ogg</name>
+        <exists>-1</exists>
+        <size>1440736</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Pica.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_RedKey.ogg</name>
+        <exists>-1</exists>
+        <size>5829155</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_RedKey.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_RenalTreasure.ogg</name>
+        <exists>-1</exists>
+        <size>630691</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_RenalTreasure.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_SE.ogg</name>
+        <exists>-1</exists>
+        <size>5729758</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_SE.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Secret1.ogg</name>
+        <exists>-1</exists>
+        <size>3618808</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Secret1.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Secret2.ogg</name>
+        <exists>-1</exists>
+        <size>946502</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Secret2.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Secret3.ogg</name>
+        <exists>-1</exists>
+        <size>2917104</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Secret3.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Trebole.ogg</name>
+        <exists>-1</exists>
+        <size>2854450</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Trebole.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM_Truth.ogg</name>
+        <exists>-1</exists>
+        <size>6024267</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM_Truth.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM1.ogg</name>
+        <exists>-1</exists>
+        <size>4920421</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM1.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM1-10F.ogg</name>
+        <exists>-1</exists>
+        <size>2729260</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM1-10F.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGM11-15F.ogg</name>
+        <exists>-1</exists>
+        <size>2163971</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGM11-15F.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGMB1F.ogg</name>
+        <exists>-1</exists>
+        <size>2182639</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGMB1F.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BGMBoss1.ogg</name>
+        <exists>-1</exists>
+        <size>4004189</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BGMBoss1.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>Death.ogg</name>
+        <exists>-1</exists>
+        <size>80675</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Death.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>Null.ogg</name>
+        <exists>-1</exists>
+        <size>3760</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Null.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>SE_HeedMyCall.ogg</name>
+        <exists>-1</exists>
+        <size>48703</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>SE_HeedMyCall.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>SE_KidScream.ogg</name>
+        <exists>-1</exists>
+        <size>68791</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>SE_KidScream.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>Title.ogg</name>
+        <exists>-1</exists>
+        <size>1065220</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Title.ogg</filename>
+      </datafile>
+    </datafiles>
+    <datafile>
+      <name>CleanMem.dll</name>
+      <exists>-1</exists>
+      <size>1024</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>CleanMem.dll</filename>
+    </datafile>
+    <datafile>
+      <name>fmodex.dll</name>
+      <exists>-1</exists>
+      <size>370688</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>fmodex.dll</filename>
+    </datafile>
+    <datafile>
+      <name>GMFMODSimple.dll</name>
+      <exists>-1</exists>
+      <size>495104</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>GMFMODSimple.dll</filename>
+    </datafile>
+  </datafiles>
+  <NewExtensions>
+    <extension index="0">extensions\GMSched</extension>
+  </NewExtensions>
   <sounds name="sound">
     <sounds name="sfx">
       <sound>sound\sndBlockChange</sound>
@@ -67,7 +923,6 @@
       <sound>sound\sndClaw1</sound>
       <sound>sound\sndClaw2</sound>
       <sound>sound\sndClock</sound>
-      <sound>sound\snddark1</sound>
       <sound>sound\sndDark1</sound>
       <sound>sound\sndDark2</sound>
       <sound>sound\sndDark3</sound>
@@ -920,7 +1775,6 @@
           <sprite>sprites\spr_swordDash</sprite>
           <sprite>sprites\spr_swordhit3</sprite>
           <sprite>sprites\spr_superSaiyan</sprite>
-          <sprite>sprites\spr_unKnown</sprite>
           <sprite>sprites\spr_danger</sprite>
         </sprites>
         <sprites name="miniboss1">
@@ -1706,7 +2560,6 @@
         <sprite>sprites\spr_specials</sprite>
         <sprite>sprites\spr_wings</sprite>
         <sprite>sprites\spr_others</sprite>
-        <sprite>sprites\spr_cheater!</sprite>
       </sprites>
     </sprites>
     <sprites name="extra">
@@ -2185,7 +3038,6 @@
     </scripts>
     <scripts name="argument">
       <script>scripts\draw_me.gml</script>
-      <script>scripts\drawlife.gml</script>
       <script>scripts\fade_in.gml</script>
       <script>scripts\fade_out.gml</script>
       <script>scripts\fadeobject.gml</script>
@@ -2470,7 +3322,6 @@
       <script>scripts\drawRing.gml</script>
       <scripts name="Nikaple">
         <script>scripts\turn_towards_direction.gml</script>
-        <script>scripts\angle_difference.gml</script>
         <script>scripts\scr_draw_motionblur.gml</script>
         <script>scripts\createBullet.gml</script>
         <script>scripts\createDiaBullet.gml</script>
@@ -2495,6 +3346,11 @@
     </scripts>
     <script>scripts\saveFix_v998.gml</script>
     <script>scripts\AutoBackup.gml</script>
+    <script>scripts\stop_all_alarms.gml</script>
+    <script>scripts\scrInit.gml</script>
+    <script>scripts\print.gml</script>
+    <script>scripts\scrInitEnums.gml</script>
+    <script>scripts\draw_reset.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font24</font>
@@ -2663,7 +3519,6 @@
       <object>objects\blockNotVis2</object>
       <object>objects\blockVis</object>
       <object>objects\blockVis2</object>
-      <object>objects\block haneru</object>
       <object>objects\objSlideBlockL</object>
       <object>objects\objSlideBlockR</object>
       <object>objects\demobock</object>
@@ -2688,9 +3543,7 @@
         <object>objects\objCherryblue</object>
       </objects>
       <objects name="enemy">
-        <object>objects\enemy test</object>
         <object>objects\boss_test</object>
-        <object>objects\boss item</object>
       </objects>
     </objects>
     <objects name="bossitem">
@@ -5058,6 +5911,7 @@
         <object>objects\obj_GDObjEffectOut</object>
       </objects>
     </objects>
+    <object>objects\objTouhouDeathEffect</object>
   </objects>
   <timelines name="timelines">
     <timelines name="miku">

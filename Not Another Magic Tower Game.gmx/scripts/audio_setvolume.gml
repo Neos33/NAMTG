@@ -1,5 +1,5 @@
 var _VolPer;
-switch(argument0)
+/*switch(argument0)
 {
     case global.BGM_Luka:
     case global.BGM_Gallery:
@@ -46,6 +46,10 @@ switch(argument0)
     default:
          _VolPer = 1;
          break;
-}
+}*/
+_VolPer = 1;
 // SS_SetSoundVol(argument0,2000+80*global.audio_music_volume*_VolPer);
 FMODInstanceSetVolume(argument0,global.audio_music_volume/100*_VolPer);
+//FMODInstanceSetVolume(argument0,1);
+/*show_debug_message(global.audio_music_volume/100*_VolPer);
+show_debug_message("Que onda?");

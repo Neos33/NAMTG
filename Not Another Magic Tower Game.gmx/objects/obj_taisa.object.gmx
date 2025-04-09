@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = 272;
+            <string>event_inherited();
+x = 272;
 y = 32;
 name = "Fapple";
 instance_create(x+128,y+128,obj_taisaPattern);
@@ -88,7 +89,7 @@ SS_SetSoundPosition(curMusic,start_pos/tl_length*song_byte);
             <kind>1</kind>
             <string>if !instance_exists(player){
     timeline_running = 0;
-    alarm[0..11] = 0;
+    stop_all_alarms();
 }
 </string>
           </argument>

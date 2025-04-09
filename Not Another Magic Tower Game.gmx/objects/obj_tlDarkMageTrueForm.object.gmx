@@ -37,7 +37,7 @@ emit = part_emitter_create(obj_tlPreFinalController.sys);
 xl = ds_list_create();
 yl = ds_list_create();
 
-attract = part_attractor_create(obj_tlPreFinalController.sys);
+/*attract = part_attractor_create(obj_tlPreFinalController.sys);
 part_attractor_position(obj_tlPreFinalController.sys,attract,x,y-64);
 part_attractor_force(obj_tlPreFinalController.sys,attract,0.5,128,1,1);
 </string>
@@ -67,10 +67,10 @@ part_attractor_force(obj_tlPreFinalController.sys,attract,0.5,128,1,1);
     part_emitter_destroy(obj_tlPreFinalController.sys,emit);
 }
 
-if(part_attractor_exists(obj_tlPreFinalController.sys, attract))
+/*if(part_attractor_exists(obj_tlPreFinalController.sys, attract))
 {
     part_attractor_destroy(obj_tlPreFinalController.sys, attract);
-}
+}*/
 
 with(weapon)
 {

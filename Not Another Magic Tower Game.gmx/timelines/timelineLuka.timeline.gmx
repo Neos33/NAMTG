@@ -257,12 +257,12 @@ with(white3)alpha2 = 1
     obj_superFasf_combat.image_blend = c_white;
     obj_superFasf_combat.x = 400;
     obj_superFasf_combat.y = 200;
-    transition_kind=102;
-    transition_steps = 100;
+    //transition_kind=102;
+    //transition_steps = 100;
     room_goto(battlefasfroom);
     
     audio_resumemusic_volume(global.BGMsupfasf);
-    SS_SetSoundVol(global.BGMsupfasf,2000+80*100);
+    FMODInstanceSetVolume(global.BGMsupfasf, 2000+80*100);
     with(obj_superFasf_combat)alarm[11]=20;
 }
 </string>

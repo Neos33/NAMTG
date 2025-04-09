@@ -25,10 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=1/8;
+            <string>event_inherited();
+image_speed=1/8;
 name="Black Slime";
 isStable = true;
 alarm[5]=50;
+
+
+targetX = 0;
+targetY = 0;
 </string>
           </argument>
         </arguments>

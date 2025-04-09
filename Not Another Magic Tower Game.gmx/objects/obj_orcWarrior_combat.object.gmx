@@ -25,12 +25,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1/8;
+            <string>event_inherited();
+image_speed = 1/8;
 name = "Orc Warrior"
 x=600;
 y=544;
 alarm[3]=30;
 sound_fix(sndwarrior);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>i = 0;
+isAch = 0;
 </string>
           </argument>
         </arguments>

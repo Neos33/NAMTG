@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 576; i += 4)
+            <string>for(var i = 0; i &lt; 576; i += 4)
 {
     instance_create(view_xview[0] + 208 + i, view_yview[0] + 204, obj_fairyTailFog);
     instance_create(view_xview[0] + 208 + i, view_yview[0] + 406, obj_fairyTailFog);
@@ -33,9 +33,10 @@
     instance_create(view_xview[0] + 598, view_yview[0] + 16 + i, obj_fairyTailFog);
 }
 
-surf = surface_create(800,608);
+//surf = surface_create(800, 608);
+surf = noone;
 list = ds_list_create();
-for(i=0; i &lt; 9; i += 1)
+for(var i=0; i &lt; 9; i += 1)
 {
     ds_list_add(list,i);
 }
@@ -62,7 +63,7 @@ ds_list_shuffle(list);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (surface_exists(surf))
+            <string>/*if (surface_exists(surf))
 {
     surface_set_target(surf);
 }
@@ -89,7 +90,7 @@ ds_list_shuffle(list);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (surface_exists(surf)){
+            <string>/*if (surface_exists(surf)){
     surface_reset_target();
     for(j = 0; j &lt; 9; j += 1)
     {
@@ -97,7 +98,7 @@ ds_list_shuffle(list);
         draw_surface_general(surf, 195 + 202 * (val mod 3), 1 + 202 * floor(val / 3), 202, 202, 195 + 202 * (j mod 3), 1 + 202 * floor(j / 3), 1, 1, 0, c_white,c_white,c_white,c_white,1);
     }
     draw_surface_general(surf, 0,0,192,608, 0,0,1, 1, 0, c_white,c_white,c_white,c_white,1);
-    screen_refresh();
+    //screen_refresh();
     
 }
 else{
@@ -131,6 +132,89 @@ else{
     surface_free(surf);
 }
 ds_list_destroy(list);
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*if (!surface_exists(surf)){
+    surface_reset_target();
+    for(j = 0; j &lt; 9; j += 1)
+    {
+        val = ds_list_find_value(list,j);
+        draw_surface_general(surf, 195 + 202 * (val mod 3), 1 + 202 * floor(val / 3), 202, 202, 195 + 202 * (j mod 3), 1 + 202 * floor(j / 3), 1, 1, 0, c_white,c_white,c_white,c_white,1);
+    }
+    draw_surface_general(surf, 0,0,192,608, 0,0,1, 1, 0, c_white,c_white,c_white,c_white,1);
+    //screen_refresh();
+    
+}
+else{
+    surf = surface_create(view_wview[0], view_hview[0]);
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (!surface_exists(surf))
+{
+    surf = surface_create(view_wview[0], view_hview[0]);
+}
+
+
+surface_set_target(surf);
+for(j = 0; j &lt; 9; j += 1)
+{
+    var val = ds_list_find_value(list,j);
+    draw_surface_general(application_surface, 
+                        195 + 202 * (val mod 3), 
+                        1 + 202 * floor(val / 3), 
+                        202, 202, 
+                        195 + 202 * (j mod 3), 1 + 202 * floor(j / 3), 
+                        1, 1, 0, c_white,c_white,c_white,c_white,1);
+}
+
+surface_reset_target();
+//draw_surface_general(surf, 0,0,192,608, 0,0,1, 1, 0, c_white,c_white,c_white,c_white,1);
+
+draw_surface(surf, 0, 0);
+//screen_refresh();
+    
+
 
 </string>
           </argument>

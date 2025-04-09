@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1/8;
+            <string>event_inherited();
+image_speed = 1/8;
 name = "Red Slime";
 
 alarm[5] = 1;
@@ -106,15 +107,18 @@ alarm[5] = 75;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(status == 1)
+            <string>if instance_exists(player)
 {
-    app = instance_create(x + 16, y + 16, obj_cherry);
-    with(app)
+    if(status == 1)
     {
-        move_towards_point(player.x, player.y, 10);
-        audio_playsound(sndShoot);
+        app = instance_create(x + 16, y + 16, obj_cherry);
+        with(app)
+        {
+            move_towards_point(player.x, player.y, 10);
+            audio_playsound(sndShoot);
+        }
+        alarm[3] = 3;
     }
-    alarm[3] = 3;
 }
 </string>
           </argument>

@@ -28,6 +28,9 @@
             <string>alarm[1] = 1;
 sound_fix(sndShoot);
 alarm[3] = 50;
+
+alpha = 0;
+go = false;
 </string>
           </argument>
         </arguments>
@@ -75,8 +78,8 @@ alarm[3] = 50;
           <argument>
             <kind>1</kind>
             <string>//sound_fix(sndGetstar);
-transition_kind = 21;
-transition_steps = 100;
+//transition_kind = 21;
+//transition_steps = 100;
 room_goto(rTitle);
 //room_goto_next();
 </string>
@@ -101,7 +104,8 @@ room_goto(rTitle);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(alpha &lt; 1)
+            <string>/// Fade in
+if(alpha &lt; 1)
 {
     alpha += 0.04;
     alarm[1] = 1;
@@ -132,7 +136,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(alpha &gt; 0)
+            <string>/// Fade out
+if(alpha &gt; 0)
 {
     alpha -= 0.04;
     alarm[0] = 1;

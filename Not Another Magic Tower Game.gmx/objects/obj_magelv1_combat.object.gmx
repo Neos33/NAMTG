@@ -25,11 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = 'Junior Mage';
+            <string>event_inherited();
+name = 'Junior Mage';
 alarm[11] = 30;
 x = 704;
 y = 288;
 image_speed = 1 / 8;
+
+stepSpd = 0;
+
+hCount = 0;
+
+time = 0;
+dis = 0;
+b = 0;
+width = 0;
+gap  = 0;
+p1 = 0;
+p2 = 0;
+ang = 0;
 </string>
           </argument>
         </arguments>
@@ -75,7 +89,9 @@ image_speed = 1 / 8;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hCount = 0;
+            <string>if !instance_exists(player)
+    exit;
+hCount = 0;
 status = 1;
 hspeed = 0;
 if(player.x &gt; 400)
@@ -110,7 +126,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>status = 4;
+            <string>if !instance_exists(player)
+    exit;
+status = 4;
 stepSpd = -0.1 * sign(x + 16 - player.x);
 alarm[7] = 200;
 </string>

@@ -4,8 +4,10 @@
 
 //argument 0 - Inner radius scale factor
 //argument 1 - Outter Radius scale factor
-if(!instance_exists(player)) exit;
-var d r c rx a ma ri ro t_sina t_cosa;
+if !instance_exists(player) 
+    exit;
+    
+var d, r, c, rx, a, ma, ri, ro, t_sina, t_cosa;
 d = room_width/pi;               //Sets the dimanter for the tower 254.648
 r = d/2;                         //Sets the radius for the tower
 c = 400;               //Sets the center point of thw tower *

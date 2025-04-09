@@ -86,9 +86,9 @@ with(obj_startElement)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(SS_IsSoundPlaying(global.BGM_GE))
+            <string>if(FMODInstanceIsPlaying(global.BGM_GE))
 {
-    SS_StopSound(global.BGM_GE);
+    FMODInstanceStop(global.BGM_GE);
 }
 audio_playmusic_volume(global.BGM_GE);
 </string>

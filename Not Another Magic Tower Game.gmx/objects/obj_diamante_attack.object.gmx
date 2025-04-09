@@ -203,7 +203,7 @@ if(at4){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>SS_StopSound(global.BGM_Diamante);
+            <string>FMODInstanceStop(global.BGM_Diamante);
 </string>
           </argument>
         </arguments>

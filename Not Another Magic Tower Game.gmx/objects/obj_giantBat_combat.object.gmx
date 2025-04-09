@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Giant Bat";
+            <string>event_inherited();
+name = "Giant Bat";
 image_speed = 1/8;
 x = 400; 
 y = 200;

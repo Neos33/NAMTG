@@ -661,7 +661,8 @@ if(global.testPhase &gt; 0)
         start = true;
         mode = 2;
     }
-    SS_SetSoundPosition(global.BGM_Faro,global.testPos[global.testPhase]);
+    //SS_SetSoundPosition(global.BGM_Faro,global.testPos[global.testPhase]);
+    FMODInstanceSetPosition(global.BGM_Faro,global.testPos[global.testPhase]);
     if(room != global.testRoom[global.testPhase])
     {
         room_goto(global.testRoom[global.testPhase]);
@@ -951,7 +952,7 @@ if(start)
                     instance_destroy();
                 }
             }
-            SS_StopSound(global.BGM_Faro);
+            FMODInstanceStop(global.BGM_Faro);
             sound_fix(sndOsuFail);
             event_user(10);
         }
@@ -960,66 +961,66 @@ if(start)
 
 switch(time)
 {
-    case osuReady:
+    case 1200: //osuReady:
         //global.testStep1 = time;
         //global.testPos1 = SS_GetSoundPosition(global.BGM_Faro);
         sound_fix(sndOsuReady);
         instance_create(400,304,obj_osuReady);
         break;
-    case countdown3:
+    case 1250: //countdown3:
         cd = instance_create(0,0,obj_osuCountdown);
         cd.sprite_index = spr_osuCountdown3;
         sound_fix(snd_three);
         break;
-    case countdown2:
+    case 1290: //countdown2:
         cd = instance_create(800,0,obj_osuCountdown);
         cd.sprite_index = spr_osuCountdown2;
         sound_fix(snd_two);
         break;
-    case countdown1 - 10:
+    case 1320: //countdown1 - 10:
         room_goto(rFaroOsuStandard);
         break;
-    case countdown1:
+    case 1330: //countdown1:
         cd = instance_create(400,0,obj_osuCountdown);
         cd.sprite_index = spr_osuCountdown1;
         sound_fix(snd_one);
         break;
-    case countdown0:
+    case 1370: //countdown0:
         instance_create(400,304,obj_osuGo);
         sound_fix(snd_go);
         start = true;
         break;
-    case speedRun1: 
-        transition_kind = tType;
-        transition_steps = 50;
+    case 2620: //speedRun1: 
+        //transition_kind = tType;
+        //transition_steps = 50;
         time += 50;
         start = false;
         room_goto(rFaroBubble);
         break;
-    case faro1:
+    case 3000: //faro1:
         srFaro = instance_create(-400,304,obj_speedRunFaro);
         srFaro.hspeed = 5;
         break;
-    case speedRun2:
-        transition_kind = tType;
-        transition_steps = 50;
+    case 3220: //speedRun2:
+        //transition_kind = tType;
+        //transition_steps = 50;
         time += 50;
         room_goto(rFaroMMM);
         break;
-    case faro2:
+    case 3600: //faro2:
         srFaro = instance_create(400,1000,obj_speedRunFaro);
         srFaro.vspeed = -4;
         srFaro.depth = -1001;
         break;
-    case speedRun2End:
-        transition_kind = tType;
-        transition_steps = 50;
+    case 3800: //speedRun2End:
+        //transition_kind = tType;
+        //transition_steps = 50;
         time += 50;
         room_goto(rFaroMidTime);
         alarm[5] = 5;
         break;
-    case midRound1_1:
-    case finalRound1_1:
+    case 3855: //midRound1_1:
+    case 8125: //finalRound1_1:
         bCenterX = 400 + midRoundRadius * cos(degtorad(90));
         bCenterY = 304 - midRoundRadius * sin(degtorad(90));
         ball = instance_create(bCenterX * 2 - 400, bCenterY * 2 - 304, obj_faroMidTimeBall1);
@@ -1028,8 +1029,8 @@ switch(time)
         ball.angle = 90;
         ball.radius = midRoundRadius;
         break;
-    case midRound1_2:
-    case finalRound1_2:
+    case 3890: //midRound1_2:
+    case 8160: //finalRound1_2:
         bCenterX = 400 + midRoundRadius * cos(degtorad(210));
         bCenterY = 304 - midRoundRadius * sin(degtorad(210));
         ball = instance_create(bCenterX * 2 - 400, bCenterY * 2 - 304, obj_faroMidTimeBall1);
@@ -1038,8 +1039,8 @@ switch(time)
         ball.angle = 210;
         ball.radius = midRoundRadius;
         break;
-    case midRound1_3:
-    case finalRound1_3:
+    case 3915: //midRound1_3:
+    case 8195: //finalRound1_3:
         bCenterX = 400 + midRoundRadius * cos(degtorad(330));
         bCenterY = 304 - midRoundRadius * sin(degtorad(330));
         ball = instance_create(bCenterX * 2 - 400, bCenterY * 2 - 304, obj_faroMidTimeBall1);
@@ -1048,26 +1049,26 @@ switch(time)
         ball.angle = 330;
         ball.radius = midRoundRadius;
         break;
-    case midRountStart1:
-    case finalRountStart1:
+    case 3970: //midRountStart1:
+    case 8250: //finalRountStart1:
         with(obj_faroMidTimeBall1)
         {
             event_user(0);
         }
         break;
-    case midRound2_1:
-    case finalRound2_1:
+    case 4140: //midRound2_1:
+    case 8420: //finalRound2_1:
         instance_create(400, 304, obj_faroMidTimeBall2);
         break;
-    case midRound2_2:
-    case finalRound2_2:
+    case 4175: //midRound2_2:
+    case 8445: //finalRound2_2:
         instance_create(200, 304, obj_faroMidTimeBall2);
         break;
-    case midRound2_3:
-    case finalRound2_3:
+    case 4200: //midRound2_3:
+    case 8470: //finalRound2_3:
         instance_create(600, 304, obj_faroMidTimeBall2);
         break;
-    case midRountStart2:
+    case 4290: //midRountStart2:
         with(obj_faroMidTimeBall2)
         {
             event_user(0);
@@ -1077,64 +1078,64 @@ switch(time)
     //case racing:
     //   instance_create(0,0,obj_faroMidTimeWhite);
     //    break;
-    case taikoTime:
+    case 4400: //taikoTime:
         event_user(0);
         mode = 1;
-        transition_kind = tType;
-        transition_steps = 30;
+        //transition_kind = tType;
+        //transition_steps = 30;
         time += 30;
         room_goto(rFaroTaiko);
         break;
-    case speedRun3: 
-        transition_kind = tType;
-        transition_steps = 50;
+    case 5670: //speedRun3: 
+        //transition_kind = tType;
+        //transition_steps = 50;
         event_user(10);
         time += 50;
         room_goto(rFaroSideTower);
         break;
-    case faro3:
+    case 6000: //faro3:
         srFaro = instance_create(1200,304,obj_speedRunFaro);
         srFaro.hspeed = -5;
         break;
-    case speedRun4: 
-        transition_kind = tType;
-        transition_steps = 50;
+    case 6250: //speedRun4: 
+        //transition_kind = tType;
+        //transition_steps = 50;
         time += 50;
         room_goto(rFaroJK);
         break;
-     case faro4: 
+     case 6700: //faro4: 
         srFaro = instance_create(400,-400,obj_speedRunFaro);
         srFaro.vspeed = 4.5;
         srFaro.depth = -1001;
         break;
-     case ctbTime:
+     case 6850: //ctbTime:
         event_user(0);
         mode = 2;
-        transition_kind = tType;
-        transition_steps = 50;
+        //transition_kind = tType;
+        //transition_steps = 50;
         time += 50;
         room_goto(rFaroCTB);
         alarm[6] = 5;
         break;  
-     case ctbEnd: 
-        transition_kind = tType;
-        transition_steps = 50;
+     case 8070: //ctbEnd: 
+        //transition_kind = tType;
+        //transition_steps = 50;
         event_user(10);
         time += 50;
         alarm[7] = 5;
         room_goto(rFaroFinal1);
         break; 
-    case finalRoundStart2:
+    case 8580: //finalRoundStart2:
         with(obj_faroMidTimeBall2)
         {
             event_user(1);
         }
         break;
-    case finalPart:
+    case 8725: //finalPart:
         finalController = instance_create(0,0,obj_faroPhase1Controller);
         finalController.mode = 1;
         break;
-    case final:
+    case 9865: //final:
         fanalEnd = true;
         alarm[8] = 100;
         with(obj_faroMagicCircle)

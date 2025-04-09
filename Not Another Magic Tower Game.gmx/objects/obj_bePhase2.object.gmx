@@ -42,7 +42,31 @@ image_alpha = 0;
 alarm[10] = 1;
 alarm[11] = 1;
 /*blendColor = 0;
-image_blend = make_color_rgb(blendColor,blendColor,blendColor);
+image_blend = make_color_rgb(blendColor,blendColor,blendColor);*/
+
+
+hdir = 0;
+vdir = 0;
+hdis = 0;
+vdis = 0;
+
+bDir = 0;
+bSpd = 0;
+
+rSpd = 0;
+rDir = 0;
+
+c1 = 0;
+c2 = 0;
+
+blinkCount = 0;
+blink = 0;
+
+sc = 0;
+
+
+dis = 0;
+spd = 0;
 </string>
           </argument>
         </arguments>
@@ -361,9 +385,9 @@ alarm[4] = irandom_range(4,5);
 {
     rSpd = 3;
     rDir = random_range(0,359);
-    for(j = 0; j &lt; 6; j+=1)
+    for(var j = 0; j &lt; 6; j+=1)
     {
-    for(i =0; i &lt; 8; i+= 1)
+    for(var i =0; i &lt; 8; i+= 1)
     {
         r = instance_create(x + 112 * cos(degtorad(rStart + i * 45)),y - 112 * sin(degtorad(rStart + i * 45)), obj_beBossPhase2Bullet2);
         r.speed = rSpd;
@@ -404,9 +428,9 @@ else
     bSpd = 6;
     bDir += 37;
     bStart = random_range(0,359);
-    for(j = 0; j &lt; 6; j+=1)
+    for(var j = 0; j &lt; 6; j+=1)
     {
-    for(i =0; i &lt; 8; i+= 1)
+    for(var i =0; i &lt; 8; i+= 1)
     {
         b = instance_create(x + 24 * cos(degtorad(bStart + i * 45)),y - 24 * sin(degtorad(bStart + i * 45)), obj_beBossPhase2Bullet1);
         b.speed = bSpd;
@@ -647,7 +671,8 @@ if(phase == 2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(obj_beMagicCircle))
+            <string>/// Attach magic circle
+if(instance_exists(obj_beMagicCircle))
 {
     obj_beMagicCircle.x = x;
     obj_beMagicCircle.y = y;
@@ -718,6 +743,9 @@ if(totalTime &lt; limitTime)
         draw_rectangle(64, 32, 96, 48, false);
     }
 }
+
+draw_set_color(c_white);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

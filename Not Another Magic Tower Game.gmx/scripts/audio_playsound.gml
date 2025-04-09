@@ -1,8 +1,9 @@
-var sound,sound_default_volume;
-sound = argument0;
+
+var sound = argument0;
+var sound_default_volume;
 switch(sound){
     case sndBossHit: sound_default_volume = 0.75; break;
-    case sndBlockChange: ound_default_volume = 0.85; break;
+    case sndBlockChange: sound_default_volume = 0.85; break;
     case sndDeath:
     case sndSpikeTrap:
     case sndgras: sound_default_volume = 0.9; break;

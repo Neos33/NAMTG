@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Armored Soldier";
+            <string>event_inherited();
+name = "Armored Soldier";
 image_speed = 1/8;
 asShadowX = ds_list_create();
 asShadowY = ds_list_create();

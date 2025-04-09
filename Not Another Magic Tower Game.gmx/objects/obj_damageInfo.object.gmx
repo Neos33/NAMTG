@@ -108,7 +108,16 @@ else
     {
         draw_text_transformed(x,y,str,-1,-1,0);
     }
+    
+    /*draw_set_alpha(1);
+    draw_set_color(c_white);
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);*/
+    
+    draw_reset();
 }
+
+
 </string>
           </argument>
         </arguments>

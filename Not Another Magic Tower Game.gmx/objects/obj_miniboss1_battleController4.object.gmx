@@ -55,7 +55,7 @@ ang = 45;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.test = SS_GetSoundPosition(global.BGMBoss1);
+            <string>global.test = FMODInstanceGetPosition(global.BGMBoss1);
 </string>
           </argument>
         </arguments>

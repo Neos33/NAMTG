@@ -148,23 +148,25 @@ timeline_speed=bpf*4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player) {
-timeline_running=false
-obj_pica_ef.timeline_running=false
-timeline_position=-1
-obj_pica_ef.timeline_position=-1
-set_automatic_draw(true)}
-
-
-if f {obj_pica_ef.f=true;f=false}
-if f2 {obj_pica_ef.f2=true;f2=false}
-if d {obj_pica_ef.d=true;d=false}
-if d2 {obj_pica_ef.d2=true;d2=false}
-
-if(view_kill){
-    with(player){
-        if(outsideView(0)){
-            audio_playsound(sndDeath)
+            <string>if !instance_exists(player) 
+{
+    timeline_running=false
+    obj_pica_ef.timeline_running=false
+    timeline_position=-1
+    obj_pica_ef.timeline_position=-1
+    //set_automatic_draw(true)}
+    
+    
+    if f {obj_pica_ef.f=true;f=false}
+    if f2 {obj_pica_ef.f2=true;f2=false}
+    if d {obj_pica_ef.d=true;d=false}
+    if d2 {obj_pica_ef.d2=true;d2=false}
+    
+    if(view_kill){
+        with(player){
+            if(outsideView(0)){
+                audio_playsound(sndDeath)
+            }
         }
     }
 }
@@ -542,7 +544,7 @@ t18=0}}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>set_automatic_draw(true);
+            <string>//set_automatic_draw(true);
 </string>
           </argument>
         </arguments>

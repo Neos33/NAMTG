@@ -37,6 +37,8 @@ else
 {
     ty = view_yview[0] + 608 - 72;
 }
+
+status = 0;
 /*if(instance_number(obj_achievements))
 {
 

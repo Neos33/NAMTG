@@ -1694,8 +1694,8 @@ a.back=true;
 b.image_alpha=0.1
 b.image_blend=c_black
 at9=false
-set_automatic_draw(false)
-screen_redraw()
+//set_automatic_draw(false)
+//screen_redraw()
 </string>
           </argument>
         </arguments>
@@ -1721,7 +1721,7 @@ screen_redraw()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>screen_redraw()
+            <string>//screen_redraw()
 
 b.image_alpha=0.3
 </string>
@@ -1749,7 +1749,7 @@ b.image_alpha=0.3
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>screen_redraw()
+            <string>//screen_redraw()
 
 b.image_alpha=0.5
 </string>
@@ -1777,7 +1777,7 @@ b.image_alpha=0.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>screen_redraw()
+            <string>//screen_redraw()
 
 b.image_alpha=0.7
 </string>
@@ -1805,7 +1805,7 @@ b.image_alpha=0.7
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>set_automatic_draw(true)
+            <string>//set_automatic_draw(true)
 with b instance_destroy()
 </string>
           </argument>

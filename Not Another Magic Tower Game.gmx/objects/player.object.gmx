@@ -40,9 +40,11 @@ if(global.reverse == 1){
     y -= 4;
     djump = 1;
 }
+onPlatform = false;
+
 image_yscale = yflag;
 image_speed = 0.2; //�A�j���[�V�����̑��x
-if(global.image_xscale=-1){image_xscale = -1;}
+if(image_xscale=-1){image_xscale = -1;}
 
 life=5
 
@@ -76,6 +78,34 @@ else
 {
     visible = 1;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>injuredInterval = 0;
+lavaDamage = 0;
+
+block2 = 0;
+hosei = 0;
+onblock = 0;
+
+isConvoy = false;
 </string>
           </argument>
         </arguments>
@@ -601,6 +631,8 @@ if (place_free(x+hspeed,y+vspeed) == false){
           <argument>
             <kind>1</kind>
             <string>//��ʂ̊O�ɏo���Ƃ��̔���
+if !instance_exists(player)
+    exit;
 var changeRoom,roomTo;
 
 if(room == rBegining || room == battleroomBE || room == rNPCBattle || room == rDracula || room == rRedKnight || room == rSilverEvilSlime || room == rGoldEvilSlime || room == rBurningKnight || room == rEvilBlackMagician || (room == rFaroBubble &amp;&amp; obj_faroBubbleWarp.triggered) || room == rFaroMMM || room == rEvilDragon || room == r5F
@@ -625,15 +657,28 @@ if(room == rDemonLeadOrininal)
 changeRoom = outsideRoom();
 
 
-    if(changeRoom == true){
-  //�߂���roomChanger���L��΁A����roomTo�̃��[���Ɉړ��B������Ύ��S
-  roomTo = instance_position(x,y,roomChanger).roomTo;  
-  if(place_meeting(x,y,roomChanger) == false){
-  killPlayer();
-  }
-  else{
-      room_goto(roomTo);
-  }
+if(changeRoom == true)
+{
+    //�߂���roomChanger���L��΁A����roomTo�̃��[���Ɉړ��B������Ύ��S
+    //if instance_exists(roomChanger)
+    {
+        var _room_target = instance_position(x,y,roomChanger);
+        var _secure_roomTo = noone;
+        if _room_target != noone
+        {
+            _secure_roomTo = _room_target.roomTo
+        }
+        //roomTo = instance_position(x,y,roomChanger).roomTo;  
+        if(place_meeting(x,y,roomChanger) == false)
+        {
+            killPlayer();
+        }
+        else
+        {
+            if _secure_roomTo != noone
+                room_goto(_secure_roomTo);
+        }
+    }
 }  
   //���W���킹�i���[���̃T�C�Y�������łȂ��Ƌ������ςɂȂ�܂��j
   if(x &lt; 0){

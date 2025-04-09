@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100000</depth>
+  <depth>-200</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -86,6 +86,34 @@ levelExp = global.levelExp;
 levelRequired = global.levelRequired[global.currentLevel];
 isSound = false;
 alarm[0] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>special = false;
+debug = false;
+
+baseInfoX = 0;
+baseInfoY = 0;
+
+amount = 0;
+finalAmount = 0;
 </string>
           </argument>
         </arguments>
@@ -328,7 +356,10 @@ else {
     }
     else if(!special)
     {
-        draw_sprite(player.sprite_index, player.image_index, 48 + 17, 48 + 23);
+        if instance_exists(player)
+        {
+            draw_sprite(player.sprite_index, player.image_index, 48 + 17, 48 + 23);
+        }
         draw_set_alpha(1);
         draw_set_halign(fa_left);
         draw_set_valign(fa_top);
@@ -381,6 +412,8 @@ else {
         draw_text(baseInfoX - 2 + 96 - 2,baseInfoY + 24 + 4 + 5, string(levelExp) + "/" + string(levelRequired));
     }
 }
+
+draw_reset();
 </string>
           </argument>
         </arguments>

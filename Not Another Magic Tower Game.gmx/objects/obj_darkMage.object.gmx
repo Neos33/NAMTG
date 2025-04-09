@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>atk=280;
+            <string>event_inherited();
+atk=280;
 def=142;
 hp=150;
 ex=320;
@@ -33,7 +34,7 @@ name = "Dark Mage";
 combatObj = obj_darkMage_combat;
 //mybattleroom = getBattleRoom();
 mybattleroom = rDarkMage;
-event_inherited();
+
 </string>
           </argument>
         </arguments>

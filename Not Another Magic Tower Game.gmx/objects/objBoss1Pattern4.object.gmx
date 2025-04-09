@@ -186,10 +186,13 @@ steps=1;
 ii=irandom(6);
 repeat(24){
     a=instance_create(x,y,objBoss1Bullet5);
-    a.speed = (1.4-j*0.1)*variable_local_get("length"+string(steps))/30;
-    a.direction = variable_local_get("dire"+string(steps))+d+j*4;
+    //a.speed = (1.4-j*0.1)*variable_local_get("length"+string(steps))/30;
+    //a.direction = variable_local_get("dire"+string(steps))+d+j*4;
+    a.speed = (1.4-j*0.1)*variable_instance_get(id, "length"+string(steps)) / 30;
+    a.direction = variable_instance_get(id, "dire"+string(steps))+d+j*4;
     a.image_index=ii;
     steps+=1;
+    
 }
 }
 instance_destroy();
@@ -259,34 +262,69 @@ instance_destroy();
             <kind>1</kind>
             <string>d=random(360);
 ind=irandom(6);
-  arg0 = 6 ;   arg1 = 0 ;   arg2 = 0 ;   arg3 = x ;   arg4 = y ;   arg5 = d ;
-  arg6 = objBoss1Bullet5 ;   arg7 = 4 ;   arg8 = 8+global.phase ;   arg9 = 1 ;   arg10 = 7 ;
-  if(arg0==0)arg0 = 1 ;  if(arg1==0)arg1 = 1 ;if(arg2==0)arg2 = 1 ;  if(arg7==0)arg7 = 1 ;
-  i = 0 ;   d = 0 ;   t = 0 ;   P_d = 360/arg0*arg7 ;                       
+arg0 = 6;   
+arg1 = 0;   
+arg2 = 0;   
+arg3 = x;   
+arg4 = y;   
+arg5 = d;
+arg6 = objBoss1Bullet5;   
+arg7 = 4;   
+arg8 = 8+global.phase;   
+arg9 = 1;   
+arg10 = 7;
+
+if(arg0==0)
+    arg0 = 1;  
+if(arg1==0)
+    arg1 = 1;
+if(arg2==0)
+    arg2 = 1;  
+if(arg7==0)
+    arg7 = 1;
+
+i = 0;   
+d = 0;   
+t = 0;   
+P_d = 360/arg0*arg7;                       
                      
-  // instance_code                   
-  repeat(arg0) { ins_d = d+arg5
-                 P = point_distance(arg3+arg1*cos(degtorad(ins_d)) , arg4-arg2*sin(degtorad(ins_d)) , 
-                                    arg3+arg1*cos(degtorad(ins_d+P_d)) , arg4-arg2*sin(degtorad(ins_d+P_d))) ;
-                 D = point_direction(arg3+arg1*cos(degtorad(ins_d)) , arg4-arg2*sin(degtorad(ins_d)) ,
-                                     arg3+arg1*cos(degtorad(ins_d+P_d)) , arg4-arg2*sin(degtorad(ins_d+P_d))) ;
-                                       
-                 repeat(arg8+1) { ins_x = arg3+arg1*cos(degtorad(ins_d))+(lengthdir_x(P , D)/(arg8+1))*t ;
-                                  ins_y = arg4-arg2*sin(degtorad(ins_d))+(lengthdir_y(P , D)/(arg8+1))*t ;
-                       
-                                  switch(arg9) {  case 0: nk=instance_create(ins_x , ins_y , arg6) ;
-                                                          nk.N=1;
-                                                          nk.image_index=argument11;  break;
-                                                  case 1: nk = instance_create(ins_x , ins_y , arg6) ;
-                                                          nk.direction = point_direction(arg3 , arg4 , ins_x , ins_y) ;
-                                                          nk.speed = arg10/arg1*point_distance(ins_x , ins_y , arg3 , arg4) ;
-                                                          nk.N=1 ;
-                                                          nk.image_index=ind; break;
-                                               }
-                                  t += 1 ;
-                                }
-                 t = 0 ;  d += 360/arg0 ;
-               }
+// instance_code                   
+repeat(arg0) 
+{ 
+    ins_d = d+arg5;
+    P = point_distance(arg3+arg1*dcos(ins_d) , arg4-arg2*dsin(ins_d) , 
+    arg3+arg1*dcos(ins_d+P_d) , arg4-arg2*dsin(ins_d+P_d));
+    
+    D = point_direction(arg3+arg1*dcos(ins_d), arg4-arg2*dsin(ins_d) ,
+    arg3+arg1*dcos(ins_d+P_d), arg4-arg2*dsin(ins_d+P_d));
+                                           
+    repeat(arg8+1) 
+    { 
+        ins_x = arg3+arg1*dcos(ins_d)+(lengthdir_x(P, D) / (arg8+1))*t;
+        ins_y = arg4-arg2*dsin(ins_d)+(lengthdir_y(P, D) / (arg8+1))*t;
+                               
+        switch(arg9) 
+        {  
+            case 0: 
+                nk=instance_create(ins_x , ins_y , arg6);
+                nk.N=1;
+                //nk.image_index=argument11;  
+                nk.image_index=0;  
+            break
+            
+            case 1: 
+                nk = instance_create(ins_x , ins_y , arg6);
+                nk.direction = point_direction(arg3 , arg4 , ins_x , ins_y);
+                nk.speed = arg10/arg1*point_distance(ins_x , ins_y , arg3 , arg4);
+                nk.N=1;
+                nk.image_index=ind; 
+            break;
+        }
+        t += 1;
+    }
+    t = 0;  
+    d += 360/arg0;
+}
 instance_destroy();
 </string>
           </argument>

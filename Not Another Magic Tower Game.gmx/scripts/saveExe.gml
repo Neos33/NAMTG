@@ -17,7 +17,7 @@ roomTo += file_bin_read_byte(f)*100;
 roomTo += file_bin_read_byte(f);
 if(room != rMenu){
 room_goto(roomTo);
- global.image_xscale=0;
+ image_xscale=0;
 if( !instance_exists(player) ) instance_create(0,0,player);
 }
 player.x = file_bin_read_byte(f)*10000;

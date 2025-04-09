@@ -52,7 +52,7 @@ player.y = 544 + 20;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="fasf_timelinestart" x="64" y="64" name="inst_BF443A7A" locked="0" code="transition_define(101, &quot;scr_tr_squeeze_right&quot;);&#xA;transition_define(102, &quot;scr_tr_bars_both&quot;);&#xA;transition_define(103, &quot;scr_tr_diagonal1_in&quot;);&#xA;transition_define(104, &quot;scr_tr_blocks&quot;);" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="fasf_timelinestart" x="64" y="64" name="inst_BF443A7A" locked="0" code="/*transition_define(101, &quot;scr_tr_squeeze_right&quot;);&#xA;transition_define(102, &quot;scr_tr_bars_both&quot;);&#xA;transition_define(103, &quot;scr_tr_diagonal1_in&quot;);&#xA;transition_define(104, &quot;scr_tr_blocks&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_playerHitController" x="128" y="64" name="inst_12978128" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="block" x="0" y="0" name="inst_8236B772" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="block" x="0" y="0" name="inst_77FAA7A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

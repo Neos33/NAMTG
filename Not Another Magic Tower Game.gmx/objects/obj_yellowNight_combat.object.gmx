@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Yellow Knight";
+            <string>event_inherited();
+name = "Yellow Knight";
 alarm[3] = 20;
 phase = "";
 image_speed = 1/8;

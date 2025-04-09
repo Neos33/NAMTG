@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "DIAO Slime";
+            <string>event_inherited();
+name = "DIAO Slime";
 image_speed = 1/8;
 alarm[4] = 30;
 status = 0;

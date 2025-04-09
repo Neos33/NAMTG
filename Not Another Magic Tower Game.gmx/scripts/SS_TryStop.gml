@@ -1,5 +1,4 @@
-audio_stopmusic(agrument0);
-
+audio_stopmusic(argument0);
 /*
 if(SS_IsSoundPlaying(argument0))
 {

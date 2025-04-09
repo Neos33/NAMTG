@@ -41,8 +41,8 @@
 }
 alpha = 1;
 scale = 1;
-transition_kind = 106;
-transition_steps = 50;
+//transition_kind = 106;
+//transition_steps = 50;
 event_inherited();
 </string>
           </argument>

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>atk=150;
+            <string>event_inherited();
+atk=150;
 def=111;
 hp=125;
 ex=150;
@@ -33,7 +34,6 @@ name = "Burning FASF";
 combatObj = obj_burningFasf_combat;
 //mybattleroom = getBattleRoom();
 mybattleroom =battleroom_bf;
-event_inherited();
 </string>
           </argument>
         </arguments>

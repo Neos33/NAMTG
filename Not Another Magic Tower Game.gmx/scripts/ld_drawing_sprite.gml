@@ -7,7 +7,7 @@ w = argument1;
 col = argument2;
 
 _tex = sprite_get_texture(spr,0);
-texture_preload(_tex);
+//texture_preload(_tex);
 texture_set_interpolation(true);
 draw_primitive_begin_texture(pr_trianglestrip,_tex);
 

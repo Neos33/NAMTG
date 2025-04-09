@@ -1,17 +1,23 @@
-//createDiaBullet(x,y,speed,direction,sprite,image,obj)
+///createDiaBullet(x,y,speed,direction,sprite,image,[obj = obj_diaDanmaku])
+
+var _x = argument[0];
+var _y = argument[1];
+var _speed = argument[2];
+var _direction = argument[3];
+var _sprite = argument[4];
+var _image = argument[5];
+var _obj = obj_diaDanmaku;
+
+if argument_count > 6
 {
-    var inst,obj;
-    if(!argument6){
-        obj = obj_diaDanmaku;
-    }
-    else{
-        obj = argument6;
-    }
-    inst = instance_create(argument0,argument1,obj);
-    inst.speed = argument2;
-    inst.direction = argument3;
-    inst.image_angle = argument3;
-    inst.sprite_index = argument4;
-    inst.image_index = argument5;
-    return inst;
+    _obj = argument[6];
 }
+
+var inst = instance_create(_x, _y, _obj);
+inst.speed = _speed;
+inst.direction = _direction;
+inst.image_angle = _direction;
+inst.sprite_index = _sprite;
+inst.image_index = _image;
+return inst;
+

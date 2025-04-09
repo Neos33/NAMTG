@@ -29,7 +29,8 @@
 if !global.audio_sound_muted{
     audio_playsound(sndDeath);
 }
-start_vol = SS_GetSoundVol(global.currentBGM);
+//start_vol = SS_GetSoundVol(global.currentBGM);
+start_vol = FMODInstanceGetVolume(global.currentBGM);
 now_vol = start_vol;
 alarm[0]=5;
 </string>
@@ -55,6 +56,13 @@ alarm[0]=5;
           <argument>
             <kind>1</kind>
             <string>if !global.audio_sound_muted{
+    if !FMODInstanceIsPlaying(SE_Death){
+        FMODInstanceSetVolume(SE_Death,0.9*(2000+80*global.audio_sound_volume));
+        FMODSoundPlay(SE_Death, false);
+    }
+}
+/*
+if !global.audio_sound_muted{
     if !SS_IsSoundPlaying(SE_Death){
         SS_SetSoundVol(SE_Death,0.9*(2000+80*global.audio_sound_volume));
         SS_PlaySound(SE_Death);
@@ -83,12 +91,14 @@ alarm[0]=5;
           <argument>
             <kind>1</kind>
             <string>if !global.audio_music_muted{
-    SS_SetSoundVol(global.currentBGM,now_vol);
+    //SS_SetSoundVol(global.currentBGM,now_vol);
+    FMODInstanceSetVolume(global.currentBGM, now_vol);
     if now_vol &gt;=2000{
         now_vol -= 100;
     }
     else{
-        SS_PauseSound(global.currentBGM);
+        //SS_PauseSound(global.currentBGM);
+        FMODInstanceSetPaused(global.currentBGM, true);
         global.paused = 1;
     }
 }

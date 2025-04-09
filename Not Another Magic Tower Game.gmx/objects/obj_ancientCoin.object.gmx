@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ind = 2;
-event_inherited();
+            <string>event_inherited();
+ind = 2;
 </string>
           </argument>
         </arguments>

@@ -80,7 +80,8 @@ if(abs(player.x - x) &lt; 10 &amp;&amp; !triggered)
    global.defenseDamage = bossDmg;
    global.attackDamage = hitDmg;
    global.mEx = 0;
-   SS_StopSound(global.currentBGM);
+   //SS_StopSound(global.currentBGM);
+   FMODInstanceStop(global.currentBGM);
    sound_fix(sndgras);
    if(player.x &gt; x)
    {
@@ -102,8 +103,8 @@ if(abs(player.x - x) &lt; 10 &amp;&amp; !triggered)
    global.stageRoom = room;
    global.inCombat = true;
    global.currentBGM = global.BGM_Null;
-   transition_steps = 100;
-   transition_kind = 104;
+   //transition_steps = 100;
+   //transition_kind = 104;
    room_goto(roomTo);
 }
 </string>

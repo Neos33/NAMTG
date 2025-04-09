@@ -29,7 +29,8 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_font(fontBasicInfo);
 //Draw the sprite for the dialog box in the correct place
-dHeight = RangeClamp(view_yview[0] + view_hview[0] - sprite_get_height(spr_dialogbox), view_yview[0] + window_get_region_height() - sprite_get_height(spr_dialogbox),1000000);
+//dHeight = RangeClamp(view_yview[0] + view_hview[0] - sprite_get_height(spr_dialogbox), view_yview[0] + window_get_region_height() - sprite_get_height(spr_dialogbox),1000000);
+dHeight = RangeClamp(view_yview[0] + view_hview[0] - sprite_get_height(spr_dialogbox), view_yview[0] - sprite_get_height(spr_dialogbox),1000000);
 draw_sprite(spr_dialogbox, floor(round(global.msec[global.savenum]) / 50), view_xview[0], dHeight);
 msg = message_read();
 /* NOTE:    If there is a colon : in your message, all text before it 
@@ -124,7 +125,7 @@ repeat(pos) {
                     draw_set_color(THE COLOUR);
                     break;
                 */
-                case "k": default: //Black. If the letter is not found, also set the colour to black
+                default: //Black. If the letter is not found, also set the colour to black
                     draw_set_color(c_silver);
                     break;
             }

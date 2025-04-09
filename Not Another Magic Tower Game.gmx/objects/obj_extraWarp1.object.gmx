@@ -61,8 +61,8 @@
     }
     saveExtra();
 }
-transition_kind = 102;
-transition_steps = 80;
+//transition_kind = 102;
+//transition_steps = 80;
 room_goto(ExtraBubbleStages);
 
 </string>

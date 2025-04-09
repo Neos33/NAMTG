@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Dark Summoner";
+            <string>event_inherited();
+name = "Dark Summoner";
 image_speed = 1/8;
 x = 400;
 y = 128;

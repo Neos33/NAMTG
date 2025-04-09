@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x=obj_guardlv3_combat.x+16;
-
-y=obj_guardlv3_combat.y+16;
+            <string>if instance_exists(obj_guardlv3_combat)
+{
+    x=obj_guardlv3_combat.x+16;
+    y=obj_guardlv3_combat.y+16;
+}
 </string>
           </argument>
         </arguments>

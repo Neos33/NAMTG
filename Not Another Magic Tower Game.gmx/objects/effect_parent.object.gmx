@@ -29,7 +29,7 @@
 
 //if(keyboard_get_numlock())keyboard_set_numlock(off)
 
-for(i=0;i&lt;=100;i+=1){
+for(var i=0;i&lt;global.flash_entity_amount;i+=1){
     if(global.flash_object[i]!=0){
     a=global.flash_object[i]
     global.flash_time[i]-=1
@@ -51,7 +51,7 @@ for(i=0;i&lt;=100;i+=1){
     }
 }
 
-for(i=0;i&lt;=100;i+=1){
+for(var i=0;i&lt;global.flash_entity_amount;i+=1){
     if(global.fade_out_object[i]!=0){
         a=global.fade_out_object[i];
         if global.fade_out_time[i]&gt;1{

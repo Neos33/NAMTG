@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hpLimit = 500;
+            <string>event_inherited();
+hpLimit = 500;
 combatTime = 0;
 phase = 1;
 ang = 0;
@@ -294,8 +295,8 @@ if(instance_exists(player) &amp;&amp; player.x &gt; 0)
 {
     if(global.GalleryBossFight &amp;&amp; global.GalleryBossFightNum &gt; 1 &amp;&amp; global.GalleryBossFightInd &lt; global.GalleryBossFightNum - 1)
     {
-        transition_kind = 21;
-        transition_steps = 100;
+        //transition_kind = 21;
+        //transition_steps = 100;
         global.GalleryBossFightInd += 1;
         global.combatObj = global.brObj[global.GalleryBossFightInd];
         global.mHP = global.brMHp[global.GalleryBossFightInd];
@@ -312,7 +313,7 @@ if(instance_exists(player) &amp;&amp; player.x &gt; 0)
             global.GalleryBossFightInd = 0;
             global.BR_Status = 1;
         }
-        transition_kind = 21;
+        //transition_kind = 21;
         room_goto(global.stageRoom);
         if(global.special[2])
         {

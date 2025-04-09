@@ -66,8 +66,8 @@ global.defenseDamage = global.mAtk - global.defense;
 
 //global.stageMusic = global.currentBGM;
 sound_fix(sndgras);
-transition_steps = 150;
-transition_kind = 104;
+//transition_steps = 150;
+//transition_kind = 104;
 room_goto(battleroomBE);
 instance_destroy();
 </string>
@@ -120,7 +120,7 @@ alarm[11] = 5;
 {
     alarm[1] = 1;
 }
-audio_playsound(snddark1);
+audio_playsound(sndDark1);
 with(obj_bossAppearPrototype)
 {
     alarm[4] = 1;
@@ -344,7 +344,7 @@ if(!global.story[23])
     message_add("??? : ...");
     message_add("??? : Hah, seems camouflage is no longer needed.");
     player.vspeed = 0;
-    SS_PauseSound(global.currentBGM);
+    FMODInstanceSetPaused(global.curMusic, true);
     global.currentBGM = global.BGM_Null;
     alarm[0] = 10;
     player.frozen = true;

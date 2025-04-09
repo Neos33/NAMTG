@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>type = 3;
+            <string>event_inherited();
+
+type = Key_Type.Green;
 ammount = 1;
-event_inherited();
+event_user(0);
 </string>
           </argument>
         </arguments>

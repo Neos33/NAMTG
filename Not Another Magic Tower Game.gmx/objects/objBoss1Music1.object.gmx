@@ -30,17 +30,18 @@
 //filePlaying = 101;
 //curMusic = global.BGM_Corazone;
 if !global.audio_music_muted{
-    if !SS_IsSoundPlaying(global.BGM_Corazone){
-        SS_SetSoundVol(global.BGM_Corazone,2000+80*global.audio_music_volume);
+    if !FMODInstanceGetPaused(global.BGM_Corazone){
+        FMODInstanceSetVolume(global.BGM_Corazone,2000+80*global.audio_music_volume);
         audio_loopmusic_volume(global.BGM_Corazone);
     }
 }
-start_vol = SS_GetSoundVol(global.BGM_Corazone);
+start_vol = FMODInstanceGetVolume(global.BGM_Corazone);
 now_vol = start_vol;
 loop_start = 50.157;
 loop_end = 78.570;
 song_length = 87.098;
-song_byte = SS_GetSoundLength(global.BGM_Corazone);
+//song_byte = SS_GetSoundLength(global.BGM_Corazone);
+song_byte = FMODSoundGetLength(global.BGM_Corazone);
 </string>
           </argument>
         </arguments>
@@ -63,7 +64,23 @@ song_byte = SS_GetSoundLength(global.BGM_Corazone);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if SS_GetSoundPosition(global.BGM_Corazone)/song_byte &gt; loop_end/song_length{
+            <string>if FMODInstanceGetPosition(global.BGM_Corazone)/song_byte &gt; loop_end/song_length{
+    FMODInstanceSetPosition(global.BGM_Corazone, loop_start/song_length*song_byte);
+}
+
+if fadeOut{
+    FMODInstanceSetVolume(global.BGM_Corazone, now_vol);
+    if now_vol &gt;=2000{
+        now_vol -= 25;
+    }
+    else{
+        FMODInstanceStop(global.BGM_Corazone);
+        //curMusic = -1;
+        //filePlaying = 0;
+    }
+}
+
+/*if SS_GetSoundPosition(global.BGM_Corazone)/song_byte &gt; loop_end/song_length{
     SS_SetSoundPosition(global.BGM_Corazone,loop_start/song_length*song_byte);
 }
 
@@ -78,6 +95,7 @@ if fadeOut{
         //filePlaying = 0;
     }
 }
+*/
 </string>
           </argument>
         </arguments>

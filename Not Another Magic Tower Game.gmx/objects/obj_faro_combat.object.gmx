@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>event_inherited();
+
 name = "Faro!!!";
 image_blend = c_gray;
 image_alpha = 0;

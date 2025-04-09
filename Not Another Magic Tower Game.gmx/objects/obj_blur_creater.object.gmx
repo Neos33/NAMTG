@@ -195,7 +195,7 @@ view_hport[0]=_height
 
     visible=0
     surface_set_target(blur_2X)
-    screen_redraw()
+    //screen_redraw()
     surface_reset_target()
     visible=1
 

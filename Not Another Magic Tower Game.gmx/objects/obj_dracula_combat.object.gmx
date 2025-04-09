@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Dracula";
+            <string>event_inherited();
+name = "Dracula";
 image_speed = 1/8;
 image_xscale = 2;
 image_yscale = 2;

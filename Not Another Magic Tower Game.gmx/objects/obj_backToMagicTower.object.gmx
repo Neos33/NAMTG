@@ -29,8 +29,8 @@
 {   
     back = true;
     instance_create(256 + 17, 240 + 23,player);
-    transition_steps = 80;
-    transition_kind = 21;
+    //transition_steps = 80;
+    //transition_kind = 21;
     room_goto(r10F);
 }
 </string>

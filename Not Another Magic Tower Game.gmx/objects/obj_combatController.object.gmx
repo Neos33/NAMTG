@@ -25,6 +25,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>initialized = 0;
+
+dontDraw = false;
+
+numOnly = 0;
+
+dontDrawMonster = 0;
+
+battleBGM = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>if(global.GalleryBossFight)
 {
     recoveryCountDown = 100;
@@ -65,9 +94,9 @@ else
     m.ex = global.mEx;
 }
 global.cooldown = false;
-if(!SS_IsSoundPaused(global.currentBGM))
+if(!FMODInstanceGetPaused(global.currentBGM))
 {
-    SS_PauseSound(global.currentBGM);
+    FMODInstanceSetPaused(global.currentBGM, true);
     //global.pausedBGM = global.currentBGM;
 }
 if(global.mDef &lt; 75)
@@ -107,66 +136,66 @@ sound_loop(battleBGM);
 else if(room == battlefasfroom)
 {
     global.currentBGM = global.BGMsupfasf;
-    if(SS_IsSoundPaused(global.BGMsupfasf))
+    if(FMODInstanceGetPaused(global.BGMsupfasf))
     {
         audio_resumemusic_volume(global.BGMsupfasf);
     }
-    else if(!SS_IsSoundPlaying(global.BGMsupfasf))
+    else if(!FMODInstanceIsPlaying(global.BGMsupfasf))
     {
         audio_loopmusic_volume(global.BGMsupfasf);   
     }
-    else if(!SS_IsSoundLooping(global.BGMsupfasf))
+    /*else if(!SS_IsSoundLooping(global.BGMsupfasf))
     {
         audio_loopmusic_volume(global.BGMsupfasf);
-    }
+    }*/
 }
 else if(room == battleroom12)
 {
     global.currentBGM = global.BGM_RedKey;
-    if(SS_IsSoundPaused(global.BGM_RedKey))
+    if(FMODInstanceGetPaused(global.BGM_RedKey))
     {
         audio_resumemusic_volume(global.BGM_RedKey);
     }
-    else if(!SS_IsSoundPlaying(global.BGM_RedKey))
+    else if(!FMODInstanceIsPlaying(global.BGM_RedKey))
     {
         audio_loopmusic_volume(global.BGM_RedKey);   
     }
-    else if(!SS_IsSoundLooping(global.BGM_RedKey))
+    /*else if(!SS_IsSoundLooping(global.BGM_RedKey))
     {
         audio_loopmusic_volume(global.BGM_RedKey);
-    }
+    }*/
 }
 else if(room == rDracula)
 {
     global.currentBGM = global.BGMDracula;
-    if(SS_IsSoundPaused(global.BGMDracula))
+    if(FMODInstanceGetPaused(global.BGMDracula))
     {
         audio_resumemusic_volume(global.BGMDracula);
     }
-    else if(!SS_IsSoundPlaying(global.BGMDracula))
+    else if(!FMODInstanceIsPlaying(global.BGMDracula))
     {
         audio_loopmusic_volume(global.BGMDracula);   
     }
-    else if(!SS_IsSoundLooping(global.BGMDracula))
+    /*else if(!SS_IsSoundLooping(global.BGMDracula))
     {
         audio_loopmusic_volume(global.BGMDracula);
-    }
+    }*/
 }
 else if(room == battleroom_bf)
 {
     global.currentBGM = global.BGM_BurningFasf;
-    if(SS_IsSoundPaused(global.BGM_BurningFasf))
+    if(FMODInstanceGetPaused(global.BGM_BurningFasf))
     {
         audio_resumemusic_volume(global.BGM_BurningFasf);
     }
-    else if(!SS_IsSoundPlaying(global.BGM_BurningFasf))
+    else if(!FMODInstanceIsPlaying(global.BGM_BurningFasf))
     {
         audio_loopmusic_volume(global.BGM_BurningFasf);   
     }
-    else if(!SS_IsSoundLooping(global.BGM_BurningFasf))
+    /*else if(!SS_IsSoundLooping(global.BGM_BurningFasf))
     {
         audio_loopmusic_volume(global.BGM_BurningFasf);
-    }
+    }*/
 }
 else if(room == rDiamante)
 {
@@ -232,8 +261,8 @@ if(instance_exists(player) &amp;&amp; player.x &gt; 0)
 {
     if(global.GalleryBossFight &amp;&amp; global.GalleryBossFightNum &gt; 1 &amp;&amp; global.GalleryBossFightInd &lt; global.GalleryBossFightNum - 1)
     {
-        transition_kind = 21;
-        transition_steps = 100;
+        //transition_kind = 21;
+        //transition_steps = 100;
         global.GalleryBossFightInd += 1;
         global.combatObj = global.brObj[global.GalleryBossFightInd];
         global.mHP = global.brMHp[global.GalleryBossFightInd];
@@ -252,7 +281,7 @@ if(instance_exists(player) &amp;&amp; player.x &gt; 0)
         }
         if(!global.isRandom)
         {
-            transition_kind = 21;
+            //transition_kind = 21;
         }
         //global.currentBGM = global.pausedBGM;
         //if(SS_IsSoundPaused(global.currentBGM))
@@ -476,6 +505,8 @@ if(instance_exists(player) || instance_exists(player2))
     }
 }
 
+if !instance_exists(obj_monsterBattlePrototype)
+    exit;
 if(dontDrawMonster) exit;
 if(obj_monsterBattlePrototype.hp &lt; 233 &amp;&amp; !numOnly)
 {
@@ -537,6 +568,8 @@ else
     }
 }
 
+
+draw_reset();
 </string>
           </argument>
         </arguments>

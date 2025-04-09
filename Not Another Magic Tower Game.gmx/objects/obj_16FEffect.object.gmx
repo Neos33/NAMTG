@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 10; i += 1)
+            <string>for(var i = 0; i &lt; 10; i += 1)
 {
     instance_create(random_range(view_xview[1] + 16,view_xview[1] + view_wview[1] - 16), 48 + 55 * i, obj_giantBatBGDash);
 }

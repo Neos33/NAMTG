@@ -2,9 +2,14 @@
 //initialize fmod system
 LoadFMOD();
 FMODinit(100,0);
+
+global.music_directory = "BGM\";
+global.stream_music = 0;
+
 //indicates that no music will be playing in the room
 //DO NOT DELETE THIS ONE
-BGM_Null=FMODSoundAdd(global.music_directory+"null.ogg",0,0);
+globalvar BGM_Null;
+BGM_Null=FMODSoundAdd(global.music_directory+"Null.ogg",0,0);
 //current music, set it to BGM_Null for default value
 globalvar curMusic;
 curMusic = -1;
@@ -13,7 +18,7 @@ curMusicID = BGM_Null;
 globalvar deathMusic;
 deathMusic = -1;
 //the death sound, the volume of which is adjusted by the global sound volume
-globalvar SE_Death;
+/*globalvar SE_Death;
 SE_Death=music_load("death.ogg");
 
 globalvar BGM_Title;
@@ -27,94 +32,98 @@ BGM_BOSS1=music_load("101.ogg");
 
 globalvar BGM_BOSS2;
 BGM_BOSS2=music_load("102.ogg");
-
+*/
 //add your code here
 
 
-/*
-globalvar curMusic,filePlaying; //current music, current music serial, ~~~
+
+//globalvar curMusic,filePlaying; //current music, current music serial, ~~~
 
 globalvar SE_Death;
-SE_Death=SS_LoadSound(working_directory+"\BGM\Death.ogg",0);
+SE_Death=music_load("Death.ogg");
 
 // play music full edition
-globalvar BGM_Null;
-BGM_Null=SS_LoadSound(working_directory+"\BGM\Null.ogg",0);
+//globalvar BGM_Null;
+//BGM_Null=music_load("Null.ogg",0);
 
 //globalvar BGM_Title;
-//BGM_Title=SS_LoadSound(working_directory+"\BGM\BGM1.ogg",0);
+//BGM_Title=music_load("BGM1.ogg",0);
 
 globalvar BGM_1;
-BGM_1=SS_LoadSound(working_directory+"\BGM\BGM1.ogg",0);
+BGM_1=music_load("BGM1.ogg");
 
 globalvar BGM1To10F;
-BGM1To10F=SS_LoadSound(working_directory+"\BGM\BGM1-10F.ogg",0);
+BGM1To10F=music_load("BGM1-10F.ogg");
 
 globalvar BGMB1F;
-BGMB1F = SS_LoadSound(working_directory+"\BGM\BGMB1F.ogg",0);
+BGMB1F = music_load("BGMB1F.ogg");
 
 globalvar BGMSecret1;
-BGMSecret1=SS_LoadSound(working_directory+"\BGM\BGM_Secret1.ogg",0);
+BGMSecret1=music_load("BGM_Secret1.ogg");
 
 globalvar BGMsupfasf;
-BGMsupfasf=SS_LoadSound(working_directory+"\BGM\BGM_battle1.ogg",0);
+BGMsupfasf=music_load("BGM_battle1.ogg");
 
 globalvar BGMBoss1; 
-BGMBoss1=SS_LoadSound(working_directory+"\BGM\BGMBoss1.ogg",0);
+BGMBoss1=music_load("BGMBoss1.ogg");
 
 globalvar BGM_BE;
-BGM_BE=SS_LoadSound(working_directory+"\BGM\BGM_BE.ogg",0);
+BGM_BE=music_load("BGM_BE.ogg");
 
 globalvar BGM_BEBoss;
-BGM_BEBoss=SS_LoadSound(working_directory+"\BGM\BGM_BEBoss.ogg",0);
+BGM_BEBoss=music_load("BGM_BEBoss.ogg");
 
 globalvar BGM_RedKey;
-BGM_RedKey=SS_LoadSound(working_directory+"\BGM\BGM_RedKey.ogg",0);
+BGM_RedKey=music_load("BGM_RedKey.ogg");
 
 globalvar BGM_BubbleStageSelection;
-BGM_BubbleStageSelection=SS_LoadSound(working_directory+"\BGM\BGM_BubbleStageSelection.ogg",0);
+BGM_BubbleStageSelection=music_load("BGM_BubbleStageSelection.ogg");
 
 globalvar BGM_BubbleStage;
-BGM_BubbleStage=SS_LoadSound(working_directory+"\BGM\BGM_BubbleStage.ogg",0);
+BGM_BubbleStage=music_load("BGM_BubbleStage.ogg");
 
 //globalvar BGM_GD01;
-//BGM_GD01 = SS_LoadSound(working_directory+"\BGM\BGM_GD01.ogg",0);
+//BGM_GD01 = music_load("BGM_GD01.ogg",0);
 
 globalvar BGM_JKStage;
-BGM_JKStage=SS_LoadSound(working_directory+"\BGM\BGM_JKStage.ogg",0);
+BGM_JKStage=music_load("BGM_JKStage.ogg");
 
 globalvar BGM_JKStageSelection;
-BGM_JKStageSelection=SS_LoadSound(working_directory+"\BGM\BGM_JKStageSelection.ogg",0);
+BGM_JKStageSelection=music_load("BGM_JKStageSelection.ogg");
 
 globalvar BGM_FloorStage;
-BGM_FloorStage=SS_LoadSound(working_directory+"\BGM\BGM_FloorStage.ogg",0);
+BGM_FloorStage=music_load("BGM_FloorStage.ogg");
 
 globalvar BGM_MMMFingers;
-BGM_MMMFingers=SS_LoadSound(working_directory+"\BGM\BGM_MMMFingers.ogg",0);
+BGM_MMMFingers=music_load("BGM_MMMFingers.ogg");
 
 globalvar BGM11To15F;
-BGM11To15F=SS_LoadSound(working_directory+"\BGM\BGM11-15F.ogg",0);
+BGM11To15F=music_load("BGM11-15F.ogg");
 
 globalvar BGMFaShiLiu;
-BGMFaShiLiu=SS_LoadSound(working_directory+"\BGM\BGM_FAShiLiu.ogg",0);
+BGMFaShiLiu=music_load("BGM_FAShiLiu.ogg");
 
 globalvar BGMDracula;
-BGMDracula=SS_LoadSound(working_directory+"\BGM\BGM_Dracula.ogg",0);
+BGMDracula=music_load("BGM_Dracula.ogg");
 
 globalvar BGM_Burning;
-BGM_Burning=SS_LoadSound(working_directory+"\BGM\BGM_Burning.ogg",0);
+BGM_Burning=music_load("BGM_Burning.ogg");
 
 globalvar BGM_Freezing;
-BGM_Freezing=SS_LoadSound(working_directory+"\BGM\BGM_Freezing.ogg",0);
+BGM_Freezing=music_load("BGM_Freezing.ogg");
 
 globalvar BGM_RenalTreasure;
-BGM_RenalTreasure=SS_LoadSound(working_directory+"\BGM\BGM_RenalTreasure.ogg",0);
+BGM_RenalTreasure=music_load("BGM_RenalTreasure.ogg");
 
 globalvar BGM_FairyTail;
-BGM_FairyTail=SS_LoadSound(working_directory+"\BGM\BGM_FairyTail.ogg",0);
+BGM_FairyTail=music_load("BGM_FairyTail.ogg");
 
 globalvar BGM_Finals;
-BGM_Finals=SS_LoadSound(working_directory+"\BGM\BGM_Finals.ogg",0);
+BGM_Finals=music_load("BGM_Finals.ogg");
+
+
+globalvar BGM_DemonLead;
+BGM_DemonLead = music_load("BGM_DemonLead.ogg");
 
 globalvar currentBGM;
 currentBGM = BGM_1;

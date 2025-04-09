@@ -61,8 +61,7 @@ global.lite=0
 
 
 //"temp"�t�@�C�������݂��Ă���΃��[�h���A������Ύ��̕����i�X�^�[�g�n�_�j�Ɉړ�
-/*transition_kind = 21;
-transition_steps = 100;
+/*
 room_goto_next();
 /*if(file_exists("temp") == true){
   tempExe();

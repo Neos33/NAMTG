@@ -41,7 +41,23 @@ image_alpha = 0;
 alarm[10] = 1;
 alarm[11] = 1;
 /*blendColor = 0;
-image_blend = make_color_rgb(blendColor,blendColor,blendColor);
+image_blend = make_color_rgb(blendColor,blendColor,blendColor);*/
+
+
+hdir = 0;
+vdir = 0;
+hdis = 0;
+vdis = 0;
+
+b = 0;
+
+blinkCount = 0;
+blink = 0;
+
+sc = 0;
+
+dis = 0;
+spd = 0;
 </string>
           </argument>
         </arguments>
@@ -316,7 +332,7 @@ else
             <string>if(phase == 1)
 {
     sound_fix(snd_touhou_attack5);
-    for(i=0;i&lt;10;i+=1)
+    for(var i=0;i&lt;10;i+=1)
     {
         b = instance_create(x,y,obj_beBossPhase3Bullet1);       
         b.speed = 6;
@@ -647,6 +663,9 @@ if(totalTime &lt; limitTime)
         draw_rectangle(64, 32, 96, 48, false);
     }
 }
+
+draw_set_color(c_white);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

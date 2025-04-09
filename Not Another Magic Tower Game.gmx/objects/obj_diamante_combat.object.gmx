@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Mr.Diamante";
+            <string>event_inherited();
+name = "Mr.Diamante";
 image_speed = 1/8;
 x=-32;
 y=-32;

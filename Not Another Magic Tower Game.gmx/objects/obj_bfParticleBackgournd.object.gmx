@@ -93,7 +93,7 @@ part_emitter_region(partsys_fire,mypart,-32,832,512,608,ps_shape_rectangle,ps_di
             <kind>1</kind>
             <string>part_type_destroy(part_fire);
 part_emitter_destroy(part_fire, mypart);
-part_destroyer_destroy(partsys_fire, mydestroyer);
+//part_destroyer_destroy(partsys_fire, mydestroyer);
 part_system_destroy(partsys_fire);
 
 </string>

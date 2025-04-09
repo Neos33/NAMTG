@@ -107,8 +107,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>transition_kind = 21;
-transition_steps = 100;
+            <string>//transition_kind = 21;
+//transition_steps = 100;
 global.koala = 40000;
 if(!global.achievements[98])
 {

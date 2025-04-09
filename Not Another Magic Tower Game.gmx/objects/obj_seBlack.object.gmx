@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>SS_StopSound(global.BGM_SE);
-transition_kind = 21;
-transition_steps = 50;
+            <string>FMODInstanceStop(global.BGM_SE);
+//transition_kind = 21;
+//transition_steps = 50;
 if(!global.achievements[98])
 {
     ch = instance_create(0,608,obj_achievements);
@@ -62,7 +62,7 @@ room_goto(rStatistics);
 {
     instance_destroy();
 }
-SS_StopSound(global.BGM_SE);
+FMODInstanceStop(global.BGM_SE);
 room_goto(rSleepingEnd2);
 </string>
           </argument>

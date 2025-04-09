@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Skeleton Elete";
+            <string>event_inherited();
+name = "Skeleton Elete";
 image_speed = 1/8;
 alarm[3] = 30;
 instance_create(x - 10, y+ 18, obj_skeletonSword);

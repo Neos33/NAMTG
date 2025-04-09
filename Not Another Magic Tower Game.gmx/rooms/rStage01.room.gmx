@@ -292,10 +292,6 @@
     <instance objName="movingPlatform" x="1056" y="128" name="inst_97922910" locked="0" code="hspeed = 2;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePointVHard" x="832" y="448" name="inst_6287DCCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockNotVis" x="736" y="256" name="inst_6B0928DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="enemy test" x="352" y="448" name="inst_20D8A5DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="enemy test" x="448" y="448" name="inst_EEB0DBCF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="enemy test" x="352" y="288" name="inst_0D78113E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="enemy test" x="480" y="288" name="inst_315D6EE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockNotVis" x="288" y="448" name="inst_8AB8EB8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="blockFall" x="1312" y="384" name="inst_4B5B6B0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePointVHard" x="672" y="224" name="inst_77B8EE38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

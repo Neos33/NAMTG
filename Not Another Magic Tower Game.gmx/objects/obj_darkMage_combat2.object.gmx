@@ -38,7 +38,7 @@ emit = part_emitter_create(obj_dmParticleController.sys);
 xl = ds_list_create();
 yl = ds_list_create();
 
-attract1 = part_attractor_create(obj_dmParticleController.sys);
+/*attract1 = part_attractor_create(obj_dmParticleController.sys);
 part_attractor_position(obj_dmParticleController.sys,attract1,x,y-64);
 part_attractor_force(obj_dmParticleController.sys,attract1,0.5,128,1,1);
 
@@ -70,10 +70,10 @@ part_attractor_force(obj_dmParticleController.sys,attract1,0.5,128,1,1);
     part_emitter_destroy(obj_dmParticleController.sys,emit);
 }
 
-if(part_attractor_exists(obj_dmParticleController.sys, attract1))
+/*if(part_attractor_exists(obj_dmParticleController.sys, attract1))
 {
     part_attractor_destroy(obj_dmParticleController.sys, attract1);
-}
+}*/
 event_inherited();
 </string>
           </argument>

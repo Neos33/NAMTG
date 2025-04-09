@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Evil Black Magician";
+            <string>event_inherited();
+name = "Evil Black Magician";
 image_speed = 1/8;
 x = room_width / 2;
 y = room_height / 2;

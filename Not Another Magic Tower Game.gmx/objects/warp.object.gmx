@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>onCollide = true; //�G���ƃ��[�v�ł���ꍇ��true�A�G��Ă���[�v�ł��Ȃ��Ȃ�false
+            <string>event_inherited();
+onCollide = true; //�G���ƃ��[�v�ł���ꍇ��true�A�G��Ă���[�v�ł��Ȃ��Ȃ�false
 /**
 Room�ɔz�u����Ă���warp��
 Ctrl�����Ȃ���E�N���b�N�����

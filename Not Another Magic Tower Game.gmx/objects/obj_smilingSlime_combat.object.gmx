@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Smiling Slime";
+            <string>event_inherited();
+name = "Smiling Slime";
 x = 608;
 alarm[3] = 10;
 p1Count = 0;

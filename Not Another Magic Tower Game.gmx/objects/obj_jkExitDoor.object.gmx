@@ -179,8 +179,8 @@ if(go)
                 }
             }
         }
-        transition_kind = 21;
-        transition_steps = 80;
+        //transition_kind = 21;
+        //transition_steps = 80;
         instance_create(warpX, warpY, player);
         if(obj_stepRecord.ind &lt; 9)
         {

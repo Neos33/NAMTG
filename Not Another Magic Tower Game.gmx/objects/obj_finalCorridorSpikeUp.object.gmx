@@ -101,7 +101,7 @@ else
             <kind>1</kind>
             <string>if(view_current != 0){exit}
 if(y &gt;= view_yview[0] + 608) exit;
-var sw sh osw;
+var sw, sh, osw;
 
 sw  = (sprite_width*tw)/2
 sh  = (sprite_height)/2

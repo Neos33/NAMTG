@@ -1,7 +1,9 @@
 //This system finds a position for X around a vertical pole
 //based on current x and room_width
-if(!instance_exists(player)) exit;
-var d r c rx a ma;
+if !instance_exists(player)
+    exit;
+
+var d, r, c, rx, a, ma;
 d = room_width/pi             //Sets the dimanter for the tower
 r = d/2                       //Sets the radius for the tower
 c = room_width/2              //Sets the center point of thw tower *

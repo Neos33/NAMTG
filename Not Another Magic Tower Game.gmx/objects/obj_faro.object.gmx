@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale = 3;
+            <string>event_inherited();
+image_xscale = 3;
 image_yscale = 3;
 
 atk=9000;
@@ -36,7 +37,6 @@ name = "Faro";
 combatObj = obj_faro_combat;
 //mybattleroom = getBattleRoom();
 mybattleroom = rFaro1;
-event_inherited();
 </string>
           </argument>
         </arguments>

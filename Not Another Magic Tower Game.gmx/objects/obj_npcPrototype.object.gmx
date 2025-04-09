@@ -26,6 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 1/8;
+
+onMesseging = false;
+messageLength = 0;
+myMsg = array_create(20);
 </string>
           </argument>
         </arguments>
@@ -97,18 +101,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(((player.x + 6 &gt;= bbox_left) &amp;&amp; player.x &lt; x &amp;&amp; keyboard_check_direct(global.rightbutton)) || 
-((player.x - 6 &lt;= bbox_right) &amp;&amp; (player.x &gt; x + 16) &amp;&amp; keyboard_check_direct(global.leftbutton)))
+            <string>if instance_exists(player)
 {
-    if(!onMesseging &amp;&amp; player.y &lt; bbox_bottom &amp;&amp; player.y &gt; bbox_top)
+    if(((player.x + 9 &gt;= bbox_left) &amp;&amp; player.x &lt; x &amp;&amp; keyboard_check_direct(global.rightbutton)) || 
+    ((player.x - 9 &lt;= bbox_right) &amp;&amp; (player.x &gt; x + 16) &amp;&amp; keyboard_check_direct(global.leftbutton)))
     {
-        //global.sprIndex = 0;
-        for(i = 0; i &lt; messageLength; i+= 1) {
-            message_add(myMsg[i]);
+        if(!onMesseging &amp;&amp; player.y &lt; bbox_bottom  &amp;&amp; player.y &gt; bbox_top)
+        {
+            //global.sprIndex = 0;
+            for(i = 0; i &lt; messageLength; i+= 1) {
+                message_add(myMsg[i]);
+            }
+            onMesseging = true;
+            alarm[0] = 30;
+            alarm[1] = 10;
         }
-        onMesseging = true;
-        alarm[0] = 30;
-        alarm[1] = 10;
     }
 }
 </string>

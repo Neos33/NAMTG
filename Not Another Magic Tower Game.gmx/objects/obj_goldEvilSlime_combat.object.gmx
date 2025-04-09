@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Gold Evil Slime";
+            <string>event_inherited();
+name = "Gold Evil Slime";
 image_speed = 1/8;
 x = 624;
 y = 128;

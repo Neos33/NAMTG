@@ -7,9 +7,10 @@
 //
 {
     if !global.audio_music_muted{
-        if FMODInstanceGetPaused(curMusic){
-            FMODInstanceSetVolume(curMusic,global.audio_music_volume/100);
-            FMODInstanceSetPaused(curMusic,0);
+        if FMODInstanceGetPaused(curMusic)
+        {
+            //FMODInstanceSetVolume(curMusic, global.audio_music_volume/100);
+            FMODInstanceSetPaused(curMusic, false);
         }
     }
 }

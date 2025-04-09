@@ -28,6 +28,10 @@
             <string>image_speed = 1/8;
 speed = 1;
 direction = random_range(0,360);
+
+
+draw = 0;
+msg = 0;
 </string>
           </argument>
         </arguments>
@@ -157,6 +161,8 @@ if(draw)
     draw_set_valign(fa_bottom);
     draw_text(x + 16, y - 16, msg);
 }
+
+draw_reset();
 </string>
           </argument>
         </arguments>

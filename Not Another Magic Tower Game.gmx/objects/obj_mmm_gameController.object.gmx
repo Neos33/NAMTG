@@ -124,8 +124,8 @@ else if(!instance_exists(obj_mmm_player))
     if(!instance_exists(obj_mmm_menu))
     {
         instance_create(256 + 17, 96 + 23, player);
-        transition_steps = 50;
-        transition_kind = 21;
+        //transition_steps = 50;
+        //transition_kind = 21;
         room_goto(r10F);
     }
 }

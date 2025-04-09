@@ -142,8 +142,8 @@ bow.visible = false;
     trigger = true;
     /*instance_create(0,0,obj_finalCorridorWhite);
     player.frozen= true;*/
-    transition_kind = 105;
-    transition_steps = 100;
+    //transition_kind = 105;
+    //transition_steps = 100;
     sound_play(sndMMMDoor);
     
     player.x = 416 + 17;
@@ -225,7 +225,7 @@ bow.visible = false;
             <kind>1</kind>
             <string>if(view_current != 0){exit}
 
-var sw sh osw;
+var sw, sh, osw;
 
 sw  = (sprite_width*tw)/2
 sh  = (sprite_height)/2

@@ -148,7 +148,7 @@ else if(a.visible=1)instance_destroy()
             <kind>1</kind>
             <string>if(view_current != 0){exit}
 
-var sw sh osw;
+var sw, sh, osw;
 
 sw  = (sprite_width*tw)/2
 sh  = (sprite_height)/2

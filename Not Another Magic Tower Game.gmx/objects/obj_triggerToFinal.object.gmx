@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.story[32])
+            <string>/*if(global.story[32])
 {
     visible = false;
     x = -32;
@@ -41,7 +41,20 @@ if(global.story[33])
         instance_destroy();
     }
     instance_destroy();
-}
+}*/
+
+new_alarm_timer = 0;
+quake = 0;
+blendAlpha = 0;
+blendColor = 0;
+alpha = 0;
+storyEnd = 0;
+p = 0
+open = 0;
+triggered = 0;
+up = 0;
+save1 = 0;
+save2 = 0;
 </string>
           </argument>
         </arguments>
@@ -72,7 +85,7 @@ with(obj_16FControlledNPC1)
     image_alpha = 1;
 }
 open = true;
-for(i=0;i&lt;4;i+=1)
+for(var i=0;i&lt;4;i+=1)
 {
     if(!global.gemPlaced[i])
     {
@@ -336,9 +349,9 @@ if(global.MagicCloak)
 player.frozen = false;
 
 sound_play(sndgras);
-transition_kind = 21;
+//transition_kind = 21;
 //transition_kind = 104;
-transition_steps = 80;
+//transition_steps = 80;
 room_goto(rNPCBattle);
 </string>
           </argument>
@@ -514,6 +527,49 @@ alarm[1] = 10;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// ADDED
+
+if new_alarm_timer == 1
+{
+    if(global.story[32])
+    {
+        visible = false;
+        x = -32;
+        y = -32;
+        p = instance_create(480,320,movingPlatform);
+        p.visible = false;
+        alarm[11] = 1;
+    }
+    if(global.story[33])
+    {
+        with(p)
+        {
+            instance_destroy();
+        }
+        instance_destroy();
+    }
+}
+new_alarm_timer++;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>if(triggered)
 {
     if(image_alpha &gt; 0)
@@ -576,7 +632,8 @@ if(!triggered)
     p = instance_create(480,320,movingPlatform);
     p.visible = false;
     sound_play(sndExpMax);
-    SS_StopSound(global.currentBGM);
+    //FMODInstanceStop(global.currentBGM);
+    FMODInstanceStop(global.curMusic);
     alarm[0] = 50;
 }
 </string>

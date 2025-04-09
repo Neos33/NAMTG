@@ -41,6 +41,23 @@ alarm[10] = 1;
 alarm[11] = 1;
 //blendColor = 0;
 //image_blend = make_color_rgb(blendColor,blendColor,blendColor);
+
+hdir = 0;
+vdir = 0;
+hdis = 0;
+vdis = 0;
+
+
+p = 0;
+controlHeight = 0;
+bounce = 0;
+
+
+dis = 0;
+spd = 0;
+
+blink = 0;
+blinkCount = 0;
 </string>
           </argument>
         </arguments>
@@ -354,7 +371,7 @@ else
 {
     if(count &gt; 0)
     {
-        for(i = 0; i&lt; 18; i+=1)
+        for(var i = 0; i&lt; 18; i+=1)
         {
             b = instance_create(x,y,obj_beBossPhase1Bullet1);
             b.speed = 3;
@@ -401,7 +418,10 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(x &gt; 250 &amp;&amp; x &lt; 550)
+            <string>if !instance_exists(player)
+    exit;
+
+if(x &gt; 250 &amp;&amp; x &lt; 550)
 {
     if(player.x &lt; 200)
     {
@@ -517,7 +537,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(phase == 1)
+            <string>/// Phases finished
+// End of phase 1, use spellcard
+if(phase == 1)
 {
     if(totalTime &gt;= limitTime)
     {
@@ -569,6 +591,7 @@ else
     }
 }
 
+// Defeated
 if(phase == 2)
 {
     if(totalTime &gt;= limitTime)
@@ -602,6 +625,7 @@ if(phase == 2)
             instance_create(x,y, obj_spellCardClearEffect);
             obj_beBattleController.alarm[1] = 120;
             sound_fix(snd_touhou_defeated);
+            //instance_create(x, y, objTouhouDeathEffect);
             instance_destroy();
         }
     }
@@ -626,7 +650,8 @@ if(phase == 2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(obj_beMagicCircle))
+            <string>/// Magic circle attach
+if(instance_exists(obj_beMagicCircle))
 {
     obj_beMagicCircle.x = x;
     obj_beMagicCircle.y = y;
@@ -698,6 +723,9 @@ if(totalTime &lt; limitTime)
         draw_rectangle(64, 32, 96, 48, false);
     }
 }
+
+draw_set_color(c_white);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

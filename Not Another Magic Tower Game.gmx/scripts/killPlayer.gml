@@ -6,11 +6,11 @@ if(room != rSelectStage){
 //�v���C���[�����񂾎��̃C�x���g
 
 ////���y��炵�Ă���Object��폜
-if(instance_exists(playMusic)){
+/*if(instance_exists(playMusic)){
   with(playMusic){
     instance_destroy();
   }
-}
+}*/
 
 ////���ݖ��Ă���Sound��S�Ē�~���A���S�pBGM��Đ�
 
@@ -38,8 +38,8 @@ if(instance_exists(player2)){
     instance_destroy();
   }
 }
-with(niseplayer){instance_destroy()}
-with(niseplayer2){instance_destroy()}
+//with(niseplayer){instance_destroy()}
+//with(niseplayer2){instance_destroy()}
 
 //�Q�[���I�[�o�[�̕����iObject�j�𐶐�
 instance_create(view_xview+400,view_yview+300,GAMEOVER);

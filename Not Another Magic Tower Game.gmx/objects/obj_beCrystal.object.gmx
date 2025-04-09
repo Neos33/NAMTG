@@ -32,7 +32,7 @@ alarm[5] = 1;
 alarm[6] = 380;
 alarm[4] = 450;
 image_alpha = 0.6;
-SS_StopSound(global.BGM_BE);
+FMODInstanceStop(global.BGM_BE);
 sound_fix(sndDark2);
 </string>
           </argument>
@@ -114,8 +114,8 @@ sound_fix(sndDark2);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>transition_kind = 21;
-transition_steps = 150;
+            <string>//transition_kind = 21;
+//transition_steps = 150;
 room_goto(rTitle);
 </string>
           </argument>

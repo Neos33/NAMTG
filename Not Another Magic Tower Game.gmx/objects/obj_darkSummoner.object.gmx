@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>atk=250;
+            <string>event_inherited();
+atk=250;
 def=142;
 hp=300;
 ex=300;
@@ -33,7 +34,7 @@ name = "Dark Summoner";
 combatObj = obj_darkSummoner_combat;
 mybattleroom = rDarkSummoner;
 //mybattleroom = getBattleRoom();
-event_inherited();
+
 </string>
           </argument>
         </arguments>

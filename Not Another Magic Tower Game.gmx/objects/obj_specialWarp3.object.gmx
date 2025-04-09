@@ -78,7 +78,7 @@ spr = noone;
             <kind>1</kind>
             <string>if(!sprite_exists(spr)) {
         //Get an image of the screen
-        spr = sprite_create_from_screen(0, 0, 800, 608, false, false, 0, 0);
+        spr = sprite_create_from_surface(application_surface, 0, 0, 800, 608, false, false, 0, 0);
         //And stop all actions, not including this one
         instance_deactivate_all(true);
         instance_activate_object(world);

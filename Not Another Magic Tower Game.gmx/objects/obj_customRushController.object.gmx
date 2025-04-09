@@ -390,7 +390,8 @@ for(i=0;i&lt;global.GalleryBossFightNum;i+=1)
     global.GalleryBossFightRoom[i] = bossRoom[fightInd];
 }
 player.frozen = false;
-SS_StopSound(global.currentBGM);
+//SS_StopSound(global.currentBGM);
+FMODInstanceStop(global.currentBGM);
 global.currentBGM = global.BGM_Null;
 sound_fix(sndgras);
 if(global.special[6])
@@ -402,8 +403,8 @@ else
     global.Blockable = false;
 }
 
-transition_kind = 104;
-transition_steps = 100;
+//transition_kind = 104;
+//transition_steps = 100;
 global.combatObj = global.brObj[global.GalleryBossFightInd];
 global.mHP = global.brMHp[global.GalleryBossFightInd];
 global.defenseDamage = global.brBossDmg[global.GalleryBossFightInd];
