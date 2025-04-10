@@ -25,6 +25,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string></string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>alarm[0] = 1;
 alarm[2] = 1;
 image_xscale = 0.8;
@@ -51,7 +71,8 @@ image_yscale = 0.8;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(image_xscale &lt; 0.6)
+            <string>/// Scale up
+if(image_xscale &lt; 0.6)
 {
     image_xscale += 0.01;
     image_yscale += 0.01;
@@ -83,7 +104,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(image_xscale &gt; 0.4)
+            <string>/// Scale down
+if(image_xscale &gt; 0.4)
 {
     image_xscale -= 0.01;
     image_yscale -= 0.01;
@@ -115,7 +137,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(image_alpha &lt; 0.7)
+            <string>/// Fade in
+if(image_alpha &lt; 0.7)
 {
     image_alpha += 0.02;
     alarm[1]= 1;
@@ -146,7 +169,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(image_alpha &gt; 0.5)
+            <string>/// Fade out 
+if(image_alpha &gt; 0.5)
 {
     image_alpha -= 0.02;
     alarm[0]= 1;

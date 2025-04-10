@@ -25,6 +25,34 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>s = 0;
+count1 = 0;
+dir = 0;
+subdir = 0;
+b1 = 0;
+b2 = 0;
+finalDir = 0;
+mc = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>image_speed = 0;
 alarm[11] = 1;
 image_xscale = 0.7;
@@ -118,7 +146,7 @@ for(i = 0; i &lt; 5; i+=1)
             <kind>1</kind>
             <string>dir = point_direction(x,y,obj_beFinalPhase1.x,obj_beFinalPhase1.y);
 subdir = random_range(0, 359);
-for(i = 0; i &lt; 6; i+= 1)
+for(var i = 0; i &lt; 6; i+= 1)
 {
     b1 = instance_create(x + 80 * cos(degtorad(dir)), y - 80 * sin(degtorad(dir)), obj_beFinalBullet5);
     b1.speed = 2;
@@ -216,9 +244,7 @@ else
           <argument>
             <kind>1</kind>
             <string>
-
-
-for(i = 0; i &lt; 20; i+= 1)
+for(var i = 0; i &lt; 20; i+= 1)
 {
     s = instance_create(x,y,obj_beFinalBullet3);
     s.speed = 3;
@@ -309,8 +335,11 @@ if(count1 == 4)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mc.x = x;
-mc.y = y;
+            <string>if instance_exists(mc)
+{
+    mc.x = x;
+    mc.y = y;
+}
 </string>
           </argument>
         </arguments>

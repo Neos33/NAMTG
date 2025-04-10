@@ -26,6 +26,26 @@
           <argument>
             <kind>1</kind>
             <string>mc = 0;
+spd = 0;
+dis = 0;
+moveDir = 0;
+p = 0;
+
+count6 = 0;
+count6Ang1 = 0;
+count6Ang2 = 0;
+count6Ang3 = 0;
+count6SX1 = 0;
+count6SX2 = 0;
+count6SX3 = 0;
+
+s1 = 0;
+s2 = 0;
+s3 = 0;
+
+sDir = 0;
+pp = 0;
+finalDir = 0;
 </string>
           </argument>
         </arguments>
@@ -178,7 +198,7 @@ else
           <argument>
             <kind>1</kind>
             <string>finalDir = 0;
-for(i = 0; i &lt; 5; i+=1)
+for(var i = 0; i &lt; 5; i+=1)
 {
     rodElement[i] = instance_create(x + 40 * i * cos(degtorad(finalDir)), y - 40 * i * sin(degtorad(finalDir)), obj_beFinalRodElement);
     rodElement[i].dir = finalDir;
@@ -209,7 +229,7 @@ for(i = 0; i &lt; 5; i+=1)
           <argument>
             <kind>1</kind>
             <string>sDir = point_direction(x,y, obj_beFinalPhase3.x, obj_beFinalPhase3.y);
-for(i = 0;i&lt;6;i+=1)
+for(var i = 0;i&lt;6;i+=1)
 {
     pp = instance_create(x,y,obj_beFinalBullet3);
     pp.image_index = 0;
@@ -391,7 +411,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 24; i+=1)
+            <string>for(var i = 0; i &lt; 24; i+=1)
 {
     p = instance_create(x,y,obj_beFinalBullet2);
     p.image_index = 2;
@@ -483,8 +503,11 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mc.x = x;
-mc.y = y;
+            <string>if instance_exists(mc)
+{
+    mc.x = x;
+    mc.y = y;
+}
 </string>
           </argument>
         </arguments>

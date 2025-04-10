@@ -34,6 +34,13 @@ child.depth = depth + 1;
 child.index = subCount - 1;
 dir = "init";
 b = instance_create(x,y,block);
+
+
+isX = 0;
+isY = 0;
+
+signX = 0;
+signY = 0;
 </string>
           </argument>
         </arguments>
@@ -266,8 +273,11 @@ if(abs(guide.x - x) &gt;= 32 || abs(guide.y - y) &gt;= 32)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>b.x = x;
-b.y = y;
+            <string>if instance_exists(b)
+{
+    b.x = x;
+    b.y = y;
+}
 </string>
           </argument>
         </arguments>
@@ -290,8 +300,11 @@ b.y = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>b.x = x;
-b.y = y;
+            <string>if instance_exists(b)
+{
+    b.x = x;
+    b.y = y;
+}
 </string>
           </argument>
         </arguments>
@@ -314,8 +327,11 @@ b.y = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>b.x = x;
-b.y = y;
+            <string>if instance_exists(b)
+{
+    b.x = x;
+    b.y = y;
+}
 </string>
           </argument>
         </arguments>

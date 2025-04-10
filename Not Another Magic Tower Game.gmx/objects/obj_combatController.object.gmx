@@ -389,6 +389,28 @@ if(!global.inGallery || (global.GalleryBossFight &amp;&amp; global.GalleryBossFi
             <kind>1</kind>
             <string>if(dontDraw)
     exit;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Monster name info
+
 draw_set_halign(fa_right);
 draw_set_font(font12);
 draw_set_color(c_silver);
@@ -418,8 +440,27 @@ else
         draw_text_transformed(view_xview[0] + 64 + strWidth, view_hview[0] - 64, obj_monsterBattlePrototype.name, -1, -1, 0);
     }
 }
-
-
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Kid info
 draw_set_halign(fa_left)
 if(global.reverse == 0)
 {
@@ -450,17 +491,17 @@ if(instance_exists(player) || instance_exists(player2))
         {
             for(k = 0; k &lt; floor(usedHp / 100); k+=1)
             {
-                draw_sprite_ext(spr_hp, 0, view_xview[0] +64 + 24 * k, view_yview[0] + 80, .75, .75, 0, c_white, 1);
+                draw_sprite_ext(spr_hp, 0, view_xview[0] +64 + 24 * k, view_yview[0] + 80+8, .75, .75, 0, c_white, 1);
             }
             
             for(j = 0; j &lt; floor((usedHp mod 100) / 10); j+=1)
             {
-                draw_sprite(spr_heart10, 0, view_xview[0] +64 + floor(usedHp / 100) * 24 + 20 * j, view_yview[0] + 92);
+                draw_sprite(spr_heart10, 0, view_xview[0] +64 + floor(usedHp / 100) * 24 + 20 * j, view_yview[0] + 92+8);
             }
             
             for(i = 0; i &lt; (usedHp mod 10); i+= 1)
             {
-                draw_sprite(spr_smallHeart, 0, view_xview[0] +64 + floor(usedHp / 100) * 24 + 20 * floor((usedHp mod 100) / 10) + 14 * i, view_yview[0] + 98);
+                draw_sprite(spr_smallHeart, 0, view_xview[0] +64 + floor(usedHp / 100) * 24 + 20 * floor((usedHp mod 100) / 10) + 14 * i, view_yview[0] + 98+8);
             }
         }
         else
@@ -505,6 +546,28 @@ if(instance_exists(player) || instance_exists(player2))
     }
 }
 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Monster HP info
 if !instance_exists(obj_monsterBattlePrototype)
     exit;
 if(dontDrawMonster) exit;

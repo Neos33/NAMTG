@@ -99,11 +99,14 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!obj_snakeStartControl.on)
+            <string>if instance_exists(obj_snakeStartControl)
 {
-    if(player.x &gt; 800)
+    if(!obj_snakeStartControl.on)
     {
-        view_xview[0] = room_width - 800;
+        if(player.x &gt; 800)
+        {
+            view_xview[0] = room_width - 800;
+        }
     }
 }
 </string>
