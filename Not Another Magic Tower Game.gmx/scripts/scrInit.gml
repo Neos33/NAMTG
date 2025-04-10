@@ -1,6 +1,7 @@
 ///scrInit();
 
 scrInitEnums();
+scrInitAudio();
 
 global.skipMonsters = false;
 global.cooldown = false;

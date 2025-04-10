@@ -144,11 +144,11 @@ if(HP=0){
             <kind>1</kind>
             <string>if(damage=false)
 {
-flashobject(5,3);
-HP-=1;
-damage=true;
-with(other)instance_destroy();
-alarm[5]=40;
+    flashobject(5,3);
+    HP-=1;
+    damage=true;
+    with(other)instance_destroy();
+    alarm[5]=40;
 }
 </string>
           </argument>

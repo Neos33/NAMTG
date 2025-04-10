@@ -145,7 +145,7 @@
     <instance objName="obj_attUp1" x="320" y="96" name="inst_B3B0F9A1" locked="0" code="ind=14;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_attUp1" x="288" y="96" name="inst_8F83CED5" locked="0" code="ind=13;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="camera" x="32" y="0" name="inst_0EF98C2B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="112" name="inst_68C2C606" locked="0" code="bgm = global.BGM1To10F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="112" name="inst_68C2C606" locked="0" code="bgm = scrAudioGetID(&quot;BGM1To10F&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="144" name="inst_7D3629D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_upStairs2" x="672" y="32" name="inst_75960EAE" locked="0" code="roomTo = r3F;&#xA;warpX = 704 + 17;&#xA;warpY = 32 + 23;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellowKey" x="224" y="352" name="inst_21A13E4E" locked="0" code="ind = 8;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

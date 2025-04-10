@@ -39,6 +39,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Init vars
+shoot = 0;
+start = 0;
+count = 0;
+final = 0;
+pp = 0;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>interval = 6;
 alarm[3] = 6;
 image_index = 2;
@@ -166,10 +193,13 @@ else
             <string>shoot = false
 if(instance_number(obj_smallGrayCherry) == 0)
 {
-    obj_diaoSlime_combat.x = 704;
-    obj_diaoSlime_combat.y = 544;
-    obj_diaoSlime_combat.status = 0;
-    obj_diaoSlime_combat.alarm[4] = 30;
+    if instance_exists(obj_diaoSlime_combat)
+    {
+        obj_diaoSlime_combat.x = 704;
+        obj_diaoSlime_combat.y = 544;
+        obj_diaoSlime_combat.status = 0;
+        obj_diaoSlime_combat.alarm[4] = 30;
+    }
     sound_loop(choose(sndBattle1,sndBattle2));
     instance_destroy();
 }

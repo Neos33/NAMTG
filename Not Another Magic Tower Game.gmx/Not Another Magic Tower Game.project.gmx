@@ -2803,6 +2803,7 @@
       <sprite>sprites\spr_spikeUp_center</sprite>
     </sprites>
     <sprite>sprites\sprEmpty</sprite>
+    <sprite>sprites\sprBasementUnknownMonster</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bacJumpThrough</background>
@@ -3067,6 +3068,8 @@
       <script>scripts\audio_resumemusic_volume.gml</script>
       <script>scripts\audio_loopmusic_volume.gml</script>
       <script>scripts\audio_setvolume.gml</script>
+      <script>scripts\scrInitAudio.gml</script>
+      <script>scripts\scrAudioGetID.gml</script>
     </scripts>
     <scripts name="controls">
       <script>scripts\controls_init.gml</script>

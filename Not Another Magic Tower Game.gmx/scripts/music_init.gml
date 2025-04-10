@@ -3,12 +3,9 @@
 LoadFMOD();
 FMODinit(100,0);
 
-global.music_directory = "BGM\";
-global.stream_music = 0;
-
 //indicates that no music will be playing in the room
 //DO NOT DELETE THIS ONE
-globalvar BGM_Null;
+/*globalvar BGM_Null;
 BGM_Null=FMODSoundAdd(global.music_directory+"Null.ogg",0,0);
 //current music, set it to BGM_Null for default value
 globalvar curMusic;
@@ -16,7 +13,7 @@ curMusic = -1;
 globalvar curMusicID;
 curMusicID = BGM_Null;
 globalvar deathMusic;
-deathMusic = -1;
+deathMusic = -1;*/
 //the death sound, the volume of which is adjusted by the global sound volume
 /*globalvar SE_Death;
 SE_Death=music_load("death.ogg");
@@ -39,8 +36,8 @@ BGM_BOSS2=music_load("102.ogg");
 
 //globalvar curMusic,filePlaying; //current music, current music serial, ~~~
 
-globalvar SE_Death;
-SE_Death=music_load("Death.ogg");
+//globalvar SE_Death;
+//SE_Death=music_load("Death.ogg");
 
 // play music full edition
 //globalvar BGM_Null;
@@ -48,7 +45,7 @@ SE_Death=music_load("Death.ogg");
 
 //globalvar BGM_Title;
 //BGM_Title=music_load("BGM1.ogg",0);
-
+/*
 globalvar BGM_1;
 BGM_1=music_load("BGM1.ogg");
 

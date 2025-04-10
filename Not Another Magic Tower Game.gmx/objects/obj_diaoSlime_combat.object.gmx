@@ -25,6 +25,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>pCount = 0;
+result = 0;
+status = 0;
+randomNum = 0;
+result = 0;
+pIndex = 0;
+flash = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>event_inherited();
 name = "DIAO Slime";
 image_speed = 1/8;
@@ -236,9 +263,9 @@ else
 }
 else if(status == 1)
 {
-    for(i = 0; i &lt; pCount; i += 1)
+    for(var i = 0; i &lt; pCount; i += 1)
     {
-        for(j = 0; j &lt; 8; j += 1)
+        for(var j = 0; j &lt; 8; j += 1)
         {
             draw_sprite_part_ext(spr[result],image_index, 0, 4 * j, 32, 4 / 25 * pCount, x, y + 4 * j,1,1,c_white,1);        
         }

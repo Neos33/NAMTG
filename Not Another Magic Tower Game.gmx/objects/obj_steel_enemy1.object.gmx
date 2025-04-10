@@ -119,11 +119,11 @@ if(HP=0){
             <kind>1</kind>
             <string>if(damage=false)
 {
-flashobject(5,3);
-HP-=1;
-damage=true;
-with(other)instance_destroy();
-alarm[5]=40;
+    flashobject(5,3);
+    HP-=1;
+    damage=true;
+    with(other)instance_destroy();
+    alarm[5]=40;
 }
 </string>
           </argument>
@@ -149,10 +149,10 @@ alarm[5]=40;
             <kind>1</kind>
             <string>if(!instance_exists(obj_dizzy))
 {
-instance_create(0,0,obj_dizzy);
-player.frozen=1;
-obj_dizzy.alarm[0]=75;
-obj_steel_combat.dizzyTimes += 1;
+    instance_create(0,0,obj_dizzy);
+    player.frozen=1;
+    obj_dizzy.alarm[0]=75;
+    obj_steel_combat.dizzyTimes += 1;
 }
 </string>
           </argument>

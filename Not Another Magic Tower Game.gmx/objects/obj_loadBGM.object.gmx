@@ -36,18 +36,22 @@ musicIndex = 0;
 musicCount = 46;
 
 musicLoadEnd = false;
+type = array_create(46);
 
 song[0] = "Death.ogg";
 song[1] = "Null.ogg";
+
 song[2] = "BGM1.ogg";type[2]=1;
 song[3] = "BGM1-10F.ogg";type[3]=1;
 song[4] = "BGMB1F.ogg";type[4]=1;
 song[5] = "BGM_Secret1.ogg";type[5]=1;
+
 song[6] = "BGM_battle1.ogg";
 song[7] = "BGMBoss1.ogg";
 song[8] = "BGM_BE.ogg";
 song[9] = "BGM_BEBoss.ogg";
 song[10] = "BGM_RedKey.ogg";
+
 song[11] = "BGM_BubbleStageSelection.ogg";
 song[12] = "BGM_BubbleStage.ogg";
 song[13] = "BGM_JKStage.ogg";
@@ -56,6 +60,7 @@ song[15] = "BGM_FloorStage.ogg";
 song[16] = "BGM_MMMFingers.ogg";
 song[17] = "BGM11-15F.ogg";type[17]=1;
 song[18] = "BGM_FAShiLiu.ogg";
+
 song[19] = "BGM_Dracula.ogg";
 song[20] = "BGM_Burning.ogg";type[20]=1;
 song[21] = "BGM_Freezing.ogg";type[21]=1;
@@ -153,8 +158,10 @@ name[45] = "BGM_Luka";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>globalvar currentBGM;
-global.currentBGM = global.BGM_1;
+            <string>/// Music loaded
+globalvar currentBGM;
+//global.currentBGM = global.BGM_1;
+global.currentBGM = global.NAMTG_BGM[? "BGM_1"];
 instance_create(768, 560, obj_start);
 </string>
           </argument>
@@ -178,8 +185,12 @@ instance_create(768, 560, obj_start);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//execute_string("globalvar " + name[musicIndex]);
+            <string>/// Load music
+//execute_string("globalvar " + name[musicIndex]);
 //execute_string(name[musicIndex] + '=SS_LoadSound(working_directory+"\BGM\' + song[musicIndex] + '",'+ string(1-type[musicIndex]) +');');
+
+ds_map_add(global.NAMTG_BGM, name[musicIndex], FMODSoundAdd(global.music_directory + song[musicIndex], 0, type[musicIndex]));
+print("*",name[musicIndex],"*", " loaded succesfully.")
 event_user(0);
 </string>
           </argument>
@@ -205,7 +216,7 @@ event_user(0);
             <kind>1</kind>
             <string>if(musicPer &lt; targetPer)
 {
-    musicPer += 10;
+    musicPer += 1;
 }
 else 
 {

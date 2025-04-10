@@ -25,11 +25,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+image_speed = 0;
 name = "Unknown";
 x = 400;
 y = 304;
 alarm[3] = 3;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy();
+print("Se cambia o se destruye???")
 </string>
           </argument>
         </arguments>
@@ -56,13 +81,25 @@ alarm[3] = 3;
 y = 544;
 //instance_create(704, 544, getRandomMonster());
 monster = getRandomMonster();
+print("monster selected: ", object_get_name(monster));
 global.combatObj = monster;
 instance_change(monster, true);
+monster.hp = global.mHP;
+
+
+print("global.randomMonstersKilled: ", global.randomMonstersKilled);
 if(global.randomMonstersKilled &lt; 10)
 {
     global.randomMonstersKilled += 1;
 }
-instance_destroy();
+
+//instance_destroy();
+/*global.mHP = 50;
+global.mAtk = global.attack;
+global.mDef = global.defense;
+global.mEx = 0;*/
+//instance_destroy();
+//alarm[11] = 1;
 </string>
           </argument>
         </arguments>

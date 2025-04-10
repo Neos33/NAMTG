@@ -40,6 +40,13 @@
           <argument>
             <kind>1</kind>
             <string>isStable = true;
+
+onBoom = 0;
+onHold = 0;
+onSmash = 0;
+smashEnd = 0;
+smashType = 0;
+onRun = 0;
 </string>
           </argument>
         </arguments>
@@ -62,7 +69,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(onBoom)
+            <string>if !instance_exists(obj_guardlv1_combat)
+    exit;
+    
+if(onBoom)
 {
     image_angle += 10;
     speed -= 0.5;
@@ -115,7 +125,11 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(onHold)
+            <string>if !instance_exists(player) and !instance_exists(obj_guardlv1_combat)
+{
+    exit;
+}   
+if(onHold)
 {
     if(player.x &gt; obj_guardlv1_combat.x)
     {
@@ -150,7 +164,10 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(onSmash)
+            <string>if !instance_exists(obj_guardlv1_combat)
+    exit;
+    
+if(onSmash)
 {
     if(!smashEnd)
     {
@@ -204,7 +221,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = obj_guardlv1_combat.image_alpha;
+            <string>if !instance_exists(obj_guardlv1_combat)
+    exit;
+image_alpha = obj_guardlv1_combat.image_alpha;
 </string>
           </argument>
         </arguments>
@@ -225,7 +244,10 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(onRun)
+            <string>if !instance_exists(obj_guardlv1_combat)
+    exit;
+    
+if(onRun)
 {
     y = obj_guardlv1_combat.y;
     if(obj_guardlv1_combat.hspeed &gt; 0)

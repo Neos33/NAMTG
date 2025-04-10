@@ -90,7 +90,10 @@ alarm[1]=8;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x=obj_steel_combat.x+32;
+            <string>if !instance_exists(obj_steel_combat)
+    exit;
+    
+x=obj_steel_combat.x+32;
 y=obj_steel_combat.y+32;
 </string>
           </argument>

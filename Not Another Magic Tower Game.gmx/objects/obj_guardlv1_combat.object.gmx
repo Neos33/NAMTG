@@ -31,6 +31,13 @@ alarm[3] = 20;
 image_speed = 1 / 8;
 phase = "init";
 alarm[11] = 1;
+
+key = 0;
+dir = 0;
+djump = 0;
+
+xoffset = 0;
+yoffset = 0;
 </string>
           </argument>
         </arguments>
@@ -174,7 +181,10 @@ alarm[10] = 120;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(player.x &gt; 400)
+            <string>if !instance_exists(player)
+    exit;
+
+if(player.x &gt; 400)
 {
     x = player.x -350;
     image_angle = -45;
@@ -242,7 +252,10 @@ phase = "jump";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>key.onHold = false;
+            <string>if !instance_exists(player)
+    exit;
+    
+key.onHold = false;
 key.onBoom = true;
 key.onSmash = false;
 key.onRun = false;
@@ -311,7 +324,8 @@ alarm[4] = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(phase == "jump")
+            <string>/// Phase: Jump
+if(phase == "jump")
 {
     if(vspeed &gt; 0)
     {
@@ -348,7 +362,8 @@ alarm[4] = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(phase = "smash")
+            <string>/// Phase: Smash
+if(phase = "smash")
 {
     if(abs(vspeed) &lt; 0.1)
     {
@@ -381,7 +396,8 @@ alarm[4] = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(phase = "run")
+            <string>/// Phase: Run
+if(phase = "run")
 {
     if(abs(hspeed) &lt; 0.1)
     {
@@ -424,7 +440,8 @@ alarm[4] = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(phase == "final")
+            <string>/// Phase: Final
+if(phase == "final")
 {
     if(y &gt; 559 &amp;&amp; abs(vspeed &lt; 0.1))
     {
@@ -545,7 +562,7 @@ if (place_free(x+hspeed,y+vspeed) == false){
             <kind>1</kind>
             <string>if(abs(hspeed) &gt; 5)
 {
-    for(i = 1; i &lt; 5; i+= 1)
+    for(var i = 1; i &lt; 5; i+= 1)
     {
         xoffset = -10 * i * cos(degtorad(360 - direction));
         yoffset = -10 * i * sin(degtorad(360 - direction));

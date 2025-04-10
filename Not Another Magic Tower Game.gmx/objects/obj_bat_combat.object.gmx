@@ -34,6 +34,24 @@ alarm[3] = 50;
 
 left = global.leftbutton;
 right = global.rightbutton;
+
+
+
+phase = 0;
+dashCount = 0;
+
+isDrawWave = 0;
+wave = 0;
+isDiverse = 0;
+isDiverseInit = 0;
+
+targeted = 0;
+dir = 0;
+cx = 0;
+cy = 0;
+
+status = 0;
+wcount = 0;
 </string>
           </argument>
         </arguments>
@@ -452,7 +470,7 @@ dashCount = 0;
             <string>if(status == 1)
 {
     draw_set_alpha(1);
-    for(i = 0; i &lt; 5; i+= 1)
+    for(var i = 0; i &lt; 5; i+= 1)
     {
         draw_sprite_ext(sprite_index, image_index, x + 10 * (i+1) * cos(degtorad(360 -direction)), y - 10 * (i+1) * sin(degtorad(360 -direction)),1,1,image_angle,c_white, 1 - 0.17 * (i + 1));
     }
@@ -461,7 +479,7 @@ if(isDrawWave)
 {
     wave += 1;
     wcount = ceil(wave / 15);
-    for(i = 0; i &lt; wcount; i+=1)
+    for(var i = 0; i &lt; wcount; i+=1)
     {
         draw_set_alpha(1 - i * 0.15);
         draw_set_color(c_silver);
@@ -475,6 +493,7 @@ if(isDrawWave)
 }
 draw_set_alpha(1);
 draw_sprite_ext(sprite_index,image_index,x,y,1,1,image_angle,c_white,image_alpha);
+draw_set_color(c_white);
 </string>
           </argument>
         </arguments>

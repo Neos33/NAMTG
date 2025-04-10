@@ -155,7 +155,7 @@
     <instance objName="obj_slime_black" x="256" y="320" name="inst_BDE5764B" locked="0" code="ind = 18;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slime_king" x="224" y="256" name="inst_CD6420A1" locked="0" code="ind = 17;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_stone" x="448" y="192" name="inst_2C901589" locked="0" code="ind = 14;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="112" name="inst_33066F59" locked="0" code="bgm = global.BGM1To10F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="112" name="inst_33066F59" locked="0" code="bgm = scrAudioGetID(&quot;BGM1To10F&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="144" name="inst_3E685BE1" locked="0" code="global.currentFloor = 1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fasf" x="736" y="64" name="inst_3FD07C10" locked="0" code="ind=20;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fasf" x="704" y="32" name="inst_0583AB59" locked="0" code="ind=21;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

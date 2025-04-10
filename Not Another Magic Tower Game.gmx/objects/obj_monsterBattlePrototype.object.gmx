@@ -25,9 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>cooldown = false;
+            <string>event_inherited();
+cooldown = false;
 damage = 1;
-hp = 10;
+//hp = 10;
 </string>
           </argument>
         </arguments>
