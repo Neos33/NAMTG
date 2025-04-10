@@ -91,7 +91,7 @@
     <instance objName="spikeRight" x="512" y="352" name="inst_51F7C06A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeDown" x="576" y="384" name="inst_76ADF53A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeDown" x="432" y="224" name="inst_958DF628" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="128" name="inst_B5F1F345" locked="0" code="bgm = global.BGM_Secret3;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="128" name="inst_B5F1F345" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Secret3&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="160" name="inst_FCA8D9D2" locked="0" code="global.currentFloor = 8;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spacePortal" x="192" y="384" name="inst_B75C009F" locked="0" code="warpX = 256 + 17;&#xA;warpY = 448 + 23;&#xA;roomTo = rSpacePortal;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spaceNoteBoard" x="256" y="424" name="inst_D2EA9A17" locked="0" code="msg[0] = &quot;Time for some basic jumps!&quot;;&#xA;msgLen = 1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

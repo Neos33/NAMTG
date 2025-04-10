@@ -146,7 +146,7 @@
     <instance objName="obj_spaceButton" x="304" y="264" name="inst_35BC5D4D" locked="0" code="ind = 3;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spaceButton" x="392" y="288" name="inst_F9836736" locked="0" code="ind = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spaceButton" x="656" y="496" name="inst_6F69C280" locked="0" code="ind = 4;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="128" name="inst_F2319C66" locked="0" code="bgm = global.BGM_Secret3;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="128" name="inst_F2319C66" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Secret3&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="160" name="inst_96BFF9A0" locked="0" code="global.currentFloor = 8;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spacePortal" x="112" y="80" name="inst_86700F62" locked="0" code="warpX = 576 + 17;&#xA;warpY = 128 + 23;&#xA;roomTo = rSpacePortal;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spaceNoteBoard" x="176" y="136" name="inst_D5A3792C" locked="0" code="msg[0] = &quot;From - Fairy Igzi : Hey hey hey! This is an official made-by-igzi stage.&quot;;&#xA;msg[1] = &quot;From - Fairy Igzi : Looks hard right? Don't let me know you will give up easily!&quot;;&#xA;msgLen = 2;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

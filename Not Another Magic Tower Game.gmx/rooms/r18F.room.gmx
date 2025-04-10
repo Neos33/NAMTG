@@ -81,7 +81,7 @@
     <instance objName="spikeUp" x="608" y="320" name="inst_31B88BFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeUp" x="544" y="352" name="inst_7B16E3DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeUp" x="416" y="352" name="inst_FA729F63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="112" name="inst_2BF4331F" locked="0" code="bgm = global.BGM_Finals;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="112" name="inst_2BF4331F" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Finals&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="144" name="inst_46F4E77F" locked="0" code="global.currentFloor = 18;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_16FEffect" x="80" y="16" name="inst_38D9F6E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_downStairs" x="480" y="576" name="inst_AEC36D35" locked="0" code="warpX = 480 + 17;&#xA;warpY = 32 + 23;&#xA;roomTo = r17F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

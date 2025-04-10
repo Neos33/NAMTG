@@ -270,7 +270,7 @@
     <instance objName="obj_pbSpikeDown" x="1248" y="256" name="inst_A60B7E08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pbSpikeUp" x="1248" y="224" name="inst_40D2FE27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snakeStartControl" x="64" y="96" name="inst_CB7D9064" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="128" y="0" name="inst_2EA978B7" locked="0" code="bgm = scrAudioGetID(&quot;BGMB1F&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="128" y="0" name="inst_2EA978B7" locked="0" code="bgm = scrAudioGetID(&quot;BGMB1F&quot;);" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="128" y="96" name="inst_9EA34417" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pbSpikeUp" x="1040" y="432" name="inst_28094BBC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_pbSpikeUp" x="1072" y="432" name="inst_3E31E18D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="camera" x="32" y="16" name="inst_3C6FC807" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="112" name="inst_50A45888" locked="0" code="bgm = global.BGM_Finals;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="112" name="inst_50A45888" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Finals&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="144" name="inst_E00E1333" locked="0" code="global.currentFloor = 16;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_downStairs" x="496" y="576" name="inst_053BDE69" locked="0" code="warpX = 458 + 17;&#xA;warpY = 32 + 23;&#xA;roomTo = r15F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="288" y="544" name="inst_FB8D5D74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

@@ -61,7 +61,7 @@
     <instance objName="obj_galleryItem" x="512" y="520" name="inst_05B112D9" locked="0" code="spr = spr_silverEvilSlime;&#xA;obj = obj_silverEvilSlime;&#xA;atk = 90;&#xA;def = 90;&#xA;hp = 90;&#xA;txt = 'Silver Evil Slime';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_galleryItem" x="288" y="520" name="inst_9ECAF4C3" locked="0" code="spr = spr_goldEvilSlime;&#xA;obj = obj_goldEvilSlime;&#xA;atk = 110;&#xA;def = 110;&#xA;hp = 110;&#xA;txt = 'Gold Evil Slime';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_galleryItem" x="400" y="112" name="inst_0F720A38" locked="0" code="spr = spr_burningSlime;&#xA;obj = obj_burningSlime;&#xA;atk = 115;&#xA;def = 115;&#xA;hp = 115;&#xA;txt = 'Burning Slime';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="160" y="32" name="inst_312851AB" locked="0" code="bgm = global.BGM_Gallery;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="160" y="32" name="inst_312851AB" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Gallery&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="128" y="32" name="inst_3B465E5E" locked="0" code="global.currentFloor = -1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="320" y="304" name="inst_73E202EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="448" y="304" name="inst_4D501DC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

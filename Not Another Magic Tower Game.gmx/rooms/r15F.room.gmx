@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="camera" x="32" y="16" name="inst_02C11B05" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="112" name="inst_94B94459" locked="0" code="bgm = global.BGM11To15F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="112" name="inst_94B94459" locked="0" code="bgm = scrAudioGetID(&quot;BGM11To15F&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="144" name="inst_ECA194AC" locked="0" code="global.currentFloor = 15;&#xA;global.route15F = 0;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_downStairs" x="512" y="544" name="inst_18B6BB01" locked="0" code="roomTo = r14F;&#xA;warpX = 464 + 17;&#xA;warpY = 480 + 23;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_upStairs" x="480" y="32" name="inst_82042181" locked="0" code="if(!global.story[30])&#xA;{&#xA;    instance_destroy();&#xA;}&#xA;warpX = 480 + 17;&#xA;warpY = 64 + 23;&#xA;roomTo = r16F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

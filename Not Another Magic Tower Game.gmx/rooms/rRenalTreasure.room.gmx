@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="camera" x="32" y="16" name="inst_B69D3163" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="112" name="inst_6F2C932F" locked="0" code="bgm = global.BGM_RenalTreasure;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="112" name="inst_6F2C932F" locked="0" code="bgm = scrAudioGetID(&quot;BGM_RenalTreasure&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="144" name="inst_9F55FA65" locked="0" code="global.currentFloor = 7;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_specialWarp10" x="736" y="544" name="inst_4CAD29BB" locked="0" code="warpX = 720 + 17;&#xA;warpY = 512 + 23;&#xA;roomTo = r7F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="672" y="544" name="inst_8A039189" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

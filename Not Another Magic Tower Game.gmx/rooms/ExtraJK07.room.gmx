@@ -90,7 +90,7 @@
     <instance objName="obj_jkSpikeDown" x="560" y="32" name="inst_28445347" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkSpikeUp" x="544" y="48" name="inst_0EBB77B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkSpikeUp" x="576" y="48" name="inst_F07FE114" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="32" y="96" name="inst_063FF4D8" locked="0" code="bgm = global.BGM_JKStage;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="32" y="96" name="inst_063FF4D8" locked="0" code="bgm = scrAudioGetID(&quot;BGM_JKStage&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="80" y="96" name="inst_C088E6E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wayDown" x="192" y="288" name="inst_F287178C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wayDown" x="224" y="288" name="inst_EC734C53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

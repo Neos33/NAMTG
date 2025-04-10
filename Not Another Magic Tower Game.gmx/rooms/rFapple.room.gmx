@@ -55,7 +55,7 @@
     <instance objName="obj_theColonel" x="272" y="96" name="inst_BC29BC23" locked="0" code="ind=318;&#xA;isBoss = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_specialWarp15" x="592" y="432" name="inst_9B0BF94D" locked="0" code="warpX = 640 + 17;&#xA;warpY = 512 + 23;&#xA;roomTo = rSpacePortal;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="32" y="160" name="inst_F20C0D4A" locked="0" code="global.currentFloor = -1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="32" y="128" name="inst_6D869898" locked="0" code="bgm = global.BGM_Secret3;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="32" y="128" name="inst_6D869898" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Secret3&quot;);" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_saintSword" x="192" y="448" name="inst_00EB28ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="464" y="432" name="inst_06109A58" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_fappleEffectController" x="160" y="32" name="inst_63D10859" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

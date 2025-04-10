@@ -102,7 +102,7 @@ if(abs(player.x - x) &lt; 10 &amp;&amp; !triggered)
    global.roomY = player.y;
    global.stageRoom = room;
    global.inCombat = true;
-   global.currentBGM = global.BGM_Null;
+   global.currentBGM = scrAudioGetID("BGM_Null");
    //transition_steps = 100;
    //transition_kind = 104;
    room_goto(roomTo);

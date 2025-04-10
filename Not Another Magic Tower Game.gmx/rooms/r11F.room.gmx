@@ -78,7 +78,7 @@
     <instance objName="minispikeRight" x="288" y="416" name="inst_C49EA73B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="minispikeRight" x="288" y="160" name="inst_BE544A3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="camera" x="32" y="32" name="inst_BE605388" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="128" name="inst_B3F7C2EC" locked="0" code="bgm = global.BGM11To15F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="128" name="inst_B3F7C2EC" locked="0" code="bgm = scrAudioGetID(&quot;BGM11To15F&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="160" name="inst_77954C72" locked="0" code="global.currentFloor = 11;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_downStairs" x="448" y="288" name="inst_3D0A86B3" locked="0" code="roomTo = r10F;&#xA;warpX = 480 + 17;&#xA;warpY = 192 + 23;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="416" y="320" name="inst_FD1151E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

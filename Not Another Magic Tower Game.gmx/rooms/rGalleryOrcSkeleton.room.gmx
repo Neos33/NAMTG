@@ -59,7 +59,7 @@
     <instance objName="obj_galleryItem" x="576" y="392" name="inst_330DB721" locked="0" code="spr = spr_skeletonSwordsman;&#xA;obj = obj_skeletonElete;&#xA;atk = 28;&#xA;def = 28;&#xA;hp = 38;&#xA;txt = 'Skeleton Elete';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_galleryItem" x="288" y="104" name="inst_F4AC893C" locked="0" code="spr = spr_skeletonElite;&#xA;obj = obj_variationSkeleton;&#xA;atk = 60;&#xA;def = 60;&#xA;hp = 60;&#xA;txt = 'Variation Skeleton';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_galleryItem" x="400" y="520" name="inst_0897E692" locked="0" code="spr = spr_skeletonLead;&#xA;obj = obj_skeletonKing;&#xA;atk = 25;&#xA;def = 25;&#xA;hp = 100;&#xA;txt = 'Skeleton King';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="160" y="32" name="inst_3687E19D" locked="0" code="bgm = global.BGM_Gallery;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="160" y="32" name="inst_3687E19D" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Gallery&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="128" y="32" name="inst_81EB4934" locked="0" code="global.currentFloor = -1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="320" y="304" name="inst_EFCDCC0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="448" y="304" name="inst_999DBDCD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

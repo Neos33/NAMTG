@@ -28,7 +28,7 @@
             <string>sound_stop_all();
 SS_StopAll();
 audio_playsound(sndMMMStart);
-global.currentBGM = global.BGM_Null;
+global.currentBGM = scrAudioGetID("BGM_Null");
 </string>
           </argument>
         </arguments>
@@ -77,8 +77,8 @@ audio_playsound(sndMMMFail);
             <kind>1</kind>
             <string>sound_stop(sndMMMStart);
 sound_stop(sndMMMFail);
-audio_playmusic_volume(global.BGM_MMMFingers);
-global.currentBGM = global.BGM_MMMFingers;
+audio_playmusic_volume(scrAudioGetID("BGM_MMMFingers"));
+global.currentBGM = scrAudioGetID("BGM_MMMFingers");
 </string>
           </argument>
         </arguments>

@@ -118,7 +118,7 @@
     <instance objName="spikeRight" x="512" y="128" name="inst_982AF1D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeRight" x="416" y="160" name="inst_7036DB2F" locked="0" code="if(instance_exists(obj_fatPrincess))&#xA;{&#xA;    instance_destroy();&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeLeft" x="544" y="160" name="inst_77508F9F" locked="0" code="if(instance_exists(obj_fatPrincess))&#xA;{&#xA;    instance_destroy();&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="112" name="inst_C988A2CD" locked="0" code="bgm = global.BGM_Finals;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="112" name="inst_C988A2CD" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Finals&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="144" name="inst_9BDF3F2A" locked="0" code="global.currentFloor = 17;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_16FEffect" x="80" y="16" name="inst_00E8F176" locked="0" code="upRoom = r16F_1;&#xA;downRoom = r16F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_downStairs" x="480" y="576" name="inst_EFAD201D" locked="0" code="warpX = 480 + 17;&#xA;warpY = 448 + 23;&#xA;roomTo = r16F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

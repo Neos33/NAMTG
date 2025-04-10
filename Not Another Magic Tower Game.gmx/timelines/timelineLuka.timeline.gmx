@@ -25,8 +25,9 @@ instance_create(0,0,black5)
 SS_StopAll();
 sound_stop_all()
 //sound_fix(luka);
-global.currentBGM = global.BGM_Luka;
-audio_playmusic_volume(global.BGM_Luka);
+global.currentBGM = scrAudioGetID("BGM_Luka");
+
+audio_playmusic_volume(scrAudioGetID("BGM_Luka"));
 
 
 </string>

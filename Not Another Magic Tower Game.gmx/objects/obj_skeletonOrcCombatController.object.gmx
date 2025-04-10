@@ -88,50 +88,50 @@ sound_loop(battleBGM);
 }
 else if(room == battlefasfroom)
 {
-    global.currentBGM = global.BGMsupfasf;
-    if(FMODInstanceGetPaused(global.BGMsupfasf))
+    global.currentBGM = scrAudioGetID("BGMsupfasf");
+    if(FMODInstanceGetPaused(scrAudioGetID("BGMsupfasf")))
     {
-        audio_resumemusic_volume(global.BGMsupfasf);
+        audio_resumemusic_volume(scrAudioGetID("BGMsupfasf"));
     }
-    else if(!FMODInstanceIsPlaying(global.BGMsupfasf))
+    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGMsupfasf")))
     {
-        audio_loopmusic_volume(global.BGMsupfasf);   
+        audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));   
     }
-    /*else if(!SS_IsSoundLooping(global.BGMsupfasf))
+    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGMsupfasf")))
     {
-        audio_loopmusic_volume(global.BGMsupfasf);
+        audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));
     }*/
 }
 else if(room == battleroom12)
 {
-    global.currentBGM = global.BGM_RedKey;
-    if(FMODInstanceGetPaused(global.BGM_RedKey))
+    global.currentBGM = scrAudioGetID("BGM_RedKey");
+    if(FMODInstanceGetPaused(scrAudioGetID("BGM_RedKey")))
     {
-        audio_resumemusic_volume(global.BGM_RedKey);
+        audio_resumemusic_volume(scrAudioGetID("BGM_RedKey"));
     }
-    else if(!FMODInstanceIsPlaying(global.BGM_RedKey))
+    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGM_RedKey")))
     {
-        audio_loopmusic_volume(global.BGM_RedKey);   
+        audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));   
     }
-    /*else if(!SS_IsSoundLooping(global.BGM_RedKey))
+    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGM_RedKey")))
     {
-        audio_loopmusic_volume(global.BGM_RedKey);
+        audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));
     }*/
 }
 else if(room == rDracula)
 {
-    global.currentBGM = global.BGMDracula;
-    if(FMODInstanceGetPaused(global.BGMDracula))
+    global.currentBGM = scrAudioGetID("BGMDracula");
+    if(FMODInstanceGetPaused(scrAudioGetID("BGMDracula")))
     {
-        audio_resumemusic_volume(global.BGMDracula);
+        audio_resumemusic_volume(scrAudioGetID("BGMDracula"));
     }
-    else if(!FMODInstanceIsPlaying(global.BGMDracula))
+    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGMDracula")))
     {
-        audio_loopmusic_volume(global.BGMDracula);   
+        audio_loopmusic_volume(scrAudioGetID("BGMDracula"));   
     }
-    /*else if(!SS_IsSoundLooping(global.BGMDracula))
+    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGMDracula")))
     {
-        audio_loopmusic_volume(global.BGMDracula);
+        audio_loopmusic_volume(scrAudioGetID("BGMDracula"));
     }*/
 }
 

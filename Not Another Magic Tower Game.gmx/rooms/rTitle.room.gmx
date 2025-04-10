@@ -58,7 +58,7 @@ part_system_destroy(all);</code>
     <instance objName="obj_resumeGame" x="400" y="464" name="inst_091592C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_startGame" x="224" y="432" name="inst_DCF4ACDD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_quitGame" x="576" y="432" name="inst_048236BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="64" y="192" name="inst_CEA28D73" locked="0" code="bgm = global.NAMTG_BGM[? &quot;BGM_1&quot;];&#xA;global.currentBGM = global.NAMTG_BGM[? &quot;BGM_Null&quot;];&#xA;/*bgm = global.BGM_1;&#xA;global.currentBGM = global.BGM_Null;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="64" y="192" name="inst_CEA28D73" locked="0" code="bgm = scrAudioGetID(&quot;BGM_1&quot;);&#xA;global.currentBGM = scrAudioGetID(&quot;BGM_Null&quot;);&#xA;/*bgm = global.BGM_1;&#xA;global.currentBGM = global.BGM_Null;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_snowController" x="96" y="192" name="inst_0148D431" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>

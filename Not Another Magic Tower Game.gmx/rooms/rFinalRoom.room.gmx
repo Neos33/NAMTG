@@ -54,7 +54,7 @@
     <instance objName="obj_theColonel" x="368" y="224" name="inst_E455CBA7" locked="0" code="ind=318;&#xA;isBoss = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_specialWarp12" x="480" y="0" name="inst_0212B316" locked="0" code="warpX = 480 + 17;&#xA;warpY = 32 + 23;&#xA;roomTo = r18F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="camera" x="32" y="16" name="inst_D6F31AE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="112" name="inst_9D6D6CF1" locked="0" code="bgm = global.BGM_Finals;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="112" name="inst_9D6D6CF1" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Finals&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="144" name="inst_12CA250C" locked="0" code="global.currentFloor = 18;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_16FEffect" x="96" y="32" name="inst_A47C03AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="480" y="64" name="inst_F1DFCC0F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

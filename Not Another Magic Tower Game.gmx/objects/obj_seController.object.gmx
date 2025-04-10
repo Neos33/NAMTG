@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>SS_StopAll();
 background_blend = make_color_rgb(168,168,168);
-audio_playmusic_volume(global.BGM_SE);
-global.currentBGM = global.BGM_SE;
+audio_playmusic_volume(scrAudioGetID("BGM_SE"));
+global.currentBGM = scrAudioGetID("global.BGM_SE");
 black = instance_create(0,0,obj_seBlack);
 black.alpha = 1;
 black.alarm[1] = 50;

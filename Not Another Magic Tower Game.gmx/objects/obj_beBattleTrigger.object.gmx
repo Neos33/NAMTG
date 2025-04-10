@@ -345,7 +345,7 @@ if(!global.story[23])
     message_add("??? : Hah, seems camouflage is no longer needed.");
     player.vspeed = 0;
     FMODInstanceSetPaused(global.curMusic, true);
-    global.currentBGM = global.BGM_Null;
+    global.currentBGM = scrAudioGetID("BGM_Null");
     alarm[0] = 10;
     player.frozen = true;
     global.story[23] = true;

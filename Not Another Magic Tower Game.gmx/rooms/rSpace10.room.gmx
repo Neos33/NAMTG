@@ -143,7 +143,7 @@
     <instance objName="obj_spaceButton" x="656" y="64" name="inst_FC9FD37E" locked="0" code="ind=7;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spaceButton" x="416" y="128" name="inst_F49C8D96" locked="0" code="ind=6;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spaceButton" x="208" y="112" name="inst_93C97E7A" locked="0" code="ind=8;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="128" name="inst_CB32C769" locked="0" code="bgm = global.BGM_Secret3;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="128" name="inst_CB32C769" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Secret3&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="160" name="inst_E693A511" locked="0" code="global.currentFloor = 8;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spacePortal" x="344" y="272" name="inst_19634625" locked="0" code="warpX = 96 + 17;&#xA;warpY = 256 + 23;&#xA;roomTo = rSpacePortal;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_spaceNoteBoard" x="320" y="344" name="inst_AC60DCB7" locked="0" code="msg[0] = &quot;From - Fairy Igzi : Welcome to the final challenge.&quot;;&#xA;msg[1] = &quot;From - Fairy Igzi : I make some changes to the conveyors so it will get reversed when one trigger is fired.&quot;;&#xA;msg[2] = &quot;From - Fairy Igzi : I very much expect you can beat this.&quot;;&#xA;msgLen = 3;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

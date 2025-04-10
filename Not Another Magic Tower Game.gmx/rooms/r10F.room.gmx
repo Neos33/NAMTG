@@ -62,7 +62,7 @@
     <instance objName="spikeRight" x="448" y="512" name="inst_DCCE813F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeDown" x="608" y="240" name="inst_A179FA7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeUp" x="608" y="208" name="inst_2CE98799" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="128" name="inst_7D396836" locked="0" code="bgm = global.BGM1To10F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="128" name="inst_7D396836" locked="0" code="bgm = scrAudioGetID(&quot;BGM1To10F&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="160" name="inst_A19C983B" locked="0" code="global.currentFloor = 10;&#xA;global.skipable = false;&#xA;global.isJK = false;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_darkSpikeDown" x="224" y="32" name="inst_9DBC0E9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_darkSpikeDown" x="256" y="32" name="inst_7B675D9A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

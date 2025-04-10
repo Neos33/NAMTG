@@ -50,14 +50,14 @@ alarm[0] = 1;
           <argument>
             <kind>1</kind>
             <string>
-global.currentBGM = global.BGM_Faro;
-if(FMODInstanceGetPaused(global.BGM_Faro))
+global.currentBGM = scrAudioGetID("BGM_Faro");
+if(FMODInstanceGetPaused(scrAudioGetID("BGM_Faro")))
 {
-    audio_resumemusic_volume(global.BGM_Faro);
+    audio_resumemusic_volume(scrAudioGetID("BGM_Faro"));
 }
-else if(!FMODInstanceIsPlaying(global.BGM_Faro))
+else if(!FMODInstanceIsPlaying(scrAudioGetID("BGM_Faro")))
 {
-    audio_playmusic_volume(global.BGM_Faro);   
+    audio_playmusic_volume(scrAudioGetID("BGM_Faro"));   
 }
 
 </string>

@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>SS_StopAll();
-audio_playmusic_volume(global.BGM_Corridor);
-global.currentBGM = global.BGM_Corridor;
+audio_playmusic_volume(scrAudioGetID("BGM_Corridor"));
+global.currentBGM = scrAudioGetID("BGM_Corridor");
 alpha = 1;
 alarm[0] = 1;
 view_xview[0] = 288;

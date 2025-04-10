@@ -124,7 +124,7 @@
     <instance objName="obj_jkSpikeUp" x="208" y="288" name="inst_84169FB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkSpikeUp" x="560" y="288" name="inst_E1AE863E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkStandButtonGreen" x="256" y="256" name="inst_01C247C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="32" y="32" name="inst_8BE10BA8" locked="0" code="bgm = global.BGM_JKStage;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="32" y="32" name="inst_8BE10BA8" locked="0" code="bgm = scrAudioGetID(&quot;BGM_JKStage&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="80" y="32" name="inst_B879624E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkStandButtonBlue" x="160" y="256" name="inst_C1661429" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkStandButtonYellow" x="512" y="256" name="inst_407729F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

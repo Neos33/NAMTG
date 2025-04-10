@@ -36,7 +36,7 @@ hp = 100;
 stepDrain = 0.1;
 combo = 0;
 alpha = 0;
-global.currentBGM = global.BGM_Faro;
+global.currentBGM = scrAudioGetID("BGM_Faro");
 
 tType = 106;
 //room_goto(rFaroMMM);

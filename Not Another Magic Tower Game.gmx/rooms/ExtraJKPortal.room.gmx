@@ -225,7 +225,7 @@ global.isJK = true;</code>
     <instance objName="obj_jkButtonBlockYellow" x="320" y="416" name="inst_EE1504F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkButtonBlockRed" x="640" y="416" name="inst_EF984D9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkButtonBlockRed" x="544" y="128" name="inst_32D28D5F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="48" y="16" name="inst_6AD3CBC4" locked="0" code="bgm = global.BGM_JKStageSelection;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="48" y="16" name="inst_6AD3CBC4" locked="0" code="bgm = scrAudioGetID(&quot;BGM_JKStageSelection&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="144" y="16" name="inst_41EE7EEF" locked="0" code="global.currentFloor = 10;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkButtonBlockRed" x="592" y="288" name="inst_CF9EA12D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkButtonBlockRed" x="592" y="320" name="inst_CFDA89B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

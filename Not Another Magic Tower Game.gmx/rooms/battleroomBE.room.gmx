@@ -57,7 +57,7 @@ background_alpha[1] = 0.1;</code>
     <instance objName="obj_playerHitController" x="96" y="0" name="inst_665D6DEE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dStop" x="0" y="576" name="inst_AC83F17D" locked="0" code="image_xscale=25;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_beBattleController" x="128" y="0" name="inst_1FF198BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="160" y="0" name="inst_A5692FC5" locked="0" code="bgm = global.BGM_BEBoss;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="160" y="0" name="inst_A5692FC5" locked="0" code="bgm = scrAudioGetID(&quot;BGM_BEBoss&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_3b6EffectController" x="192" y="0" name="inst_0AF0F6CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="block" x="-32" y="-32" name="inst_D6589E18" locked="0" code="" scaleX="1" scaleY="21" colour="4294967295" rotation="0"/>
     <instance objName="block" x="0" y="608" name="inst_91C68734" locked="0" code="" scaleX="25" scaleY="1" colour="4294967295" rotation="0"/>

@@ -60,7 +60,7 @@
     <instance objName="obj_galleryItem" x="288" y="104" name="inst_4AE2987C" locked="0" code="spr = spr_dracula;&#xA;obj = obj_dracula;&#xA;atk = 80;&#xA;def = 78;&#xA;hp = 88;&#xA;txt = 'Dracula';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_galleryItem" x="288" y="520" name="inst_B68C12A0" locked="0" code="spr = spr_variationBat;&#xA;obj = obj_giantBat;&#xA;atk = 88;&#xA;def = 88;&#xA;hp = 80;&#xA;txt = 'Giant Bat';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_galleryItem" x="512" y="520" name="inst_AFF3D54D" locked="0" code="spr = spr_superfasf;&#xA;obj = obj_superFasf;&#xA;atk = 72;&#xA;def = 66;&#xA;hp = 100;&#xA;txt = 'SUPER FASF';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="160" y="32" name="inst_F8758148" locked="0" code="bgm = global.BGM_Gallery;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="160" y="32" name="inst_F8758148" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Gallery&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="128" y="32" name="inst_219E8212" locked="0" code="global.currentFloor = -1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="320" y="304" name="inst_4B9BD89A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="448" y="304" name="inst_438FD509" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>BPM = 135.75;
 x1 = 800;
-global.currentBGM = global.BGM_Diamante;
+global.currentBGM = scrAudioGetID("BGM_Diamante");
 </string>
           </argument>
         </arguments>

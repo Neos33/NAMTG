@@ -53,7 +53,7 @@ global.isExtra = true;</code>
   </views>
   <instances>
     <instance objName="obj_basicInfoDrawer" x="64" y="32" name="inst_1F307814" locked="0" code="special = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="96" y="32" name="inst_0AFBBE49" locked="0" code="bgm = global.BGM_BubbleStageSelection;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="96" y="32" name="inst_0AFBBE49" locked="0" code="bgm = scrAudioGetID(&quot;BGM_BubbleStageSelection&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="128" y="32" name="inst_0B9A1250" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_extraBubbleParticle" x="64" y="64" name="inst_4ABB5321" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_backToMagicTower" x="16" y="64" name="inst_A9A9B0AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

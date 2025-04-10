@@ -573,7 +573,7 @@ for(i=0;i&lt;global.GalleryBossFightNum;i+=1)
 player.frozen = false;
 //SS_StopSound(global.currentBGM);
 FMODInstanceStop(global.currentBGM);
-global.currentBGM = global.BGM_Null;
+global.currentBGM = scrAudioGetID("BGM_Null");
 sound_fix(sndgras);
 if(global.special[6])
 {

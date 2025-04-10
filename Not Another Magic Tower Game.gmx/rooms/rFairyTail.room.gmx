@@ -108,7 +108,7 @@
     <instance objName="minispikeUp" x="576" y="144" name="inst_2E1DA739" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="minispikeUp" x="592" y="144" name="inst_99720874" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="camera" x="32" y="16" name="inst_80E55620" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="0" y="112" name="inst_03B779F7" locked="0" code="bgm = global.BGM_FairyTail;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="0" y="112" name="inst_03B779F7" locked="0" code="bgm = scrAudioGetID(&quot;BGM_FairyTail&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="0" y="144" name="inst_6929BF8D" locked="0" code="global.currentFloor = 11;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="736" y="64" name="inst_6DFB1D23" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_specialWarp11" x="704" y="32" name="inst_4623A1CA" locked="0" code="warpX = 682 + 17;&#xA;warpY = 32 + 23;&#xA;roomTo = r11F;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

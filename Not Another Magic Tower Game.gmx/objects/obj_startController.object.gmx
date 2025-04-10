@@ -38,7 +38,7 @@ alarm[6] = 655;
 alarm[7] = 660;
 alarm[8] = 800;
 //room_goto(rGeCredit);
-global.currentBGM = global.BGM_GE;
+global.currentBGM = scrAudioGetID("BGM_GE");
 </string>
           </argument>
         </arguments>

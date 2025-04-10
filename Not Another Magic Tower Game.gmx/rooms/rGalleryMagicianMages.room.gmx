@@ -60,7 +60,7 @@
     <instance objName="obj_galleryItem" x="288" y="104" name="inst_D0522BD3" locked="0" code="spr = spr_darkMage;&#xA;obj = obj_darkMage;&#xA;atk = 150;&#xA;def = 130;&#xA;hp = 500;&#xA;txt = 'Dark Mage';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_galleryItem" x="288" y="520" name="inst_357378C3" locked="0" code="spr = spr_orcMage;&#xA;obj = obj_orcMage;&#xA;atk = 50;&#xA;def = 40;&#xA;hp = 50;&#xA;txt = 'Orc Mage';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_galleryItem" x="512" y="520" name="inst_AD36FBB9" locked="0" code="spr = spr_blackDevilMagician;&#xA;obj = obj_blackDevilMagician;&#xA;atk = 120;&#xA;def = 120;&#xA;hp = 500;&#xA;txt = 'Evil Black Magician';" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="160" y="32" name="inst_6C7E6022" locked="0" code="bgm = global.BGM_Gallery;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="160" y="32" name="inst_6C7E6022" locked="0" code="bgm = scrAudioGetID(&quot;BGM_Gallery&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="128" y="32" name="inst_F8DCAEBE" locked="0" code="global.currentFloor = -1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="320" y="304" name="inst_88E990F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="448" y="304" name="inst_4F5B2116" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

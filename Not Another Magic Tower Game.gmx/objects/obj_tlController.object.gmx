@@ -332,28 +332,28 @@ ds_list_destroy(rngRoomList);
             <kind>1</kind>
             <string>SS_StopAll();
 sound_stop_all();
-audio_playmusic_volume(global.BGM_DemonLead);
+audio_playmusic_volume(scrAudioGetID("BGM_DemonLead"));
 //global.currentBGM = global.BGM_DemonLead;
-global.curMusic = global.BGM_DemonLead;
+global.curMusic = scrAudioGetID("BGM_DemonLead");
 if(global.part == 1)
 {
-    FMODInstanceSetPosition(global.BGM_DemonLead, 8666536); //to monster room
+    FMODInstanceSetPosition(scrAudioGetID("BGM_DemonLead"), 8666536); //to monster room
 }
 else if(global.part == 2)
 {
     room_goto(rDemonLeadMonsters);
-    FMODInstanceSetPosition(global.BGM_DemonLead, 19038852);
+    FMODInstanceSetPosition(scrAudioGetID("BGM_DemonLead"), 19038852);
 }
 else if(global.part == 3)
 {
     room_goto(rDemonLeadTouhou);
-    FMODInstanceSetPosition(global.BGM_DemonLead, 24708352);
+    FMODInstanceSetPosition(scrAudioGetID("BGM_DemonLead"), 24708352);
     currentStep = 54;
 }
 else if(global.part == 4)
 {
     room_goto(rDemonLeadFinalPhase);
-    FMODInstanceSetPosition(global.BGM_DemonLead, 33533648);
+    FMODInstanceSetPosition(scrAudioGetID("BGM_DemonLead"), 33533648);
     currentStep = 54;
 }
 </string>

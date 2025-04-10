@@ -86,10 +86,10 @@ alarm[0] = 1;
           <argument>
             <kind>1</kind>
             <string>//FMODInstanceStop(global.currentBGM);
-//global.currentBGM = global.BGM_Null;
+//global.currentBGM = scrAudioGetID("BGM_Null");
 
 FMODInstanceStop(global.curMusic);
-global.currentBGM = global.BGM_Null;
+global.currentBGM = scrAudioGetID("BGM_Null");
 sound_fix(sndQuake);
 </string>
           </argument>

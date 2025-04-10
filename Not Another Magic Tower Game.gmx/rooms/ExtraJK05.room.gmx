@@ -90,7 +90,7 @@
     <instance objName="obj_jkSpikeDown" x="672" y="64" name="inst_BAFD13B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkSpikeUp" x="736" y="224" name="inst_9E4C1C79" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jkSpikeDown" x="736" y="160" name="inst_2C9C3630" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="96" y="32" name="inst_45E1EE3E" locked="0" code="bgm = global.BGM_JKStage;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="96" y="32" name="inst_45E1EE3E" locked="0" code="bgm = scrAudioGetID(&quot;BGM_JKStage&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wayRight" x="192" y="160" name="inst_4A1C0113" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wayRight" x="192" y="192" name="inst_4968C43C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wayRight" x="192" y="224" name="inst_74E09A7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
