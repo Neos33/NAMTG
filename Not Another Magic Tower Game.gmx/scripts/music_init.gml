@@ -61,6 +61,9 @@ BGMB1F = music_load("BGMB1F.ogg");
 globalvar BGMSecret1;
 BGMSecret1=music_load("BGM_Secret1.ogg");
 
+globalvar BGM_Secret2;
+BGM_Secret2 = music_load("BGM_Secret2.ogg");
+
 globalvar BGMsupfasf;
 BGMsupfasf=music_load("BGM_battle1.ogg");
 

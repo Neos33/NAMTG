@@ -2802,6 +2802,7 @@
       <sprite>sprites\spr_spaceDotSmog</sprite>
       <sprite>sprites\spr_spikeUp_center</sprite>
     </sprites>
+    <sprite>sprites\sprEmpty</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bacJumpThrough</background>

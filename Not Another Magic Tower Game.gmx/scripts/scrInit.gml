@@ -13,7 +13,7 @@ global.convoyDown = 0;
 global.convoyLeft = 0;
 global.convoyRight = 0;
 
-global.monsters = array_create(300);
+global.monsters = array_create(1001);
 global.achievements = array_create(300);
 global.story = array_create(300);
 global.special = array_create(300);
