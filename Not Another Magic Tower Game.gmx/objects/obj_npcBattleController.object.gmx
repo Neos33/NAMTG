@@ -543,6 +543,10 @@ if(instance_exists(obj_npcBattleNPC4))
     draw_set_color(c_green);
     draw_rectangle(0, 592, obj_npcBattleNPC4.hp * perHp, 608,false);
 }
+
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>

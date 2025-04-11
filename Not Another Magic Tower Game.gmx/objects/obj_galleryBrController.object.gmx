@@ -691,6 +691,9 @@ draw_set_color(c_white);
 draw_set_font(fontBrTitle);
 draw_set_alpha(txtAlpha);
 draw_text(400, 128, "Battle Sequence");
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>

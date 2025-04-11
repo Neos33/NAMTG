@@ -201,6 +201,8 @@ if(qLen &gt; 0)
         draw_text(fx,fy,ds_list_find_value(q, i));
     }
 }
+
+draw_reset_color();
 </string>
           </argument>
         </arguments>

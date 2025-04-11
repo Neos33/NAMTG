@@ -322,6 +322,8 @@ if(is_message()) {
         sprite_delete(pauseImg);
     }
 }
+
+draw_reset();
 </string>
           </argument>
         </arguments>

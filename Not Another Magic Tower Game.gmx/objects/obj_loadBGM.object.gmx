@@ -38,6 +38,31 @@ musicCount = 46;
 musicLoadEnd = false;
 type = array_create(46);
 
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Song file list
+
 song[0] = "Death.ogg";
 song[1] = "Null.ogg";
 
@@ -88,6 +113,27 @@ song[42] = "BGM_SE.ogg";
 song[43] = "BGM_Fapple.ogg";
 song[44] = "BGM_Secret3.ogg";type[44]=1;
 song[45] = "BGM_Luka.ogg";
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Song name list
 
 name[0] = "SE_Death";
 name[1] = "BGM_Null";
@@ -161,6 +207,9 @@ name[45] = "BGM_Luka";
             <string>/// Music loaded
 globalvar currentBGM;
 //global.currentBGM = global.BGM_1;
+
+show_debug_message("BGM load finished.");
+show_debug_message("------------------------------------------------------");
 global.currentBGM = global.NAMTG_BGM[? "BGM_1"];
 instance_create(768, 560, obj_start);
 </string>
@@ -190,7 +239,14 @@ instance_create(768, 560, obj_start);
 //execute_string(name[musicIndex] + '=SS_LoadSound(working_directory+"\BGM\' + song[musicIndex] + '",'+ string(1-type[musicIndex]) +');');
 
 ds_map_add(global.NAMTG_BGM, name[musicIndex], FMODSoundAdd(global.music_directory + song[musicIndex], 0, type[musicIndex]));
-print("*",name[musicIndex],"*", " loaded succesfully.")
+if global.NAMTG_BGM[? name[musicIndex]] == 0
+{
+    print("*",name[musicIndex],"*", " failed.");
+}
+else
+{
+    print("*",name[musicIndex],"*", " loaded succesfully.");
+}
 event_user(0);
 </string>
           </argument>
@@ -292,6 +348,10 @@ draw_text(x,y,string(musicPer) + "%");
 draw_set_color(c_white);
 draw_set_circle_precision(64);
 draw_roundrect(32,520, 32 + 736 * musicPer / 100, 536,false);
+
+
+draw_set_halign(fa_left);
+draw_set_circle_precision(24);
 </string>
           </argument>
         </arguments>

@@ -312,23 +312,6 @@
         <filename>BGM_Fear.ogg</filename>
       </datafile>
       <datafile>
-        <name>BGM_Finals.mp3</name>
-        <exists>-1</exists>
-        <size>6726563</size>
-        <exportAction>2</exportAction>
-        <exportDir></exportDir>
-        <overwrite>0</overwrite>
-        <freeData>-1</freeData>
-        <removeEnd>0</removeEnd>
-        <store>0</store>
-        <ConfigOptions>
-          <Config name="Default">
-            <CopyToMask>9223372036854775807</CopyToMask>
-          </Config>
-        </ConfigOptions>
-        <filename>BGM_Finals.mp3</filename>
-      </datafile>
-      <datafile>
         <name>BGM_Finals.ogg</name>
         <exists>-1</exists>
         <size>1856978</size>
@@ -926,6 +909,7 @@
       <sound>sound\sndDark1</sound>
       <sound>sound\sndDark2</sound>
       <sound>sound\sndDark3</sound>
+      <sound>sound\sndDark4</sound>
       <sound>sound\sndDecide</sound>
       <sound>sound\sndDive1</sound>
       <sound>sound\sndDoor</sound>
@@ -3355,6 +3339,8 @@
     <script>scripts\print.gml</script>
     <script>scripts\scrInitEnums.gml</script>
     <script>scripts\draw_reset.gml</script>
+    <script>scripts\draw_reset_color.gml</script>
+    <script>scripts\draw_reset_align.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font24</font>
@@ -3401,6 +3387,30 @@
     <font>fonts\fontSpace</font>
   </fonts>
   <objects name="objects">
+    <object>objects\objDummy</object>
+    <objects name="player_etc">
+      <object>objects\init</object>
+      <object>objects\effect_parent</object>
+      <object>objects\obj_options_init</object>
+      <object>objects\world</object>
+      <object>objects\playerStart</object>
+      <object>objects\player</object>
+      <object>objects\player2</object>
+      <object>objects\WalljumpR</object>
+      <object>objects\WalljumpL</object>
+      <object>objects\bow</object>
+      <object>objects\bloodEmitter</object>
+      <object>objects\blood</object>
+      <object>objects\bullet</object>
+      <object>objects\camera</object>
+      <object>objects\GAMEOVER</object>
+      <object>objects\titleButton</object>
+      <object>objects\menuSelect</object>
+      <object>objects\menuSelect2</object>
+      <object>objects\playerface</object>
+      <object>objects\warpStart</object>
+      <object>objects\objDeathSound</object>
+    </objects>
     <objects name="Convoys">
       <object>objects\obj_conveyor</object>
       <object>objects\obj_wayLeft</object>
@@ -3612,29 +3622,6 @@
       <object>objects\trgPlayerKiller</object>
       <object>objects\playerKiller</object>
       <object>objects\roomChanger</object>
-    </objects>
-    <objects name="player_etc">
-      <object>objects\init</object>
-      <object>objects\effect_parent</object>
-      <object>objects\obj_options_init</object>
-      <object>objects\world</object>
-      <object>objects\playerStart</object>
-      <object>objects\player</object>
-      <object>objects\player2</object>
-      <object>objects\WalljumpR</object>
-      <object>objects\WalljumpL</object>
-      <object>objects\bow</object>
-      <object>objects\bloodEmitter</object>
-      <object>objects\blood</object>
-      <object>objects\bullet</object>
-      <object>objects\camera</object>
-      <object>objects\GAMEOVER</object>
-      <object>objects\titleButton</object>
-      <object>objects\menuSelect</object>
-      <object>objects\menuSelect2</object>
-      <object>objects\playerface</object>
-      <object>objects\warpStart</object>
-      <object>objects\objDeathSound</object>
     </objects>
     <objects name="savePoint">
       <object>objects\savePointMedium</object>

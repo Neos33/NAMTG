@@ -365,6 +365,10 @@ if(timeline_position &lt;= 2008)
     draw_sprite_ext(spr_expBar, 0, 64, 28, 672 / 420, 0.5, 0, c_white,1);
     draw_sprite_part_ext(spr_expBar,1, 0,0, timeline_position * 420 / 2008, 37, 64, 28, 672 / 420, 0.5, c_white, 1);
 }
+
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>

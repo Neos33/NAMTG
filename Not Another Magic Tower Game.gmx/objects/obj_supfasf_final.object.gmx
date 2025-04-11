@@ -131,6 +131,9 @@ if(!out)
     draw_set_color(c_silver);
     draw_set_alpha(0.2 + 0.018 * abs((step mod 100) - 50));
     draw_text(player.x, player.y - 32, "You can infinite jump!");
+    
+    draw_reset_align();
+    draw_reset_color();
 }
 </string>
           </argument>

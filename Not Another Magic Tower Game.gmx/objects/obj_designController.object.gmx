@@ -158,6 +158,9 @@ if(isDraw)
 {
  draw_sprite_ext(global.currentSpr, 0, floor(mouse_x / gridSize) * gridSize, floor(mouse_y / gridSize) * gridSize, 1, 1, 0, global.img_blend, 0.6);
 }
+
+
+draw_set_color(c_white);
 </string>
           </argument>
         </arguments>

@@ -94,6 +94,26 @@ isRefresh = 0;
 
 surf1 = 0;
 surf2 = 0;
+
+
+
+sSpr = array_create(30);
+swordsSpr = array_create(30);
+sheildsSpr = array_create(30);
+colorKey = array_create(30);
+colorOffset = array_create(30);
+description = array_create(30);
+a_bns = array_create(30);
+d_bns = array_create(30);
+h_bns = array_create(30);
+
+k1_bns = array_create(30);
+k2_bns = array_create(30);
+k3_bns = array_create(30);
+k4_bns = array_create(30);
+k5_bns = array_create(30);
+k6_bns = array_create(30);
+rm = array_create(30);
 </string>
           </argument>
         </arguments>

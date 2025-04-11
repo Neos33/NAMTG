@@ -50,7 +50,8 @@ part_emitter_region(Sname,emitter1,0,800,0,608,0,0);
 alarm[4]=1;
 
 
-
+step = 0;
+t = 0;
 //global.total=global.attack*20+global.defense*40+global.hp*5+getCurrentTotalExp()+global.yellowKeyNum*100+global.blueKeyNum*200+global.redKeyNum*500+global.greenKeyNum*1000+global.ironKeyNum*1000+global.centralWingNum*1000+global.upstairsWingNum*1000+global.downstairsWingNum*1000+global.special[0]*1000+global.special[1]*1000+global.special[2]*1000+global.special[3]*1000+getAchievementsNum()*40+global.story;
 
 </string>

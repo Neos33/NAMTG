@@ -89,6 +89,10 @@ draw_sprite_ext( spr_downstairsWing,0,x+16,y+16*3,1,1,0,c_white,alpha);
 //draw_sprite( spr_greenKey,0,x+16,y+16*5);
 //draw_sprite( spr_ironKey,0,x+16,y+16*7);
 draw_circle(x+80,y+35,100,2);
+
+
+draw_reset_color();
+draw_set_circle_precision(24);
 </string>
           </argument>
         </arguments>

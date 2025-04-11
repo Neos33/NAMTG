@@ -440,6 +440,9 @@ else
         draw_text_transformed(view_xview[0] + 64 + strWidth, view_hview[0] - 64, obj_monsterBattlePrototype.name, -1, -1, 0);
     }
 }
+
+
+
 </string>
           </argument>
         </arguments>

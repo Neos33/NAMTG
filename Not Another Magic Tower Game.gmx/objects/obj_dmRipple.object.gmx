@@ -143,6 +143,8 @@ if (obj_dmRippleController.redrawn)
     draw_primitive_end();
     }
 
+    
+
 </string>
           </argument>
         </arguments>

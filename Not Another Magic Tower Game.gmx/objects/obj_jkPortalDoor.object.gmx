@@ -242,6 +242,10 @@ else
 {
     draw_text(x, y - 45, "Stage Bonus");
 }
+
+
+
+draw_reset_align();
 </string>
           </argument>
         </arguments>

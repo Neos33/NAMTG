@@ -115,6 +115,9 @@ if(!instance_exists(player))
             <string>draw_set_alpha(alpha);
 draw_set_color(c_black);
 draw_rectangle(view_xview[0]+400-25*step/2,view_yview[0]+304-19*step/2,view_xview[0]+400+25*step/2,view_yview[0]+304+19*step/2,false);
+
+
+draw_reset_color();
 </string>
           </argument>
         </arguments>

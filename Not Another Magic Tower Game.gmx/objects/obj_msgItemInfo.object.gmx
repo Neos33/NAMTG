@@ -84,6 +84,9 @@ draw_sprite_ext(item,0,x,y,1,1,-30,c_white,1);
 draw_set_alpha(0.5);
 draw_set_color(c_black);
 draw_rectangle(0,0,800,480,false);
+
+
+draw_reset_color();
 </string>
           </argument>
         </arguments>

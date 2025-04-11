@@ -89,17 +89,20 @@ onPlatform = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(player.x &lt; 400)
+            <string>if instance_exists(player)
 {
-    p = instance_create(920, 480, obj_hugeBone);
-    p.hspeed = -1;
-    p.dx = - 120;
-}
-else
-{
-    p = instance_create(-120, 480, obj_hugeBone);
-    p.hspeed = 1;
-    p.dx = 920;
+    if(player.x &lt; 400)
+    {
+        p = instance_create(920, 480, obj_hugeBone);
+        p.hspeed = -1;
+        p.dx = - 120;
+    }
+    else
+    {
+        p = instance_create(-120, 480, obj_hugeBone);
+        p.hspeed = 1;
+        p.dx = 920;
+    }
 }
 isShake = true;
 </string>
@@ -162,11 +165,14 @@ else
             <string>isShake = false;
 if(jumpCount &lt; 3)
 {
-    phase = 2;
-    targetX = player.x;
-    targetY = 200;
-    jumpCount += 1;
-    alarm[4] = 1;
+    if instance_exists(player)
+    {
+        phase = 2;
+        targetX = player.x;
+        targetY = 200;
+        jumpCount += 1;
+        alarm[4] = 1;
+    }
 }
 else
 {
@@ -294,19 +300,22 @@ else
 }
 if(phase == 2)
 {   
-    if(point_distance(x,y,targetX, targetY) &gt;= 15)
+    if instance_exists(player)
     {
-        targetX = player.x;
-        targetY = 200;
-        onPlatform = false;
-        move_towards_point(targetX, targetY, 15);
-    }
-    else
-    {
-        hspeed = 0;
-        vspeed = 0;
-        gravity = 0.2;
-        phase = 3;
+        if(point_distance(x,y,targetX, targetY) &gt;= 15)
+        {
+            targetX = player.x;
+            targetY = 200;
+            onPlatform = false;
+            move_towards_point(targetX, targetY, 15);
+        }
+        else
+        {
+            hspeed = 0;
+            vspeed = 0;
+            gravity = 0.2;
+            phase = 3;
+        }
     }
 }
 </string>

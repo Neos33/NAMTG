@@ -25,6 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>a_bns = array_create(30);
+d_bns = array_create(30);
+h_bns = array_create(30);
+
+k1_bns = array_create(30);
+k2_bns = array_create(30);
+k3_bns = array_create(30);
+k4_bns = array_create(30);
+k5_bns = array_create(30);
+k6_bns = array_create(30);
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>
 
 a_bns[1] = 0;
@@ -325,34 +357,34 @@ else {
 {
     if(debug)
     {
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_set_color(c_white);
-    draw_set_alpha(1);
-    draw_set_font(font12);
-    draw_sprite(spr_yellowKey,0,startX, startY);
-    draw_text(startX + 48, startY + 16, global.yellowKeyNum);
-    
-    draw_sprite(spr_blueKey,0,startX + 96 * 1, startY);
-    draw_text(startX + 96 * 1 + 48, startY + 16, global.blueKeyNum);
-    
-    draw_sprite(spr_redKey,0,startX + 96 * 2, startY);
-    draw_text(startX + 96 * 2 + 48, startY + 16, global.redKeyNum);
-    
-    draw_sprite(spr_greenKey,0,startX + 96 * 3, startY);
-    draw_text(startX + 96 * 3 + 48, startY + 16, global.greenKeyNum);
-    
-    draw_sprite(spr_ironKey,0,startX + 96 * 4, startY);
-    draw_text(startX + 96 * 4 + 48, startY + 16, global.ironKeyNum);
-    
-    draw_sprite(spr_attUp1, 0, startX, startY + 64);
-    draw_text(startX + 48, startY + 64 + 16, global.attack);
-    
-    draw_sprite(spr_defUp1, 0, startX + 96 * 1, startY + 64);
-    draw_text(startX + 96 * 1 + 48, startY + 64 + 16, global.defense);
-    
-    draw_sprite(spr_hpUp1, 0, startX + 96 * 2, startY + 64);
-    draw_text(startX + 96 * 2 + 48, startY + 64 + 16, global.hp);
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_set_color(c_white);
+        draw_set_alpha(1);
+        draw_set_font(font12);
+        draw_sprite(spr_yellowKey,0,startX, startY);
+        draw_text(startX + 48, startY + 16, global.yellowKeyNum);
+        
+        draw_sprite(spr_blueKey,0,startX + 96 * 1, startY);
+        draw_text(startX + 96 * 1 + 48, startY + 16, global.blueKeyNum);
+        
+        draw_sprite(spr_redKey,0,startX + 96 * 2, startY);
+        draw_text(startX + 96 * 2 + 48, startY + 16, global.redKeyNum);
+        
+        draw_sprite(spr_greenKey,0,startX + 96 * 3, startY);
+        draw_text(startX + 96 * 3 + 48, startY + 16, global.greenKeyNum);
+        
+        draw_sprite(spr_ironKey,0,startX + 96 * 4, startY);
+        draw_text(startX + 96 * 4 + 48, startY + 16, global.ironKeyNum);
+        
+        draw_sprite(spr_attUp1, 0, startX, startY + 64);
+        draw_text(startX + 48, startY + 64 + 16, global.attack);
+        
+        draw_sprite(spr_defUp1, 0, startX + 96 * 1, startY + 64);
+        draw_text(startX + 96 * 1 + 48, startY + 64 + 16, global.defense);
+        
+        draw_sprite(spr_hpUp1, 0, startX + 96 * 2, startY + 64);
+        draw_text(startX + 96 * 2 + 48, startY + 64 + 16, global.hp);
     }
     else if(!special)
     {

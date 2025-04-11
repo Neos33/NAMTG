@@ -139,6 +139,9 @@ draw_set_valign(fa_middle);
 draw_set_alpha(txtAlpha);
 draw_set_color(c_white);
 draw_text(x,y-27,"Press 'UP' to read");
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>

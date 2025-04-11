@@ -89,6 +89,10 @@ draw_sprite_ext( spr_redKey,0,x+16,y+16*3,1,1,0,c_white,alpha);
 draw_sprite_ext( spr_greenKey,0,x+16,y+16*5,1,1,0,c_white,alpha);
 draw_sprite_ext( spr_ironKey,0,x+16,y+16*7,1,1,0,c_white,alpha);
 draw_circle(x+85,y+70,120,2);
+
+
+draw_reset_color();
+draw_set_circle_precision(24);
 </string>
           </argument>
         </arguments>

@@ -199,6 +199,10 @@ else
 draw_set_alpha(alpha);
 draw_set_font(fontStart);
 draw_text(x,y,"Press Any Key to Start");
+
+
+draw_set_halign(fa_left);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

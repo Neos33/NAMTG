@@ -159,6 +159,10 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_alpha(alpha);
 draw_text(obj_osuCTBCatcher.x, obj_osuCTBCatcher.y - 48, "'Left', 'Right' to move,  hold 'Jump' to dash");
+
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>

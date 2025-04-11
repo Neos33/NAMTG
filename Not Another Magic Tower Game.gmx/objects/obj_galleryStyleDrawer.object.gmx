@@ -177,7 +177,7 @@ alarm[0] = 20;
             <kind>1</kind>
             <string>draw_set_color(color);
 draw_set_alpha(0.5);
-for(i = 0; i &lt; dimension; i += 1)
+for(var i = 0; i &lt; dimension; i += 1)
 {
     sx = centerX + lengthdir_x(minRadius, sAngle + pAngle * i);
     sy = centerY + lengthdir_y(minRadius, sAngle + pAngle * i);
@@ -186,6 +186,9 @@ for(i = 0; i &lt; dimension; i += 1)
     draw_line(sx,sy,tx,ty);
 }
 drawPolygon(centerX, centerY, dimension, minRadius, sAngle);
+
+draw_set_color(c_white);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

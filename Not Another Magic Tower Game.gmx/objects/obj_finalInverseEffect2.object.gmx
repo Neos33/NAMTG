@@ -61,6 +61,8 @@ draw_circle_color(x,y,rr,c_white,c_white,0);
 draw_set_alpha(image_alpha);
 draw_set_blend_mode(bm_normal);
 
+
+//draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>global.currentBGM = scrAudioGetID("BGMFaShiLiu");
-if(!FMODInstanceIsPlaying(scrAudioGetID("global.BGMFaShiLiu")))
+if(!FMODInstanceIsPlaying(scrAudioGetID("BGMFaShiLiu")))
 {
     //sound_stop_all();
     SS_StopAll();
@@ -85,7 +85,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_playmusic_volume(global.BGMFaShiLiu);
+            <string>audio_playmusic_volume(scrAudioGetID("BGMFaShiLiu"));
 instance_create(400,96,obj_faShiLiu_combat);
 </string>
           </argument>
@@ -224,35 +224,40 @@ if(usedHp &gt; 0)
         draw_text(view_xview[0] + 78, view_yview[0] + 92, "x " + string(usedHp));
     }
 }
-
-if(obj_monsterBattlePrototype.hp &lt; 233)
+if instance_exists(obj_monsterBattlePrototype)
 {
-    for(k = 0; k &lt; floor(obj_monsterBattlePrototype.hp / 100); k+=1)
+    if(obj_monsterBattlePrototype.hp &lt; 233)
     {
-        draw_sprite_ext(spr_hp, 0, view_xview[0] + view_wview[0]  - 64 - 24 * (k + 1), yview + 80 * sign(view_hview[0]), .75, .75, 0, c_white, 1);
+        for(k = 0; k &lt; floor(obj_monsterBattlePrototype.hp / 100); k+=1)
+        {
+            draw_sprite_ext(spr_hp, 0, view_xview[0] + view_wview[0]  - 64 - 24 * (k + 1), yview + 80 * sign(view_hview[0]), .75, .75, 0, c_white, 1);
+        }
+        
+        for(j = 0; j &lt; floor((obj_monsterBattlePrototype.hp mod 100) / 10); j+=1)
+        {
+            draw_sprite(spr_heart10, 0, view_xview[0] + view_wview[0]  - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * (j + 1), yview + 92 * sign(view_hview[0]));
+        }
+        
+        for(i = 0; i &lt; (obj_monsterBattlePrototype.hp mod 10); i+= 1)
+        {
+            draw_sprite(spr_smallHeart, 0, view_xview[0] + view_wview[0]  - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * floor((obj_monsterBattlePrototype.hp mod 100) / 10) - 14 * (i + 1), yview + 98 * sign(view_hview[0]));
+        }
     }
-    
-    for(j = 0; j &lt; floor((obj_monsterBattlePrototype.hp mod 100) / 10); j+=1)
+    else
     {
-        draw_sprite(spr_heart10, 0, view_xview[0] + view_wview[0]  - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * (j + 1), yview + 92 * sign(view_hview[0]));
-    }
-    
-    for(i = 0; i &lt; (obj_monsterBattlePrototype.hp mod 10); i+= 1)
-    {
-        draw_sprite(spr_smallHeart, 0, view_xview[0] + view_wview[0]  - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * floor((obj_monsterBattlePrototype.hp mod 100) / 10) - 14 * (i + 1), yview + 98 * sign(view_hview[0]));
+        draw_set_font(fontBasicInfoMini);
+        draw_set_color(c_silver);
+        draw_set_halign(fa_right);
+        draw_set_valign(fa_middle);
+        strWidth = string_width("x " + string(obj_monsterBattlePrototype.hp));
+        draw_text(view_xview[0] + view_wview[0] - 64, view_yview[0] + 92, "x " + string(obj_monsterBattlePrototype.hp));
+        draw_sprite_ext(spr_smallHeart, 0, view_xview[0] + view_wview[0] - 64 - strWidth - 14, view_yview[0] + 92, .75, .75, 0, c_white, 1);
     }
 }
-else
-{
-    draw_set_font(fontBasicInfoMini);
-    draw_set_color(c_silver);
-    draw_set_halign(fa_right);
-    draw_set_valign(fa_middle);
-    strWidth = string_width("x " + string(obj_monsterBattlePrototype.hp));
-    draw_text(view_xview[0] + view_wview[0] - 64, view_yview[0] + 92, "x " + string(obj_monsterBattlePrototype.hp));
-    draw_sprite_ext(spr_smallHeart, 0, view_xview[0] + view_wview[0] - 64 - strWidth - 14, view_yview[0] + 92, .75, .75, 0, c_white, 1);
-}
 
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>

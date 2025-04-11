@@ -129,6 +129,11 @@ draw_set_valign(fa_middle);
 draw_text(x + 304, y + 105, string(RangeClamp(hp,0,fullHP)) + " / " + string(fullHP));
 
 draw_sprite(spr_pokemonSpecies, 0, x + 96, y + 74);
+
+
+
+draw_reset_align();
+draw_set_color(c_white);
 </string>
           </argument>
         </arguments>

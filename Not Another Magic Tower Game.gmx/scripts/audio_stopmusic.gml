@@ -4,5 +4,5 @@
 //
 {
     FMODInstanceStop(curMusic);
-    curMusicID = global.BGM_Null;
+    curMusicID = scrAudioGetID("BGM_Null");
 }

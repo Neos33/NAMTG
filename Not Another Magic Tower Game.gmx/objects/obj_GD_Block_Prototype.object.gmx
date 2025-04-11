@@ -224,6 +224,10 @@ else
 {
     test4 = false;
 }
+
+
+
+draw_reset_color();
 </string>
           </argument>
         </arguments>

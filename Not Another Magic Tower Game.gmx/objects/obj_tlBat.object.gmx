@@ -204,6 +204,8 @@ global.rightbutton = right;
     }
 }
 draw_current();
+draw_reset_color();
+draw_set_circle_precision(24);
 </string>
           </argument>
         </arguments>

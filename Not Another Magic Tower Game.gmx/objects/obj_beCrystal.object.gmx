@@ -32,8 +32,11 @@ alarm[5] = 1;
 alarm[6] = 380;
 alarm[4] = 450;
 image_alpha = 0.6;
-FMODInstanceStop(global.BGM_BE);
+FMODInstanceStop(scrAudioGetID("BGM_BE"));
 sound_fix(sndDark2);
+
+
+time = 0;
 </string>
           </argument>
         </arguments>

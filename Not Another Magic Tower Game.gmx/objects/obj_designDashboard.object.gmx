@@ -243,6 +243,8 @@ draw_text(view_xview[0] - global.dashboardWidth + global.menuPos + 16, view_yvie
 draw_text(view_xview[0] - global.dashboardWidth + global.menuPos + 16, view_yview[0] + 468, "Transformers:");
 
 
+
+
 </string>
           </argument>
         </arguments>

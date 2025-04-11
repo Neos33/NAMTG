@@ -134,6 +134,8 @@ else if(phase == 1)
     draw_sprite(sprite_index,0,x,y);
     sw = obj_demonLead_combat.hp/6666*width;
     draw_sprite_part_ext(sprite_index, 1, 0, 0, sw, height, x, y, 1, 1, c_white, 1);
+    
+    draw_reset();
 }
 else if(phase == 2)
 {

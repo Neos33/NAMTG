@@ -64,6 +64,10 @@ draw_set_halign(fa_center);
 draw_set_color(c_black);
 draw_set_alpha(1);
 draw_text(x + 16,y + 16, string(num));
+
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>

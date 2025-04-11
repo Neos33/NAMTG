@@ -10,6 +10,8 @@ _alpha = argument7;
 
 var _tx, _ty, tempColor;
 draw_set_blend_mode(bm_add);
+var _old_alpha = draw_get_alpha();
+var _old_color = draw_get_color();
 _tx = _sx + lengthdir_x(_len, _dir);
 _ty = _sy + lengthdir_y(_len, _dir);
 for(i = 0; i < _precision; i+=1)
@@ -20,5 +22,7 @@ for(i = 0; i < _precision; i+=1)
     draw_line_width(_sx, _sy, _tx, _ty, _width * (_precision - i)/_precision);
 }
 draw_set_blend_mode(bm_normal);
+draw_set_alpha(_old_alpha);
+draw_set_color(_old_color);
 
 //drawLaser(sx,sy,color,dir,len,width,precision,alpha);

@@ -108,6 +108,9 @@ for(i=0;i&lt;5;i+=1)
     rc = 64 + 0.5 * acc * sqr(50 - time + interval * i);
     draw_circle(400,304,rc,true);
 }
+
+draw_set_color(c_white);
+draw_set_circle_precision(24);
 </string>
           </argument>
         </arguments>

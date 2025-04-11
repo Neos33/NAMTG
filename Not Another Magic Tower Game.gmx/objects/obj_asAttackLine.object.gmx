@@ -131,6 +131,8 @@ else
     draw_line_width(x,y,tx,ty, 2);
     draw_set_alpha(0.5 * alpha);
     draw_line_width(x,y,tx, ty, 4);
+    
+    draw_set_alpha(1);
 }
 </string>
           </argument>

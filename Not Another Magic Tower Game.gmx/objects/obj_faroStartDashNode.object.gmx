@@ -128,6 +128,9 @@ width = 10;
         }
     }
     draw_set_blend_mode(bm_normal);
+    
+    
+    draw_set_color(c_white);
 }
 </string>
           </argument>

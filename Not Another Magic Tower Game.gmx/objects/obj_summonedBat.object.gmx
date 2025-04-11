@@ -597,6 +597,7 @@ if(isDrawWave)
     }
 }
 draw_set_alpha(1);
+draw_set_color(c_white);
 draw_sprite_ext(sprite_index,image_index,x,y,1,1,image_angle,c_white,image_alpha);
 </string>
           </argument>

@@ -167,6 +167,10 @@ if(keyboard_check_pressed(global.downbutton))
         draw_text(32 + 32, yy, choice[i]);
         yy += 32;
     }
+    
+    
+    
+    draw_reset();
 }
 </string>
           </argument>

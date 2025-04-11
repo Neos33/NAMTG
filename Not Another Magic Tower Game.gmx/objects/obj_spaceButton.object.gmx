@@ -103,7 +103,7 @@ else
                     alarm[0] = 0;
                     solid = true;
                     //object_set_parent(id, block);
-                    sound_fix(sndDark1);
+                    sound_fix(sndDark4);
                 }
             }
         }

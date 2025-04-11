@@ -224,6 +224,8 @@ else
 {
     draw_text(x, y - 68, setName);
 }
+
+draw_reset();
 </string>
           </argument>
         </arguments>

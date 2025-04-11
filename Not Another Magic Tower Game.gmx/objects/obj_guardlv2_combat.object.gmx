@@ -634,7 +634,7 @@ bbb.targetX=752;
 bbb.targetY=560;
 bbb.spd=8;
 bbb.hspd = -12;
-audio_playsound(snddark1);
+audio_playsound(sndDark1);
 
 </string>
           </argument>

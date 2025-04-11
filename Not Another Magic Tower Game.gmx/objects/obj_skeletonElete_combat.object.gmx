@@ -25,6 +25,31 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>wind = 0;
+
+transfer = 0;
+appear = 0;
+time = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>event_inherited();
 name = "Skeleton Elete";
 image_speed = 1/8;
@@ -89,7 +114,7 @@ transfer = true;
 appear = true;
 time = 0;
 alarm[6] = 110;
-audio_playsound(snddark1);
+audio_playsound(sndDark1);
 </string>
           </argument>
         </arguments>
@@ -166,7 +191,7 @@ obj_skeletonSword.targetY = y + 18;
 appear = false;
 time = 0;
 instance_create(x,y, obj_skeletonHead);
-audio_playsound(snddark1);
+audio_playsound(sndDark1);
 </string>
           </argument>
         </arguments>

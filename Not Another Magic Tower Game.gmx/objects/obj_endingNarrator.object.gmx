@@ -56,6 +56,9 @@ draw_set_alpha(global.NarratorAlpha / 2);
 draw_text_ext(x + 3, y + 3, txt, 50, 600);
 draw_set_alpha(global.NarratorAlpha);
 draw_text_ext(x, y, txt, 50, 600);
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>

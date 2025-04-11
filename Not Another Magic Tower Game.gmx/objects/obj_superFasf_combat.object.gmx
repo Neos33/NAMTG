@@ -36,14 +36,14 @@ x=400;
 y=200;
 
 //sound_loop(fasf_battle_music);
-audio_loopmusic_volume(global.BGMsupfasf);
+audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));
 //sound_stop_all();
 
 
 alarm[3]=100; //orginal 150;
 volume=10000;
 //SS_SetSoundVol(global.BGMsupfasf,volume);
-FMODInstanceSetVolume(global.BGMsupfasf,volume);
+FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"),volume);
 animation=1;
 </string>
           </argument>

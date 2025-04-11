@@ -334,7 +334,8 @@ ds_list_destroy(rngRoomList);
 sound_stop_all();
 audio_playmusic_volume(scrAudioGetID("BGM_DemonLead"));
 //global.currentBGM = global.BGM_DemonLead;
-global.curMusic = scrAudioGetID("BGM_DemonLead");
+global.currentBGM = scrAudioGetID("BGM_DemonLead")
+//global.curMusic = scrAudioGetID("BGM_DemonLead");
 if(global.part == 1)
 {
     FMODInstanceSetPosition(scrAudioGetID("BGM_DemonLead"), 8666536); //to monster room

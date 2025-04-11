@@ -200,6 +200,9 @@ else
     draw_sprite(spr_osuStandardInd, floor((ind + 1) / 10), x - 8, y);
     draw_sprite(spr_osuStandardInd, (ind + 1) mod 10, x + 8, y);
 }
+
+
+draw_reset();
 //draw_text(x,y,string(ind+1));
 </string>
           </argument>

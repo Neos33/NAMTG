@@ -62,6 +62,9 @@ draw_text(x-18,y,"D");
 draw_text(x+18,y,"J");
 draw_text(x-30,y-25,"S");
 draw_text(x+30,y-25,"K");
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>

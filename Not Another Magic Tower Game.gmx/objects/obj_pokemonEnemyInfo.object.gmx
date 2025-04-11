@@ -150,6 +150,10 @@ else
     draw_sprite(spr_pokemonSpecies, spIndex, x + 56, y + 74);
 }
 
+
+draw_set_color(c_white);
+draw_set_valign(fa_top);
+
 </string>
           </argument>
         </arguments>

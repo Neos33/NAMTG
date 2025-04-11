@@ -80,6 +80,9 @@ repeat(2)
 }
 //draw_set_blend_mode(bm_normal);
 d3d_transform_set_identity();
+
+
+draw_reset_color();
 </string>
           </argument>
         </arguments>

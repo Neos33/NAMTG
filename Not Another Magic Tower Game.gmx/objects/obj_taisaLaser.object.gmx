@@ -108,6 +108,8 @@ image_xscale = 64;
     if alpha&lt;1 alpha+=0.05;
     draw_line_direction(x,y,image_angle)
     draw_line_direction(x,y,image_angle+180)
+    
+    draw_set_alpha(1);
 }
 else{
     draw_set_blend_mode(bm_add);

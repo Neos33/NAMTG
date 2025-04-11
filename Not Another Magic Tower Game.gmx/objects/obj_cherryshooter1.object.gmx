@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>alarm[1]=1;
 alarm[0]=5;
+
+hspd = 0;
 </string>
           </argument>
         </arguments>
@@ -72,13 +74,13 @@ alarm[0]=5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>cn=instance_create(x,y,obj_cherry)
-cn.sprite_index=spr_silverEvilSlimeRock;
-cn.vspeed=-3;
-cn.image_xscale = 0.6;
-cn.image_yscale = 0.6;
-cn.image_speed = 1/8;
-cn.gravity=0.18;
+            <string>var cn=instance_create(x,y,obj_cherry);
+    cn.sprite_index=spr_silverEvilSlimeRock;
+    cn.vspeed=-3;
+    cn.image_xscale = 0.6;
+    cn.image_yscale = 0.6;
+    cn.image_speed = 1/8;
+    cn.gravity=0.18;
 alarm[0]=5;
 </string>
           </argument>

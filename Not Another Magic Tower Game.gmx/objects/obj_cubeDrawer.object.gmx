@@ -177,6 +177,9 @@ repeat(2)
     }
     //offset += 4;
 }
+
+
+draw_reset_color();
 //draw_set_blend_mode(bm_normal);
 </string>
           </argument>

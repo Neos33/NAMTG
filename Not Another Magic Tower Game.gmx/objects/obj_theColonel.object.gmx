@@ -298,6 +298,8 @@ else
 }
 draw_set_alpha(image_alpha);
 draw_roundrect(x + sprite_width - 12,y, x + sprite_width,y + 12,false);
+
+draw_reset_color();
 </string>
           </argument>
         </arguments>

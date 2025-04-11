@@ -95,7 +95,6 @@ else
         SS_StopAll();
         global.currentBGM = bgm;
         
-    
         audio_loopmusic_volume(bgm);
     }
 }

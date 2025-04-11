@@ -690,6 +690,10 @@ for(section = 0; section &lt; totalSections; section += 1)
     event_user(evtInd[section]);
 }
 //draw_text(32,32,string(640-startY));
+
+
+
+draw_set_color(c_white);
 </string>
           </argument>
         </arguments>

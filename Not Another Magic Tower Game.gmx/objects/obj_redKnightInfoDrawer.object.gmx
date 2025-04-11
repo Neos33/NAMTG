@@ -40,6 +40,8 @@ if(instance_exists(obj_achievements))
 {
     draw_sprite(obj_achievements.sprite_index,0,0,view_yview[0] + obj_achievements.y);
 }
+
+draw_reset_align();
 </string>
           </argument>
         </arguments>

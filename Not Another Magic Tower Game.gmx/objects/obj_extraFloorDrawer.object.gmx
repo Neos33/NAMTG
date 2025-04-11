@@ -228,6 +228,9 @@ else
      draw_text(704,80,"Life");
      draw_text(704,112,string(global.floorStageLife));
 }
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>
