@@ -90,7 +90,7 @@ crotch = 0;
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if(crotch &amp;&amp; !instance_exists(player))
+if(crotch &amp;&amp; !player_is_alive())
 {
     if(!global.achievements[33])
     {

@@ -215,7 +215,7 @@ event_user(1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(player))
+            <string>if(player_is_alive())
 {
     instance_create(x + sign(player.x - x) + 16, y, obj_tl_swordMasterThrowingSword);
     sx = x;

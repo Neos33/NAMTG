@@ -107,7 +107,7 @@ if(global.difficulty &gt; 1){
           <argument>
             <kind>1</kind>
             <string>//�Z�[�u���āA��莞�ԃZ�[�u�s�ɂ���
-if(saveTimer &lt; 0 &amp;&amp; instance_exists(player) == true){
+if(saveTimer &lt; 0 &amp;&amp; player_is_alive() == true){
   saveTimer = 30;
   image_index = 1;
   image_speed = 0.017;

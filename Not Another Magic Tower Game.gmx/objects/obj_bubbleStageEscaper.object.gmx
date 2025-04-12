@@ -66,6 +66,9 @@ else
 {
     draw_text(x,y, "Tab: Switch Item,  Backspace: Return Portal Room");
 }
+
+
+draw_set_color(c_white);
 </string>
           </argument>
         </arguments>

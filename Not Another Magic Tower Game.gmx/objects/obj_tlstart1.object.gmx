@@ -173,7 +173,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(timeline_position &gt;= 2008 &amp;&amp; instance_exists(player) &amp;&amp; player.x &gt; 0)
+            <string>if(timeline_position &gt;= 2008 &amp;&amp; player_is_alive() &amp;&amp; player.x &gt; 0)
 {
     global.inCombat = false;
     with(obj_combatPlayerKiller)
@@ -181,8 +181,8 @@ else
         instance_destroy();
     }
     global.monsters[global.combatIndex] = 1;
-    FMODInstanceStop(global.BGMBoss1);
-    if(instance_exists(player) &amp;&amp; player.x &gt; 0)
+    FMODInstanceStop(scrAudioGetID("BGMBoss1"));
+    if(player_is_alive() &amp;&amp; player.x &gt; 0)
     {
         if(!global.achievements[50])
         {
@@ -229,7 +229,7 @@ else
         }
     }
 }
-else if(!instance_exists(player))
+else if(!player_is_alive())
 {
     if(!instance_exists(obj_black))
     {

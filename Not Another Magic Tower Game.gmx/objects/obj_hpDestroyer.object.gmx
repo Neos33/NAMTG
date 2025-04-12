@@ -98,7 +98,7 @@ message_add("Kid : Oh my fucking god... The thief should told me that there's su
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(player))
+            <string>if(player_is_alive())
 {
     if(global.hp &gt; 0)
     {

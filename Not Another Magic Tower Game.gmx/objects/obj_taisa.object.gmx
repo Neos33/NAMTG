@@ -87,7 +87,7 @@ SS_SetSoundPosition(curMusic,start_pos/tl_length*song_byte);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player){
+            <string>if !player_is_alive(){
     timeline_running = 0;
     stop_all_alarms();
 }

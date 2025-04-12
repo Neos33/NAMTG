@@ -25,6 +25,50 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>wind = 0;
+rank = 0;
+inited = 0;
+collision = 0;
+i = 0;
+add1 = 0;
+
+rspd = 0;
+rdir = 0;
+windTime = 0;
+windDelay = 0;
+smash = 0;
+
+teleport = 0;
+teleportDelay = 0;
+
+teleport2 = 0;
+teleport2Delay = 0;
+
+teleport3 = 0;
+teleport3Delay = 0;
+
+aaa = 0;
+bbb = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>event_inherited();
 image_speed = 1/8;
 name = "Intermediate Guard";

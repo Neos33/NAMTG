@@ -234,6 +234,8 @@ else
     draw_sprite_ext(spr_smallHeart, 0, view_xview[0] + view_wview[0] - 64 - strWidth - 14, view_yview[0] + 92, .75, .75, 0, c_white, 1);
 }
 
+
+draw_reset();
 /*
 if(global.hp &gt; 0)
 {

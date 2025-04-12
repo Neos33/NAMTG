@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 1/6;
-if instance_exists(player)
+//if instance_exists(player)
     player.visible = true;
 
 hspd = 0;
@@ -54,8 +54,8 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(player)
-{
+            <string>//if instance_exists(player)
+//{
 if(hspd != 0)
 {
     player.hspeed = hspd;
@@ -66,7 +66,7 @@ if(vspd != 0)
 }
 player.djump = true;
 player.visible = false;
-}
+//}
 //transition_kind = 21;
 //transition_steps = 30;
 event_inherited();

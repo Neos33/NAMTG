@@ -30,6 +30,18 @@ alarm[0] = 1;
 image_xscale = 0.6;
 image_yscale = 0.6;
 spd = 3;
+
+
+kissGay = 0;
+targetX = 0;
+targetY = 0;
+dis = 0;
+
+targetScale = 0;
+
+rotateType = 0;
+rBulletCoolDown = 0;
+rb = 0;
 </string>
           </argument>
         </arguments>
@@ -168,10 +180,13 @@ alarm[4] = 1;
       gayHeart.vspeed = -2;
       gayHeart.hspeed = -0.5 * sign(image_xscale);
   }
-  obj_miniboss1_battleController3.alarm[11] = 30;
-  obj_miniboss1_battleController6.alarm[11] = 30;
-  obj_miniBossGay.alarm[2] = 0;
-  obj_miniBossGay.image_index = 2;
+  with obj_miniboss1_battleController3 alarm[11] = 30;
+  with obj_miniboss1_battleController6 alarm[11] = 30;
+  if instance_exists(obj_miniBossGay)
+  {
+      obj_miniBossGay.alarm[2] = 0;
+      obj_miniBossGay.image_index = 2;
+  }
  }
 }
 else

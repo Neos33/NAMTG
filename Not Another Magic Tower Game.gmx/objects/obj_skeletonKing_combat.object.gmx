@@ -89,8 +89,8 @@ onPlatform = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(player)
-{
+            <string>//if instance_exists(player)
+
     if(player.x &lt; 400)
     {
         p = instance_create(920, 480, obj_hugeBone);
@@ -103,7 +103,7 @@ onPlatform = 0;
         p.hspeed = 1;
         p.dx = 920;
     }
-}
+
 isShake = true;
 </string>
           </argument>
@@ -165,7 +165,7 @@ else
             <string>isShake = false;
 if(jumpCount &lt; 3)
 {
-    if instance_exists(player)
+    //if instance_exists(player)
     {
         phase = 2;
         targetX = player.x;
@@ -300,7 +300,7 @@ else
 }
 if(phase == 2)
 {   
-    if instance_exists(player)
+    //if instance_exists(player)
     {
         if(point_distance(x,y,targetX, targetY) &gt;= 15)
         {

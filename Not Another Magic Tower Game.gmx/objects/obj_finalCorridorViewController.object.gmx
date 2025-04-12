@@ -79,8 +79,8 @@ alarm[0] = 3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!instance_exists(player)) exit;
-for(i=0;i&lt;=800;i+=32)
+            <string>if(!player_is_alive()) exit;
+for(var i=0;i&lt;=800;i+=32)
 {
     var d, r, c, rx, a, ri, ro, t_sina, t_cosa, ind;
     d = room_width/pi;               //Sets the dimanter for the tower 254.648
@@ -130,7 +130,7 @@ start = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(player))
+            <string>if(player_is_alive())
 {
     view_xview[0] = 0;
     view_yview[0] = RangeClamp(player.y - 304, 0, room_height - 608) + yShift;

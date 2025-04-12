@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>//�v���C���[�̈ʒu�ɉ����ăJ������ړ��i�r���[����j
 if(global.grav=0){
-if(instance_exists(player) == true){
+if(player_is_alive() == true){
   view_xview = floor(player.x/800)*800;
   view_yview = floor(player.y/608)*608;
 }
@@ -61,7 +61,7 @@ if(instance_exists(player2) == true){
             <kind>1</kind>
             <string>
 //�v���C���[�̈ʒu�ɉ����ăJ������ړ��i�r���[����j
-if(instance_exists(player) == true){
+if(player_is_alive() == true){
   view_xview = floor(player.x/800)*800;
   view_yview = floor(player.y/608)*608;
 }

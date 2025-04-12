@@ -403,7 +403,7 @@ alarm[0] = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!instance_exists(player)) exit;
+            <string>if(!player_is_alive()) exit;
 time += 1;
 if(currentStep == 54)
 {

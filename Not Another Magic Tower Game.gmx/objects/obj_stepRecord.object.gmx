@@ -131,7 +131,7 @@ else
     personIndex += 1;
     event_user(0);
     currentStep = 0;
-    if(!instance_exists(player))
+    if(!player_is_alive())
     {
         instance_create(startX, startY, player);
     }
@@ -269,7 +269,7 @@ if(currentStep == totalTime * 50)
     exit;
 if(personIndex &lt; 6)
 {
-    if(!instance_exists(player) &amp;&amp; start)
+    if(!player_is_alive() &amp;&amp; start)
     {
         start = false;
         alarm[1] = 1;
@@ -315,7 +315,7 @@ if(keyboard_check_released(vk_backspace))
 
 if(keyboard_check_direct(global.downbutton))
 {
-    if(instance_exists(player))
+    if(player_is_alive())
     {
         player.sprite_index = sprPlayerIdle;
         player.vspeed = 0;
@@ -326,7 +326,7 @@ if(keyboard_check_direct(global.downbutton))
 
 if(keyboard_check_direct(global.restartbutton) &amp;&amp; !keyboard_check_direct(vk_control))
 {
-    if(!instance_exists(player))
+    if(!player_is_alive())
     {
        instance_create(startX, startY, player);
     }

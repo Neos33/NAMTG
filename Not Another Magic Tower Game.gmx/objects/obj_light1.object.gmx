@@ -45,6 +45,31 @@ image_yscale = 0.01;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>rndAngle = 0;
+ang = 0;
+
+p1Count = 0;
+p2Count = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="4">
       <action>
@@ -64,7 +89,7 @@ image_yscale = 0.01;
           <argument>
             <kind>1</kind>
             <string>rndAngle = irandom_range(0, 355);
-for(i = 0; i &lt; 48; i += 1)
+for(var i = 0; i &lt; 48; i += 1)
 {
     ang = rndAngle + i * 7.5;
     cherry = instance_create(x,y,obj_action2Cherry);    

@@ -118,7 +118,7 @@ ros=2�̂Ƃ��͎��Ԃ�0�ɂȂ��Ă����N���Ȃ��Ƃ�
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(player) || instance_exists(player2))
+            <string>if(player_is_alive() || instance_exists(player2))
 setS -= 1;
 alarm[0] = room_speed*1;
 </string>
@@ -174,7 +174,7 @@ alarm[0] = room_speed*1;
             room_goto(ros);
             
             if (warpX!=0 || warpY!=0) {
-                if (!instance_exists(player)) {
+                if (!player_is_alive()) {
                 instance_create(warpX, warpY, player);
                 }
                 player.x = warpX;

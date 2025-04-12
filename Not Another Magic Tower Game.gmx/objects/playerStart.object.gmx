@@ -51,7 +51,7 @@ y+=23
           <argument>
             <kind>1</kind>
             <string>//�v���C���[�����݂��Ȃ��ꍇ�A�v���C���[�𐶐�
-if(!instance_exists(player) &amp;&amp; global.grav=0){
+if(!player_is_alive() &amp;&amp; global.grav=0){
   instance_create(x,y,player);
 }
 

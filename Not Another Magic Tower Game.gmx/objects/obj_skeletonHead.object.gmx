@@ -11,6 +11,27 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>gather = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>604</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -63,10 +84,13 @@ isStable = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index = obj_skeletonElete_combat.image_index;
-image_xscale = obj_skeletonElete_combat.image_xscale;
-image_alpha = obj_skeletonElete_combat.image_alpha;
-move_bounce_solid(false);
+            <string>if instance_exists(obj_skeletonElete_combat)
+{
+    image_index = obj_skeletonElete_combat.image_index;
+    image_xscale = obj_skeletonElete_combat.image_xscale;
+    image_alpha = obj_skeletonElete_combat.image_alpha;
+    move_bounce_solid(false);
+}
 //image_alpha = obj_skeletonElete_combat.alpha;
 </string>
           </argument>
@@ -100,8 +124,11 @@ move_bounce_solid(false);
         hspeed = 0;
         vspeed = 0;
         gather = false;
-        obj_skeletonElete_combat.alarm[11] = 50;
-        obj_skeletonElete_combat.time = 1;
+        if instance_exists(obj_skeletonElete_combat)
+        {
+            obj_skeletonElete_combat.alarm[11] = 50;
+            obj_skeletonElete_combat.time = 1;
+        }
     }
 }
 </string>
@@ -130,15 +157,18 @@ move_bounce_solid(false);
 {
     instance_destroy();
 }
-instance_create(obj_skeletonElete_combat.x, obj_skeletonElete_combat.y + 16, bullet);
-if(!obj_skeletonElete_combat.cooldown)
+if instance_exists(obj_skeletonElete_combat)
 {
-    damage = global.attackDamage;
-    damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
-    damageInfo.damage = damage;
-    damageInfo.font = fontDamageInfo1;
-    damageInfo.color = c_white;        
-    damageInfo.level = 1;
+    instance_create(obj_skeletonElete_combat.x, obj_skeletonElete_combat.y + 16, bullet);
+    if(!obj_skeletonElete_combat.cooldown)
+    {
+        damage = global.attackDamage;
+        damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
+        damageInfo.damage = damage;
+        damageInfo.font = fontDamageInfo1;
+        damageInfo.color = c_white;        
+        damageInfo.level = 1;
+    }
 }
 </string>
           </argument>

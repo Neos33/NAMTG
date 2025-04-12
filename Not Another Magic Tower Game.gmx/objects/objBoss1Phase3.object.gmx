@@ -90,7 +90,7 @@ image_alpha=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player) exit;
+            <string>if !player_is_alive() exit;
 audio_playsound(sndBossJump);
 vspeed = -17;
 hspeed = (400-x)/60;
@@ -193,7 +193,7 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player){
+            <string>if !player_is_alive(){
     sprite_index=sprB1_think;
     alarm[0]=0;
     speed=0;

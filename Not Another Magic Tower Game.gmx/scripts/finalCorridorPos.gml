@@ -1,6 +1,6 @@
 //This system finds a position for X around a vertical pole
 //based on current x and room_width
-if !instance_exists(player)
+if !player_is_alive()
     exit;
 
 var d, r, c, rx, a, ma;

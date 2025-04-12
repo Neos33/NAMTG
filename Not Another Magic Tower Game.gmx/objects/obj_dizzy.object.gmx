@@ -72,10 +72,7 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player)
-    exit;
-
-x = player.x;
+            <string>x = player.x;
 y = player.y - 36;
 </string>
           </argument>

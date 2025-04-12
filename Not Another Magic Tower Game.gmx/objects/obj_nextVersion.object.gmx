@@ -32,6 +32,8 @@ draw_set_valign(fa_top);
 draw_text(496, 96, "Thank You for Waiting!");
 draw_text(496, 192, "Now Start Your");
 draw_text(496, 224, "NEW JOURNEY!");
+
+draw_reset();
 </string>
           </argument>
         </arguments>

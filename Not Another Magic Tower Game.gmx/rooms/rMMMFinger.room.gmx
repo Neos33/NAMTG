@@ -57,7 +57,7 @@
     <instance objName="block" x="0" y="576" name="inst_502AB44D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="block" x="32" y="576" name="inst_8E87578C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mmm_hint" x="400" y="304" name="inst_D63DAB69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mmm_gameController" x="224" y="32" name="inst_FDB16247" locked="0" code="draw_set_font(fontMMM1);&#xA;draw_set_color(c_white);&#xA;draw_set_halign(fa_center);&#xA;draw_set_valign(fa_middle);&#xA;draw_text(400,48, string(currentMeter));" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mmm_gameController" x="224" y="32" name="inst_FDB16247" locked="0" code="draw_set_font(fontMMM1);&#xA;draw_set_color(c_white);&#xA;draw_set_halign(fa_center);&#xA;draw_set_valign(fa_middle);&#xA;draw_text(400,48, string(currentMeter));&#xA;&#xA;draw_reset_align();&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mmm_title" x="100" y="64" name="inst_B074784C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mmm_info1" x="100" y="176" name="inst_F32F3224" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mmm_info2" x="100" y="576" name="inst_7B7B23F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

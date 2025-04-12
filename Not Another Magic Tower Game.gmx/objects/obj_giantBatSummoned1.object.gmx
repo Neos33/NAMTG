@@ -85,7 +85,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(player) &amp;&amp; (instance_exists(obj_giantBat_combat) || instance_exists(obj_tl_giantBat)))
+            <string>if(player_is_alive() &amp;&amp; (instance_exists(obj_giantBat_combat) || instance_exists(obj_tl_giantBat)))
 {
     move_towards_point(player.x,player.y,1.5);
 }

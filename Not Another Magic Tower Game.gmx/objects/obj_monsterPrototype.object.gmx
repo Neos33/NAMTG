@@ -68,6 +68,38 @@ alarm[11] = 1;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// ADDED: initialize common variables
+
+phase = 0;
+status = 0;
+time = 0;
+dir = 0;
+dis = 0;
+targetX = 0;
+targetY = 0;
+spd = 0;
+hspd = 0;
+vspd = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="11">
       <action>
@@ -86,7 +118,8 @@ alarm[11] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.monsters[ind] &amp;&amp; !global.inGallery &amp;&amp; !sample)
+            <string>/// Destroy
+if(global.monsters[ind] &amp;&amp; !global.inGallery &amp;&amp; !sample)
 {
     instance_destroy();
 }
@@ -133,11 +166,9 @@ global.stageRoom = room;
 
 //global.stageMusic = global.currentBGM;
 sound_stop_all();
-//print("music paused = ", FMODInstanceGetPaused(global.curMusic));
 //FMODInstanceSetPaused(global.currentBGM, true);
 FMODInstanceSetPaused(global.curMusic, true);
-//print("musica supuestamente se pauso");
-//print("music paused = ", FMODInstanceGetPaused(global.curMusic));
+
 if(isBoss || object_index == obj_demonLead)
 {
     sound_fix(sndgras);
@@ -412,6 +443,9 @@ else
     draw_set_color(c_red);
 }
 draw_roundrect(x+ 28 * (sprite_width / 32),y, x + sprite_width,y + 4 * (sprite_height / 32),false);
+
+
+draw_set_color(c_white);
 </string>
           </argument>
         </arguments>

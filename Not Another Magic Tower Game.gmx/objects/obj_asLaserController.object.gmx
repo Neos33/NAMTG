@@ -65,7 +65,7 @@ if(dis &lt;= 400)
 }
 else
 {
-    if(instance_exists(player))
+    if(player_is_alive())
     {
         if(player.x &gt; 400)
         {

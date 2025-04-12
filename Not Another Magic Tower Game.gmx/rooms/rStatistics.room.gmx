@@ -55,7 +55,7 @@
     <instance objName="obj_amount_drawer" x="64" y="128" name="inst_AE2F9247" locked="0" code="FMODInstanceStop(global.currentBGM);&#xA;global.currentBGM = scrAudioGetID(&quot;BGM_Null&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_amount_timeline" x="576" y="96" name="inst_127A158B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_cheater" x="400" y="304" name="inst_202BF454" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="block" x="0" y="640" name="inst_531709DB" locked="0" code="if instance_exists(player)&#xA;    player.frozen = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="block" x="0" y="640" name="inst_531709DB" locked="0" code="if player_is_alive()&#xA;    player.frozen = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="block" x="32" y="640" name="inst_62281340" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>

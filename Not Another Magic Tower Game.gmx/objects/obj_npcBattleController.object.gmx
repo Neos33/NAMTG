@@ -115,7 +115,7 @@ if(!global.achievements[84])
     global.achievements[84] = true;
 }
 
-if(instance_exists(player) &amp;&amp; player.x &gt; 0)
+if(player_is_alive() &amp;&amp; player.x &gt; 0)
 {
     if(global.GalleryBossFight &amp;&amp; global.GalleryBossFightNum &gt; 1 &amp;&amp; global.GalleryBossFightInd &lt; global.GalleryBossFightNum - 1)
     {
@@ -292,7 +292,7 @@ with(obj_combatPlayerKiller)
     instance_destroy();
 }
 
-if(instance_exists(player) &amp;&amp; player.x &gt; 0)
+if(player_is_alive() &amp;&amp; player.x &gt; 0)
 {   
     if(global.GalleryBossFight &amp;&amp; global.GalleryBossFightNum &gt; 1 &amp;&amp; global.GalleryBossFightInd &lt; global.GalleryBossFightNum - 1)
     {
@@ -499,7 +499,7 @@ else
     usedHp = global.hp;
 }
 
-if(instance_exists(player))
+if(player_is_alive())
 {
     draw_sprite_ext(spr_smallHeart, 0, player.x - 16, player.y - 32, .75, .75, 0, c_white, 1);
     draw_set_font(fontBasicInfoMini);

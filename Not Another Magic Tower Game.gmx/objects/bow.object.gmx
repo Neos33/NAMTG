@@ -28,7 +28,7 @@
             <string>if(global.difficulty!=0 || room = rSelectStage){
 instance_destroy()
 }
-if !instance_exists(player)
+if !player_is_alive()
     exit;
 //�v���C���[�̈ʒu��ǂ�������
 if(global.grav=0){
@@ -65,7 +65,7 @@ image_yscale = player2.image_yscale;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player)
+            <string>if !player_is_alive()
     exit
 //�v���C���[�̈ʒu��ǂ�������
 if(global.grav=0){

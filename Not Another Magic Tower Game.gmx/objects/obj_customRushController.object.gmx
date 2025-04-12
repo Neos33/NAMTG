@@ -763,7 +763,7 @@ if(instance_exists(obj_galleryBrCRCard))
 {
     draw_set_alpha(0.3);
     draw_set_color(c_gray);
-    for(i=1;i&lt;=3;i+=1)
+    for(var i=1;i&lt;=3;i+=1)
     {
         draw_rectangle(512+i,i,800,608-i,true);
     }

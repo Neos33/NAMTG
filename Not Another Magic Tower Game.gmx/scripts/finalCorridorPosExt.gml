@@ -4,7 +4,7 @@
 
 //argument 0 - Inner radius scale factor
 //argument 1 - Outter Radius scale factor
-if !instance_exists(player) 
+if !player_is_alive()
     exit;
     
 var d, r, c, rx, a, ma, ri, ro, t_sina, t_cosa;

@@ -283,6 +283,8 @@ else
 {
     draw_text(x+75,y+19,"???");
 }
+
+draw_reset();
 </string>
           </argument>
         </arguments>

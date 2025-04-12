@@ -612,7 +612,7 @@ alarm[1] = 70;
         timeColor = c_red;
         timeStart = false;
         alarm[10] = 0;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             //alarm[0] = 200;
             alarm[4] = 80;
@@ -652,7 +652,7 @@ if(phase == 1)
         obj_beFinalPhase1.alarm[7] = 1;
         obj_beFinalPhase2.alarm[7] = 1;
         obj_beFinalPhase3.alarm[5] = 1;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             //alarm[0] = 200;
             //alarm[4] = 130;
@@ -696,7 +696,7 @@ if(phase == 2)
         obj_beFinalPhase3.alarm[6] = 0;
         obj_beFinalPhase1.alarm[7] = 1;
         obj_beFinalPhase2.alarm[7] = 1;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             //alarm[0] = 200;
             //alarm[4] = 130;
@@ -744,7 +744,7 @@ if(phase == 3)
             instance_destroy();
         }
         alarm[6] = 0;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             if(!finalEnd)
             {

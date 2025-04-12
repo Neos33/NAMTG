@@ -33,6 +33,12 @@ alarm[5] = 450;
 explodeCount = 1;
 rotateCount = 3;
 ang = 45;
+
+
+
+rSpd = 0;
+rGay = 0;
+b2 = 0;
 </string>
           </argument>
         </arguments>
@@ -55,7 +61,7 @@ ang = 45;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.test = FMODInstanceGetPosition(global.BGMBoss1);
+            <string>global.test = FMODInstanceGetPosition(scrAudioGetID("BGMBoss1"));
 </string>
           </argument>
         </arguments>
@@ -108,7 +114,7 @@ obj_tlstart1.alarm[5] = 43;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 12; i+=1)
+            <string>for(var i = 0; i &lt; 12; i+=1)
 {
  b2 = instance_create(592,304,obj_minibossBullet2);
  b2.speed = 8;
@@ -145,7 +151,7 @@ alarm[10] = 20;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 12; i+=1)
+            <string>for(var i = 0; i &lt; 12; i+=1)
 {
  b2 = instance_create(496,304,obj_minibossBullet2);
  b2.speed = 8;
@@ -182,7 +188,7 @@ alarm[9] = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 12; i+=1)
+            <string>for(var i = 0; i &lt; 12; i+=1)
 {
  b2 = instance_create(400,304,obj_minibossBullet2);
  b2.speed = 10;
@@ -216,7 +222,7 @@ alarm[8] = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 12; i+=1)
+            <string>for(var i = 0; i &lt; 12; i+=1)
 {
  b2 = instance_create(304,304,obj_minibossBullet2);
  b2.speed = 8;
@@ -253,7 +259,7 @@ alarm[7] = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 12; i+=1)
+            <string>for(var i = 0; i &lt; 12; i+=1)
 {
  b2 = instance_create(208,304,obj_minibossBullet2);
  b2.speed = 8;
@@ -462,7 +468,7 @@ with(obj_miniBossGay)
 }
 with(obj_minibossKappa)
 {
- for(i = 0; i&lt; 15; i+=1)
+ for(var i = 0; i&lt; 15; i+=1)
  {
   pp = instance_create(x,y,obj_smallGrayCherry);
   pp.speed = 5;

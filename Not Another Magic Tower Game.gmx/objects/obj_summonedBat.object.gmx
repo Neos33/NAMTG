@@ -433,7 +433,7 @@ dashCount = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!(instance_exists(player) &amp;&amp; player.x &gt; 0))
+            <string>if(!(player_is_alive() &amp;&amp; player.x &gt; 0))
 {
     global.leftbutton = left;
     global.rightbutton = right;

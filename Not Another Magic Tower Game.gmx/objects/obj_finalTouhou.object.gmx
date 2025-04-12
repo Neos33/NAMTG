@@ -100,7 +100,7 @@ alarm[1] = 1500;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if instance_exists(obj_playerTouhou) or instance_exists(player) or instance_exists(obj_finalPlane){
+            <string>if instance_exists(obj_playerTouhou) or player_is_alive() or instance_exists(obj_finalPlane){
     timer += 1;
 }
 

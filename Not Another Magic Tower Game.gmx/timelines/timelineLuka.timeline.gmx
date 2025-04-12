@@ -251,7 +251,7 @@ with(white3)alpha2 = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(player))
+            <string>if(player_is_alive())
 {
     with(black5)instance_destroy();
     //instance_activate_object(obj_superFasf_combat);

@@ -83,9 +83,9 @@ else
             <kind>1</kind>
             <string>if(start)
 {
-    if(instance_exists(obj_skeletonOrc_combat) &amp;&amp; instance_exists(player))
+    if(instance_exists(obj_skeletonOrc_combat) &amp;&amp; player_is_alive())
     {
-        for(i = 0; i &lt; 2; i += 1)
+        for(var i = 0; i &lt; 2; i += 1)
         {
             if(view_wview[i] &gt; 300)
             {

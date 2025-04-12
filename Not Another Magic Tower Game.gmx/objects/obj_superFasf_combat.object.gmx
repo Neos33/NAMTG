@@ -134,7 +134,7 @@ FMODInstanceSetVolume(global.BGMsupfasf, volume);
 volume-=150;
 alarm[7]=1;
 }
-else if(instance_exists(player))
+else if(player_is_alive())
 {
 alarm[3]=0;
 alarm[4]=0;
@@ -449,7 +449,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(ach &amp;&amp; instance_exists(player))
+            <string>if(ach &amp;&amp; player_is_alive())
 {
     if(!global.achievements[49])
     {

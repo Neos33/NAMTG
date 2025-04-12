@@ -11,6 +11,33 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>status = 0;
+
+tAngle = 0;
+shoot = 0;
+
+targetX = 0;
+targetY = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>604</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -96,11 +123,14 @@ else if(status == 3)
             <kind>1</kind>
             <string>if(status == 0)
 {
-    image_angle = 0;
-    image_index = obj_skeletonElete_combat.image_index;
-    image_xscale = obj_skeletonElete_combat.image_xscale;
-    x = obj_skeletonElete_combat.x - sign(obj_skeletonElete_combat.image_xscale) * 10;
-    y = obj_skeletonElete_combat.y + sprite_yoffset;
+    if instance_exists(obj_skeletonElete_combat)
+    {
+        image_angle = 0;
+        image_index = obj_skeletonElete_combat.image_index;
+        image_xscale = obj_skeletonElete_combat.image_xscale;
+        x = obj_skeletonElete_combat.x - sign(obj_skeletonElete_combat.image_xscale) * 10;
+        y = obj_skeletonElete_combat.y + sprite_yoffset;
+    }
 }
 else if(status == 1)
 {
@@ -158,10 +188,13 @@ else if(status == 2)
 }
 else if(status == 3)
 {
-    image_xscale = sign(x - player.x);
-    image_index = 0;
-    tAngle = point_direction(x,y,player.x,player.y);
-    image_angle =  tAngle + 71 * image_xscale;
+    //if instance_exists(player)
+    {
+        image_xscale = sign(x - player.x);
+        image_index = 0;
+        tAngle = point_direction(x,y,player.x,player.y);
+        image_angle =  tAngle + 71 * image_xscale;
+    }
     if(!shoot)
     {
         alarm[3] = 60;
@@ -171,12 +204,15 @@ else if(status == 3)
     }
     else
     {
-        if(x &lt; 16 || x &gt; 784 || ((x - player.x) * sign(hspeed)) &gt; 200)
+        //if instance_exists(player)
         {
-            hspeed = 0;
-            vspeed = 0;
-            shoot = false;
-            status = 5;
+            if(x &lt; 16 || x &gt; 784 || ((x - player.x) * sign(hspeed)) &gt; 200)
+            {
+                hspeed = 0;
+                vspeed = 0;
+                shoot = false;
+                status = 5;
+            }
         }
     }
 }
@@ -206,13 +242,16 @@ else if(status == 4)
 }
 else if(status == 5)
 {
-    if(x &gt; player.x)
+    //if instance_exists(player)
     {
-        image_angle += 30;
-    }
-    else
-    {
-        image_angle -= 30;
+        if(x &gt; player.x)
+        {
+            image_angle += 30;
+        }
+        else
+        {
+            image_angle -= 30;
+        }
     }
 }
 </string>
@@ -235,7 +274,8 @@ else if(status == 5)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale = obj_skeletonElete_combat.image_xscale;
+            <string>if instance_exists(obj_skeletonElete_combat)
+    image_xscale = obj_skeletonElete_combat.image_xscale;
 </string>
           </argument>
         </arguments>

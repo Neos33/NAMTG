@@ -25,16 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a_bns = array_create(30);
-d_bns = array_create(30);
-h_bns = array_create(30);
+            <string>/// Arrays
 
-k1_bns = array_create(30);
-k2_bns = array_create(30);
-k3_bns = array_create(30);
-k4_bns = array_create(30);
-k5_bns = array_create(30);
-k6_bns = array_create(30);
+var _total = 13;
+a_bns = array_create(_total);
+d_bns = array_create(_total);
+h_bns = array_create(_total);
+
+k1_bns = array_create(_total);
+k2_bns = array_create(_total);
+k3_bns = array_create(_total);
+k4_bns = array_create(_total);
+k5_bns = array_create(_total);
+k6_bns = array_create(_total);
 
 
 </string>
@@ -388,7 +391,7 @@ else {
     }
     else if(!special)
     {
-        if instance_exists(player)
+        if player_is_alive()
         {
             draw_sprite(player.sprite_index, player.image_index, 48 + 17, 48 + 23);
         }

@@ -90,7 +90,6 @@ cTime = 0;
     with(combo1[cCount1])
     {
         speed = 15;
-        if instance_exists(player)
         direction = point_direction(x,y, player.x, player.y);
     }
     cCount1 += 1;

@@ -71,7 +71,7 @@ with(obj_combatPlayerKiller)
 global.monsters[global.combatIndex] = 1;
 sound_stop(battleBGM);
 audio_resumemusic_volume(global.stageMusic);
-if(instance_exists(player) &amp;&amp; player.x &gt; 0)
+if(player_is_alive() &amp;&amp; player.x &gt; 0)
 {
     if(global.GalleryBossFight &amp;&amp; global.GalleryBossFightNum &gt; 1 &amp;&amp; global.GalleryBossFightInd &lt; global.GalleryBossFightNum - 1)
     {
@@ -209,6 +209,7 @@ for(i = 0; i &lt; (obj_monsterBattlePrototype.hp mod 10); i+= 1)
 }
 
 
+draw_reset();
 </string>
           </argument>
         </arguments>

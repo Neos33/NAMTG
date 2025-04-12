@@ -412,8 +412,8 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player){
-    for(i=0;i&lt;12;i+=1){
+            <string>if !player_is_alive(){
+    for(var i=0;i&lt;12;i+=1){
         alarm[i]=0;
     }
 }

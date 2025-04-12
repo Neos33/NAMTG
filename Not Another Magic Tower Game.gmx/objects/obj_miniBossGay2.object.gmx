@@ -25,6 +25,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>rotate = 0;
+high = 0;
+climax = 0;
+dimChange = 0;
+dim = 0;
+ang = 0;
+escape = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>image_speed = 0;
 image_alpha = 0;
 explodePolygon(x, y, 3, 800, 0, 8, 50, obj_minibossBullet3, spr_minibossbullet, 1/8, 1);

@@ -531,7 +531,7 @@ else
         alarm[8] = 0;
         alarm[2] = 0;
         alarm[1] = 0;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             alarm[9] = 50;
             alarm[2] = 150;
@@ -563,7 +563,7 @@ if(phase == 2)
         alarm[4] = 0;
         targetX = 400;
         targetY = 200;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             instance_create(x,y, obj_spellCardClearEffect);
             sound_fix(snd_touhou_defeated);

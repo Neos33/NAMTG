@@ -80,7 +80,7 @@ alarm[5]= 2660;
 alarm[6] = 3620;
 alarm[7] = 4330;
 
-for(i = 0; i &lt; 12; i+= 1)
+for(var i = 0; i &lt; 12; i+= 1)
 {
     aa = instance_create(x,y, obj_shiliuBullet1);
     aa.ind = i;
@@ -199,7 +199,7 @@ instance_create(x,y,obj_faShiliuHPBlock);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(player))
+            <string>if(player_is_alive())
 {
     instance_create(x,y,obj_phase5ChangeEffect);
 }
@@ -304,15 +304,15 @@ instance_create(x,y,obj_faShiliuHPBlock);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!instance_exists(player))
-    exit;
+            <string>//if(!instance_exists(player))
+  //  exit;
 global.inCombat = false;
 with(obj_combatPlayerKiller)
 {
     instance_destroy();
 }
 global.monsters[global.combatIndex] = 1;
-if(instance_exists(player) &amp;&amp; player.x &gt; 0)
+if(player_is_alive() &amp;&amp; player.x &gt; 0)
 {
     if(global.GalleryBossFight &amp;&amp; global.GalleryBossFightNum &gt; 1 &amp;&amp; global.GalleryBossFightInd &lt; global.GalleryBossFightNum - 1)
     {
@@ -417,7 +417,7 @@ if(instance_exists(player) &amp;&amp; player.x &gt; 0)
             }
             else
             {
-                if(!instance_exists(player))
+                if(!player_is_alive())
                 {
                   phase = -1;
                 }

@@ -33,6 +33,9 @@ draw_set_color(c_black);
 highScore = RangeClamp(obj_mmm_gameController.currentMeter, global.mmmHighScore, 999999);
 global.mmmHighScore = highScore;
 draw_text(x,y + 40, string(highScore));
+
+
+draw_reset();
 </string>
           </argument>
         </arguments>

@@ -418,10 +418,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player)
-    exit;
-
-if(x &gt; 250 &amp;&amp; x &lt; 550)
+            <string>if(x &gt; 250 &amp;&amp; x &lt; 550)
 {
     if(player.x &lt; 200)
     {
@@ -578,7 +575,7 @@ if(phase == 1)
         alarm[8] = 0;
         alarm[2] = 0;
         alarm[1] = 0;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             alarm[0] = 200;
             alarm[4] = 180;
@@ -620,7 +617,7 @@ if(phase == 2)
         alarm[6] = 0;
         targetX = 400;
         targetY = 200;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             instance_create(x,y, obj_spellCardClearEffect);
             obj_beBattleController.alarm[1] = 120;

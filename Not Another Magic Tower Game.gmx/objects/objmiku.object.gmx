@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(player)=0){
+            <string>if(player_is_alive()=0){
 timeline_running=0
 }
 </string>

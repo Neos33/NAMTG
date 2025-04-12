@@ -78,7 +78,7 @@ jump = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(player)){
+            <string>if(player_is_alive()){
 x=player.x
 y=player.y
 }
@@ -151,7 +151,7 @@ if(player.hspeed=0)background_hspeed=-1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(player)){
+            <string>if(player_is_alive()){
     
     if(view_current != 0){exit}
     draw_sprite_ext(player.sprite_index,player.image_index,tx,y,player.image_xscale,player.image_yscale,0,c_white,1)

@@ -148,7 +148,7 @@ timeline_speed=bpf*4
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player) 
+            <string>if !player_is_alive() 
 {
     timeline_running=false
     obj_pica_ef.timeline_running=false
@@ -518,7 +518,7 @@ t18=0}}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!instance_exists(player))
+            <string>if(!player_is_alive())
 {
     timeline_running = false;
 }

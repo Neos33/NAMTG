@@ -181,8 +181,8 @@ alarm[10] = 120;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player)
-    exit;
+            <string>//if !instance_exists(player)
+    //exit;
 
 if(player.x &gt; 400)
 {
@@ -252,8 +252,8 @@ phase = "jump";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player)
-    exit;
+            <string>//if !instance_exists(player)
+   // exit;
     
 key.onHold = false;
 key.onBoom = true;

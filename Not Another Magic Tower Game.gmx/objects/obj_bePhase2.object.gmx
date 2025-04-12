@@ -222,7 +222,7 @@ sc.hspd = 1;
             <kind>1</kind>
             <string>sound_fix(snd_touhou_attack3);
 alarm[7] = 5;
-if(!instance_exists(player))
+if(!player_is_alive())
 {
     alarm[7] = 0;
 }
@@ -611,7 +611,7 @@ else
         alarm[8] = 0;
         alarm[2] = 0;
         alarm[1] = 0;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             alarm[0] = 200;
             alarm[4] = 180;
@@ -642,7 +642,7 @@ if(phase == 2)
         alarm[6] = 0;
         targetX = 400;
         targetY = 200;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             instance_create(x,y, obj_spellCardClearEffect);
             sound_fix(snd_touhou_defeated);

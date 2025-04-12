@@ -128,6 +128,10 @@ draw_set_valign(fa_bottom);
 draw_set_color(c_black);
 draw_text(x + 16, y - 12, 'x' + string(ammount));
 //draw_sprite(sprite_index, floor((clock mod 50) / 10), x, y);
+
+
+draw_set_valign(fa_top);
+draw_set_color(c_white);
 </string>
           </argument>
         </arguments>

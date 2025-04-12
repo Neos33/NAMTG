@@ -3008,6 +3008,8 @@
       <script>scripts\playerReverse.gml</script>
       <script>scripts\playerMisc.gml</script>
       <script>scripts\playerSlope.gml</script>
+      <script>scripts\player_dead.gml</script>
+      <script>scripts\player_is_alive.gml</script>
     </scripts>
     <scripts name="System">
       <script>scripts\loadGame.gml</script>
@@ -3034,12 +3036,14 @@
       <script>scripts\music_init.gml</script>
       <script>scripts\music_load.gml</script>
       <script>scripts\musicFunctions.gml</script>
-      <script>scripts\audio_init.gml</script>
-      <script>scripts\audio_update.gml</script>
-      <script>scripts\audio_setnewvolume_sound.gml</script>
-      <script>scripts\audio_setnewvolume_music.gml</script>
-      <script>scripts\audio_togglesoundmuted.gml</script>
-      <script>scripts\audio_togglemusicmuted.gml</script>
+      <scripts name="Options">
+        <script>scripts\audio_init.gml</script>
+        <script>scripts\audio_update.gml</script>
+        <script>scripts\audio_setnewvolume_sound.gml</script>
+        <script>scripts\audio_setnewvolume_music.gml</script>
+        <script>scripts\audio_togglesoundmuted.gml</script>
+        <script>scripts\audio_togglemusicmuted.gml</script>
+      </scripts>
       <script>scripts\audio_playsound.gml</script>
       <script>scripts\audio_playmusic.gml</script>
       <script>scripts\audio_loopmusic.gml</script>

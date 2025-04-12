@@ -25,6 +25,39 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>notFirstRound = 0;
+i = 0;
+aa = 0;
+ab = 0;
+ac = 0;
+j = 0;
+
+xx = 0;
+yy = 0;
+a = 0;
+k = 0;
+
+bubbleDestroyCount = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>event_inherited();
 name = "Blue Knight";
 image_speed = 1/8;
@@ -46,7 +79,7 @@ part_type_orientation(global.particle1,14,349,0.40,6,1);
 part_type_blend(global.particle1,1);
 part_type_life(global.particle1,17,24);
 
-global.emitter1=part_emitter_create(system1);
+global.emitter1=part_emitter_create(global.system1);
 
 bubbleDestroyCount = 0;
 </string>

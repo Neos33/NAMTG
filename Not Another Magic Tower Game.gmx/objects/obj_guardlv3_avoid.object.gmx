@@ -99,8 +99,7 @@ instance_destroy();
             <kind>1</kind>
             <string>sound_fix(sndZhazha);
 with(other)instance_destroy();
-if instance_exists(player)
-    move_towards_point(player.x,player.y,8)
+move_towards_point(player.x,player.y,8)
 </string>
           </argument>
         </arguments>

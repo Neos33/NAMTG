@@ -10,6 +10,9 @@ _color = argument7;
 
 _sx = _cx + lengthdir_x(_radius, _startAngle);
 _sy = _cy + lengthdir_y(_radius, _startAngle);
+
+var _old_color = draw_get_color();
+
 draw_set_color(_color);
 while(_totalAngle > 0)
 {
@@ -22,5 +25,5 @@ while(_totalAngle > 0)
     _sy = _ty;
 }
 
-
+draw_set_color(_old_color);
 

@@ -189,7 +189,7 @@ global.rightbutton = right;
     wave += 1;
     wcount = ceil(wave / 15);
     draw_set_circle_precision(64);
-    for(i = 0; i &lt; wcount; i+=1)
+    for(var i = 0; i &lt; wcount; i+=1)
     {
         draw_set_alpha(0.8 - i * 0.15);
         draw_set_color(c_silver);

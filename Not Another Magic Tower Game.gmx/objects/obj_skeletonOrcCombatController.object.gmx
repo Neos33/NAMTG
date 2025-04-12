@@ -171,7 +171,7 @@ if(room != battleroom12)
 sound_stop(battleBGM);
 }
 //SS_ResumeSound(global.stageMusic);
-if(instance_exists(player) &amp;&amp; player.x &gt; 0)
+if(player_is_alive() &amp;&amp; player.x &gt; 0)
 {
     
     if(!global.isRandom)
@@ -281,7 +281,7 @@ else
     usedHp = global.hp;
 }
 
-if(instance_exists(player))
+if(player_is_alive())
 {
     drawMagicHP();
     if(usedHp &lt; 233)

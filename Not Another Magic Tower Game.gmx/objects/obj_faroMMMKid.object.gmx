@@ -135,7 +135,7 @@ else if(!closed)
             <kind>1</kind>
             <string>player.x = x;
 player.y = y;
-if(!instance_exists(player))
+if(!player_is_alive())
 {
     instance_destroy();
 }

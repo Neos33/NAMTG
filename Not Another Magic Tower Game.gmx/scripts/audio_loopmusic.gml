@@ -13,7 +13,6 @@
             if !FMODInstanceIsPlaying(curMusic){
                 curMusic = FMODSoundLoop(curMusicID, false);
                 FMODInstanceSetVolume(curMusic, global.audio_music_volume/100 * 0.45);
-                //show_debug_message("Se reproduce la musica?")
             }
         }
     }

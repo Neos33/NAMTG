@@ -250,7 +250,7 @@ if(!sound_isplaying(sndPokemonBattle) &amp;&amp; !sound_isplaying(sndEvolveEnd))
     sound_loop(sndPokemonBattle);
 }
 
-if(!instance_exists(player))
+if(!player_is_alive())
 {
     view_xview[0] = 0;
     view_yview[0] = 0;

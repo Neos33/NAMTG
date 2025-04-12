@@ -120,6 +120,8 @@ if(current &lt; limit)
     draw_set_valign(fa_top);
     draw_set_halign(fa_left);
     draw_text(x-2,y-4, "X  " + string(limit));
+    
+    draw_set_color(c_white);
 }
 </string>
           </argument>

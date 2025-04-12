@@ -230,6 +230,8 @@ ds_list_destroy(list);
         }
     }
 
+    
+draw_reset();
 </string>
           </argument>
         </arguments>

@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -36,6 +50,13 @@ else
  rType = 1;
 }
 alarm[3] = 1;
+
+
+
+special = 0;
+path = 0;
+rnd = 0;
+pp = 0;
 </string>
           </argument>
         </arguments>
@@ -149,7 +170,7 @@ else
             <string>if(!special)
 {
  rnd = random_range(0,36);
- for(i = 0; i &lt; 10; i += 1)
+ for(var i = 0; i &lt; 10; i += 1)
  {
   pp = instance_create(x,y,obj_smallGrayCherry);
   pp.speed = 5;

@@ -235,7 +235,7 @@ else
     y = oy + 10 * sin(degtorad(angle));
 }
 
-if(!instance_exists(player))
+if(!player_is_alive())
 {
     view_xview[0] = 0;
     view_yview[0] = 0;

@@ -63,6 +63,8 @@ else
     recoveryCountDown = 10;
 }
 if(initialized) exit;
+
+// Super FASF
 if(room == battlefasfroom || room == Roomavoidence)
 {
     if(!instance_exists(obj_superFasf_combat) &amp;&amp; room != Roomavoidence)
@@ -99,21 +101,24 @@ if(!FMODInstanceGetPaused(global.currentBGM))
     FMODInstanceSetPaused(global.currentBGM, true);
     //global.pausedBGM = global.currentBGM;
 }
+
+// 1st list of battle songs
 if(global.mDef &lt; 75)
 {
     if(room == battleroom4 || room == battleroom6)
     {
         battleBGM = choose(sndBattle3, sndBattle4);
     }
-    else if(room ==battleroom12)
+    /*else if(room ==battleroom12)
     {
     //    battleBGM=happymusic;
-    }
+    }*/
     else
     {
         battleBGM = choose(sndBattle1, sndBattle2);
     }
 }
+// 2nd list of battle songs
 else if(global.mDef &lt;= 135)
 {
     if(room == rSilverEvilSlime || room == rGoldEvilSlime)
@@ -125,13 +130,26 @@ else if(global.mDef &lt;= 135)
         battleBGM = choose(sndBattle5, sndBattle6, sndBattle7, sndBattle8);
     }
 }
+// Last list of battle songs
 else
 {
     battleBGM = sndBattle9;
 }
-if(room != battlefasfroom &amp;&amp; room != Roomavoidence &amp;&amp; room != battleroom12 &amp;&amp; room != rDracula &amp;&amp; room != battleroom_bf &amp;&amp; global.combatObj != obj_faro_combat &amp;&amp; room != rDiamante &amp;&amp; room != rPica &amp;&amp; room != rDragonStart &amp;&amp; room != rTrebole &amp;&amp; room != rCorazone &amp;&amp; room != rDemonLead &amp;&amp; room != rTaisa)
+if(room != battlefasfroom &amp;&amp; 
+    room != Roomavoidence &amp;&amp; 
+    room != battleroom12 &amp;&amp; 
+    room != rDracula &amp;&amp; 
+    room != battleroom_bf &amp;&amp; 
+    global.combatObj != obj_faro_combat &amp;&amp; 
+    room != rDiamante &amp;&amp; 
+    room != rPica &amp;&amp; 
+    room != rDragonStart &amp;&amp; 
+    room != rTrebole &amp;&amp; 
+    room != rCorazone &amp;&amp; 
+    room != rDemonLead &amp;&amp; 
+    room != rTaisa)
 {
-sound_loop(battleBGM);
+    sound_loop(battleBGM);
 }
 else if(room == battlefasfroom)
 {
@@ -257,7 +275,7 @@ if(room != battleroom12 &amp;&amp; battleBGM)
 sound_stop(battleBGM);
 }
 //SS_ResumeSound(global.stageMusic);
-if(instance_exists(player) &amp;&amp; player.x &gt; 0)
+if(player_is_alive() &amp;&amp; player.x &gt; 0)
 {
     if(global.GalleryBossFight &amp;&amp; global.GalleryBossFightNum &gt; 1 &amp;&amp; global.GalleryBossFightInd &lt; global.GalleryBossFightNum - 1)
     {
@@ -485,7 +503,7 @@ else
     usedHp = global.hp;
 }
 
-if(instance_exists(player) || instance_exists(player2))
+if(player_is_alive() || instance_exists(player2))
 {
     drawMagicHP();
     if(usedHp &lt; 233 &amp;&amp; !numOnly)

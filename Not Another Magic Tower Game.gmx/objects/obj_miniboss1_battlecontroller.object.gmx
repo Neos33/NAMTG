@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -27,6 +41,35 @@
             <kind>1</kind>
             <string>
 alarm[11] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Init vars
+p1 = 0;
+p2 = 0;
+isRepeated = 0;
+
+l1 = 0;
+l2 = 0;
+
+tAngle = 0;
 </string>
           </argument>
         </arguments>
@@ -124,7 +167,7 @@ alarm[4]= 22.8 * 50;
             <kind>1</kind>
             <string>with(obj_light_common)
 {
-    for(i = 0; i &lt; 15; i += 1)
+    for(var i = 0; i &lt; 15; i += 1)
     {
         ang = -90 + i * 24;
         cherry = instance_create(x,y,obj_action2Cherry);

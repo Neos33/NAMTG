@@ -266,7 +266,7 @@ mage2.xSpeed = 10;
 }
 else
 {
-    if(instance_exists(player))
+    if(player_is_alive())
     {
         if(hp &gt; 80)
         {

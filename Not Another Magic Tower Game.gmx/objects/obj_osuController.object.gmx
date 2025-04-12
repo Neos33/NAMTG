@@ -850,7 +850,7 @@ global.testPos9 = SS_GetSoundPosition(global.BGM_Faro);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!instance_exists(player)) exit;
+            <string>if(!player_is_alive()) exit;
 if(start)
 {  
     if(!instance_exists(obj_osuHpAva))
@@ -932,7 +932,7 @@ if(start)
     }
     else
     {
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             with(player)
             {
@@ -952,7 +952,7 @@ if(start)
                     instance_destroy();
                 }
             }
-            FMODInstanceStop(global.BGM_Faro);
+            FMODInstanceStop(scrAudioGetID("BGM_Faro"));
             sound_fix(sndOsuFail);
             event_user(10);
         }
@@ -1266,7 +1266,7 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(start &amp;&amp; instance_exists(player))
+            <string>if(start &amp;&amp; player_is_alive())
 {
     //draw_set_color(c_red);
     //draw_set_alpha(1);

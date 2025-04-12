@@ -111,7 +111,7 @@ event_inherited();
 }
 else
 {
-    if(instance_exists(player))
+    if(player_is_alive())
     {
         instance_create(400,288,obj_dmLastController);
     }
@@ -167,7 +167,7 @@ else
     {
         waterBulletCount = 100;
         waterBulletSound = false;
-        if(instance_exists(player))
+        if(player_is_alive())
         {
             alarm[11] = 80;
         }
@@ -197,7 +197,7 @@ else
           <argument>
             <kind>1</kind>
             <string>
-if(instance_exists(player))
+if(player_is_alive())
 {
     instance_create(0,0,obj_dmSpikeController);
 }
@@ -235,7 +235,7 @@ if(instance_exists(player))
 }
 else
 {
-    if(instance_exists(player))
+    if(player_is_alive())
     {
         sound_fix(snd_touhou_caution);
         alarm[7] = 30;
@@ -272,7 +272,7 @@ else
 else
 {
     shotGunCount = 30;
-    if(instance_exists(player))
+    if(player_is_alive())
     {
         alarm[6] = 150;
     }

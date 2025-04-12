@@ -78,7 +78,7 @@ alarm[3] = 500;
             <kind>1</kind>
             <string>if(start &amp;&amp; !die)
 {
-    if(!FMODInstanceGetPaused(global.BGM_Pica) &amp;&amp; instance_exists(player) &amp;&amp; complete)
+    if(!FMODInstanceGetPaused(scrAudioGetID("BGM_Pica")) &amp;&amp; player_is_alive() &amp;&amp; complete)
     {
         die = true;
         hp = 0;

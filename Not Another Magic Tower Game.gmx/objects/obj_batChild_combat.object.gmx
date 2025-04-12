@@ -86,8 +86,8 @@ direction = point_direction(x,y,player.x,player.y);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player)
-    exit;
+            <string>//if !instance_exists(player)
+  //  exit;
     
 dir = point_direction(x,y,player.x,player.y);
 
@@ -139,7 +139,7 @@ if(abs(direction - dir) != 180)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!instance_exists(player))
+            <string>if(!player_is_alive())
 {
     if((global.combatTime &gt;= 30 * room_speed) &amp;&amp; !global.achievements[25])
     {

@@ -170,10 +170,7 @@ time += 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player)
-    exit;
-
-dir = point_direction(x+16,y+16,player.x,player.y);
+            <string>dir = point_direction(x+16,y+16,player.x,player.y);
 if(dir &gt; 70 &amp;&amp; dir &lt; 120 &amp;&amp; phase != 2)
 {
     tempspd = hspeed;

@@ -194,8 +194,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player)
-    exit;
+            <string>//if !instance_exists(player)
+  //  exit;
 if(((player.x + 6 &gt;= bbox_left) &amp;&amp; player.x &lt; x &amp;&amp; keyboard_check_direct(global.rightbutton)) || 
 ((player.x - 6 &lt;= bbox_right) &amp;&amp; (player.x &gt; x + 16) &amp;&amp; keyboard_check_direct(global.leftbutton)))
 {

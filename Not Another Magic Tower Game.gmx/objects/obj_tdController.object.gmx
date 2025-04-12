@@ -421,7 +421,7 @@ draw_text(800-168,536, string(global.attack));
 draw_text(800-168,560, string(global.defense));
 draw_text(800-168,584, string(RangeClamp(global.hp, 0, 10000)));
 
-if(instance_exists(player))
+if(player_is_alive())
 {
     draw_sprite_ext(player.sprite_index, player.image_index, 736, 560, player.image_xscale, 1, 0, c_white, 1);
 }

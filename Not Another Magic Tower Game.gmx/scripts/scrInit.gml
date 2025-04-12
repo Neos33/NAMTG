@@ -3,6 +3,8 @@
 scrInitEnums();
 scrInitAudio();
 
+global.player_killed = false;
+
 global.skipMonsters = false;
 global.cooldown = false;
 global.Blockable = 0;

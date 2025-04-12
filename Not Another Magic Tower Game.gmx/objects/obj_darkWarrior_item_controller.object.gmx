@@ -123,7 +123,7 @@ else
 }
 draw_text(96, vInfo + vGap * 4 + 32, string(obj_darkWarrior_combat.godtime / 50) + " secs");
 
-if(instance_exists(player))
+if(player_is_alive())
 {
     draw_sprite_ext(spr_smallHeart, 0, player.x - 16, player.y - 32, .75, .75, 0, c_white, 1);
     draw_set_font(fontBasicInfoMini);

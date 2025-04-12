@@ -104,6 +104,10 @@ else
     global.Blockable = false;
 }
 
+
+sound_stop_all();
+FMODInstanceSetPaused(global.curMusic, true);
+
 audio_playsound(sndThunder);
 //transition_kind = 21;
 //transition_steps = 150;

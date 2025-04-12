@@ -60,7 +60,7 @@ wall = instance_position(0,y,obj_finalCorridorWall);
             <kind>1</kind>
             <string>//finalCorridorPosExt(1,1.5);
 
-if(!instance_exists(player)) exit;
+if(!player_is_alive()) exit;
 var ind;
 if(x mod 32 == 0)
 {

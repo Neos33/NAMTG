@@ -110,8 +110,8 @@ ang = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player)
-    exit;
+            <string>//if !instance_exists(player)
+    //exit;
 hCount = 0;
 status = 1;
 hspeed = 0;
@@ -147,8 +147,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !instance_exists(player)
-    exit;
+            <string>//if !instance_exists(player)
+    //exit;
 status = 4;
 stepSpd = -0.1 * sign(x + 16 - player.x);
 alarm[7] = 200;

@@ -130,7 +130,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!instance_exists(player)) exit;
+            <string>if(!player_is_alive()) exit;
 repeat(6)
 {
     hitEffect();

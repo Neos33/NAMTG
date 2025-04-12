@@ -169,7 +169,7 @@ window_set_caption(_caption);
 if(room != rInit &amp;&amp; room != rMenu &amp;&amp; room != rTitle &amp;&amp; room != rSelectStage &amp;&amp; room != rBadEnding &amp;&amp; room != rTruth &amp;&amp; !global.inCombat &amp;&amp; !global.GalleryBossFight){
     if keyboard_check_pressed(global.pausebutton){
         if ( pauseon = false ){
-            if instance_exists(player) or instance_exists(player2){
+            if player_is_alive() or instance_exists(player2){
                 pauseon = true; 
                 pauseback = background_create_from_surface(application_surface, 0,0,room_width,room_height,0,0); 
                 instance_deactivate_all(1);   
@@ -328,7 +328,7 @@ if(room == rGayEnding || room == rGE3D || room == rGeCredit)
             <string>/// Godmod
 if(global.godmod)
 {
-    if instance_exists(player)
+    if player_is_alive()
     {
         if(mouse_check_button_pressed(mb_right))
         {
@@ -357,7 +357,7 @@ if(global.godmod)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.special[7] &amp;&amp; instance_exists(player) &amp;&amp; room != rFinalCorridor)
+            <string>if(global.special[7] &amp;&amp; player_is_alive() &amp;&amp; room != rFinalCorridor)
 {
     if(keyboard_check_direct(global.shotbutton))
     {
@@ -512,7 +512,7 @@ if(pauseon == 0)
         {
             instance_destroy();
         }
-        if(instance_exists(player) or instance_exists(player2)){
+        if(player_is_alive() or instance_exists(player2)){
             saveDeathTime();
             if fps!=0{
                     if !global.clear
@@ -539,6 +539,34 @@ if(pauseon == 0)
         ini_close();
         }
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if keyboard_check(vk_control)
+{
+    room_speed = 1000;
+}
+else
+{
+    room_speed = 50;
 }
 </string>
           </argument>
@@ -890,16 +918,17 @@ cleanmem_init(1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    if ( pauseon = true ) { 
-        draw_background(pauseback,view_xview[0],view_yview[0]); 
-        draw_set_alpha(0.5);
-        draw_set_color(c_black);
-        draw_rectangle(0,0,room_width,room_height,0);
-        draw_set_alpha(1);
-        draw_set_color(c_white);
-        draw_set_blend_mode(bm_normal);
-        draw_sprite(sprPause,0,view_xview[0]+400,view_yview[0]+304)
-        }
+            <string>if ( pauseon == true ) 
+{ 
+    draw_background(pauseback,view_xview[0],view_yview[0]); 
+    draw_set_alpha(0.5);
+    draw_set_color(c_black);
+    draw_rectangle(0,0,room_width,room_height,0);
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+    draw_set_blend_mode(bm_normal);
+    draw_sprite(sprPause,0,view_xview[0]+400,view_yview[0]+304)
+}
 
 </string>
           </argument>
