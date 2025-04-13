@@ -16,5 +16,5 @@ ___
 
 - There are some common errors of not initialize a variable.
 - Music is quite a mess to work.
-- *move_wrap* function seems to be not working as it should be.
+- *move_wrap* function seems to not be working as it should be.
 - UI depth order.
