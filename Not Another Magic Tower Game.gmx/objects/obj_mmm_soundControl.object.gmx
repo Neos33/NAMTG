@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>sound_stop_all();
+//FMODInstanceSetPaused(global.curMusic, true);
 SS_StopAll();
 audio_playsound(sndMMMStart);
 global.currentBGM = scrAudioGetID("BGM_Null");
@@ -51,7 +52,9 @@ global.currentBGM = scrAudioGetID("BGM_Null");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//SS_StopSound(global.BGM_MMMFingers);
+            <string>/// Failed
+//SS_StopSound(global.BGM_MMMFingers);
+FMODInstanceStop(global.curMusic);
 audio_playsound(sndMMMFail);
 </string>
           </argument>
@@ -75,7 +78,8 @@ audio_playsound(sndMMMFail);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sound_stop(sndMMMStart);
+            <string>/// Start
+sound_stop(sndMMMStart);
 sound_stop(sndMMMFail);
 audio_playmusic_volume(scrAudioGetID("BGM_MMMFingers"));
 global.currentBGM = scrAudioGetID("BGM_MMMFingers");

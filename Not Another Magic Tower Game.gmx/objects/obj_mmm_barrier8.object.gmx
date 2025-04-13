@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -50,11 +64,11 @@ p3[4] = instance_create(x - 3 * gap, y + radius, obj_mmm_monster1);
 p3[5] = instance_create(x - 4 * gap, y + radius, obj_mmm_monster1);
 
 
-for(i = 0; i&lt;6;i+=1)
+for(var i = 0; i&lt;6; i+=1)
 {
-    p1[i].hspeed = -moveSpd;
-    p2[i].hspeed = moveSpd;
-    p3[i].hspeed = moveSpd;
+    if instance_exists(p1[i]) p1[i].hspeed = -moveSpd;
+    if instance_exists(p2[i]) p2[i].hspeed = moveSpd;
+    if instance_exists(p3[i]) p3[i].hspeed = moveSpd;
 }
 
 /*
@@ -123,19 +137,22 @@ for(i = 0; i&lt;6;i+=1)
             <kind>1</kind>
             <string>vspeed = global.levelSpeed;
 
-for(i = 0; i&lt;6;i+=1)
+for(var i = 0; i&lt;6;i+=1)
 {
     p1[i].y = y;
-    p2[i].y = y - radius;
+    if instance_exists(p2[i]) p2[i].y = y - radius;
     p3[i].y = y + radius;
     
     if(p1[i].x &lt; x - 360)
     {
         p1[i].x += 720;
     }
+    if instance_exists(p2[i])
+    {
     if(p2[i].x &gt; x + 240)
     {
         p2[i].x -= 480;
+    }
     }
     if(p3[i].x &gt; x + 360)
     {

@@ -33,7 +33,7 @@ targetPer = 0;
 isLoading = false;
 
 musicIndex = 0;
-musicCount = 11//46;
+musicCount = 46;
 
 musicLoadEnd = false;
 type = array_create(46);
@@ -77,7 +77,7 @@ song[8] = "BGM_BE.ogg";
 song[9] = "BGM_BEBoss.ogg";
 song[10] = "BGM_RedKey.ogg";
 
-/*
+
 song[11] = "BGM_BubbleStageSelection.ogg";
 song[12] = "BGM_BubbleStage.ogg";
 song[13] = "BGM_JKStage.ogg";
@@ -149,7 +149,7 @@ name[8] = "BGM_BE";
 name[9] = "BGM_BEBoss";
 name[10] = "BGM_RedKey";
 
-/*
+
 name[11] = "BGM_BubbleStageSelection";
 name[12] = "BGM_BubbleStage";
 name[13] = "BGM_JKStage";

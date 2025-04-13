@@ -129,5 +129,5 @@ else if(obj == obj_mmm_barrier20)
 }
 
 
-
+print("MMMFingers - Barrier spawned: ", object_get_name( obj));
 instance_create(view_xview[0] + 400, view_yview[0] - global.mmmGap, obj);

@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 1/8;
+
+
+identical = 0;
 </string>
           </argument>
         </arguments>

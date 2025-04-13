@@ -11,6 +11,47 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>moveSpd = 0;
+d2 = 0;
+d1 = 0;
+gap = 0;
+bounceSpd = 0;
+acc = 0;
+steps = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -88,7 +129,7 @@ oooo  oo
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 4; i+=1)
+            <string>for(var i = 0; i &lt; 4; i+=1)
 {
     with(p[i])
     {
@@ -212,7 +253,7 @@ bounceSpd = acc * steps;
 d1.y = y;
 d2.y = y;
 
-for(i = 0; i &lt; 4; i += 1)
+for(var i = 0; i &lt; 4; i += 1)
 {
     p[i].y = y + (floor(i / 2) - 0.5) * gap;
     p1[i].y = y + (floor(i / 2) - 0.5) * gap;

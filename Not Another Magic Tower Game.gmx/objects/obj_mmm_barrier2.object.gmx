@@ -11,6 +11,20 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -54,14 +68,14 @@ else if(record &gt;= 1000)
     stopInterval = 15;
 }
 rotateSpd *= choose(-1,1);
-for(i = 0; i &lt; level + 1; i+=1)
+for(var i = 0; i &lt; level + 1; i+=1)
 {
     px = x + radius * cos(degtorad(i * 360 / (level + 1)));
     py = y - radius * sin(degtorad(i * 360 / (level + 1)));
     p[i] = instance_create(px, py, obj_mmm_monster3);
 }
 
-for(i = 0; i &lt; 12; i+=1)
+for(var i = 0; i &lt; 12; i+=1)
 {
     px = x + radius * cos(degtorad(i * 30));
     py = y - radius * sin(degtorad(i * 30));

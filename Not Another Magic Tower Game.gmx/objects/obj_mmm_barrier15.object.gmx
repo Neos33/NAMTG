@@ -25,6 +25,42 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>subAngle = array_create(21);
+stepAngle = array_create(21);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>record = obj_mmm_gameController.currentMeter;
 radius = 150;
 if(record &lt; 400)
@@ -44,14 +80,14 @@ else if(record &gt;= 1000)
     rotateSpd = 4;
 }
 rotateSpd *= choose(-1,1);
-for(i = 0; i &lt; 2; i+=1)
+for(var i = 0; i &lt; 2; i+=1)
 {
     px = x + radius * cos(degtorad(i * 180));
     py = y - radius * sin(degtorad(i * 180));
     b[i] = instance_create(px, py, obj_mmm_pathPoint);
     b[i].image_alpha = 0;
     stepAngle[i] = 2;
-    for(j = 0; j &lt; 4; j+=1)
+    for(var j = 0; j &lt; 4; j+=1)
     {
         p[i,j] = instance_create(b[i].x + 106 * cos(degtorad((j + 0.5) * 90)), b[i].y - 106 * sin(degtorad((j + 0.5) * 90)), obj_mmm_monster2);
         p[i,j].angle = (j - 1) * 90;
@@ -59,7 +95,7 @@ for(i = 0; i &lt; 2; i+=1)
     }
 }
 
-for(i = 0; i &lt; 12; i+=1)
+for(var i = 0; i &lt; 12; i+=1)
 {
     px = x + radius * cos(degtorad(i * 30));
     py = y - radius * sin(degtorad(i * 30));
@@ -144,19 +180,19 @@ for(i = 0; i &lt; 12; i+=1)
             <string>vspeed = global.levelSpeed;
 
 angle += rotateSpd;
-for(i = 0; i &lt; 2; i+=1)
+for(var i = 0; i &lt; 2; i+=1)
 {
     b[i].x = x + radius * cos(degtorad(i * 180 + angle));
     b[i].y = y - radius * sin(degtorad(i * 180 + angle));
-    subAngle[i] += stepAngle;
-    for(j = 0; j &lt; 4; j+=1)
+    subAngle[i] += stepAngle[i];
+    for(var j = 0; j &lt; 4; j+=1)
     {
         p[i,j].x = b[i].x + 106 * cos(degtorad((j + 0.5) * 90 + subAngle[i]));
         p[i,j].y = b[i].y - 106 * sin(degtorad((j + 0.5) * 90 + subAngle[i]));
     }
 }
 
-for(i = 0; i &lt; 12; i+=1)
+for(var i = 0; i &lt; 12; i+=1)
 {
     d[i].x = x + radius * cos(degtorad(i * 30 + angle));
     d[i].y = y - radius * sin(degtorad(i * 30 + angle));

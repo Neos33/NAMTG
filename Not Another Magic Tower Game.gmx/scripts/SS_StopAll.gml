@@ -43,3 +43,4 @@ SS_TryStop(scrAudioGetID("BGM_Secret3"));
 SS_TryStop(scrAudioGetID("BGM_Luka"));
 
 curMusicID = scrAudioGetID("BGM_Null");
+curMusic = curMusicID;

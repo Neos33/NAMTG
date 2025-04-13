@@ -216,7 +216,7 @@
     <instance objName="obj_ironKey" x="400" y="512" name="inst_C544AD0D" locked="0" code="ind=2;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_magicRing" x="64" y="544" name="inst_028F0115" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_achievementsController" x="96" y="32" name="inst_7403EF5F" locked="0" code="global.currentFloor = 10;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sound" x="128" y="32" name="inst_2C66B7C7" locked="0" code="bgm = global.BGM_BubbleStage;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sound" x="128" y="32" name="inst_2C66B7C7" locked="0" code="bgm = scrAudioGetID(&quot;BGM_BubbleStage&quot;);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="movingPlatform" x="32" y="512" name="inst_908B0C30" locked="0" code="visible = false;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hpUp5" x="376" y="196" name="inst_99B3091D" locked="0" code="ind=206;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hpUp5" x="424" y="196" name="inst_DD5B2289" locked="0" code="ind=207;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

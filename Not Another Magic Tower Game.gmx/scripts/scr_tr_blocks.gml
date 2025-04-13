@@ -5,7 +5,7 @@ s_width = argument2;
 s_height = argument3;
 fraction = argument4; 
 
-var block_size, cx, cy, xx, yy, index, pos;
+var block_size, cx, cy, xx, yy, index, _pos;
 block_size = 16; 
 cx = s_width / block_size; 
 cy = s_height / block_size;
@@ -24,9 +24,9 @@ draw_surface(s_prev, 0, 0);
 
 index = 0;
 repeat (ds_list_size(global.__tr_block_positions) * fraction) {
-    pos = ds_list_find_value(global.__tr_block_positions, index);
-    xx = pos mod cx;
-    yy = pos div cx;
+    _pos = ds_list_find_value(global.__tr_block_positions, index);
+    xx = _pos mod cx;
+    yy = _pos div cx;
     index += 1;
     draw_surface_part(s_next, xx*block_size, yy*block_size, block_size, block_size, xx*block_size, yy*block_size);
 }
