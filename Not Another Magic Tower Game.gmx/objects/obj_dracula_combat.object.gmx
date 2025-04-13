@@ -25,6 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>appear = 0;
+transformed = 0;
+transformStart = 0;
+alpha = 0;
+
+transfer = 0;
+meteorShot = 0;
+fireballShot = 0;
+
+p = 0;
+blank = 0;
+pDir = 0;
+
+tranformCountDown = 0;
+
+clawHitCount = 0;
+
+angle = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>event_inherited();
 name = "Dracula";
 image_speed = 1/8;
@@ -175,7 +213,7 @@ else
 {
     fireballShot -= 1;
     blank = irandom_range(0,4)
-    for(i = 0; i &lt; 5; i += 1)
+    for(var i = 0; i &lt; 5; i += 1)
     {
         if(i == blank)
         {
@@ -217,7 +255,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 3; i += 1)
+            <string>for(var i = 0; i &lt; 3; i += 1)
 {
     p = instance_create(x + 45 * cos(degtorad(90 + 120 * i)),  y - 45 * sin(degtorad(90 + 120 * i)), obj_draculaMeteor2);
     p.rad = 45;

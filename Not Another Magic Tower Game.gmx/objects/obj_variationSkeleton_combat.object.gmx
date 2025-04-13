@@ -25,6 +25,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>final = 0;
+tControl = 0;
+fury = 0;
+a1 = 0;
+b1 = 0;
+c1 = 0;
+
+drawLaser = 0;
+drawDirt = 0;
+dHeight = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>event_inherited();
 name = "Variation Skeleton";
 image_speed = 1/8;
@@ -473,7 +503,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(drawLaser == 1)
+            <string>draw_set_color(c_white);
+if(drawLaser == 1)
 {
     effect_create_above(ef_spark, x - 12, y + 4, 0, c_yellow);
 

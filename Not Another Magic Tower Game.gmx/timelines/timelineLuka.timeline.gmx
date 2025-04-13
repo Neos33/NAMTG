@@ -19,7 +19,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>player.frozen = 1
+            <string>if player_is_alive()
+    player.frozen = 1
 //instance_deactivate_object(obj_superFasf_combat);
 instance_create(0,0,black5)
 SS_StopAll();
@@ -262,8 +263,8 @@ with(white3)alpha2 = 1
     //transition_steps = 100;
     room_goto(battlefasfroom);
     
-    audio_resumemusic_volume(global.BGMsupfasf);
-    FMODInstanceSetVolume(global.BGMsupfasf, 2000+80*100);
+    audio_resumemusic_volume(scrAudioGetID("BGMsupfasf"));
+    FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"), 2000+80*100 / 10000);
     with(obj_superFasf_combat)alarm[11]=20;
 }
 </string>

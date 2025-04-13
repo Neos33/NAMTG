@@ -58,14 +58,10 @@ player.y = 352 + 23;</code>
     <instance objName="obj_dmPlatform" x="680" y="256" name="inst_6415E560" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dmSpikeStopper" x="0" y="416" name="inst_1B0FCCED" locked="0" code="image_xscale = 25;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_playerHitController" x="144" y="56" name="inst_F6BF36CA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="block" x="80" y="384" name="inst_09219843" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="block" x="112" y="384" name="inst_831C169D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="block" x="280" y="384" name="inst_AF920CC5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="block" x="312" y="384" name="inst_CD87C813" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="block" x="472" y="384" name="inst_49039655" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="block" x="504" y="384" name="inst_1D45FC58" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="block" x="664" y="384" name="inst_B131BCD9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="block" x="696" y="384" name="inst_4802B370" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="block" x="80" y="384" name="inst_09219843" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="block" x="280" y="384" name="inst_AF920CC5" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="block" x="472" y="384" name="inst_49039655" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="block" x="664" y="384" name="inst_B131BCD9" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dmWater2" x="0" y="672" name="inst_91155288" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dmWater1" x="0" y="640" name="inst_126837B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dmWater1" x="32" y="640" name="inst_1AECBB68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

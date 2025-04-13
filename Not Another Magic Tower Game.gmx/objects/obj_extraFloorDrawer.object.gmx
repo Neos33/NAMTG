@@ -39,7 +39,8 @@ if(room != rExtraFloorBonus)
     instance_create(704,96,obj_floorBGStyle);
     if(room != rFaroSideTower)
     {
-        player.frozen = true;
+        if instance_exists(player)
+            player.frozen = true;
         alarm[1] = 10;
     }
 }

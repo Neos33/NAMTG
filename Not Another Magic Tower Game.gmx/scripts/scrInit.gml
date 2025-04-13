@@ -5,6 +5,7 @@ scrInitAudio();
 
 global.player_killed = false;
 
+global.levelSpd = 0;
 global.skipMonsters = false;
 global.cooldown = false;
 global.Blockable = 0;

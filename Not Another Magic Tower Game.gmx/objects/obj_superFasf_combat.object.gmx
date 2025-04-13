@@ -25,6 +25,43 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>i = 0;
+aa = 0;
+ab = 0;
+ac = 0;
+j = 0;
+k = 0;
+
+spdd = 0;
+dir = 0;
+
+flag = 0;
+
+volume = 0;
+
+animation = 0;
+
+ach = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>event_inherited();
 name = "SUPER FASF!!!";
 image_speed =0;
@@ -99,11 +136,11 @@ alarm[10]=1;
           <argument>
             <kind>1</kind>
             <string>//SS_SetSoundVol(global.BGMsupfasf,volume)
-FMODInstanceSetVolume(global.BGMsupfasf, volume);
+FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"), volume / 10000);
 if(volume&lt;=10000)
 {
-volume+=1000;
-alarm[10]=2;
+    volume+=1000;
+    alarm[10]=2;
 }
 </string>
           </argument>
@@ -127,29 +164,30 @@ alarm[10]=2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(volume&gt;200)
+            <string>/// Volume
+if(volume&gt;200)
 {
-//SS_SetSoundVol(global.BGMsupfasf,volume);
-FMODInstanceSetVolume(global.BGMsupfasf, volume);
-volume-=150;
-alarm[7]=1;
+    //SS_SetSoundVol(global.BGMsupfasf,volume);
+    FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"), volume / 10000);
+    volume-=150;
+    alarm[7]=1;
 }
 else if(player_is_alive())
 {
-alarm[3]=0;
-alarm[4]=0;
-alarm[5]=0;
-alarm[6]=0;
-//shoot =false;
-visible=0;
-x=100;
-y=100;
-image_speed = 1/8;
-//SS_PauseSound(global.BGMsupfasf);
-FMODInstanceSetPaused(global.BGMsupfasf, true);
-room_goto(Roomavoidence);
-//transition_steps = 20;
-//transition_kind=21;
+    alarm[3]=0;
+    alarm[4]=0;
+    alarm[5]=0;
+    alarm[6]=0;
+    //shoot =false;
+    visible=0;
+    x=100;
+    y=100;
+    image_speed = 1/8;
+    //SS_PauseSound(global.BGMsupfasf);
+    FMODInstanceSetPaused(scrAudioGetID("BGMsupfasf"), true);
+    room_goto(Roomavoidence);
+    //transition_steps = 20;
+    //transition_kind=21;
 }
 </string>
           </argument>
@@ -218,11 +256,11 @@ sound_fix(snd_letsgo);
 vspeed=2;
 if(flag==1 or flag==2)
 {
-
-k=0;
-//shoot =true;
-alarm[6]=50;
-//alarm[7]=100;
+    
+    k=0;
+    //shoot =true;
+    alarm[6]=50;
+    //alarm[7]=100;
 }
 </string>
           </argument>
@@ -249,15 +287,15 @@ alarm[6]=50;
             <string>image_speed=0.2;
 if(j&lt;40)
 {
-j+=1;
-ab=instance_create(x,y,obj_supfasfbullet);
-ab.speed=4+spdd;
-ab.direction=270+dir;
-ab.image_xscale=0.5;
-ab.image_yscale=0.5;
-spdd+=0.1;
-dir+=65;
-alarm[4]=60*1/j;
+    j+=1;
+    ab=instance_create(x,y,obj_supfasfbullet);
+    ab.speed=4+spdd;
+    ab.direction=270+dir;
+    ab.image_xscale=0.5;
+    ab.image_yscale=0.5;
+    spdd+=0.1;
+    dir+=65;
+    alarm[4]=60*1/j;
 }
 else
 {
@@ -289,38 +327,38 @@ alarm[5]=100;
             <kind>1</kind>
             <string>if(i&lt;4)
 {
-i+=1;
-aa=instance_create(x,y,obj_supfasfbullet);
-aa.direction=point_direction(x,y,player.x,player.y);
-aa.speed=8;
-aa.twist=0;
-aa.image_xscale=0.5;aa.image_yscale=0.5;
-alarm[3]=50;
-sound_fix(snd_ha);
-image_blend=c_white;
+    i+=1;
+    aa=instance_create(x,y,obj_supfasfbullet);
+    aa.direction=point_direction(x,y,player.x,player.y);
+    aa.speed=8;
+    aa.twist=0;
+    aa.image_xscale=0.5;aa.image_yscale=0.5;
+    alarm[3]=50;
+    sound_fix(snd_ha);
+    image_blend=c_white;
 }
 else
 {
-if(i==4)
-{
-i+=1;
-aa=instance_create(x,y,obj_supfasfbullet);
-aa.direction=point_direction(x,y,player.x,player.y);
-aa.speed=12;
-aa.twist=1;
-alarm[3]=50;
-sound_fix(snd_oowa);
-}
-else
-{
-    if(i&gt;4)
+    if(i==4)
     {
-    j=0;k=0;
-    image_speed=0;
-    image_index=0;
-    alarm[4]=100;
+        i+=1;
+        aa=instance_create(x,y,obj_supfasfbullet);
+        aa.direction=point_direction(x,y,player.x,player.y);
+        aa.speed=12;
+        aa.twist=1;
+        alarm[3]=50;
+        sound_fix(snd_oowa);
     }
-}
+    else
+    {
+        if(i&gt;4)
+        {
+            j=0;k=0;
+            image_speed=0;
+            image_index=0;
+            alarm[4]=100;
+        }
+    }
 }
 
 </string>
