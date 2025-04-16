@@ -25,6 +25,37 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>phase10cd = 0;
+phase11cd = 0;
+dashCount = 0;
+isRight = 0;
+waitTime = 0;
+
+pAngle = 0;
+pCount = 0;
+px = 0;
+py = 0;
+cc = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>event_inherited();
 name = "Senior Magician";
 image_speed = 1/8;
@@ -164,7 +195,7 @@ phase10cd = 30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bb = instance_create(x,y,obj_magicianlv2Bullet);
+            <string>var bb = instance_create(x,y,obj_magicianlv2Bullet);
 bb.speed = 6;
 bb.direction = random_range(0,180);
 bb.spd = 6;
@@ -214,9 +245,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>p1 = instance_create(100, 100, obj_magicianlv2Portal1);
+            <string>var p1 = instance_create(100, 100, obj_magicianlv2Portal1);
 p1.image_angle = 45;
-p2 = instance_create(700, 100, obj_magicianlv2Portal1);
+var p2 = instance_create(700, 100, obj_magicianlv2Portal1);
 p2.image_angle = 135;
 alarm[6] = 40;
 </string>
@@ -267,9 +298,9 @@ alarm[5] = 50;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;3;i+=1)
+            <string>for(var i=0;i&lt;3;i+=1)
 {
-    aa = instance_create(x,y,obj_magicianlv2Bullet);
+    var aa = instance_create(x,y,obj_magicianlv2Bullet);
     aa.speed = 8;
     aa.direction = angle1 + 120 * i;
 }
@@ -347,13 +378,13 @@ else if(phase == 6)
             {
                 if(isRight)
                 {
-                    shockwave = instance_create(x +20, y, obj_magicianlv2Cannon);
+                    var shockwave = instance_create(x +20, y, obj_magicianlv2Cannon);
                     shockwave.image_xscale = 2.5;
                     shockwave.image_yscale = 2.5;
                 }  
                 else
                 {
-                    shockwave = instance_create(x -20, y, obj_magicianlv2Cannon);
+                    var shockwave = instance_create(x -20, y, obj_magicianlv2Cannon);
                     shockwave.image_xscale = -2.5;
                     shockwave.image_yscale = 2.5;
                 }
@@ -503,7 +534,7 @@ else if(phase == 6)
     }
     else
     {
-        wave = instance_create(x,y + 32,obj_magicianlv2Superwave);
+        var wave = instance_create(x,y + 32,obj_magicianlv2Superwave);
         wave.vspeed = 1;
         phase = 12;
     }

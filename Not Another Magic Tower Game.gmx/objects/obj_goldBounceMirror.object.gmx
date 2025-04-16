@@ -50,7 +50,8 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(image_alpha &gt; 0)
+            <string>/// Fade out
+if(image_alpha &gt; 0)
 {
     image_alpha -= 0.05;
     alarm[1] = 1;
@@ -81,7 +82,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(image_alpha &lt; 1)
+            <string>/// Fade in
+if(image_alpha &lt; 1)
 {
     image_alpha += 0.02;
     alarm[0] = 1;

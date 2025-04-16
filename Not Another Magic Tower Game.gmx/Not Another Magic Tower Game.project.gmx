@@ -3345,6 +3345,8 @@
     <script>scripts\draw_reset.gml</script>
     <script>scripts\draw_reset_color.gml</script>
     <script>scripts\draw_reset_align.gml</script>
+    <script>scripts\clamp_wrap.gml</script>
+    <script>scripts\modwrap.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font24</font>

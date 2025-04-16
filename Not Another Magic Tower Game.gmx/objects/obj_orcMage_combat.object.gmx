@@ -25,6 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>swordCount = 0;
+    deathHeartCount = 0;
+    swordBoomCount = 0;
+thunderCount = 0;
+
+
+        swordDelay = 0;
+        swordBoomCount = 0;
+        swordIndex = 0;
+        swordStartAngle = 0;
+        
+claw = 0;
+
+            swordCenterX = 0;
+            swordCenterY = 0;
+            
+sword = 0;
+bombDelay = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>event_inherited();
 name = "Orc Mage";
 image_speed = 1/8;

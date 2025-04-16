@@ -42,6 +42,10 @@
             <string>image_speed = 1/6;
 gravity = 0.1;
 
+record_x = array_create(10); 
+record_y = array_create(10);  
+
+
 record_x[0] = x; 
 record_y[0] = y; 
 count = 0;
@@ -72,7 +76,7 @@ alarm[3] = 1;
 {
     count += 1;
 }
-for(i = count; i &gt;=0; i-=1)
+for(var i = count; i &gt;=0; i-=1)
 {
     if(i &gt; 0)
     {
@@ -131,7 +135,7 @@ alarm[3] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(j = count; j &gt;= 0; j-=1)
+            <string>for(var j = count; j &gt;= 0; j-=1)
 {
     draw_sprite_ext(sprite_index,image_index,record_x[j],record_y[j],1-j*0.1,1-j*0.1,image_angle,c_white,1-j*0.12);
 }

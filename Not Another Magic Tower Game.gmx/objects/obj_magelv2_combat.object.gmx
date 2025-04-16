@@ -25,6 +25,40 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>tempAng = 0;
+eAngle = 0;
+
+rIndex = 0;
+rotateAngle = 0;
+sIndex = 0;
+rSpd = 0;
+selectedIndex = 0;
+
+isFire = false;
+isWater = false;
+isGold = false;
+isDark = false;
+isGrass = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>event_inherited();
 image_speed = 1/8;
 name = "Senior Mage";
@@ -166,7 +200,7 @@ alarm[5] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0;i&lt;5;i+=1)
+            <string>for(var i = 0;i&lt;5;i+=1)
 {
     tempAng = eAngle + 72 * i;
     if(tempAng &lt; 0)

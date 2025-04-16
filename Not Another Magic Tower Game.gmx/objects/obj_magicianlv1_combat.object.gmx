@@ -37,6 +37,36 @@ status = "init";
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>aa = 0;
+cc = 0;
+p1 = 0;
+p2 = 0;
+
+gap = 0;
+
+isRight = 0;
+waitTime = 0;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="2" enumb="11">
       <action>
@@ -227,7 +257,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(400, 100, obj_magicianPortal1);
+            <string>/// Portal
+instance_create(400, 100, obj_magicianPortal1);
 </string>
           </argument>
         </arguments>
@@ -346,13 +377,13 @@ else if(status == "appear")
             {
                 if(isRight)
                 {
-                    shockwave = instance_create(x +32, y + 16, obj_magicianShockwave);
+                    var shockwave = instance_create(x +32, y + 16, obj_magicianShockwave);
                     shockwave.image_xscale = 2.5;
                     shockwave.image_yscale = 2.5;
                 }  
                 else
                 {
-                    shockwave = instance_create(x -32, y + 16, obj_magicianShockwave);
+                    var shockwave = instance_create(x -32, y + 16, obj_magicianShockwave);
                     shockwave.image_xscale = -2.5;
                     shockwave.image_yscale = 2.5;
                 }

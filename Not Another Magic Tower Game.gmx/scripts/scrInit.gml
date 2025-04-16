@@ -3,7 +3,9 @@
 scrInitEnums();
 scrInitAudio();
 
-global.player_killed = false;
+randomize();
+
+global.player_alive = false;
 
 global.levelSpd = 0;
 global.skipMonsters = false;

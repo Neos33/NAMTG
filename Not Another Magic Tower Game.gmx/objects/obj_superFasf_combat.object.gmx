@@ -80,7 +80,7 @@ audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));
 alarm[3]=100; //orginal 150;
 volume=10000;
 //SS_SetSoundVol(global.BGMsupfasf,volume);
-FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"),volume);
+FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"),volume / 10000);
 animation=1;
 </string>
           </argument>
@@ -104,7 +104,8 @@ animation=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(0,0,obj_continue_controller_of_superfasf);
+            <string>/// Back from avoidance
+instance_create(0,0,obj_continue_controller_of_superfasf);
 
 visible=1;
 x=400;
@@ -135,7 +136,8 @@ alarm[10]=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//SS_SetSoundVol(global.BGMsupfasf,volume)
+            <string>/// Back from avoidance room - Volume
+//SS_SetSoundVol(global.BGMsupfasf,volume)
 FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"), volume / 10000);
 if(volume&lt;=10000)
 {
@@ -385,12 +387,12 @@ else
             <kind>1</kind>
             <string>if(image_alpha&lt;=1 &amp;&amp; flag==0)
 {
-image_alpha+=0.01;
+    image_alpha+=0.01;
 }
 else
 {
 if(flag==0)
-flag=1;
+    flag=1;
 }
 if(animation==0)
   {
@@ -419,6 +421,52 @@ if(room!=Roomavoidence  or room!=battlefasfroom)
 instance_destroy();
 }
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Wrap 
+
+var _margin = 32;
+var _warped_vertically = false;
+
+if x != median(x, -_margin - 1, 800 + _margin + 1)
+{
+    x = modwrap(x, -_margin, 800+_margin);
+}
+
+if y != median(y, -_margin - 1, 608 + _margin + 1)
+{
+    y = modwrap(y, -_margin, 608+_margin);
+    _warped_vertically = true;
+}
+
+if _warped_vertically
+{
+    if(instance_exists(obj_continue_controller_of_superfasf) &amp;&amp; obj_continue_controller_of_superfasf.pp &amp;&amp; y &lt; 64)
+    {    
+        obj_continue_controller_of_superfasf.alarm[3] = 3;
+    }
+    // Reset
+    _warped_vertically = false;
+}
+//zbjkvnz.,nv,kjnb
 </string>
           </argument>
         </arguments>
@@ -518,14 +566,26 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-move_wrap(1,1,32);
-if(instance_exists(obj_continue_controller_of_superfasf) &amp;&amp; obj_continue_controller_of_superfasf.pp &amp;&amp; y &lt; 64)
-{    
-    obj_continue_controller_of_superfasf.alarm[3] = 3;
+            <string>/// This code is broken in GMS (See 2nd block in Step Event)
+/*
+//move_wrap(true, true, 32);
+x = modwrap(x, 32, 800-32);
+//var _warped_vertically = false;
+/*if y &gt; 608
+{
+    print("wraped vertically");
+    y = 10;
+    _warped_vertically = true;
+}*/
+/*
+y = modwrap(y, 0, 608);
+//if _warped_vertically
+{
+    if(instance_exists(obj_continue_controller_of_superfasf) &amp;&amp; obj_continue_controller_of_superfasf.pp &amp;&amp; y &lt; 64)
+    {    
+        obj_continue_controller_of_superfasf.alarm[3] = 8;
+    }
 }
-
 //zbjkvnz.,nv,kjnb
 </string>
           </argument>

@@ -29,22 +29,33 @@
 
 //if(keyboard_get_numlock())keyboard_set_numlock(off)
 
-for(var i=0;i&lt;global.flash_entity_amount;i+=1){
-    if(global.flash_object[i]!=0){
-    a=global.flash_object[i]
-    global.flash_time[i]-=1
-        if(global.flash_time[i]=0){
-        global.flash_time[i]=global.flash_temptime[i]
-            if(a.visible=1){a.visible=0}
-            else{
-            a.visible=1
-            global.flash_count[i]-=1
-                if(global.flash_count[i]=0){
-                global.flash_object[i]=0
-                global.flash_count[i]=0
-                global.flash_time[i]=0
-                global.flash_temptime[i]=0
-                a.flash=0
+for(var i=0;i&lt;global.flash_entity_amount;i+=1)
+{
+    if(global.flash_object[i]!=0)
+    {
+        a=global.flash_object[i]
+        global.flash_time[i]-=1
+        if(global.flash_time[i]=0)
+        {
+            global.flash_time[i]=global.flash_temptime[i]
+            if instance_exists(a)
+            {
+                if(a.visible=1)
+                {
+                    a.visible=0
+                }
+                else
+                {
+                    a.visible=1
+                    global.flash_count[i]-=1
+                    if(global.flash_count[i]=0)
+                    {
+                        global.flash_object[i]=0
+                        global.flash_count[i]=0
+                        global.flash_time[i]=0
+                        global.flash_temptime[i]=0
+                        a.flash=0
+                    }
                 }
             }
         }

@@ -99,11 +99,11 @@ if(file_exists("save"+string(global.savenum)) == false){
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
-        <isnot>0</isnot>
+        <isnot>-1</isnot>
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>global.player_killed</string>
+            <string>global.player_alive</string>
           </argument>
         </arguments>
       </action>
@@ -434,11 +434,11 @@ instance_destroy()
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
-        <isnot>0</isnot>
+        <isnot>-1</isnot>
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>global.player_killed</string>
+            <string>global.player_alive</string>
           </argument>
         </arguments>
       </action>
@@ -519,11 +519,11 @@ killPlayer();</string>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
-        <isnot>0</isnot>
+        <isnot>-1</isnot>
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>global.player_killed</string>
+            <string>global.player_alive</string>
           </argument>
         </arguments>
       </action>
@@ -615,11 +615,11 @@ if(y-vspeed/2 &gt;= other.y+15){
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
-        <isnot>0</isnot>
+        <isnot>-1</isnot>
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>global.player_killed</string>
+            <string>global.player_alive</string>
           </argument>
         </arguments>
       </action>
@@ -729,11 +729,11 @@ if (place_free(x+hspeed,y+vspeed) == false){
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
-        <isnot>0</isnot>
+        <isnot>-1</isnot>
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>global.player_killed</string>
+            <string>global.player_alive</string>
           </argument>
         </arguments>
       </action>
@@ -843,11 +843,11 @@ if (place_free(x+hspeed,y+vspeed) == false){
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
-        <isnot>0</isnot>
+        <isnot>-1</isnot>
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>global.player_killed</string>
+            <string>global.player_alive</string>
           </argument>
         </arguments>
       </action>

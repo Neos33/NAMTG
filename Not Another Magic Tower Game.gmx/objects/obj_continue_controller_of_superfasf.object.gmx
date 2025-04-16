@@ -25,6 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>qq = 0;
+pp = 0;
+baseline = 0;
+direc = 0;
+
+fina = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>alarm[0]=100;
 alarm[1]=100;
 </string>
@@ -83,10 +109,14 @@ if(baseline &lt; 700)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>fina=instance_create(obj_superFasf_combat.x,obj_superFasf_combat.y,obj_supfasfbullet6);
-fina.direction=random_range(92,268);
-fina.speed=random_range(3,6);
-//fina.alarm[1]=20;
+            <string>/// Finale
+if instance_exists(obj_superFasf_combat)
+{
+    fina=instance_create(obj_superFasf_combat.x,obj_superFasf_combat.y,obj_supfasfbullet6);
+    fina.direction=random_range(92,268);
+    fina.speed=random_range(3,6);
+    //fina.alarm[1]=20;
+}
 alarm[6]=50;
 alarm[1] = 0;
 </string>
@@ -139,7 +169,8 @@ obj_superFasf_combat.ach = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sound_fix(snd_ooooorrrrrr1);
+            <string>/// Finale
+sound_fix(snd_ooooorrrrrr1);
 instance_create(0,0,obj_supfasf_final);
 alarm[5]=100;
 alarm[6]=150;
@@ -147,10 +178,10 @@ alarm[7] = 150;
 baseline = 0;
 with(obj_superFasf_combat)
 {
-animation=0;
-targetX=700;
-targetY=304;
-spd=2;
+    animation=0;
+    targetX=700;
+    targetY=304;
+    spd=2;
 }
 
 
@@ -184,7 +215,7 @@ if(direc&lt;=3)
     with(obj_superFasf_combat)
     {
         direction=point_direction(x,y,player.x,player.y);
-        speed=speed+direc;
+        speed=speed+other.direc;
     }
     direc+=1;
     //global.test += 1;
@@ -193,8 +224,9 @@ else
 {
     with(obj_superFasf_combat)
     {
-    friction=0.1;
+        friction=0.1;
     }
+    print("Se warpeo esta mierda? - position y: ", obj_superFasf_combat.y)
     pp = false;
     alarm[4]=150;
 }
@@ -220,12 +252,13 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_superFasf_combat)
+            <string>/// Going to the player (Start)
+with(obj_superFasf_combat)
 {
-image_blend=c_red;
-image_speed=2;
-sound_fix(snd_riioooooooo);
-move_towards_point(player.x,player.y,8)
+    image_blend=c_red;
+    image_speed=2;
+    sound_fix(snd_riioooooooo);
+    move_towards_point(player.x,player.y,8)
 }
 pp=true;
 //alarm[3]=50;
@@ -251,21 +284,54 @@ pp=true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/*
 if(obj_superFasf_combat.y &lt; 544)
 {
     with(obj_superFasf_combat)
     {
-    aaa=instance_create(x,y,obj_supfasfbullet);
-    aaa.twist=4; //choose(2,3)
-    aaa.alarm[3] = 100;
-    aaa.alarm[4] = 1;
-    //aaa.speed=irandom(6)+4;
-    //aaa.direction=random_range(0,359);
-    //aaa.sprite_index=spr_supfasfbullet2;
+        aaa=instance_create(x,y,obj_supfasfbullet);
+        aaa.twist=4; //choose(2,3)
+        aaa.alarm[3] = 100;
+        aaa.alarm[4] = 1;
+        //aaa.speed=irandom(6)+4;
+        //aaa.direction=random_range(0,359);
+        //aaa.sprite_index=spr_supfasfbullet2;
     }
 }
 alarm[1]=5;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(obj_superFasf_combat.y &lt; 304)
+{
+    with(obj_superFasf_combat)
+    {
+    aaa=instance_create(x,y,obj_supfasfbullet);
+    aaa.twist=choose(2,3)
+    aaa.speed=irandom(6)+4;
+    aaa.direction=random_range(0,359);
+    aaa.sprite_index=spr_supfasfbullet2;
+    }
+}
+alarm[1]=50;
 
 </string>
           </argument>
@@ -289,13 +355,12 @@ alarm[1]=5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
+            <string>// Target 
 if(qq&lt;5)
 {
     with(obj_superFasf_combat)
     {
-    instance_create(player.x,player.y,obj_supfasf_target);
+        instance_create(player.x,player.y,obj_supfasf_target);
     }
     alarm[0]=60;
     qq+=1;

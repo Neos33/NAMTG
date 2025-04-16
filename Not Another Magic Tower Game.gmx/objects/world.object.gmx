@@ -1023,9 +1023,17 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
+            <string>
 if(!global.testMode) exit;
-bType = get_integer("Provide the type you want to add:",0);
+bType = get_integer("Provide the type you want to add:
+0: Attack
+1: Defense
+2: HP
+3: Yellow key
+4: Blue key
+5: Red key
+6: Green key
+7: Iron key","");
 bAmmount = get_integer("Provide the ammount:", 0);
 if(bType == 0)
 {

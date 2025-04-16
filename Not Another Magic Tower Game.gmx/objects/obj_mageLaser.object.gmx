@@ -41,6 +41,10 @@
             <kind>1</kind>
             <string>alarm[3] = 1;
 isStable = true;
+
+follower = 0;
+pAngle = 0;
+followStatus = 0;
 </string>
           </argument>
         </arguments>
