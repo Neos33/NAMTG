@@ -48,11 +48,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>p1 = instance_create(150,0,obj_phase5BulletLead2);
+            <string>var p1 = instance_create(150,0,obj_phase5BulletLead2);
 p1.vspeed = 8;
 p1.gravity = 0.1;
 p1.gravity_direction = 90;
-p2 = instance_create(650,0,obj_phase5BulletLead2);
+var p2 = instance_create(650,0,obj_phase5BulletLead2);
 p2.vspeed = 8;
 p2.gravity = 0.1;
 p2.gravity_direction = 90;
@@ -78,7 +78,7 @@ p2.gravity_direction = 90;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>p = instance_create(-16,508,obj_phase5BulletLead1);
+            <string>var p = instance_create(-16,508,obj_phase5BulletLead1);
 p.hspeed = 8;
 alarm[5] = 80;
 </string>
@@ -103,7 +103,7 @@ alarm[5] = 80;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>p = instance_create(816,508,obj_phase5BulletLead1);
+            <string>var p = instance_create(816,508,obj_phase5BulletLead1);
 p.hspeed = -8;
 alarm[4] = 80;
 </string>
@@ -128,10 +128,10 @@ alarm[4] = 80;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>p1 = instance_create(150,608,obj_phase5BulletLead2);
+            <string>var p1 = instance_create(150,608,obj_phase5BulletLead2);
 p1.vspeed = -9;
 p1.gravity = 0.1;
-p2 = instance_create(650,608,obj_phase5BulletLead2);
+var p2 = instance_create(650,608,obj_phase5BulletLead2);
 p2.vspeed = -9;
 p2.gravity = 0.1;
 alarm[3] = 180;
@@ -157,7 +157,7 @@ alarm[3] = 180;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>p = instance_create(816,100,obj_phase5BulletLead1);
+            <string>var p = instance_create(816,100,obj_phase5BulletLead1);
 p.hspeed = -8;
 alarm[2] = 80;
 </string>
@@ -182,7 +182,7 @@ alarm[2] = 80;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>p = instance_create(-16,100,obj_phase5BulletLead1);
+            <string>var p = instance_create(-16,100,obj_phase5BulletLead1);
 p.hspeed = 8;
 alarm[1] = 80;
 </string>

@@ -40,6 +40,9 @@ with(obj_phase4BounceKid)
     frozen = true;
 }
 alarm[0] = 20;
+
+startChange = 0;
+i = 0;
 </string>
           </argument>
         </arguments>

@@ -49,8 +49,8 @@ gap = 4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>start = irandom_range(0,15);
-for(i = 0; i &lt; start; i+=1)
+            <string>var start = irandom_range(0,15);
+for(var i = 0; i &lt; start; i+=1)
 {
     if(i == 0)
     {
@@ -63,7 +63,7 @@ for(i = 0; i &lt; start; i+=1)
     }
 }
 
-for(i = start + 4; i &lt; 19; i+=1)
+for(var i = start + 4; i &lt; 19; i+=1)
 {
     if(i == start + 4)
     {

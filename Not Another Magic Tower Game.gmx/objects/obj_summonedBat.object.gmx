@@ -11,6 +11,40 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>dashCount = 0;
+
+isDrawWave = 0;
+wave = 0;
+wcount = 0;
+isDiverse = 0;
+isDiverseInit = 0;
+
+left = 0;
+right = 0;
+
+targeted = 0;
+cx = 0;
+cy = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>604</id>
         <kind>0</kind>
         <userelative>0</userelative>
@@ -458,12 +492,14 @@ dashCount = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hp = obj_diaoSlime_combat.hp;
-image_alpha = obj_diaoSlime_combat.image_alpha;
-if(!instance_exists(obj_diaoSlime_combat))
+            <string>if(!instance_exists(obj_diaoSlime_combat))
 {
     instance_destroy();
+    exit;
 }
+hp = obj_diaoSlime_combat.hp;
+image_alpha = obj_diaoSlime_combat.image_alpha;
+
 </string>
           </argument>
         </arguments>
@@ -575,7 +611,7 @@ with(obj_diaoSlime_combat)
             <string>if(status == 1)
 {
     draw_set_alpha(1);
-    for(i = 0; i &lt; 5; i+= 1)
+    for(var i = 0; i &lt; 5; i+= 1)
     {
         draw_sprite_ext(sprite_index, image_index, x + 10 * (i+1) * cos(degtorad(360 -direction)), y - 10 * (i+1) * sin(degtorad(360 -direction)),1,1,image_angle,c_white, 1 - 0.17 * (i + 1));
     }
@@ -584,7 +620,7 @@ if(isDrawWave)
 {
     wave += 1;
     wcount = ceil(wave / 15);
-    for(i = 0; i &lt; wcount; i+=1)
+    for(var i = 0; i &lt; wcount; i+=1)
     {
         draw_set_alpha(1 - i * 0.15);
         draw_set_color(c_silver);

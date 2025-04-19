@@ -40,6 +40,13 @@
           <argument>
             <kind>1</kind>
             <string>isStable = true;
+
+onRun = 0;
+onBoom = 0;
+onHold = 0;
+onSmash = 0;
+smashEnd = 0;
+smashType = 0;
 </string>
           </argument>
         </arguments>
@@ -68,19 +75,22 @@
     speed -= 0.5;
     if(speed &lt; 0)
     {
-        if(abs(obj_guardlv1_combat.y - y) &lt; 2 || (x &lt; 0 || x &gt; 800 || y &gt; obj_guardlv1_combat.y))
+        if instance_exists(obj_guardlv1_combat)
         {
-            y = obj_summonedGuardLv1.y - 2;
-        }
-        else
-        {
-            if(y &gt; (obj_summonedGuardLv1.y - 2))
+            if(abs(obj_guardlv1_combat.y - y) &lt; 2 || (x &lt; 0 || x &gt; 800 || y &gt; obj_guardlv1_combat.y))
             {
-                y -= 1;
+                y = obj_summonedGuardLv1.y - 2;
             }
             else
             {
-                y += 1;
+                if(y &gt; (obj_summonedGuardLv1.y - 2))
+                {
+                    y -= 1;
+                }
+                else
+                {
+                    y += 1;
+                }
             }
         }
     }

@@ -277,7 +277,10 @@ else
           <argument>
             <kind>1</kind>
             <string>if(!instance_exists(obj_guardlv2_combat))
+{
     instance_destroy();
+    exit;
+}
 x = obj_guardlv2_combat.x;
 y = obj_guardlv2_combat.y;
 if(!obj_guardlv2_combat.wind &amp;&amp; alarm[10] == 0)

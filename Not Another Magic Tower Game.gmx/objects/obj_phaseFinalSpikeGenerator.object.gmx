@@ -507,6 +507,7 @@ instance_create(startX + 16 * 6, startY - 16 * 13, obj_phaseFinalBlock1);
             <string>if(room == rFaShiliu07)
 {
     FMODInstanceStop(scrAudioGetID("BGMFaShiLiu"));
+    SS_TryStop(scrAudioGetID("BGMFaShiLiu"));
 }
 </string>
           </argument>

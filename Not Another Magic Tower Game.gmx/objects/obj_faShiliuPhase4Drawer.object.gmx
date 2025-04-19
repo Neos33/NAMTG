@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>global.currentBGM = scrAudioGetID("BGMFaShiLiu");
-if(!FMODInstanceIsPlaying(scrAudioGetID("BGMFaShiLiu")))
+//if(!FMODInstanceIsPlaying(scrAudioGetID("BGMFaShiLiu")))
+if global.curMusicID != global.currentBGM
 {
     //sound_stop_all();
     SS_StopAll();

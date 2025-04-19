@@ -27,6 +27,11 @@
             <kind>1</kind>
             <string>p = noone;
 tailWidth = 12;
+
+
+alpha = 0;
+ammount = 0;
+piece = 0;
 </string>
           </argument>
         </arguments>

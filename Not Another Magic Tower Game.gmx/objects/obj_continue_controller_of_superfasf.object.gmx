@@ -320,15 +320,18 @@ alarm[1]=5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_superFasf_combat.y &lt; 304)
+            <string>if instance_exists(obj_superFasf_combat)
 {
-    with(obj_superFasf_combat)
+    if(obj_superFasf_combat.y &lt; 304)
     {
-    aaa=instance_create(x,y,obj_supfasfbullet);
-    aaa.twist=choose(2,3)
-    aaa.speed=irandom(6)+4;
-    aaa.direction=random_range(0,359);
-    aaa.sprite_index=spr_supfasfbullet2;
+        with(obj_superFasf_combat)
+        {
+            aaa=instance_create(x,y,obj_supfasfbullet);
+            aaa.twist=choose(2,3)
+            aaa.speed=irandom(6)+4;
+            aaa.direction=random_range(0,359);
+            aaa.sprite_index=spr_supfasfbullet2;
+        }
     }
 }
 alarm[1]=50;

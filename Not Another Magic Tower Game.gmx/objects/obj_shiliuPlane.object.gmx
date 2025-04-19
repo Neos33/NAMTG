@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>alarm[0] = 1;
 stepAngle = 2;
+
+angle = 0;
 </string>
           </argument>
         </arguments>

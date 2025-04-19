@@ -26,12 +26,16 @@
           <argument>
             <kind>1</kind>
             <string>global.currentBGM = scrAudioGetID("BGMFaShiLiu");
-if(!FMODInstanceIsPlaying(scrAudioGetID("BGMFaShiLiu")))
+//if(!FMODInstanceIsPlaying(scrAudioGetID("BGMFaShiLiu")))
+if curMusicID != global.currentBGM
 {
     //sound_stop_all();
     SS_StopAll();
-    player.x = 400; 
-    player.y = 544 + 23;
+    if player_is_alive()
+    {
+        player.x = 400; 
+        player.y = 544 + 23;
+    }
     alarm[1] = 30;
 }
 

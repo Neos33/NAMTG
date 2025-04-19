@@ -141,7 +141,8 @@ alarm[3] = 20;
 }
 else if(status == 2)
 {
-    move_towards_point(obj_orcMage_combat.x,obj_orcMage_combat.y, 2.5);
+    if instance_exists(obj_orcMage_combat)
+        move_towards_point(obj_orcMage_combat.x,obj_orcMage_combat.y, 2.5);
 }
 </string>
           </argument>

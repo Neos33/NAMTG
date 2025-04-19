@@ -25,6 +25,40 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>event_inherited();
+
+alpha = 1;
+scale = 1;
+
+ind = 0;
+alarm[11] = 1;
+draw = 0;
+txt = "";
+//transition_kind = 106;
+//transition_steps = 50;
+//event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>if(ind != 0)
 {
     if(!global.SpaceItems[ind - 1])
@@ -39,11 +73,6 @@
         }
     }
 }
-alpha = 1;
-scale = 1;
-//transition_kind = 106;
-//transition_steps = 50;
-event_inherited();
 </string>
           </argument>
         </arguments>

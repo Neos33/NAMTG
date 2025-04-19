@@ -50,9 +50,11 @@ grab = 0;
           <argument>
             <kind>1</kind>
             <string>//�v���C���[�̌����Ă�������ɔ��ł����A��莞�Ԃ��o�߂���Ə���
+if instance_exists(player)
+{
 if(global.grav=0){hspeed = player.image_xscale*16;}
 else{hspeed = player2.image_xscale*16;}
-
+}
 if(room == rRedKnight)
 {
     vspeed = -16;
