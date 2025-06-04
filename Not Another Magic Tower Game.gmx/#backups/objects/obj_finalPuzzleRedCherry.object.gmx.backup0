@@ -1,0 +1,11 @@
+// 2025-06-04 20:13:27
+#event properties (no comments/etc. here are saved)
+parent_index = playerKiller;
+sprite_index = sprCherry;
+uses_physics = false;
+
+#event create
+image_speed=1/15;
+#event other_outside
+//��ʊO�ɏo����I�u�W�F�N�g�����
+instance_destroy();

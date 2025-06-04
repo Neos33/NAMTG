@@ -31,6 +31,11 @@ image_xscale = 3;
 image_yscale = 3;
 x = 672;
 y = 480;
+
+
+changeCoolDown = false;
+targetScale = 0;
+
 /*x = -96;
 y = -96;
 time = 0;

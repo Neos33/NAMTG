@@ -1,0 +1,28 @@
+// 2025-06-04 20:12:55
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+gap = 96;
+color = c_gray;
+
+time = 0;
+shift = 0;
+
+#event step
+time += 4;
+
+#event draw
+draw_set_color(color);
+for(var i = -608; i < 800; i += gap)
+{
+    draw_line(i,0,i + 608, 608);
+}
+shift = time mod gap;
+for(var i = 0; i < 800 + 608; i += gap)
+{
+    draw_line(i - shift, 0, i - shift - 608, 608);
+}
+
+draw_set_color(c_white);

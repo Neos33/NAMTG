@@ -1,0 +1,93 @@
+// 2025-06-04 20:11:40
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_faroStartBullet;
+uses_physics = false;
+
+#event create
+alarm[0] = 1;
+angle = 0;
+image_alpha = 0.5;
+image_speed = 0;
+image_xscale = 0.1;
+image_yscale = 0.1;
+px1 = 240;
+px2 = 560;
+scale = 1;
+
+
+ind = 0;
+dir1 = 0;
+dir2 = 0;
+start = 0;
+px = 0;
+py = 0;
+
+#event alarm0
+b = instance_create(x + 32 * cos(degtorad(angle)), y - 32 * sin(degtorad(angle)), obj_dragonStartBullet2);
+b.image_index = ind;
+b.image_angle = angle;
+angle -= 45;
+if(angle > -360)
+{
+    alarm[0] = 2;
+}
+else
+{
+    alarm[1] = 2;
+    angle = 22.5;
+}
+
+#event alarm1
+b = instance_create(x + 64 * cos(degtorad(angle)), y - 64 * sin(degtorad(angle)), obj_dragonStartBullet2);
+b.image_index = ind;
+b.image_angle = angle + 90;
+angle += 45;
+if(angle < 360)
+{
+    alarm[1] = 2;
+}
+
+
+#event alarm3
+b1 = instance_create(x,y,obj_dragonStartBullet3);
+b1.direction = dir1;
+b1.speed = 20;
+b1.image_index = ind;
+b2 = instance_create(x,y,obj_dragonStartBullet3);
+b2.direction = dir2;
+b2.speed = 20;
+b2.image_index = ind;
+alarm[3] = 2;
+
+#event step
+image_angle += 3;
+if(image_xscale < 1)
+{
+    image_xscale += 0.02;
+    image_yscale += 0.02;
+}
+if(scale < 2)
+{
+    scale += 0.05;
+}
+else
+{
+    scale = 1;
+}
+if(start)
+{
+    px1 += 1;
+    px2 -= 1;
+    event_user(0);
+}
+
+#event other_user0
+dir1 = point_direction(x,y,px1,py);
+dir2 = point_direction(x,y,px2,py);
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_sprite_ext(sprite_index,image_index,x,y,scale,scale,0,c_white,2-scale);
+draw_current();
+draw_set_blend_mode(bm_normal);

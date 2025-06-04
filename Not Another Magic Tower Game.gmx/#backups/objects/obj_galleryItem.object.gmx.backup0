@@ -1,0 +1,66 @@
+// 2025-06-04 20:15:48
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_portal;
+uses_physics = false;
+
+#event create
+triggered = false;
+spr = 0;
+atk = 0;
+def = 0;
+hp = 0;
+obj = objDummy;
+txt = "";
+
+
+sprWidth = sprite_get_width(spr);
+sprHeight = sprite_get_height(spr);
+image_xscale = 1.5;
+image_yscale = 1.5;
+m = instance_create(x-sprWidth/2, y-sprHeight/2,obj_galleryMonster);
+m.sprite_index = spr;
+image_speed = 0.5;
+
+#event collision:player
+if(abs(player.x - x) < 10 && !triggered)
+{
+   triggered = true;
+   global.inGallery = true;
+   global.GalleryAtk = global.attack;
+   global.GalleryDef = global.defense;
+   global.GalleryHp = global.hp;
+   global.attack = atk;
+   global.defense = def;
+   global.hp = hp;
+   if(player.x > x)
+   {
+        global.galleryX = x + 32;
+   }
+   else
+   {
+        global.galleryX = x - 32;
+   }
+   global.galleryY = player.y;
+   global.monsters[350] = 0;
+   sprWidth = sprite_get_width(spr);
+   sprHeight = sprite_get_height(spr);
+   
+   battleMonster = instance_create(player.x - sprWidth/2,player.y - sprHeight/2,obj);
+   battleMonster.ind = 350;
+   battleMonster.visible = false;
+   global.combatIndex = 350;
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);
+draw_set_font(fontBasicInfo);
+draw_set_alpha(1);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_text(x,y-48,txt);
+
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);

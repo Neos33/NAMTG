@@ -47,6 +47,9 @@ image_alpha = 0;
 minAlpha = 0.3;
 maxAlpha = 0.6;
 alarm[3] = 1;
+
+
+burst = 0;
 </string>
           </argument>
         </arguments>

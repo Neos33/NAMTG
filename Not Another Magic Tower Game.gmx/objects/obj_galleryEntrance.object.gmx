@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ps = part_system_create();
+            <string>txt = "";
+color = c_white;
+
+ps = part_system_create();
   
 pt = part_type_create();
 part_type_shape(pt,pt_shape_flare);

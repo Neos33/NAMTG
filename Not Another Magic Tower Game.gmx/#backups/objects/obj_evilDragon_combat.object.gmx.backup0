@@ -1,0 +1,149 @@
+// 2025-06-04 20:10:06
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_devilDragon_combat;
+persistent = true;
+uses_physics = false;
+
+#event create
+name = "The Evil Dragon";
+image_speed = 1/8;
+image_xscale = 3;
+image_yscale = 3;
+x = 672;
+y = 480;
+
+
+changeCoolDown = false;
+targetScale = 0;
+
+/*x = -96;
+y = -96;
+time = 0;
+draw = false;
+
+startCorner1 = 270;
+startCorner2 = 340;
+startCorner3 = 410;
+startCorner4 = 480;
+startCornerShoot = 580;
+startShootEnd = 690;
+
+instance_create(0,0,obj_dragonStartController);
+
+#event alarm0
+//
+
+#event alarm1
+//
+
+#event step
+if(cooldown > 0)
+{
+    cooldown -= 1;
+}
+time += 1;
+
+#section
+/*switch(time)
+{
+    case startCorner1 - 10:
+        with(obj_dragonStartBullet1)
+        {
+            burst = true;
+            speed = 15;
+            direction = point_direction(player.x,player.y,x,y);
+        }
+        with(obj_dragonStartController)
+        {
+            instance_destroy();
+        }
+        break;
+    case startCorner1:
+        shooter = instance_create(96,96,obj_dragonStartCornerShooter);
+        with(shooter)
+        {
+            py = 304;
+            event_user(0);
+            ind = 4;
+            image_index = 0;
+        }
+        break;
+    case startCorner2:
+        shooter = instance_create(704,96,obj_dragonStartCornerShooter);
+        with(shooter)
+        {
+            py = 304;
+            event_user(0);
+            ind = 5;
+            image_index = 1;
+        }
+        break;
+    case startCorner3:
+        shooter = instance_create(704,512,obj_dragonStartCornerShooter);
+        with(shooter)
+        {
+            py = 336;
+            event_user(0);
+            ind = 1;
+            image_index = 2;
+        }
+        break;
+    case startCorner4:
+        shooter = instance_create(96,512,obj_dragonStartCornerShooter);
+        with(shooter)
+        {
+            py = 336;
+            event_user(0);
+            ind = 6;
+            image_index = 3;
+        }
+        break;
+    case startCornerShoot:
+        with(obj_dragonStartCornerShooter)
+        {
+            alarm[3] = 1;
+            start = true;
+        }
+        break;
+    case startShootEnd:
+        with(obj_dragonStartCornerShooter)
+        {
+            alarm[3] = 0;
+        }
+        with(obj_dragonStartBullet3)
+        {
+            speed = 20;
+            direction = point_direction(player.x,player.y,x,y);
+        }
+        break;
+    case startShootEnd + 10:
+        transition_kind = 105;
+        transition_steps = 30;
+        room_goto(rDragonSpace1);
+        break;
+}
+
+#event collision:bullet
+if(!cooldown)
+{
+    changeCoolDown = true;
+}
+event_inherited();
+if(changeCoolDown)
+{
+    cooldown = 5;
+}
+
+#event other_user0
+x = targetX;
+y = targetY;
+image_xscale = targetScale;
+image_yscale = targetScale;
+
+#event draw
+draw_current();
+/*if(draw)
+{
+    draw_current();
+}

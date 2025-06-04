@@ -25,7 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprWidth = sprite_get_width(spr);
+            <string>triggered = false;
+spr = 0;
+atk = 0;
+def = 0;
+hp = 0;
+obj = objDummy;
+txt = "";
+
+
+sprWidth = sprite_get_width(spr);
 sprHeight = sprite_get_height(spr);
 image_xscale = 1.5;
 image_yscale = 1.5;

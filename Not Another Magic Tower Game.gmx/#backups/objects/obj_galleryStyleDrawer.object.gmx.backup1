@@ -1,0 +1,87 @@
+// 2025-06-04 20:18:12
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+rotateSpd = 0;
+rspd1 = 0;
+rspd2 = 0;
+interval = 0;
+sAngle = 0;
+pAngle = 0;
+color = 0;
+centerX = 0;
+centerY = 0;
+minRadius = 0;
+maxRadius = 0;
+dimension = 1;
+acc = 0;
+v0 = 0;
+t = 0;
+spd = 0;
+dis = 0;
+
+#event alarm0
+rotateSpd = rspd2;
+alarm[1] = interval;
+
+#event alarm1
+rotateSpd = rspd1;
+alarm[0] = interval;
+
+#event step
+sAngle += rotateSpd;
+
+#event other_user0
+background_alpha = 0.8;
+background_blend = color;
+
+centerX = 400; 
+centerY = 304; 
+minRadius = 1; 
+maxRadius = minRadius + 1152;
+rotateSpd = -2;
+rspd1 = -1;
+rspd2 = 0.5;
+interval = 20;
+
+pAngle = 360/dimension;
+sAngle = pAngle/2;
+
+acc = 0.0576;
+v0 = 11.52;
+
+for(var i = 0; i < 10; i += 1)
+{
+    var t = i * 20;
+    var spd = v0 - acc * t;
+    var dis = maxRadius - (v0 * t - 0.5 * acc * sqr(t));
+    sub = instance_create(0,0,obj_galleryStyleCircleDrawer);
+    sub.centerX = centerX;
+    sub.centerY = centerY;
+    sub.spd = spd;
+    sub.acc = acc;
+    sub.dimension = dimension;
+    sub.radius = dis;
+    sub.minRadius = minRadius;
+    sub.color = color;
+}
+
+alarm[0] = 20;
+
+#event draw
+draw_set_color(color);
+draw_set_alpha(0.5);
+for(var i = 0; i < dimension; i += 1)
+{
+    sx = centerX + lengthdir_x(minRadius, sAngle + pAngle * i);
+    sy = centerY + lengthdir_y(minRadius, sAngle + pAngle * i);
+    tx = centerX + lengthdir_x(maxRadius, sAngle + pAngle * i);
+    ty = centerY + lengthdir_y(maxRadius, sAngle + pAngle * i);
+    draw_line(sx,sy,tx,ty);
+}
+drawPolygon(centerX, centerY, dimension, minRadius, sAngle);
+
+draw_set_color(c_white);
+draw_set_alpha(1);

@@ -25,7 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>rotateSpd = 0;
+rspd1 = 0;
+rspd2 = 0;
+interval = 0;
+sAngle = 0;
+pAngle = 0;
+color = 0;
+centerX = 0;
+centerY = 0;
+minRadius = 0;
+maxRadius = 0;
+dimension = 1;
+acc = 0;
+v0 = 0;
+</string>
           </argument>
         </arguments>
       </action>
@@ -136,11 +150,11 @@ sAngle = pAngle/2;
 acc = 0.0576;
 v0 = 11.52;
 
-for(i = 0; i &lt; 10; i += 1)
+for(var i = 0; i &lt; 10; i += 1)
 {
-    t = i * 20;
-    spd = v0 - acc * t;
-    dis = maxRadius - (v0 * t - 0.5 * acc * sqr(t));
+    var t = i * 20;
+    var spd = v0 - acc * t;
+    var dis = maxRadius - (v0 * t - 0.5 * acc * sqr(t));
     sub = instance_create(0,0,obj_galleryStyleCircleDrawer);
     sub.centerX = centerX;
     sub.centerY = centerY;
@@ -179,10 +193,10 @@ alarm[0] = 20;
 draw_set_alpha(0.5);
 for(var i = 0; i &lt; dimension; i += 1)
 {
-    sx = centerX + lengthdir_x(minRadius, sAngle + pAngle * i);
-    sy = centerY + lengthdir_y(minRadius, sAngle + pAngle * i);
-    tx = centerX + lengthdir_x(maxRadius, sAngle + pAngle * i);
-    ty = centerY + lengthdir_y(maxRadius, sAngle + pAngle * i);
+    var sx = centerX + lengthdir_x(minRadius, sAngle + pAngle * i);
+    var sy = centerY + lengthdir_y(minRadius, sAngle + pAngle * i);
+    var tx = centerX + lengthdir_x(maxRadius, sAngle + pAngle * i);
+    var ty = centerY + lengthdir_y(maxRadius, sAngle + pAngle * i);
     draw_line(sx,sy,tx,ty);
 }
 drawPolygon(centerX, centerY, dimension, minRadius, sAngle);
