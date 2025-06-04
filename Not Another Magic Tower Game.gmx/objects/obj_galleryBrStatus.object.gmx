@@ -30,6 +30,11 @@ image_xscale = 0.5;
 image_yscale = 0.5;
 
 
+start = 0;
+ind = 0;
+cPoints = 0;
+subInd = 0;
+rewardObj = 0;
 </string>
           </argument>
         </arguments>

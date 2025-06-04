@@ -1,0 +1,62 @@
+// 2025-06-04 20:44:53
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = sprLaserDot;
+uses_physics = false;
+
+#event create
+image_alpha = 0;
+
+target = 0;
+
+#event destroy
+window_set_cursor(cr_default);
+
+#event step
+x = mouse_x;
+y = mouse_y;
+
+if(place_meeting(x,y,obj_galleryBrCRCard))
+{
+    window_set_cursor(cr_handpoint);
+}
+else
+{
+    window_set_cursor(cr_default);
+}
+
+/*
+if(mouse_check_button_released(mb_left))
+{
+    if(target)
+    {
+        with(target)
+        {
+            if(place_meeting(x,y,obj_galleryBrCRCard))
+            {
+                event_user(0);
+            }
+            else
+            {
+                x = ox;
+                y = oy;
+            } 
+            targeted = false;
+        }
+        target = noone;
+    }
+}
+
+#event collision:obj_galleryBrCRCard
+if(mouse_check_button_pressed(mb_left))
+{
+    if(!target)
+    {
+        target = other.id;
+        other.targeted = true;   
+    }
+}
+
+
+#event other_room_end
+window_set_cursor(cr_default);

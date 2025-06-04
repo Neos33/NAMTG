@@ -25,7 +25,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale = 1.5;
+            <string>spr = -1;
+xscale = 1;
+yscale = 1;
+gHp = 0;
+triggered = false;
+combatObj = 0;
+mHp = 0;
+bossDmg = 0;
+hitDmg = 0;
+roomTo = rBegining;
+txt = "";
+
+
+image_xscale = 1.5;
 image_yscale = 1.5;
 if(spr == -1)
 {

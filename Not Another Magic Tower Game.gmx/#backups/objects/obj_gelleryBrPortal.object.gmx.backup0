@@ -1,0 +1,130 @@
+// 2025-06-04 20:28:30
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_portal;
+uses_physics = false;
+
+#event create
+image_speed = 1/3;
+acceptableHits = 0;
+setName = '';
+rushInd = 0;
+
+if(rushInd != 9)
+{    
+    if(global.BR_Status == 1 && global.GalleryBRChallengeId == rushInd && !global.challengeSets[rushInd])
+    {
+        global.challengeSets[rushInd] = 1;
+        instance_create(x, y - 40, obj_appearEffect);
+        alarm[1] = 30;
+    }
+    else if(global.challengeSets[rushInd] && !global.challengeRewards[rushInd])
+    {
+        instance_create(x, y - 40, obj_appearEffect);
+        alarm[1] = 30;
+    }
+    
+    with(instance_create(x, y-40, obj_galleryBrStatus))
+    {
+        ind = other.rushInd;
+    }
+    
+    if(global.challengeSets[rushInd])
+    {
+        image_blend = c_green;
+    }
+    else
+    {
+        image_blend = c_red;
+    }
+}
+else
+{
+    for(var i=-1;i<=1;i+=1)
+    {
+        with(instance_create(x+48*i,y-60,obj_galleryBrStatus))
+        {
+            ind = 9;
+            subInd = i + 1;
+            cPoints = 35 + 10*i;
+        }
+    }
+}
+image_xscale = 1.5;
+image_yscale = 1.5;
+y -= 12;
+alarm[0] = 1;
+
+
+
+
+#event alarm0
+if(rushInd != 9)
+{
+    setName = obj_galleryBrController.challengeSetName[rushInd];
+    acceptableHits = obj_galleryBrController.challengeSetHits[rushInd];
+}
+else
+{
+    setName = 'Custom Challenge';
+}
+
+#event alarm1
+if(rushInd != 9)
+{
+    with(instance_create(x, y - 28, rewardObj))
+    {
+        ind = other.rushInd;
+    }
+}
+
+#event step
+if(show) exit;
+if(keyboard_check_pressed(global.upbutton))
+{
+    if(place_meeting(x,y,player))
+    {
+        if(rushInd == 9)
+        {
+            if(!instance_exists(obj_customRushController))
+            {
+              instance_create(x,y,obj_customRushController);
+            }
+        }
+        else if(notAvailable)
+        {
+            message_add("System : At least one of the bosses in the challenge set hasn't been defeated yet. You cannot challenge this set at current time.");
+        }
+        else if(show_question("Challenge " + setName + "?"))
+        {
+            with(obj_galleryBrController)
+            {
+                challengeId = other.rushInd;
+                event_user(0);
+            }
+            show = true;
+        }
+    }
+}
+
+
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);
+draw_set_alpha(1);
+draw_set_font(fontBasicInfoMiniBold);
+draw_set_color(c_silver);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+if(rushInd != 9)
+{
+    draw_text(x, y - 48, setName + '(' + string(acceptableHits) + ')');
+}
+else
+{
+    draw_text(x, y - 68, setName);
+}
+
+draw_reset();

@@ -1,0 +1,92 @@
+// 2025-06-04 20:43:08
+#event properties (no comments/etc. here are saved)
+parent_index = obj_galleryBrItem;
+sprite_index = spr_brCards;
+uses_physics = false;
+
+#event create
+cStep = 10;
+cx = x;
+cy = y;
+image_speed = 0;
+
+bStep = 0;
+sStep = 0;
+dStep = 0;
+aStep = 0;
+xStep = 0;
+yStep = 0;
+moving = 0;
+scale = 0;
+td = 0;
+ta = 0;
+tx = 0;
+ty = 0;
+ind = 0;
+selected = 0;
+
+#event alarm0
+if(bStep > 0)
+{
+    image_xscale += sStep;
+    image_yscale += sStep;
+    depth += dStep;
+    image_alpha += aStep;
+    x += xStep;
+    y += yStep;
+    bStep -= 1;
+    alarm[0] = 1;
+}
+else
+{
+    moving = false;
+    event_user(0);
+}
+
+#event step
+if(place_meeting(x,y,obj_galleryBrMouseControl1))
+{
+    if(mouse_check_button_pressed(mb_left))
+    {
+        if(ind == obj_customRushController.currentInd)
+        {
+            if(!selected)
+            {
+                with(obj_customRushController)
+                {
+                    event_user(3);
+                }
+            }
+            else
+            {
+                with(obj_customRushController)
+                {
+                    event_user(4);
+                }
+                obj_galleryBrSelect.image_index = 0;
+            }
+        }
+    }
+}
+
+#event other_user0
+image_xscale = scale;
+image_yscale = scale;
+depth = td;
+image_alpha = ta;
+x = tx;
+y = ty;
+
+
+#event draw
+draw_current();
+if(ind == obj_customRushController.currentInd && selected)
+{
+    draw_sprite(spr_galleryBrSelected,0,x,y);
+    /*draw_set_font(fontBasicInfoBold);
+    draw_set_color(c_red);
+    draw_set_alpha(1);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_text(x, y, 'Selected');*/
+}

@@ -1,0 +1,94 @@
+// 2025-06-04 20:27:10
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_portal;
+uses_physics = false;
+
+#event create
+spr = -1;
+xscale = 1;
+yscale = 1;
+gHp = 0;
+triggered = false;
+combatObj = 0;
+mHp = 0;
+bossDmg = 0;
+hitDmg = 0;
+roomTo = rBegining;
+
+
+image_xscale = 1.5;
+image_yscale = 1.5;
+if(spr == -1)
+{
+    spr = spr_rotateQuestionMark;
+}
+sprWidth = sprite_get_width(spr);
+sprHeight = sprite_get_height(spr);
+m = instance_create(x, y-sprHeight*yscale/2+16,obj_galleryMonster);
+m.sprite_index = spr;
+m.image_xscale = xscale;
+m.image_yscale = yscale;
+image_speed = 0.5;
+
+
+#event collision:player
+if(spr == -1 || spr == spr_rotateQuestionMark) exit;
+if(spr == spr_devilLead_combat)
+{
+    global.FullHp = gHp;
+}
+if(abs(player.x - x) < 10 && !triggered)
+{
+   triggered = true;
+   global.monsters[350] = false;
+   global.combatIndex = 350;
+   global.GalleryBossFight = true;
+   global.GalleryBossFightHp = gHp;
+   global.GalleryBossFightNum = 1;
+   global.GalleryBossFightInd = 0;
+   global.combatObj = combatObj;
+   global.mHP = mHp;
+   global.defenseDamage = bossDmg;
+   global.attackDamage = hitDmg;
+   global.mEx = 0;
+   //SS_StopSound(global.currentBGM);
+   FMODInstanceStop(global.currentBGM);
+   sound_fix(sndgras);
+   if(player.x > x)
+   {
+        global.roomX = x + 32;
+   }
+   else
+   {
+        global.roomX = x - 32;
+   }
+   if(global.special[6])
+   {
+        global.Blockable = true;
+   }
+   else
+   {
+        global.Blockable = false;
+   }
+   global.roomY = player.y;
+   global.stageRoom = room;
+   global.inCombat = true;
+   global.currentBGM = scrAudioGetID("BGM_Null");
+   //transition_steps = 100;
+   //transition_kind = 104;
+   room_goto(roomTo);
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);
+draw_set_font(fontBasicInfo);
+draw_set_alpha(1);
+draw_set_color(c_silver);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_text(x,y+40,txt);
+
+draw_reset();

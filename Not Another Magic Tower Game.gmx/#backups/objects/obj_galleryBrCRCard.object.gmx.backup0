@@ -1,0 +1,175 @@
+// 2025-06-04 20:45:57
+#event properties (no comments/etc. here are saved)
+parent_index = obj_galleryBrItem;
+sprite_index = spr_brCards;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+image_xscale = 0.5;
+image_yscale = 0.5;
+ox = x;
+oy = y;
+
+
+
+minDis = 0;
+currentInd = 0;
+targetInd = 0;
+pInd = 0;
+ind = 0;
+px = 0;
+py = 0;
+target = 0;
+
+#event step
+if(place_meeting(x,y,obj_galleryBrMouseControl1))
+{
+    if(mouse_check_button_pressed(mb_right))
+    {
+        myInd = ind;
+        with(obj_customRushCards)
+        {
+            if(image_index == other.image_index)
+            {
+                selected = false;
+            }
+        }
+        with(obj_galleryBrCRCard)
+        {
+            if(ind > other.myInd)
+            {
+                ind -= 1;
+            }
+        }
+        with(obj_customRushController)
+        {
+            selectedCount = instance_number(obj_galleryBrCRCard);
+            if(selectedCount == 4)
+            {
+                acceptableHits -= 2;
+            }
+            event_user(0);
+        }
+        myPos = ds_list_find_index(global.csOrder[global.ChallengeSetIndex], image_index);
+        //if(myPos == -1)
+        //{
+        //    show_message("Card not exists");
+        //}
+        ds_list_delete(global.csOrder[global.ChallengeSetIndex], myPos);
+        with(obj_customRushController)
+        {
+            event_user(12);
+        }
+        instance_destroy();
+    }
+    
+    if(mouse_check_button_pressed(mb_left))
+    {
+        targeted = true;
+    }
+    
+    if(mouse_check_button_released(mb_left))
+    {
+        if(target)
+        {
+            event_user(0);
+            with(obj_customRushController)
+            {
+                event_user(12);
+            }
+        }
+        else
+        {
+            x = ox;
+            y = oy;
+        }
+        targeted = false;
+    }
+}
+
+x = 657 + ((ind mod 2) - 0.5) * 140;
+y = 160 + 176 * floor(ind/2);
+
+if(targeted)
+{
+    x = mouse_x;
+    y = mouse_y;
+    depth = -10002;
+}
+else
+{
+    depth = -10000;
+}
+
+if(!place_meeting(x,y,obj_galleryBrCRCard))
+{
+    image_blend = c_white;
+    target = noone;
+}
+
+#event step_begin
+minDis = 10000;
+
+#event collision:obj_galleryBrCRCard
+if(!targeted) exit;
+with(obj_galleryBrCRCard)
+{
+    if(id != other.id)
+    {
+        dis = point_distance(x,y,other.x,other.y);
+        if(other.minDis > dis)
+        {
+            other.minDis = dis;
+            other.target = id;
+        }
+    }
+}
+
+target.image_blend = merge_color(c_red,c_white,0.5);
+targetId = target.id;
+with(obj_galleryBrCRCard)
+{
+    if(id != other.targetId)
+    {
+        image_blend = c_white;
+    }
+}
+
+#event other_user0
+currentInd = ds_list_find_index(global.csOrder[global.ChallengeSetIndex], image_index);
+targetInd = ds_list_find_index(global.csOrder[global.ChallengeSetIndex], target.image_index);
+pInd = target.ind;
+target.ind = ind;
+ind = pInd;
+px = target.x;
+py = target.y;
+target.x = ox; 
+target.y = oy;
+target.ox = target.x;
+target.oy = target.y;
+x = px;
+y = py;
+ox = x;
+oy = y;
+ds_list_replace(global.csOrder[global.ChallengeSetIndex], currentInd, target.image_index);
+ds_list_replace(global.csOrder[global.ChallengeSetIndex], targetInd, image_index);
+target = noone;
+
+#event draw
+draw_current();
+draw_sprite(spr_galleryBrOrder,ind,x,y);
+/*draw_set_font(fontBasicInfoMini);
+draw_set_alpha(1);
+draw_set_color(c_white);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+switch(ind)
+{
+    case 0: txt = '1st'; break;
+    case 1: txt = '2nd'; break;
+    case 2: txt = '3rd'; break;
+    case 3: txt = '4th'; break;
+    default: break;
+}
+draw_text(x,y,txt);

@@ -1,0 +1,81 @@
+// 2025-06-04 20:32:53
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_brCards;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+image_xscale = 0.7;
+image_yscale = 0.7;
+ox = x;
+oy = y;
+image_alpha = 0;
+
+
+targeted = 0;
+target = 0;
+minDis = 0;
+
+#event alarm0
+image_alpha = 1;
+with(instance_create(x,y,obj_galleryBrCardEffect))
+{
+    image_index = other.image_index;
+}
+sound_fix(sndSelect);
+
+#event step
+if(targeted)
+{
+    x = mouse_x;
+    y = mouse_y;
+    depth = -10002;
+}
+else
+{
+    depth = -10000;
+}
+
+if(!place_meeting(x,y,obj_galleryBrCard))
+{
+    image_blend = c_white;
+    target = noone;
+}
+
+#event step_begin
+minDis = 10000;
+
+#event collision:obj_galleryBrCard
+if(!targeted) exit;
+with(obj_galleryBrCard)
+{
+    if(id != other.id)
+    {
+        dis = point_distance(x,y,other.x,other.y);
+        if(other.minDis > dis)
+        {
+            other.minDis = dis;
+            other.target = id;
+        }
+    }
+}
+
+target.image_blend = merge_color(c_red,c_white,0.5);
+
+#event other_user0
+currentInd = ds_list_find_index(global.csOrder[global.ChallengeSetIndex], image_index);
+targetInd = ds_list_find_index(global.csOrder[global.ChallengeSetIndex], target.image_index);
+px = target.x;
+py = target.y;
+target.x = ox; 
+target.y = oy;
+target.ox = target.x;
+target.oy = target.y;
+x = px;
+y = py;
+ox = x;
+oy = y;
+ds_list_replace(global.csOrder[global.ChallengeSetIndex], currentInd, target.image_index);
+ds_list_replace(global.csOrder[global.ChallengeSetIndex], targetInd, image_index);
+target = noone;

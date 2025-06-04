@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>image_alpha = 0;
+
+target = 0;
 </string>
           </argument>
         </arguments>

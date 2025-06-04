@@ -26,6 +26,21 @@
           <argument>
             <kind>1</kind>
             <string>alarm[0] = 1;
+
+
+rushInd = 0;
+cName = "";
+setName = 0;
+bossCount = 0;
+
+bossInd = array_create(10);
+bossName = array_create(10);
+
+acceptableHits = 0;
+info = 0;
+msgLength = 0;
+msg = array_create(1);
+txtAlpha = 0;
 </string>
           </argument>
         </arguments>
@@ -51,7 +66,7 @@
             <string>cName = "";
 setName = obj_galleryBrController.challengeSetName[rushInd];
 bossCount = obj_galleryBrController.challengeSetMembersCount[rushInd];
-for(i=0;i&lt;bossCount;i+=1)
+for(var i=0;i&lt;bossCount;i+=1)
 {
     bossInd[i] = obj_galleryBrController.challengeSetMemberId[rushInd, i];
     bossName[i] = obj_galleryBrController.bossName[bossInd[i]];
@@ -97,7 +112,7 @@ msgLength = 1;
     
     if(keyboard_check_pressed(global.upbutton))
     {
-        for(i=0;i&lt;msgLength;i+=1)
+        for(var i=0;i&lt;msgLength;i+=1)
         {
             message_add(msg[i]);
         }
