@@ -94,7 +94,7 @@ if(crotch &amp;&amp; !player_is_alive())
 {
     if(!global.achievements[33])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 33;
         global.achievements[33] = true;
     }
@@ -124,7 +124,7 @@ if(crotch &amp;&amp; !player_is_alive())
             <string>if(y &gt; 608)
 {
     instance_destroy();
-    }
+}
 </string>
           </argument>
         </arguments>

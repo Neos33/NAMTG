@@ -1,0 +1,62 @@
+// 2025-06-05 08:59:23
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_orcWarrior;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/8;
+name = "Orc Warrior"
+x=600;
+y=544;
+alarm[3]=30;
+sound_fix(sndwarrior);
+#section
+i = 0;
+isAch = 0;
+
+#event alarm3
+repeat(2)
+{
+    var aa=instance_create(x,y,obj_cherry_black)
+    with(aa)
+    {
+        speed=random_range(6,8);
+        direction=random_range(90,180);
+        gravity=0.1;
+    }
+}
+if(i<30)
+{
+    i+=1;
+    alarm[3]=6;
+}
+else
+{
+    alarm[3]=0;
+    isAch = true;
+    alarm[4]=30;
+}
+
+#event alarm4
+path_start(path_warrior,16,0,0);
+sound_fix(sndwarrior);
+instance_create(0,0,white_flash1);
+instance_create(0,0,view_shaker1);
+i=0
+alarm[3]=100;
+
+#event other_end_of_path
+isAch = false;
+
+#event other_user15
+if(isAch)
+{
+    if(!global.achievements[26])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 26;
+        global.achievements[26] = true;
+    }
+}

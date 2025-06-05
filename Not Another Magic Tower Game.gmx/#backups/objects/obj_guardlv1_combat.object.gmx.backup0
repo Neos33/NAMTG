@@ -1,0 +1,251 @@
+// 2025-06-05 09:07:10
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_guardlv1_battle;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Junior Guard";
+alarm[3] = 20;
+image_speed = 1 / 8;
+phase = "init";
+alarm[11] = 1;
+
+key = 0;
+dir = 0;
+djump = 0;
+
+xoffset = 0;
+yoffset = 0;
+
+#event destroy
+event_inherited();
+with(obj_keyBoomerang)
+{
+    sound_stop(sndBoomerang);
+    instance_destroy();
+}
+
+#event alarm3
+if(!key)
+{
+    if(x > player.x)
+    {
+        key = instance_create(x - 12, y - 2, obj_keyBoomerang);
+    }
+    else
+    {
+        key = instance_create(x + 12, y - 2, obj_keyBoomerang);
+    }
+}
+key.onHold = true;
+key.onBoom = false;
+key.onSmash = false;
+key.onRun = false;
+//key.image_angle = -16;
+alarm[4] = 30;
+
+#event alarm4
+//if !instance_exists(player)
+   // exit;
+    
+key.onHold = false;
+key.onBoom = true;
+key.onSmash = false;
+key.onRun = false;
+key.direction = point_direction(key.x, key.y, player.x, player.y);
+key.speed = 30;
+sound_loop(sndBoomerang);
+alarm[5] = 100;
+
+#event alarm5
+vspeed = -15;
+phase = "jump";
+
+#event alarm6
+//if !instance_exists(player)
+    //exit;
+
+if(player.x > 400)
+{
+    x = player.x -350;
+    image_angle = -45;
+}
+else
+{
+    image_angle = 45;
+    x = player.x  + 350;
+}
+y = player.y - 350;
+instance_create(x, y, obj_teleport);
+sound_fix(sndTelAtk);
+dir = point_direction(x,y,player.x,player.y);
+key.onSmash = true;
+key.smashEnd = false;
+key.onHold = false;
+hspeed = 15 * cos(degtorad(dir));
+vspeed = -15 * sin(degtorad(dir));
+phase = "smash";
+
+
+
+#event alarm7
+key.onSmash = false;
+key.onBoom = true;
+image_angle = 0;
+if(y > 560)
+{
+    y = 560;
+}
+key.direction = point_direction(key.x, key.y, player.x, player.y);
+key.speed = 30;
+sound_loop(sndBoomerang);
+alarm[10] = 120;
+
+#event alarm10
+phase = "run";
+sprite_index = spr_guardlv1_dash;
+if(player.x > x)
+{
+    hspeed = 15;
+    image_xscale = -1;
+}
+else
+{
+    hspeed = -15;
+    image_xscale = 1;
+}
+key.onHold = false;
+key.onRun = true;
+sound_fix(sndEarth2);
+
+#event alarm11
+y+=16;
+
+#event step Phase: Jump
+if(phase == "jump")
+{
+    if(vspeed > 0)
+    {
+        gravity = 0;
+        instance_create(x,y, obj_teleport);
+        sound_fix(sndTeleport);
+        x = -32; 
+        y = -32;
+        alarm[6] = 40;
+        phase = "init";
+    }
+    else
+    {
+        vspeed += 0.8;
+    }
+}
+#section Phase: Smash
+if(phase = "smash")
+{
+    if(abs(vspeed) < 0.1)
+    {
+        vspeed = 0;
+        hspeed = 0;
+        instance_create(x,y, view_shaker1);
+        sound_fix(sndEarth1);
+        key.smashEnd = true;
+        alarm[7] = 30;
+        phase = "init";
+    }
+}
+#section Phase: Run
+if(phase = "run")
+{
+    if(abs(hspeed) < 0.1)
+    {
+        if(x > 400)
+        {
+            hspeed = -1.5;      
+            x -= 5;              
+        }
+        else
+        {
+            hspeed = 1.5;
+            x += 5;                             
+        }
+        vspeed = -4; 
+        gravity = 0.1;
+        key.onRun = false;
+        key.onHold = true;
+        sprite_index = spr_guardlv1_battle;
+        instance_create(x,y, view_shaker1);
+        phase = "final";
+    }
+}
+#section Phase: Final
+if(phase == "final")
+{
+    if(y > 559 && abs(vspeed < 0.1))
+    {
+        sound_fix(sndEarth1);
+        y = 560;
+        hspeed = 0;
+        vspeed = 0;
+        gravity = 0;
+        phase = "init";
+        alarm[3] = 20;
+    }
+}
+
+#event collision:block
+//�ǂƂ̏Փ˔���
+
+//�O��ɕǂ����鎞
+if(place_free(x+hspeed,y) == false){
+  if(hspeed <= 0){//��
+    move_contact_solid(180,abs(hspeed));
+  }
+  if(hspeed > 0){//�E
+    move_contact_solid(0,abs(hspeed));
+  }
+  hspeed = 0;
+}
+
+//�㉺�ɕǂ����鎞  
+if(place_free(x,y+vspeed) == false){
+  if(vspeed <= 0){//��
+    move_contact_solid(90,abs(vspeed));
+  }
+  if(vspeed > 0){//��
+    move_contact_solid(270,abs(vspeed));
+    djump=1;
+  }
+  vspeed = 0;
+  gravity=0
+}
+
+//�΂߂̈ʒu�ɕǂ����鎞
+if (place_free(x+hspeed,y+vspeed) == false){
+  hspeed=0;
+}
+
+
+#event other_user15
+if(abs(vspeed) > 0.1)
+{
+    if(!global.achievements[32])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 32;
+        global.achievements[32] = true;
+    }
+}
+
+#event draw
+if(abs(hspeed) > 5)
+{
+    for(var i = 1; i < 5; i+= 1)
+    {
+        xoffset = -10 * i * cos(degtorad(360 - direction));
+        yoffset = -10 * i * sin(degtorad(360 - direction));
+        draw_sprite_ext(sprite_index, image_index, x + xoffset,y + yoffset,1,1,image_angle,c_white,1 - 0.15 * i);
+    }
+}
+draw_sprite_ext(sprite_index, image_index, x,y,1,1,image_angle,c_white,image_alpha);

@@ -520,7 +520,7 @@ if(transformed &amp;&amp; !transformStart)
 {
     if(!global.achievements[67])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 67;
         global.achievements[67] = true;
     }

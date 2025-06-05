@@ -39,12 +39,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed=random_range(5,7);
-direction=random_range(1,359);
-rnd = 20+random_range(20,70);
+            <string>speed = random_range(5,7);
+direction = random_range(1,359);
+rnd = 20 + irandom_range(20,70);
 blend = 0;
 bSpd = 255/rnd;
-alarm[1]=rnd;
+alarm[1] = rnd;
+
+image_blend = c_black;
 </string>
           </argument>
         </arguments>
@@ -67,7 +69,7 @@ alarm[1]=rnd;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_change(fasf_boom,1);
+            <string>instance_change(fasf_boom, 1);
 </string>
           </argument>
         </arguments>
@@ -91,7 +93,7 @@ alarm[1]=rnd;
           <argument>
             <kind>1</kind>
             <string>blend += bSpd;
-image_blend = make_color_rgb(blend,0,0);
+image_blend = make_color_rgb(blend, 0, 0);
 </string>
           </argument>
         </arguments>

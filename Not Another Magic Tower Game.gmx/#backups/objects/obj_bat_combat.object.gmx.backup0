@@ -1,0 +1,200 @@
+// 2025-06-05 09:07:49
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_batBattle;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/8;
+name = "Bat";
+x = 600;
+y = 256;
+alarm[3] = 50;
+
+left = global.leftbutton;
+right = global.rightbutton;
+
+
+
+phase = 0;
+dashCount = 0;
+
+isDrawWave = 0;
+wave = 0;
+isDiverse = 0;
+isDiverseInit = 0;
+
+targeted = 0;
+dir = 0;
+cx = 0;
+cy = 0;
+
+status = 0;
+wcount = 0;
+
+#event destroy
+event_inherited();
+global.leftbutton = left;
+global.rightbutton = right;
+with(obj_dizzy)
+{
+    instance_destroy();
+}
+
+#event alarm3
+sprite_index = spr_batDash;
+vspeed = -0.5;
+alarm[4] = 30;
+dashCount = 0;
+
+#event alarm4
+phase = 1;
+
+#event alarm5
+if(point_distance(x,y,400,304) > 3)
+{
+    y += 3;
+    alarm[5] = 1;
+}
+else
+{
+    alarm[6] = 30;
+}
+
+
+#event alarm6
+audio_playsound(sndBatScream);
+isDrawWave = true;
+wave = 0;
+isDiverse = true;
+isDiverseInit = false;
+alarm[7] = 150;
+
+#event alarm7
+alarm[10] = 500;
+phase = 3;
+
+#event alarm10
+isDiverseInit = false;
+isDiverse = false;
+global.leftbutton = left;
+global.rightbutton = right;
+with(obj_dizzy)
+{
+    instance_destroy();
+}
+phase = 4;
+
+#event step
+if(phase == 1)
+{
+    if(!targeted)
+    {
+        dir = point_direction(x,y,player.x, player.y);
+        direction = dir;
+        image_angle = dir - 90;
+        speed = 15;
+        targeted = true;
+    }
+    if(y > 624)
+    {
+        targeted = false;
+        if(dashCount < 5)
+        {
+            dashCount +=1;
+            cx = x;
+            x = 800 - cx;
+            y = -16;
+            speed += 2;
+        }
+        else
+        {
+            phase = 2;
+            x = 400; 
+            y = -16;
+            sprite_index = spr_batBattle;
+            speed = 0;
+            hspeed = 0;
+            vspeed = 0;
+            alarm[5] = 10;
+            image_angle = 0;
+        }
+    }
+}
+#section
+if(isDiverse && !isDiverseInit)
+{
+    global.leftbutton = right;
+    global.rightbutton = left;
+    instance_create(player.x,player.y - 36, obj_dizzy);
+    isDiverseInit = true;
+}
+#section
+if(phase == 3)
+{
+    move_towards_point(player.x, player.y, 2.8);
+}
+#section
+if(phase == 4)
+{
+    if(point_distance(x,y,600,256) >=5)
+    {
+        move_towards_point(600,256,5);
+    }
+    else
+    {
+        hspeed = 0;
+        vspeed = 0;
+        x = 600;
+        y = 256;
+        phase = 5;
+        alarm[3] = 20;
+    }
+}
+#section
+if(!(player_is_alive() && player.x > 0))
+{
+    global.leftbutton = left;
+    global.rightbutton = right;
+}
+
+#event other_user15
+if(instance_number(obj_dizzy) > 0)
+{
+    if(!global.achievements[29])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 29;
+        global.achievements[29] = true;
+    }
+}
+
+#event draw
+if(status == 1)
+{
+    draw_set_alpha(1);
+    for(var i = 0; i < 5; i+= 1)
+    {
+        draw_sprite_ext(sprite_index, image_index, x + 10 * (i+1) * cos(degtorad(360 -direction)), y - 10 * (i+1) * sin(degtorad(360 -direction)),1,1,image_angle,c_white, 1 - 0.17 * (i + 1));
+    }
+}
+if(isDrawWave)
+{
+    wave += 1;
+    wcount = ceil(wave / 15);
+    for(var i = 0; i < wcount; i+=1)
+    {
+        draw_set_alpha(1 - i * 0.15);
+        draw_set_color(c_silver);
+        draw_circle(x,y, (wave - 15 * i) * 10, true);
+    }
+    if(wave == 100)
+    {
+        wave = 0;
+        isDrawWave = false;
+    }
+}
+draw_set_alpha(1);
+draw_sprite_ext(sprite_index,image_index,x,y,1,1,image_angle,c_white,image_alpha);
+draw_set_color(c_white);

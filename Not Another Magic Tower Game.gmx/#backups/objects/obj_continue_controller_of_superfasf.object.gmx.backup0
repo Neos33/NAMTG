@@ -1,0 +1,152 @@
+// 2025-06-05 09:46:17
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+qq = 0;
+pp = 0;
+baseline = 0;
+direc = 0;
+
+fina = 0;
+#section
+alarm[0]=100;
+alarm[1]=100;
+
+#event alarm0
+// Target 
+if(qq<5)
+{
+    with(obj_superFasf_combat)
+    {
+        instance_create(player.x,player.y,obj_supfasf_target);
+    }
+    alarm[0]=60;
+    qq+=1;
+}
+else
+{
+    alarm[2]=1;
+}
+
+#event alarm1
+/*
+if(obj_superFasf_combat.y < 544)
+{
+    with(obj_superFasf_combat)
+    {
+        aaa=instance_create(x,y,obj_supfasfbullet);
+        aaa.twist=4; //choose(2,3)
+        aaa.alarm[3] = 100;
+        aaa.alarm[4] = 1;
+        //aaa.speed=irandom(6)+4;
+        //aaa.direction=random_range(0,359);
+        //aaa.sprite_index=spr_supfasfbullet2;
+    }
+}
+alarm[1]=5;
+
+#section
+if instance_exists(obj_superFasf_combat)
+{
+    if(obj_superFasf_combat.y < 304)
+    {
+        with(obj_superFasf_combat)
+        {
+            aaa=instance_create(x,y,obj_supfasfbullet);
+            aaa.twist=choose(2,3)
+            aaa.speed=irandom(6)+4;
+            aaa.direction=random_range(0,359);
+            aaa.sprite_index=spr_supfasfbullet2;
+        }
+    }
+}
+alarm[1]=50;
+
+
+#event alarm2 Going to the player (Start)
+with(obj_superFasf_combat)
+{
+    image_blend=c_red;
+    image_speed=2;
+    sound_fix(snd_riioooooooo);
+    move_towards_point(player.x,player.y,8)
+}
+pp=true;
+//alarm[3]=50;
+
+#event alarm3
+
+if(direc<=3)
+{
+    //alarm[3]=50;
+    sound_fix(snd_riioooooooo);
+    with(obj_superFasf_combat)
+    {
+        direction=point_direction(x,y,player.x,player.y);
+        speed=speed+other.direc;
+    }
+    direc+=1;
+    //global.test += 1;
+}
+else
+{
+    with(obj_superFasf_combat)
+    {
+        friction=0.1;
+    }
+    //print("Se warpeo esta mierda? - position y: ", obj_superFasf_combat.y)
+    pp = false;
+    alarm[4]=150;
+}
+
+#event alarm4 Finale
+sound_fix(snd_ooooorrrrrr1);
+instance_create(0,0,obj_supfasf_final);
+alarm[5]=100;
+alarm[6]=150;
+alarm[7] = 150;
+baseline = 0;
+with(obj_superFasf_combat)
+{
+    animation=0;
+    targetX=700;
+    targetY=304;
+    spd=2;
+}
+
+
+
+#event alarm5
+sound_fix(sndShoot);
+repeat(4)
+{
+    instance_create(obj_superFasf_combat.x,obj_superFasf_combat.y,obj_supfasfbullet5);
+}
+obj_superFasf_combat.ach = true;
+
+#event alarm6 Finale
+if instance_exists(obj_superFasf_combat)
+{
+    fina=instance_create(obj_superFasf_combat.x,obj_superFasf_combat.y,obj_supfasfbullet6);
+    fina.direction=random_range(92,268);
+    fina.speed=random_range(3,6);
+    //fina.alarm[1]=20;
+}
+alarm[6]=50;
+alarm[1] = 0;
+
+#event alarm7
+with(obj_supfasfBlock)
+{
+    if(y <= other.baseline)
+    {
+        alarm[2] = 1;
+    }
+}
+baseline += 32;
+if(baseline < 700)
+{
+    alarm[7] = 16;
+}

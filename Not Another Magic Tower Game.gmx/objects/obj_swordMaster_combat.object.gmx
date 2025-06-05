@@ -323,7 +323,7 @@ else if(status == 3)
 {
     if(!global.achievements[72])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 72;
         global.achievements[72] = 1;
     }

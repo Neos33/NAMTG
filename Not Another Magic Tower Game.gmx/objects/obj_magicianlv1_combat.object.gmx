@@ -53,10 +53,10 @@ status = "init";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>aa = 0;
-cc = 0;
-p1 = 0;
-p2 = 0;
+            <string>//aa = 0;
+//cc = 0;
+//p1 = 0;
+//p2 = 0;
 
 gap = 0;
 
@@ -188,11 +188,11 @@ audio_playsound(sndTeleport);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>p1 = instance_create(48,560,obj_magicianPortal2);
+            <string>var p1 = instance_create(48,560,obj_magicianPortal2);
 p1.image_angle = -45;
 p1.minAngle = 50;
 p1.maxAngle = 85;
-p2 = instance_create(752,560, obj_magicianPortal2);
+var p2 = instance_create(752,560, obj_magicianPortal2);
 p2.image_angle = 45;
 p2.minAngle = 95;
 p2.maxAngle = 140;
@@ -220,7 +220,7 @@ p2.maxAngle = 140;
             <kind>1</kind>
             <string>if(time &lt; 150)
 {
-    cc = instance_create(x + 16, y + 16, obj_magicianBullet);
+    var cc = instance_create(x + 16, y + 16, obj_magicianBullet);
     cc.speed = random_range(5,6);
     cc.direction = random_range(30, 150);
     if(time mod 5 == 0)
@@ -281,10 +281,10 @@ instance_create(400, 100, obj_magicianPortal1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>aa = instance_create(x + 16 + 16 * cos(degtorad(-90 + angle)), y + 16 - 16 * sin(degtorad(-90 + angle)), obj_magicianBullet);
+            <string>var aa = instance_create(x + 16 + 16 * cos(degtorad(-90 + angle)), y + 16 - 16 * sin(degtorad(-90 + angle)), obj_magicianBullet);
 aa.speed = 10;
 aa.direction = -90 + angle;
-bb = instance_create(x + 16 + 16 * cos(degtorad(270 - angle)), y + 16 - 16 * sin(degtorad(270 - angle)), obj_magicianBullet);
+var bb = instance_create(x + 16 + 16 * cos(degtorad(270 - angle)), y + 16 - 16 * sin(degtorad(270 - angle)), obj_magicianBullet);
 bb.speed = 10;
 bb.direction = 270 - angle;
 if(angle &lt; 1440)
@@ -421,7 +421,7 @@ else if(status == "appear")
 {
     if(!global.achievements[41])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 41;
         global.achievements[41] = true;
     }

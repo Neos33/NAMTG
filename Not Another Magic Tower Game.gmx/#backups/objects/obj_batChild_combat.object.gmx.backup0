@@ -1,0 +1,71 @@
+// 2025-06-05 08:59:12
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_batChild_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed=1/8;
+name = "Child Bat"
+friction = 0;
+alarm[5] = 1;
+maxSpd = 7;
+x=600;
+y=300;
+
+
+dir = 0;
+hspd = 0;
+vspd = 0;
+hgap = 0;
+vgap = 0;
+
+#event alarm5
+speed = maxSpd; 
+direction = point_direction(x,y,player.x,player.y);
+
+#event step
+//if !instance_exists(player)
+  //  exit;
+    
+dir = point_direction(x,y,player.x,player.y);
+
+hspd = maxSpd * cos(degtorad(dir));
+vspd = -maxSpd * sin(degtorad(dir));
+
+hgap = hspd - hspeed;
+vgap = vspd - vspeed;
+
+hspeed += sign(hgap) * min(0.25, abs(hgap));
+vspeed += sign(vgap) * min(0.25, abs(vgap));
+
+if(direction < 0)
+{
+    direction += 360;
+}
+if(abs(direction - dir) != 180)
+{
+    if(abs(direction - dir) > 180)
+    {
+        if(direction > dir)
+        {
+            dir += 360;
+        }
+        else
+        {
+            dir -= 360;
+        }
+    }
+    direction += sign(dir - direction) * min(2, abs(dir - direction));
+}
+#section
+if(!player_is_alive())
+{
+    if((global.combatTime >= 30 * room_speed) && !global.achievements[25])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 25;
+        global.achievements[25] = true;
+    }
+}

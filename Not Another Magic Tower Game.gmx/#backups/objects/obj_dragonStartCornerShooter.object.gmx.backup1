@@ -1,4 +1,4 @@
-// 2025-06-04 20:11:23
+// 2025-06-04 20:11:40
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = spr_faroStartBullet;
@@ -19,6 +19,9 @@ scale = 1;
 ind = 0;
 dir1 = 0;
 dir2 = 0;
+start = 0;
+px = 0;
+py = 0;
 
 #event alarm0
 b = instance_create(x + 32 * cos(degtorad(angle)), y - 32 * sin(degtorad(angle)), obj_dragonStartBullet2);

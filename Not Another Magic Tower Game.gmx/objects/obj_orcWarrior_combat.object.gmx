@@ -106,24 +106,24 @@ alarm[3]=100;
             <kind>1</kind>
             <string>repeat(2)
 {
-aa=instance_create(x,y,obj_cherry_black)
-with(aa)
-{
-speed=random_range(6,8);
-direction=random_range(90,180);
-gravity=0.1;
-}
+    var aa=instance_create(x,y,obj_cherry_black)
+    with(aa)
+    {
+        speed=random_range(6,8);
+        direction=random_range(90,180);
+        gravity=0.1;
+    }
 }
 if(i&lt;30)
 {
-i+=1;
-alarm[3]=6;
+    i+=1;
+    alarm[3]=6;
 }
 else
 {
-alarm[3]=0;
-isAch = true;
-alarm[4]=30;
+    alarm[3]=0;
+    isAch = true;
+    alarm[4]=30;
 }
 </string>
           </argument>
@@ -151,7 +151,7 @@ alarm[4]=30;
 {
     if(!global.achievements[26])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 26;
         global.achievements[26] = true;
     }

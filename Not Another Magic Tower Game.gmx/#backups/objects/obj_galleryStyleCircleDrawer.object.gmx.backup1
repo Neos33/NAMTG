@@ -1,0 +1,43 @@
+// 2025-06-05 08:51:55
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+centerX = 0;
+centerY = 0;
+acc = 0;
+dimension = 0;
+minRadius = 0;
+color = 0;
+
+#event destroy
+    var sub =  instance_create(0,0,obj_galleryStyleCircleDrawer);
+    sub.centerX = centerX;
+    sub.centerY = centerY;
+    sub.spd = obj_galleryStyleDrawer.v0;
+    sub.acc = acc;
+    sub.dimension = dimension;
+    sub.radius = obj_galleryStyleDrawer.maxRadius;
+    sub.minRadius = minRadius;
+    sub.color = color;
+
+#event step
+if(radius > minRadius && spd > 0)
+{
+    radius -= spd;
+    spd -= acc;
+    sAngle = obj_galleryStyleDrawer.sAngle;
+}
+else
+{
+    instance_destroy();
+}
+
+#event draw
+draw_set_color(color);
+draw_set_alpha(0.5);
+drawPolygon(centerX, centerY, dimension, radius, sAngle);
+
+
+draw_reset_color();

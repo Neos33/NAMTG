@@ -451,7 +451,7 @@ else
             <kind>1</kind>
             <string>if(hasAchievement &amp;&amp; !global.achievements[68])
 {
-    ch = instance_create(0,608,obj_achievements);
+    var ch = instance_create(0,608,obj_achievements);
     ch.index = 68;
     global.achievements[68] = 1;
 }

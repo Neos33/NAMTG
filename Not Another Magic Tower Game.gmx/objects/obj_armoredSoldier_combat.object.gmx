@@ -456,7 +456,7 @@ ds_list_add(asShadowY, yprevious);
 {
     if(!global.achievements[83])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 83;
         global.achievements[83] = true;
     }

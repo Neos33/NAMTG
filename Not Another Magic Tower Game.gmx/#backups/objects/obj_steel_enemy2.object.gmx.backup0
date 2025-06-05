@@ -1,0 +1,60 @@
+// 2025-06-05 09:09:14
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_stone;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+HP=3;
+damage=false;
+image_xscale=2;
+image_yscale=2;
+image_speed=1/8;
+isStable = true;
+
+#event alarm5
+damage=false;
+
+#event step
+
+if(HP=0)
+{
+    audio_playsound(sndDeath)
+    instance_destroy()
+}
+#section
+if(bbox_left < 0 || bbox_right > 800)
+{
+    hspeed *= -1;
+}
+if(bbox_top < 0 || bbox_bottom > 608)
+{
+    vspeed *= -1;
+}
+
+#event collision:player
+if(!instance_exists(obj_dizzy))
+{
+    instance_create(0,0,obj_dizzy);
+    player.frozen=1;
+    obj_dizzy.alarm[0]=75;
+    obj_steel_combat.dizzyTimes += 1;
+}
+
+#event collision:bullet
+if(damage=false)
+{
+    flashobject(5,3);
+    HP-=1;
+    damage=true;
+    with(other)instance_destroy();
+    alarm[5]=40;
+}
+
+#event draw
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
+draw_set_color(c_white)
+draw_set_font(font12);
+draw_text(x + 32,y-16,HP);

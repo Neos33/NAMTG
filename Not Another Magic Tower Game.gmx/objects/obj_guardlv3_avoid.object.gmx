@@ -66,13 +66,13 @@ hspeed=-2;
             <string>sound_fix(sndDeath)
 repeat(16)
 {
-aa=instance_create(x,y,obj_cherry)
-aa.sprite_index=spr_colorful_cherry;
-aa.image_index=irandom(5);
-aa.speed=4+irandom(3);
-aa.direction=irandom(360);
-aa.image_xscale=0.5;
-aa.image_yscale=0.5;
+    var aa=instance_create(x,y,obj_cherry)
+    aa.sprite_index=spr_colorful_cherry;
+    aa.image_index=irandom(5);
+    aa.speed=4+irandom(3);
+    aa.direction=irandom(360);
+    aa.image_xscale=0.5;
+    aa.image_yscale=0.5;
 }
 instance_destroy();
 </string>
@@ -119,6 +119,27 @@ move_towards_point(player.x,player.y,8)
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

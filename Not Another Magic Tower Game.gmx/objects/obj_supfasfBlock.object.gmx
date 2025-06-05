@@ -74,12 +74,13 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>if(image_alpha&lt;=1)
-{image_alpha+=0.1;
-alarm[1]=2;
+{
+    image_alpha+=0.1;
+    alarm[1]=2;
 }
 else
 {
-casement=0;
+    casement=0;
 }
 </string>
           </argument>
@@ -132,11 +133,11 @@ alarm[1]=1;
             <kind>1</kind>
             <string>if(casement==0)
 {
-instance_create(x,y,obj_fasfblockass);
-solid=0;
-visible=0;
-alarm[0]=100;
-casement=1;
+    instance_create(x,y,obj_fasfblockass);
+    solid=0;
+    visible=0;
+    alarm[0]=100;
+    casement=1;
 }
 </string>
           </argument>
@@ -162,11 +163,11 @@ casement=1;
             <kind>1</kind>
             <string>if(casement==0)
 {
-instance_create(x,y,obj_fasfblockass);
-solid=0;
-visible=0;
-alarm[0]=100;
-casement=1;
+    instance_create(x,y,obj_fasfblockass);
+    solid=0;
+    visible=0;
+    alarm[0]=100;
+    casement=1;
 }
 </string>
           </argument>
@@ -192,35 +193,35 @@ casement=1;
             <kind>1</kind>
             <string>if(casement==0)
 {
-instance_create(x,y,obj_fasfblockass);
-solid=0;
-visible=0;
-alarm[0]=100;
-casement=1;
-if(y &gt; 576 || y &lt; 32)
-{
-    with(other)
+    instance_create(x,y,obj_fasfblockass);
+    solid=0;
+    visible=0;
+    alarm[0]=100;
+    casement=1;
+    if(y &gt; 576 || y &lt; 32)
     {
-        if(twist != 1)
+        with(other)
         {
-            vspeed *= -0.3;
-            hspeed *= 0.3;
-            alarm[6] = 1;
+            if(twist != 1)
+            {
+                vspeed *= -0.3;
+                hspeed *= 0.3;
+                alarm[6] = 1;
+            }
         }
     }
-}
-else if(x &gt; 768 || x &lt; 32)
-{
-    with(other)
+    else if(x &gt; 768 || x &lt; 32)
     {
-        if(twist != 1)
+        with(other)
         {
-            hspeed *= -0.3;
-            vspeed *= 0.3;
-            alarm[6] = 1;
+            if(twist != 1)
+            {
+                hspeed *= -0.3;
+                vspeed *= 0.3;
+                alarm[6] = 1;
+            }
         }
     }
-}
 }
 </string>
           </argument>
@@ -246,11 +247,11 @@ else if(x &gt; 768 || x &lt; 32)
             <kind>1</kind>
             <string>if(casement==0)
 {
-instance_create(x,y,obj_fasfblockass);
-solid=0;
-visible=0;
-alarm[0]=100;
-casement=1;
+    instance_create(x,y,obj_fasfblockass);
+    solid=0;
+    visible=0;
+    alarm[0]=100;
+    casement=1;
 }
 </string>
           </argument>

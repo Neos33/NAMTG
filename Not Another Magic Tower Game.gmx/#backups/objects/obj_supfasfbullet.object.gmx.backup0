@@ -1,0 +1,65 @@
+// 2025-06-05 09:39:16
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_fasfbullet1;
+uses_physics = false;
+
+#event create
+twist = 0;
+#action action_inherited
+#section
+sound_fix(sndsupshoot);
+dir = 5;
+alarm[11] = 1;
+
+#event alarm3
+move_towards_point(player.x,player.y,12);
+
+#event alarm4
+image_angle += 15;
+alarm[4] = 1;
+
+#event alarm6
+if(image_xscale > 0)
+{
+    image_xscale -= 0.05;
+    image_yscale -= 0.05;
+    image_alpha -= 0.05;
+    alarm[6] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event alarm11
+if(dir > 0)
+{
+    dir -= 0.05;
+    alarm[11] = 1;
+}
+
+#event step
+if(twist==1)
+{
+    direction+=random_range(-2,2);
+}
+
+if(twist==2)
+{
+    direction+=dir;
+}
+
+if(twist==3)
+{
+    direction-=dir;
+}
+
+if(twist==4)
+{
+    direction+=0;
+}
+
+
+#event other_outside
+#action action_kill_object

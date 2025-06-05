@@ -1,0 +1,65 @@
+// 2025-06-05 09:33:37
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_mageLaser;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+alarm[3] = 1;
+isStable = true;
+
+follower = 0;
+pAngle = 0;
+followStatus = 0;
+
+#event destroy
+if(follower)
+{
+    with(follower)
+    {
+        instance_destroy();
+    }
+}
+
+#event alarm3
+pAngle = image_angle;
+if(followStatus < 10)
+{
+    follower = instance_create(xprevious, yprevious, obj_mageLaser);
+    follower.image_angle = pAngle;
+    follower.followStatus = followStatus + 1;
+}
+/*else if(followStatus == 1)
+{
+    follower = instance_create(xprevious, yprevious, obj_mageLaser);
+    follower.image_angle = pAngle;
+    follower.followStatus = 2;
+}
+
+#event step
+image_angle = direction;
+if(follower)
+{
+    follower.x = xprevious;
+    follower.y = yprevious;
+    follower.image_angle = pAngle;
+}
+
+#event step_begin
+pAngle = image_angle;
+
+#event collision:obj_goldBounceMirror
+
+audio_playsound(sndMetal1);
+move_bounce_all(false);
+
+
+#event other_outside
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

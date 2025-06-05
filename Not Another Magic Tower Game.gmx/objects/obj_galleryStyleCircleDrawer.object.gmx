@@ -8,6 +8,38 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>centerX = 0;
+centerY = 0;
+acc = 0;
+dimension = 0;
+minRadius = 0;
+color = c_white;
+
+radius = 0;
+spd = 0;
+sAngle = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="1" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,7 +57,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>    sub =  instance_create(0,0,obj_galleryStyleCircleDrawer);
+            <string>    var sub =  instance_create(0,0,obj_galleryStyleCircleDrawer);
     sub.centerX = centerX;
     sub.centerY = centerY;
     sub.spd = obj_galleryStyleDrawer.v0;

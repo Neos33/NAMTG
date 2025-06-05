@@ -1,0 +1,222 @@
+// 2025-06-05 09:25:19
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_diao;
+uses_physics = false;
+
+#event create Init vars
+shoot = 0;
+start = 0;
+count = 0;
+final = 0;
+pp = 0;
+
+#action action_inherited
+#section
+interval = 6;
+alarm[3] = 6;
+image_index = 2;
+image_speed = 0;
+audio_playsound(snd_loveTogether);
+hp = obj_diaoSlime_combat.hp;
+isStable = true;
+
+#event destroy
+if(shoot)
+{
+    if(!global.achievements[38])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 38;
+        global.achievements[38] = true;
+    }
+}
+
+#event alarm3
+start = true;
+count += 1;
+if(count < 16)
+{
+    x = random_range(90, 710);
+}
+else
+{
+    x = 400;
+}
+y = 686;
+alarm[4] = 5;
+
+#event alarm4
+if(image_index > 0)
+{
+    image_index -= 1;
+    alarm[4] = 6;
+}
+else
+{
+    alarm[5] = 3;
+}
+
+#event alarm5
+if(image_index < 4)
+{
+    image_index += 1;
+    alarm[5] = 5;
+}
+else
+{
+    if(count < 16)
+    {
+        alarm[3] = 1;
+    }
+    else
+    {
+        final = true;
+        image_index = 2;
+        alarm[10] = 1;
+    }
+}
+
+#event alarm6
+shoot = false
+if(instance_number(obj_smallGrayCherry) == 0)
+{
+    if instance_exists(obj_diaoSlime_combat)
+    {
+        obj_diaoSlime_combat.x = 704;
+        obj_diaoSlime_combat.y = 544;
+        obj_diaoSlime_combat.status = 0;
+        obj_diaoSlime_combat.alarm[4] = 30;
+    }
+    sound_loop(choose(sndBattle1,sndBattle2));
+    instance_destroy();
+}
+else
+{
+    alarm[6] = 1;
+}
+
+
+
+#event alarm10
+if(image_yscale > 0.3)
+{
+    image_yscale -= 0.8;
+    alarm[10] = 1;
+}
+else
+{
+    alarm[11] = 15;
+}
+
+#event alarm11
+if(image_yscale < 1)
+{
+    image_yscale += 0.08;
+    alarm[11] = 1;
+}
+else
+{
+    shoot = true;
+    alarm[6] = 75;   
+}
+
+
+#event step
+hp = obj_diaoSlime_combat.hp;
+image_alpha = obj_diaoSlime_combat.image_alpha;
+if(!instance_exists(obj_diaoSlime_combat))
+{
+    instance_destroy();
+}
+#section
+if(start && !final)
+{
+    if(y > 530)
+    {
+        y -= 10;
+    }
+    else
+    {
+        y = 530;
+    }
+}
+if(final)
+{
+    y = 608 - 78 * image_yscale;
+}
+#section
+if(shoot)
+{
+    pp = instance_create(x, y - 78, obj_smallGrayCherry);
+    pp.sprite_index = spr_minibossbullet1;
+    pp.speed = random_range(12, 15);
+    pp.direction = random_range(60, 120);
+    pp.gravity = 0.35;
+}
+
+#event collision:bullet
+if(obj_diaoSlime_combat.cooldown)
+{
+    with(other)
+    {
+        hitEffect();
+        instance_destroy();
+    }
+    exit;
+}
+damage = global.attackDamage;
+if(other.energy >= 1.5)
+{
+    damage = round(global.attackDamage * other.energy);
+}
+damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
+damageInfo.damage = damage;
+if(other.energy < 1.5)
+{
+    damageInfo.font = fontDamageInfo1;
+    damageInfo.color = c_white;        
+    damageInfo.level = 1;
+}
+else if(other.energy <= 2)
+{
+    damageInfo.font = fontDamageInfo2;
+    damageInfo.color = c_yellow;  
+    damageInfo.level = 2;      
+}
+else
+{
+    damageInfo.font = fontDamageInfo3;
+    damageInfo.color = c_red;        
+    damageInfo.level = 3;
+}
+
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}
+with(obj_diaoSlime_combat)
+{
+    if(!cooldown)
+    {    
+        hp -= other.damage;
+        if(hp <= 0)
+        {
+            audio_playsound(sndDeath);
+            alarm[2] = 1;
+        }
+        else
+        {
+            audio_playsound(sndBossHit);
+            cooldown = true;
+            alarm[0] = 1;
+            alarm[1] = 50;
+        }
+    }
+    
+    if(hp <= 0)
+    {
+        instance_destroy();
+    }
+}

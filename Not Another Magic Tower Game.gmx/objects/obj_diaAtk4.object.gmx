@@ -383,7 +383,7 @@ else
             <kind>1</kind>
             <string>if(hasAch &amp;&amp; !global.achievements[79])
 {
-    ch = instance_create(0,608,obj_achievements);
+    var ch = instance_create(0,608,obj_achievements);
     ch.index = 79;
     global.achievements[79] = 1;
 }

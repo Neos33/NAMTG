@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>dire = 0;
-ii = 0;
+//ii = 0;
 
 radius = 0;
 dire2 = 0;
@@ -169,7 +169,7 @@ alarm[2] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ii = instance_create(x,y,obj_supfasfbullet4)
+            <string>var ii = instance_create(x,y,obj_supfasfbullet4)
 ii.speed = point_distance(x,y,400,300)/40
 ii.direction = point_direction(x,y,400,300)
 ii.alarm[0] = 40

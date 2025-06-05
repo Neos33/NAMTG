@@ -28,13 +28,15 @@
             <string>final = 0;
 tControl = 0;
 fury = 0;
-a1 = 0;
-b1 = 0;
-c1 = 0;
+
 
 drawLaser = 0;
 drawDirt = 0;
 dHeight = 0;
+
+laserStatus = 0;
+laserDir = 0;
+dirtCount = 0;
 </string>
           </argument>
         </arguments>
@@ -199,7 +201,7 @@ else
 {
     repeat(2)
     {
-        c = instance_create(x, y, obj_vsDarkBullet2);
+        var c = instance_create(x, y, obj_vsDarkBullet2);
         c.direction = random_range(0,360);
         c.speed = random_range(7,9);
     }
@@ -255,21 +257,21 @@ else
 {
     if(laserDir == 1)
     {
-        laser1 = instance_create(x - 12, y + 4, obj_vsDarkLaser);
+        var laser1 = instance_create(x - 12, y + 4, obj_vsDarkLaser);
         laser1.left = true;
         laser1.targetX = 500;
         laser1.endX = 16;
     }
     else if(laserDir == 2)
     {
-        laser2 = instance_create(x + 12, y + 4, obj_vsDarkLaser);
+        var laser2 = instance_create(x + 12, y + 4, obj_vsDarkLaser);
         laser2.left = false;
         laser2.targetX = 300;
         laser2.endX = 784;
     }
     else if(laserDir == 3)
     {
-        laser1 = instance_create(x - 12, y + 4, obj_vsDarkLaser);
+        var laser1 = instance_create(x - 12, y + 4, obj_vsDarkLaser);
         laser1.left = true;
         laser1.targetX = 500;
         laser1.endX = 16;
@@ -355,9 +357,9 @@ else
 else
 {
     image_alpha = 1;
-    smoke1 = instance_create(x - 12, y + 12, obj_vsDarkSmoke);
+    var smoke1 = instance_create(x - 12, y + 12, obj_vsDarkSmoke);
     smoke1.alarm[0] = 30;
-    smoke2 = instance_create(x + 12, y + 12, obj_vsDarkSmoke);
+    var smoke2 = instance_create(x + 12, y + 12, obj_vsDarkSmoke);
     smoke2.alarm[0] = 70;
     alarm[4] = 30;
     time = 300;
@@ -388,13 +390,13 @@ else
 {
     if(tControl mod 2 == 0)
     {
-        a1 = instance_create(x,y,obj_vsFinalBullet);
+        var a1 = instance_create(x,y,obj_vsFinalBullet);
         a1.sprite_index = spr_touhoubullet7;
         a1.speed = random_range(5,7);
         a1.direction = random_range(0,359);    
         if(time &lt;= 150)
         {
-            b1 = instance_create(x,y,obj_vsFinalBullet);
+            var b1 = instance_create(x,y,obj_vsFinalBullet);
             b1.sprite_index = spr_mageDarkBullet;
             b1.speed = random_range(5,7);
             b1.direction = random_range(0,359);
@@ -404,7 +406,7 @@ else
         {
             fury = true;
             obj_vsDarkHole.fury = true;
-            c1 = instance_create(x,y,obj_vsFinalBullet);
+            var c1 = instance_create(x,y,obj_vsFinalBullet);
             c1.sprite_index = spr_touhoubullet8;
             c1.speed = random_range(5,7);
             c1.direction = random_range(0,359);
@@ -476,7 +478,7 @@ else
 {
     if(!global.achievements[46])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 46;
         global.achievements[46] = true;
     }

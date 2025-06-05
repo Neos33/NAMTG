@@ -47,8 +47,8 @@ teleport2Delay = 0;
 teleport3 = 0;
 teleport3Delay = 0;
 
-aaa = 0;
-bbb = 0;
+//aaa = 0;
+//bbb = 0;
 </string>
           </argument>
         </arguments>
@@ -208,9 +208,9 @@ alarm[4]=30;
 move_towards_point(player.x,player.y,15);
 sound_fix(sndZhazha);
 i+=1;
-add1=instance_create(0,576,obj_guardlv2SpecialTrigger)
+var add1=instance_create(0,576,obj_guardlv2SpecialTrigger)
 add1.image_xscale=50;
-add2=instance_create(0,0,obj_guardlv2SpecialTrigger)
+var add2=instance_create(0,0,obj_guardlv2SpecialTrigger)
 add2.image_yscale=20;
 </string>
           </argument>
@@ -301,7 +301,7 @@ alarm[6]=random_range(30,60);
             <kind>1</kind>
             <string>repeat(rank)
 {
-instance_create(x,y,obj_keyBluekiller);
+    instance_create(x,y,obj_keyBluekiller);
 }
 audio_playsound(sndBurst1);
 rank+=5;
@@ -605,11 +605,11 @@ image_angle = 0;
 //visible=0;
 if(i&lt;=3)
 {
-alarm[10]=50;
+    alarm[10]=50;
 }
 else
 {
-alarm[5]=50;
+    alarm[5]=50;
 
 }
 </string>
@@ -638,7 +638,7 @@ alarm[5]=50;
 {
     if(!global.achievements[45])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 45;
         global.achievements[45] = true;
     }
@@ -665,14 +665,14 @@ alarm[5]=50;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>aaa=instance_create(x,y,obj_mirrorguardlv2);
+            <string>var aaa=instance_create(x,y,obj_mirrorguardlv2);
 aaa.targetX=48;
 aaa.targetY=560;
 aaa.spd=8;
 aaa.hspd = 12;
 
 
-bbb=instance_create(x,y,obj_mirrorguardlv2);
+var bbb=instance_create(x,y,obj_mirrorguardlv2);
 
 bbb.targetX=752;
 bbb.targetY=560;

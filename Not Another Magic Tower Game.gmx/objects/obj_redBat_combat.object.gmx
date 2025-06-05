@@ -313,7 +313,7 @@ alarm[4]=23;
             <kind>1</kind>
             <string>if(!instance_exists(obj_effect_poison))
 {
- instance_create(0,0,obj_effect_poison);
+    instance_create(0,0,obj_effect_poison);
 }
 event_inherited();
 </string>
@@ -342,7 +342,7 @@ event_inherited();
 {
     if(!global.achievements[35])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 35;
         global.achievements[35] = true;
     }

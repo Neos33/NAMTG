@@ -46,6 +46,8 @@ cCount3 = 0;
 backupPhase = 0;
 cInterval = 0;
 cTime = 0;
+
+combo1 = array_create(11);
 </string>
           </argument>
         </arguments>
@@ -451,8 +453,8 @@ spd = 10;
             if(cCount2 mod 2 == 0)
             {
                 audio_playsound(sndShoot);
-                c2_1 = instance_create(x - 15, y + 50 - 24 +  abs(5 - ((cCount2 / 2) mod 10)) * 8, obj_yellowKnightBullet2);
-                c2_2 = instance_create(x - 15, y - 46 - 24 - abs(5 - ((cCount2 / 2) mod 10)) * 8, obj_yellowKnightBullet2);
+                var c2_1 = instance_create(x - 15, y + 50 - 24 +  abs(5 - ((cCount2 / 2) mod 10)) * 8, obj_yellowKnightBullet2);
+                var c2_2 = instance_create(x - 15, y - 46 - 24 - abs(5 - ((cCount2 / 2) mod 10)) * 8, obj_yellowKnightBullet2);
                 c2_1.hspeed = -8;
                 c2_2.hspeed = -8;
             }
@@ -473,8 +475,8 @@ spd = 10;
             if(cCount2 mod 2 == 0)
             {
                 audio_playsound(sndShoot);
-                c3_1 = instance_create(x - 15, y + 28, obj_yellowKnightBullet3);
-                c3_2 = instance_create(x - 15, y - 24, obj_yellowKnightBullet3);
+                var c3_1 = instance_create(x - 15, y + 28, obj_yellowKnightBullet3);
+                var c3_2 = instance_create(x - 15, y - 24, obj_yellowKnightBullet3);
                 c3_1.type = 0;
                 c3_2.type = 1;
                 c3_1.vspeed = -5.25;

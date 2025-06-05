@@ -1,4 +1,4 @@
-// 2025-06-04 20:11:40
+// 2025-06-05 08:47:11
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = spr_faroStartBullet;
@@ -24,7 +24,7 @@ px = 0;
 py = 0;
 
 #event alarm0
-b = instance_create(x + 32 * cos(degtorad(angle)), y - 32 * sin(degtorad(angle)), obj_dragonStartBullet2);
+var b = instance_create(x + 32 * cos(degtorad(angle)), y - 32 * sin(degtorad(angle)), obj_dragonStartBullet2);
 b.image_index = ind;
 b.image_angle = angle;
 angle -= 45;
@@ -39,7 +39,7 @@ else
 }
 
 #event alarm1
-b = instance_create(x + 64 * cos(degtorad(angle)), y - 64 * sin(degtorad(angle)), obj_dragonStartBullet2);
+var b = instance_create(x + 64 * cos(degtorad(angle)), y - 64 * sin(degtorad(angle)), obj_dragonStartBullet2);
 b.image_index = ind;
 b.image_angle = angle + 90;
 angle += 45;
@@ -50,11 +50,11 @@ if(angle < 360)
 
 
 #event alarm3
-b1 = instance_create(x,y,obj_dragonStartBullet3);
+var b1 = instance_create(x,y,obj_dragonStartBullet3);
 b1.direction = dir1;
 b1.speed = 20;
 b1.image_index = ind;
-b2 = instance_create(x,y,obj_dragonStartBullet3);
+var b2 = instance_create(x,y,obj_dragonStartBullet3);
 b2.direction = dir2;
 b2.speed = 20;
 b2.image_index = ind;

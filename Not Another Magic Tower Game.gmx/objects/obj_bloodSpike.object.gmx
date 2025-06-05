@@ -206,11 +206,13 @@ if(harid=1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(harid=1){
-if(aa=0){
-alarm[1]=1
-aa=1
-}
+            <string>if(harid=1)
+{
+    if(aa=0)
+    {
+        alarm[1]=1
+        aa=1
+    }
 }
 </string>
           </argument>
@@ -236,7 +238,7 @@ aa=1
             <kind>1</kind>
             <string>event_inherited();
 if(!instance_exists(obj_effect_poison) &amp;&amp; !global.godmod)
- instance_create(0,0,obj_effect_poison);
+    instance_create(0,0,obj_effect_poison);
  
  
 </string>

@@ -1,0 +1,53 @@
+// 2025-06-05 09:01:28
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_slime_red;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/8;
+name = "Red Slime";
+
+alarm[5] = 1;
+
+#event alarm3
+//if instance_exists(player)
+{
+    if(status == 1)
+    {
+        var app = instance_create(x + 16, y + 16, obj_cherry);
+        with(app)
+        {
+            move_towards_point(player.x, player.y, 10);
+            audio_playsound(sndShoot);
+        }
+        alarm[3] = 3;
+    }
+}
+
+#event alarm4
+status = 2;
+x = 704;
+y = 544;
+hspeed = -12;
+alarm[5] = 75;
+
+#event alarm5
+x = 400 - 16;
+y = 304 - 16;
+alarm[3] = 25;
+alarm[4] = 100;
+status = 1;
+speed = 0;
+
+#event other_user15
+if(global.playerHP == global.hp)
+{
+    if(!global.achievements[22])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 22;
+        global.achievements[22] = true;
+    }
+}

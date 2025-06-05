@@ -207,7 +207,7 @@ alarm[5] = 1;
     {
         tempAng += 360;
     }
-    element[i] = instance_create(x + 128 * cos(degtorad(eAngle + 72 * i)), y - 80 * sin(degtorad(eAngle + 72 * i)), obj_mageElement);
+    var element[i] = instance_create(x + 128 * cos(degtorad(eAngle + 72 * i)), y - 80 * sin(degtorad(eAngle + 72 * i)), obj_mageElement);
     element[i].image_xscale = 1.2;
     element[i].image_yscale = 1.2;
     element[i].image_index = i;
@@ -334,7 +334,7 @@ event_inherited();
 {
     if(!global.achievements[42])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 42;
         global.achievements[42] = true;
     }

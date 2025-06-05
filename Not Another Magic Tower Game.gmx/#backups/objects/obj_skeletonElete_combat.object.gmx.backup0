@@ -1,0 +1,153 @@
+// 2025-06-05 09:27:02
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_skeletonEleteWithoutSword;
+uses_physics = false;
+
+#event create
+wind = 0;
+
+transfer = 0;
+appear = 0;
+time = 0;
+#section
+event_inherited();
+name = "Skeleton Elete";
+image_speed = 1/8;
+alarm[3] = 30;
+instance_create(x - 10, y+ 18, obj_skeletonSword);
+
+#event destroy
+event_inherited();
+with(obj_skeletonSword)
+{
+    instance_destroy();
+}
+with(obj_skeletonHead)
+{
+    instance_destroy();
+}
+
+#event alarm3
+obj_skeletonSword.status = 1;
+if(image_xscale > 0)
+{
+    wind = instance_create(x - 32, y - 32, obj_swordwind);
+    wind.hspeed = -5;
+}
+else
+{
+    wind = instance_create(x + 32, y - 32, obj_swordwind);
+    wind.hspeed = 5;
+}
+audio_playsound(sndwind1);
+alarm[4] = 50;
+
+#event alarm4
+transfer = true;
+appear = false;
+time = 0;
+instance_create(x,y, obj_skeletonHead);
+audio_playsound(sndDark1);
+
+#event alarm5
+obj_skeletonHead.gather = true;
+
+#event alarm6
+alarm[3] = 70;
+obj_skeletonSword.status = 4;
+obj_skeletonSword.speed = 3;
+obj_skeletonSword.targetX = x - 16 * sign(image_xscale) + 6;
+obj_skeletonSword.targetY = y + 18;
+
+#event alarm11
+x = obj_skeletonHead.x;
+y = obj_skeletonHead.y;
+transfer = true;
+appear = true;
+time = 0;
+alarm[6] = 110;
+audio_playsound(sndDark1);
+
+#event step
+if(x > 0)
+{
+    image_xscale = sign(x - player.x);
+}
+else
+{
+    image_xscale = sign(obj_skeletonHead.x - player.x);
+}
+
+#event other_user15
+if(object_exists(obj_skeletonHead) && (obj_skeletonHead.hspeed * obj_skeletonHead.vspeed) != 0)
+{
+    if(!global.achievements[40])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 40;
+        global.achievements[40] = true;
+    }
+}
+
+#event draw
+if(!transfer)
+{
+    draw_current();
+}
+else
+{
+    if(!appear)
+    {
+        if(time < 49)
+        {
+            height = 32 * (1 - 0.02 * time);
+            draw_sprite_part_ext(sprite_index,image_index,0,0,32, height,x - 16 * sign(image_xscale),y,image_xscale,image_yscale,c_white,1);
+            if(time mod 5 == 0)
+            {
+                if(height > 24)
+                {
+                    height = 24;
+                }
+                p1 = instance_create(x - 4, y + height, obj_eleteBone);
+                p1.image_xscale = 0.8;
+                p1.image_yscale = 0.8;
+                //p2 = instance_create(x, y + height, obj_eleteBone);
+                //p2.image_xscale = 0.8;
+                //p2.image_yscale = 0.8;
+                p3 = instance_create(x + 4, y + height, obj_eleteBone);
+                p3.image_xscale = 0.8;
+                p3.image_yscale = 0.8;
+            }
+            time += 1;
+            if(time == 49)
+            {
+                transfer = false;
+                alarm[5] = 300;
+                x = -64; 
+                transfer = false;
+                obj_skeletonHead.speed = random_range(5,7);
+                obj_skeletonHead.direction = random_range(20, 160);
+                obj_skeletonSword.status = 3;
+                obj_skeletonSword.shoot = false;
+            }
+        }
+    }
+    else
+    {
+        if(time < 100)
+        {
+            height = 32 * 0.01 * time;
+            draw_sprite_part_ext(sprite_index,image_index,0,0,32, height,x - 16 * sign(image_xscale),y,image_xscale,image_yscale,c_white,1);
+            time += 1;
+            if(time == 100)
+            {
+                transfer = false;
+                with(obj_skeletonHead)
+                {
+                    instance_destroy();
+                }
+            }
+        }
+    }
+}

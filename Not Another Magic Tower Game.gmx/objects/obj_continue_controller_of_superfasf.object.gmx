@@ -77,10 +77,10 @@ alarm[1]=100;
             <kind>1</kind>
             <string>with(obj_supfasfBlock)
 {
- if(y &lt;= other.baseline)
- {
-  alarm[2] = 1;
- }
+    if(y &lt;= other.baseline)
+    {
+        alarm[2] = 1;
+    }
 }
 baseline += 32;
 if(baseline &lt; 700)
@@ -144,7 +144,7 @@ alarm[1] = 0;
             <string>sound_fix(sndShoot);
 repeat(4)
 {
- instance_create(obj_superFasf_combat.x,obj_superFasf_combat.y,obj_supfasfbullet5);
+    instance_create(obj_superFasf_combat.x,obj_superFasf_combat.y,obj_supfasfbullet5);
 }
 obj_superFasf_combat.ach = true;
 </string>
@@ -226,7 +226,7 @@ else
     {
         friction=0.1;
     }
-    print("Se warpeo esta mierda? - position y: ", obj_superFasf_combat.y)
+    //print("Se warpeo esta mierda? - position y: ", obj_superFasf_combat.y)
     pp = false;
     alarm[4]=150;
 }

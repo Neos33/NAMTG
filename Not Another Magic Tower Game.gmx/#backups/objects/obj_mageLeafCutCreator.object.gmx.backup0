@@ -1,0 +1,23 @@
+// 2025-06-05 09:33:46
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+alarm[0] = 10;
+
+type = 0;
+
+#event alarm0
+var leaf = instance_create(x,y,obj_mageLeafCut);
+leaf.speed = 10;
+leaf.direction = 270;
+leaf.type = type;
+audio_playsound(sndSwing1);
+alarm[0] = 10;
+
+#event step
+if(x < - 400 || x > 1200)
+{
+    instance_destroy();
+}

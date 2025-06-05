@@ -1,0 +1,24 @@
+// 2025-06-05 09:10:17
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_fasfCannon;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+speed=random_range(5,7);
+direction=random_range(1,359);
+rnd = 20+random_range(20,70);
+blend = 0;
+bSpd = 255/rnd;
+alarm[1]=rnd;
+
+image_blend = c_black;
+
+#event alarm1
+instance_change(fasf_boom,1);
+
+#event step
+blend += bSpd;
+image_blend = make_color_rgb(blend,0,0);

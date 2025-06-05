@@ -1,0 +1,92 @@
+// 2025-06-05 09:00:25
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_slime_black;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed=1/8;
+name="Black Slime";
+alarm[5]=10;
+x=400-16;
+y=304-16;
+#section
+i = 0;
+
+#event alarm3
+x=200;
+y=460;
+app=instance_create(x,y,obj_cherry_black);
+with(app)
+{
+    direction=random_range(1,355);
+    speed=random_range(3,5);
+    audio_playsound(sndShoot);
+}
+if i<10
+{
+    i+=1;
+    alarm[3]=4;
+}
+else
+{
+    alarm[3]=0;
+    alarm[4]=5;
+    i=0;
+}
+
+#event alarm4
+x=600;
+y=460;
+app=instance_create(x,y,obj_cherry_black);
+with(app)
+{
+    direction=random_range(1,355);
+    speed=random_range(3,5);
+    audio_playsound(sndShoot);
+}
+if i<10
+{
+    i+=1;
+    alarm[4]=4;
+}
+else
+{
+    alarm[4]=0;
+    alarm[5]=5;
+    i=0;
+}
+
+#event alarm5
+x=400 - 16;
+y=304 - 16;
+app=instance_create(x,y,obj_cherry_black);
+with(app)
+{
+    direction=random_range(1,355);
+    speed=random_range(3,5);
+    audio_playsound(sndShoot);
+}
+if i<10
+{
+    i+=1;
+    alarm[5]=4;
+}
+else
+{
+    alarm[5]=0;
+    alarm[3]=5;
+    i=0;
+}
+
+#event other_user15
+if(global.playerHP == global.hp)
+{
+    if(!global.achievements[23])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 23;
+        global.achievements[23] = true;
+    }
+}

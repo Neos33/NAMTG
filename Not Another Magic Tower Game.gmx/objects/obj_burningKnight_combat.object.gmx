@@ -384,7 +384,7 @@ vspeed = obj_bkSpdController.blockSpd;
 {
     if(!global.achievements[75])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 75;
         global.achievements[75] = true;
     }

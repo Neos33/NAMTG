@@ -33,7 +33,7 @@ minAngle = 0;
 maxAngle = 0;
 
 count = 0;
-aa = 0;
+//aa = 0;
 </string>
           </argument>
         </arguments>
@@ -90,7 +90,7 @@ else
             <kind>1</kind>
             <string>if(count &lt; 50)
 {
-    aa = instance_create(x,y, obj_magicianBullet);
+    var aa = instance_create(x,y, obj_magicianBullet);
     aa.direction = random_range(minAngle,maxAngle);
     if(abs(aa.direction - 90) &lt; 20)
     {

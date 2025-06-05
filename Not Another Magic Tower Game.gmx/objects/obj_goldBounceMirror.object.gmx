@@ -110,7 +110,7 @@ if(image_alpha &lt; 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir = point_direction(x,y,player.x,player.y);
+            <string>var dir = point_direction(x,y,player.x,player.y);
 player.speed = 10;
 player.direction = dir;
 player.djump = true;

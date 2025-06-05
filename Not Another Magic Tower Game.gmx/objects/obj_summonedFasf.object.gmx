@@ -188,10 +188,10 @@ else
             <kind>1</kind>
             <string>image_speed=0;
 image_index=0;
-aa=instance_create(10,player.y,fasf_photo);
+var aa=instance_create(10,player.y,fasf_photo);
 aa.hspeed=6;
 aa.ind = 0;
-ab=instance_create(790,player.y,fasf_photo);
+var ab=instance_create(790,player.y,fasf_photo);
 ab.hspeed=-6;
 ab.ind = 1;
 sound_fix(sndfasfhappen);

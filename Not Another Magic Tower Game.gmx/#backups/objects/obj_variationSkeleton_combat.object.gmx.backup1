@@ -1,0 +1,278 @@
+// 2025-06-05 09:48:29
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_variationSkeletonCombat;
+uses_physics = false;
+
+#event create
+final = 0;
+tControl = 0;
+fury = 0;
+a1 = 0;
+b1 = 0;
+c1 = 0;
+
+drawLaser = 0;
+drawDirt = 0;
+dHeight = 0;
+
+laserStatus = 0;
+laserDir = 0;
+dirtCount = 0;
+#section
+event_inherited();
+name = "Variation Skeleton";
+image_speed = 1/8;
+x = 400;
+y = 304;
+image_alpha = 0;
+sound_fix(sndDevilLaugh1);
+alarm[3] = 1;
+
+#event alarm3
+if(image_alpha < 1)
+{
+    image_alpha += 0.015;
+    alarm[3] = 1;
+}
+else
+{
+    image_alpha = 1;
+    var smoke1 = instance_create(x - 12, y + 12, obj_vsDarkSmoke);
+    smoke1.alarm[0] = 30;
+    var smoke2 = instance_create(x + 12, y + 12, obj_vsDarkSmoke);
+    smoke2.alarm[0] = 70;
+    alarm[4] = 30;
+    time = 300;
+}
+
+#event alarm4
+if(time > 0)
+{
+    with(obj_vsDarkSmoke)
+    {
+        b = instance_create(x,y, obj_vsDarkBullet1);
+        b.speed = random_range(5,7);
+        b.direction = random_range(0,360);
+        b.image_angle = b.direction - 90;
+    }
+    time -= 3;
+    audio_playsound(sndShoot);
+    alarm[4] = 3;
+}
+else
+{
+    with(obj_vsDarkSmoke)
+    {
+        alarm[1] = 1;
+    }
+    time = 10;
+    laserStatus = 1;
+    laserDir = 1;
+    alarm[5] = 50;
+}
+
+#event alarm5
+if(time > 0)
+{
+    if(laserStatus == 1)
+    {
+        drawLaser = 1;
+    }
+    else if(laserStatus == 2)
+    {
+        drawLaser = 2;
+    }
+    else if(laserStatus == 3)
+    {
+        drawLaser = 3;
+    }
+    time -= 1;
+    alarm[5] = 1;
+}
+else
+{
+    if(laserDir == 1)
+    {
+        var laser1 = instance_create(x - 12, y + 4, obj_vsDarkLaser);
+        laser1.left = true;
+        laser1.targetX = 500;
+        laser1.endX = 16;
+    }
+    else if(laserDir == 2)
+    {
+        var laser2 = instance_create(x + 12, y + 4, obj_vsDarkLaser);
+        laser2.left = false;
+        laser2.targetX = 300;
+        laser2.endX = 784;
+    }
+    else if(laserDir == 3)
+    {
+        var laser1 = instance_create(x - 12, y + 4, obj_vsDarkLaser);
+        laser1.left = true;
+        laser1.targetX = 500;
+        laser1.endX = 16;
+        laser2 = instance_create(x + 12, y + 4, obj_vsDarkLaser);
+        laser2.left = false;
+        laser2.targetX = 300;
+        laser2.endX = 784;
+    }
+}
+
+#event alarm6
+if(time > 0)
+{
+    repeat(2)
+    {
+        var c = instance_create(x, y, obj_vsDarkBullet2);
+        c.direction = random_range(0,360);
+        c.speed = random_range(7,9);
+    }
+    //c.dir = c.direction;
+    audio_playsound(sndShoot);
+    time -= 2;
+    alarm[6] = 2;
+}
+else
+{
+    alarm[7] = 50;
+}
+
+#event alarm7
+if(image_alpha > 0)
+{
+    if(image_alpha == 1)
+    {
+        sound_fix(sndDevilLaugh1);
+    }
+    image_alpha -= 0.02;
+    alarm[7] = 1;
+}
+else
+{
+    x = 400;
+    y = 632;
+    image_alpha = 1;
+    image_blend = c_purple;
+    drawDirt = true;
+    dirtCount = 5;
+    alarm[10] = 30;
+}
+
+#event alarm10
+instance_create(random_range(32, 768), 576, obj_vsdarkEffect);
+
+#event alarm11
+if(image_alpha < 1)
+{
+    image_alpha += 0.02;
+}
+else
+{
+    image_alpha = 1;
+}
+if(point_distance(400, 488,x,y) > 5)
+{
+    move_towards_point(400, 488, 5);
+    alarm[11] = 1;
+}
+else
+{
+    hspeed = 0;
+    vspeed = 0;
+    x = 400;
+    y = 488;
+    instance_create(x,y,obj_vsDarkHole);
+    instance_create(x,y,obj_vsDarkViewShaker);
+    time = 300;
+    final = true;
+}
+
+#event step
+if(final)
+{
+    if(tControl mod 2 == 0)
+    {
+        var a1 = instance_create(x,y,obj_vsFinalBullet);
+        a1.sprite_index = spr_touhoubullet7;
+        a1.speed = random_range(5,7);
+        a1.direction = random_range(0,359);    
+        if(time <= 150)
+        {
+            var b1 = instance_create(x,y,obj_vsFinalBullet);
+            b1.sprite_index = spr_mageDarkBullet;
+            b1.speed = random_range(5,7);
+            b1.direction = random_range(0,359);
+            b1.image_angle = b1.direction - 90;
+        }
+        if(time <= 0)
+        {
+            fury = true;
+            obj_vsDarkHole.fury = true;
+            var c1 = instance_create(x,y,obj_vsFinalBullet);
+            c1.sprite_index = spr_touhoubullet8;
+            c1.speed = random_range(5,7);
+            c1.direction = random_range(0,359);
+            c1.image_angle = random_range(0,359);
+            c1.image_xscale = 0.4;
+            c1.image_yscale = 0.4;
+        }
+        audio_playsound(sndShoot);
+        time -= 1;
+    }
+    tControl += 1;
+}
+
+#event collision:player
+if(drawDirt)
+{
+    if(dHeight >= 4)
+    {
+        event_inherited();
+    }
+}
+else
+{
+    event_inherited();
+}
+
+#event other_user15
+if(fury)
+{
+    if(!global.achievements[46])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 46;
+        global.achievements[46] = true;
+    }
+}
+
+#event draw
+draw_set_color(c_white);
+if(drawLaser == 1)
+{
+    effect_create_above(ef_spark, x - 12, y + 4, 0, c_yellow);
+
+}
+else if(drawLaser == 2)
+{
+    effect_create_above(ef_spark, x + 12, y + 4, 0, c_yellow);
+}
+else if(drawLaser == 3)
+{
+    effect_create_above(ef_spark, x - 12, y + 4, 0, c_yellow);
+    effect_create_above(ef_spark, x + 12, y + 4, 0, c_yellow);
+
+}
+if(drawDirt)
+{
+    dHeight = 572 - (y - 16);
+    if(dHeight > 0)
+    {
+        draw_sprite_part_ext(sprite_index,image_index,0,0,32,dHeight,x - 16,y - 16, 1,1,image_blend,image_alpha);
+    }
+}
+else
+{
+    draw_current();
+}

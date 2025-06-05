@@ -111,7 +111,7 @@ alarm[5] = 75;
 {
     if(status == 1)
     {
-        app = instance_create(x + 16, y + 16, obj_cherry);
+        var app = instance_create(x + 16, y + 16, obj_cherry);
         with(app)
         {
             move_towards_point(player.x, player.y, 10);
@@ -146,7 +146,7 @@ alarm[5] = 75;
 {
     if(!global.achievements[22])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 22;
         global.achievements[22] = true;
     }

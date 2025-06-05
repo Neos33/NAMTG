@@ -1,0 +1,35 @@
+// 2025-06-05 09:05:54
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bone;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+rotateSpd = random_range(8,20);
+image_angle = random_range(0,355);
+gravity = 0.1;
+
+crotch = 0;
+
+#event step
+image_angle += rotateSpd;
+
+#event collision:player
+event_inherited();
+if(crotch && !player_is_alive())
+{
+    if(!global.achievements[33])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 33;
+        global.achievements[33] = true;
+    }
+}
+
+#event other_outside
+if(y > 608)
+{
+    instance_destroy();
+}

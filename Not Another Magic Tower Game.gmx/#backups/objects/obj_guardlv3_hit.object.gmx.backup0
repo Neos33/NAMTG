@@ -1,0 +1,46 @@
+// 2025-06-05 09:53:58
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_redKey;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+hspeed=-2;
+
+sss = 0;
+
+#event step
+if instance_exists(obj_guardlv3_combat)
+{
+    if(sss==1)
+    {
+        direction=point_direction(x,y,obj_guardlv3_combat.x+16,obj_guardlv3_combat.y+16);
+    }
+}
+
+
+#event collision:bullet
+sound_fix(sndAchievement)
+with(other)instance_destroy();
+move_towards_point(obj_guardlv3_combat.x,obj_guardlv3_combat.y,5);
+sss=1;
+
+#event collision:obj_guardlv3_hit
+sound_fix(sndDeath)
+repeat(24)
+{
+    var aa=instance_create(x,y,obj_cherry)
+    aa.sprite_index=spr_colorful_cherry;
+    aa.image_index=irandom(5);
+    aa.speed=4+irandom(3);
+    aa.direction=irandom(360);
+    aa.image_xscale=0.5;
+    aa.image_yscale=0.5;
+}
+obj_guardlv3_combat.alarm[5] = 5;
+instance_destroy();
+
+#event other_outside
+#action action_kill_object

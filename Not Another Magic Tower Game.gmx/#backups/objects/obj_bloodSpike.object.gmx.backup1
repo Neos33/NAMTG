@@ -1,0 +1,71 @@
+// 2025-06-05 09:11:58
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bloodSpike;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed=0;
+image_index=1;
+alarm[0]=30+irandom(90);
+vspeed=-2.5-random(3.5);
+sound_fix(sndSpikeTrap);
+
+
+
+harid = 0;
+aaa = 0;
+aa = 0;
+
+#event alarm0
+alarm[0]=1
+
+if(harid=0)
+{
+    speed=0
+    direction+=30
+    aaa+=1
+}
+
+if(aaa=35)
+{
+    harid=1
+}
+
+if(harid=1)
+{
+    alarm[0]=0
+    move_towards_point(player.x,player.y,10);
+}
+
+#event alarm1
+speed=0
+sound_fix(snd_saku)
+
+#event step
+image_angle=direction
+
+#event step_begin
+image_angle=direction
+
+#event step_end
+image_angle=direction
+
+#event collision:player
+event_inherited();
+if(!instance_exists(obj_effect_poison) && !global.godmod)
+ instance_create(0,0,obj_effect_poison);
+ 
+ 
+
+#event collision:obj_dStop
+if(harid=1)
+{
+    if(aa=0)
+    {
+        alarm[1]=1
+        aa=1
+    }
+}

@@ -1,0 +1,53 @@
+// 2025-06-05 08:52:52
+#event properties (no comments/etc. here are saved)
+parent_index = obj_galleryBrItem;
+sprite_index = spr_galleryBrCancel;
+uses_physics = false;
+
+#event create
+cardNum = 0;
+start = 0;
+
+#event step
+cardNum = instance_number(obj_galleryBrCRCard);
+if(cardNum == 0)
+{
+    image_alpha = 0;
+    start = false;
+}
+else
+{
+    image_alpha = 1;
+    start = true;
+}
+
+
+if(keyboard_check_pressed(global.shotbutton))
+{
+    event_user(0);
+}
+
+if(place_meeting(x,y,obj_galleryBrMouseControl1))
+{
+    if(mouse_check_button_pressed(mb_left))
+    {
+        event_user(0);
+    }
+}
+
+#event other_user0
+with(obj_galleryBrController)
+{
+    draw = false;
+    drawTxt = false;
+    txtAlpha = 0;
+}
+player.frozen = false;
+with(obj_galleryBrItem)
+{
+    instance_destroy();
+}
+with(obj_gelleryBrPortal)
+{
+    show = false;
+}

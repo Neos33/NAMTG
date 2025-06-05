@@ -1,0 +1,142 @@
+// 2025-06-05 09:53:35
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_guardlv3;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Senior Guard";
+image_speed = 1/8;
+x=750
+y=300
+alarm[3]=424;
+bubble = instance_create(x+16,y+16,obj_guardlv3_bubble);
+j=1;
+redColCount = 0;
+
+i = 0;
+a = 0;
+aa = 0;
+ab = 0;
+
+
+#event destroy
+with(bubble)
+{
+    instance_destroy();
+}
+event_inherited();
+
+#event alarm3
+i=irandom(7);
+j=-j
+y=64+i*64;
+alarm[3]=24;
+alarm[4]=1;
+a=irandom(6);
+if(j==-1)
+{
+    instance_create(800,576,obj_guardlv3_block)
+}
+else
+{
+    instance_create(800,576,obj_guardlv3_spike)
+}
+
+#event alarm4
+if(a==0 or a==1 or a==2)
+{
+    var aa=instance_create(x,y,obj_guardlv3_block)
+    var ab=instance_create(x-32,y,obj_guardlv3_block)
+    aa.sss=1;
+    ab.sss=1;
+}
+
+if(a==3)
+{
+    instance_create(x,y,obj_guardlv3_spike);
+}
+
+if(a==4 or a==5)
+{
+    instance_create(x,y,obj_guardlv3_avoid)
+}
+
+if(a==6)
+{
+    instance_create(x-32,y,obj_guardlv3_hit)
+}
+/*
+switch(a)
+{
+case 0 or 1 or 2:
+{
+instance_create(x,y,obj_guardlv3_block)
+
+}
+break;
+case 3:
+instance_create(x,y,obj_guardlv3_spike)
+break;
+case 4 or 5:
+instance_create(x,y,obj_guardlv3_avoid)
+break;
+case 6:
+instance_create(x,y,obj_guardlv3_hit)
+break;
+}
+
+#event alarm5
+redColCount += 1;
+
+#event collision:obj_guardlv3_hit
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}
+if(!cooldown)
+{    
+    hp -= global.attackDamage;
+    if(hp <= 0)
+    {
+        audio_playsound(sndDeath);
+        if(!global.inGallery)
+        {
+            global.TotalKills += 1;
+        }
+        alarm[2] = 1;
+    }
+    else
+    {
+        audio_playsound(sndBossHit);
+        cooldown = true;
+        alarm[0] = 1;
+        alarm[1] = 50;
+    }
+}
+
+sound_fix(sndDeath)
+repeat(12)
+{
+    var aa=instance_create(x,y,obj_cherry)
+    aa.sprite_index=spr_colorful_cherry;
+    aa.image_index=irandom(5);
+    aa.speed=4+irandom(3);
+    aa.direction=irandom(360);
+    aa.image_xscale=0.5;
+    aa.image_yscale=0.5;
+}
+//instance_destroy();
+
+#event other_user15
+if(redColCount >= 3)
+{
+    if(!global.achievements[48])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 48;
+        global.achievements[48] = true;
+    }
+}

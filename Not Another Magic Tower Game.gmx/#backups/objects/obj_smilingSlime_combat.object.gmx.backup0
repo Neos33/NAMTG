@@ -1,0 +1,253 @@
+// 2025-06-05 09:14:50
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_smileSlime;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Smiling Slime";
+x = 608;
+alarm[3] = 10;
+p1Count = 0;
+p2Count = 0;
+breakTotal = 15;
+countdown = 10;
+image_speed = 1 /8;
+path_scale = 1;
+//explodePolygon(400,304, 8,250,random_range(1,360),8,50,obj_explodeBullet, spr_touhouBullet4, irandom_range(0,7), 0, true);
+//explodePolygon(400,304, 6,250,random_range(1,360),8,50,obj_explodeBullet, spr_touhouBullet4, irandom_range(0,7), 0, true);
+//explodePolygon(400,304, 4,250,random_range(1,360),8,50,obj_explodeBullet, spr_touhouBullet4, irandom_range(0,7), 0, true);
+
+
+status = 0;
+path1 = 0;
+path2 = 0;
+
+aa = 0;
+roundTotal = 0;
+randomNum = 0;
+convex = 0;
+ammount = 0;
+angle = 0;
+
+#event alarm3
+if(p1Count == 0)
+{
+    audio_playsound(sndEvilSmile);
+}
+status = 11;
+if(!path1)
+{
+    path1 = pathHappy;
+}
+
+path_start(path1, 15,0,0);
+
+#event alarm4
+/*path = pathHappy2;
+path_scale(path, 0.3, 0.3);
+path_start(path, 10,0,0);*/
+repeat(4)
+{
+    aa = instance_create(x,y, obj_smilingSlime_child);
+    aa.speed = random_range(7,12);
+    aa.direction = random_range(100,130);
+}
+if(p2Count == 0)
+{
+    audio_playsound(sndEvilSmile);
+}
+p2Count += 1;
+if(p2Count < 3)
+{
+    alarm[4] = 30;
+}
+else
+{
+    alarm[5] = 30;
+}
+
+#event alarm5
+instance_create(x+16,y+16,obj_appearEffect);
+x = -32;
+y = -32;
+alarm[6] = 25;
+
+
+#event alarm6
+instance_create(400,304, obj_appearEffect);
+x = 400 - 16;
+y = 304 - 16;
+alarm[7] = 70;
+
+#event alarm7
+status = 4;
+roundTotal = breakTotal;
+alarm[10] = 1;
+if(breakTotal == 1)
+{
+    if(countdown > 0)
+    {
+        countdown -= 1;
+    }
+    else
+    {
+        breakTotal -= 1;
+    }
+}
+else
+{
+    breakTotal -= 1;
+}
+
+#event alarm10
+randomNum = choose(5,6,7,8,9);
+if(roundTotal > 0)
+{    
+    roundTotal -= 1;
+    if(countdown == 10)
+    {
+        alarm[10] = 3;
+    }
+    else
+    {
+        alarm[10] = 2;
+    }
+}
+else
+{
+    alarm[11] = 1;
+}
+
+#event alarm11
+convex = choose(0,1);
+if(convex)
+{
+    if(randomNum < 5)
+    {
+        ammount = 5;
+    }
+    else
+    {
+        ammount = 4;
+    }
+}
+else
+{
+    ammount = 7;
+}
+sound_fix(snd_touhou_attack4);
+if(randomNum > 4)
+{
+    if(convex > 0)
+    {
+        explodePolygon(400,304, randomNum,250,random_range(1,360),ammount,50,obj_explodeBullet, spr_touhouBullet4, 0.2, true);
+    }
+    else
+    {
+        explodePolygon2(400,304, randomNum,250,random_range(1,360),ammount,50,obj_explodeBullet, spr_touhouBullet4, 0.2);
+    }
+}
+else
+{
+    explodePolygon(400,304, randomNum,250,random_range(1,360),ammount,50,obj_explodeBullet, spr_touhouBullet4, 0.2, true);
+}
+if(breakTotal > 0)
+{
+    alarm[7] = 10;
+}
+else
+{
+    x = -32;
+    y = -32;
+    status = 5;
+}
+
+#event step
+if(status == 5)
+{
+    if(instance_number(obj_explodeBullet) == 0)
+    {
+        instance_destroy();
+        audio_playsound(sndDeath);
+        obj_combatController.alarm[0] = 50;
+    }
+}
+#section
+if(status == 4)
+{
+    angle += 20 - breakTotal;
+    x = 400 + 30 * cos(degtorad(angle)) - 16;
+    y = 304 - 30 * sin(degtorad(angle)) - 16;
+}
+
+#event other_end_of_path
+if(status == 11)
+{
+    if(!path2)
+    {
+        path2 = pathHappy2;
+    }
+    p1Count += 1;
+    status = 12;
+    path_start(path2, 15,0,0);
+}
+else if(status == 12)
+{
+    if(p1Count < 3)
+    {
+        alarm[3] = 1;
+    }
+    else
+    {
+        status = 21;
+        alarm[4] = 20;
+    }
+}
+/*else if(status == 21)
+{
+    path = pathHappy2;
+    path_scale(path, 0.3, 0.3);
+    p2Count += 1;
+    status = 22;
+    path_scale = 0.3;
+    path_start(pathHappy2, 10,0,0);
+}
+else if(status == 22)
+{
+    path = pathHappy2;
+    path_scale(path, 0.3, 0.3);
+    if(p2Count < 3)
+    {
+        status = 21;
+        alarm[4] = 1;
+    }
+    else
+    {
+        status = 3;
+        alarm[5] = 50;
+    }
+}
+
+#event other_user15
+if(global.playerHP == global.hp)
+{
+    if(!global.achievements[37])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 37;
+        global.achievements[37] = true;
+    }
+}
+
+#event draw
+draw_current();
+/*if(randomNum > 0)
+{
+    draw_set_font(font12);
+    draw_set_color(c_silver);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_text(x+16,y-8,string(randomNum));
+}

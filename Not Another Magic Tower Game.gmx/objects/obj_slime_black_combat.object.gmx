@@ -76,21 +76,23 @@ y=304-16;
             <kind>1</kind>
             <string>x=400 - 16;
 y=304 - 16;
-app=instance_create(x,y,obj_cherry_black);
+var app=instance_create(x,y,obj_cherry_black);
 with(app)
-{direction=random_range(1,355);
-speed=random_range(3,5);
-audio_playsound(sndShoot);
+{
+    direction=random_range(1,355);
+    speed=random_range(3,5);
+    audio_playsound(sndShoot);
 }
 if i&lt;10
-{i+=1;
-alarm[5]=4;
+{
+    i+=1;
+    alarm[5]=4;
 }
 else
 {
-alarm[5]=0;
-alarm[3]=5;
-i=0;
+    alarm[5]=0;
+    alarm[3]=5;
+    i=0;
 }
 </string>
           </argument>
@@ -116,21 +118,23 @@ i=0;
             <kind>1</kind>
             <string>x=600;
 y=460;
-app=instance_create(x,y,obj_cherry_black);
+var app=instance_create(x,y,obj_cherry_black);
 with(app)
-{direction=random_range(1,355);
-speed=random_range(3,5);
-audio_playsound(sndShoot);
+{
+    direction=random_range(1,355);
+    speed=random_range(3,5);
+    audio_playsound(sndShoot);
 }
 if i&lt;10
-{i+=1;
-alarm[4]=4;
+{
+    i+=1;
+    alarm[4]=4;
 }
 else
 {
-alarm[4]=0;
-alarm[5]=5;
-i=0;
+    alarm[4]=0;
+    alarm[5]=5;
+    i=0;
 }
 </string>
           </argument>
@@ -156,21 +160,23 @@ i=0;
             <kind>1</kind>
             <string>x=200;
 y=460;
-app=instance_create(x,y,obj_cherry_black);
+var app=instance_create(x,y,obj_cherry_black);
 with(app)
-{direction=random_range(1,355);
-speed=random_range(3,5);
-audio_playsound(sndShoot);
+{
+    direction=random_range(1,355);
+    speed=random_range(3,5);
+    audio_playsound(sndShoot);
 }
 if i&lt;10
-{i+=1;
-alarm[3]=4;
+{
+    i+=1;
+    alarm[3]=4;
 }
 else
 {
-alarm[3]=0;
-alarm[4]=5;
-i=0;
+    alarm[3]=0;
+    alarm[4]=5;
+    i=0;
 }
 </string>
           </argument>
@@ -198,7 +204,7 @@ i=0;
 {
     if(!global.achievements[23])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 23;
         global.achievements[23] = true;
     }

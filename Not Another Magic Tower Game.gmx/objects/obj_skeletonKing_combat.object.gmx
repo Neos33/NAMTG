@@ -93,13 +93,13 @@ onPlatform = 0;
 
     if(player.x &lt; 400)
     {
-        p = instance_create(920, 480, obj_hugeBone);
+        var p = instance_create(920, 480, obj_hugeBone);
         p.hspeed = -1;
         p.dx = - 120;
     }
     else
     {
-        p = instance_create(-120, 480, obj_hugeBone);
+        var p = instance_create(-120, 480, obj_hugeBone);
         p.hspeed = 1;
         p.dx = 920;
     }
@@ -257,7 +257,8 @@ sound_stop(sndQuake);
             <kind>1</kind>
             <string>view_xview = random_range(-shakeSize, shakeSize);
 view_yview = random_range(-shakeSize, shakeSize);
-if(isShake) {
+if(isShake) 
+{
     alarm[3] = 1;
 }
 else
@@ -292,7 +293,7 @@ else
     if(boneNum mod 3 == 0)
     {
         audio_playsound(snd_wallum);
-        bone = instance_create(x, y - 50, obj_skeletonBone);
+        var bone = instance_create(x, y - 50, obj_skeletonBone);
         bone.hspeed = -sign(image_xscale) * random_range(1,5);
         bone.vspeed = random_range(-8, 2);
     }
@@ -370,7 +371,7 @@ if(place_free(x,y+vspeed) == false){
         alarm[6] = 50;
         repeat(3)
         {
-            tt = instance_create(x + random_range(-32, 32), y + random_range(32, 96), obj_skeletonBone);
+            var tt = instance_create(x + random_range(-32, 32), y + random_range(32, 96), obj_skeletonBone);
             tt.crotch = true;
         }
     }

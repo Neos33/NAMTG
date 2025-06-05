@@ -116,7 +116,8 @@ alarm[4] = 75;
           <argument>
             <kind>1</kind>
             <string>
-if(HP=0){
+if(HP=0)
+{
     audio_playsound(sndDeath)
     instance_destroy()
 }
@@ -198,10 +199,10 @@ y = modwrap(y, _margin, 608 - _margin);
             <kind>1</kind>
             <string>if(!instance_exists(obj_dizzy))
 {
-instance_create(0,0,obj_dizzy);
-player.frozen=1;
-obj_dizzy.alarm[0]=75;
-obj_steel_combat.dizzyTimes += 1;
+    instance_create(0,0,obj_dizzy);
+    player.frozen=1;
+    obj_dizzy.alarm[0]=75;
+    obj_steel_combat.dizzyTimes += 1;
 }
 </string>
           </argument>

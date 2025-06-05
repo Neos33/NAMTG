@@ -70,7 +70,7 @@
         instance_create(x,y,obj_steel_bomb);
     }
 
-alarm[1]=8;
+    alarm[1]=8;
 }
 </string>
           </argument>

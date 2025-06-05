@@ -1,0 +1,36 @@
+// 2025-06-05 09:01:42
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_slime_s;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 1/8;
+name = "Small Slime";
+
+vspeed = -7;
+hspeed = -3;
+friction = 0;
+gravity = 0.2;
+
+#event step
+if(x < -4)
+{
+    hspeed = 3;
+}
+else if(x >= 776)
+{
+    hspeed = -3;
+}
+if(y > 544)
+{
+    vspeed = -7;
+}
+if(!player_is_alive() && !global.achievements[21])
+{
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 21;
+        global.achievements[21] = true;
+}

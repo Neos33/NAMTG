@@ -1,0 +1,202 @@
+// 2025-06-05 09:25:02
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_orcSwordsman;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 1/8;
+name = "Orc Swordsman"
+x=704;
+y=544;
+alarm[3] = 10;
+blastNum = 0;
+dashNum = 0;
+hp = obj_diaoSlime_combat.hp;
+isStable = true;
+
+#event alarm3
+image_alpha = 1;
+if(blastNum < 4)
+{
+    if(x > 400)
+    {
+        var blast = instance_create(x - 48, y - 32, obj_swordwind);
+        blast.hspeed = -3;
+    }
+    else
+    {
+        var blast = instance_create(x + 16, y - 32, obj_swordwind);
+        blast.hspeed = 3;
+    }
+    blastNum += 1;
+    alarm[3] = 60;
+}
+else
+{
+    alarm[4] = 30;
+}
+
+#event alarm4
+status = 1;
+image_alpha = 1;
+var shadow = instance_create(x,y, obj_dashshadow);
+shadow.image_xscale = image_xscale;
+alarm[5] = 1;
+
+#event alarm5
+if(shadow.image_index < 12)
+{
+    shadow.image_index += 1;
+    alarm[5] = 3;
+}
+else
+{
+    with(shadow)
+    {
+        instance_destroy();
+    }
+    if(dashNum < 4)
+    {
+        status = 2;
+    }
+    else
+    {
+        status = 0;
+        alarm[11] = 10;
+    }
+}
+
+#event alarm6
+var dashhit = instance_create(x + sign(image_xscale * 4), y + 16, obj_swordhit);
+dashhit.image_xscale = -image_xscale;
+dashNum += 1;
+alarm[4] = 30;
+
+
+#event alarm10
+obj_diaoSlime_combat.x = 704;
+obj_diaoSlime_combat.y = 544;
+obj_diaoSlime_combat.alarm[4] = 30;
+obj_diaoSlime_combat.status = 0;
+instance_destroy();
+
+#event alarm11
+if(player.x < 400)
+{
+    x = 704;
+    y = 544;
+    image_xscale = 1;
+}
+else
+{
+    x = 96;
+    y = 544;
+    image_alpha = -1;
+}
+blastNum = 0;
+dashNum = 0;
+alarm[10] = 30;
+
+#event step
+if(status == 1)
+{
+    if(image_alpha > 0)
+    {
+        image_alpha -= 0.1;
+    }
+    else
+    {
+        x = -32;
+        y = -32;
+    }
+}
+#section
+if(status == 2)
+{
+    image_alpha = 1;
+    type = choose(-1, 1);
+    x = player.x + 12 * type;
+    y = player.y - 23;
+    image_xscale =  sign(x - player.x);
+    alarm[6] = 30;
+    status = 3;
+}
+#section
+if(!instance_exists(obj_diaoSlime_combat))
+{
+    instance_destroy();
+    exit;
+}
+
+hp = obj_diaoSlime_combat.hp;
+image_alpha = obj_diaoSlime_combat.image_alpha;
+
+
+#event collision:bullet
+if(obj_diaoSlime_combat.cooldown)
+{
+    with(other)
+    {
+        hitEffect();
+        instance_destroy();
+    }
+    exit;
+}
+damage = global.attackDamage;
+if(other.energy >= 1.5)
+{
+    damage = round(global.attackDamage * other.energy);
+}
+damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
+damageInfo.damage = damage;
+if(other.energy < 1.5)
+{
+    damageInfo.font = fontDamageInfo1;
+    damageInfo.color = c_white;        
+    damageInfo.level = 1;
+}
+else if(other.energy <= 2)
+{
+    damageInfo.font = fontDamageInfo2;
+    damageInfo.color = c_yellow;  
+    damageInfo.level = 2;      
+}
+else
+{
+    damageInfo.font = fontDamageInfo3;
+    damageInfo.color = c_red;        
+    damageInfo.level = 3;
+}
+
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}
+with(obj_diaoSlime_combat)
+{
+    if(!cooldown)
+    {    
+        hp -= other.damage;
+        if(hp <= 0)
+        {
+            audio_playsound(sndDeath);
+            alarm[2] = 1;
+        }
+        else
+        {
+            audio_playsound(sndBossHit);
+            cooldown = true;
+            alarm[0] = 1;
+            alarm[1] = 50;
+        }
+    }
+    
+    if(hp <= 0)
+    {
+        instance_destroy();
+    }
+}

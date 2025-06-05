@@ -1,0 +1,317 @@
+// 2025-06-05 08:59:30
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_slime_king;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed=1/8;
+name="Slime King";
+alarm[3]=20;
+x=400-16;
+y=304-16;
+status = 0;
+#section
+pid = 0;
+soundInd = 0;
+magic = 0;
+initialized = 0;
+centerX = 0;
+centerY = 0;
+
+#event alarm3
+magic = instance_create(x + 16, y + 16,  obj_magicCircle);
+audio_playsound(sndMagicCircle);
+alarm[4] = 30;
+
+
+#event alarm4
+if(status == 0)
+{    
+    for(var i = 0; i < 4; i+=1)
+    {
+        eff = instance_create(x + 16 + 64 * cos(degtorad(45 * (2 * i + 1))), y + 16 - 64 * sin(degtorad(45 * (2 * i + 1))), obj_appearEffect);
+        eff.pid = i;
+    }
+}
+else if(status == 2)
+{    
+    for(var i = 0; i < 3; i+=1)
+    {
+        eff = instance_create(x + 16 + 64 * cos(degtorad(90 + 120 * i)), y + 16 - 64 * sin(degtorad(90 + 120 * i)), obj_appearEffect);
+        eff.pid = i;
+    }
+}
+else if(status == 4)
+{    
+    for(var i = 0; i < 2; i+=1)
+    {
+        eff = instance_create(x + 16 + 96 * cos(degtorad(180 * i)), y + 16 - 96 * sin(degtorad(180 * i)), obj_appearEffect);
+        eff.pid = i;
+    }
+}
+audio_playsound(sndSummon);
+alarm[5] = 30;
+
+#event alarm5
+if(status == 0)
+{
+    with(obj_appearEffect)
+    {
+        obj = instance_create(x - 16, y - 16, obj_slime_s_summoned);
+        obj.pid = pid;
+    }
+}
+else if(status == 2)
+{
+    soundInd = 0;
+    with(obj_appearEffect)
+    {
+        obj = instance_create(x - 16, y - 16, obj_slime_red_summoned);
+        obj.pid = pid;
+        if(pid == 0)
+        {
+            sound = true;
+        }
+    }
+}
+else if(status == 4)
+{
+    with(obj_appearEffect)
+    {
+        other.obj[pid] = instance_create(x - 16, y - 16, obj_slime_black_summoned);
+        other.obj[pid].pid = pid;
+    }
+}
+with(obj_magicCircle)
+{
+    alarm[0] = 0;
+    alarm[1] = 0;
+    alarm[2] = 1;
+}
+magic.alarm[2] = 1;
+magic.status = 1;
+alarm[6] = 30;
+status += 1;
+
+
+#event alarm6
+if(status == 1 && !initialized)
+{
+    with(obj_slime_s_summoned)
+    {
+        gravity = 0.2;
+        if(pid == 0)
+        {
+            hspeed = 6;
+        }
+        else if(pid == 1)
+        {
+            hspeed = -6;
+        }
+        else if(pid == 2)
+        {
+            hspeed = -4;
+        }   
+        else if(pid == 3)
+        {
+            hspeed = 4;
+        }
+    }
+    initialized = true;
+}
+else if(status == 3 && !initialized)
+{
+    with(obj_slime_red_summoned)
+    {
+        if(pid == 0)
+        {
+            targetX = 400 - 16;
+            targetY = 200 - 16;
+            targetX1 = 400 - 16;
+            targetY1 = 100 - 16;
+            hspd = 0;
+            vspd = 12;
+        }
+        else if(pid == 1)
+        {
+            targetX = 200 - 16;
+            targetY = 400 - 16;
+            targetX1 = 64;
+            targetY1 = 544;
+            hspd = 12;
+            vspd = 0;
+        }
+        else if(pid == 2)
+        {
+            targetX = 600 - 16;
+            targetY = 400 - 16;
+            targetX1 = 704;
+            targetY1 = 544;
+            hspd = -12;
+            vspd = 0;
+        }
+    }
+    initialized = true;
+}
+else if(status == 5 && !initialized)
+{
+    with(obj_slime_black_summoned)
+    {
+        if(pid == 0)
+        {
+            targetX = 620;
+            targetY = 460;
+        }
+        else if(pid == 1)
+        {
+            targetX = 180;
+            targetY = 460;
+        }
+    }
+    initialized = true;
+}
+
+#event alarm7
+vspeed = -15;
+alarm[10] = 50;
+alarm[11] = 290;
+
+#event alarm10
+x = player.x - 48;
+y = -100;
+vspeed = 15;
+alarm[10] = 50;
+
+#event alarm11
+alarm[10] = 0;
+status = 0;
+image_xscale = 1;
+image_yscale = 1;
+hspeed = 0;
+vspeed = 0;
+x = 400 - 16;
+y = 304 - 16;
+alarm[3] = 50;
+
+#event step
+if(status == 1)
+{
+    if(!instance_exists(obj_slime_s_summoned))
+    {
+        if(!cooldown)
+        {    
+            hp -= global.attackDamage;
+            if(hp <= 0)
+            {
+                audio_playsound(sndDeath);
+                if(!global.inGallery)
+                {
+                    global.TotalKills += 1;
+                }
+                alarm[2] = 1;
+            }
+            else
+            {
+                audio_playsound(sndBossHit);
+                cooldown = true;
+                alarm[0] = 1;
+                alarm[1] = 50;
+            }
+        }
+        status = 2;
+        alarm[3] = 70;
+        initialized = false;
+    }
+}
+else if(status == 3)
+{
+    if(!instance_exists(obj_slime_red_summoned))
+    {
+        if(!cooldown)
+        {    
+            hp -= global.attackDamage;
+            if(hp <= 0)
+            {
+                audio_playsound(sndDeath);
+                if(!global.inGallery)
+                {
+                    global.TotalKills += 1;
+                }
+                alarm[2] = 1;
+            }
+            else
+            {
+                audio_playsound(sndBossHit);
+                cooldown = true;
+                alarm[0] = 1;
+                alarm[1] = 50;
+            }
+        }
+        status = 4;
+        alarm[3] = 70;
+        initialized = false;
+    }
+}
+else if(status == 5)
+{
+    if(!instance_exists(obj_slime_black_summoned))
+    {
+        if(!cooldown)
+        {    
+            hp -= global.attackDamage;
+            if(hp <= 0)
+            {
+                audio_playsound(sndDeath);
+                if(!global.inGallery)
+                {
+                    global.TotalKills += 1;
+                }
+                alarm[2] = 1;
+            }
+            else
+            {
+                audio_playsound(sndBossHit);
+                cooldown = true;
+                alarm[0] = 1;
+                alarm[1] = 50;
+            }
+        }
+        status = 6;
+        centerX = x + 16;
+        centerY = y + 16;
+        initialized = false;
+    }
+}
+else if(status == 6)
+{
+    initialized = false;
+    if(image_xscale < 3)
+    {
+        image_xscale += 0.02;
+        image_yscale += 0.02;
+        x -= 0.02 * 16;
+        y -= 0.02 * 16;
+    }
+    else
+    {
+        image_xscale = 3;
+        image_yscale = 3;
+        x = centerX - 48;
+        y = centerY - 48;
+        status = 7;
+        alarm[7] = 10;
+    }
+}
+
+#event other_user15
+if(status == 7)
+{
+    if(!global.achievements[24])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 24;
+        global.achievements[24] = true;
+    }
+}

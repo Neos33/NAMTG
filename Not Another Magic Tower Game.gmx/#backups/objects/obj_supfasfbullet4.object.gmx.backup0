@@ -1,0 +1,43 @@
+// 2025-06-05 09:44:20
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_supfasfbullet;
+visible = false;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+scale = 0;
+
+alpha2 = 0;
+flag = 0;
+
+#event alarm0
+visible = 1
+
+#event step
+if(scale==1)
+{
+    image_xscale-=1/20
+    image_yscale-=1/20
+}
+
+if(image_xscale==0)
+{
+    instance_destroy()
+}
+
+if(alpha2==1)
+{
+    image_alpha-=1/20
+    flag = 1
+}
+
+if(image_alpha==0 && flag==1)
+{
+    instance_destroy()
+}
+
+#event other_outside
+#action action_kill_object

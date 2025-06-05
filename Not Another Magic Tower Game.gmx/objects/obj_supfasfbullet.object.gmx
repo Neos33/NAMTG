@@ -194,22 +194,22 @@ alarm[4] = 1;
             <kind>1</kind>
             <string>if(twist==1)
 {
-direction+=random_range(-2,2);
+    direction+=random_range(-2,2);
 }
 
 if(twist==2)
 {
-direction+=dir;
+    direction+=dir;
 }
 
 if(twist==3)
 {
-direction-=dir;
+    direction-=dir;
 }
 
 if(twist==4)
 {
-direction+=0;
+    direction+=0;
 }
 
 </string>
@@ -231,6 +231,27 @@ direction+=0;
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

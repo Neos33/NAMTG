@@ -50,7 +50,7 @@ type = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>leaf = instance_create(x,y,obj_mageLeafCut);
+            <string>var leaf = instance_create(x,y,obj_mageLeafCut);
 leaf.speed = 10;
 leaf.direction = 270;
 leaf.type = type;

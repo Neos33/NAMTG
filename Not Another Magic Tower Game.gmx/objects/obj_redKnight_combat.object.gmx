@@ -157,7 +157,7 @@ else
 {
     if(!global.achievements[66])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 66;
         global.achievements[66] = 1;
     }

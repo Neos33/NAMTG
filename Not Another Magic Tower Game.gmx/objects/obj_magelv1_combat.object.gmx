@@ -407,7 +407,7 @@ alarm[5] = 300;
 {
     if(!global.achievements[27])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 27;
         global.achievements[27] = true;
     }

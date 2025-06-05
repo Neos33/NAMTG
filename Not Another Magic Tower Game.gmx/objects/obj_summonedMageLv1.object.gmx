@@ -258,7 +258,7 @@ alarm[5] = 300;
     repeat(round(1.5 / dis))
     {
         dir = irandom_range(0, 359);
-        b = instance_create(x + 16, y + 16, obj_magelv1_bullet1);
+        var b = instance_create(x + 16, y + 16, obj_magelv1_bullet1);
         b.direction = dir;
         b.speed = 5;
         b.image_angle = dir - 90;
@@ -345,11 +345,11 @@ alarm[5] = 300;
         audio_playsound(sndShoot);
     }
     gap = width * cos(degtorad(ang));
-    p1 = instance_create(x, y - width - 16 + gap, obj_magelv1_bullet2);
+    var p1 = instance_create(x, y - width - 16 + gap, obj_magelv1_bullet2);
     p1.image_angle = 90 * sign(x + 16 - player.x);
     p1.image_index = floor((ang mod 360) / 24);
     p1.hspeed = -5 * sign(x + 16 - player.x);
-    p2 = instance_create(x, y + 32  + 16 + width - gap, obj_magelv1_bullet2);
+    var p2 = instance_create(x, y + 32  + 16 + width - gap, obj_magelv1_bullet2);
     p2.image_angle = 90 * sign(x + 16 - player.x);
     p2.image_index = floor((ang mod 360) / 24);
     p2.hspeed = -5 * sign(x + 16 - player.x);

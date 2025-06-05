@@ -1,0 +1,208 @@
+// 2025-06-05 09:23:56
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_magelv1;
+uses_physics = false;
+
+#event create
+stepSpd = 0;
+hCount = 0;
+width = 0;
+gap = 0;
+ang = 0;
+
+
+#action action_inherited
+#section
+name = 'Junior Mage';
+time = 0;
+alarm[11] = 30;
+x = 704;
+y = 288;
+image_speed = 1 / 8;
+hp = obj_diaoSlime_combat.hp;
+isStable = true;
+
+#event alarm3
+status = 2;
+
+#event alarm4
+status = 3;
+alarm[5] = 300;
+
+#event alarm5
+status = -1;
+alarm[6] = 5;
+
+#event alarm6
+status = 4;
+stepSpd = -0.1 * sign(x + 16 - player.x);
+alarm[7] = 200;
+
+#event alarm7
+obj_diaoSlime_combat.x = 704;
+obj_diaoSlime_combat.y = 544;
+obj_diaoSlime_combat.alarm[4] = 30;
+obj_diaoSlime_combat.status = 0;
+instance_destroy();
+
+#event alarm11
+status = 1;
+
+
+#event step
+if(status == 1)
+{
+    time += 1;
+    dis = floor(abs(x-400) / 100);
+    if(dis == 0)
+    {
+        dis = 1;
+    }
+    if(time mod 4 == 0)
+    {
+        audio_playsound(sndShoot);
+    }
+    repeat(round(1.5 / dis))
+    {
+        dir = irandom_range(0, 359);
+        var b = instance_create(x + 16, y + 16, obj_magelv1_bullet1);
+        b.direction = dir;
+        b.speed = 5;
+        b.image_angle = dir - 90;
+        b.phase = 1;
+        b.image_index = irandom_range(0, 14);
+    }
+    if(x > 400)
+    {
+        hspeed -= 0.2;
+    }
+    else
+    {
+        hspeed += 0.2;
+    }
+    if(hspeed == 0)
+    {
+        hCount += 1;
+    }
+    if(hCount == 2)
+    {
+        hspeed = 0;
+        status = -1;
+        alarm[3] = 50;
+    }
+}
+#section
+if(status == 2)
+{
+    if(abs(y-512) > 3)
+    {
+        y += 3;
+    }
+    else
+    {
+        y = 512;
+        status = -1;
+        alarm[4] = 20;
+    }
+}
+#section
+if(status == 3)
+{
+    width = 32;
+    if(ang mod 20 == 0)
+    {
+        audio_playsound(sndShoot);
+    }
+    gap = width * cos(degtorad(ang));
+    var p1 = instance_create(x, y - width - 16 + gap, obj_magelv1_bullet2);
+    p1.image_angle = 90 * sign(x + 16 - player.x);
+    p1.image_index = floor((ang mod 360) / 24);
+    p1.hspeed = -5 * sign(x + 16 - player.x);
+    var p2 = instance_create(x, y + 32  + 16 + width - gap, obj_magelv1_bullet2);
+    p2.image_angle = 90 * sign(x + 16 - player.x);
+    p2.image_index = floor((ang mod 360) / 24);
+    p2.hspeed = -5 * sign(x + 16 - player.x);
+    ang += 5;
+}
+#section
+if(status == 4)
+{
+    hspeed += stepSpd;
+}
+#section
+if(!instance_exists(obj_diaoSlime_combat))
+{
+    instance_destroy();
+    exit;
+}
+
+hp = obj_diaoSlime_combat.hp;
+image_alpha = obj_diaoSlime_combat.image_alpha;
+
+
+#event collision:bullet
+if(obj_diaoSlime_combat.cooldown)
+{
+    with(other)
+    {
+        hitEffect();
+        instance_destroy();
+    }
+    exit;
+}
+damage = global.attackDamage;
+if(other.energy >= 1.5)
+{
+    damage = round(global.attackDamage * other.energy);
+}
+damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
+damageInfo.damage = damage;
+if(other.energy < 1.5)
+{
+    damageInfo.font = fontDamageInfo1;
+    damageInfo.color = c_white;        
+    damageInfo.level = 1;
+}
+else if(other.energy <= 2)
+{
+    damageInfo.font = fontDamageInfo2;
+    damageInfo.color = c_yellow;  
+    damageInfo.level = 2;      
+}
+else
+{
+    damageInfo.font = fontDamageInfo3;
+    damageInfo.color = c_red;        
+    damageInfo.level = 3;
+}
+
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}
+with(obj_diaoSlime_combat)
+{
+    if(!cooldown)
+    {    
+        hp -= other.damage;
+        if(hp <= 0)
+        {
+            audio_playsound(sndDeath);
+            alarm[2] = 1;
+        }
+        else
+        {
+            audio_playsound(sndBossHit);
+            cooldown = true;
+            alarm[0] = 1;
+            alarm[1] = 50;
+        }
+    }
+    
+    if(hp <= 0)
+    {
+        instance_destroy();
+    }
+}

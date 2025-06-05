@@ -28,6 +28,7 @@
             <string>animation = 0;
 rdir = 0;
 rspd = 0;
+hspd = 0;
 </string>
           </argument>
         </arguments>

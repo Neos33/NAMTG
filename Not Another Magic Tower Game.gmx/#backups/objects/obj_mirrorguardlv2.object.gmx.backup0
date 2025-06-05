@@ -1,0 +1,91 @@
+// 2025-06-05 09:36:34
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_guardlv2SwordBlast;
+uses_physics = false;
+
+#event create
+animation = 0;
+rdir = 0;
+rspd = 0;
+hspd = 0;
+#action action_inherited
+#section
+image_alpha=0.3;;
+image_blend=c_fuchsia;
+image_speed=1/8;
+alarm[3]=1;
+rdir = 1;
+rspd = 0.8;
+isStable = true;
+
+#event alarm3
+image_alpha+=0.02;
+if(image_alpha<=1)
+{
+alarm[3]=1;
+}
+
+#event alarm4
+animation=1;
+hspeed=hspd;
+obj_guardlv2_combat.alarm[3] = 5;
+
+#event step
+if(animation==0)
+  {
+
+    if(point_distance(x,y,targetX, targetY) <(spd/2) )
+    {
+        x = targetX;
+        y = targetY;
+        hspeed = 0;
+        vspeed = 0;
+        animation = 1;
+        alarm[4] = 1;
+    }
+    else
+    {
+
+        move_towards_point(targetX, targetY, spd);
+    }
+   
+    
+}
+move_bounce_solid(true);
+#section
+if(animation == 1)
+{
+        if(rdir == 1)
+        {
+            if(image_xscale > -1)
+            {
+                image_xscale -= rspd;
+            }
+            else
+            {
+                rdir = 2;
+            }
+        }
+        else if(rdir == 2)
+        {
+            if(image_xscale < 1)
+            {
+                image_xscale += rspd;
+            }
+            else
+            {
+                rdir = 1;
+            }
+        }
+        if(image_xscale > 1)
+        {
+            image_xscale = 1;
+        }
+        if(image_xscale < -1)
+        {
+            image_xscale = -1;   
+        }
+        vspeed = 0;
+        y = 560;
+}

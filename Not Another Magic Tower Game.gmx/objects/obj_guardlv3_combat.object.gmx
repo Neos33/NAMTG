@@ -37,8 +37,6 @@ redColCount = 0;
 
 i = 0;
 a = 0;
-aa = 0;
-ab = 0;
 
 </string>
           </argument>
@@ -114,25 +112,25 @@ event_inherited();
             <kind>1</kind>
             <string>if(a==0 or a==1 or a==2)
 {
-aa=instance_create(x,y,obj_guardlv3_block)
-ab=instance_create(x-32,y,obj_guardlv3_block)
-aa.sss=1;
-ab.sss=1;
+    var aa=instance_create(x,y,obj_guardlv3_block)
+    var ab=instance_create(x-32,y,obj_guardlv3_block)
+    aa.sss=1;
+    ab.sss=1;
 }
 
 if(a==3)
 {
-instance_create(x,y,obj_guardlv3_spike);
+    instance_create(x,y,obj_guardlv3_spike);
 }
 
 if(a==4 or a==5)
 {
-instance_create(x,y,obj_guardlv3_avoid)
+    instance_create(x,y,obj_guardlv3_avoid)
 }
 
 if(a==6)
 {
-instance_create(x-32,y,obj_guardlv3_hit)
+    instance_create(x-32,y,obj_guardlv3_hit)
 }
 /*
 switch(a)
@@ -183,11 +181,11 @@ alarm[4]=1;
 a=irandom(6);
 if(j==-1)
 {
-instance_create(800,576,obj_guardlv3_block)
+    instance_create(800,576,obj_guardlv3_block)
 }
 else
 {
-instance_create(800,576,obj_guardlv3_spike)
+    instance_create(800,576,obj_guardlv3_spike)
 }
 </string>
           </argument>
@@ -240,13 +238,13 @@ if(!cooldown)
 sound_fix(sndDeath)
 repeat(12)
 {
-aa=instance_create(x,y,obj_cherry)
-aa.sprite_index=spr_colorful_cherry;
-aa.image_index=irandom(5);
-aa.speed=4+irandom(3);
-aa.direction=irandom(360);
-aa.image_xscale=0.5;
-aa.image_yscale=0.5;
+    var aa=instance_create(x,y,obj_cherry)
+    aa.sprite_index=spr_colorful_cherry;
+    aa.image_index=irandom(5);
+    aa.speed=4+irandom(3);
+    aa.direction=irandom(360);
+    aa.image_xscale=0.5;
+    aa.image_yscale=0.5;
 }
 //instance_destroy();
 </string>
@@ -275,7 +273,7 @@ aa.image_yscale=0.5;
 {
     if(!global.achievements[48])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 48;
         global.achievements[48] = true;
     }

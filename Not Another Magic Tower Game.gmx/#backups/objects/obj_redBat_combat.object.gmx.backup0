@@ -1,0 +1,149 @@
+// 2025-06-05 09:11:41
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_redBat;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/8;
+name = "Red Bat";
+x = 400;
+y = 302;
+alarm[3] = 50;
+dstop=instance_create(0,576,obj_dStop);
+dstop.image_xscale=25;
+
+i = 0;
+n=0; 
+len=0; 
+dir=0;
+
+xx = 0;
+yy = 0;
+
+#event destroy
+event_inherited();
+with(obj_effect_poison)
+{
+    instance_destroy();
+}
+player.image_blend = c_white;
+
+#event alarm3
+x=400;
+y=302;
+move_towards_point(player.x,player.y,14);
+instance_create(0,0,obj_redbatblack);
+with(obj_redbatblack)
+{
+    image_alpha=0.11;
+    blackflag=0;
+}
+alarm[11]=1;
+alarm[4]=23;
+
+#event alarm4
+move_towards_point(400,302,2.4);
+alarm[5]=65;
+
+
+#event alarm5
+if(i<5)
+{
+    x=random_range(200,600);
+    y=random_range(200,300);
+    n=8; len=200; dir=0;
+    for(var p = 0; p < 16; p += 1)
+    {
+        dir +=  22.5;
+        xx=x+lengthdir_x(len,dir);
+        yy=y+lengthdir_y(len,dir);
+        aa[p]=instance_create(xx,yy,obj_touhoubullet2);
+    }
+    for(var p = 0; p < 16; p += 1)
+    {
+        with(aa[p])
+        {
+            image_index=irandom(14);
+            dir+=22.5;
+        }
+    }
+
+    i+=1;
+    alarm[5]=50;
+    alarm[10]=20;
+}
+else
+{
+    alarm[10]=25;
+    alarm[6]=35;
+}
+
+#event alarm6
+instance_create(x-64,y,obj_bloodSpike);
+instance_create(x+64,y,obj_bloodSpike);
+alarm[3]=40;
+/*with(obj_touhoubullet2)
+{
+    if(speed == 0)
+    {
+        speed=5;
+        direction=random_range(1,359);
+        friction=0.02;
+        image_angle=direction+90;
+    }
+}
+
+#event alarm10
+for(var p = 0; p < 16; p += 1)
+{
+    with(aa[p])
+    {
+        speed=5;
+        direction=random_range(1,359);
+        //friction=0.02;
+        image_angle=direction+90;
+    }
+}
+
+#event alarm11
+with(obj_redbatblack)
+{
+    if(image_alpha<0.2&& blackflag==0)
+    {
+        image_alpha+=0.05;
+        other.alarm[11]=2;
+    }
+    else
+    {
+        image_alpha-=0.01;
+        blackflag=1;
+        other.alarm[11]=2;
+    }
+    if(image_alpha==0)
+    {
+        blackflag=0;
+        instance_destroy();
+        other.alarm[11]=0;
+    }
+}
+
+
+#event collision:player
+if(!instance_exists(obj_effect_poison))
+{
+    instance_create(0,0,obj_effect_poison);
+}
+event_inherited();
+
+#event other_user15
+if(global.combatTime >= room_speed * 90)
+{
+    if(!global.achievements[35])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 35;
+        global.achievements[35] = true;
+    }
+}

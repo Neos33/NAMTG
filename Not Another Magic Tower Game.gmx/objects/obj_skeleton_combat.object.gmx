@@ -107,10 +107,10 @@ hspeed = tempspd;
             <kind>1</kind>
             <string>if(throwCount &lt; 20)
 {
-    pp = instance_create(x+16,y,obj_skeletonBone);
+    var pp = instance_create(x+16,y,obj_skeletonBone);
     pp.speed = random_range(8, 12);
     pp.direction = random_range(60,120);
-    rnd = random_range(0,100);
+    var rnd = random_range(0,100);
     if(rnd &gt; 99)
     {
         pp.image_xscale = 10;
@@ -183,7 +183,7 @@ else if(phase != 2)
     if(time mod 30 == 0)
     {
         dis = point_distance(x+16,y+16,player.x,player.y);
-        bone = instance_create(x + 16, y + 16, obj_skeletonBone);
+        var bone = instance_create(x + 16, y + 16, obj_skeletonBone);
         bone.speed = 12;
         bone.direction = point_direction(x+16,y+16,player.x,player.y - dis / 10);
     }
@@ -214,7 +214,7 @@ else if(phase != 2)
 {
     if(!global.achievements[39])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 39;
         global.achievements[39] = true;
     }

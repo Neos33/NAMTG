@@ -1,0 +1,130 @@
+// 2025-06-05 09:42:12
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_supfasfbullet;
+uses_physics = false;
+
+#event create
+i = 0;
+j = 0;
+k = 0;
+l = 0;
+m = 0;
+/*aa = 0;
+bb = 0;
+cc = 0;
+dd = 0;
+ee = 0;*/
+
+diree = 0;
+diree2 = 0;
+#action action_inherited
+#section
+image_speed=1/2;
+kind=choose(0,1,2,3,4);
+alarm[kind]=random_range(30,80);
+
+#event alarm0
+speed=0;
+if(i<30)
+{
+    var aa=instance_create(x,y,obj_supfasfbullet7)
+    aa.sprite_index=spr_supfasfbullet;
+    aa.image_index=1;
+    aa.image_speed=0;
+    aa.speed=8
+    aa.direction=180+diree;
+    diree+=15;
+    alarm[0]=7;
+}
+else
+{
+    i=0;
+    instance_destroy();
+}
+
+#event alarm1
+speed=0;
+if(j<30)
+{
+    var bb=instance_create(x,y,obj_supfasfbullet7)
+    bb.sprite_index=spr_supfasfbullet;
+    bb.image_index=2;
+    bb.image_speed=0;
+    bb.speed=8
+    bb.direction=random_range(0,359);
+    j=j+1;
+    alarm[1]=5;
+}
+else
+{
+    j=0;
+    instance_destroy();
+}
+
+#event alarm2
+speed=0;
+if(k<5)
+{
+    repeat(12)
+    {
+        var cc=instance_create(x,y,obj_supfasfbullet7)
+        cc.sprite_index=spr_supfasfbullet;
+        cc.image_index=3;
+        cc.image_speed=0;
+        cc.speed=8
+        cc.direction=70+diree2;
+        diree2+=30;
+        k=k+1
+    }
+    alarm[2]=20;
+}
+else
+{
+    k=0;
+    instance_destroy();
+}
+
+#event alarm3
+speed=0;
+if(l<30)
+{
+    var dd=instance_create(x,y,obj_supfasfbullet7)
+    dd.sprite_index=spr_supfasfbullet;
+    dd.image_index=4;
+    dd.image_speed=0;
+    dd.speed=irandom(6)+1;
+    dd.gravity=0.15;
+    dd.direction=75+irandom(30);
+    l=l+1;
+    alarm[3]=7;
+}
+else
+{
+    l=0;
+    instance_destroy();
+}
+
+#event alarm4
+speed=0;
+if(m<5)
+{
+    var ee=instance_create(x,y,obj_supfasfbullet7)
+    ee.sprite_index=spr_supfasfbullet;
+    ee.image_index=1;
+    ee.image_speed=0;
+    ee.speed=8
+    ee.direction=point_direction(x,y,player.x,player.y);
+    m=m+1
+    alarm[4]=25;
+}
+else
+{
+    m=0;
+    instance_destroy();
+}
+
+#event step
+
+#event other_outside
+#action action_kill_object

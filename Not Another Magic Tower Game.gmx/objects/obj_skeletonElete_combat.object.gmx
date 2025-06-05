@@ -283,7 +283,7 @@ else
 {
     if(!global.achievements[40])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 40;
         global.achievements[40] = true;
     }

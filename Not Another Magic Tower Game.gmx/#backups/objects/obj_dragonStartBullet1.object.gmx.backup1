@@ -1,0 +1,64 @@
+// 2025-06-04 20:10:48
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_dragonBullet2;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 1/15;
+speed = random_range(3,5);
+direction = 270;
+stepDir = random_range(-0.4,0.4);
+image_alpha = 0;
+minAlpha = 0.3;
+maxAlpha = 0.6;
+alarm[3] = 1;
+
+
+burst = 0;
+
+#event alarm3
+if(image_alpha < maxAlpha)
+{
+    image_alpha += 0.03;
+    alarm[3] = 1;
+}
+else
+{
+    alarm[4] = 1;
+}
+
+#event alarm4
+if(image_alpha > minAlpha)
+{
+    image_alpha -= 0.03;
+    alarm[4] = 1;
+}
+else
+{
+    alarm[3] = 1;
+}
+
+#event step
+if(!burst)
+{
+    direction += stepDir;
+}
+image_angle = direction;
+tail = instance_create(x,y,obj_dragonStartBulletTail);
+tail.sprite_index = sprite_index;
+tail.image_index = image_index;
+tail.image_speed = 0;
+tail.image_alpha = 0.5;
+tail.image_angle = image_angle;
+tail.depth = depth + 1;
+
+#event other_outside
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

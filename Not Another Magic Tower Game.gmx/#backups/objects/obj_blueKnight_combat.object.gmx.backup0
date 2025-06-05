@@ -1,0 +1,184 @@
+// 2025-06-05 09:51:30
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_blueKnight;
+uses_physics = false;
+
+#event create
+notFirstRound = 0;
+i = 0;
+//aa = 0;
+//ab = 0;
+//ac = 0;
+j = 0;
+
+xx = 0;
+yy = 0;
+//a = 0;
+k = 0;
+
+bubbleDestroyCount = 0;
+#section
+event_inherited();
+name = "Blue Knight";
+image_speed = 1/8;
+x=-32;
+y=-32;
+instance_create(400,304,obj_blueknightDanger);
+//alarm[3]=80;
+global.system1=part_system_create();
+global.particle1 = part_type_create();
+part_type_shape(global.particle1,pt_shape_snow);
+part_type_size(global.particle1,0.20,0.22,0.01,0);
+part_type_scale(global.particle1,0.70,0.70);
+part_type_color3(global.particle1,16777215,16777088,65535);
+part_type_alpha3(global.particle1,0.78,0.32,0.01);
+part_type_speed(global.particle1,3,5,-0.01,2);
+part_type_direction(global.particle1,0,351,-1,1);
+part_type_gravity(global.particle1,0,270);
+part_type_orientation(global.particle1,14,349,0.40,6,1);
+part_type_blend(global.particle1,1);
+part_type_life(global.particle1,17,24);
+
+global.emitter1=part_emitter_create(global.system1);
+
+bubbleDestroyCount = 0;
+
+#event destroy
+with(obj_blueknight_bullet)
+{
+    instance_destroy();
+}
+event_inherited();
+
+#event alarm3
+sound_fix(sndbksword);
+if(i=0)
+{
+    i=1;
+    var aa=instance_create(770,587,obj_blueknight_sword)
+    aa.direction=point_direction(aa.x,aa.y,player.x,player.y);
+    aa.speed=24;
+    alarm[3]=28;
+}
+else
+{
+    if(i=1)
+    {
+        i=2;
+        var aa=instance_create(15,587,obj_blueknight_sword)
+        aa.direction=point_direction(aa.x,aa.y,player.x,player.y);
+        aa.speed=24;
+        alarm[3]=24;
+    }
+    else
+    {
+        if(i=2)
+        {
+            i=3;
+            var aa=instance_create(15,15,obj_blueknight_sword)
+            aa.direction=point_direction(aa.x,aa.y,player.x,player.y);
+            aa.speed=28;
+            alarm[4]=30;
+        }
+    }
+}
+
+#event alarm4
+instance_create(700,502,obj_blueknight_appear);
+
+#event alarm5
+if(j<=30)
+{
+    if(j == 0)
+    {
+        audio_playsound(snd_touhou_bonus3);
+    }
+    xx=x+lengthdir_x(100,180);
+    yy=y+lengthdir_y(100,180);
+    var a=instance_create(xx,yy,obj_blueknight_bullet);
+    a._id=id;
+    a.len=100;
+    a.dir=180;
+    a.dirspd=4;
+    dir+=30;
+    j+=1;
+    alarm[5]=5;
+}
+else
+{
+    alarm[6]=20;
+    j=0;
+}
+
+
+#event alarm6
+with(obj_blueknight_appear)
+{
+    instance_destroy();
+}
+path_start(path_bkpth1,4,0,0)
+
+alarm[7]=50;
+
+#event alarm7
+if(k<50)
+{   
+    alarm[7]=5;
+    instance_create(x,y,obj_blueknightcherry);
+    sound_fix(sndShoot);
+    k+=1;
+    
+}
+else
+{
+alarm[10]=1;
+}
+
+#event alarm10
+x=-32;
+y=-32;
+
+var aa=instance_create(770,587,obj_blueknight_sword);
+aa.direction=point_direction(aa.x,aa.y,0,0);
+aa.speed=28;
+var ab=instance_create(770,557,obj_blueknight_sword);
+ab.direction=point_direction(ab.x,ab.y,0,0);
+ab.speed=28;
+var ac=instance_create(30,587,obj_blueknight_sword);
+ac.direction=point_direction(ac.x,ac.y,800,0);
+ac.speed=28
+var ad=instance_create(30,557,obj_blueknight_sword);
+ad.direction=point_direction(ad.x,ad.y,800,0);
+ad.speed=28
+var ae=instance_create(400,10,obj_blueknight_sword);
+ae.vspeed=28;
+var af=instance_create(10,300,obj_blueknight_sword);
+af.hspeed=28;
+with(obj_blueknightcherry)friction=0.1;
+alarm[11]=20;
+
+#event alarm11
+audio_playsound(sndgras);
+bkchange();
+i=0;
+j=0;
+k=0;
+notFirstRound = true;
+instance_create(400,304,obj_blueknightDanger);
+//alarm[3]=120;
+
+#event other_room_end
+part_type_destroy(global.particle1);
+part_system_destroy(global.system1)
+
+#event other_user15
+if(bubbleDestroyCount >= 50)
+{
+    if(!global.achievements[47])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 47;
+        global.achievements[47] = true;
+    }
+}

@@ -1,0 +1,33 @@
+// 2025-06-05 09:54:31
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_yellowKey;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+sprite_index=choose(spr_yellowKey,spr_blueKey,spr_greenKey)
+hspeed=-2;
+
+#event collision:bullet
+sound_fix(sndZhazha);
+with(other)instance_destroy();
+move_towards_point(player.x,player.y,8)
+
+#event collision:obj_guardlv3_hit
+sound_fix(sndDeath)
+repeat(16)
+{
+    var aa=instance_create(x,y,obj_cherry)
+    aa.sprite_index=spr_colorful_cherry;
+    aa.image_index=irandom(5);
+    aa.speed=4+irandom(3);
+    aa.direction=irandom(360);
+    aa.image_xscale=0.5;
+    aa.image_yscale=0.5;
+}
+instance_destroy();
+
+#event other_outside
+#action action_kill_object

@@ -64,11 +64,11 @@ py = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>b1 = instance_create(x,y,obj_dragonStartBullet3);
+            <string>var b1 = instance_create(x,y,obj_dragonStartBullet3);
 b1.direction = dir1;
 b1.speed = 20;
 b1.image_index = ind;
-b2 = instance_create(x,y,obj_dragonStartBullet3);
+var b2 = instance_create(x,y,obj_dragonStartBullet3);
 b2.direction = dir2;
 b2.speed = 20;
 b2.image_index = ind;
@@ -95,7 +95,7 @@ alarm[3] = 2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>b = instance_create(x + 64 * cos(degtorad(angle)), y - 64 * sin(degtorad(angle)), obj_dragonStartBullet2);
+            <string>var b = instance_create(x + 64 * cos(degtorad(angle)), y - 64 * sin(degtorad(angle)), obj_dragonStartBullet2);
 b.image_index = ind;
 b.image_angle = angle + 90;
 angle += 45;
@@ -126,7 +126,7 @@ if(angle &lt; 360)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>b = instance_create(x + 32 * cos(degtorad(angle)), y - 32 * sin(degtorad(angle)), obj_dragonStartBullet2);
+            <string>var b = instance_create(x + 32 * cos(degtorad(angle)), y - 32 * sin(degtorad(angle)), obj_dragonStartBullet2);
 b.image_index = ind;
 b.image_angle = angle;
 angle -= 45;

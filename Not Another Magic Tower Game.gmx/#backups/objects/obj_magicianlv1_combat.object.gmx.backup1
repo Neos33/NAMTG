@@ -1,0 +1,208 @@
+// 2025-06-05 09:28:49
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_magicianlv1;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Junior Magician";
+image_speed = 1/8;
+x = 400 - 16;
+y = 256 - 16;
+alarm[3] = 20;
+angle = 30;
+status = "init";
+#section
+//aa = 0;
+//cc = 0;
+p1 = 0;
+p2 = 0;
+
+gap = 0;
+
+isRight = 0;
+waitTime = 0;
+
+
+#event alarm3
+var aa = instance_create(x + 16 + 16 * cos(degtorad(-90 + angle)), y + 16 - 16 * sin(degtorad(-90 + angle)), obj_magicianBullet);
+aa.speed = 10;
+aa.direction = -90 + angle;
+var bb = instance_create(x + 16 + 16 * cos(degtorad(270 - angle)), y + 16 - 16 * sin(degtorad(270 - angle)), obj_magicianBullet);
+bb.speed = 10;
+bb.direction = 270 - angle;
+if(angle < 1440)
+{
+    angle += 11;
+    alarm[3] = 2;
+    audio_playsound(sndShoot);
+}
+else
+{
+    angle = 30;
+    alarm[4] = 75;
+}
+
+#event alarm4 Portal
+instance_create(400, 100, obj_magicianPortal1);
+
+#event alarm5
+if(time < 150)
+{
+    var cc = instance_create(x + 16, y + 16, obj_magicianBullet);
+    cc.speed = random_range(5,6);
+    cc.direction = random_range(30, 150);
+    if(time mod 5 == 0)
+    {
+        audio_playsound(sndShoot);
+    }
+    time += 1;
+    alarm[5] = 1;
+}
+else
+{
+    time = 0;
+    obj_magicianPortal1.check = true;
+}
+
+#event alarm6
+var p1 = instance_create(48,560,obj_magicianPortal2);
+p1.image_angle = -45;
+p1.minAngle = 50;
+p1.maxAngle = 85;
+var p2 = instance_create(752,560, obj_magicianPortal2);
+p2.image_angle = 45;
+p2.minAngle = 95;
+p2.maxAngle = 140;
+
+#event alarm7
+targetX = choose(16,784);
+targetY = 544;
+status = "dash";
+audio_playsound(sndTeleport);
+
+#event alarm10
+targetX = 400 - 16;
+targetY = 256 - 16;
+//image_xscale = 1;
+//image_yscale = 1;
+audio_playsound(sndTeleport);
+status = "dash";
+
+#event alarm11
+status = "appear";
+if(targetX <= 400)
+{
+    x = targetX + 16;
+}
+else
+{
+    x = targetX - 16;
+}
+y = targetY - gap;
+if(targetX > 400)
+{
+    isRight = false;
+    if(image_xscale > 0)
+    {
+        image_xscale *= -1;
+    }
+}
+else
+{
+    isRight = true;
+    if(image_xscale < 0)
+    {
+        image_xscale *= -1;
+    }
+}
+audio_playsound(sndTelAtk);
+
+#event step
+if(status == "dash")
+{
+    if(abs(image_xscale) > 0.05)
+    {
+        image_xscale -= sign(image_xscale) * 0.05;
+        x+=sign(image_xscale) * 0.05 * 16;
+        image_yscale += 0.1;
+        y-= 0.1 * 16;
+    }
+    else
+    {
+        x = -32;
+        if(y < 400)
+        {
+            gap = 240 - y;
+        }
+        alarm[11] = 10;
+        status = "init";
+    }
+}
+else if(status == "appear")
+{
+    if(abs(image_xscale) < 1)
+    {
+        if(isRight)
+        {
+            image_xscale += 0.05;
+            x-=0.05 * 16;
+        }
+        else
+        {
+            image_xscale -= 0.05;      
+            x+=0.05 * 16;    
+        }
+        image_yscale -= 0.1;
+        y+=0.1*16;
+    }
+    else
+    {
+        waitTime += 1;
+        if(isRight)
+        {
+            image_xscale = 1;
+        }
+        else
+        {
+            image_xscale = -1;
+        }
+        image_yscale = 1;
+        if(waitTime == 20)
+        {
+            status = "init";    
+            waitTime = 0;
+            if(targetY > 400)
+            {
+                if(isRight)
+                {
+                    var shockwave = instance_create(x +32, y + 16, obj_magicianShockwave);
+                    shockwave.image_xscale = 2.5;
+                    shockwave.image_yscale = 2.5;
+                }  
+                else
+                {
+                    var shockwave = instance_create(x -32, y + 16, obj_magicianShockwave);
+                    shockwave.image_xscale = -2.5;
+                    shockwave.image_yscale = 2.5;
+                }
+            }
+            else
+            {
+                alarm[3] = 50;
+            }
+        }
+    }
+}
+
+#event other_user15
+if(x < 500 && y < 400)
+{
+    if(!global.achievements[41])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 41;
+        global.achievements[41] = true;
+    }
+}

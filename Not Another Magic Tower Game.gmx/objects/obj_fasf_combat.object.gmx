@@ -87,13 +87,14 @@ spddd = 0;
 instance_create(x,y,fasf_moon)
 instance_create(0,0,view_shaker1);
 if j&lt;2
-{alarm[6]=110;
-j+=1;
+{
+    alarm[6]=110;
+    j+=1;
 }
 else
 {
-i=0;
-alarm[3]=160;
+    i=0;
+    alarm[3]=160;
 }
 </string>
           </argument>
@@ -119,22 +120,22 @@ alarm[3]=160;
             <kind>1</kind>
             <string>image_speed=0;
 image_index=0;
-aa=instance_create(10,player.y,fasf_photo);
+var aa=instance_create(10,player.y,fasf_photo);
 aa.hspeed=6;
 aa.ind = 0;
-ab=instance_create(790,player.y,fasf_photo);
+var ab=instance_create(790,player.y,fasf_photo);
 ab.hspeed=-6;
 ab.ind = 1;
 sound_fix(sndfasfhappen);
 if i&lt;4
 {
-alarm[5]=50;
-i+=1;
+    alarm[5]=50;
+    i+=1;
 }
 else
 {
-j=0;
-alarm[6]=50;
+    j=0;
+    alarm[6]=50;
 }
 </string>
           </argument>
@@ -160,7 +161,7 @@ alarm[6]=50;
             <kind>1</kind>
             <string>if spddd=1
 {
-    aa=instance_create(x,y,fasf_ball)
+    var aa=instance_create(x,y,fasf_ball)
     aa.direction=random_range(1,359);
     aa.speed=random_range(4,8)
     sound_fix(sndShoot);
@@ -233,7 +234,7 @@ alarm[8]=190;
 {
     if(!global.achievements[31])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 31;
         global.achievements[31] = true;
     }

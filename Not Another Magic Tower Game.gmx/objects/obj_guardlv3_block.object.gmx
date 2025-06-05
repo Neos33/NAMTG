@@ -75,7 +75,7 @@ sss=0
             <kind>1</kind>
             <string>if(sss==1)
 {
-instance_destroy();
+    instance_destroy();
 }
 </string>
           </argument>

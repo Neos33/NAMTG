@@ -139,7 +139,7 @@ else
     direction += stepDir;
 }
 image_angle = direction;
-tail = instance_create(x,y,obj_dragonStartBulletTail);
+var tail = instance_create(x,y,obj_dragonStartBulletTail);
 tail.sprite_index = sprite_index;
 tail.image_index = image_index;
 tail.image_speed = 0;

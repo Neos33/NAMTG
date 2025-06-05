@@ -1,0 +1,39 @@
+// 2025-06-05 09:45:02
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_black;
+uses_physics = false;
+
+#event create
+alpha2 = 0;
+flag = 0;
+#section
+image_xscale = 25;
+image_yscale = 19;
+image_speed = 0
+image_alpha = 0
+alpha = 1
+
+alarm[0] = 50
+
+#event step
+if(alpha==1)
+{
+    image_alpha+=1/50
+}
+
+if(image_alpha==1)
+{
+    alpha = 0
+}
+
+if(alpha2==1)
+{
+    image_alpha-=1/50
+    flag = 1
+}
+
+if(image_alpha==0 && flag==1)
+{
+    instance_destroy()
+}

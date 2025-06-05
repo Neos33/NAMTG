@@ -383,7 +383,7 @@ spd = 0.5 + (1-hpPer);
 {
     if(!global.achievements[88])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 88;
         global.achievements[88] = 1;
     }

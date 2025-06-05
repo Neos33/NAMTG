@@ -1,0 +1,101 @@
+// 2025-06-05 09:03:36
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_fasf1;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed=0;
+image_index=0;
+
+name="F A S F !!!";
+
+x=400;
+y=200;
+alarm[3]=50;
+i=0;
+j=0;
+
+spddd = 0;
+
+#event alarm3
+spddd=1;
+image_speed=1/3;
+path_start(path_fasf,10,0,0);
+alarm[4]=3;
+alarm[8]=190;
+
+#event alarm4
+if spddd=1
+{
+    var aa=instance_create(x,y,fasf_ball)
+    aa.direction=random_range(1,359);
+    aa.speed=random_range(4,8)
+    sound_fix(sndShoot);
+    alarm[4]=3;
+}
+else
+{
+    image_speed=0;
+    image_index=0;
+    instance_create(0,0,white_flash1);
+    with(fasf_ball)
+    {
+        move_towards_point(400,302,3);
+        friction=-0.15;
+
+    }
+    alarm[5]=120;
+}
+
+
+#event alarm5
+image_speed=0;
+image_index=0;
+aa=instance_create(10,player.y,fasf_photo);
+aa.hspeed=6;
+aa.ind = 0;
+ab=instance_create(790,player.y,fasf_photo);
+ab.hspeed=-6;
+ab.ind = 1;
+sound_fix(sndfasfhappen);
+if i<4
+{
+    alarm[5]=50;
+    i+=1;
+}
+else
+{
+    j=0;
+    alarm[6]=50;
+}
+
+#event alarm6
+image_speed=1/2;
+instance_create(x,y,fasf_moon)
+instance_create(0,0,view_shaker1);
+if j<2
+{
+    alarm[6]=110;
+    j+=1;
+}
+else
+{
+    i=0;
+    alarm[3]=160;
+}
+
+#event alarm8
+spddd=0;
+
+#event other_user15
+if(global.attack <= 18)
+{
+    if(!global.achievements[31])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 31;
+        global.achievements[31] = true;
+    }
+}

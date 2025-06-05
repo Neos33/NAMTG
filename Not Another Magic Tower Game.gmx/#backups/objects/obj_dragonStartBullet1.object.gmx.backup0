@@ -1,4 +1,4 @@
-// 2025-06-04 20:10:48
+// 2025-06-05 08:46:35
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatPlayerKiller;
 sprite_index = spr_dragonBullet2;
@@ -47,7 +47,7 @@ if(!burst)
     direction += stepDir;
 }
 image_angle = direction;
-tail = instance_create(x,y,obj_dragonStartBulletTail);
+var tail = instance_create(x,y,obj_dragonStartBulletTail);
 tail.sprite_index = sprite_index;
 tail.image_index = image_index;
 tail.image_speed = 0;

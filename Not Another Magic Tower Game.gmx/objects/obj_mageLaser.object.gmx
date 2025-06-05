@@ -69,10 +69,10 @@ followStatus = 0;
             <kind>1</kind>
             <string>if(follower)
 {
- with(follower)
- {
-  instance_destroy();
- }
+    with(follower)
+    {
+        instance_destroy();
+    }
 }
 </string>
           </argument>
@@ -157,9 +157,9 @@ if(followStatus &lt; 10)
             <string>image_angle = direction;
 if(follower)
 {
- follower.x = xprevious;
- follower.y = yprevious;
- follower.image_angle = pAngle;
+    follower.x = xprevious;
+    follower.y = yprevious;
+    follower.image_angle = pAngle;
 }
 </string>
           </argument>

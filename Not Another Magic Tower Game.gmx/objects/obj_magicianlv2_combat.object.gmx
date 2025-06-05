@@ -565,7 +565,7 @@ else if(phase == 6)
 {
     if(!global.achievements[43])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 43;
         global.achievements[43] = true;
     }

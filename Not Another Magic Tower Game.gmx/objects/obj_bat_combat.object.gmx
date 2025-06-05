@@ -440,7 +440,7 @@ dashCount = 0;
 {
     if(!global.achievements[29])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 29;
         global.achievements[29] = true;
     }

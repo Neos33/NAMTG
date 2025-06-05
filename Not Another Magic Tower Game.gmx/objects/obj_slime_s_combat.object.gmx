@@ -82,7 +82,7 @@ if(y &gt; 544)
 }
 if(!player_is_alive() &amp;&amp; !global.achievements[21])
 {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 21;
         global.achievements[21] = true;
 }

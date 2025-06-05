@@ -1,0 +1,83 @@
+// 2025-06-05 09:26:20
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_skeleton;
+uses_physics = false;
+
+#event create
+time = 0;
+status = 0;
+throwCount = 0;
+phase = 0;
+tempspd = 0;
+
+dir = 0;
+dis = 0;
+
+hugeboneCount = 0;
+#section
+event_inherited();
+name = "Skeleton";
+image_speed = 1/8;
+hspeed = -5;
+
+#event alarm3
+if(throwCount < 20)
+{
+    var pp = instance_create(x+16,y,obj_skeletonBone);
+    pp.speed = random_range(8, 12);
+    pp.direction = random_range(60,120);
+    rnd = random_range(0,100);
+    if(rnd > 99)
+    {
+        pp.image_xscale = 10;
+        pp.image_yscale = 10;
+        hugeboneCount += 1;
+    }
+    audio_playsound(snd_wallum);
+    throwCount += 1;
+    alarm[3] = 5;
+}
+else
+{
+    throwCount = 0;
+    alarm[4] = 10;
+}
+
+#event alarm4
+phase = 0;
+hspeed = tempspd;
+
+#event step
+move_bounce_solid(false);
+time += 1;
+#section
+dir = point_direction(x+16,y+16,player.x,player.y);
+if(dir > 70 && dir < 120 && phase != 2)
+{
+    tempspd = hspeed;
+    hspeed = 0;
+    phase = 2;
+    alarm[3] = 15;
+}
+else if(phase != 2)
+{
+    if(time mod 30 == 0)
+    {
+        dis = point_distance(x+16,y+16,player.x,player.y);
+        var bone = instance_create(x + 16, y + 16, obj_skeletonBone);
+        bone.speed = 12;
+        bone.direction = point_direction(x+16,y+16,player.x,player.y - dis / 10);
+    }
+}
+
+#event other_user15
+if(hugeboneCount >= 3)
+{
+    if(!global.achievements[39])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 39;
+        global.achievements[39] = true;
+    }
+}

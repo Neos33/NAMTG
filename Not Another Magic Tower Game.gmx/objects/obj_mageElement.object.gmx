@@ -185,7 +185,7 @@ else
 }
 else
 {
-    c = instance_create(x,y,obj_mageElementController);
+    var c = instance_create(x,y,obj_mageElementController);
     c.index = index;
     instance_destroy();
 }

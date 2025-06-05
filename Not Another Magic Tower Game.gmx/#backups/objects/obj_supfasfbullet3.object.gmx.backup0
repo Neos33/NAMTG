@@ -1,0 +1,53 @@
+// 2025-06-05 09:40:56
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_supfasfbullet;
+uses_physics = false;
+
+#event create
+dire = 0;
+//ii = 0;
+
+radius = 0;
+dire2 = 0;
+#action action_inherited
+#section
+radius=point_distance(400,300,x,y)
+dire2=point_direction(400,300,x,y)
+image_speed=0;
+
+spd = 0
+
+alarm[0] = 1
+alarm[3] = 1
+
+#event alarm0
+alarm[1] = 45
+
+#event alarm1
+var ii = instance_create(x,y,obj_supfasfbullet4)
+ii.speed = point_distance(x,y,400,300)/40
+ii.direction = point_direction(x,y,400,300)
+ii.alarm[0] = 40
+
+alarm[1] = 48                
+
+#event alarm2
+spd = 0
+
+#event alarm3
+spd+=45
+
+alarm[4] = 47
+alarm[2] = 1
+
+#event alarm4
+spd+=30
+
+alarm[4] = 48
+alarm[2] = 1
+
+#event step
+x=400+radius*cos(degtorad(dire+dire2))
+y=300-radius*sin(degtorad(dire+dire2))
+dire+=spd

@@ -1,0 +1,54 @@
+// 2025-06-05 09:40:39
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_supfasfbullet;
+uses_physics = false;
+
+#event create
+d = 0;
+//ii = 0;
+#action action_inherited
+#section
+alarm[0] = 8
+alarm[1] = 385
+alarm[2] = 5
+image_speed=0;
+
+#event alarm0
+var ii = instance_create(x,y,obj_supfasfbullet2)
+ii.direction = point_direction(x,y,400,300)
+ii.speed = 6
+ii.image_index=0;
+
+ii = instance_create(x,y,obj_supfasfbullet2)
+ii.direction = point_direction(x,y,400,300)
+ii.speed = 5
+ii.image_index=1;
+
+ii = instance_create(x,y,obj_supfasfbullet2)
+ii.direction = point_direction(x,y,400,300)
+ii.speed = 4
+ii.image_index=2;
+ii = instance_create(x,y,obj_supfasfbullet2)
+ii.direction = point_direction(x,y,400,300)
+ii.speed = 3
+ii.image_index=3;
+
+alarm[0] = 26
+
+#event alarm1
+var ii = instance_create(x,y,obj_supfasfbullet2)
+ii.direction = point_direction(400,300,x,y)
+ii.speed = 5
+ii.image_index=4;
+
+alarm[1] = 10
+
+#event alarm2
+d = 1
+
+#event step
+if(d==1)
+{
+    direction+=2
+}

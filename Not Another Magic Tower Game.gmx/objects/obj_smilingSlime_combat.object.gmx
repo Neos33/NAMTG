@@ -406,7 +406,7 @@ path_start(path1, 15,0,0);
 {
     if(!global.achievements[37])
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 37;
         global.achievements[37] = true;
     }

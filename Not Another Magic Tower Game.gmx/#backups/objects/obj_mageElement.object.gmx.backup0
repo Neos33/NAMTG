@@ -1,0 +1,155 @@
+// 2025-06-05 09:31:25
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_elements;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+alarm[11] = 1;
+alarm[10] = 50;
+image_alpha = 0;
+startX = x;
+startY = y;
+
+index = 0;
+
+stepScale = 0;
+
+targetAlpha = 0;
+targetScale = 0;
+alphaGap = 0;
+scaleGap = 0;
+xgap = 0;
+ygap = 0;
+targetX = 0;
+targetY = 0;
+
+start = 0;
+
+tempAng = 0;
+scale = 0;
+txt = "";
+
+#event alarm0
+if(image_alpha > 0)
+{
+    image_alpha -= 0.02;
+    image_xscale += 0.1;
+    image_yscale += 0.1;
+    alarm[0] = 1;
+}
+else
+{
+    var c = instance_create(x,y,obj_mageElementController);
+    c.index = index;
+    instance_destroy();
+}
+
+#event alarm1
+if(image_xscale > 0)
+{
+    image_xscale -= stepScale;
+    image_yscale += stepScale;
+    alarm[1] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event alarm10
+alphaGap = targetAlpha - 1;
+scaleGap = targetScale - 1.2;
+xgap = targetX - startX;
+ygap = targetY - startY;
+
+if(abs(targetX - x) > abs(xgap / 50) || abs(targetY - y) > abs(ygap / 50))
+{
+    image_xscale += scaleGap / 50;
+    image_yscale += scaleGap / 50;
+    image_alpha += alphaGap / 50;
+    x += xgap / 50;
+    y += ygap / 50;
+    alarm[10] = 1;
+}
+else
+{
+    x = targetX;
+    y = targetY;
+    image_xscale = targetScale;
+    image_yscale = targetScale;
+    image_alpha = targetAlpha;
+    start = true;
+}
+
+#event alarm11
+if(image_alpha < 1)
+{
+    image_alpha += 0.05;
+    alarm[11] = 1;
+}
+
+#event step
+if(start)
+{
+    if(obj_magelv2_combat.selectedIndex < 0)
+    {
+        tempAng = obj_magelv2_combat.eAngle + 72 * index;
+        if(tempAng < 0)
+        {
+            tempAng += 360;
+        }
+        x = obj_magelv2_combat.x + 96 * cos(degtorad(tempAng));
+        y = obj_magelv2_combat.y - 40 * sin(degtorad(tempAng));
+        scale = abs(abs((obj_magelv2_combat.eAngle + 72 * index) mod 360) - 90) / 240 + 0.25;
+        image_xscale = scale;
+        image_yscale = scale;
+        image_alpha = scale;
+    }
+    else
+    {
+            x = obj_magelv2_combat.x + 96 * cos(degtorad(obj_magelv2_combat.eAngle + 72 * index));
+            y = obj_magelv2_combat.y - 40 * sin(degtorad(obj_magelv2_combat.eAngle + 72 * index));
+            if(obj_magelv2_combat.selectedIndex == index)
+            {
+                alarm[0] = 10;
+            }
+            else
+            {
+                stepScale = image_xscale / 25;
+                alarm[1] = 10;
+            }
+            start = false;
+    }
+}
+
+
+#event draw
+draw_current();
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_set_font(fontBasicInfoMini);
+if(index == 0)
+{
+    txt = "Fire";
+}
+else if(index == 1)
+{
+    txt = "Water";
+}
+else if(index == 2)
+{
+    txt = "Gold";
+}
+else if(index == 3)
+{
+    txt = "Dark";
+}
+else if(index == 4)
+{
+    txt = "Grass";
+}
+draw_text(x, y - 16 * image_yscale, string(txt));
+
+draw_reset_align();

@@ -86,7 +86,7 @@ if(obj_variationSkeleton_combat.y &gt; 568)
     obj_variationSkeleton_combat.y -= 2;
     repeat(2)
     {
-        p = instance_create(obj_variationSkeleton_combat.x, 580,obj_vsDarkBullet3);
+        var p = instance_create(obj_variationSkeleton_combat.x, 580,obj_vsDarkBullet3);
         p.direction = random_range(40, 130);
         p.speed = random_range(7,9);
     }
@@ -121,8 +121,8 @@ if(obj_variationSkeleton_combat.y &gt; 568)
     {
         if instance_exists(obj_variationSkeleton_combat)
         {
-        obj_variationSkeleton_combat.x = x;
-        obj_variationSkeleton_combat.y = 572 + 16;
+            obj_variationSkeleton_combat.x = x;
+            obj_variationSkeleton_combat.y = 572 + 16;
         }
         alarm[4] = 1;
     }
