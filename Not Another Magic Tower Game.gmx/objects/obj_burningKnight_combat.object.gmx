@@ -35,6 +35,9 @@ isAch = true;
 movingList = ds_list_create();
 alarm[11] = 1;
 alarm[10] = 30;
+
+
+found = false;
 </string>
           </argument>
         </arguments>

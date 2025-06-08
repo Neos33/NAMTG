@@ -1,4 +1,4 @@
-// 2025-06-08 11:04:56
+// 2025-06-08 11:05:09
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatController;
 uses_physics = false;
@@ -255,7 +255,7 @@ else
     draw_set_color(c_silver);
     draw_set_halign(fa_right);
     draw_set_valign(fa_middle);
-    strWidth = string_width("x " + string(obj_monsterBattlePrototype.hp));
+    var strWidth = string_width("x " + string(obj_monsterBattlePrototype.hp));
     draw_text(view_xview[1] + view_wview[1] - 64, view_yview[1] + 92, "x " + string(obj_monsterBattlePrototype.hp));
     draw_sprite_ext(spr_smallHeart, 0, view_xview[1] + view_wview[0] - 64 - strWidth - 14, view_yview[1] + 92, .75, .75, 0, c_white, 1);
 }

@@ -46,6 +46,11 @@ if(sign(x - player.x) &gt; 0)
     direction = 180;
 }
 sound_fix(sndSwing1);
+
+
+dashStart = false;
+dashEnd = false;
+
 </string>
           </argument>
         </arguments>

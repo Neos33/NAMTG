@@ -1,4 +1,4 @@
-// 2025-06-08 13:57:32
+// 2025-06-08 11:34:10
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatPlayerKiller;
 sprite_index = spr_touhouBullet4;
@@ -9,14 +9,19 @@ uses_physics = false;
 #section
 image_index = 5;
 image_speed = 0;
-image_xscale = 0.5;
-image_yscale = 0.5;
-
-scale = 0;
+targetX = random_range(96, room_width - 96);
+targetY = random_range(64, room_height - 64);
+path = path_add();
+path_set_precision(path,8);
+path_set_closed(path,false);
+path_set_kind(path,1);
+path_add_point(path,x,y,100);
+path_add_point(path,(targetX + x) / 2, RangeClamp(y - random_range(32, 304),0, targetY - 32),100);
+path_add_point(path, targetX, targetY, 100);
 
 child = instance_create(x,y,obj_bdmEnergyBallShadow);
 child.ind = 9;
-child.scale = 0.5;
+child.scale = 1;
 child.image_xscale = child.ind * 0.1 * scale;
 child.image_yscale = child.ind * 0.1 * scale;
 child.depth = -child.ind;
@@ -25,11 +30,15 @@ with(child)
 {
     event_user(0);
 }
-isStable = true;
+
 
 
 px = 0;
 py = 0;
+
+path_start(path,5,0,1);
+isStable = true;
+sound_fix(snd_touhou_twinkle2);
 
 #event destroy
 if(child)
@@ -48,7 +57,8 @@ child.y = py;
 px = x;
 py = y;
 
-#event other_outside
+#event other_end_of_path
+instance_create(x,y,obj_bdmEnergyBoom);
 instance_destroy();
 
 #event draw

@@ -1,4 +1,4 @@
-// 2025-06-08 10:33:55
+// 2025-06-08 19:03:02
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 uses_physics = false;
@@ -6,6 +6,7 @@ uses_physics = false;
 #event create
 currentStep = 0;
 personIndex = 0;
+totalTime = 0;
 event_user(0);
 start = false;
 blackAlpha = 0;
@@ -21,7 +22,7 @@ with(player)
 
 
 
-totalTime = 0;
+
 currentSteps = 0;
 star1 = 0;
 star2 = 0;

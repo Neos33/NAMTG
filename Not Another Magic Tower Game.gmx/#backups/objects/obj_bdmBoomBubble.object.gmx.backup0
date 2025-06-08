@@ -1,0 +1,69 @@
+// 2025-06-08 13:59:31
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bubbtle;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_xscale = 1/8;
+image_yscale = 1/8;
+image_blend = c_purple;
+isStable = true;
+isDmg = true;
+alarm[3] = 150;
+
+
+boomHit = false;
+
+#event alarm3
+if(image_alpha > 0)
+{
+    image_alpha -= 0.02;
+    alarm[3] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event step
+if(image_xscale < 50)
+{
+    image_xscale += 0.1;
+    image_yscale += 0.1;
+}
+
+#event collision:player
+if(!boomHit)
+{
+    if(!global.cooldown && !global.godmod)
+    {
+        isDmg = true;
+        with(obj_bdmAncientBook)
+        {
+            if(onHold)
+            {
+                obj_bdmBoomBubble.isDmg = false;
+                boom = true;
+                spd = 3;
+                alarm[3] = 1;
+            }
+        }
+        if(isDmg)
+        {
+            global.monsterSuperCritical = true;
+            event_inherited();
+        }
+        else
+        {
+            sound_fix(sndgras);
+            boomHit = true;
+        }
+    }
+}
+
+#event draw
+draw_current();
+draw_current();

@@ -1,0 +1,36 @@
+// 2025-06-08 13:24:34
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_redKnightThreats;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+b = instance_create(x - 22, y - 22, block);
+b.image_xscale = 44/32;
+b.image_yscale = 44/32;
+isStable = true;
+
+#event step
+if instance_exists(b)
+{
+    b.x = x-22;
+    b.y = y-22;
+    if(player.redKnightDash)
+    {
+        b.solid = false;   
+    }
+    else if(!collision_rectangle(x-22,y-22,x+22,y+22, player,false,true))
+    {
+        b.solid = true;
+    }
+}
+#section
+move_bounce_solid(false);
+
+#event collision:player
+if(!player.redKnightDash)
+{
+    event_inherited();
+}

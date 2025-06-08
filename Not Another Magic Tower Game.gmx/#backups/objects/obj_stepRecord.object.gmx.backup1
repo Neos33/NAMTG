@@ -1,4 +1,4 @@
-// 2025-06-08 10:30:50
+// 2025-06-08 10:33:55
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 uses_physics = false;
@@ -35,7 +35,7 @@ recordSpr[0, 0] = 0;
 recordSprInd[0, 0] = 0;
 recordXScale[0, 0] = 0;
 
-//ind = 0;
+ind = 0;
 
 #event alarm0
 start = true;

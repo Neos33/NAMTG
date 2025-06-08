@@ -51,6 +51,9 @@ path_add_point(path,x,y,100);
 path_add_point(path,(targetX + x) / 2, RangeClamp(y - random_range(32, 304),0, targetY - 32),100);
 path_add_point(path, targetX, targetY, 100);
 
+
+scale = 0;
+
 child = instance_create(x,y,obj_bdmEnergyBallShadow);
 child.ind = 9;
 child.scale = 1;

@@ -1,4 +1,4 @@
-// 2025-06-08 13:57:32
+// 2025-06-08 11:34:28
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatPlayerKiller;
 sprite_index = spr_touhouBullet4;
@@ -11,8 +11,6 @@ image_index = 5;
 image_speed = 0;
 image_xscale = 0.5;
 image_yscale = 0.5;
-
-scale = 0;
 
 child = instance_create(x,y,obj_bdmEnergyBallShadow);
 child.ind = 9;

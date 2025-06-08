@@ -1,0 +1,35 @@
+// 2025-06-08 13:30:54
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_shockwave;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0;
+image_xscale = -2;
+image_yscale = 2;
+isStable = true;
+alarm[3] = 2;
+
+#event alarm3
+if(image_index < 18)
+{
+    if(image_index == 5)
+    {
+        audio_playsound(sndCannon);
+    }
+    image_index += 1;
+    alarm[3] = 2;
+}
+else
+{
+    instance_destroy();
+}
+
+#event collision:player
+if(image_index >= 4 && image_index <= 13)
+{
+    event_inherited();
+}

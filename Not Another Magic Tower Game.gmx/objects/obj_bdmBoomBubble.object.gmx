@@ -45,6 +45,9 @@ image_blend = c_purple;
 isStable = true;
 isDmg = true;
 alarm[3] = 150;
+
+
+boomHit = false;
 </string>
           </argument>
         </arguments>

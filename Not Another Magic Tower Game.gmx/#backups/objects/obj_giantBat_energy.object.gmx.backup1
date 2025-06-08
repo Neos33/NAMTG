@@ -1,0 +1,51 @@
+// 2025-06-08 13:21:28
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_touhouBullet4;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+alarm[3] = 1;
+image_speed = 1/6;
+
+t = 0;
+
+#event alarm3
+if(point_distance(obj_giantBat_combat.x, obj_giantBat_combat.y, x, y) > spd)
+{
+    move_towards_point(obj_giantBat_combat.x, obj_giantBat_combat.y, spd);
+    spd += 0.1;
+    alarm[3] = 1;
+}
+else
+{
+    with(obj_giantBat_combat)
+    {
+        if(targetScale < 10)
+        {
+            targetScale += 1;
+        }
+    }
+    hspeed = 0;
+    vspeed = 0;
+    alarm[4] = 1;
+}
+
+#event alarm4
+if(image_xscale > 0)
+{
+    image_xscale -= 0.02;
+    image_yscale -= 0.02;
+    image_alpha -= 0.02;
+    alarm[4] = 1;
+}
+else
+{
+    if(obj_giantBat_combat.targetScale + instance_number(obj_giantBat_energy) < 10)
+    {
+        obj_giantBat_combat.alarm[t] = irandom_range(30,40);
+    }
+    instance_destroy();
+}

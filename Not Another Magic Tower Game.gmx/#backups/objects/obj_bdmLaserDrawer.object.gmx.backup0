@@ -1,4 +1,4 @@
-// 2025-06-08 11:37:09
+// 2025-06-08 18:55:53
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 uses_physics = false;
@@ -13,7 +13,7 @@ color[0] = c_red;
 color[1] = c_yellow;
 color[2] = c_blue;
 colorStep = 0;
-color = c_red;
+col = c_red;
 alpha = 0;
 len = 960;
 angleDir = choose(-1,1);
@@ -35,6 +35,7 @@ startInd = 0;
 ammount = 0;
 widthAngle = 0;
 targetAngle = 0;
+col = array_create(5);
 
 #event destroy
 with(obj_bdmLaserCollision)
@@ -78,11 +79,11 @@ startInd = floor((colorStep mod 150) / 50);
 ammount = colorStep mod 50;
 if(startInd < 2)
 {
-    color = merge_color(color[startInd], color[startInd + 1], ammount * 0.02);
+    col = merge_color(color[startInd], color[startInd + 1], ammount * 0.02);
 }
 else
 {
-    color = merge_color(color[startInd], color[0], ammount * 0.02);
+    col = merge_color(color[startInd], color[0], ammount * 0.02);
 }
 #section
 widthAngle += 5;
@@ -113,5 +114,5 @@ else
 #event draw
 for(var j=0;j<laserCount;j+=1)
 {
-    drawLaserExt(obj_blackDevilMagician_combat.x,obj_blackDevilMagician_combat.y,color,angle + 360/laserCount*j,len,width,precision,alpha);
+    drawLaserExt(obj_blackDevilMagician_combat.x,obj_blackDevilMagician_combat.y,col,angle + 360/laserCount*j,len,width,precision,alpha);
 }

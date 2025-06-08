@@ -1,4 +1,4 @@
-// 2025-06-08 18:59:39
+// 2025-06-08 18:59:08
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = maskBlock;
@@ -14,9 +14,6 @@ type = 0;
 count = 0;
 total = 0;
 pressed = false;
-
-obj = array_create(buttonTypeCount);
-subOpen = array_create(buttonTypeCount);
 
 #event step
 /*opened = true;

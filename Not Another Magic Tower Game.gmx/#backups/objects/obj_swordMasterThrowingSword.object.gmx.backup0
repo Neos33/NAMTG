@@ -1,0 +1,72 @@
+// 2025-06-08 13:33:49
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_swordMasterSword;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+isStable = true;
+speed = 15;
+if(sign(x - player.x) > 0)
+{
+    direction = 180;
+}
+sound_fix(sndSwing1);
+
+
+dashStart = false;
+dashEnd = false;
+
+
+#event alarm0
+if(image_alpha > 0)
+{
+    image_alpha -= 0.05;
+    alarm[0]=1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event step
+image_angle = direction;
+if(!dashStart)
+{
+    if(abs(x - player.x) <= 48)
+    {
+        dashStart = true;
+        with(obj_swordMaster_combat)
+        {
+            tx = other.x;
+            ty = other.y;
+            event_user(0);
+            event_user(2);
+        }
+    }
+}
+else
+{
+    if(!dashEnd)
+    {
+        if(abs(x - player.x) >= 16 || x <= 160 || x >= 640)
+        {
+            dashEnd = true;
+            with(obj_swordMaster_combat)
+            {
+                tx = other.x + 16 * sign(other.direction - 90);
+                ty = other.y;
+                ind = 4;
+                event_user(1);
+                ind = 5;
+            }
+            speed = 0;
+            alarm[0] = 1;
+        }
+    }
+}
+
+#event other_outside
+instance_destroy();

@@ -31,6 +31,8 @@ child = noone;
 
 px = 0;
 py = 0;
+
+scale = 0;
 </string>
           </argument>
         </arguments>

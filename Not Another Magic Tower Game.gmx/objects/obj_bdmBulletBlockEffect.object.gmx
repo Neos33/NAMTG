@@ -30,7 +30,9 @@ image_speed = 0.2;
 image_xscale = 3;
 image_yscale = 3;
 sound_fix(sndfasfboom);
-obj_bdmBlocker.alarm[3] = 1;
+
+with obj_bdmBlocker
+    alarm[3] = 1;
 </string>
           </argument>
         </arguments>
@@ -53,7 +55,9 @@ obj_bdmBlocker.alarm[3] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_bdmBoomBubble.alarm[3] = 1;
+            <string>with obj_bdmBoomBubble
+    alarm[3] = 1;
+    
 instance_destroy();
 </string>
           </argument>

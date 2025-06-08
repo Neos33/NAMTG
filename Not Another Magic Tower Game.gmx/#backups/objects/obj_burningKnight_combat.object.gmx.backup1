@@ -1,4 +1,4 @@
-// 2025-06-08 11:43:03
+// 2025-06-08 11:43:08
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_burningKnight_combat;
@@ -108,7 +108,7 @@ if(!cooldown)
 if(!cooldown)
 {   
     damage = global.attackDamage;
-    damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
+    var damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
     damageInfo.damage = damage;
     damageInfo.font = fontDamageInfo1;
     damageInfo.color = c_white;        

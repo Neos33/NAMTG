@@ -1,4 +1,4 @@
-// 2025-06-08 11:20:09
+// 2025-06-08 13:40:07
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_goldEvilSlime_combat;
@@ -36,6 +36,10 @@ evolveStep = 500;
 alarm[11] = 10;
 
 ind = 0;
+fade = false;
+
+evolve = false;
+playEnd = false;
 
 #event alarm3
 

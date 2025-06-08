@@ -41,6 +41,8 @@
             <kind>1</kind>
             <string>alarm[3] = 1;
 image_speed = 1/6;
+
+t = 0;
 </string>
           </argument>
         </arguments>

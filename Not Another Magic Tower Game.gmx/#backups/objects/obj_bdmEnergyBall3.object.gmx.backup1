@@ -1,4 +1,4 @@
-// 2025-06-08 11:34:55
+// 2025-06-08 11:34:59
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatPlayerKiller;
 sprite_index = spr_danmaku12;
@@ -68,7 +68,7 @@ else
 }
 
 #event alarm5
-tDir = point_direction(x,y,player.x,player.y);
+var tDir = point_direction(x,y,player.x,player.y);
 targetX = x + lengthdir_x(500, tDir);
 targetY = y + lengthdir_y(500, tDir);
 alarm[4] = 1;

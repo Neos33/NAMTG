@@ -1,4 +1,4 @@
-// 2025-06-08 13:56:00
+// 2025-06-08 13:50:35
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = spr_touhouBullet4;
@@ -12,7 +12,7 @@ child = noone;
 px = 0;
 py = 0;
 
-scale = 0;
+scale = 1;
 
 #event destroy
 if(child)

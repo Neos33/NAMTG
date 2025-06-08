@@ -57,6 +57,9 @@ alarm[11] = 10;
 
 ind = 0;
 fade = false;
+
+evolve = false;
+playEnd = false;
 </string>
           </argument>
         </arguments>

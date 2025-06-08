@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>currentStep = 0;
 personIndex = 0;
+totalTime = 0;
 event_user(0);
 start = false;
 blackAlpha = 0;
@@ -42,7 +43,7 @@ with(player)
 
 
 
-totalTime = 0;
+
 currentSteps = 0;
 star1 = 0;
 star2 = 0;
