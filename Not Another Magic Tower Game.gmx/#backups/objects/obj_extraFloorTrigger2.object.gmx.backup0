@@ -1,0 +1,19 @@
+// 2025-06-08 10:46:27
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_floorButton;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+ptrg = 0;
+trg = 0;
+
+#event collision:player
+if(ptrg == 0 || global.trigger[ptrg])
+{
+    if(!global.trigger[trg]) {
+        global.trigger[trg] = true;
+        image_index = 1;
+    }
+}

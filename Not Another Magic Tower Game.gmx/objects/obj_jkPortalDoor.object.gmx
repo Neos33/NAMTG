@@ -28,6 +28,10 @@
             <string>image_speed = 0;
 index = 0;
 ang = 0;
+
+ind = 0;
+transport = false;
+go = false;
 </string>
           </argument>
         </arguments>
@@ -225,7 +229,7 @@ draw_set_alpha(1);
 if(ind &gt; 0)
 {
     draw_text(x, y - 45, "Stage " + string(ind));
-    for(i = 0; i &lt; 3; i+=1)
+    for(var i = 0; i &lt; 3; i+=1)
     {
         if(i &lt; global.ExtraJkStar[ind - 1])
         {

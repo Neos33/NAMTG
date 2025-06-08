@@ -52,6 +52,10 @@ if(room == rExtraFloor31)
 {
  alarm[3] = 1;
 }
+
+
+
+ach58 = false;
 </string>
           </argument>
         </arguments>
@@ -78,7 +82,7 @@ if(room == rExtraFloor31)
 {
     if(!instance_exists(obj_achievements))
     {
-        ch = instance_create(0,608,obj_achievements);
+        var ch = instance_create(0,608,obj_achievements);
         ch.index = 57;
         global.achievements[57] = 1;
     }
@@ -112,7 +116,7 @@ if(room == rExtraFloor31)
             <string>if(!global.achievements[58])
 {
     ach58 = true;
-    for(i = 0; i &lt; 6; i+=1)
+    for(var i = 0; i &lt; 6; i+=1)
     {
         if(!global.floorTrigger[i])
         {
@@ -123,7 +127,7 @@ if(room == rExtraFloor31)
     {
         if(!instance_exists(obj_achievements))
         {
-            ch = instance_create(0,608,obj_achievements);
+            var ch = instance_create(0,608,obj_achievements);
             ch.index = 58;
             global.achievements[58] = 1;
         }

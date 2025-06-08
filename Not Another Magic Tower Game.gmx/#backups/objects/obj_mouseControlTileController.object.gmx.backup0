@@ -1,0 +1,144 @@
+// 2025-06-08 10:06:17
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+map = ds_map_create();
+list = ds_list_create();
+currentIndex = 0;
+color_change=85;
+color_flag=0;
+global.currentFloor = 10;
+
+
+
+
+isDraw = false;
+listSize = 0;
+obj = 0;
+item = 0;
+sprX = 0;
+sprY = 0;
+
+#event step
+if(mouse_check_button(mb_left))
+{
+    if(ds_list_size(list) > 0 && player.x > 0 && mouse_x <= (view_xview + room_width) && mouse_x >= view_xview && mouse_y >= view_yview && mouse_y <= (view_yview + room_height))
+    {        
+        isDraw = true;
+    }
+    else
+    {
+        isDraw = false;
+    }
+}
+if(isDraw)
+{
+    sprX = mouse_x;
+    sprY = mouse_y;
+}
+if(mouse_check_button_released(mb_left) && isDraw)
+{
+    obj = ds_list_find_value(list, currentIndex);
+    instance_create(sprX, sprY, obj);
+    item = ds_map_find_value(map, obj);
+    item.ammount -= 1;
+    if(item.ammount == 0)
+    {
+        ds_list_delete(list, currentIndex);
+        ds_map_delete(map, obj);
+        currentIndex = 0;
+        with(item)
+        {
+            instance_destroy();
+        }
+    }
+    isDraw = false;
+}
+#section
+listSize = ds_list_size(list);
+if(keyboard_check_released(vk_tab) && listSize > 0)
+{
+    sound_fix(snd_click);
+    if(currentIndex == listSize - 1)
+    {
+        currentIndex = 0;
+    }
+    else
+    {
+        currentIndex += 1;
+    }
+}
+
+#event other_room_end
+ds_map_destroy(map);
+ds_list_destroy(list);
+
+#event draw
+
+    if(isDraw)
+    {
+        obj = ds_list_find_value(list, currentIndex);
+        item = ds_map_find_value(map, obj);
+        draw_sprite_ext(item.spr, 0, sprX, sprY, 1, 1, 0, c_white, 0.5);
+    }
+    listSize = ds_list_size(list);
+    if(listSize > 0)
+    {
+        for(var i = 0; i < listSize; i += 1)
+        {
+            obj = ds_list_find_value(list, i);
+            item = ds_map_find_value(map, obj);
+            
+            draw_set_font(fontBasicInfoMini);
+            if(i == currentIndex)
+            { 
+                if(color_change<253 && color_flag==0)
+                {
+                       color_change+=3;
+                       color_flag=0;
+                }
+                else 
+                {
+                   color_flag=1;
+                }
+                if(color_change>84 && color_flag==1)
+                {
+                   color_change-=3;
+                   color_flag=1;
+                }
+                else
+                {
+                    color_flag=0;
+                }
+                    var color=make_color_rgb(226,252,color_change);
+                    draw_set_color(c_orange);
+            }
+            else
+            {
+                var color=c_white;
+                draw_set_color(c_black);
+            }
+            dir=0
+     /*       repeat(listSize)
+            {
+                xx=(view_xview+100)+lengthdir_x(70,30+dir);
+                yy=(view_yview+100)+lengthdir_y(70,30+dir);
+               a=draw_sprite_ext(spr_extraBubble,0,xx,yy,1,1,1,color_change,1)
+               b=draw_sprite_stretched(item.spr,0,xx,yy,16,16)
+                dir+=60;
+                }
+                */
+        
+     draw_sprite_stretched(item.spr, 0, view_xview + 48 + 50 * i + 4, view_yview + 48 + 12, 16,16);
+     draw_sprite_ext(spr_extraBubble,0,view_xview + 64 + 50 * i, view_yview + 64,1.1,1.1,0,color,1);         
+            
+  draw_set_valign(fa_top);
+   draw_text(view_xview + 48 + 50 * i + 16, view_yview + 48 + 2, 'x ' + string(item.ammount));
+
+        }
+    }
+
+    
+draw_reset();

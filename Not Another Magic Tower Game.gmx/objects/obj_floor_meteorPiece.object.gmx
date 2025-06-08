@@ -50,10 +50,10 @@
             <kind>1</kind>
             <string>if(image_xscale &gt; 0)
 {
-image_xscale -= 0.04;
-image_yscale -= 0.04;
-image_alpha -= 0.04;
-alarm[0] = 1;
+    image_xscale -= 0.04;
+    image_yscale -= 0.04;
+    image_alpha -= 0.04;
+    alarm[0] = 1;
 }
 else
 {

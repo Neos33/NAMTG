@@ -1,0 +1,33 @@
+// 2025-06-08 10:49:45
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+f1=0
+f2=0
+f3=0
+timer=0
+
+dt = 1;
+// Taken from renex-square engine
+
+#event step
+timer+=dt if (timer>=1) {timer-=1
+    f1=f1*1.1+2
+    if (f1>10) f2=f2*1.1+2
+    if (f1>150) f3=f3*1.1+2
+    if (f3>800) instance_destroy()
+}
+
+#event draw
+draw_set_blend_mode_ext(10,1)
+draw_circle(x,y,f1,0)
+
+draw_circle(x+48,y,f2,0)
+draw_circle(x-48,y,f2,0)
+draw_circle(x,y+48,f2,0)
+draw_circle(x,y-48,f2,0)
+
+draw_circle(x,y,f3,0)
+draw_set_blend_mode(0)

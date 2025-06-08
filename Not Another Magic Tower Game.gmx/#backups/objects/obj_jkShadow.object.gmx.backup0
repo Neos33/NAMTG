@@ -1,0 +1,28 @@
+// 2025-06-08 10:30:56
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = sprPlayerIdle;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+image_blend = c_gray;
+image_alpha = 0.5;
+
+ind = 0;
+
+
+#event step
+if(obj_stepRecord.start && obj_stepRecord.currentStep < obj_stepRecord.recordLength[ind])
+{
+    visible = true;
+    x = obj_stepRecord.recordX[ind, obj_stepRecord.currentStep];
+    y = obj_stepRecord.recordY[ind, obj_stepRecord.currentStep];
+    sprite_index = obj_stepRecord.recordSpr[ind, obj_stepRecord.currentStep];
+    image_index = obj_stepRecord.recordSprInd[ind, obj_stepRecord.currentStep];
+    image_xscale = obj_stepRecord.recordXScale[ind, obj_stepRecord.currentStep];
+}
+else
+{
+    visible = false;
+}

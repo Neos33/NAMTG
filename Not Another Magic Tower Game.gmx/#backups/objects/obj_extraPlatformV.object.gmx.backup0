@@ -1,0 +1,12 @@
+// 2025-06-08 10:16:37
+#event properties (no comments/etc. here are saved)
+parent_index = movingPlatform;
+sprite_index = spr_extraPlatform;
+uses_physics = false;
+
+#event create
+var p = instance_create(x-16,y-8,obj_extraPlatform);
+p.vspeed = -1.5;
+instance_destroy();
+
+

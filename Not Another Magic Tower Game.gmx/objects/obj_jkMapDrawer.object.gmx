@@ -32,6 +32,16 @@ mapZoomSpd = 10;
 moveRatio = 1;
 sx = view_xview[0];
 sy = view_yview[0];
+
+
+drawMap = false;
+startX = 0;
+startY = 0;
+movable = 0;
+startW = 0;
+startH = 0;
+wGap = 0;
+hGap = 0;
 </string>
           </argument>
         </arguments>

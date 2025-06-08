@@ -31,6 +31,9 @@ vspeed = 1.4 * spdRnd;
 scaleRnd = random_range(0.2, 0.4);
 image_xscale = scaleRnd;
 image_yscale = scaleRnd;
+
+
+piece = 0;
 </string>
           </argument>
         </arguments>

@@ -1,0 +1,58 @@
+// 2025-06-08 10:19:37
+#event properties (no comments/etc. here are saved)
+parent_index = obj_jkButtonPrototype;
+sprite_index = maskBlock;
+persistent = true;
+uses_physics = false;
+
+#event create
+
+ind = 0;
+pressed = false;
+
+image_speed = 0;
+alarm[0] = 1;
+//pressed = false;
+
+#event alarm0|
+if(room == ExtraJKPortal)
+{
+    if(global.ExtraJKPortalPressed[ind])
+    {
+        pressed = true;
+    }
+}
+#event step
+if(pressed)
+{
+    image_index = 1;
+}
+else
+{
+    image_index = 0;
+}
+
+#event collision:player
+if(!pressed)
+{
+    pressed = true;
+    if(room == ExtraJKPortal)
+    {
+        global.ExtraJKPortalPressed[ind] = true;
+    }
+}
+
+
+#event collision:obj_jkShadow
+if(!pressed)
+{
+    pressed = true;
+    image_index = 1;
+}
+
+#event collision:obj_followingMonster
+if(!pressed)
+{
+    pressed = true;
+    image_index = 1;
+}

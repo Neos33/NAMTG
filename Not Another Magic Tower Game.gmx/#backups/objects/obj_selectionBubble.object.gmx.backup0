@@ -1,0 +1,124 @@
+// 2025-06-08 10:12:47
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_selectionBubble;
+uses_physics = false;
+
+#event create
+image_speed = 1/8;
+py = y;
+alarm[11] = 1;
+image_alpha = 0.8;
+played=0;
+
+
+pending = false;
+ind = 0;
+lock = false;
+lvLock = 0;
+angle = 0;
+selected = false;
+roomTo = 0;
+
+#event alarm2
+pending = false;
+
+#event alarm11
+if(ind >= 0)
+{
+    if(ind > global.currentBubbleStage || obj_bubbleStageController.totalStars < obj_bubbleStageController.stageLimit[ind])
+    {
+        lock = true;
+        pending = true;
+        lvLock = instance_create(x,y,obj_extraLevelLock);
+        lvLock.limit = obj_bubbleStageController.stageLimit[ind];
+        lvLock.current = obj_bubbleStageController.totalStars;
+    }
+}
+
+#event step
+if(lock)
+{
+    if(global.currentBubbleStage >= ind && obj_bubbleStageController.totalStars >= obj_bubbleStageController.stageLimit[ind])
+    {
+        lock = false;
+        alarm[2] = 100;
+        lvLock.alarm[0] = 1;
+    }
+}
+angle += 3;
+y = py + sin(degtorad(angle));
+#section
+if(lvLock)
+{
+    lvLock.y = y;
+}
+#section
+if(!pending)
+{
+    var m_dis = point_distance(mouse_x,mouse_y, x,y);
+    if(m_dis <= 50)
+    {
+        if(played==0)
+        {
+            
+            played=1;
+            sound_fix(sndSelect);
+        }
+            
+        image_xscale = 1.2;
+        image_yscale = 1.2;
+        selected = true;
+        if(mouse_check_button_released(mb_left))
+        {
+            global.stageIndex = ind;
+            //transition_steps = 80;
+            //transition_kind = 21;
+            room_goto(roomTo);
+            sound_fix(sndDecide);
+        }
+    }
+    else
+    {
+        played=0;
+        image_xscale = 1;
+        image_yscale = 1;
+        selected = false;
+    }
+    
+}
+
+#event draw
+if(ind >=0)
+{
+    draw_sprite_ext(spr_bubbleStagesInfo, ind, x,y,1,1,0,c_white,1);
+}
+else
+{
+    draw_sprite_ext(spr_bubbleStagesInfo, 10, x,y,1,1,0,c_white,1);
+}
+draw_current();
+draw_set_font(fontBasicInfo);
+draw_set_color(c_white);
+draw_set_valign(fa_middle);
+draw_set_halign(fa_center);
+
+if(ind >=0)
+{
+    draw_text(x, y - 60, "Stage " + string(ind + 1));
+    for(i = 0; i < 3; i += 1)
+    {
+        if(i < global.bubbleStageStar[ind])
+        {
+            draw_sprite_ext(spr_starForStas, 0, x - 50 + 35 * i, y - 100, 0.3,0.3,0,c_white,1);
+        }
+        else
+        {
+            draw_sprite_ext(spr_starForStas, 1, x - 50 + 35 * i, y - 100, 0.3,0.3,0,c_white,1);
+        }
+    }
+}
+else
+{
+    draw_text(x, y - 60, "Bonus Stage");
+}

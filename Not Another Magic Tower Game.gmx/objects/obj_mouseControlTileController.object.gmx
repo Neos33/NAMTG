@@ -31,6 +31,16 @@ currentIndex = 0;
 color_change=85;
 color_flag=0;
 global.currentFloor = 10;
+
+
+
+
+isDraw = false;
+listSize = 0;
+obj = 0;
+item = 0;
+sprX = 0;
+sprY = 0;
 </string>
           </argument>
         </arguments>
@@ -176,7 +186,7 @@ ds_list_destroy(list);
     listSize = ds_list_size(list);
     if(listSize &gt; 0)
     {
-        for(i = 0; i &lt; listSize; i += 1)
+        for(var i = 0; i &lt; listSize; i += 1)
         {
             obj = ds_list_find_value(list, i);
             item = ds_map_find_value(map, obj);
@@ -184,30 +194,30 @@ ds_list_destroy(list);
             draw_set_font(fontBasicInfoMini);
             if(i == currentIndex)
             { 
-               if(color_change&lt;253 &amp;&amp; color_flag==0)
-               {
-               color_change+=3;
-               color_flag=0;
-               }
-               else 
-               {
-               color_flag=1;
-               }
-               if(color_change&gt;84 &amp;&amp; color_flag==1)
+                if(color_change&lt;253 &amp;&amp; color_flag==0)
                 {
-               color_change-=3;
-               color_flag=1;
-               }
-               else
-               {
-               color_flag=0;
-               }
-               color=make_color_rgb(226,252,color_change);
-               draw_set_color(c_orange);
+                       color_change+=3;
+                       color_flag=0;
+                }
+                else 
+                {
+                   color_flag=1;
+                }
+                if(color_change&gt;84 &amp;&amp; color_flag==1)
+                {
+                   color_change-=3;
+                   color_flag=1;
+                }
+                else
+                {
+                    color_flag=0;
+                }
+                    var color=make_color_rgb(226,252,color_change);
+                    draw_set_color(c_orange);
             }
             else
             {
-                color=c_white
+                var color=c_white;
                 draw_set_color(c_black);
             }
             dir=0

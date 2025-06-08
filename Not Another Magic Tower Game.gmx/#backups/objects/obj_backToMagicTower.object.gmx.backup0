@@ -1,0 +1,18 @@
+// 2025-06-08 10:14:37
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_backToMagicTower;
+uses_physics = false;
+
+#event create
+back = false;
+
+#event step
+if(checkMouse(x,y,x+sprite_width,y+sprite_height) && mouse_check_button(mb_left) && !back)
+{   
+    back = true;
+    instance_create(256 + 17, 240 + 23,player);
+    //transition_steps = 80;
+    //transition_kind = 21;
+    room_goto(r10F);
+}

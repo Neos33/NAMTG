@@ -1,0 +1,29 @@
+// 2025-06-08 10:20:21
+#event properties (no comments/etc. here are saved)
+parent_index = obj_jkButtonPrototype;
+sprite_index = maskBlock;
+persistent = true;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+pressed = false;
+
+#event step
+if(pressed)
+{
+    image_index = 1;
+}
+else
+{
+    image_index = 0;
+}
+#section
+if(place_meeting(x,y,player) || place_meeting(x,y,obj_jkShadow) || place_meeting(x,y,obj_followingMonster))
+{
+    pressed = true;
+}
+else
+{
+    pressed = false;
+}

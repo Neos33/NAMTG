@@ -1,0 +1,81 @@
+// 2025-06-08 10:21:22
+#event properties (no comments/etc. here are saved)
+parent_index = obj_jkButtonPrototype;
+sprite_index = maskBlock;
+persistent = true;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+pressed = false;
+time = 0;
+totalTime = 0;
+color = c_white;
+
+#event step
+if(pressed)
+{
+    image_index = 1;
+}
+else
+{
+    image_index = 0;
+}
+if(time > 0)
+{
+    time -= 1;
+}
+else if(pressed)
+{
+    pressed = false;
+}
+
+#event collision:player
+if(!pressed || time != totalTime * 50)
+{
+    pressed = true;
+    time = totalTime * 50;  
+}
+
+
+#event collision:obj_jkShadow
+if(!pressed || time != totalTime * 50)
+{
+    pressed = true;
+    time = totalTime * 50;  
+}
+
+
+#event collision:obj_followingMonster
+if(!pressed || time != totalTime * 50)
+{
+    pressed = true;
+    time = totalTime * 50;  
+}
+
+
+#event draw
+draw_current();
+for(var i = 0; i < totalTime; i+=1)
+{
+    draw_set_color(c_black);
+    draw_set_alpha(1);  
+    draw_rectangle(x + 8 + 12 * (i mod 2), y + 32 + 10 * floor(i / 2), x + 8 + 12 * (i mod 2) + 4, y + 32 + 10 * floor(i / 2) + 4, false);
+    if((time - i * 50) > 0)
+    {
+        draw_set_color(color);
+        if((time - i * 50) > 50)
+        {
+            draw_set_alpha(1);
+        }
+        else
+        {
+            draw_set_alpha((time - i * 50) / 50);
+        }
+        draw_rectangle(x + 8 + 12 * (i mod 2), y + 32 + 10 * floor(i / 2), x + 8 + 12 * (i mod 2) + 4, y + 32 + 10 * floor(i / 2) + 4, false);
+    }   
+}
+
+
+
+draw_reset_color();

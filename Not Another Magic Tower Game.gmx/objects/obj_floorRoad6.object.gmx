@@ -35,7 +35,7 @@ if(global.floorTrigger[ind])
 }
 else
 {
-    alt = instance_create(x,y,obj_floorMark);
+    var alt = instance_create(x,y,obj_floorMark);
     alt.sprite_index = sprite_index;
     alt.image_index = 1;
     instance_destroy();

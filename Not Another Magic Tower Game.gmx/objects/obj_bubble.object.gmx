@@ -28,6 +28,13 @@
             <string>image_speed=1/8;
 py = y;
 
+
+
+angle = 0;
+obj = 0;
+ammount = 0;
+spr = 0;
+
 </string>
           </argument>
         </arguments>
@@ -86,12 +93,12 @@ else
 }*/
 if(ds_map_exists(obj_mouseControlTileController.map,obj))
 {
-    bubbleItem = ds_map_find_value(obj_mouseControlTileController.map, obj);
+    var bubbleItem = ds_map_find_value(obj_mouseControlTileController.map, obj);
     bubbleItem.ammount += ammount;
 }
 else
 {
-    bubbleItem = instance_create(0,0,obj_bubbleItem);
+    var bubbleItem = instance_create(0,0,obj_bubbleItem);
     bubbleItem.spr = spr;
     bubbleItem.ammount = ammount;
     ds_list_add(obj_mouseControlTileController.list, obj);

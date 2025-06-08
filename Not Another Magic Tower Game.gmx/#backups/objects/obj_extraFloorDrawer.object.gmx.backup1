@@ -1,0 +1,117 @@
+// 2025-06-08 10:47:07
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+//background_blend[0] = c_gray;
+//background_vspeed[0] = -3;
+//background_hspeed[0] = -3;
+if(room != rExtraFloorBonus)
+{
+ instance_create(0,0,obj_floorEffect);
+}
+if(room != rExtraFloorBonus)
+{
+    instance_create(96,96,obj_floorBGStyle);
+    
+    instance_create(704,96,obj_floorBGStyle);
+    if(room != rFaroSideTower)
+    {
+        if instance_exists(player)
+            player.frozen = true;
+        alarm[1] = 10;
+    }
+}
+else
+{
+ alarm[2] = 1;
+}
+if(room == rExtraFloor31)
+{
+ alarm[3] = 1;
+}
+
+
+
+ach58 = 0;
+
+#event alarm0
+if(global.floorStageLife > 0)
+{
+    global.floorStageLife -= 1;
+}
+else
+{
+    //transition_kind = 21;
+    //transition_steps = 80;
+    player.x = 64 + 17;
+    player.y = 512 + 23;
+    room_goto(rExtraFloorBonus);
+}
+
+#event alarm1
+player.frozen = false;
+
+#event alarm2
+if(!global.achievements[58])
+{
+    ach58 = true;
+    for(var i = 0; i < 6; i+=1)
+    {
+        if(!global.floorTrigger[i])
+        {
+            ach58 = false;
+        }
+    }
+    if(ach58)
+    {
+        if(!instance_exists(obj_achievements))
+        {
+            var ch = instance_create(0,608,obj_achievements);
+            ch.index = 58;
+            global.achievements[58] = 1;
+        }
+        else
+        {
+            alarm[2] = 1;
+        }
+    }
+}
+
+#event alarm3
+if(!global.achievements[57])
+{
+    if(!instance_exists(obj_achievements))
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 57;
+        global.achievements[57] = 1;
+    }
+    else
+    {
+        alarm[3] = 1;
+    }
+}
+
+#event draw
+draw_set_font(fontFloorInfo);
+draw_set_color(c_silver);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_set_alpha(1);
+if(room == rExtraFloorBonus)
+{
+ draw_text(400,48,"Bonus Room");
+}
+else
+{
+     draw_text(400,48,"Side Tower");
+     draw_text(96,80,"Floor");
+     draw_text(96,112,string(global.floorStageLevel));
+     draw_text(704,80,"Life");
+     draw_text(704,112,string(global.floorStageLife));
+}
+
+
+draw_reset();

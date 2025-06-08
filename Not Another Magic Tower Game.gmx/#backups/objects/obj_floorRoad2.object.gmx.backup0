@@ -1,0 +1,22 @@
+// 2025-06-08 10:48:31
+#event properties (no comments/etc. here are saved)
+parent_index = block;
+sprite_index = spr_floorRoad2;
+uses_physics = false;
+
+#event create
+ind = 1;
+image_speed = 0;
+image_index = 1;
+if(global.floorTrigger[ind])
+{
+    solid = true;
+    image_index = 0;
+}
+else
+{
+    var alt = instance_create(x,y,obj_floorMark);
+    alt.sprite_index = sprite_index;
+    alt.image_index = 1;
+    instance_destroy();
+}

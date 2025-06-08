@@ -1,0 +1,129 @@
+// 2025-06-08 10:22:28
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = maskBlock;
+uses_physics = false;
+
+#event create
+b = instance_create(x,y,block);
+buttonTypeCount = 3;
+
+#event step
+/*opened = true;
+if(obj)
+{
+    with(obj)
+    {
+        if(!pressed)
+        {
+            other.opened = false;
+        }   
+    }
+}
+if(opened)
+{
+    if(b)
+    {
+     with(b)
+     {
+      instance_destroy();
+     }
+     b = noone;
+    }
+    //solid = false;
+    if(image_alpha > 0.3)
+    {
+        image_alpha -= 0.02;
+    }
+}
+else
+{
+    if(!b)
+    {
+     b = instance_create(x,y,block);
+    }
+    //solid = true;
+    image_alpha = 1;
+}
+#section
+if(type == 0)
+{
+ opened = false;
+}
+else
+{
+ opened = true;
+}
+for(var i = 0; i < buttonTypeCount; i += 1)
+{
+    if(obj[i])
+    {
+        subOpen[i] = false;
+        total = instance_number(obj[i]);
+        count = 0;
+        if(total > 0)
+        {
+            with(obj[i])
+            {
+                if(pressed)
+                {
+                    other.count += 1;
+                }
+            }
+        }
+        if(total == count)
+        {
+             subOpen[i] = true;
+        }
+    }
+}
+if(type == 0)
+{
+ if(subOpen[0] && subOpen[1] && subOpen[2])
+ {
+   opened = true;
+ }
+ else
+ {
+   opened = false;
+ }
+}
+else
+{
+ if(subOpen[0] && subOpen[1] && subOpen[2])
+ {
+    opened = false;
+ }
+ else
+ {
+    opened = true;
+ }
+}
+if(!opened)
+{
+    if(!b)
+    {
+     b = instance_create(x,y,block);
+    }
+    //solid = true;
+    if(image_alpha < 1)
+    {
+        image_alpha += 0.02;
+    }
+}
+else
+{
+    if(b)
+    {
+     with(b)
+     {
+      instance_destroy();
+     }
+     b = noone;
+    }
+    //solid = false;
+    if(image_alpha > 0.25)
+    {
+        image_alpha -= 0.02;
+    }
+}

@@ -1,0 +1,49 @@
+// 2025-06-08 10:13:27
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_extraLevelLock;
+uses_physics = false;
+
+#event create
+shakeCount = 5;
+
+
+current = 0;
+limit = 0;
+
+#event alarm0
+if(shakeCount >= 0)
+{
+    image_angle = sign((shakeCount mod 2) - 0.5) * random_range(5,15);
+    alarm[0] = 10;
+}
+else
+{
+    image_angle = 0;
+    alarm[1] = 1;
+}
+
+#event alarm1
+if(image_alpha > 0)
+{
+    image_alpha -= 0.02;
+    alarm[0] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event draw
+draw_current();
+if(current < limit)
+{
+    draw_sprite_ext(spr_starForStas, 0, x - 30, y - 5, 0.2,0.2,0,c_white,1);
+    draw_set_font(fontBasicInfoMiniBold);
+    draw_set_color(c_yellow);
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_left);
+    draw_text(x-2,y-4, "X  " + string(limit));
+    
+    draw_set_color(c_white);
+}

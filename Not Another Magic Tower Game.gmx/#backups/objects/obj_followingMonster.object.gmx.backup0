@@ -1,0 +1,58 @@
+// 2025-06-08 10:39:52
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_followingMonsterIdle;
+uses_physics = false;
+
+#event create
+image_speed = 1/8; //sprite_index = 1/8;
+startX = x;
+startY = y;
+
+minX = 0;
+maxX = 0;
+
+#event step
+if(player_is_alive())
+{
+  var tempX = x;
+  if(abs(tempX - player.x)  <= 1)
+  {
+    x = RangeClamp(player.x, minX, maxX);
+  }
+  else
+  {
+    x = RangeClamp(tempX + sign(player.x - tempX), minX, maxX);
+  }
+}
+else
+{
+    sprite_index = spr_followingMonsterIdle;
+    exit;
+}
+if(x == player.x)
+{
+    if(x > xprevious)
+    {
+        sprite_index = spr_followingMonsterRight;
+    }
+    else if(x < xprevious)
+    {
+        sprite_index = spr_followingMonsterLeft;
+    }
+    else
+    {
+        sprite_index = spr_followingMonsterIdle;
+    }
+}
+else
+{
+    if(x > player.x)
+    {
+        sprite_index = spr_followingMonsterLeft;
+    }
+    else
+    {
+        sprite_index = spr_followingMonsterRight;
+    }
+}

@@ -1,0 +1,24 @@
+// 2025-06-08 10:49:09
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_floor_meteor;
+uses_physics = false;
+
+#event create
+spdRnd = random_range(2.5,4);
+hspeed = -1.6 * spdRnd;
+vspeed = 1.4 * spdRnd;
+scaleRnd = random_range(0.2, 0.4);
+image_xscale = scaleRnd;
+image_yscale = scaleRnd;
+
+
+piece = 0;
+
+#event step
+if(y > 700)
+{
+    instance_destroy();
+}
+#section
+piece = instance_create(x + random_range(-8 * scaleRnd,12 * scaleRnd),y + random_range(-3 * scaleRnd, 0),obj_floor_meteorPiece);

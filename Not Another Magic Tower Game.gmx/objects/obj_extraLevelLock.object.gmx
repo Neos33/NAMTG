@@ -26,6 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>shakeCount = 5;
+
+
+current = 0;
+limit = 0;
 </string>
           </argument>
         </arguments>

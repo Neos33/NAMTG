@@ -30,6 +30,15 @@ py = y;
 alarm[11] = 1;
 image_alpha = 0.8;
 played=0;
+
+
+pending = false;
+ind = 0;
+lock = false;
+lvLock = 0;
+angle = 0;
+selected = false;
+roomTo = 0;
 </string>
           </argument>
         </arguments>
@@ -165,7 +174,7 @@ y = py + sin(degtorad(angle));
             <kind>1</kind>
             <string>if(!pending)
 {
-    m_dis = point_distance(mouse_x,mouse_y, x,y);
+    var m_dis = point_distance(mouse_x,mouse_y, x,y);
     if(m_dis &lt;= 50)
     {
         if(played==0)

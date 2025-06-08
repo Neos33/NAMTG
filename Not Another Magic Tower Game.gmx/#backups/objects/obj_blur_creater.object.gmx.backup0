@@ -1,0 +1,148 @@
+// 2025-06-08 10:44:52
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+l = 1.2;
+h = 1.5;
+beat = 0;
+precision=h;
+amount=0 
+_prec=max(1,min(10,precision))
+_width=view_wview[0]/_prec
+_height=view_hview[0]/_prec
+//_width=188/_prec
+//_height=188/_prec
+
+blur_1X=surface_create(_width,_height)
+blur_2X=surface_create(_width,_height)
+
+blur_on=0
+a = 0;
+alarm[0]=a;
+
+//startX = 2;
+//startY = 130;
+
+#event destroy
+ if(surface_exists(blur_1X))
+ {
+    surface_free(blur_1X);
+ }
+ if(surface_exists(blur_2X))
+ {
+    surface_free(blur_2X);
+ }
+
+#event alarm0
+blur_on=1;
+if(beat mod 2 == 0)
+{
+ precision = h;
+ _prec=max(1,min(10,precision));
+ _width=view_wview[0]/_prec;
+ _height=view_hview[0]/_prec;
+ //_width=188/_prec;
+ //_height=188/_prec;
+ if(surface_exists(blur_1X))
+ {
+    surface_free(blur_1X);
+ }
+ if(surface_exists(blur_2X))
+ {
+    surface_free(blur_2X);
+ }
+ blur_1X=surface_create(_width,_height)
+ blur_2X=surface_create(_width,_height)
+ view_xview[0] = -3;
+}
+else
+{
+ precision = l;
+ _prec=max(1,min(10,precision));
+ _width=view_wview[0]/_prec;
+ _height=view_hview[0]/_prec;
+ //_width=188/_prec;
+ //_height=188/_prec;
+ if(surface_exists(blur_1X))
+ {
+    surface_free(blur_1X);
+ }
+ if(surface_exists(blur_2X))
+ {
+    surface_free(blur_2X);
+ }
+ blur_1X=surface_create(_width,_height)
+ blur_2X=surface_create(_width,_height)
+}
+beat += 1;
+alarm[1]=6;
+
+#event alarm1
+blur_on=0;
+view_xview[0] = 0;
+alarm[0]=b;
+
+#event step
+if(!surface_exists(blur_1X) || !surface_exists(blur_2X))
+{
+    exit;
+}
+
+view_wport[0]=_width
+view_hport[0]=_height
+
+    visible=0
+    surface_set_target(blur_2X)
+    //screen_redraw()
+    surface_reset_target()
+    visible=1
+
+view_wport[0]=view_wview[0]
+view_hport[0]=view_hview[0]
+
+texture_set_interpolation(true)
+
+repeat(amount)
+{
+    surface_set_target(blur_1X)
+    draw_surface_ext(blur_2X,0,0,.5,.5,0,c_white,1)
+    surface_reset_target()
+
+    surface_set_target(blur_2X)
+    draw_surface_ext(blur_1X,0,0,2,2,0,c_white,1)
+    surface_reset_target()
+}
+
+texture_set_interpolation(false)
+
+
+if blur_on=1 && amount<8 {amount+=1}
+if blur_on=0 && amount>0 {amount-=1}
+
+#event other_room_end
+ if(surface_exists(blur_1X))
+ {
+    surface_free(blur_1X);
+ }
+ if(surface_exists(blur_2X))
+ {
+    surface_free(blur_2X);
+ }
+
+#event draw
+if(!surface_exists(blur_1X) || !surface_exists(blur_2X))
+{
+    exit;
+}
+
+texture_set_interpolation(true)
+
+draw_surface_stretched_ext(blur_2X,view_xview[0],view_yview[0]
+,view_wview[0],view_hview[0],c_white,min(1,amount/precision))
+
+//draw_surface_stretched_ext(blur_2X,startX,startY
+//,188,188,c_white,min(1,amount/precision))
+
+texture_set_interpolation(false)

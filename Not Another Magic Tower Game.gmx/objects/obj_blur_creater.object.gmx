@@ -40,6 +40,7 @@ blur_1X=surface_create(_width,_height)
 blur_2X=surface_create(_width,_height)
 
 blur_on=0
+a = 0;
 alarm[0]=a;
 
 //startX = 2;

@@ -1,0 +1,63 @@
+// 2025-06-08 10:15:24
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+global.isExtra = true;
+with(player)
+{
+    instance_destroy();
+}
+bubbleStageRoom[0] = ExtraBubble01;
+bubbleStageRoom[1] = ExtraBubble02;
+bubbleStageRoom[2] = ExtraBubble03;
+bubbleStageRoom[3] = ExtraBubble04;
+bubbleStageRoom[4] = ExtraBubble05;
+bubbleStageRoom[5] = ExtraBubble06;
+bubbleStageRoom[6] = ExtraBubble07;
+bubbleStageRoom[7] = ExtraBubble08;
+bubbleStageRoom[8] = ExtraBubble09;
+bubbleStageRoom[9] = ExtraBubble10;
+for(var i = 0; i < 2; i+= 1)
+{
+    for(var j=0; j<5;j+=1)
+    {
+        var lv = instance_create(400 + 150 * (j - 2), 229 + i * 180, obj_selectionBubble);
+        lv.ind = i * 5 + j;
+        lv.roomTo = bubbleStageRoom[i * 5 + j];
+    }
+}
+
+totalStars = 0;
+for(var i = 0; i < 10; i+=1)
+{
+    totalStars += global.bubbleStageStar[i];
+}
+
+stageLimit[4] = 1;
+stageLimit[5] = 3;
+stageLimit[6] = 6;
+stageLimit[7] = 10;
+stageLimit[8] = 15;
+stageLimit[9] = 21;
+
+if(!global.achievements[51])
+{
+    if(global.currentBubbleStage == 10 && !instance_exists(obj_achievements))
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 51;
+        global.achievements[51] = 1;
+    }
+}
+
+if(!global.achievements[52])
+{
+    if(totalStars == 30 && !instance_exists(obj_achievements))
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 52;
+        global.achievements[52] = 1;
+    }
+}

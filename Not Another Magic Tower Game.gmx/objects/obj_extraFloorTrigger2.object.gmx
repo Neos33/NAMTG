@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
+ptrg = 0;
+trg = 0;
 </string>
           </argument>
         </arguments>

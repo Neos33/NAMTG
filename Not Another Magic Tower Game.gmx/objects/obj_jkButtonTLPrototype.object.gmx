@@ -26,7 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
-//pressed = false;
+pressed = false;
+time = 0;
+totalTime = 0;
+//color = c_white;
 </string>
           </argument>
         </arguments>

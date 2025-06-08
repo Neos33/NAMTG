@@ -1,0 +1,39 @@
+// 2025-06-08 10:33:01
+#event properties (no comments/etc. here are saved)
+parent_index = block;
+sprite_index = sprfloor9;
+solid = true;
+uses_physics = false;
+
+#event create
+sprite_index = spr_ex2block;
+
+totalStars = 0;
+num = 0;
+
+for(var i = 0; i < 10; i+=1)
+{
+    totalStars += global.ExtraJkStar[i];
+}
+
+
+#event alarm0|
+
+if(totalStars >= num)
+{
+    instance_change(obj_openedBlock, true);
+}
+
+#event draw
+draw_current();
+draw_sprite_stretched_ext(sprStarButton,1,x,y,32,32, c_white, 0.5);
+draw_set_font(font12);
+draw_set_valign(fa_middle);
+draw_set_halign(fa_center);
+draw_set_color(c_black);
+draw_set_alpha(1);
+draw_text(x + 16,y + 16, string(num));
+
+
+
+draw_reset();

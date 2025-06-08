@@ -1,0 +1,27 @@
+// 2025-06-08 10:16:14
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+global.isExtra = true;
+instance_create(16,4,obj_bubbleStageEscaper);
+
+
+starNum = 0;
+
+#event step
+starNum = 3 - instance_number(obj_extraStar);
+
+#event draw
+for(var i = 0; i < 3; i += 1)
+{
+    if(i < starNum)
+    {
+        draw_sprite_ext(spr_starForStas, 0, 650 + i * 40, 64, 0.3,0.3,0,c_white,1);
+    }
+    else
+    {
+        draw_sprite_ext(spr_starForStas, 1, 650 + i * 40, 64, 0.3,0.3,0,c_white,1);
+    }
+}

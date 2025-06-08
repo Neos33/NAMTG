@@ -1,0 +1,172 @@
+// 2025-06-08 10:37:29
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+blackalpha = 0;
+alarm[0] = 1;
+mapMoveSpd = 3;
+mapZoomSpd = 10;
+moveRatio = 1;
+sx = view_xview[0];
+sy = view_yview[0];
+
+
+drawMap = false;
+startX = 0;
+startY = 0;
+movable = 0;
+
+#event alarm0
+if(blackalpha < 1)
+{
+    blackalpha += 0.02;
+    alarm[0] = 1;
+}
+else
+{
+    drawMap = true;
+    alarm[1] = 1;
+}
+
+#event alarm1
+if(blackalpha > 0)
+{
+    blackalpha -= 0.02;
+    alarm[1] = 1;
+}
+else
+{
+    startX = RangeClamp(player.x - 600, 0, RangeClamp(room_width - 1200, 0, room_width - 1200));
+    startY = RangeClamp(player.y - 406, 0, RangeClamp(room_width - 912, 0, room_width - 912));
+    view_wview[0] = RangeClamp(1200, 0, room_width);
+    view_hview[0] = RangeClamp(912, 0, room_height);
+    view_xview[0] = startX;
+    view_yview[0] = startY;
+    if((view_hview[0] / view_wview[0]) > 19 / 25)
+    {
+        view_wview[0] = view_hview[0] / 19 * 25;
+    }
+    else
+    {
+        view_hview[0] = view_wview[0] / 25 * 19;
+    }
+    movable = true;
+}
+
+#event alarm2
+if(blackalpha < 1)
+{
+    blackalpha += 0.02;
+    alarm[2] = 1;
+}
+else
+{
+    alarm[3] = 1;
+    view_xview[0] = sx;
+    view_yview[0] = sy;
+    view_wview[0] = 800;
+    view_hview[0] = 544;
+    drawMap = false;
+}
+
+#event alarm3
+if(blackalpha > 0)
+{
+    blackalpha -= 0.02;
+    alarm[3] = 1;
+}
+else
+{
+    obj_stepRecord.start = true;
+    player.frozen = false;
+    global.JKMapView = false;
+    instance_destroy();
+}
+
+#event step
+if(movable)
+{
+    moveRatio = view_wview[0] / 800;
+    if(keyboard_check(global.leftbutton))
+    {
+        startX = RangeClamp(view_xview[0] - mapMoveSpd * moveRatio, 0,room_width - view_wview[0]);
+    }
+    if(keyboard_check(global.rightbutton))
+    {
+        startX = RangeClamp(view_xview[0] + mapMoveSpd * moveRatio, 0,room_width - view_wview[0]);
+    }
+    if(keyboard_check(global.upbutton))
+    {
+        startY = RangeClamp(view_yview[0] - mapMoveSpd * moveRatio, 0,room_height - view_hview[0]);
+    }
+    if(keyboard_check(global.rightbutton))
+    {
+        startY = RangeClamp(view_yview[0] + mapMoveSpd * moveRatio, 0,room_height - view_hview[0]);
+    }
+    view_xview[0] = startX;
+    view_yview[0] = startY;
+}
+
+#event mouse_wheel_up
+if(movable)
+{
+    startW = RangeClamp(view_wview + mapMoveSpd, 0, room_width);
+    startH = RangeClamp(view_hview + mapMoveSpd, 0, room_height);
+    if((startH / startW) > 19 / 25)
+    {
+        startW = startH / 19 * 25;
+    }
+    else
+    {
+        startH = startW / 25 * 19;
+    }
+    wGap = view_wview[0] - startW;
+    hGap = view_hview[0] - startH;
+    view_wview[0] = startW;
+    view_hview[0] = startH;
+    startX = RangeClamp(view_xview[0] - wGap / 2, 0, room_width);
+    startY = RangeClamp(view_yview[0] - hGap / 2, 0, room_height);
+    view_xview[0] = startX;
+    view_yview[0] = startY;
+}
+
+#event mouse_wheel_down
+if(movable)
+{
+    startW = RangeClamp(view_wview - mapMoveSpd, 0, room_width);
+    startH = RangeClamp(view_hview - mapMoveSpd, 0, room_height);
+    if((startH / startW) > 19 / 25)
+    {
+        startW = startH / 19 * 25;
+    }
+    else
+    {
+        startH = startW / 25 * 19;
+    }
+    wGap = view_wview[0] - startW;
+    hGap = view_hview[0] - startH;
+    view_wview[0] = startW;
+    view_hview[0] = startH;
+    startX = RangeClamp(view_xview[0] - wGap / 2, 0, room_width);
+    startY = RangeClamp(view_yview[0] - hGap / 2, 0, room_height);
+    view_xview[0] = startX;
+    view_yview[0] = startY;
+}
+
+#event draw
+draw_set_alpha(blackalpha);
+draw_set_color(c_black);
+draw_rectangle(view_xview[0], view_yview[0], view_xview[0] + view_wview[0], view_yview[0] + view_hview[0], false);
+
+
+draw_reset_color();
+
+
+#event keypress:vk_enter
+if(movable)
+{
+    movable = false;
+    alarm[2] = 1;
+}

@@ -25,9 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = 1/8;
+            <string>image_speed = 1/8; //sprite_index = 1/8;
 startX = x;
 startY = y;
+
+minX = 0;
+maxX = 0;
 </string>
           </argument>
         </arguments>
@@ -52,7 +55,7 @@ startY = y;
             <kind>1</kind>
             <string>if(player_is_alive())
 {
-  tempX = x;
+  var tempX = x;
   if(abs(tempX - player.x)  &lt;= 1)
   {
     x = RangeClamp(player.x, minX, maxX);

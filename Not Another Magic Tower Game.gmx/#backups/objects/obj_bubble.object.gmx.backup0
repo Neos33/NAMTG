@@ -1,0 +1,61 @@
+// 2025-06-08 10:07:38
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_extraBubble;
+uses_physics = false;
+
+#event create
+image_speed=1/8;
+py = y;
+
+
+
+angle = 0;
+obj = 0;
+ammount = 0;
+spr = 0;
+
+
+#event step
+angle += 3;
+y = py + 5 * sin(degtorad(angle))
+
+#event collision:player
+/*obj_mouseControlTileController.spr = spr;
+if(obj_mouseControlTileController.obj == obj)
+{
+ obj_mouseControlTileController.ammount += ammount;
+}
+else
+{
+ obj_mouseControlTileController.obj = obj;
+ obj_mouseControlTileController.ammount = ammount;
+}*/
+if(ds_map_exists(obj_mouseControlTileController.map,obj))
+{
+    var bubbleItem = ds_map_find_value(obj_mouseControlTileController.map, obj);
+    bubbleItem.ammount += ammount;
+}
+else
+{
+    var bubbleItem = instance_create(0,0,obj_bubbleItem);
+    bubbleItem.spr = spr;
+    bubbleItem.ammount = ammount;
+    ds_list_add(obj_mouseControlTileController.list, obj);
+    ds_map_add(obj_mouseControlTileController.map, obj, bubbleItem);
+}
+sound_fix(sndBlockChange);
+instance_destroy();
+
+#event draw
+draw_current();
+draw_sprite_stretched(spr, 0, x - 8, y - 8, 16, 16);
+draw_set_font(fontBasicInfoMini);
+draw_set_valign(fa_bottom);
+draw_set_color(c_black);
+draw_text(x + 16, y - 12, 'x' + string(ammount));
+//draw_sprite(sprite_index, floor((clock mod 50) / 10), x, y);
+
+
+draw_set_valign(fa_top);
+draw_set_color(c_white);

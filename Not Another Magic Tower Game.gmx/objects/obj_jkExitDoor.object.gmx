@@ -27,6 +27,15 @@
             <kind>1</kind>
             <string>image_speed = 0;
 image_index = 8;
+
+
+transport = false;
+go = false;
+ind = 0;
+warpX = 0;
+warpY = 0;
+totalStar = 0;
+allClear = 0;
 </string>
           </argument>
         </arguments>
@@ -146,7 +155,7 @@ if(go)
     {
         with(player)
         {
-         instance_destroy();
+            instance_destroy();
         }
         if(ind &gt;= 0)
         {
@@ -188,7 +197,7 @@ if(go)
         }
         totalStar = 0;
         allClear = true;
-        for(i = 0; i &lt; 10; i += 1)
+        for(var i = 0; i &lt; 10; i += 1)
         {
             if(global.ExtraJkBest[i] == 0)
             {
@@ -201,7 +210,7 @@ if(go)
         }
         if(allClear &amp;&amp; !global.achievements[54])
         {
-            ch = instance_create(0,608,obj_achievements);
+            var ch = instance_create(0,608,obj_achievements);
             ch.index = 54;
             global.achievements[54] = 1;
         }
@@ -209,11 +218,11 @@ if(go)
         {
             if(instance_exists(obj_achievements))
             {
-                ch = instance_create(0,680,obj_achievements);
+                var ch = instance_create(0,680,obj_achievements);
             }
             else
             {
-                ch = instance_create(0,608,obj_achievements);
+                var ch = instance_create(0,608,obj_achievements);
             }
             ch.index = 55;
             global.achievements[55] = 1;
