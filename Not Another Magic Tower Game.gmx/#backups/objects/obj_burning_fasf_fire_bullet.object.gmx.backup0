@@ -1,0 +1,43 @@
+// 2025-06-08 11:58:12
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bffire_bullet;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+direction=choose(30,60,90,120,150,180,210,240,270,300,330,360);
+alarm[0]=250;
+speed=choose(8,10,12);
+
+emit2=part_emitter_create(obj_burningFasf_combat.explosion);
+
+part_emitter_region(obj_burningFasf_combat.explosion,emit2,x,x+5-random(10),y,y+5-random(10),ps_shape_ellipse,ps_distr_linear);
+image_speed = 1/6;
+isStable = true;
+
+#event destroy
+if(part_emitter_exists(obj_burningFasf_combat.explosion,emit2))
+{
+    part_emitter_destroy(obj_burningFasf_combat.explosion,emit2);
+}
+
+
+#event alarm0
+speed=0;
+ part_emitter_burst(obj_burningFasf_combat.explosion,obj_burningFasf_combat.emit1,obj_burningFasf_combat.prt1,40);
+ instance_destroy();
+
+#event step
+image_angle=direction;
+
+#event collision:block
+move_bounce_solid(false);
+//move_outside_solid(direction,10);
+
+#event other_room_end
+if(part_emitter_exists(obj_burningFasf_combat.explosion,emit2))
+{
+    part_emitter_destroy(obj_burningFasf_combat.explosion,emit2);
+}

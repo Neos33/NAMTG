@@ -58,6 +58,11 @@ alarm[3] = 500;
 alarm[4] = 1;
 start = false;
 sound_fix(snd_touhou_twinkle2);
+
+
+isEnd = false;
+px = 0;
+py = 0;
 </string>
           </argument>
         </arguments>
@@ -141,7 +146,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>tDir = point_direction(x,y,player.x,player.y);
+            <string>var tDir = point_direction(x,y,player.x,player.y);
 targetX = x + lengthdir_x(500, tDir);
 targetY = y + lengthdir_y(500, tDir);
 alarm[4] = 1;

@@ -112,6 +112,9 @@ isConvoy = false;
 
 global.player_alive = true;
 
+
+redKnightDash = false;
+
 //print(instance_number(object_index));
 </string>
           </argument>

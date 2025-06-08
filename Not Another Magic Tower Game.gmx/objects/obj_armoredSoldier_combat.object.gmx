@@ -36,6 +36,22 @@ dashLine = ds_queue_create();
 x = 400;
 y = 96;
 alarm[3] = 50;
+
+
+
+dirMin = 0;
+dirMax = 0;
+
+dashCount = 0;
+dashGap = 0;
+
+
+left = false;
+sndroar = false;
+forAch = false;
+
+sx = 0;
+sy = 0;
 </string>
           </argument>
         </arguments>
@@ -87,7 +103,7 @@ event_inherited();
             <string>instance_create(0,0,obj_asBGChanger);
 instance_create(x,y,obj_asHaki);
 instance_create(0,0,obj_asQTEController);
-qtePlayer = instance_create(player.x,player.y, obj_asQTEPlayer);
+var qtePlayer = instance_create(player.x,player.y, obj_asQTEPlayer);
 qtePlayer.sprite_index = player.sprite_index;
 qtePlayer.image_index = player.image_index;
 qtePlayer.image_xscale = player.image_xscale;
@@ -167,7 +183,7 @@ else
     {
         sx = random_range(0,800); sy = 608;
     }
-    line = instance_create(sx,sy,obj_asAttackLine);
+    var line = instance_create(sx,sy,obj_asAttackLine);
     ds_queue_enqueue(dashLine,line);
     dashCount -= 1;
     alarm[7] = dashGap;
@@ -261,7 +277,7 @@ else
 }
 view_xview[0] = random_range(-3,3);
 view_yview[0] = random_range(-3,3);
-s = instance_create(x,y,obj_asSpike);
+var s = instance_create(x,y,obj_asSpike);
 s.direction = random_range(dirMin, dirMax);
 s.speed = random_range(8, 12);
 alarm[5] = 4;
@@ -483,8 +499,8 @@ ds_list_add(asShadowY, yprevious);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>listSize = ds_list_size(asShadowX);
-for(i = 0; i &lt; listSize; i += 1)
+            <string>var listSize = ds_list_size(asShadowX);
+for(var i = 0; i &lt; listSize; i += 1)
 {
     draw_sprite_ext(sprite_index, image_index, 
                       ds_list_find_value(asShadowX, listSize - i - 1), 

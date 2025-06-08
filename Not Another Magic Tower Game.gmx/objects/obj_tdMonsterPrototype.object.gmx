@@ -32,6 +32,18 @@ startX = x;
 startY = y;
 //path = pathDarkLord;
 alarm[3] = 1;
+
+
+ind = 0;
+mInd = 0;
+padX = 0;
+padY = 0;
+
+path = 0;
+spd = 0;
+reset = false;
+hp = 0;
+fullHp = 1;
 </string>
           </argument>
         </arguments>
@@ -56,7 +68,7 @@ alarm[3] = 1;
             <kind>1</kind>
             <string>if(ind &lt; 0 || obj_tdController.isBoss) exit;
 if(mInd != obj_tdController.currentIndex) exit;
-shadow = instance_create(padX, padY, obj_tdMShadow);
+var shadow = instance_create(padX, padY, obj_tdMShadow);
 shadow.sprite_index = sprite_index;
 shadow.image_index = 0;
 shadow.image_speed = 0;
@@ -211,8 +223,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hPad = ind mod 5;
-vPad = floor(ind/5);
+            <string>var hPad = ind mod 5;
+var vPad = floor(ind/5);
 padX = 320+16+hPad*32;
 padY = 508+16+vPad*32;
 
@@ -238,7 +250,7 @@ padY = 508+16+vPad*32;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>shadow = instance_create(x,y,obj_tdMonsterIn);
+            <string>var shadow = instance_create(x,y,obj_tdMonsterIn);
 shadow.sprite_index = sprite_index;
 shadow.image_index = image_index;
 shadow.image_speed = image_speed;
@@ -274,7 +286,7 @@ obj_tdController.spikeLevel += 16;
             <string>draw_set_alpha(1);
 draw_current();
 
-hpPer = hp/fullHp;
+var hpPer = hp/fullHp;
 draw_set_color(merge_color(c_red,c_green,hpPer));
 draw_rectangle(x-16,y-20,x-16+32*hpPer,y-18,false);
 

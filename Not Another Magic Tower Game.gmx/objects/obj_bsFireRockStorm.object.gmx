@@ -45,6 +45,9 @@ image_speed = 0;
 bottomLine = 1000;
 isInit = true;
 isStable = true;
+
+
+move = false;
 </string>
           </argument>
         </arguments>

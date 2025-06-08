@@ -1,0 +1,30 @@
+// 2025-06-08 11:41:59
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_hitEffect;
+uses_physics = false;
+
+#event create
+image_alpha = 0.3;
+alarm[0] = 1;
+
+
+parentX = 0;
+parentY = 0;
+
+#event alarm0
+if(image_alpha < 1)
+{
+    image_alpha += 0.02;
+    alarm[0] = 1;
+}
+
+#event step
+if(point_distance(x,y,parentX,parentY) > 5)
+{
+    move_towards_point(parentX, parentY, 3);
+}
+else
+{
+    instance_destroy();
+}

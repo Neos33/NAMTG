@@ -1,0 +1,48 @@
+// 2025-06-08 11:05:44
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_orcSkeletonBoomerang;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 1/3;
+dis = point_distance(x,y,player.x,player.y);
+t = 50;
+direction = point_direction(x,y,player.x,player.y);
+a = dis * 2 / sqr(t);
+speed = a*t;
+isStable = true;
+
+
+boom = false;
+
+#event alarm3
+if(image_xscale > 0)
+{
+    image_xscale -= 0.04;
+    image_yscale -= 0.04;
+    alarm[3] = 1;
+}
+else
+{
+    sound_fix(sndfasfboom);
+    repeat(20)
+    {
+        instance_create(x,y,obj_skeletonOrcBullet1);
+    }
+    instance_destroy();
+}
+
+#event step
+if(speed > 0)
+{
+    speed -= a;
+}
+else if(!boom)
+{
+    speed = 0;
+    boom = true;
+    alarm[3] = 1;
+}

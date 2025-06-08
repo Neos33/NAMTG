@@ -1,0 +1,96 @@
+// 2025-06-08 11:41:44
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bsEnergy;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0.3;
+image_xscale = 0.1;
+image_yscale = 0.1;
+targetScale = 0.7;
+image_alpha = 0.8;
+sound_fix(snd_touhou_powerup);
+px = x; 
+py = y + 16;
+maxScale = 5.7;
+canBoom = true;
+isStable = true;
+
+
+boomInterval = 0;
+
+#event alarm3
+with(obj_burningSlime_combat)
+{
+    pType = 3;
+    path_start(path_bs2,3,0,1);
+}
+canBoom = false;
+
+#event alarm4
+if(boomInterval > 3)
+{
+    var be = instance_create(x,y,obj_bsEnergyLeak);
+    be.dir = random_range(0,360);
+    alarm[4] = boomInterval;
+    boomInterval -= 1;
+}
+else
+{
+    instance_create(x,y,obj_energyBoom);
+    instance_destroy();
+}
+
+#event step
+if(image_xscale < targetScale)
+{
+    image_xscale += 0.02;
+    image_yscale += 0.02;
+}
+else if(targetScale == maxScale && !start)
+{
+    start = true;
+    alarm[3] = 50;
+}
+#section
+var randomR = random_range(32,48);
+var randomDir = random_range(30,150);
+var energy = instance_create(px + lengthdir_x(randomR,randomDir), py + lengthdir_y(randomR, randomDir), obj_bsEnergyEffect);
+energy.parentX = px;
+energy.parentY = py;
+
+#event collision:bullet
+/*if(targetScale == maxScale)
+{
+    if(!boom && canBoom)
+    {
+        boom = true;
+        event_user(0);
+    }
+}*/
+with(other)
+{
+    instance_destroy();
+}
+/*else
+{
+    bDir = point_direction(x,y,other.x,other.y);
+    with(other)
+    {
+        direction = other.bDir;
+        image_angle = other.bDir;
+    }
+}
+
+#event other_user0
+alarm[3] = 0;
+alarm[4] = 1;
+boomInterval = 15;
+
+#event other_user1
+instance_create(x,y,obj_bsEnergyBurst);
+audio_playsound(sndfasfboom);
+//instance_destroy();

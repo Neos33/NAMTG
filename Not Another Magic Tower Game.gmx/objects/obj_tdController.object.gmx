@@ -96,6 +96,13 @@ atDmg = global.attack - tdMDef[currentIndex];
 dfDmg = tdMAtk[currentIndex] - global.defense;
 
 alarm[0] = 30;
+
+
+
+
+isBoss = false;
+special = false;
+time = 0;
 </string>
           </argument>
         </arguments>
@@ -272,7 +279,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>px = RangeClamp(player.x, 672 + 5, 800);
+            <string>var px = RangeClamp(player.x, 672 + 5, 800);
 player.x = px;
 </string>
           </argument>

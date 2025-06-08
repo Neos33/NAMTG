@@ -1,0 +1,87 @@
+// 2025-06-08 11:17:59
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_silverEvilSlimeWaterOrb;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0;
+speed = 6;
+direction = point_direction(x,y,player.x, player.y - random_range(0,32));
+alarm[3] = 5;
+alarm[11] = 50;
+audio_playsound(sndLaser1);
+isStable = true;
+
+boom = false;
+
+#event alarm3
+if(image_index < 2)
+{
+    image_index += 1;
+    alarm[3] = 5;
+}
+else
+{
+    alarm[4] = 5;
+}
+
+#event alarm4
+if(image_index < 5)
+{
+    image_index += 1;
+    alarm[4] = 5;
+}
+else
+{
+    if(!boom)
+    {
+        image_index = 2;
+        alarm[4] = 5;
+    }
+    else
+    {
+        alarm[5] = 5;
+    }
+}
+
+#event alarm5
+if(image_index < 9)
+{
+    image_index += 1;
+    alarm[5] = 5;
+}
+
+#event alarm11
+boom = true;
+
+#event step
+if(boom)
+{
+    if(speed > 0)
+    {
+        speed -= 0.15;
+    }
+    else
+    {
+        event_user(0);
+    }
+}
+image_angle = direction + 180;
+
+#event other_outside
+instance_destroy();
+
+#event other_user0
+var randomAng = random_range(0,45);
+for(var i = 0; i < 8; i += 1)
+{
+    var p = instance_create(x,y, obj_silverEvilSlimeWaterBullet);
+    p.speed = 7;
+    p.direction = randomAng + 45 * i;
+    p.image_angle = randomAng + 45 * i + 180;
+}
+audio_playsound(sndWater1);
+instance_destroy();

@@ -1,0 +1,29 @@
+// 2025-06-08 11:37:32
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bdmLaserCollision;
+visible = false;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+alarm[3] = 30;
+
+
+
+hurt = false;
+ind = 0;
+
+#event alarm3
+hurt = true;
+
+#event step
+image_angle = obj_bdmLaserDrawer.angle + 360 / obj_bdmLaserDrawer.laserCount * ind;
+image_yscale = obj_bdmLaserDrawer.width * 0.8 / 32;
+
+#event collision:player
+if(hurt)
+{
+    event_inherited();
+}

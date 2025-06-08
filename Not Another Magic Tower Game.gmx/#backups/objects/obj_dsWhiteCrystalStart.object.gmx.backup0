@@ -1,0 +1,27 @@
+// 2025-06-08 12:49:56
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_dsCrystalRed;
+uses_physics = false;
+
+#event create
+image_speed = 1/8;
+image_alpha = 0;
+
+startAngle = 0;
+
+#event step
+var r = obj_dsWhiteController.r;
+var angle = obj_dsWhiteController.angle;
+var scale = r/200 *2 + 1;
+var alpha = 1-r/200;
+image_xscale = scale;
+image_yscale = scale;
+image_alpha = alpha*0.8;
+x = obj_darkSummoner_combat.x + lengthdir_x(r, angle + startAngle);
+y = obj_darkSummoner_combat.y + lengthdir_y(r, angle + startAngle);
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

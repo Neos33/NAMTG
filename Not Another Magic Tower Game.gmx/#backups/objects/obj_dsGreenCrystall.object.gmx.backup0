@@ -1,0 +1,43 @@
+// 2025-06-08 12:47:56
+#event properties (no comments/etc. here are saved)
+parent_index = obj_dsCrystall;
+sprite_index = spr_dsCrystalGreen;
+uses_physics = false;
+
+#event create
+with(obj_dsSpike)
+{
+    image_index = greenIndex;
+}
+alarm[1] = 500;
+event_inherited();
+
+#event alarm0
+instance_create(random_range(16,784),0, choose(obj_dsCGBullet1,obj_dsCGBullet1,obj_dsCGBullet1,obj_dsCGBullet2,obj_dsCGBullet2,obj_dsCGBullet3));
+alarm[0] = 20;
+
+
+#event alarm1
+alarm[0] = 0;
+alarm[10] = 1;
+alarm[11] = 40;
+if(!obj_darkSummoner_combat.crazy)
+{
+    obj_darkSummoner_combat.alarm[3] = 150;
+}
+else
+{
+    event_user(10);
+}
+sound_fix(snd_touhou_powerup);
+
+#event other_user1
+sound_stop(snd_touhou_powerup);
+sound_fix(sndfasfboom);
+for(var i = 0; i < 30; i += 1)
+{
+    var ex = instance_create(x,y,obj_dsCBBulletExplode);
+    ex.direction = i * 12;
+    ex.image_index = 5;
+}
+instance_destroy();

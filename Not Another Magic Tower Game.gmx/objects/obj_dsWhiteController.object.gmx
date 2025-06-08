@@ -37,6 +37,10 @@ spr[3] = spr_dsCrystalGreen;
 spr[4] = spr_dsCrystalPurple;
 
 sound_fix(snd_touhou_powerup);
+
+
+
+stop = false;
 </string>
           </argument>
         </arguments>
@@ -59,9 +63,9 @@ sound_fix(snd_touhou_powerup);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;5;i+=1)
+            <string>for(var i=0;i&lt;5;i+=1)
 {
-    crystal = instance_create(obj_darkSummoner_combat.x + lengthdir_x(r, angle + 72 * i), obj_darkSummoner_combat.y + lengthdir_y(r, angle + 72 * i), obj_dsWhiteCrystalStart);
+    var crystal = instance_create(obj_darkSummoner_combat.x + lengthdir_x(r, angle + 72 * i), obj_darkSummoner_combat.y + lengthdir_y(r, angle + 72 * i), obj_dsWhiteCrystalStart);
     crystal.startAngle = angle + 72*i;
     crystal.sprite_index = spr[i];
 }
@@ -127,8 +131,8 @@ else
             <kind>1</kind>
             <string>if(!stop)
 {
-    rad = random_range(20,50);
-    ang = random_range(0,360);
+    var rad = random_range(20,50);
+    var ang = random_range(0,360);
     instance_create(obj_darkSummoner_combat.x + lengthdir_x(rad,ang), obj_darkSummoner_combat.y + lengthdir_y(rad,ang),obj_dsWhiteAppearEffect);
 }
 </string>

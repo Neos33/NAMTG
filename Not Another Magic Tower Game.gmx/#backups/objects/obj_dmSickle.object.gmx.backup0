@@ -1,0 +1,65 @@
+// 2025-06-08 12:21:25
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_dmSickle;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_angle = 90;
+image_alpha = 0;
+alarm[3] = 1;
+isStable = true;
+
+
+rCount = 0;
+
+#event alarm3
+if(image_alpha < 1)
+{
+    image_alpha += 0.02;
+    alarm[3] = 1;
+}
+else
+{
+    rCount = 63;
+    alarm[4] = 1;
+}
+
+
+#event alarm4
+if(rCount > 0)
+{
+    rCount -= 1;
+    image_angle += 10;
+    alarm[4] = 1;
+}
+else
+{
+    alarm[5] = 1;   
+}
+
+#event alarm5
+if(point_distance(x,y,400,y) > 15)
+{
+    move_towards_point(400,y,15);
+    alarm[5] = 1;
+}
+else
+{
+    alarm[6] = 1;
+    x = 400;
+    speed = 0;
+}
+
+#event alarm6
+if(image_alpha > 0)
+{
+    image_alpha -= 0.1;
+    alarm[6] = 1;
+}
+else
+{
+    instance_destroy();
+}

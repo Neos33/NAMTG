@@ -1,0 +1,17 @@
+// 2025-06-08 12:29:15
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tdMonsterPrototype;
+sprite_index = spr_dlSmallSlime;
+uses_physics = false;
+
+#event create
+//
+atk = 0;
+#event alarm4
+//
+var b = instance_create(x,y,obj_tdSlimeBullet);
+b.atk = atk;
+alarm[4] = 150;
+
+#event other_user0
+//

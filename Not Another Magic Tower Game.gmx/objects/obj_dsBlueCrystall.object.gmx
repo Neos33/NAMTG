@@ -35,6 +35,9 @@ with(obj_dsSpike)
     image_index = blueIndex;
 }
 gap = 2;
+
+
+count = 0;
 </string>
           </argument>
         </arguments>
@@ -99,15 +102,17 @@ gap = 2;
     sound_fix(snd_touhou_powerup);
     exit;
 }
-angle1 = random_range(145,155);
-angle2 = random_range(145,155);
-x1 = x + lengthdir_x(dir, startAngle1);
-x2 = x + lengthdir_x(dir, startAngle2);
-y1 = y + lengthdir_y(dir, startAngle1);
-y2 = y + lengthdir_y(dir, startAngle2);
-for(i=-1;i&lt;=1;i+=1)
+var angle1 = random_range(145,155);
+var angle2 = random_range(145,155);
+var x1 = x + lengthdir_x(dir, startAngle1);
+var x2 = x + lengthdir_x(dir, startAngle2);
+var y1 = y + lengthdir_y(dir, startAngle1);
+var y2 = y + lengthdir_y(dir, startAngle2);
+
+var b1, b2;
+for(var i=-1;i&lt;=1;i+=1)
 {
-    j = i+1;
+    var j = i+1;
     b1[j] = instance_create(x1 + lengthdir_x(i*gap,startAngle1+90),y1 + lengthdir_y(i*gap,startAngle1+90),obj_dsCBBullet);
     b1[j].alarm[3] = 100;
     b1[j].image_index = 10;
@@ -157,9 +162,9 @@ count += 1;
             <kind>1</kind>
             <string>sound_stop(snd_touhou_powerup);
 sound_fix(sndfasfboom);
-for(i = 0; i &lt; 30; i += 1)
+for(var i = 0; i &lt; 30; i += 1)
 {
-    ex = instance_create(x,y,obj_dsCBBulletExplode);
+    var ex = instance_create(x,y,obj_dsCBBulletExplode);
     ex.direction = i * 12;
     ex.image_index = 3;
 }

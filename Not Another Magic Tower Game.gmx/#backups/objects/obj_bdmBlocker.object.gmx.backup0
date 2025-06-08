@@ -1,0 +1,71 @@
+// 2025-06-08 11:32:04
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bubbtle;
+visible = false;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+targetScale = 1;
+image_xscale = 0.1;
+image_yscale = 0.1;
+alarm[11] = 10;
+alarm[10] = 10;
+image_alpha = 0.6;
+isStable = true;
+//image_blend = c_purple;
+
+#event destroy
+with(obj_blackDevilMagician_combat)
+{
+    event_user(0);
+}
+with(obj_bdmAncientBook)
+{
+    instance_destroy();
+}
+
+#event alarm3
+targetScale -= 0.5;
+
+#event alarm10
+sound_fix(snd_touhou_spellcard);
+visible = true;
+
+#event alarm11
+if(image_xscale < 1)
+{
+    image_xscale += 0.01;
+    image_yscale += 0.01;
+    alarm[11] = 1;
+}
+
+
+#event step
+image_angle += 5;
+if(image_xscale > targetScale)
+{
+    image_xscale -= 0.02;
+    image_yscale -= 0.02;
+}
+if(image_xscale <= 0.02)
+{
+    instance_destroy();
+}
+
+
+if(!instance_exists(obj_blackDevilMagician_combat))
+{
+    instance_destroy();
+}
+
+#event collision:bullet
+var bDir = point_direction(x,y,other.x,other.y);
+other.direction = bDir;
+other.image_angle = bDir;
+
+#event draw
+draw_sprite_ext(spr_bdmBlockerEffect, 0, x,y, 3 * image_xscale, 3 * image_yscale,image_angle,c_white,image_alpha);
+draw_current();

@@ -1,0 +1,27 @@
+// 2025-06-08 11:43:01
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+
+waterLevel = 0; 
+targetSpd = 0;
+
+
+targetWaterLevel = 0;
+blockSpd = 0;
+
+#event step
+if(blockSpd < targetSpd)
+{
+    blockSpd += 0.01;
+}
+if(waterLevel < targetWaterLevel)
+{
+    waterLevel += 0.1;
+    with(obj_fireWater1)
+    {
+        y -= 0.1;
+    }
+}

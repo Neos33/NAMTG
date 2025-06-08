@@ -1,0 +1,19 @@
+// 2025-06-08 12:37:18
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tdMonsterPrototype;
+sprite_index = spr_dlRedKnight;
+uses_physics = false;
+
+#event create
+#action action_inherited
+
+
+atk = 0;
+#event alarm4
+//
+var b = instance_create(x,y,obj_tdRedKnightSpike);
+b.atk = atk;
+alarm[4] = 450;
+
+#event other_user0
+//

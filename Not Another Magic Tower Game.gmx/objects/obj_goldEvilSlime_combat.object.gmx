@@ -54,6 +54,9 @@ up = true;
 evolveStep = 500;
 
 alarm[11] = 10;
+
+ind = 0;
+fade = false;
 </string>
           </argument>
         </arguments>

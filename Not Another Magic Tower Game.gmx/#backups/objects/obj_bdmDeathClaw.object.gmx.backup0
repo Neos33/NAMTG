@@ -1,0 +1,82 @@
+// 2025-06-08 11:32:48
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bdmDeathClaw;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_alpha = 0;
+image_speed = 0;
+image_xscale = choose(-1,1);
+isStable = true;
+alarm[3] = 1;
+isInit = true;
+alarm[11] = 1;
+
+
+criticalType = 0;
+
+#event alarm3
+if(image_alpha < 1)
+{
+    image_alpha += 0.02;
+    alarm[3] = 1;
+}
+else
+{
+    start = true;
+    sound_fix(sndSwing1);
+    alarm[4] = 1;
+}
+
+#event alarm4
+if(image_index < 12)
+{
+    image_index += 1;
+    alarm[4] = 3;
+}
+else
+{
+    start = false;
+    alarm[5] = 1;
+}
+
+#event alarm5
+if(image_alpha > 0)
+{
+    image_alpha -= 0.05;
+    alarm[5] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event alarm11
+isInit = false;
+
+#event collision:player
+if(start)
+{
+    if(!global.cooldown && !global.godmod)
+    {   
+        criticalType = choose(0,1,2);
+        if(criticalType == 1)
+        {
+            global.monsterCritical = true;
+        }
+        else if(criticalType == 2)
+        {
+            global.monsterSuperCritical = true;
+        }
+        event_inherited();
+    }
+}
+
+#event collision:obj_bdmLaserCollision
+/*if(isInit)
+{
+    instance_destroy();
+}

@@ -1,0 +1,52 @@
+// 2025-06-08 11:51:27
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+totalShot = 6;
+gap = 30;
+alarm[0] = 1;
+
+#event alarm0
+if(totalShot > 0)
+{
+    for(var i = 20; i <= 800; i += 80)
+    {
+        instance_create(i, 0, obj_asShock);
+    }
+    totalShot-=1;
+    event_user(1);
+    alarm[1] = gap;
+}
+else
+{
+    event_user(0);
+}
+
+#event alarm1
+if(totalShot > 0)
+{
+    for(var i = 60; i <= 800; i += 80)
+    {
+        instance_create(i, 0, obj_asShock);
+    }
+    totalShot-=1;
+    event_user(1);
+    alarm[0] = gap;
+}
+else
+{
+    event_user(0);
+}
+
+#event other_user0
+if(player_is_alive())
+{
+    obj_armoredSoldier_combat.alarm[11] = 50;
+}
+instance_destroy();
+
+#event other_user1
+sound_fix(sndFire1);
+instance_create(0,0,obj_asShockShaker);

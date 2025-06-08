@@ -32,6 +32,11 @@ msgInterval = 32;
 
 msgTop = 432;
 msgBottom = 560;
+
+msg = 0;
+msgAlpha = 0;
+qLen = 0;
+top = 0;
 </string>
           </argument>
         </arguments>
@@ -182,10 +187,10 @@ if(qLen &gt; 0)
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
     
-    for(i = 0; i &lt; qLen; i += 1)
+    for(var i = 0; i &lt; qLen; i += 1)
     {
-        fy = top + i * msgInterval;
-        fx = 48;
+        var fy = top + i * msgInterval;
+        var fx = 48;
         if(fy &lt; msgTop)
         {
             draw_set_alpha(RangeClamp((msgTop - fy) / msgInterval, 0, 1));

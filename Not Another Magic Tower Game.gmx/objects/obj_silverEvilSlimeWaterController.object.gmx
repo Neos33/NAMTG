@@ -30,6 +30,10 @@ ox = obj_silverEvilSlime_combat.x;
 oy = obj_silverEvilSlime_combat.y;
 alarm[0] = 30;
 alarm[11] = 300;
+
+
+stop = false;
+modAngle = 0;
 </string>
           </argument>
         </arguments>

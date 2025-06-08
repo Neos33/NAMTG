@@ -213,7 +213,7 @@ if(!instance_exists(obj_blackDevilMagician_combat))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bDir = point_direction(x,y,other.x,other.y);
+            <string>var bDir = point_direction(x,y,other.x,other.y);
 other.direction = bDir;
 other.image_angle = bDir;
 </string>

@@ -1,0 +1,16 @@
+// 2025-06-08 11:22:26
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+for(var i = 0; i < 10; i += 1)
+{
+    instance_create(80 * i, random_range(0,384), obj_missingnoDash);
+}
+alarm[0] = 15;
+
+
+#event alarm0
+instance_create(800, random_range(0,384), obj_missingnoDash);
+alarm[0] = 15;

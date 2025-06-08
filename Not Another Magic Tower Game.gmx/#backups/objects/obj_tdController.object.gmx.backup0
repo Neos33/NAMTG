@@ -1,0 +1,258 @@
+// 2025-06-08 12:26:18
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+startX = -16;
+startY = 176;
+spikeLevel = -16;
+
+totalAmmount = 5;
+currentAmmount = 0;
+currentIndex = 0;
+
+mList = ds_list_create();
+
+tdMonster[0] = obj_tdMonster_smallSlime;
+tdMonster[1] = obj_tdMonster_stone;
+tdMonster[2] = obj_tdMonster_skeletonLead;
+tdMonster[3] = obj_tdMonster_superFasf;
+tdMonster[4] = obj_tdMonster_redKnight;
+
+tdSpd[0] = 1;
+tdInterval[0] = 50;
+tdAmmount[0] = 15;
+tdBreak[0] = 250;
+tdMName[0] = "Small Slime";
+tdSpr[0] = spr_dlSmallSlime;
+tdMAtk[0] = 150;
+tdMDef[0] = 100;
+tdMHP[0] = 60;
+
+tdSpd[1] = 0.5;
+tdInterval[1] = 40;
+tdAmmount[1] = 10;
+tdBreak[1] = 350;
+tdSpr[1] = spr_dlStone;
+tdMName[1] = "Stone";
+tdMAtk[1] = 165;
+tdMDef[1] = 120;
+tdMHP[1] = 150;
+
+tdSpd[2] = 1.5;
+tdInterval[2] = 50;
+tdAmmount[2] = 5;
+tdBreak[2] = 350;
+tdSpr[2] = spr_dlSkeletonLead;
+tdMName[2] = "Skeleton Elete";
+tdMAtk[2] = 190;
+tdMDef[2] = 115;
+tdMHP[2] = 100;
+
+tdSpd[3] = 1;
+tdInterval[3] = 60;
+tdAmmount[3] = 4;
+tdBreak[3] = 350;
+tdSpr[3] = spr_dlSuperFasf;
+tdMName[3] = "Super Fasf";
+tdMAtk[3] = 200;
+tdMDef[3] = 125;
+tdMHP[3] = 80;
+
+tdSpd[4] = 1;
+tdInterval[4] = 70;
+tdAmmount[4] = 3;
+tdBreak[4] = 500;
+tdSpr[4] = spr_dlRedKnight;
+tdMName[4] = "Red Knight";
+tdMAtk[4] = 180;
+tdMDef[4] = 130;
+tdMHP[4] = 120;
+
+hide = true;
+atDmg = global.attack - tdMDef[currentIndex];
+dfDmg = tdMAtk[currentIndex] - global.defense;
+
+alarm[0] = 30;
+
+
+
+
+isBoss = false;
+special = false;
+time = 0;
+
+#event alarm0
+if(currentIndex < totalAmmount)
+{
+    if(currentAmmount < tdAmmount[currentIndex])
+    {
+        m = instance_create(startX, startY, tdMonster[currentIndex]);
+        m.path = obj_monsterBattlePrototype.tdPath;
+        m.spd = tdSpd[currentIndex];
+        m.atk = tdMAtk[currentIndex];
+        m.def = tdMDef[currentIndex];
+        m.hp = tdMHP[currentIndex];
+        m.fullHp = tdMHP[currentIndex];
+        m.ind = currentAmmount;
+        m.mInd = currentIndex;
+        with(m)
+        {
+            event_user(10);
+        }
+        currentAmmount += 1;
+        alarm[0] = tdInterval[currentIndex];
+    }
+    else
+    {
+        if(special)
+        {
+            alarm[1] = 300;//tdInterval[currentIndex];
+        }
+        else
+        {
+            if(currentIndex == 0)
+            {
+                obj_tdSpecialPlatform.alarm[0] = 1;
+                with(obj_tdSwitch)
+                {
+                    alarm[0] = 1;
+                }
+            }
+            alarm[11] = 1;
+            //alarm[1] = tdBreak[currentIndex];
+        }
+    }
+}
+else
+{
+    isBoss = true;
+    instance_create(400,304,obj_dlDanger);
+    //obj_monsterBattlePrototype.alarm[3] = 1;
+}
+
+#event alarm1
+currentAmmount = 0;
+currentIndex += 1;
+with(obj_tdMShadow)
+{
+    instance_destroy();
+}
+alarm[0] = 1;
+
+#event alarm4
+sound_fix(sndBloody);
+
+#event alarm11
+if(!isBoss)
+{
+    if(instance_number(tdMonster[currentIndex]) == 0)
+    {
+        alarm[1] = 30;
+    }
+    else
+    {
+        alarm[11] = 1;
+    }
+}
+
+#event step
+if(currentIndex == 0 && !special)
+{
+    if(instance_number(obj_tdSwitch) == 0)
+    {
+        special = true;
+        alarm[4] = 10;
+    }
+}
+
+
+#event step_end
+var px = RangeClamp(player.x, 672 + 5, 800);
+player.x = px;
+
+#event other_room_end
+ds_list_destroy(mList);
+
+#event draw
+
+draw_set_alpha(1);
+draw_set_color(c_silver);
+draw_set_font(fontBEInfo);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+draw_text(64,504,"Enemy");
+draw_text(736,504,"Kid");
+
+draw_text(400,480,"Round " + string(currentIndex + 1)); 
+
+if(instance_number(tdMonster[currentIndex]) == 0 || isBoss)
+{
+    draw_set_font(font12);
+    if(!isBoss)
+        draw_text(64,544,"???");
+
+    if(isBoss)
+    {
+        if(instance_exists(obj_darkLord_combat))
+        {
+            draw_sprite_ext(spr_darkLord_combat, obj_darkLord_combat.image_index, 64, 544, 1.5, 1.5, 0, c_white, 1);
+            draw_sprite_ext(spr_darkLord_combat, obj_darkLord_combat.image_index, 400, 544, 2.5, 2.5, 0, c_white, 1);
+            draw_text(64,580,"Dark Lord");
+        } 
+        else
+        {
+            draw_sprite_ext(spr_darkLord_combat, 0, 400, 544, 2.5, 2.5, 0, c_gray, 1);
+        }
+    }
+    draw_set_halign(fa_left);
+    draw_text(136,536, "Attack:");
+    draw_text(136,560, "Defense:");
+    draw_text(136,584, "Max Hp:");
+    
+    if(isBoss)
+    {
+        draw_text(216,536, string(obj_darkLord_combat.atk));
+        draw_text(216,560, string(obj_darkLord_combat.def));
+        draw_text(216,584, string(obj_darkLord_combat.hp));
+    }
+}
+else
+{
+    draw_set_font(font12);
+    if(tdSpr[currentIndex])
+    {
+        draw_sprite_ext(tdSpr[currentIndex], (time/5) mod 4, 64, 544, 1.5, 1.5, 0, c_white, 1);
+        
+        draw_text(64,580,tdMName[currentIndex]);
+    }
+    
+    draw_set_halign(fa_left);
+    draw_text(136,536, "Attack:");
+    draw_text(136,560, "Defense:");
+    draw_text(136,584, "Max Hp:");
+
+    draw_text(216,536, string(tdMAtk[currentIndex]));
+    draw_text(216,560, string(tdMDef[currentIndex]));
+    draw_text(216,584, string(tdMHP[currentIndex]));
+}
+
+draw_text(800-248,536, "Attack:");
+draw_text(800-248,560, "Defense:");
+draw_text(800-248,584, "Hp:");
+
+draw_text(800-168,536, string(global.attack));
+draw_text(800-168,560, string(global.defense));
+draw_text(800-168,584, string(RangeClamp(global.hp, 0, 10000)));
+
+if(player_is_alive())
+{
+    draw_sprite_ext(player.sprite_index, player.image_index, 736, 560, player.image_xscale, 1, 0, c_white, 1);
+}
+
+time += 1;
+
+
+draw_reset();

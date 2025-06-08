@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>alpha = 0.6;
+
+dir = 0;
 </string>
           </argument>
         </arguments>

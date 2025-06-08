@@ -33,6 +33,16 @@ image_yscale = 3;
 x = 400;
 y = - 48;
 alarm[3] = 1;
+
+
+
+pType = 0;
+xxCount = 0;
+trace = false;
+path = 0;
+
+statusCountDown = 0;
+energyCount = 0;
 </string>
           </argument>
         </arguments>
@@ -87,9 +97,9 @@ pType = 2;
             <kind>1</kind>
             <string>if(xxCount &gt; 0)
 {
-    for(i = 0; i &lt; 4; i += 1)
+    for(var i = 0; i &lt; 4; i += 1)
     {
-        xx = instance_create(x,y,obj_bsFireShot);
+        var xx = instance_create(x,y,obj_bsFireShot);
         xx.image_angle = 90 * i;
     }
     xxCount -= 1;
@@ -379,7 +389,7 @@ else
     other.damage = true;
  
     damage = global.attackDamage * 3;
-    damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
+    var damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
     damageInfo.damage = damage;
     damageInfo.font = fontDamageInfo3;
     damageInfo.color = c_red;        
@@ -506,10 +516,10 @@ else
 {
     sound_fix(sndEarth1);
     instance_create(0,0,view_shaker1);
-    p1 = instance_create(x, y + 48, obj_bsShark);
+    var p1 = instance_create(x, y + 48, obj_bsShark);
     p1.image_xscale = 2;
     p1.hspeed = -2;
-    p2 = instance_create(x, y + 48, obj_bsShark);
+    var p2 = instance_create(x, y + 48, obj_bsShark);
     p2.hspeed = 2;
     p2.image_xscale = -2;
     alarm[6] = 50;

@@ -1,0 +1,239 @@
+// 2025-06-08 12:12:54
+#event properties (no comments/etc. here are saved)
+parent_index = obj_dmSummonPrototype;
+sprite_index = spr_dmJuniorMage;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/8;
+hp = 10;
+fullHp = 10;
+instance_position(x,y,obj_dmAppearHole);
+xl = ds_list_create();
+yl = ds_list_create();
+spd = 0;
+hMove = true;
+vMove = false;
+
+
+minAngle = 0;
+
+maxAngle = 0;
+
+if(x > 400)
+{
+    minAngle = 115;
+    maxAngle = 245;
+}
+else
+{
+    minAngle = -65;
+    maxAngle = 65;
+}
+angle = maxAngle;
+midAngle = (minAngle + maxAngle)/2;
+angleSpd = 0;
+hinit = false;
+toMin = true;
+time = 0;
+isStable = true;
+
+
+ind = 0;
+size = 0;
+
+#event destroy
+ds_list_destroy(xl);
+ds_list_destroy(yl);
+if(instance_number(obj_dmSummonPrototype) == 1)
+{
+    with(obj_darkMage_combat)
+    { 
+        if(hp > 80)
+        {
+            alarm[6] = 70;
+            hp -= global.attackDamage;
+            cooldown = true;
+            if(global.special[8])
+            {
+                alarm[1] = 25;
+            }
+            else
+            {
+                alarm[1] = 50;
+            }
+            alarm[0] = 1;
+        }
+        else
+        {
+            sound_fix(sndBEDevilLaugh);
+            alarm[11] = 80;
+        }
+    }
+}
+//instance_create(obj_darkMage_combat.x,obj_darkMage_combat.y,bullet);
+
+#event alarm4
+instance_create(x,y,obj_dmJuniorMageBullet1);
+alarm[4] = 3;
+
+#event alarm5
+if(toMin)
+{
+    if(angle > midAngle)
+    {
+        angleSpd += 0.3;
+        
+    }
+    else
+    {
+        if(angleSpd > 0)
+        {
+            angleSpd -= 0.3;
+        }
+        else
+        {
+            angle = minAngle;
+            toMin = false;
+        }
+    }
+    angle -= angleSpd;
+}
+else
+{
+    if(angle < midAngle)
+    {
+        angleSpd += 0.3;
+    }
+    else
+    {
+        if(angleSpd > 0)
+        {
+            angleSpd -= 0.3;
+        }
+        else
+        {
+            angle = maxAngle;
+            toMin = true;
+        }
+    }
+    angle += angleSpd;
+}
+
+alarm[5] = 1;
+
+#event alarm6
+var b = instance_create(x,y,obj_dmJuniorMageBullet2);
+b.image_angle = angle - 90;
+b.direction = angle;
+b.image_index = ind;
+alarm[6] = 2;
+
+#event alarm7
+if(sound)
+{
+    sound_fix(sndShoot);
+}
+else if(instance_number(obj_dmJuniorMage) == 1)
+{
+    sound_fix(sndShoot);
+}
+alarm[7] = 5;
+
+#event alarm10
+if(ind == 14)
+{
+    ind = 0;
+}
+else
+{
+    ind += 1;
+}
+alarm[10] = 10;
+
+#event alarm11
+
+//with(movingPlatform)
+//{
+//    changeNothing(movingPlatform,0);
+//}
+alarm[5] = 1;
+alarm[6] = 1;
+alarm[7] = 1;
+alarm[10] = 10;
+//instance_create(x,y,obj_dmJuniorMage1);
+//instance_destroy();
+
+#event step
+time += 1;
+if(time mod 3 != 0)
+    exit;
+size = ds_list_size(xl);
+if(size == 5)
+{
+    ds_list_delete(xl,0);
+    ds_list_delete(yl,0);
+}
+ds_list_add(xl, xprevious);
+ds_list_add(yl, yprevious);
+
+#section
+if(start)
+{
+    if(!hinit)
+    {
+        spd = -6;
+        hinit = true;
+    }
+    if(hMove)
+    {
+        if(abs(x-targetX) > 1)
+        {
+            if(abs(x-targetX) > 125)
+            {
+                spd += 0.1;
+            }
+            else
+            {
+                spd -= 0.1;
+            }
+            move_towards_point(targetX,y,spd);
+        }
+        else
+        {
+            x = targetX;
+            speed = 0;
+            hMove = false;
+            vMove = true;
+            alarm[4] = 0;
+            alarm[7] = 0;
+        }
+    }
+    if(vMove)
+    {
+        if(abs(y-targetY) >= 10)
+        {
+            move_towards_point(x,targetY,10);
+        }
+        else
+        {
+            y = targetY;
+            speed = 0;
+            vMove = false;
+            alarm[4] = 0;
+            alarm[11] = 30;
+        }
+    }
+}
+
+#event other_user0
+alarm[7] = 1;
+
+#event draw
+for(var i = 0; i < size; i+=1)
+{
+    alpha = 1/(size+1)*(i+1);
+    draw_sprite_ext(sprite_index,image_index,ds_list_find_value(xl,i),ds_list_find_value(yl,i),image_xscale,image_yscale,image_angle,image_blend,alpha);
+}
+event_inherited();

@@ -1,0 +1,41 @@
+// 2025-06-08 12:43:13
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_dsLaserEmitter;
+uses_physics = false;
+
+#event create
+image_xscale = 0.1;
+image_yscale = 0.1;
+count = 1;
+alarm[0] = 40;
+
+
+startAngle = 0;
+stepAngle = 0;
+
+#event alarm0
+var laser = instance_create(x,y,obj_dsLaser);
+laser.direction = startAngle;
+laser.image_angle = startAngle;
+laser.speed = 2;
+startAngle += stepAngle;
+alarm[0] = 4;
+
+#event step
+image_angle += 10;
+if(image_xscale < 1)
+{
+    image_xscale += 0.02;
+    image_yscale += 0.02;
+    count += 0.2;
+}
+
+#event draw
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,0.95);
+draw_set_blend_mode(bm_add);
+repeat(floor(count))
+{
+    draw_current();
+}
+draw_set_blend_mode(bm_normal);

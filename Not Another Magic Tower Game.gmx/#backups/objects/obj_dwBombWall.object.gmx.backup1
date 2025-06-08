@@ -1,0 +1,30 @@
+// 2025-06-08 13:00:54
+#event properties (no comments/etc. here are saved)
+parent_index = solidblock;
+sprite_index = spr_dwWall;
+solid = true;
+uses_physics = false;
+
+#event destroy
+with(obj_darkWarrior_combat)
+{
+    cellX = other.x;
+    cellY = other.y;
+    event_user(10);
+}
+
+#event alarm0
+if(red < 255)
+{
+    red += 10;
+    if(red > 255)
+    {
+        red = 255;
+    }
+    image_blend = make_color_rgb(255,255-red,255-red);
+    alarm[0] = 1;
+}
+else
+{
+    instance_destroy();
+}

@@ -1,0 +1,33 @@
+// 2025-06-08 13:00:38
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_darkWarrior_bomb;
+solid = true;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0.1;
+time = 150;
+alarm[0] = time;
+isStable = 1;
+
+#event alarm0
+var a = instance_create(x, y, obj_darkWarrior_bomb_fire);
+a.p = p;
+with(a)
+{
+    event_user(0);
+}
+instance_destroy();
+
+#event collision:bullet
+hitEffect();
+with(other)
+{
+    instance_destroy();
+}
+
+#event collision:obj_dwBombDmg
+alarm[0] = 1;

@@ -1,0 +1,21 @@
+// 2025-06-08 12:04:31
+#event properties (no comments/etc. here are saved)
+parent_index = movingPlatform;
+sprite_index = sprDynamicPlatform01;
+uses_physics = false;
+
+#event create
+image_blend = merge_color(c_orange,c_red,0.5);
+image_alpha = 0.8;
+event_inherited();
+
+#event destroy
+sound_fix(sndbrake);
+var part1 = instance_create(x+8,y+8,obj_dmPlatformPart);
+part1.hspeed = -1;
+var part2 = instance_create(x+8,y+8,obj_dmPlatformPart);
+part2.hspeed = 1;
+part2.image_index = 1;
+
+#event collision:bullet
+//

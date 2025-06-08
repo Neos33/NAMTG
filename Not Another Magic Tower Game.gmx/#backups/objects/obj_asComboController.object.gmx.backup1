@@ -1,0 +1,89 @@
+// 2025-06-08 11:53:29
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+
+targetX = 0;
+comboXScale = 0;
+
+if(obj_asQTEPlayer.x > 400)
+{
+    targetX = RangeClamp(obj_asQTEPlayer.x  + 128, 0, 800);
+    comboXScale = 1;
+}
+else
+{
+    targetX = RangeClamp(obj_asQTEPlayer.x  - 128, 0, 800);
+    comboXScale = -1;
+}
+targetY = obj_asQTEPlayer.y;
+alpha = 0;
+draw = true;
+alarm[0] = 1;
+//instance_create(0,0,obj_asComboViewController);
+//obj_combatController.dontDraw = true;
+
+#event alarm0
+if(alpha < 1)
+{
+    alpha += 0.02;
+    alarm[0] = 1;
+}
+else
+{
+    draw = false;
+    obj_armoredSoldier_combat.image_alpha = 1;
+    obj_armoredSoldier_combat.x = targetX;
+    obj_armoredSoldier_combat.y = targetY;
+    alarm[1] = 40;
+}
+
+
+#event alarm1
+if(comboXScale > 0)
+{
+    flash = instance_create(obj_armoredSoldier_combat.x - 16, obj_armoredSoldier_combat.y, obj_levelupFlash);
+}
+else
+{
+    flash = instance_create(obj_armoredSoldier_combat.x + 16, obj_armoredSoldier_combat.y, obj_levelupFlash);
+}
+flash.image_xscale = 2;
+flash.image_yscale = 2;
+alarm[2] = 30;
+alarm[11] = 1;
+
+#event alarm2
+var combo = instance_create(obj_armoredSoldier_combat.x, obj_armoredSoldier_combat.y - 16, obj_asCombo);
+combo.hspeed = -comboXScale * 0.5;
+combo.vspeed = -0.1;
+obj_asQTEPlayer.hspeed = -comboXScale * 0.5;
+obj_asQTEPlayer.vspeed = -0.1;
+alarm[3] = 1;
+alarm[4] = 100;
+
+#event alarm3
+sound_fix(sndClaw1);
+instance_create(obj_asQTEPlayer.x, obj_asQTEPlayer.y, bloodEmitter);
+alarm[3] = 25;
+
+#event alarm4
+obj_asCombo.alarm[0] = 1;
+alarm[3] = 0;
+sound_stop(sndClaw1);
+
+#event alarm11
+if(obj_armoredSoldier_combat.image_alpha > 0)
+{
+    obj_armoredSoldier_combat.image_alpha -= 0.08;
+    alarm[11] = 1;
+}   
+
+#event draw
+if(draw)
+{
+    draw_sprite_ext(obj_armoredSoldier_combat.sprite_index, obj_armoredSoldier_combat.image_index, targetX, targetY, 1, 1, 0, c_white, alpha);
+    obj_armoredSoldier_combat.image_alpha = 1 - alpha; 
+}

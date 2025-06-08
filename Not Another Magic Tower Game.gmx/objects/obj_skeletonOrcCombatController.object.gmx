@@ -32,7 +32,7 @@ if(room == battlefasfroom || room == Roomavoidence)
 {
     if(!instance_exists(obj_superFasf_combat) &amp;&amp; room != Roomavoidence)
     {
-        m = instance_create(704, 544, global.combatObj);
+        var m = instance_create(704, 544, global.combatObj);
         m.hp = global.mHP;
         m.atk = global.mAtk;
         m.def = global.mDef;
@@ -52,7 +52,7 @@ if(room == battlefasfroom || room == Roomavoidence)
 }
 else
 {
-    m = instance_create(704, 544, global.combatObj);
+    var m = instance_create(704, 544, global.combatObj);
     m.hp = global.mHP;
     m.atk = global.mAtk;
     m.def = global.mDef;
@@ -274,11 +274,11 @@ draw_text(view_xview[0] +64, view_yview[0] + 64, "Kid");
 
 if(global.GalleryBossFight)
 {
-    usedHp = global.GalleryBossFightHp;
+    var usedHp = global.GalleryBossFightHp;
 }
 else
 {
-    usedHp = global.hp;
+    var usedHp = global.hp;
 }
 
 if(player_is_alive())
@@ -286,17 +286,17 @@ if(player_is_alive())
     drawMagicHP();
     if(usedHp &lt; 233)
     {
-        for(k = 0; k &lt; floor(usedHp / 100); k+=1)
+        for(var k = 0; k &lt; floor(usedHp / 100); k+=1)
         {
             draw_sprite_ext(spr_hp, 0, view_xview[0] +64 + 24 * k, view_yview[0] + 80, .75, .75, 0, c_white, 1);
         }
         
-        for(j = 0; j &lt; floor((usedHp mod 100) / 10); j+=1)
+        for(var j = 0; j &lt; floor((usedHp mod 100) / 10); j+=1)
         {
             draw_sprite(spr_heart10, 0, view_xview[0] +64 + floor(usedHp / 100) * 24 + 20 * j, view_yview[0] + 92);
         }
         
-        for(i = 0; i &lt; (usedHp mod 10); i+= 1)
+        for(var i = 0; i &lt; (usedHp mod 10); i+= 1)
         {
             draw_sprite(spr_smallHeart, 0, view_xview[0] +64 + floor(usedHp / 100) * 24 + 20 * floor((usedHp mod 100) / 10) + 14 * i, view_yview[0] + 98);
         }
@@ -315,17 +315,17 @@ if(player_is_alive())
 if(dontDrawMonster) exit;
 if(obj_monsterBattlePrototype.hp &lt; 233)
 {
-    for(k = 0; k &lt; floor(obj_monsterBattlePrototype.hp / 100); k+=1)
+    for(var k = 0; k &lt; floor(obj_monsterBattlePrototype.hp / 100); k+=1)
     {
         draw_sprite_ext(spr_hp, 0, view_xview[1] + view_wview[1] - 64 - 24 * (k + 1), view_yview[0] + 80, .75, .75, 0, c_white, 1);
     }
     
-    for(j = 0; j &lt; floor((obj_monsterBattlePrototype.hp mod 100) / 10); j+=1)
+    for(var j = 0; j &lt; floor((obj_monsterBattlePrototype.hp mod 100) / 10); j+=1)
     {
         draw_sprite(spr_heart10, 0, view_xview[1] + view_wview[1] - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * (j + 1), view_yview[1] + 92);
     }
     
-    for(i = 0; i &lt; (obj_monsterBattlePrototype.hp mod 10); i+= 1)
+    for(var i = 0; i &lt; (obj_monsterBattlePrototype.hp mod 10); i+= 1)
     {
         draw_sprite(spr_smallHeart, 0, view_xview[1] + view_wview[1] - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * floor((obj_monsterBattlePrototype.hp mod 100) / 10) - 14 * (i + 1), view_yview[1] + 98);
     }
@@ -336,7 +336,7 @@ else
     draw_set_color(c_silver);
     draw_set_halign(fa_right);
     draw_set_valign(fa_middle);
-    strWidth = string_width("x " + string(obj_monsterBattlePrototype.hp));
+    var strWidth = string_width("x " + string(obj_monsterBattlePrototype.hp));
     draw_text(view_xview[1] + view_wview[1] - 64, view_yview[1] + 92, "x " + string(obj_monsterBattlePrototype.hp));
     draw_sprite_ext(spr_smallHeart, 0, view_xview[1] + view_wview[0] - 64 - strWidth - 14, view_yview[1] + 92, .75, .75, 0, c_white, 1);
 }

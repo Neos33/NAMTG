@@ -1,0 +1,45 @@
+// 2025-06-08 12:18:07
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_portal1;
+uses_physics = false;
+
+#event create
+image_xscale = 0.1;
+image_yscale = 0.06;
+image_alpha = 0.6;
+image_speed = 1/8;
+image_blend = merge_color(c_purple,c_black,0.3);
+sound_fix(sndFire1);
+alarm[0] = 1;
+
+#event alarm0
+if(image_xscale < 1)
+{
+    image_xscale += 0.03;
+    image_yscale += 0.02;
+    image_alpha += 0.02;
+    alarm[0] = 1;
+}
+else
+{
+    alarm[1] = 20;
+}
+
+#event alarm1
+var sword = instance_create(x,y-60,obj_dmSword1);
+sound_fix(sndDark2)
+sword.top = y;
+alarm[2] = 50;
+
+#event alarm2
+if(image_xscale > 0)
+{
+    image_xscale -= 0.03;
+    image_yscale -= 0.03;
+    alarm[2] = 1;
+}
+else
+{
+    instance_destroy();
+}

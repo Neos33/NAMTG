@@ -1,0 +1,83 @@
+// 2025-06-08 11:03:13
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_orcSkeletonViewSplitsSword;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+alarm[0] = 5;
+
+cut = false;
+angle = 0;
+start = false;
+
+#event alarm0
+if(image_index < 7)
+{
+    image_index += 1;
+    alarm[0] = 5;
+}
+else
+{
+    alarm[1] = 15;
+}
+
+#event alarm1
+cut = true;
+if(bbox_left < 400)
+{
+    x += 1;
+    cut = false;
+}
+if(angle > -135)
+{
+    angle -= 3;
+    image_angle = angle;
+    cut = false;
+}
+if(!cut)
+{
+    alarm[1] = 1;
+}
+else
+{
+    alarm[2] = 30;
+}
+
+#event alarm2
+if(y > 40)
+{
+    y -= 8;
+    alarm[2] = 1;
+}
+else
+{
+    alarm[3] = 40;
+}
+
+#event alarm3
+audio_playsound(sndSwing1);
+vspeed = 30;
+start = true;
+alarm[4] = 30;
+
+#event alarm4
+audio_playsound(sndgras);
+obj_skeletonOrc_combat.viewSplit = true;
+obj_skeletonOrc_combat.alarm[11] = 50;
+obj_skeletonOrcViewController.alarm[0] = 1;
+
+#event step
+if(y > 800)
+{
+    vspeed = 0;
+}
+if(start)
+{
+    if(angle < - 15)
+    {
+        angle += 10;
+        image_angle = angle;
+    }
+}

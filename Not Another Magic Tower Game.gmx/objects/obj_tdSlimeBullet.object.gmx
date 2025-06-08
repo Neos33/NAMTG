@@ -45,6 +45,8 @@ image_yscale = 0.25;
 speed = 2;
 direction = point_direction(x,y,player.x,player.y);
 
+atk = 0;
+
 </string>
           </argument>
         </arguments>

@@ -1,0 +1,68 @@
+// 2025-06-08 11:54:14
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+x = 0;
+y = 0;
+dis = point_distance(x,y,player.x - 75, player.y - 57);
+spd = dis/50;
+
+
+boom = false;
+trace = false;
+
+#event destroy
+view_xview[0] = 0;
+view_yview[0] = 0;
+speed = 0;
+view_wview[0] = 800;
+view_hview[0] = 608;
+
+#event step
+if(!boom)
+{
+    if(!trace)
+    {
+        if(point_distance(x,y,obj_asQTEPlayer.x - 75, obj_asQTEPlayer.y - 57) < spd)
+        {
+            x = obj_asQTEPlayer.x - 75;
+            y = obj_asQTEPlayer.y - 57;
+            speed = 0;
+            trace = true;
+            view_wview[0] = 150;
+            view_hview[0] = 114;
+        }
+        else
+        {
+            move_towards_point(obj_asQTEPlayer.x - 75, obj_asQTEPlayer.y - 57, spd);
+            view_wview[0] -= 13;
+            view_hview[0] -= 9.88;
+        }
+    }
+    else
+    {
+        x = obj_asQTEPlayer.x - 75;
+        y = obj_asQTEPlayer.y - 57;
+    }
+}
+else
+{
+    if(point_distance(x,y,0,0) < spd)
+    {
+        instance_destroy();
+    }
+    else
+    {
+        move_towards_point(0,0, spd);
+        view_wview[0] += 21.67;
+        view_hview[0] += 16.47;
+    }
+}
+view_xview[0] = x;
+view_yview[0] = y;
+
+#event other_user0
+dis = point_distance(x,y,0,0);
+spd = dis/30;

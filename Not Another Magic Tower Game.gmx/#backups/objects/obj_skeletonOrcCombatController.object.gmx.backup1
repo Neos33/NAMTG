@@ -1,0 +1,263 @@
+// 2025-06-08 11:04:56
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatController;
+uses_physics = false;
+
+#event create
+if(initialized)
+    exit;
+sound_stop_all();
+if(room == battlefasfroom || room == Roomavoidence)
+{
+    if(!instance_exists(obj_superFasf_combat) && room != Roomavoidence)
+    {
+        var m = instance_create(704, 544, global.combatObj);
+        m.hp = global.mHP;
+        m.atk = global.mAtk;
+        m.def = global.mDef;
+        m.ex = global.mEx;
+    }
+    else
+    {
+        obj_superFasf_combat.hspeed = 0;
+        obj_superFasf_combat.vspeed = 0;
+        obj_superFasf_combat.visible = 1;
+        obj_superFasf_combat.x=400;
+        obj_superFasf_combat.y=304;
+        obj_superFasf_combat.image_blend = c_red;
+        obj_superFasf_combat.image_speed = 1 / 6;
+        obj_superFasf_combat.image_index = 0;
+    }
+}
+else
+{
+    var m = instance_create(704, 544, global.combatObj);
+    m.hp = global.mHP;
+    m.atk = global.mAtk;
+    m.def = global.mDef;
+    m.ex = global.mEx;
+}
+global.cooldown = false;
+if(!FMODInstanceGetPaused(global.currentBGM))
+{
+    FMODInstanceSetPaused(global.currentBGM, true);
+}
+if(global.currentFloor <= 10)
+{
+    if(room == battleroom4 || room == battleroom6)
+    {
+        battleBGM = choose(sndBattle3, sndBattle4);
+    }
+    else if(room ==battleroom12)
+    {
+    //    battleBGM=happymusic;
+    }
+    else
+    {
+        battleBGM = choose(sndBattle1, sndBattle2);
+    }
+}
+else
+{
+    battleBGM = choose(sndBattle5, sndBattle6, sndBattle7, sndBattle8);
+}
+if(room != battlefasfroom && room != battleroom12 && room != rDracula)
+{
+sound_loop(battleBGM);
+}
+else if(room == battlefasfroom)
+{
+    global.currentBGM = scrAudioGetID("BGMsupfasf");
+    if(FMODInstanceGetPaused(scrAudioGetID("BGMsupfasf")))
+    {
+        audio_resumemusic_volume(scrAudioGetID("BGMsupfasf"));
+    }
+    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGMsupfasf")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));   
+    }
+    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGMsupfasf")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));
+    }*/
+}
+else if(room == battleroom12)
+{
+    global.currentBGM = scrAudioGetID("BGM_RedKey");
+    if(FMODInstanceGetPaused(scrAudioGetID("BGM_RedKey")))
+    {
+        audio_resumemusic_volume(scrAudioGetID("BGM_RedKey"));
+    }
+    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGM_RedKey")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));   
+    }
+    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGM_RedKey")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));
+    }*/
+}
+else if(room == rDracula)
+{
+    global.currentBGM = scrAudioGetID("BGMDracula");
+    if(FMODInstanceGetPaused(scrAudioGetID("BGMDracula")))
+    {
+        audio_resumemusic_volume(scrAudioGetID("BGMDracula"));
+    }
+    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGMDracula")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGMDracula"));   
+    }
+    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGMDracula")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGMDracula"));
+    }*/
+}
+
+
+global.playerHP = global.hp;
+global.combatTime = 0;
+
+#event alarm0
+global.inCombat = false;
+with(obj_combatPlayerKiller)
+{
+    instance_destroy();
+}
+global.monsters[global.combatIndex] = 1;
+if(room != battleroom12)
+{
+sound_stop(battleBGM);
+}
+//SS_ResumeSound(global.stageMusic);
+if(player_is_alive() && player.x > 0)
+{
+    
+    if(!global.isRandom)
+    {
+        //transition_kind = 21;
+    }
+    room_goto(global.stageRoom);
+    if(global.special[2])
+    {
+        global.expBonus += floor(global.mEx * 1.5);
+    }
+    else
+    {
+        global.expBonus += global.mEx;
+    }
+    
+    player.x = global.roomX;
+    player.y = global.roomY;
+}
+
+#event step
+global.combatTime += 1;
+/*if(global.special[7])
+{
+    if(instance_exists(obj_monsterBattlePrototype))
+    {
+        if(obj_monsterBattlePrototype.x > view_xview[0] && obj_monsterBattlePrototype.x < view_xview[0] + view_wview[0] && obj_monsterBattlePrototype.y > view_yview[0] && obj_monsterBattlePrototype.y < view_yview[0] + view_hview[0])
+        {
+            global.isTrack = true;
+            with(obj_monsterBattlePrototype)
+            {
+                global.trackX = x + (sprite_width / 2 - sprite_xoffset) * image_xscale;
+                global.trackY = y + (sprite_height / 2 - sprite_yoffset) * image_yscale;
+            }
+        }
+    }
+}
+else
+{
+    global.isTrack = false;
+}
+
+#event draw
+draw_set_halign(fa_right);
+draw_set_font(font12);
+draw_set_color(c_silver);
+draw_set_alpha(1);
+if(!instance_exists(obj_monsterBattlePrototype))
+{
+    draw_text(view_xview[1] + view_wview[1] - 64, view_yview[0] + 64, "");
+}
+else
+{
+    draw_text(view_xview[1] + view_wview[1] - 64, view_yview[1] + 64, obj_monsterBattlePrototype.name);
+}
+
+
+draw_set_halign(fa_left)
+draw_text(view_xview[0] +64, view_yview[0] + 64, "Kid");
+
+if(global.GalleryBossFight)
+{
+    var usedHp = global.GalleryBossFightHp;
+}
+else
+{
+    var usedHp = global.hp;
+}
+
+if(player_is_alive())
+{
+    drawMagicHP();
+    if(usedHp < 233)
+    {
+        for(var k = 0; k < floor(usedHp / 100); k+=1)
+        {
+            draw_sprite_ext(spr_hp, 0, view_xview[0] +64 + 24 * k, view_yview[0] + 80, .75, .75, 0, c_white, 1);
+        }
+        
+        for(var j = 0; j < floor((usedHp mod 100) / 10); j+=1)
+        {
+            draw_sprite(spr_heart10, 0, view_xview[0] +64 + floor(usedHp / 100) * 24 + 20 * j, view_yview[0] + 92);
+        }
+        
+        for(var i = 0; i < (usedHp mod 10); i+= 1)
+        {
+            draw_sprite(spr_smallHeart, 0, view_xview[0] +64 + floor(usedHp / 100) * 24 + 20 * floor((usedHp mod 100) / 10) + 14 * i, view_yview[0] + 98);
+        }
+    }
+    else
+    {
+        draw_sprite_ext(spr_smallHeart, 0, view_xview[0] +64, view_yview[0] + 92, .75, .75, 0, c_white, 1);
+        draw_set_font(fontBasicInfoMini);
+        draw_set_color(c_silver);
+        draw_set_halign(fa_left);
+        draw_set_valign(fa_middle);
+        draw_text(view_xview[0] +78, view_yview[0] + 92, "x " + string(usedHp));
+    }
+}
+
+if(dontDrawMonster) exit;
+if(obj_monsterBattlePrototype.hp < 233)
+{
+    for(var k = 0; k < floor(obj_monsterBattlePrototype.hp / 100); k+=1)
+    {
+        draw_sprite_ext(spr_hp, 0, view_xview[1] + view_wview[1] - 64 - 24 * (k + 1), view_yview[0] + 80, .75, .75, 0, c_white, 1);
+    }
+    
+    for(var j = 0; j < floor((obj_monsterBattlePrototype.hp mod 100) / 10); j+=1)
+    {
+        draw_sprite(spr_heart10, 0, view_xview[1] + view_wview[1] - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * (j + 1), view_yview[1] + 92);
+    }
+    
+    for(var i = 0; i < (obj_monsterBattlePrototype.hp mod 10); i+= 1)
+    {
+        draw_sprite(spr_smallHeart, 0, view_xview[1] + view_wview[1] - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * floor((obj_monsterBattlePrototype.hp mod 100) / 10) - 14 * (i + 1), view_yview[1] + 98);
+    }
+}
+else
+{
+    draw_set_font(fontBasicInfoMini);
+    draw_set_color(c_silver);
+    draw_set_halign(fa_right);
+    draw_set_valign(fa_middle);
+    strWidth = string_width("x " + string(obj_monsterBattlePrototype.hp));
+    draw_text(view_xview[1] + view_wview[1] - 64, view_yview[1] + 92, "x " + string(obj_monsterBattlePrototype.hp));
+    draw_sprite_ext(spr_smallHeart, 0, view_xview[1] + view_wview[0] - 64 - strWidth - 14, view_yview[1] + 92, .75, .75, 0, c_white, 1);
+}
+
+draw_reset();

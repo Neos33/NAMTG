@@ -1,0 +1,53 @@
+// 2025-06-08 11:35:35
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_danmaku12;
+uses_physics = false;
+
+#event create
+image_speed = 1/4;
+child = noone;
+
+px = 0;
+py = 0;
+
+#event destroy
+if(child)
+{
+    with(child)
+    {
+        instance_destroy();
+    }
+}
+
+#event step
+if(child)
+{
+    child.x = px;
+    child.y = py;
+}
+
+#event step_end
+px = x;
+py = y;
+
+#event other_user0
+if(ind > 1)
+{
+    child = instance_create(x,y,obj_bdmEnergyBall3Shadow);
+    child.ind = ind - 1;
+    child.scale = scale;
+    child.image_xscale = child.ind * 0.1 * scale;
+    child.image_yscale = child.ind * 0.1 * scale;
+    child.depth = -child.ind;
+    child.image_alpha = child.ind * 0.08 + 0.2;
+    with(child)
+    {
+        event_user(0);
+    }
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

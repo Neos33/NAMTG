@@ -1,0 +1,28 @@
+// 2025-06-08 10:59:27
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+for(var i = 0; i < 10; i += 1)
+{
+    instance_create(random_range(48,768), 48 + 55 * i, obj_giantBatBGDash);
+}
+alarm[0] = 15;
+alarm[1] = 1;
+
+#event alarm0
+instance_create(random_range(48,768), 608, obj_giantBatBGDash);
+alarm[0] = 15;
+
+#event alarm1
+
+    if(view_yview[0] == 0)
+    {
+        view_yview[0] = 3;
+    }
+    else
+    {
+        view_yview[0] = 0;
+    }
+    alarm[1] = 3;

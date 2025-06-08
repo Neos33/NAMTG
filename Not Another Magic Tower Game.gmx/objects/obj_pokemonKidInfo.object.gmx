@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room == r_tl_silverEvilSlime || room == r_tl_goldEvilSlime)
+            <string>fullHP = 0;
+
+if(room == r_tl_silverEvilSlime || room == r_tl_goldEvilSlime)
 {
  fullHP = global.FullHp;
 }
@@ -38,6 +40,10 @@ hp = global.hp;
 hpLen = 141;
 spIndex = 0;
 lv = global.currentLevel;
+
+hpPer = 0;
+usedHp = 0;
+stepHp = 0;
 </string>
           </argument>
         </arguments>

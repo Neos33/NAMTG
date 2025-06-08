@@ -1,0 +1,234 @@
+// 2025-06-08 11:09:46
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+dis = 0;
+viewMoveDis = 280;
+tileWidth = 128;
+tileOffsetY = 0;
+tileVspd = 2;
+createGap = 608;
+createY = 304;
+
+dashSpd = -35;
+normalSpd = -20;
+
+coinGet = 0;
+straightCount = 0;
+
+
+dashStep = 0;
+partWidth = 0;
+
+#event alarm0
+if(dashStep > 0)
+{
+    dashStep -= 1;
+    player.vspeed = dashSpd;
+    alarm[0] = 1;
+}
+else
+{
+    player.redKnightDash = false;
+}
+
+#event alarm1
+event_user(irandom_range(0,3));
+instance_create(210, createY, obj_redKnightDeco);
+
+#event alarm2
+straightCount = 0;
+
+#event step
+if(!player_is_alive())
+{
+    exit;
+}
+tempDis = dis;
+dis = RangeClamp(544 + 23 - player.y, tempDis, tempDis + 500);
+tempViewY = view_yview[0];
+view_yview[0] = RangeClamp(player.y - viewMoveDis, tempViewY - 500, RangeClamp(tempViewY + 5, tempViewY, 0));
+//player.vspeed = -9;
+player.gravity = 0.3;
+tileOffsetY += tileVspd;
+if(player.y > (view_yview[0] + view_hview[0] + 10))
+{
+    with(player)
+    {
+        killPlayer();
+    }
+}
+meter = round(dis/10);
+if(player.y < createY)
+{
+    createY -= createGap;
+    alarm[1] = 1;
+}
+
+#event other_room_end
+player.redKnightDash = false;
+
+#event other_user0
+instance_create(352,createY - 304 + 576,obj_redKnightCoin);
+//instance_create(400,createY - 304 + 576,obj_redKnightCoin);
+instance_create(448,createY - 304 + 576,obj_redKnightCoin);
+
+instance_create(256,createY - 304 + 432,obj_redKnightCoin);
+instance_create(304,createY - 304 + 432,obj_redKnightCoin);
+instance_create(256,createY - 304 + 480,obj_redKnightCoin);
+instance_create(304,createY - 304 + 480,obj_redKnightCoin);
+
+instance_create(496,createY - 304 + 432,obj_redKnightCoin);
+instance_create(544,createY - 304 + 432,obj_redKnightCoin);
+instance_create(496,createY - 304 + 480,obj_redKnightCoin);
+instance_create(544,createY - 304 + 480,obj_redKnightCoin);
+
+instance_create(352,createY - 304 + 336,obj_redKnightCoin);
+//instance_create(448,createY - 304 + 336,obj_redKnightCoin);
+//instance_create(384,createY - 304 + 304,obj_redKnightCoin);
+//instance_create(416,createY - 304 + 304,obj_redKnightCoin);
+instance_create(400,createY - 304 + 288,obj_redKnightCoin);
+//instance_create(384,createY - 304 + 272,obj_redKnightCoin);
+//instance_create(416,createY - 304 + 272,obj_redKnightCoin);
+//instance_create(352,createY - 304 + 240,obj_redKnightCoin);
+instance_create(448,createY - 304 + 240,obj_redKnightCoin);
+
+instance_create(256,createY - 304 + 112,obj_redKnightCoin);
+instance_create(304,createY - 304 + 112,obj_redKnightCoin);
+instance_create(256,createY - 304 + 160,obj_redKnightCoin);
+instance_create(304,createY - 304 + 160,obj_redKnightCoin);
+
+instance_create(496,createY - 304 + 112,obj_redKnightCoin);
+instance_create(544,createY - 304 + 112,obj_redKnightCoin);
+instance_create(496,createY - 304 + 160,obj_redKnightCoin);
+instance_create(544,createY - 304 + 160,obj_redKnightCoin);
+
+//instance_create(352,createY - 304 + 32,obj_redKnightCoin);
+instance_create(400,createY - 304 + 32,obj_redKnightCoin);
+//instance_create(448,createY - 304 + 32,obj_redKnightCoin);
+
+#event other_user1
+instance_create(400,createY - 304 + 576,obj_redKnightCoin);
+instance_create(352,createY - 304 + 544,obj_redKnightCoin);
+instance_create(304,createY - 304 + 512,obj_redKnightCoin);
+instance_create(272,createY - 304 + 464,obj_redKnightCoin);
+instance_create(400,createY - 304 + 432,obj_redKnightThreats);
+instance_create(272,createY - 304 + 400,obj_redKnightCoin);
+instance_create(304,createY - 304 + 352,obj_redKnightCoin);
+instance_create(352,createY - 304 + 320,obj_redKnightCoin);
+instance_create(400,createY - 304 + 304,obj_redKnightCoin);
+instance_create(448,createY - 304 + 288,obj_redKnightCoin);
+instance_create(496,createY - 304 + 256,obj_redKnightCoin);
+instance_create(512,createY - 304 + 192,obj_redKnightCoin);
+instance_create(400,createY - 304 + 160,obj_redKnightThreats);
+instance_create(512,createY - 304 + 128,obj_redKnightCoin);
+instance_create(496,createY - 304 + 80,obj_redKnightCoin);
+instance_create(448,createY - 304 + 48,obj_redKnightCoin);
+instance_create(400,createY - 304 + 32,obj_redKnightCoin);
+
+#event other_user2
+instance_create(288,createY - 304 + 528,obj_redKnightCoin);
+instance_create(256,createY - 304 + 576,obj_redKnightCoin);
+instance_create(320,createY - 304 + 576,obj_redKnightCoin);
+instance_create(400,createY - 304 + 544,obj_redKnightCoin);
+instance_create(512,createY - 304 + 528,obj_redKnightCoin);
+instance_create(480,createY - 304 + 576,obj_redKnightCoin);
+instance_create(544,createY - 304 + 576,obj_redKnightCoin);
+
+instance_create(256,createY - 304 + 400,obj_redKnightCoin);
+instance_create(320,createY - 304 + 400,obj_redKnightCoin);
+instance_create(288,createY - 304 + 368,obj_redKnightCoin);
+instance_create(288,createY - 304 + 336,obj_redKnightCoin);
+instance_create(288,createY - 304 + 304,obj_redKnightCoin);
+instance_create(256,createY - 304 + 272,obj_redKnightCoin);
+instance_create(320,createY - 304 + 272,obj_redKnightCoin);
+
+instance_create(400,createY - 304 + 256,obj_redKnightThreats);
+instance_create(400,createY - 304 + 320,obj_redKnightPowerUp);
+instance_create(400,createY - 304 + 384,obj_redKnightThreats);
+
+instance_create(480,createY - 304 + 400,obj_redKnightCoin);
+instance_create(544,createY - 304 + 400,obj_redKnightCoin);
+instance_create(512,createY - 304 + 368,obj_redKnightCoin);
+instance_create(512,createY - 304 + 336,obj_redKnightCoin);
+instance_create(512,createY - 304 + 304,obj_redKnightCoin);
+instance_create(480,createY - 304 + 272,obj_redKnightCoin);
+instance_create(544,createY - 304 + 272,obj_redKnightCoin);
+
+instance_create(256,createY - 304 + 160,obj_redKnightCoin);
+instance_create(288,createY - 304 + 112,obj_redKnightCoin);
+instance_create(336,createY - 304 + 64,obj_redKnightCoin);
+instance_create(400,createY - 304 + 32,obj_redKnightCoin);
+instance_create(464,createY - 304 + 64,obj_redKnightCoin);
+instance_create(512,createY - 304 + 112,obj_redKnightCoin);
+instance_create(544,createY - 304 + 160,obj_redKnightCoin);
+
+instance_create(320,createY - 304 + 160,obj_redKnightThreats);
+instance_create(480,createY - 304 + 160,obj_redKnightThreats);
+
+#event other_user3
+instance_create(352,createY - 304 + 512,obj_redKnightCoin);
+instance_create(448,createY - 304 + 512,obj_redKnightCoin);
+instance_create(272,createY - 304 + 512,obj_redKnightThreats);
+instance_create(528,createY - 304 + 512,obj_redKnightThreats);
+
+instance_create(272,createY - 304 + 176,obj_redKnightCoin);
+instance_create(224,createY - 304 + 240,obj_redKnightCoin);
+instance_create(224,createY - 304 + 304,obj_redKnightCoin);
+instance_create(224,createY - 304 + 368,obj_redKnightCoin);
+instance_create(272,createY - 304 + 304,obj_redKnightPowerUp);
+instance_create(320,createY - 304 + 240,obj_redKnightCoin);
+instance_create(320,createY - 304 + 304,obj_redKnightCoin);
+instance_create(320,createY - 304 + 368,obj_redKnightCoin);
+instance_create(272,createY - 304 + 432,obj_redKnightCoin);
+
+instance_create(528,createY - 304 + 176,obj_redKnightCoin);
+instance_create(480,createY - 304 + 240,obj_redKnightCoin);
+instance_create(480,createY - 304 + 304,obj_redKnightCoin);
+instance_create(480,createY - 304 + 368,obj_redKnightCoin);
+instance_create(528,createY - 304 + 304,obj_redKnightPowerUp);
+instance_create(576,createY - 304 + 240,obj_redKnightCoin);
+instance_create(576,createY - 304 + 304,obj_redKnightCoin);
+instance_create(576,createY - 304 + 368,obj_redKnightCoin);
+instance_create(528,createY - 304 + 432,obj_redKnightCoin);
+
+instance_create(352,createY - 304 + 96,obj_redKnightCoin);
+instance_create(448,createY - 304 + 96,obj_redKnightCoin);
+instance_create(272,createY - 304 + 96,obj_redKnightThreats);
+instance_create(528,createY - 304 + 96,obj_redKnightThreats);
+
+#event draw
+for(var i = 0; i < 400 - 190; i += tileWidth)
+{
+    for(var j = -tileWidth; j < 608; j += tileWidth)
+    {
+        if((i + tileWidth) < (400 - 190))
+        {
+            draw_sprite(spr_redKnightTile, 0, i, view_yview[0] + j  + (tileOffsetY mod tileWidth));
+        }
+        else
+        {
+            partWidth = 400 - 190 - i;
+            draw_sprite_part(spr_redKnightTile,0,0,0,partWidth,tileWidth,i, view_yview[0] + j  + (tileOffsetY mod tileWidth));
+        }
+    }
+}
+
+
+for(var i = 800; i > 400 + 190; i -= tileWidth)
+{
+    for(var j = -tileWidth; j < 608; j += tileWidth)
+    {
+        if(i > 400 + 190 + tileWidth)
+        {
+            draw_sprite(spr_redKnightTile, 0, i - tileWidth, view_yview[0] + j  + (tileOffsetY mod tileWidth));
+        }
+        else
+        {
+            partWidth = i - 400 - 190;
+            draw_sprite_part(spr_redKnightTile,0,tileWidth - partWidth,0,partWidth,tileWidth,i - partWidth, view_yview[0] + j  + (tileOffsetY mod tileWidth));
+        }
+    }
+}

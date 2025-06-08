@@ -43,6 +43,9 @@
 image_alpha = 0;
 alarm[3] = 1;
 isStable = true;
+
+
+rCount = 0;
 </string>
           </argument>
         </arguments>

@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>alpha = 1;
 alarm[0] = 100;
+
+step = 0;
 </string>
           </argument>
         </arguments>

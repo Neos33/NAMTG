@@ -1,0 +1,56 @@
+// 2025-06-08 12:49:18
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+r = 200;
+angle = 90;
+alarm[0] = 50;
+alarm[1] = 50;
+
+spr[0] = spr_dsCrystalRed;
+spr[1] = spr_dsCrystalBlue;
+spr[2] = spr_dsCrystalYellow;
+spr[3] = spr_dsCrystalGreen;
+spr[4] = spr_dsCrystalPurple;
+
+sound_fix(snd_touhou_powerup);
+
+
+
+stop = false;
+
+#event alarm0
+if(r > 0)
+{
+    r -= 2;
+    angle += 5;
+    alarm[0] = 1;
+}
+else
+{
+    sound_fix(sndExpMax);
+    with(obj_dsWhiteCrystalStart)
+    {
+        instance_destroy();
+    }
+    instance_create(obj_darkSummoner_combat.x, obj_darkSummoner_combat.y, obj_dsWhiteCrystal);
+    instance_create(obj_darkSummoner_combat.x, obj_darkSummoner_combat.y, obj_dsWhiteCrystalEffect);
+}
+
+#event alarm1
+for(var i=0;i<5;i+=1)
+{
+    var crystal = instance_create(obj_darkSummoner_combat.x + lengthdir_x(r, angle + 72 * i), obj_darkSummoner_combat.y + lengthdir_y(r, angle + 72 * i), obj_dsWhiteCrystalStart);
+    crystal.startAngle = angle + 72*i;
+    crystal.sprite_index = spr[i];
+}
+
+#event step
+if(!stop)
+{
+    var rad = random_range(20,50);
+    var ang = random_range(0,360);
+    instance_create(obj_darkSummoner_combat.x + lengthdir_x(rad,ang), obj_darkSummoner_combat.y + lengthdir_y(rad,ang),obj_dsWhiteAppearEffect);
+}

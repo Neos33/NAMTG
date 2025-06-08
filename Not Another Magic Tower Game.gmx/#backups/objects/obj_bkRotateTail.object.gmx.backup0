@@ -1,0 +1,39 @@
+// 2025-06-08 11:45:43
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_bsEnergy;
+uses_physics = false;
+
+#event create
+image_xscale = 0.25;
+image_yscale = 0.25;
+image_speed = 1/6;
+rSpd = 1;
+r = 32;
+ox = obj_burningKnight_combat.x;
+oy = obj_burningKnight_combat.y;
+
+
+angle = 0;
+rDir = 0;
+
+#event step
+image_xscale += 0.005;
+image_yscale += 0.005;
+rSpd += 0.2 - 0.1 * obj_burningKnight_combat.hp / obj_burningKnight_combat.oHP;
+r += 10 - 5 * obj_burningKnight_combat.hp / obj_burningKnight_combat.oHP;
+angle += rDir * rSpd;
+
+x = ox + r * cos(degtorad(angle));
+y = oy - r * sin(degtorad(angle));
+
+//oy += obj_bkSpdController.blockSpd;
+if(r > 600)
+{
+    instance_destroy();
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

@@ -1,0 +1,77 @@
+// 2025-06-08 12:57:39
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_darkWarrior_item;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+image_index=choose(0,0,0,0, 1,1,1, 2,2, 3, 4,4);
+
+#event destroy
+obj_darkWarrior_item_controller.alarm[0] = 200;
+sound_fix(sndSwitch);
+
+#event collision:player
+switch(image_index)
+{
+    case 0: 
+         with(obj_darkWarrior_combat)
+         {
+            if(bombCount > minBombCount)
+            {
+                bombCount -= 1;
+            }
+         }
+         break;
+    
+    case 1: 
+         with(obj_darkWarrior_combat)
+         {
+            if(powerCount > minPowerCount)
+            {
+                powerCount -= 1;
+            }
+         }
+         break;
+    case 2: 
+         with(obj_darkWarrior_combat)
+         {
+            if(spd > minSpd)
+            {
+                spd -= 0.5;
+            }
+         }
+         break;
+    case 3: obj_darkWarrior_combat.crossWall = false; break;
+    case 4: 
+         with(obj_darkWarrior_combat)
+         {
+            if(godtime > 300)
+            {
+                spd -= 300;
+            }
+            else
+            {
+                godtime = 0;
+            }
+         }
+         break;
+}
+with(obj_darkWarrior_combat)
+{
+    event_user(0);
+}
+instance_destroy();
+
+
+#event collision:obj_darkWarrior_combat
+switch(image_index){
+case 0: obj_darkWarrior_combat.bombCount += 1; break;
+case 1: obj_darkWarrior_combat.powerCount += 1; break;
+case 2: obj_darkWarrior_combat.spd += 0.5; break;
+case 3: obj_darkWarrior_combat.crossWall = true; break;
+case 4: obj_darkWarrior_combat.godtime += 200; break;
+}
+other.itemCount += 1;
+instance_destroy();

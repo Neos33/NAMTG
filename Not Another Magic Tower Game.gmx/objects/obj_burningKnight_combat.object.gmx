@@ -141,7 +141,7 @@ event_inherited();
             <kind>1</kind>
             <string>ds_list_shuffle(movingList);
 found = false;
-for(i = 0; i &lt; ds_list_size(movingList); i+=1)
+for(var i = 0; i &lt; ds_list_size(movingList); i+=1)
 {
     targetId = ds_list_find_value(movingList,i);
     with(targetId)
@@ -301,7 +301,7 @@ vspeed = obj_bkSpdController.blockSpd;
             <string>if(!cooldown)
 {   
     damage = global.attackDamage;
-    damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
+    var damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
     damageInfo.damage = damage;
     damageInfo.font = fontDamageInfo1;
     damageInfo.color = c_white;        

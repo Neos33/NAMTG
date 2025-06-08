@@ -40,6 +40,11 @@
           <argument>
             <kind>1</kind>
             <string>alarm[3] = 30;
+
+
+
+hurt = false;
+ind = 0;
 </string>
           </argument>
         </arguments>

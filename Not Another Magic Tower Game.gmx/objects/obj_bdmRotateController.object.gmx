@@ -27,6 +27,11 @@
             <kind>1</kind>
             <string>alarm[0] = 1;
 alarm[11] = 1;
+
+
+angle = 0;
+alpha = 0;
+start = false;
 </string>
           </argument>
         </arguments>

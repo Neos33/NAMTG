@@ -1,0 +1,28 @@
+// 2025-06-08 11:42:16
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+alpha = 0.6;
+
+dir = 0;
+
+#event alarm3
+if(alpha > 0)
+{
+    alpha -= 0.01;
+    alarm[3] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event draw
+draw_set_alpha(alpha);
+draw_set_color(c_red);
+draw_line_width(x,y,x+lengthdir_x(1000,dir), y + lengthdir_y(1000,dir),5);
+
+
+draw_reset_color();

@@ -1,0 +1,116 @@
+// 2025-06-08 12:48:51
+#event properties (no comments/etc. here are saved)
+parent_index = obj_dsCrystall;
+sprite_index = spr_dsCrystalPurple;
+uses_physics = false;
+
+#event create
+startAngle = 180;
+angleChange = 100;
+minAngle = 12;
+interval = 10;
+event_inherited();
+with(obj_dsSpike)
+{
+    image_index = purpleIndex;
+}
+with(obj_darkSummoner_combat)
+{
+    targetX = 400;
+    targetY = 128;
+    move = true;
+}
+
+
+start = false;
+
+#event alarm0
+repeat(RangeClamp(-interval,1,10))
+{
+    var b = instance_create(x,y,obj_dsCPBullet);
+    b.direction = startAngle;
+    startAngle += angleChange;
+      
+}
+if(angleChange > minAngle)
+{
+    angleChange -= 1;
+}  
+alarm[0] = RangeClamp(interval,1,10);
+
+#event alarm1
+alarm[0] = 0;
+alarm[2] = 0;
+alarm[3] = 0;
+alarm[10] = 1;
+alarm[11] = 40;
+over = true;
+if(!obj_darkSummoner_combat.crazy)
+{
+    obj_darkSummoner_combat.alarm[3] = 150;
+}
+else
+{
+    event_user(10);
+}
+sound_fix(snd_touhou_powerup);
+exit;
+
+#event alarm2
+if(angleChange > minAngle)
+{
+    interval -= 1;
+    alarm[2] = 10;
+}
+else
+{
+ alarm[4] = 1;
+}
+
+#event alarm3
+sound_fix(snd_touhou_attack3);
+alarm[3] = RangeClamp(interval, 3, 10);
+
+#event alarm4
+startAngle += 1;
+alarm[4] = 3;
+
+#event step
+if(obj_darkSummoner_combat.x == 400 && !start)
+{
+    start = true;
+    alarm[0] = 50;
+    alarm[2] = 50;
+    alarm[3] = 50;
+    alarm[1] = 450;
+}
+#section
+if(!over)
+{
+    if(image_alpha < 0.8)
+    {
+        image_alpha += 0.02;
+    }
+    else
+    {
+        over = true;
+    }
+}
+
+if(!instance_exists(obj_darkSummoner_combat))
+    instance_destroy();
+
+
+x = obj_darkSummoner_combat.x;
+y = obj_darkSummoner_combat.y;
+
+#event other_user1
+sound_stop(snd_touhou_powerup);
+sound_fix(sndfasfboom);
+for(var i = 0; i < 30; i += 1)
+{
+    var ex = instance_create(x,y,obj_dsCBBulletExplode);
+    ex.direction = i * 12;
+    ex.image_index = 2;
+}
+instance_destroy();

@@ -1,0 +1,66 @@
+// 2025-06-08 11:08:00
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_redKnightCombat;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Red Knight";
+image_speed = 1/8;
+x = 400;
+y = 32;
+
+
+move = false;
+
+#event alarm3
+instance_create(x,y, obj_redKnightSpike);
+alarm[3] = 30;
+
+#event step
+y = view_yview[0] + 32;
+if(hp < 70 && !move)
+{
+    move = true;
+    hspeed = 5;
+}
+if(move)
+{
+    move_bounce_solid(false);
+}
+if(hp < 40 && !spikeReady)
+{
+    spikeReady = true;
+    alarm[3] = 1;
+}
+
+
+#event collision:bullet
+if(start)
+{
+    event_inherited();   
+}
+else
+{
+    with(other)
+    {
+        hitEffect();
+    }
+    if(!instance_exists(obj_monsterHPBlock))
+    {
+        instance_create(x,y, obj_monsterHPBlock);
+    }
+    sound_fix(sndIce1);
+}
+
+#event other_user15
+if(obj_redKnightController.coinGet >= 233)
+{
+    if(!global.achievements[66])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 66;
+        global.achievements[66] = 1;
+    }
+}

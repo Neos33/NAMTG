@@ -48,6 +48,12 @@ image_yscale = 2;
 alarm[3] = 1;
 isStable = true;
 sound_play(sndClaw1);
+
+
+ind = 0;
+gap = 0;
+mx = 0;
+my = 0;
 </string>
           </argument>
         </arguments>
@@ -72,7 +78,7 @@ sound_play(sndClaw1);
             <kind>1</kind>
             <string>if(instance_exists(obj_swordMaster_combat))
 {
-    boom = instance_create(obj_swordMaster_combat.x, y + 8, obj_swordMasterBoomEffect);
+    var boom = instance_create(obj_swordMaster_combat.x, y + 8, obj_swordMasterBoomEffect);
     boom.ind = ind; 
 }
 

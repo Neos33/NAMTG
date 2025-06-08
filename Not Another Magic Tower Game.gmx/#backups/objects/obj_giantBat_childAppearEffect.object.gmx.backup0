@@ -1,0 +1,26 @@
+// 2025-06-08 10:57:01
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_variationBat_childAppearEffect;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+alarm[0] = 8;
+
+targetX = 0;
+targetY = 0;
+
+#event alarm0
+if(image_index < 6)
+{
+    image_index += 1;
+    alarm[0] = 5;
+}
+else
+{
+    var c = instance_create(x,y, obj_giantBat_child);
+    c.targetX = targetX;
+    c.targetY = targetY;
+    instance_destroy();
+}

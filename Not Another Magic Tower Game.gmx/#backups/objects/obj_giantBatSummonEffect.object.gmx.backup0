@@ -1,0 +1,23 @@
+// 2025-06-08 10:58:47
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_variationBat_childAppearEffect;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+alarm[0] = 3;
+
+summonObj = 0;
+
+#event alarm0
+if(image_index < 6)
+{
+    image_index += 1;
+    alarm[0] = 3;
+}
+else
+{
+    instance_create(x,y, summonObj);
+    instance_destroy();
+}

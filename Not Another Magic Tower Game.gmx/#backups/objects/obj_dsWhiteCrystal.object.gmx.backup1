@@ -1,0 +1,118 @@
+// 2025-06-08 12:50:21
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_dsCrystalRed;
+uses_physics = false;
+
+#event create
+spr[0] = spr_dsCrystalRed;
+spr[1] = spr_dsCrystalBlue;
+spr[2] = spr_dsCrystalYellow;
+spr[3] = spr_dsCrystalGreen;
+spr[4] = spr_dsCrystalPurple;
+
+index[0] = 1;
+index[1] = 3;
+index[2] = 6;
+index[3] = 5;
+index[4] = 2;
+
+obj_dsSpike.image_speed = 0.5;
+
+ind = 0;
+shootCount = 1//irandom_range(3,5);
+image_speed = 1/8;
+image_alpha = 0.8;
+alarm[0] = 5;
+alarm[1] = 50;
+obj_darkSummoner_combat.alarm[6] = 50;
+alarm[2] = 800;
+
+obj_dsWhiteController.stop = true;
+
+#event destroy
+obj_darkSummoner_combat.alarm[3] = 50;
+obj_dsSpike.image_speed = 0;
+obj_dsSpike.image_index = 8;
+
+#event alarm0
+ind += 1;
+sprite_index = spr[ind mod 5];
+alarm[0] = 5;
+
+#event alarm1
+if(shootCount > 0)
+{
+    shootCount -= 1;
+    sound_fix(snd_touhou_attack3);
+    for(var i = 0; i < 5; i += 1)
+    {
+        var b = instance_create(x,y,obj_dsWhiteBullet1);
+        b.direction = 180 + 45 * i;
+        b.speed = 4;
+        b.image_index = index[i];
+    }
+    alarm[1] = 10;
+}
+else
+{
+    shootCount = 1//irandom_range(3,5);
+    alarm[1] = 30;
+}
+
+#event alarm2
+
+alarm[1] = 0;
+alarm[10] = 1;
+alarm[11] = 50;
+with(obj_darkSummoner_combat)
+{
+    alarm[6] = 0;
+    targetX = 400;
+    targetY = 128;
+    move = true;
+}
+sound_fix(snd_touhou_powerup);
+
+#event alarm9
+if(image_xscale > 0)
+{
+    image_xscale -= 0.05;
+    image_yscale -= 0.05;
+    alarm[9] = 1;
+}
+else
+{
+    event_user(1);
+}
+
+#event alarm10
+var r = random_range(20,50);
+var ang = random_range(0,360);
+instance_create(x + lengthdir_x(r,ang), y + lengthdir_y(r,ang),obj_dsCrystallExplodeEffect);
+alarm[10] = 1;
+
+#event alarm11
+alarm[10] = 0;
+alarm[9] = 15;
+
+#event step
+x = obj_darkSummoner_combat.x;
+y = obj_darkSummoner_combat.y;
+
+
+#event other_user1
+sound_stop(snd_touhou_powerup);
+sound_fix(sndfasfboom);
+for(i = 0; i < 30; i += 1)
+{
+    ex = instance_create(x,y,obj_dsCBBulletExplode);
+    ex.direction = i * 12;
+    ex.image_speed = 0.5;
+}
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

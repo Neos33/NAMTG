@@ -1,0 +1,260 @@
+// 2025-06-08 12:59:15
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_darkWarrior_bomb_fire_1;
+uses_physics = false;
+
+#event create
+image_xscale = 1;//0.1;
+image_yscale = 1;//0.1;
+image_speed = 0;
+alarm[0] = 1;
+isStable = 1;
+
+sprInd = 0;
+spr[0] = spr_darkWarrior_bomb_fire_1;
+spr[1] = spr_darkWarrior_bomb_fire_2;
+spr[2] = spr_darkWarrior_bomb_fire_3;
+sprCount = 3;
+
+
+
+start = false;
+leftBombWall = false;
+rightBombWall = false;
+upBombWall = false;
+downBombWall = false;
+
+
+p = 0;
+
+#event alarm0
+if(sprInd < sprCount)
+{
+    //image_xscale += 0.05;
+    //image_yscale += 0.05;
+    sprite_index = spr[sprInd];
+    sprInd += 1;
+    alarm[0] = 5;
+}
+else
+{
+    start = true;
+    sound_fix(sndFire1);
+    if(leftBombWall)
+    {
+        var bombWall = instance_position(x-48-leftP * 32,y-16,obj_dwBombWall);
+        if(bombWall)
+        {
+            bombWall.alarm[0] = 1;
+        }
+        leftBombWall = false;
+    }
+    if(rightBombWall)
+    {
+        var bombWall = instance_position(x+16+rightP * 32,y-16,obj_dwBombWall);
+        if(bombWall)
+        {
+            bombWall.alarm[0] = 1;
+        }
+        rightBombWall = false;
+    }
+    if(upBombWall)
+    {
+        var bombWall = instance_position(x-16,y-48-upP * 32,obj_dwBombWall);
+        if(bombWall)
+        {
+            bombWall.alarm[0] = 1;
+        }
+        upBombWall = false;
+    }
+    if(downBombWall)
+    {
+        var bombWall = instance_position(x-16,y+16+downP * 32,obj_dwBombWall);
+        if(bombWall)
+        {
+            bombWall.alarm[0] = 1;
+        }
+        downBombWall = false;
+    }
+    var h = instance_create(x-16-leftP * 32, y-16, obj_dwBombDmg);
+    h.image_xscale = leftP + rightP + 1;
+    var v = instance_create(x-16, y-16-upP * 32, obj_dwBombDmg);
+    v.image_yscale = upP + downP + 1;
+    alarm[1] = 30;
+    alarm[2] = 30;
+}
+
+#event alarm1
+if(sprInd > 0)
+{
+    //image_xscale -= 0.05;
+    //image_yscale -= 0.05;
+    sprInd -= 1;
+    sprite_index = spr[sprInd];    
+    alarm[1] = 5;
+}
+else
+{
+    instance_destroy();
+}
+
+#event alarm2
+start = false;
+with(h)
+{
+    instance_destroy();
+}
+with(v)
+{
+    instance_destroy();
+}
+
+#event other_user0
+left = x - p * 32 - 16;
+right = x + p * 32 + 16;
+up = y - p * 32 - 16;
+down = y + p * 32 + 16;
+
+if(collision_line(x,y,left+16,y,block,true,true) || collision_line(x,y,left+16,y,obj_dwBombWall,true,true))
+{
+    leftP = 0;
+    for(i = x - 48; i >= left; i -= 32)
+    {   
+        if(instance_position(i,y - 16,block))
+        {
+            leftBombWall = false;
+            break; 
+        }
+        if(instance_position(i,y - 16,obj_dwBombWall))
+        {
+            leftBombWall = true;
+            break; 
+        }
+        leftP += 1;
+    }
+}
+else
+{
+    leftP = p;
+}
+
+if(collision_line(x,y,right-16,y,block,true,true) || collision_line(x,y,right-16,y,obj_dwBombWall,true,true))
+{
+    rightP = 0;
+    for(i = x +16; i <= right - 32; i += 32)
+    {   
+        if(instance_position(i,y - 16,block))
+        {
+            rightBombWall = false;
+            break; 
+        }
+        if(instance_position(i,y - 16,obj_dwBombWall))
+        {
+            rightBombWall = true;
+            break; 
+        }
+        rightP += 1;
+    }
+}
+else
+{
+    rightP = p;
+}
+
+if(collision_line(x,y,x, up + 16,block,true,true) || collision_line(x,y,x,up + 16,obj_dwBombWall,true,true))
+{
+    upP = 0;
+    for(i = y - 48; i >= up; i -= 32)
+    {   
+        if(instance_position(x - 16,i,block))
+        {
+            upBombWall = false;
+            break; 
+        }
+        if(instance_position(x - 16,i,obj_dwBombWall))
+        {
+            upBombWall = true;
+            break; 
+        }
+        upP += 1;
+    }
+}
+else
+{
+    upP = p;
+}
+
+if(collision_line(x,y,x,down-16,block,true,true) || collision_line(x,y,x,down-16,obj_dwBombWall,true,true))
+{
+    downP = 0;
+    for(i = y +16; i <= down - 32; i += 32)
+    {   
+        if(instance_position(x - 16,i,block))
+        {
+            downBombWall = false;
+            break; 
+        }
+        if(instance_position(x - 16,i,obj_dwBombWall))
+        {
+            downBombWall = true;
+            break; 
+        }
+        downP += 1;
+    }
+}
+else
+{
+    downP = p;
+}
+
+#event draw
+draw_current();
+//if(!start) exit;
+for(var i = 1; i <= leftP; i += 1)
+{
+    if(i < p)
+    {
+        draw_sprite(sprite_index, 5, x-32*i,y);
+    }
+    else
+    {
+        draw_sprite(sprite_index,4, x-32*i,y);
+    }
+}
+
+for(var i = 1; i <= rightP; i += 1)
+{
+    if(i < p)
+    {
+        draw_sprite(sprite_index, 5, x+32*i,y);
+    }
+    else
+    {
+        draw_sprite(sprite_index,6, x+32*i,y);
+    }
+}
+
+for(var i = 1; i <= upP; i += 1)
+{
+    if(i < p)
+    {
+        draw_sprite(sprite_index, 2, x,y-32*i);
+    }
+    else
+    {
+        draw_sprite(sprite_index,1, x,y-32*i);
+    }
+}
+
+for(var i = 1; i <= downP; i += 1)
+{
+    if(i < p)
+    {
+        draw_sprite(sprite_index, 2, x,y+32*i);
+    }
+    else
+    {
+        draw_sprite(sprite_index,3, x,y+32*i);
+    }
+}

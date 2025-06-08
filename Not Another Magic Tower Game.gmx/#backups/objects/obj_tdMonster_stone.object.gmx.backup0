@@ -1,0 +1,14 @@
+// 2025-06-08 12:29:41
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tdMonsterPrototype;
+sprite_index = spr_dlStone;
+uses_physics = false;
+
+#event alarm4
+//
+var b = instance_create(x,y,obj_tdStoneBullet);
+b.atk = atk;
+alarm[4] = 175;
+
+#event other_user0
+//

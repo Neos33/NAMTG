@@ -28,6 +28,9 @@
             <string>onPlatform = 0;
 onblock = 0;
 
+
+redKnightDash = false;
+
 //global.player_killed = false;
 </string>
           </argument>

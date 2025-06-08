@@ -1,0 +1,47 @@
+// 2025-06-08 12:20:13
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_dmSpike;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+gravity = 0.2;
+child = instance_create(x, -32 - 608, obj_dmSpikeBody);
+image_blend = obj_dmSpikeController.blend;
+isStable = true;
+
+
+collision = false;
+
+#event destroy
+with(child)
+{
+    instance_destroy();
+}
+
+#event alarm3
+vspeed = -5;
+child.vspeed = -5;
+
+#event step
+if(y < -32)
+{
+    instance_destroy();
+}
+
+#event collision:obj_dmSpikeStopper
+if(!collision)
+{
+    collision = true;
+    gravity = 0;
+    speed = 0;
+    child.vspeed = 0;
+    child.gravity = 0;
+    if(x < 400)
+    {
+        sound_fix(sndEarth1);
+    }
+    alarm[3] = 50;
+}

@@ -46,6 +46,8 @@ alarm[3] = 5;
 alarm[11] = 50;
 audio_playsound(sndLaser1);
 isStable = true;
+
+boom = false;
 </string>
           </argument>
         </arguments>
@@ -222,10 +224,10 @@ image_angle = direction + 180;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomAng = random_range(0,45);
-for(i = 0; i &lt; 8; i += 1)
+            <string>var randomAng = random_range(0,45);
+for(var i = 0; i &lt; 8; i += 1)
 {
-    p = instance_create(x,y, obj_silverEvilSlimeWaterBullet);
+    var p = instance_create(x,y, obj_silverEvilSlimeWaterBullet);
     p.speed = 7;
     p.direction = randomAng + 45 * i;
     p.image_angle = randomAng + 45 * i + 180;

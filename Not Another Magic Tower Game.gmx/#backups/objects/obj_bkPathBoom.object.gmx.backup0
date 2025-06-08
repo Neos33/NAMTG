@@ -1,0 +1,45 @@
+// 2025-06-08 11:46:37
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = sprBeam;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+sprite_set_alpha_from_sprite(sprBeam,sprBeam);
+image_yscale = 0.3;
+interval = 0.1;
+image_blend = make_color_rgb(255,128,64);
+sound_fix(sndFire1);
+alarm[3] = 1;
+alarm[4] = 20;
+isStable = true;
+
+over = false;
+
+#event alarm4
+over = true;
+if(image_alpha > 0)
+{
+    image_alpha -= 0.05;
+    alarm[4] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event step
+image_yscale += interval;
+
+#event collision:player
+if(!over)
+{
+    event_inherited();
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

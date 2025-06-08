@@ -34,6 +34,9 @@ direction =point_direction(x,y,
           RangeClamp(player.y + random_range(-48,48), 16, 592));
 start = true;
 sound_fix(snd_touhou_laser1);
+
+
+dispear = false;
 </string>
           </argument>
         </arguments>
@@ -95,7 +98,7 @@ else
         dispear = true;
         speed = 0;
         alarm[0] = 1;
-        shadow = instance_create(sx,sy,obj_asDashShadow);
+        var shadow = instance_create(sx,sy,obj_asDashShadow);
         shadow.direction = direction;
         shadow.image_angle = direction - 90;
         shadow.speed = 40;
@@ -125,8 +128,8 @@ else
             <kind>1</kind>
             <string>if(start)
 {
-    tx = x + 1600 * cos(degtorad(direction + 180));
-    ty = y - 1600 * sin(degtorad(direction + 180));
+    var tx = x + 1600 * cos(degtorad(direction + 180));
+    var ty = y - 1600 * sin(degtorad(direction + 180));
     draw_set_alpha(alpha);
     draw_line_width(x,y,tx,ty, 2);
     draw_set_alpha(0.5 * alpha);

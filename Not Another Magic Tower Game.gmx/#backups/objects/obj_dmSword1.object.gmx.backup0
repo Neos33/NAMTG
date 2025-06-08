@@ -1,0 +1,82 @@
+// 2025-06-08 12:18:47
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_dmSword;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+bottom = 384;
+isStable = true;
+image_blend = c_purple;
+image_speed = 0;
+//emit = part_emitter_create(obj_dmParticleController.sys);
+
+
+top = 0;
+disappear = false;
+sound = false;
+
+#event alarm3
+if(image_alpha > 0)
+{
+    image_alpha -= 0.02;
+    alarm[3] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event step
+if(!hit)
+{
+    vspeed += 0.1;
+    if(bbox_top > top)
+    {
+        vspeed += 0.1;
+    }
+}
+else if(!disappear)
+{
+    disappear = true;
+    alarm[3] = 20;
+}
+
+#event collision:player
+if(image_alpha > 0.5)
+{
+    event_inherited();
+}
+
+#event collision:block
+if(vspeed > 0)
+{
+    vspeed -= 0.2;
+}
+else
+{
+    vspeed = 0;
+}
+hit = true;
+if(!sound)
+{
+    sound_fix(sndEarth1);
+    sound = true;
+}
+
+#event collision:obj_dmPlatform
+with(other)
+{
+    instance_destroy();
+}
+
+#event draw
+for(var i = 2; i >= 0; i -= 1)
+{
+    alpha = 0.8 - i * 0.3;
+    var sprite_top = y - vspeed * 2 * i - sprite_yoffset;
+    var topStart = RangeClamp(top - sprite_top,0,sprite_height);
+    draw_sprite_part_ext(sprite_index,image_index,0,topStart, sprite_width, RangeClamp(bottom - sprite_top,0,sprite_height - topStart),x - sprite_width / 2,RangeClamp(sprite_top,top,bottom),image_xscale,image_yscale,image_blend,alpha*image_alpha);
+}

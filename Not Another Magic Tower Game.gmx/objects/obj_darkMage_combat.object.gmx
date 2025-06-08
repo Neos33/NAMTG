@@ -44,16 +44,24 @@ with(blinker)
     event_user(0);
 }
 
-/*emit = part_emitter_create(obj_dmParticleController.sys);
+
+
+darkCount2 = 0;
+transform = false;
+burst = false;
+emit = part_emitter_create(obj_dmParticleController.sys);
 part_emitter_region(obj_dmParticleController.sys,emit,x-20,x+20,y-8,y,ps_shape_ellipse,ps_distr_gaussian);
 
-
+/*
 attract1 = part_attractor_create(obj_dmParticleController.sys);
 part_attractor_position(obj_dmParticleController.sys,attract1,x,y-32);
 part_attractor_force(obj_dmParticleController.sys,attract1,0.5,96,1,1);
 
 destroy1 = part_destroyer_create(obj_dmParticleController.sys);
 part_destroyer_region(obj_dmParticleController.sys,destroyer1,x,x,y-32,y-32,ps_shape_line);
+*/
+
+
 
 </string>
           </argument>
@@ -77,11 +85,11 @@ part_destroyer_region(obj_dmParticleController.sys,destroyer1,x,x,y-32,y-32,ps_s
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if(part_emitter_exists(obj_dmParticleController.sys,emit))
+            <string>if(part_emitter_exists(obj_dmParticleController.sys,emit))
 {
     part_emitter_destroy(obj_dmParticleController.sys,emit);
 }
-
+/*
 if(part_attractor_exists(obj_dmParticleController.sys, attract1))
 {
     part_attractor_destroy(obj_dmParticleController.sys, attract1);
@@ -90,7 +98,7 @@ if(part_attractor_exists(obj_dmParticleController.sys, attract1))
 if(part_destroyer_exists(obj_dmParticleController.sys, destroyer1))
 {
     part_destroyer_destroy(obj_dmParticleController.sys, destroyer1);
-}
+}*/
 //event_inherited();
 </string>
           </argument>
@@ -222,12 +230,12 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mage1 = instance_create(x-32,y+32,obj_dmJuniorMage);
+            <string>var mage1 = instance_create(x-32,y+32,obj_dmJuniorMage);
 mage1.targetX = 32;
 mage1.targetY = 368;
 mage1.sound = true;
 mage1.xSpeed = -10;
-mage2 = instance_create(x+32,y+32,obj_dmJuniorMage);
+var mage2 = instance_create(x+32,y+32,obj_dmJuniorMage);
 mage2.targetX = 768;
 mage2.targetY = 368;
 mage2.xSpeed = 10;
@@ -255,9 +263,9 @@ mage2.xSpeed = 10;
             <kind>1</kind>
             <string>if(darkCount2 &gt; 0)
 {
-    p = instance_create(x,y,obj_dmDarkEnergyBall2);
-    rLen = random_range(16,96);
-    rDir = random_range(0,180);
+    var p = instance_create(x,y,obj_dmDarkEnergyBall2);
+    var rLen = random_range(16,96);
+    var rDir = random_range(0,180);
     p.targetX = player.x + lengthdir_x(rLen, rDir);
     p.targetY = player.y + lengthdir_y(rLen, rDir);
     p.direction = point_direction(p.x,p.y,p.targetX, p. targetY);

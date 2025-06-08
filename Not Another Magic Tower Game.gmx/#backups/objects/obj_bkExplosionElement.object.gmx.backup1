@@ -1,0 +1,64 @@
+// 2025-06-08 11:44:16
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_touhouBullet4;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0;
+image_alpha = 0;
+blend = 1;
+alarm[3] = 1;
+isStable = true;
+
+blendStart = false;
+blendSpd = 0;
+blendLimit = 0;
+
+#event alarm3
+if(image_alpha < 1)
+{
+    image_alpha += 0.05;
+    alarm[3] = 1;
+}
+else
+{
+    blendStart = true;
+    blendSpd = 0.2 + obj_burningKnight_combat.hp / obj_burningKnight_combat.oHP * 0.4;
+    blendLimit = 8;
+}
+
+#event alarm4
+instance_change(obj_bkExplosionEffect,true);
+sound_fix(sndFire1);
+
+#event step
+if(blendStart)
+{
+    if(blend < blendLimit)
+    {
+        blend += blendSpd;
+    }
+    else
+    {
+        blendStart = false;
+        alarm[4] = 15 + 15 * obj_burningKnight_combat.hp / obj_burningKnight_combat.oHP;
+    }
+}
+
+#event collision:player
+if(image_alpha >= 0.9)
+{
+    event_inherited();   
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+for(i=0;i<floor(blend);i+=1)
+{
+    draw_sprite_ext(sprite_index, i, x,y,1,1,0,c_white,1);
+}
+draw_set_blend_mode(bm_normal);
+draw_sprite_ext(sprite_index, image_index, x,y,1,1,0,c_white,0.2);

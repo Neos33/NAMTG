@@ -1,0 +1,63 @@
+// 2025-06-08 11:38:12
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+alarm[0] = 1;
+alarm[11] = 1;
+
+
+angle = 0;
+alpha = 0;
+start = false;
+
+#event alarm0
+with(obj_bdmThunderPoint)
+{
+    if(object_index == obj_bdmThunderPoint)
+    {
+        image_xscale = 2;
+        image_yscale = 2;
+    }
+}
+
+#event alarm9
+if(alpha < 1)
+{
+    alpha += 0.04;
+    alarm[9] = 1;
+}
+else
+{
+    start = true;
+}
+
+#event alarm10
+if(alpha > 0.2)
+{
+    alpha -= 0.04;
+    alarm[10] = 1;
+}
+else
+{
+    alarm[9] = 1;
+}
+
+#event alarm11
+if(alpha < 0.6)
+{
+    alpha += 0.04;
+    alarm[11] = 1;
+}
+else
+{
+    alarm[10] = 1;
+}
+
+#event step
+if(start)
+{
+    angle += 1;
+}
+player.djump = true;

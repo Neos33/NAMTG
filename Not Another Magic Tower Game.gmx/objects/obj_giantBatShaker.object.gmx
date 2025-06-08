@@ -51,8 +51,8 @@ wave = 5;
             <kind>1</kind>
             <string>if(wave &lt; 5)
 {
-wave += 0.005;
-alarm[0] = 1;
+    wave += 0.005;
+    alarm[0] = 1;
 }
 </string>
           </argument>

@@ -1,0 +1,38 @@
+// 2025-06-08 12:48:15
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_danmaku12;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_xscale = 0.8;
+image_yscale = 0.8;
+image_speed = 0;
+image_index = 5;
+direction = random_range(260,280);
+speed = random_range(4,6);
+amount = 7;
+minSpd = 3; 
+maxSpd = 6;
+isStable = true;
+
+#event destroy
+sound_fix(sndfasfboom);
+
+#event step
+if(y >= 608)
+{
+    repeat(amount)
+    {
+        var b = instance_create(x,607,obj_dsCGBulletCommon);
+        b.speed = random_range(minSpd, maxSpd);
+    }
+    instance_destroy();
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

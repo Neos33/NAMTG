@@ -1,0 +1,19 @@
+// 2025-06-08 11:08:20
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+halfBGWidth = 190;
+
+meter = 0;
+
+#event step
+meter = round(obj_redKnightController.dis / 10);
+
+#event draw
+draw_set_color(c_white);
+draw_rectangle(view_xview[0] + view_wview[0] / 2 - halfBGWidth, view_yview[0], view_xview[0] + view_wview[0] / 2 + halfBGWidth, view_yview[0] + view_hview[0], false);
+bgOffset = RangeClamp(meter / 2, 0, 608 * 3);
+draw_sprite_ext(spr_redKnightBG, RangeClamp(floor(bgOffset / 608), 0, 3), view_xview[0] + view_wview[0] / 2 - halfBGWidth, view_yview[0] + (bgOffset mod 608), 2, 2, 0, c_white, 0.6);
+draw_sprite_ext(spr_redKnightBG, RangeClamp(ceil(bgOffset / 608), 0, 3), view_xview[0] + view_wview[0] / 2 - halfBGWidth, view_yview[0] + (bgOffset mod 608) - 608, 2, 2, 0, c_white, 0.6);

@@ -169,7 +169,7 @@ isStable = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(part_emitter_exists(obj_burningFasf_combat.xplosion,emit2))
+            <string>if(part_emitter_exists(obj_burningFasf_combat.explosion,emit2))
 {
     part_emitter_destroy(obj_burningFasf_combat.explosion,emit2);
 }

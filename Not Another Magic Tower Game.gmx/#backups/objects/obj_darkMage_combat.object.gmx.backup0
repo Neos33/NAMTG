@@ -1,0 +1,191 @@
+// 2025-06-08 12:03:58
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_darkMage_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Dark Mage";
+image_speed = 1/8;
+darkCount = 3;
+x=400;
+y=128;
+instance_create(0,0,obj_dmParticleController);
+alarm[3] = 50;
+//alarm[11] = 50;
+
+blinker = instance_create(0,0,obj_darkBlinker);
+blinker.minAlpha = 0.2;
+blinker.maxAlpha = 0.4;
+blinker.stepAlpha = 0.01;
+with(blinker)
+{
+    event_user(0);
+}
+
+
+
+darkCount2 = 0;
+transform = false;
+burst = false;
+emit = part_emitter_create(obj_dmParticleController.sys);
+part_emitter_region(obj_dmParticleController.sys,emit,x-20,x+20,y-8,y,ps_shape_ellipse,ps_distr_gaussian);
+
+/*
+attract1 = part_attractor_create(obj_dmParticleController.sys);
+part_attractor_position(obj_dmParticleController.sys,attract1,x,y-32);
+part_attractor_force(obj_dmParticleController.sys,attract1,0.5,96,1,1);
+
+destroy1 = part_destroyer_create(obj_dmParticleController.sys);
+part_destroyer_region(obj_dmParticleController.sys,destroyer1,x,x,y-32,y-32,ps_shape_line);
+*/
+
+
+
+
+#event destroy
+if(part_emitter_exists(obj_dmParticleController.sys,emit))
+{
+    part_emitter_destroy(obj_dmParticleController.sys,emit);
+}
+/*
+if(part_attractor_exists(obj_dmParticleController.sys, attract1))
+{
+    part_attractor_destroy(obj_dmParticleController.sys, attract1);
+}
+
+if(part_destroyer_exists(obj_dmParticleController.sys, destroyer1))
+{
+    part_destroyer_destroy(obj_dmParticleController.sys, destroyer1);
+}*/
+//event_inherited();
+
+#event alarm3
+if(darkCount > 0)
+{
+    instance_create(x,y,obj_dmDarkEnergyBall);
+    darkCount -= 1;
+    alarm[3] = 50;
+}
+else
+{
+    darkCount2 = 4;
+    alarm[4] =50;
+}
+
+#event alarm4
+if(darkCount2 > 0)
+{
+    var p = instance_create(x,y,obj_dmDarkEnergyBall2);
+    var rLen = random_range(16,96);
+    var rDir = random_range(0,180);
+    p.targetX = player.x + lengthdir_x(rLen, rDir);
+    p.targetY = player.y + lengthdir_y(rLen, rDir);
+    p.direction = point_direction(p.x,p.y,p.targetX, p. targetY);
+    darkCount2 -=1;
+    alarm[4] = 40;
+}
+else
+{
+    if(player_is_alive())
+    {
+        if(hp > 80)
+        {
+            alarm[5] = 100;
+        }
+        else
+        {
+            sound_fix(sndBEDevilLaugh);
+            alarm[11] = 80;
+        }  
+    }
+}
+
+#event alarm5
+var mage1 = instance_create(x-32,y+32,obj_dmJuniorMage);
+mage1.targetX = 32;
+mage1.targetY = 368;
+mage1.sound = true;
+mage1.xSpeed = -10;
+var mage2 = instance_create(x+32,y+32,obj_dmJuniorMage);
+mage2.targetX = 768;
+mage2.targetY = 368;
+mage2.xSpeed = 10;
+
+#event alarm6
+instance_create(x, y + 128, obj_dmSeniorMage);
+
+#event alarm7
+if(image_alpha > 0)
+{
+    image_alpha -= 0.015;
+    alarm[7] = 1;
+}
+else
+{
+    alarm[10] = 1;
+}
+
+#event alarm10
+changeCombatObj(obj_darkMage_combat2, 0, -8);
+
+#event alarm11
+transform = true;
+sound_fix(sndFire1);
+instance_create(x,y,obj_dmChangeEffect);
+burst = true;
+//part_attractor_destroy(obj_dmParticleController.sys, attractor1);
+//part_destroyer_destroy(obj_dmParticleController.sys,destroyer1);
+part_emitter_region(obj_dmParticleController.sys,emit,x-64,x+64,y-64,y+64,ps_shape_ellipse,ps_distr_gaussian);
+alarm[7] = 1;
+
+
+#event step
+if(image_alpha > 0.8)
+    image_alpha = 0.8;
+if(!transform)
+{
+    //part_emitter_burst(obj_dmParticleController.sys,emit,obj_dmParticleController.fire2,2);
+}
+
+
+#event collision:bullet
+if(instance_exists(obj_dmSummonPrototype))
+{
+    if(!instance_exists(obj_monsterHPBlock))
+    {
+        instance_create(x,y,obj_monsterHPBlock);
+        sound_fix(sndIce1);
+    }      
+    with(other)
+    {
+        instance_destroy();
+    }
+}
+else
+{
+    if(hp >= 80)
+    {
+        event_inherited();
+    }   
+    else
+    {
+        if(transformed)
+        {
+            event_inherited();
+        }
+        else
+        {
+            if(!instance_exists(obj_monsterHPBlock))
+            {
+                instance_create(x,y,obj_monsterHPBlock);
+                sound_fix(sndIce1);
+            }      
+            with(other)
+            {
+                instance_destroy();
+            }
+        }
+    }
+}

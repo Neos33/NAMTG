@@ -1,0 +1,51 @@
+// 2025-06-08 11:25:55
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_jirachi;
+uses_physics = false;
+
+#event create
+blendColor = 255;
+image_blend = make_color_rgb(blendColor,blendColor,blendColor);
+image_speed = 1/4;
+alarm[0] = 1;
+
+mixedAlpha = 0;
+
+#event alarm0
+if(blendColor > 0)
+{
+    blendColor -= 5;
+    alarm[0] = 1;
+}
+else
+{
+    sound_fix(sndJirachi);
+    alarm[1] = 30;
+    alarm[2] = 250;
+}
+
+#event alarm1
+instance_create(x,y,obj_jirachiStar);
+alarm[1] = 70;
+
+#event alarm2
+if(mixedAlpha < 1)
+{
+    mixedAlpha += 0.05;
+    alarm[2] = 1;
+}
+else
+{
+    explodePolygon2(x,y, 5,400,random_range(1,360),15,50,obj_jirachiEffectStarExplode, spr_jirachiEffectStar, 0.2);
+    image_alpha = 0;
+    alarm[3] = 30;
+}
+
+#event alarm3
+obj_missingno.alarm[10] = 1;
+instance_destroy();
+
+#event draw
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend, (1-mixedAlpha) * image_alpha);
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_yellow, mixedAlpha * image_alpha);

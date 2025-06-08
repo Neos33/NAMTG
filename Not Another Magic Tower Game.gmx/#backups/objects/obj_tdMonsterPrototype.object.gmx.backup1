@@ -1,0 +1,121 @@
+// 2025-06-08 12:27:51
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+//image_xscale = 0.6;
+//image_yscale = 0.6;
+image_speed = 1/8;
+startX = x;
+startY = y;
+//path = pathDarkLord;
+alarm[3] = 1;
+
+
+ind = 0;
+mInd = 0;
+padX = 0;
+padY = 0;
+
+path = 0;
+spd = 0;
+reset = false;
+hp = 0;
+fullHp = 0;
+
+#event destroy
+if(ind < 0 || obj_tdController.isBoss) exit;
+if(mInd != obj_tdController.currentIndex) exit;
+var shadow = instance_create(padX, padY, obj_tdMShadow);
+shadow.sprite_index = sprite_index;
+shadow.image_index = 0;
+shadow.image_speed = 0;
+shadow.image_xscale = 0.8;
+shadow.image_yscale = 0.8;
+shadow.image_blend = merge_color(c_gray,c_black,0.5);
+shadow.mInd = mInd;
+
+
+
+#event alarm3
+path_start(path, spd, 0, 1);
+alarm[4] = 15;
+
+#event alarm10
+reset = false;
+
+#event alarm11
+x = startX;
+y = startY;
+reset = false;
+alarm[3] = 1;
+
+#event collision:bullet
+atDmg = global.attack - def;
+if(other.energy > 0)
+{
+    dmg = round(atDmg * other.energy);
+}
+else
+{
+    dmg = atDmg;
+}
+if(global.SaintSword)
+{
+    dmg = round(dmg*1.5);
+}
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}
+if(dmg >= hp)
+{
+    sound_fix(sndDeath);
+    instance_destroy();   
+}
+else
+{
+    sound_fix(sndBossHit);
+    hp -= dmg;
+}
+
+#event other_end_of_path
+var shadow = instance_create(x,y,obj_tdMonsterIn);
+shadow.sprite_index = sprite_index;
+shadow.image_index = image_index;
+shadow.image_speed = image_speed;
+x = -32;
+y = -32;
+speed = 0;
+alarm[4] = 0;
+reset = true;
+alarm[11] = 50;
+obj_tdController.spikeLevel += 16;
+
+#event other_user10
+var hPad = ind mod 5;
+var vPad = floor(ind/5);
+padX = 320+16+hPad*32;
+padY = 508+16+vPad*32;
+
+
+#event draw
+draw_set_alpha(1);
+draw_current();
+
+var hpPer = hp/fullHp;
+draw_set_color(merge_color(c_red,c_green,hpPer));
+draw_rectangle(x-16,y-20,x-16+32*hpPer,y-18,false);
+
+if(mInd < 0)
+    exit;
+if(mInd == obj_tdController.currentIndex)
+{
+    draw_sprite_ext(sprite_index,image_index,padX,padY,0.8,0.8,image_angle,c_white,1);
+    draw_rectangle(padX-13,padY-16,padX-13+26*hpPer,padY-13.5,false);
+}
+
+
+draw_set_color(c_white);

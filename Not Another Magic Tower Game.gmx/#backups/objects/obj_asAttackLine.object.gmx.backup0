@@ -1,0 +1,58 @@
+// 2025-06-08 11:50:53
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+alpha = 1;
+speed = 35;
+sx = x;
+sy = y;
+direction =point_direction(x,y,
+          RangeClamp(player.x + random_range(-48,48), 16, 784),
+          RangeClamp(player.y + random_range(-48,48), 16, 592));
+start = true;
+sound_fix(snd_touhou_laser1);
+
+
+dispear = false;
+
+#event alarm0
+if(alpha > 0)
+{
+    alpha -= 0.02;
+    alarm[0] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+
+#event step
+if(x > 900 || x < -100 || y > 708 || y < -100)
+{
+    if(!dispear)
+    {
+        dispear = true;
+        speed = 0;
+        alarm[0] = 1;
+        var shadow = instance_create(sx,sy,obj_asDashShadow);
+        shadow.direction = direction;
+        shadow.image_angle = direction - 90;
+        shadow.speed = 40;
+    }
+}
+
+#event draw
+if(start)
+{
+    var tx = x + 1600 * cos(degtorad(direction + 180));
+    var ty = y - 1600 * sin(degtorad(direction + 180));
+    draw_set_alpha(alpha);
+    draw_line_width(x,y,tx,ty, 2);
+    draw_set_alpha(0.5 * alpha);
+    draw_line_width(x,y,tx, ty, 4);
+    
+    draw_set_alpha(1);
+}

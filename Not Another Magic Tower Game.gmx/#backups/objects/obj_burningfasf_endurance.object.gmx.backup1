@@ -1,0 +1,55 @@
+// 2025-06-08 11:58:49
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+alarm[11]=50;
+sound_fix(sndBEDevilLaugh);
+alarm[0]=100;
+    default_x = view_xview[0]; //Find what the view was originally
+    default_y = view_yview[0]; //Find what the view was originally
+    shake1 = 2; //The shake intensity (maximum-pixel-shake-per-side)
+    incr = 0.5; //The amount of intensity increment when the quake starts and stops.
+    
+    factor = 0; //Current Intensity.
+    
+    
+a = 0;
+
+#event destroy
+view_xview[0]=default_x view_yview[0]=default_y
+
+#event alarm0
+alarm[10] = 1;
+with(obj_warning)instance_destroy();
+alarm[1]=30;
+
+
+#event alarm1
+with(obj_burningFasf_combat)visible=0;
+instance_create(400,304,obj_burningfasf_sample);
+
+#event alarm10
+water = instance_create(a,608,obj_burning_fasf_firewater);
+water.offset = 1 + (25-a/32)*10;
+a+=32;
+if(a < 800)
+{
+    alarm[10] = 1;
+}
+
+
+#event alarm11
+instance_create(200,500,obj_warning);
+instance_create(600,500,obj_warning);
+sound_fix(sndWarning);
+
+#event step
+
+    if factor<shake1 {factor+=incr;} //Increase the shake intensity till it reaches the maximum intensity
+    else {factor=shake1;}
+
+
+    view_xview[0]=default_x-factor+random(factor*1.5); //Shake horizontally
+    view_yview[0]=default_y-factor+random(factor*1.5); //Shake vertically

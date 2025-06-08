@@ -39,6 +39,11 @@ with(obj_darkSummoner_combat)
     targetY = 128;
     move = true;
 }
+
+
+start = false;
+t = 0;
+times = 0;
 </string>
           </argument>
         </arguments>
@@ -97,14 +102,14 @@ exit;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 3; i += 1)
+            <string>for(var i = 0; i &lt; 3; i += 1)
 {
-    b = instance_create(x,y,obj_dsCYBullet1);
+    var b = instance_create(x,y,obj_dsCYBullet1);
     b.direction = startAngle1 + i * 120;
 }
 if(times mod 8 == 0)
 {
-    for(i = 0; i &lt; 2; i+=1)
+    for(var i = 0; i &lt; 2; i+=1)
     {
         b = instance_create(x,y,obj_dsCYBullet2);
         b.direction = startAngle2 + i * 180;
@@ -211,9 +216,9 @@ y = obj_darkSummoner_combat.y;
             <kind>1</kind>
             <string>sound_stop(snd_touhou_powerup);
 sound_fix(sndfasfboom);
-for(i = 0; i &lt; 30; i += 1)
+for(var i = 0; i &lt; 30; i += 1)
 {
-    ex = instance_create(x,y,obj_dsCBBulletExplode);
+    var ex = instance_create(x,y,obj_dsCBBulletExplode);
     ex.direction = i * 12;
     ex.image_index = 6;
 }

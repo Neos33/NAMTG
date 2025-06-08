@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 10; i += 1)
+            <string>for(var i = 0; i &lt; 10; i += 1)
 {
     instance_create(80 * i, random_range(0,384), obj_missingnoDash);
 }

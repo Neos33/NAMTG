@@ -1,0 +1,89 @@
+// 2025-06-08 11:43:37
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bkPiranha;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0.1;
+hspeed = -3;
+status = 0;
+isStable = true;
+oy = y;
+sy = y;
+ready = true;
+
+
+pDir = 0;
+
+#event step
+//vspeed = obj_bkSpdController.waterSpd;
+oy = sy - obj_bkSpdController.waterLevel;
+if(status == 0)
+{
+    y = oy;
+    if(sprite_index != spr_bkPiranha)
+    {
+        sprite_index = spr_bkPiranha;
+    }
+    pDir = sign(hspeed);
+    if(abs(hspeed > 3))
+    {
+        hspeed = pDir * 3;
+    }
+    image_xscale = -sign(hspeed);
+    if(collision_rectangle(x + RangeClamp(pDir, -1,0) * 400,oy - 50, x + RangeClamp(pDir, 0,1) * 400, oy + 50, player, true, true))
+    {
+        hspeed = pDir * 12;
+        status = 2;
+    }
+    else if(abs(player.x - x) < 16 && (player.y + 160) >= y)
+    {
+        status = 1;
+        angle = 0;
+        hspeed = 0;
+    }
+}
+else if(status == 1)
+{
+    sprite_index = spr_bkPianhaAttack;
+    if(angle < 180)
+    {
+        angle += 3;
+        //dis = 304 - oy;
+        //y = 304 - dis * degtorad(sin(angle));
+        y = oy - 160 * sin(degtorad(angle));
+        image_angle = RangeClamp(-270 + angle * 4, -90, 90);
+    }
+    else
+    {
+        image_angle = 0;
+        status = 0;
+        hspeed = pDir * 2;
+    }
+}
+else if(status == 2)
+{
+    if(!collision_rectangle(x + RangeClamp(pDir, -1,0) * 200,oy - 50, x + RangeClamp(pDir, 0,1) * 200, oy + 50, player, true, true))
+    {
+        pDir = sign(hspeed);
+        hspeed = pDir * 2;
+        status = 0;
+    }
+    y = oy;
+}
+
+move_bounce_solid(false);
+
+#event collision:player
+if(status == 1)
+{
+    if(!global.cooldown && !global.godmod)
+    {   
+        global.monsterSuperCritical = true;
+        event_inherited();
+    }
+}
+event_inherited();

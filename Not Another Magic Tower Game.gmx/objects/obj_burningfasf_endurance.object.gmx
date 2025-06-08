@@ -34,6 +34,9 @@ alarm[0]=100;
     incr = 0.5; //The amount of intensity increment when the quake starts and stops.
     
     factor = 0; //Current Intensity.
+    
+    
+a = 0;
 </string>
           </argument>
         </arguments>
@@ -104,7 +107,7 @@ sound_fix(sndWarning);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>water = instance_create(a,608,obj_burning_fasf_firewater);
+            <string>var water = instance_create(a,608,obj_burning_fasf_firewater);
 water.offset = 1 + (25-a/32)*10;
 a+=32;
 if(a &lt; 800)

@@ -1,0 +1,72 @@
+// 2025-06-08 11:46:51
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bkShot;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+//start = true;
+//sound_fix(snd_touhou_twinkle2);
+start = false;
+boom = false;
+isStable = true;
+speed = 0;
+image_xscale = 1/2;
+image_yscale = 1/2;
+image_speed = 1/2;
+alarm[3] = 35;
+
+
+sound = false;
+
+#event destroy
+if(sound)
+{
+ sound_fix(sndfasfboom);
+}
+
+#event alarm3
+start = true;
+
+#event step
+if(start)
+{
+    image_angle = direction - 180;;
+    if(image_xscale < 5)
+    {      
+        image_xscale += 0.11;
+    }
+    if(image_yscale > 0.1)
+    {
+        image_yscale -= 0.02;
+    }
+    speed += 0.4;
+}
+else if(boom)
+{
+    if(image_xscale > 0)
+    {
+        image_xscale -= 0.2;
+        x += 70 / 5 * cos(degtorad(direction));
+        y -= 70 / 5 * sin(degtorad(direction));       
+    }
+    else
+    {
+        //image_xscale = 0;
+        fire = instance_create(x,y,obj_bkFireEffect);
+        fire.dir =direction;
+        with(fire)
+        {
+            event_user(0);
+        }  
+        instance_destroy();
+    }
+}
+
+#event collision:block
+start = false;
+speed = 0;
+boom = true;
+image_speed = 0;

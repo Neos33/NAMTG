@@ -63,6 +63,11 @@ with(child)
     event_user(0);
 }
 
+
+
+px = 0;
+py = 0;
+
 path_start(path,5,0,1);
 isStable = true;
 sound_fix(snd_touhou_twinkle2);

@@ -120,8 +120,8 @@ alarm[9] = 15;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>r = random_range(20,50);
-ang = random_range(0,360);
+            <string>var r = random_range(20,50);
+var ang = random_range(0,360);
 instance_create(x + lengthdir_x(r,ang), y + lengthdir_y(r,ang),obj_dsCrystallExplodeEffect);
 alarm[10] = 1;
 </string>
@@ -216,9 +216,9 @@ sound_fix(snd_touhou_powerup);
 {
     shootCount -= 1;
     sound_fix(snd_touhou_attack3);
-    for(i = 0; i &lt; 5; i += 1)
+    for(var i = 0; i &lt; 5; i += 1)
     {
-        b = instance_create(x,y,obj_dsWhiteBullet1);
+        var b = instance_create(x,y,obj_dsWhiteBullet1);
         b.direction = 180 + 45 * i;
         b.speed = 4;
         b.image_index = index[i];
@@ -304,9 +304,9 @@ y = obj_darkSummoner_combat.y;
             <kind>1</kind>
             <string>sound_stop(snd_touhou_powerup);
 sound_fix(sndfasfboom);
-for(i = 0; i &lt; 30; i += 1)
+for(var i = 0; i &lt; 30; i += 1)
 {
-    ex = instance_create(x,y,obj_dsCBBulletExplode);
+    var ex = instance_create(x,y,obj_dsCBBulletExplode);
     ex.direction = i * 12;
     ex.image_speed = 0.5;
 }

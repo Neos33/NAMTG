@@ -1,0 +1,140 @@
+// 2025-06-08 12:51:34
+#event properties (no comments/etc. here are saved)
+parent_index = obj_dsCrystall;
+sprite_index = spr_dsCrystalBlack;
+uses_physics = false;
+
+#event create
+dontDraw = true;
+interval = 3;
+event_inherited();
+image_alpha = 0.4;
+with(obj_dsSpike)
+{
+    image_blend = c_black;
+}
+with(obj_darkSummoner_combat)
+{
+    targetX = 400;
+    targetY = 128;
+    move = true;
+}
+alarm[0] = 50;
+alarm[1] = 200;
+alarm[2] = 350;
+alarm[3] = 500;
+alarm[4] = 750;
+alarm[5] = 50;
+dark = true;
+
+alarm[11] = 50;
+
+
+phase = 0;
+
+#event alarm0
+instance_create(x,y,obj_dsBlackBullet1);
+alarm[0] = interval;
+phase = 1;
+
+#event alarm1
+instance_create(x,y,obj_dsBlackBullet2);
+alarm[1] = interval;
+phase = 2;
+
+#event alarm2
+instance_create(x,y,obj_dsBlackBullet3);
+alarm[2] = interval;
+phase = 3;
+
+#event alarm3
+instance_create(x,y,obj_dsBlackBullet4);
+alarm[3] = interval;
+phase = 4;
+
+#event alarm4
+room_speed = 25;
+instance_create(0,0,obj_dsWhite);
+alarm[6] = 100;
+
+#event alarm5
+sound_fix(sndBurst1);
+
+#event alarm6
+room_speed = 50;
+alarm[0] = 0;
+alarm[1] = 0;
+alarm[2] = 0;
+alarm[3] = 0;
+dontDraw = true;
+obj_dsBlackHole.stop = true;
+with(obj_darkSummoner_combat)
+{   
+    instance_destroy();
+}
+ach = true;
+boom = true;
+with(obj_dsBlack)
+{
+    instance_destroy();
+}
+
+with(obj_dsWhite)
+{
+    instance_destroy();
+}
+sound_stop(sndQuake);
+phase = 6;
+audio_playsound(sndfasfboom);
+
+sound_stop(snd_touhou_powerup);
+sound_fix(sndfasfboom);
+for(var i = 0; i < 30; i += 1)
+{
+    var ex = instance_create(x,y,obj_dsCBBulletExplode);
+    ex.direction = i * 12;
+    ex.image_speed = 0.5;
+    ex.speed = 3;
+}
+
+#event alarm11
+sound_fix(snd_touhou_attack3);
+alarm[11] = 6 - phase;
+
+#event step
+if(player_is_alive())
+{
+    if(boom == true)
+    {
+        if(!instance_exists(obj_combatPlayerKiller))
+        {
+            boom = false;
+            if(ach)
+            {
+                if(!global.achievements[85])
+                {
+                    ch = instance_create(0,608,obj_achievements);
+                    ch.index = 85;
+                    global.achievements[85] = 1;
+                }
+            }
+            obj_combatController.alarm[0] = 30;
+        }
+    }
+}
+event_inherited();
+
+#event other_user1
+sound_stop(snd_touhou_powerup);
+sound_fix(sndfasfboom);
+for(i = 0; i < 30; i += 1)
+{
+    ex = instance_create(x,y,obj_dsCBBulletExplode);
+    ex.direction = i * 12;
+    ex.image_index = 2;
+}
+instance_destroy();
+
+#event draw
+if(dontDraw) exit;
+draw_current();

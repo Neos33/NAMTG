@@ -1,0 +1,227 @@
+// 2025-06-08 12:24:10
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_darkLord_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Dark Lord";
+image_speed = 1/8;
+
+atk=280;
+def=146;
+tdPath = pathDarkLord;
+spd = 0.5;
+x = -32;
+y = -32;
+
+targetX[0]=176; targetY[0]=176;
+targetX[1]=176; targetY[1]=368;
+targetX[2]=432; targetY[2]=368;
+targetX[3]=432; targetY[3]=176;
+targetX[4]=560; targetY[4]=176;
+targetX[5]=560; targetY[5]=48;
+
+targetCount = 6;
+currentTarget = 0;
+
+sys = part_system_create();
+part_system_depth(sys,1000);
+
+fire = part_type_create();
+part_type_sprite(fire,spr_particle_fire,0,0,1);
+part_type_size(fire,2,3,-.01,0);
+part_type_orientation(fire,85,95,2,0,0);
+part_type_color3(fire,make_color_rgb(64,0,32),make_color_rgb(32,0,64),make_color_rgb(64,0,64));
+part_type_alpha3(fire,.18,.72,0);
+part_type_blend(fire,1);
+part_type_direction(fire,85,95,0,0);
+part_type_speed(fire,3,6,0,0);
+part_type_life(fire,15,20);
+
+emit = part_emitter_create(sys);
+part_emitter_region(sys,emit,x-64,x+64,y-64,y+64,ps_shape_ellipse,ps_distr_gaussian);
+
+
+
+
+inSkill = false;
+crazy = false;
+partStart = false;
+
+fullHp = 0;
+hpPer = 0;
+
+#event destroy
+if(part_type_exists(fire))
+{
+    part_type_destroy(fire);
+}
+
+if(part_emitter_exists(sys, emit))
+{
+    part_emitter_destroy(sys, emit);
+}
+
+if(part_system_exists(sys))
+{
+    part_system_destroy(sys);
+}
+with(obj_tdMonsterPrototype)
+{
+    instance_destroy();
+}
+with(obj_dlSkill5Controller)
+{
+    instance_destroy();
+}
+event_inherited();
+
+#event alarm3
+if(fullHp == 0)
+{
+    fullHp = hp;
+    global.defenseDamage = RangeClamp(atk - global.defense, 1, 10000);
+}
+x = -16;
+y = 176;
+alarm[11] = 1;
+alarm[10] = 100;
+
+
+#event alarm4
+if(!crazy)
+{
+    var skill = choose(1,2,3);
+}
+else
+{
+    if(instance_exists(obj_darkLordDark))
+    {
+         skill = choose(1,2,3,4);
+    }
+    else
+    {
+        skill = choose(1,2,3,4,5);
+    }
+}
+switch(skill)
+{
+    case 1: instance_create(0,0,obj_dlSkill1Controller);break;
+    case 2: instance_create(0,0,obj_dlSkill2Controller);break;
+    case 3: instance_create(0,0,obj_dlSkill3Controller);break;
+    case 4: instance_create(0,0,obj_dlSkill4Controller);break;
+    case 5: instance_create(0,0,obj_dlSkill5Controller);break;
+    default: exit;
+}
+speed = 0;
+
+#event alarm5
+inSkill = false;
+
+#event alarm6
+instance_create(x,y,obj_darkLordShadow);
+alarm[6] = 15;
+
+#event alarm7
+inSkill = true;
+crazy = true;
+sound_fix(sndQuake);
+partStart = true;
+alarm[6] = 50;
+alarm[5] = 50;
+alarm[10] = 100;
+
+#event alarm10
+event_user(1);
+
+#event alarm11
+alarm[11] = 1;
+if(inSkill)
+    exit;
+if(currentTarget == targetCount)
+{
+    event_user(0);
+    exit;
+}
+if(point_distance(x,y,targetX[currentTarget], targetY[currentTarget]) < spd)
+{
+    x = targetX[currentTarget];
+    y = targetY[currentTarget];
+    speed = 0;
+    currentTarget += 1;
+}
+else
+{
+    move_towards_point(targetX[currentTarget], targetY[currentTarget], spd);
+}
+
+
+#event step
+if(partStart)
+{
+    part_emitter_region(sys,emit,x-16,x+16,y+16,y+16,ps_shape_ellipse,ps_distr_gaussian);
+    part_emitter_burst(sys,emit,fire,5);
+}
+spd = 0.5 + (1-hpPer);
+
+#event other_room_end
+if(part_type_exists(fire))
+{
+    part_type_destroy(fire);
+}
+
+if(part_emitter_exists(sys, emit))
+{
+    part_emitter_destroy(sys, emit);
+}
+
+if(part_system_exists(sys))
+{
+    part_system_destroy(sys);
+}
+
+#event other_user0
+var shadow = instance_create(x,y,obj_tdMonsterIn);
+shadow.sprite_index = sprite_index;
+shadow.image_index = image_index;
+shadow.image_speed = image_speed;
+x = -16;
+y = 176;
+speed = 0;
+alarm[4] = 150;
+alarm[11] = 50;
+currentTarget = 0;
+obj_tdController.spikeLevel += 32;
+
+#event other_user1
+if(hpPer < 0.5 && !crazy)
+{
+    crazy = true;
+    alarm[7] = 1;
+    exit;   
+}
+inSkill = true;
+alarm[4] = 1;
+
+#event other_user15
+if(obj_tdController.special)
+{
+    if(!global.achievements[88])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 88;
+        global.achievements[88] = 1;
+    }
+}
+
+#event draw
+draw_current();
+if(fullHp > 0)
+{
+    hpPer = hp/fullHp;
+    draw_set_color(merge_color(c_red,c_green,hpPer));
+    draw_rectangle(x-16,y-20,x-16+32*hpPer,y-18,false);
+    draw_set_color(c_white);
+}

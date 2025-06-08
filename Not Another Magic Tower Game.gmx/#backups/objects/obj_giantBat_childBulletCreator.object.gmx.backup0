@@ -1,0 +1,24 @@
+// 2025-06-08 10:57:29
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_supfasfbullet;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_xscale = 2;
+image_yscale = 2;
+image_speed = 0.5;
+speed = random_range(1,2);
+direction = random_range(0,360);
+alarm[3] = 1;
+
+#event alarm3
+var b = instance_create(x,y,obj_giantBatBullet1);
+b.speed = random_range(5,7);
+b.direction = random_range(0,360);
+alarm[3] = 20;
+
+#event step
+move_bounce_solid(false);

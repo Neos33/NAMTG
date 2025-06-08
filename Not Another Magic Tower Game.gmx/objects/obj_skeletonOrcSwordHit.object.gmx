@@ -43,6 +43,8 @@
 isStable = true;
 image_xscale = -1;
 alarm[3] = 5;
+
+hit = 0;
 </string>
           </argument>
         </arguments>

@@ -1,0 +1,33 @@
+// 2025-06-08 11:40:54
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bsFireShot;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0.3;
+isStable = true;
+param = 0;
+if(x < 400)
+{
+    param = -1;
+    direction = 0;
+}
+else
+{
+    param = 1;
+    direction = 180;
+}
+speed = 2;
+
+#event step
+image_angle += param * speed;
+speed += 0.1;
+
+#event other_outside
+if(x > 900 || x < -100)
+{
+    instance_destroy();
+}

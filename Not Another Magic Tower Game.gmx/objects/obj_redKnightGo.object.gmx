@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>ox = x;
 oy = y;
+
+angle = 0;
 </string>
           </argument>
         </arguments>

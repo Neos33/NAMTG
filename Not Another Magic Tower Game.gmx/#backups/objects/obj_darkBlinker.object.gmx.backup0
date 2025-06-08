@@ -1,0 +1,40 @@
+// 2025-06-08 12:22:18
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_black;
+uses_physics = false;
+
+#event create
+image_xscale = 25;
+image_yscale = 19;
+
+
+minAlpha = 0;
+maxAlpha = 0;
+stepAlpha = 0;
+
+#event alarm0
+if(image_alpha > minAlpha)
+{
+    image_alpha -= stepAlpha;
+    alarm[0] = 1;
+}
+else
+{
+    alarm[1] = 1;
+}
+
+#event alarm1
+if(image_alpha < maxAlpha)
+{
+    image_alpha += stepAlpha;
+    alarm[1] = 1;
+}
+else
+{
+    alarm[0] = 1;
+}
+
+#event other_user0
+image_alpha = maxAlpha;
+alarm[0] = 1;

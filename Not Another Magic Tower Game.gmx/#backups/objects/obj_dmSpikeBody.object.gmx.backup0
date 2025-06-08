@@ -1,0 +1,19 @@
+// 2025-06-08 12:20:32
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_dmSpikeBody;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_yscale = 19;
+gravity = 0.2;
+image_blend = c_purple;
+isStable = true;
+
+#event draw
+for(var i = 0; i < 608; i += 32)
+{
+    draw_sprite_ext(sprite_index,image_index,x,y+i,1,1,0,obj_dmSpikeController.blend,1);
+}

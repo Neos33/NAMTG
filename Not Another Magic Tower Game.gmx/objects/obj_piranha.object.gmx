@@ -46,6 +46,9 @@ isStable = true;
 oy = y;
 sy = y;
 ready = true;
+
+
+pDir = 0;
 </string>
           </argument>
         </arguments>

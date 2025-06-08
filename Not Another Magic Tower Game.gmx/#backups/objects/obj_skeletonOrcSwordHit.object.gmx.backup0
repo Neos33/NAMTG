@@ -1,0 +1,37 @@
+// 2025-06-08 11:02:14
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_swordhit;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0;
+isStable = true;
+image_xscale = -1;
+alarm[3] = 5;
+
+hit = 0;
+
+#event alarm3
+if(image_index == 0)
+{
+    hit = instance_create(x,y, obj_skeletonOrcArcHit);
+    image_index = 1;
+}
+else if(image_index < 5)
+{
+    hit.image_index = image_index;
+    image_index += 1;
+}
+else if(image_index == 5)
+{
+    hit.alarm[3] = 1;
+    image_index += 1;
+}
+else
+{
+    instance_destroy();
+}
+alarm[3] = 5;

@@ -1,0 +1,274 @@
+// 2025-06-08 12:56:31
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_darkWarrior_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Dark Warrior";
+image_speed = 1/8;
+x=752;
+y=48;
+
+bombCount = 1;
+minBombCount = 1;
+
+powerCount = 1;
+minPowerCount = 1;
+
+spd = 3;
+minSpd = 3;
+
+crossWall = false;
+
+godtime = 0;
+
+gridAll = mp_grid_create(192,0,18,18,32,32);
+mp_grid_add_instances(gridAll, block, false);
+mp_grid_add_instances(gridAll, obj_dwBombWall, false);
+gridWall = mp_grid_create(192,0,18,18,32,32);
+mp_grid_add_instances(gridWall, block, false);
+
+
+if(instance_exists(obj_darkWarrior_item))
+{
+    event_user(1);
+}
+else
+{
+    event_user(0);
+}
+
+alarm[3] = 50;
+
+
+
+drawGrid = false;
+
+pathCrossWall = false;
+wallCrossChange = false;
+toTarget = false;
+crazy = false;
+superCrazy = false;
+
+toItem = false;
+
+path = 0;
+cellX = 0;
+cellY = 0;
+
+
+#event alarm3
+if(instance_number(obj_darkWarrior_bomb) < bombCount)
+{
+    var factX = round((x - 16) / 32);
+    var factY = round((y - 16) / 32);
+    var bx = 32 * factX + 16;
+    var by = 32 * factY + 16;
+    if(!instance_position(bx,by,block) && !instance_position(bx,by,obj_dwBombWall))
+    {
+        var bomb = instance_create(bx, by, obj_darkWarrior_bomb);
+        bomb.p = powerCount;
+        alarm[3] = 30;
+    }
+    else
+    {
+        alarm[3] = 1;
+    }
+}
+else
+{
+    alarm[3] = 1;
+}
+
+#event alarm4
+var fixX = round((x - 16) / 32);
+var fixY = round((y - 16) / 32);
+var px = 32 * fixX + 16;
+var py = 32 * fixY + 16;
+if(superCrazy)
+{
+    for(var i = 0; i < 8; i += 1)
+    {
+          var b = instance_create(px,py,obj_dwFireBall);
+          b.direction = i * 45;
+    }
+}
+else
+{
+    for(var i = 0; i < 4; i += 1)
+    {
+          var b = instance_create(px,py,obj_dwFireBall);
+          b.direction = i * 90;
+    }
+}
+alarm[4] = 50;
+
+#event alarm5
+if(!place_meeting(x,y,obj_dwBombWall))
+{
+    crossWall = false;
+}
+else
+{
+    alarm[5] = 1;
+}
+
+#event step
+if(crossWall)
+{
+    if(!pathCrossWall)
+    {
+        wallCrossChange = true;
+        path_end();
+        path_delete(path);
+        event_user(2);
+        wallCrossChange = false;
+    }
+}
+else
+{
+    if(pathCrossWall)
+    {   
+        if(!place_meeting(x,y,obj_dwBombWall))
+        {
+            wallCrossChange = true;
+            path_end();
+            path_delete(path);
+            event_user(2);
+            wallCrossChange = false;
+        }
+    }
+}
+
+if(toTarget)
+{
+    if(instance_exists(obj_darkWarrior_item))
+    {
+        path_end();
+        event_user(1);
+    }
+}
+
+if(hp <= 150 && !crazy)
+{
+    crazy = true;
+    alarm[4] = 1;
+}
+
+if(hp <= 50 && !superCrazy)
+{
+    superCrazy = true;
+}
+#section
+if(godtime > 0)
+{
+    godtime -= 1;
+}
+#section
+/*if(keyboard_check_pressed(vk_space))
+{
+    drawGrid ^= 1;
+}
+
+#event collision:bullet
+if(godtime > 0)
+{
+    sound_fix(sndIce1);
+    if(!instance_exists(obj_monsterHPBlock))
+    {
+        instance_create(x,y, obj_monsterHPBlock);
+    }
+    with(other)
+    {
+        instance_destroy();
+    }
+}
+else
+{
+    event_inherited();
+}
+
+#event other_end_of_path
+if(wallCrossChange)
+    exit; 
+path_delete(path);
+if(instance_exists(obj_darkWarrior_item))
+{
+    event_user(1);
+}
+else
+{
+    event_user(0);
+}
+
+#event other_user0
+targetX = 208;
+targetY = 16;
+while(instance_position(targetX - 16, targetY - 16, block) || instance_position(targetX - 16, targetY - 16, obj_dwBombWall) || (targetX == x && targetY == y))
+{
+    var txIndex = irandom_range(0,16);
+    var tyIndex = irandom_range(0,16);
+    targetX = 240 + 32 * txIndex;
+    targetY = 48 + 32 * tyIndex;
+}
+event_user(2);
+toTarget = true;   
+toItem = false;
+    
+
+#event other_user1
+var item = instance_find(obj_darkWarrior_item,0);
+targetX = item.x;
+targetY = item.y;
+event_user(2);
+toTarget = false;
+toItem = true;   
+    
+    
+
+#event other_user2
+path = path_add();
+if(crossWall)
+{
+    mp_grid_path(gridWall, path,x,y, targetX, targetY, superCrazy);
+    pathCrossWall = true;
+}
+else
+{
+    mp_grid_path(gridAll, path,x,y, targetX, targetY, superCrazy);
+    pathCrossWall = false;
+}
+path_set_closed(path,false);
+path_set_kind(path,0);
+path_start(path,spd,0,1);
+var tt = instance_create(targetX, targetY, obj_dwTarget);
+tt.first = true;
+
+#event other_user10
+var gridIndX = (cellX - 192)/32;
+var gridIndY = (cellY - 0)/32; 
+mp_grid_clear_cell(gridAll,gridIndX,gridIndY);
+/*fix = instance_create(0,0,obj_dwGridFix);
+fix.fx = gridIndX;
+fix.fy = gridIndY;
+
+
+#event other_user15
+if(instance_number(obj_dwBombWall) == 0)
+{
+    if(!global.achievements[87])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 87;
+        global.achievements[87] = 1;
+    }
+}
+
+#event draw
+if(drawGrid)
+{
+    mp_grid_draw(gridAll);
+}
+draw_current();

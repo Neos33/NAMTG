@@ -1,0 +1,31 @@
+// 2025-06-08 13:01:25
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_dwTarget;
+uses_physics = false;
+
+#event create
+image_xscale = 2;
+image_yscale = 2;
+alarm[0] = 20;
+
+
+first = false;
+
+#event alarm0
+if(first)
+{
+    instance_create(x,y,obj_dwTarget);
+}
+
+#event step
+if(image_xscale > 0)
+{
+    image_xscale -= 0.05;
+    image_yscale -= 0.05;
+}
+else
+{
+    instance_destroy();
+}
+image_angle -= 9;

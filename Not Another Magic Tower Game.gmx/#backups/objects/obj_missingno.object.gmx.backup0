@@ -1,0 +1,149 @@
+// 2025-06-08 11:21:46
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_missingno;
+uses_physics = false;
+
+#event create
+atk = global.mAtk;
+def = global.mDef;
+ex = global.mEx;
+name = "MissingNo";
+obj_pokemonEnemyInfo.name = "MissingNo";
+hp = 1;
+ox = x;
+oy = y;
+status = -1;
+viewShift = 0;
+alarm[11] = 30;
+instance_create(0,0,obj_missingnoBlack);
+instance_create(0,0,obj_missingnoCreator);
+
+#event alarm3
+if(viewShift < 2)
+{
+    ind = floor(irandom_range(0,375)/100);
+}
+else
+{
+    ind = irandom_range(0,2);
+}
+event_user(ind);
+if(ind < 3)
+{
+    with(obj_pokemonBattleDialog)
+    {
+        msg = other.name + " uses ???.";
+        event_user(0);
+    }
+}
+else
+{
+    with(obj_pokemonBattleDialog)
+    {
+        msg = other.name + " uses Perspective Confusion.";
+        event_user(0);
+    }
+}
+
+
+#event alarm4
+if(view_wview[0] > -800)
+{
+    view_wview[0] -= 16;
+    view_xview[0] += 8;
+    alarm[4] = 1;
+}
+
+#event alarm5
+if(view_hview[0] > -384)
+{
+    view_hview[0] -= 8;
+    view_yview[0] += 4;
+    alarm[5] = 1;
+}
+
+#event alarm6
+sound_fix(snd_touhou_spellcard);
+
+#event alarm10
+with(obj_pokemonBattleDialog)
+{
+    msg = other.name + " get tired.";
+    event_user(0);
+}
+instance_create(144, 256, obj_pokemonCombatPlatform);
+
+#event alarm11
+status = 0;
+alarm[3] = 30;
+
+#event step
+if(status == 0)
+{
+    angle += 5;
+    y = oy + 10 * sin(degtorad(angle));
+}
+
+if(!sound_isplaying(sndPokemonBattle) && !sound_isplaying(sndEvolveEnd))
+{
+    sound_loop(sndPokemonBattle);
+}
+
+if(!player_is_alive())
+{
+    view_xview[0] = 0;
+    view_yview[0] = 0;
+    view_hview[0] = 384;
+    view_wview[0] = 800;
+}
+
+#event other_user0
+instance_create(0,0,obj_missingnoCircleController);
+
+#event other_user1
+instance_create(0,0,obj_missingnoCutController);
+
+#event other_user2
+instance_create(432,112,obj_jirachi);
+
+#event other_user3
+if(viewShift == 0)
+{
+    viewShift = 1;
+    alarm[4] = 50;
+}
+else if(viewShift == 1)
+{
+    viewShift = 2;
+    alarm[5] = 50;
+}
+alarm[6] = 50;
+alarm[3] = 200;
+
+#event other_user15
+if(viewShift == 2)
+{
+    if(!global.achievements[71])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 71;
+        global.achievements[71] = 1;
+    }
+}
+
+#event draw
+if(status == 0)
+{
+    var sy1 = oy + 10 * sin(degtorad(angle - 15));
+    var sy2 = oy + 10 * sin(degtorad(angle - 15));
+    draw_sprite_ext(sprite_index,image_index,x,sy2,1.1,1.1,image_angle,c_silver,0.4);
+    draw_sprite_ext(sprite_index,image_index,x,sy1,1.05,1.05,image_angle,c_silver,0.7);
+    draw_current();
+}
+else
+{
+    draw_sprite_ext(sprite_index,image_index,x,y,1.1,1.1,image_angle,c_silver,0.4);
+    draw_sprite_ext(sprite_index,image_index,x,y,1.05,1.05,image_angle,c_silver,0.7);
+    draw_current();
+}

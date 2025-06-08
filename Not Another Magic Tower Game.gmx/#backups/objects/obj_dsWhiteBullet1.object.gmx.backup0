@@ -1,0 +1,44 @@
+// 2025-06-08 12:50:45
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_danmaku12;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0;
+image_xscale = 0.8;
+image_yscale = 0.8;
+isStable = true;
+
+
+shoot = false;
+
+#event alarm3
+direction = point_direction(x,y,player.x,player.y);
+speed = 7;
+
+#event step
+if(!start)
+{
+    speed -= 0.06;
+    if(speed <= 0)
+    {
+        speed = 0;
+        start = true;
+    }
+}
+else if(!shoot)
+{
+    shoot = true;
+    alarm[3] = 30;
+}
+
+#event other_outside
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

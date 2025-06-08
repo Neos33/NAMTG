@@ -78,6 +78,12 @@ part_type_gravity(prt3,0.1,90);
 part_type_speed(prt3,4,8,0,0);
 part_type_direction(prt3,50,130,0,0);
 
+
+
+attack1 = 0;
+bullet_time = 0;
+created = false;
+
 </string>
           </argument>
         </arguments>
@@ -326,7 +332,7 @@ else
 }
 else
 {
-    a=choose(4,5,6,10);
+    var a=choose(4,5,6,10);
     alarm[a]=30;
 }
 
@@ -535,9 +541,9 @@ with(other)
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-part_type_destroy(par1);
-part_type_destroy(par2);
-part_type_destroy(par3);
+part_type_destroy(prt1);
+part_type_destroy(prt2);
+part_type_destroy(prt3);
 part_system_destroy(explosion)
 </string>
           </argument>

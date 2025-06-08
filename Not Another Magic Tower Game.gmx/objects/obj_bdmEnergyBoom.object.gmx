@@ -43,6 +43,9 @@
 image_yscale = 0.1;
 image_speed = 0.3;
 alarm[3] = 100;
+
+
+boom = false;
 </string>
           </argument>
         </arguments>
@@ -73,10 +76,10 @@ alarm[3] = 100;
 }
 else
 {
-    rndAngle = random_range(0,360);
-    for(i = 0; i &lt; 20; i+=1)
+    var rndAngle = random_range(0,360);
+    for(var i = 0; i &lt; 20; i+=1)
     {
-        p = instance_create(x,y,obj_bdmEnergyBall2);
+        var p = instance_create(x,y,obj_bdmEnergyBall2);
         p.direction = i * 18 + rndAngle;
         p.speed = 4;
     }

@@ -1,0 +1,106 @@
+// 2025-06-08 12:11:32
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_dmEnergyBall;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 1/6;
+image_xscale = 2;
+image_yscale = 2;
+speed = 5;
+isStable = true;
+alarm[3] = 1;
+
+eList = ds_list_create();
+eStart = random_range(0, 359);
+for(var i = 0; i < 12; i += 1)
+{
+    ds_list_add(eList, i * 30);   
+}
+ds_list_shuffle(eList);
+eSize = 12;
+eCount = 0;
+
+isStable = true;
+
+
+// Neos TODO: Particle emitter not getting destroyed
+emitter = noone;
+
+#event destroy
+ds_list_destroy(eList);
+if part_emitter_exists(obj_dmParticleController.sys, emitter)
+{
+    part_emitter_destroy(obj_dmParticleController.sys, emitter);
+}
+
+#event alarm3
+if(point_distance(x,y,targetX,targetY) < 125)
+{
+    if(speed > 0)
+    {
+        speed -= 0.1;
+        alarm[3] = 1;
+    }
+    else
+    {
+        speed = 0;
+        if !part_emitter_exists(obj_dmParticleController.sys, emitter)
+            emitter = part_emitter_create(obj_dmParticleController.sys);
+        part_emitter_region(obj_dmParticleController.sys,emitter,x-24,x+24,y-24/2,y+24/2,ps_shape_rectangle,ps_distr_linear);
+        alarm[4] = 1;
+        alarm[7] = 10;
+    }
+}
+else
+{
+    alarm[3] = 1;
+}
+
+#event alarm4
+if(eCount < eSize)
+{
+    var bDir = ds_list_find_value(eList,eCount);
+    part_type_orientation(obj_dmParticleController.beam,bDir-15,bDir+15,0,0,0);
+    if part_emitter_exists(obj_dmParticleController.sys, emitter)
+        part_emitter_burst(obj_dmParticleController.sys,emitter,obj_dmParticleController.beam,1);
+    eCount += 1;
+    alarm[4] = 1;
+}
+else
+{
+    alarm[5] = 1;
+}
+
+#event alarm5
+repeat(15)
+{
+    instance_create(x,y,obj_dmDarkEnergyExplode);
+}
+
+alarm[6] = 1;
+
+#event alarm6
+if(image_alpha > 0)
+{
+    image_alpha -= 0.04;
+    alarm[6] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event alarm7
+sound_fix(sndfasfboom);
+
+#event other_outside
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

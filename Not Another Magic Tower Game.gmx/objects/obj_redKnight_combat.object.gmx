@@ -31,6 +31,8 @@ image_speed = 1/8;
 x = 400;
 y = 32;
 
+
+move = false;
 </string>
           </argument>
         </arguments>

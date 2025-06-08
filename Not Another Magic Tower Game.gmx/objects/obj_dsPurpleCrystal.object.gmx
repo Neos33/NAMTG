@@ -40,6 +40,9 @@ with(obj_darkSummoner_combat)
     targetY = 128;
     move = true;
 }
+
+
+start = false;
 </string>
           </argument>
         </arguments>
@@ -181,7 +184,7 @@ exit;
             <kind>1</kind>
             <string>repeat(RangeClamp(-interval,1,10))
 {
-    b = instance_create(x,y,obj_dsCPBullet);
+    var b = instance_create(x,y,obj_dsCPBullet);
     b.direction = startAngle;
     startAngle += angleChange;
       
@@ -283,9 +286,9 @@ y = obj_darkSummoner_combat.y;
             <kind>1</kind>
             <string>sound_stop(snd_touhou_powerup);
 sound_fix(sndfasfboom);
-for(i = 0; i &lt; 30; i += 1)
+for(var i = 0; i &lt; 30; i += 1)
 {
-    ex = instance_create(x,y,obj_dsCBBulletExplode);
+    var ex = instance_create(x,y,obj_dsCBBulletExplode);
     ex.direction = i * 12;
     ex.image_index = 2;
 }

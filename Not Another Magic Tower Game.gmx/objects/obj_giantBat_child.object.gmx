@@ -68,7 +68,7 @@ if(!sound_isplaying(sndTelAtk))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>energy = instance_create(x,y,obj_giantBat_energy);
+            <string>var energy = instance_create(x,y,obj_giantBat_energy);
 if(x &gt; 400)
 {
     energy.t = 4;
@@ -99,8 +99,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scale = random_range(0.6,1.2);
-b = instance_create(x,y,obj_giantBatBullet1);
+            <string>var scale = random_range(0.6,1.2);
+var b = instance_create(x,y,obj_giantBatBullet1);
 b.speed = random_range(3,5);
 b.direction = random_range(0,360);
 b.image_xscale = scale;
@@ -130,9 +130,9 @@ alarm[6] = 5;
             <kind>1</kind>
             <string>angle = random_range(0,360);
 dis = random_range(28,36);
-tx = x + dis * cos(degtorad(angle));
-ty = y - dis * sin(degtorad(angle));
-eff = instance_create(tx,ty,obj_giantBat_childGatherEnergy);
+var tx = x + dis * cos(degtorad(angle));
+var ty = y - dis * sin(degtorad(angle));
+var eff = instance_create(tx,ty,obj_giantBat_childGatherEnergy);
 eff.parentX = x;
 eff.parentY = y;
 alarm[5] = 5;

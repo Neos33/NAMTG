@@ -1,0 +1,111 @@
+// 2025-06-08 11:34:59
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_danmaku12;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 1/4;
+direction = random_range(0,360);
+speed = random_range(5,6);
+child = instance_create(x,y,obj_bdmEnergyBall3Shadow);
+child.ind = 9;
+child.scale = 1;
+child.image_xscale = child.ind * 0.1 * scale;
+child.image_yscale = child.ind * 0.1 * scale;
+child.depth = -child.ind;
+child.image_alpha = child.ind * 0.08 + 0.2;
+with(child)
+{
+    event_user(0);
+}
+isStable = true;
+alarm[3] = 500;
+alarm[4] = 1;
+start = false;
+sound_fix(snd_touhou_twinkle2);
+
+
+isEnd = false;
+px = 0;
+py = 0;
+
+#event destroy
+if(child)
+{
+    with(child)
+    {
+        instance_destroy();
+    }
+}
+
+#event alarm3
+isEnd = true;
+
+
+#event alarm4
+if(point_distance(x,y,targetX,targetY) < 8)
+{
+    x = targetX;
+    y = targetY;
+    hspeed = 0;
+    vspeed = 0;
+    if(!isEnd)
+    {
+        event_user(0);
+    }
+    else
+    {
+        alarm[11] = 1;
+    }
+}
+else
+{
+    move_towards_point(targetX,targetY,8);
+    alarm[4] = 1;
+}
+
+#event alarm5
+var tDir = point_direction(x,y,player.x,player.y);
+targetX = x + lengthdir_x(500, tDir);
+targetY = y + lengthdir_y(500, tDir);
+alarm[4] = 1;
+
+#event alarm11
+speed=0;
+if(image_alpha > 0)
+{
+    image_alpha -= 0.02;
+    alarm[11] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event step
+child.x = px;
+child.y = py;
+/*if(!isEnd)
+{
+    motion_add(point_direction(x,y,player.x,player.y), 0.6);
+    if(speed > 6)
+    {
+        speed = 6;
+    }
+}
+
+
+#event step_end
+px = x;
+py = y;
+
+#event other_user0
+alarm[5] = 30;
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

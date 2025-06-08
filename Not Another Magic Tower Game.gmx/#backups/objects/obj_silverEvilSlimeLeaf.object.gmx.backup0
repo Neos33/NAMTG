@@ -1,0 +1,50 @@
+// 2025-06-08 11:19:04
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_silverEvilSlimeLeaf;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0;
+image_index = irandom_range(0,3);
+vspeed = -1;
+alarm[3] = 40;
+
+
+ang = 0;
+
+#event alarm3
+status = 1;
+alarm[4] = 50;
+
+#event alarm4
+status = 2;
+image_index = 0;
+image_angle = point_direction(x,y,player.x, player.y) - 225;
+speed = 15;
+direction = point_direction(x,y,player.x, player.y);
+sound_fix(sndSwing1);
+
+#event step
+if(status == 0)
+{
+    ang += 5;
+    angle = 45 * cos(degtorad(ang));
+    if(image_index < 2)
+    {
+        image_angle = -45 + angle;
+    }
+    else
+    {
+        image_angle = 45 - angle;
+    }
+}
+else if(status == 1)
+{
+    image_angle -= 15;
+}
+
+#event other_outside
+instance_destroy();

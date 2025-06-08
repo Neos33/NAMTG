@@ -83,12 +83,12 @@ instance_destroy();
             <string>if(currentPathIndex &lt; pathCount)
 {
     //execute_string('currentPath = pathBk +' + string(currentPathIndex) );
-    currentPath = path[currentPathIndex];
-    startX = path_get_x(currentPath,0);
-    startY = path_get_y(currentPath,0);
-    endX = path_get_x(currentPath,1);
-    endY = path_get_y(currentPath,1);
-    pathEle = instance_create(startX, startY, obj_bkPathElement);
+    var currentPath = path[currentPathIndex];
+    var startX = path_get_x(currentPath,0);
+    var startY = path_get_y(currentPath,0);
+    var endX = path_get_x(currentPath,1);
+    var endY = path_get_y(currentPath,1);
+    var pathEle = instance_create(startX, startY, obj_bkPathElement);
     pathEle.image_angle = point_direction(startX, startY, endX, endY);
     pathEle.path = path[currentPathIndex];
     currentPathIndex += 1;

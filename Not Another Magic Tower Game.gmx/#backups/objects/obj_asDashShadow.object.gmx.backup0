@@ -1,0 +1,38 @@
+// 2025-06-08 11:51:11
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_armoredSoldier_combat;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 1/8;
+isStable = true;
+
+#event step
+if(x < -50 || x > 850 || y < -50 || y > 650)
+{
+    instance_destroy();
+}
+if(!instance_exists(obj_armoredSoldier_combat))
+{
+    instance_destroy();
+}
+
+#event collision:bullet
+with(other)
+{
+    speed = 0;
+    x = obj_armoredSoldier_combat.x;
+    y = obj_armoredSoldier_combat.y;
+}
+
+#event draw
+for(var i = 10; i > 0; i -= 1)
+{
+    var tx = x + 10 * i * cos(degtorad(direction + 180));   
+    var ty = y - 10 * i * sin(degtorad(direction + 180)); 
+    draw_sprite_ext(sprite_index, image_index, tx,ty,1,1,image_angle,c_white,1-0.08*i);
+}
+draw_current();

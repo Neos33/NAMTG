@@ -48,6 +48,12 @@ alarm[5] = 50;
 dark = true;
 
 alarm[11] = 50;
+
+
+phase = 0;
+
+boom = false;
+ach = false;
 </string>
           </argument>
         </arguments>
@@ -122,9 +128,9 @@ audio_playsound(sndfasfboom);
 
 sound_stop(snd_touhou_powerup);
 sound_fix(sndfasfboom);
-for(i = 0; i &lt; 30; i += 1)
+for(var i = 0; i &lt; 30; i += 1)
 {
-    ex = instance_create(x,y,obj_dsCBBulletExplode);
+    var ex = instance_create(x,y,obj_dsCBBulletExplode);
     ex.direction = i * 12;
     ex.image_speed = 0.5;
     ex.speed = 3;
@@ -310,7 +316,7 @@ phase = 1;
             {
                 if(!global.achievements[85])
                 {
-                    ch = instance_create(0,608,obj_achievements);
+                    var ch = instance_create(0,608,obj_achievements);
                     ch.index = 85;
                     global.achievements[85] = 1;
                 }
@@ -344,9 +350,9 @@ event_inherited();
             <kind>1</kind>
             <string>sound_stop(snd_touhou_powerup);
 sound_fix(sndfasfboom);
-for(i = 0; i &lt; 30; i += 1)
+for(var i = 0; i &lt; 30; i += 1)
 {
-    ex = instance_create(x,y,obj_dsCBBulletExplode);
+    var ex = instance_create(x,y,obj_dsCBBulletExplode);
     ex.direction = i * 12;
     ex.image_index = 2;
 }

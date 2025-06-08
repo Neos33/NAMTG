@@ -1,0 +1,83 @@
+// 2025-06-08 11:23:49
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_missingnoCircle;
+uses_physics = false;
+
+#event create
+image_xscale = 0;
+image_yscale = 0;
+image_speed = 0;
+image_index = irandom_range(0,3);
+image_alpha = 0.6;
+alarm[0] = 1;
+sound_fix(snd_touhou_attack4);
+
+
+bulletCount = 0;
+startAng = 0;
+b = array_create(13);
+
+#event alarm0
+if(image_xscale < 2)
+{
+    image_xscale += 0.04;
+    image_yscale += 0.04;
+    alarm[0] = 1;
+}
+else
+{
+    bulletCount = 12;
+    startAng = random_range(0,360);
+    alarm[1] = 30;
+}
+
+#event alarm1
+if(bulletCount > 0)
+{
+    bulletCount -= 1;
+    var bx = x + 48 * cos(degtorad(startAng + 30 * bulletCount));
+    var by = y - 48 * sin(degtorad(startAng + 30 * bulletCount));
+    b[bulletCount] = instance_create(bx, by, obj_missingnoCircleBullets);
+    b[bulletCount].image_index = image_index;
+    b[bulletCount].image_angle = point_direction(x,y,bx,by) - 90;
+    b[bulletCount].cx = x;
+    b[bulletCount].cy = y;
+    alarm[1] = 3;
+}
+else
+{
+    alarm[2] = 30;
+    alarm[3] = 30;
+}
+
+#event alarm2
+if(image_alpha > 0)
+{
+    image_alpha -= 0.02;
+    alarm[2] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event alarm3
+for(var i = 0; i < 12; i += 1)
+{
+    b[i].alarm[3] = 1;
+}
+//sound_fix(snd_touhou_attack3);
+alarm[4] = 1;
+
+#event alarm4
+if(image_xscale > 0)
+{
+    image_xscale -= 0.04;
+    image_yscale -= 0.04;
+    alarm[4] = 1;
+}
+else
+{
+    instance_destroy();
+}

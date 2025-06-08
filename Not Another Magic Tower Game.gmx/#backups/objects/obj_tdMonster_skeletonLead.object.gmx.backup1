@@ -1,0 +1,34 @@
+// 2025-06-08 12:36:39
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tdMonsterPrototype;
+sprite_index = spr_dlSkeletonLead;
+uses_physics = false;
+
+#event create
+#action action_inherited
+
+
+windCD = 0;
+atk = 0;
+#event alarm4
+//
+if(windCD > 0)
+{
+    windCD -= 1;
+    alarm[4] = 1;
+}
+
+#event step
+if(windCD == 0 && !reset)
+{
+    if(abs(player.y - y) < 16)
+    {   
+        b = instance_create(x+4,y,obj_tdSkeletonLeadBullet);
+        b.atk = atk;
+        windCD = 80;
+        alarm[4] = 1;
+    }
+}
+
+#event other_user0
+//

@@ -52,6 +52,8 @@ if(abs(player.x - x) &lt; 120)
     alarm[3] = 1;
     alarm[4] = 10;
 }
+
+ind = 0;
 </string>
           </argument>
         </arguments>

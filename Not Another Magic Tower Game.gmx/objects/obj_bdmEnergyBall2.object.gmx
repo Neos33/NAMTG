@@ -56,6 +56,10 @@ with(child)
     event_user(0);
 }
 isStable = true;
+
+
+px = 0;
+py = 0;
 </string>
           </argument>
         </arguments>

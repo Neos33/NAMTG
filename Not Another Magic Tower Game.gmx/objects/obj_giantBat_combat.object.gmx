@@ -32,6 +32,24 @@ x = 400;
 y = 200;
 alarm[3] = 50;
 alarm[4] = 50;
+
+transformCount = 0;
+transformInterval = 0;
+transformed = false;
+
+juhua = false;
+targetScale = 0;
+fireballCount = 0;
+energyBallCount = 0;
+coolDownTime = 0;
+summon = false;
+summonStatus = 0;
+
+hasAchievement = false;
+summonedCount = 0;
+summonKilled = 0;
+
+
 </string>
           </argument>
         </arguments>
@@ -97,7 +115,7 @@ event_inherited();
         sound_fix(sndQuake);
     }
     energyBallCount -= 1;
-    ball = instance_create(x,y,obj_giantBatEnergyBall);
+    var ball = instance_create(x,y,obj_giantBatEnergyBall);
     ball.speed = 1.5;
     ball.direction = point_direction(x,y,player.x, player.y);
     alarm[11] = 150;
@@ -254,7 +272,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>c2 = instance_create(800 - random_range(32, 128), random_range(160, 304), obj_giantBat_childAppearEffect);
+            <string>var c2 = instance_create(800 - random_range(32, 128), random_range(160, 304), obj_giantBat_childAppearEffect);
 c2.targetX = 736 - 16;
 c2.targetY = 416 + 16;
 </string>
@@ -279,7 +297,7 @@ c2.targetY = 416 + 16;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>c1 = instance_create(random_range(32, 128), random_range(160, 304), obj_giantBat_childAppearEffect);
+            <string>var c1 = instance_create(random_range(32, 128), random_range(160, 304), obj_giantBat_childAppearEffect);
 c1.targetX = 64 + 16;
 c1.targetY = 416 + 16;
 </string>
@@ -310,8 +328,8 @@ c1.targetY = 416 + 16;
     {
         if(global.combatTime mod (13 - targetScale) == 0)
         {              
-            scale = random_range(1,2);
-            b = instance_create(x,y,obj_giantBatBullet1);
+            var scale = random_range(1,2);
+            var b = instance_create(x,y,obj_giantBatBullet1);
             b.speed = random_range(3,5);
             b.direction = random_range(0,360);
             b.image_xscale = scale;
@@ -345,9 +363,9 @@ else
         else
         {
             summonedCount += 1;
-            summonX = random_range(150,650);
-            summonY = random_range(100, 200);
-            summonEffect = instance_create(summonX, summonY, obj_giantBatSummonEffect);
+            var summonX = random_range(150,650);
+            var summonY = random_range(100, 200);
+            var summonEffect = instance_create(summonX, summonY, obj_giantBatSummonEffect);
             sound_fix(snd_touhou_twinkle3);
             if(summonedCount &lt; 3)
             {

@@ -33,6 +33,17 @@ y = 128;
 alarm[3] = 30;
 alarm[4] = 15;
 
+
+count = 0;
+move = false;
+colorful = false;
+hdir = 0;
+vdir = 0;
+hdis = 0;
+vdis = 0;
+
+
+crazy = false;
 </string>
           </argument>
         </arguments>
@@ -148,7 +159,7 @@ else
 move = true;
 colorful = true;
 
-for(i = -2; i &lt;= 2; i+=1)
+for(var i = -2; i &lt;= 2; i+=1)
 {
     instance_create(x +96*i, y - abs(i * 64), obj_dsWhiteBullet2);
 }

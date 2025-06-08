@@ -1,0 +1,24 @@
+// 2025-06-08 11:07:41
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = maskTrigger;
+visible = false;
+uses_physics = false;
+
+#event create|
+
+start = false;
+
+#event collision:obj_skeletonOrc_combat
+with(obj_skeletonOrcFallTrigger1)
+{
+    alarm[3] = 0;
+    start = false;
+}
+
+#event collision:obj_tl_skeletonOrc
+with(obj_skeletonOrcFallTrigger1)
+{
+    alarm[3] = 0;
+    start = false;
+}

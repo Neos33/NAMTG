@@ -1,0 +1,55 @@
+// 2025-06-08 11:34:28
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_touhouBullet4;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_index = 5;
+image_speed = 0;
+image_xscale = 0.5;
+image_yscale = 0.5;
+
+child = instance_create(x,y,obj_bdmEnergyBallShadow);
+child.ind = 9;
+child.scale = 0.5;
+child.image_xscale = child.ind * 0.1 * scale;
+child.image_yscale = child.ind * 0.1 * scale;
+child.depth = -child.ind;
+child.image_alpha = child.ind * 0.08 + 0.2;
+with(child)
+{
+    event_user(0);
+}
+isStable = true;
+
+
+px = 0;
+py = 0;
+
+#event destroy
+if(child)
+{
+    with(child)
+    {
+        instance_destroy();
+    }
+}
+
+#event step
+child.x = px;
+child.y = py;
+
+#event step_end
+px = x;
+py = y;
+
+#event other_outside
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

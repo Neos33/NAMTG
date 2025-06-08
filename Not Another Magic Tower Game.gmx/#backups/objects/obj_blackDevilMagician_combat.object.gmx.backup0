@@ -1,0 +1,59 @@
+// 2025-06-08 11:31:50
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_blackDevilMagician_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Evil Black Magician";
+image_speed = 1/8;
+x = room_width / 2;
+y = room_height / 2;
+//image_xscale = 1.5;
+//image_yscale = 1.5;
+instance_create(0,0,obj_bdmDeathClawController);
+instance_create(0,0,obj_bdmEnergyBallController);
+instance_create(0,0,obj_bdmViewController);
+instance_create(0,0,obj_bdmInfiniteJumpHint);
+instance_create(0,0,obj_bdmBlackBlink);
+instance_create(x,y,obj_bdmBlocker);
+
+
+
+tCount = 0;
+
+#event alarm3
+instance_create(x,y,obj_bdmLaserDrawer);
+
+#event alarm4
+if(tCount > 0)
+{
+    var pp = instance_create(x,y,obj_bdmEnergyBall3);
+    pp.targetX = x + choose(-1,1) * random_range(50, 200);
+    pp.targetY = y + choose(-1,1) * random_range(50, 200);
+    tCount -= 1;
+    alarm[4] = 20;
+}
+else
+{
+    alarm[11] = 550;
+}
+
+#event alarm11
+event_user(0);
+
+#event other_user0
+alarm[choose(3,4)] = 50;
+tCount = choose(4,5,6);
+
+#event other_user15
+if(abs(player.x - 516) > 500)
+{
+    if(!global.achievements[73])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 73;
+        global.achievements[73] = 1;
+    }
+}

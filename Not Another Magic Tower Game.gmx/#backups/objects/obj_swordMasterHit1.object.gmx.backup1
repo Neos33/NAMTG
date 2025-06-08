@@ -1,0 +1,82 @@
+// 2025-06-08 11:29:36
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_swordMasterSwordHit;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+//direction = point_direction(x,y,player.x,RangeClamp(player.y,0,y));
+//speed = 0.5;
+//image_angle = direction - 180;
+image_speed = 0;
+image_xscale = 2 * sign(obj_swordMaster_combat.x - player.x);
+image_yscale = 2;
+alarm[3] = 1;
+isStable = true;
+sound_play(sndClaw1);
+
+
+ind = 0;
+gap = 0;
+mx = 0;
+my = 0;
+
+#event destroy
+if(instance_exists(obj_swordMaster_combat))
+{
+    boom = instance_create(obj_swordMaster_combat.x, y + 8, obj_swordMasterBoomEffect);
+    boom.ind = ind; 
+}
+
+
+
+#event alarm3
+if(image_index < 12)
+{
+    image_index += 1;
+    alarm[3] = 5;
+}
+else
+{
+    alarm[4] = 1;
+}
+
+#event alarm4
+instance_destroy();
+
+#event alarm11
+player.frozen = false;
+
+#event step
+if(!instance_exists(obj_swordMaster_combat))
+{
+    instance_destroy();
+}
+mx = x + 5 * image_xscale - 4 * image_xscale * image_index;
+if(mx < 160)
+{
+    gap = 160 - mx;
+    x += gap;
+}
+else if(mx > 640)
+{
+    gap = mx - 640;
+    x -= gap;
+}
+obj_swordMaster_combat.x = RangeClamp(mx, 160, 640);
+
+#event collision:player
+with(player)
+{
+    frozen = true;
+    gravity = 0;
+    x = obj_swordMaster_combat.x - 16 * sign(other.image_xscale);
+    //y = lengthdir_y(6, point_direction(other.x, other.y, x, y));
+}
+alarm[11] = 10;
+event_inherited();
+
+#event other_room_end
+player.frozen = false;

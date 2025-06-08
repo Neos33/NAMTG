@@ -32,6 +32,11 @@ image_index = irandom_range(0,3);
 image_alpha = 0.6;
 alarm[0] = 1;
 sound_fix(snd_touhou_attack4);
+
+
+bulletCount = 0;
+startAng = 0;
+b = array_create(13);
 </string>
           </argument>
         </arguments>
@@ -86,7 +91,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 12; i += 1)
+            <string>for(var i = 0; i &lt; 12; i += 1)
 {
     b[i].alarm[3] = 1;
 }
@@ -148,8 +153,8 @@ else
             <string>if(bulletCount &gt; 0)
 {
     bulletCount -= 1;
-    bx = x + 48 * cos(degtorad(startAng + 30 * bulletCount));
-    by = y - 48 * sin(degtorad(startAng + 30 * bulletCount));
+    var bx = x + 48 * cos(degtorad(startAng + 30 * bulletCount));
+    var by = y - 48 * sin(degtorad(startAng + 30 * bulletCount));
     b[bulletCount] = instance_create(bx, by, obj_missingnoCircleBullets);
     b[bulletCount].image_index = image_index;
     b[bulletCount].image_angle = point_direction(x,y,bx,by) - 90;

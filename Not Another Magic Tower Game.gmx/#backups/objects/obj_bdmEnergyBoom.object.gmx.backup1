@@ -1,0 +1,53 @@
+// 2025-06-08 11:35:55
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_bdmEnergyBall;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_xscale = 0.1;
+image_yscale = 0.1;
+image_speed = 0.3;
+alarm[3] = 100;
+
+
+boom = false;
+
+#event alarm3
+boom = true;
+alarm[4] = 1;
+
+#event alarm4
+if(image_xscale > 0)
+{
+    image_xscale -= 0.1;
+    image_yscale -= 0.1;
+    alarm[4] = 1;
+}
+else
+{
+    rndAngle = random_range(0,360);
+    for(var i = 0; i < 20; i+=1)
+    {
+        p = instance_create(x,y,obj_bdmEnergyBall2);
+        p.direction = i * 18 + rndAngle;
+        p.speed = 4;
+    }
+    sound_fix(sndFire1);
+    instance_destroy();
+}
+
+#event step
+//image_angle += 5;
+if(image_xscale < 1 && !boom)
+{
+    image_xscale += 0.05;
+    image_yscale += 0.05;
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

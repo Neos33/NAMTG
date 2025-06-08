@@ -121,10 +121,10 @@ if(!instance_exists(obj_armoredSoldier_combat))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 10; i &gt; 0; i -= 1)
+            <string>for(var i = 10; i &gt; 0; i -= 1)
 {
-    tx = x + 10 * i * cos(degtorad(direction + 180));   
-    ty = y - 10 * i * sin(degtorad(direction + 180)); 
+    var tx = x + 10 * i * cos(degtorad(direction + 180));   
+    var ty = y - 10 * i * sin(degtorad(direction + 180)); 
     draw_sprite_ext(sprite_index, image_index, tx,ty,1,1,image_angle,c_white,1-0.08*i);
 }
 draw_current();

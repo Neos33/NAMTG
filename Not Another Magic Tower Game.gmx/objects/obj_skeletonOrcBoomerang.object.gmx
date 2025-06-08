@@ -46,6 +46,9 @@ direction = point_direction(x,y,player.x,player.y);
 a = dis * 2 / sqr(t);
 speed = a*t;
 isStable = true;
+
+
+boom = false;
 </string>
           </argument>
         </arguments>

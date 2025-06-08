@@ -1,0 +1,24 @@
+// 2025-06-08 12:29:28
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_touhouBullet4;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0.3;
+image_xscale = 0.25;
+image_yscale = 0.25;
+speed = 2;
+direction = point_direction(x,y,player.x,player.y);
+
+atk = 0;
+
+
+#event collision:player
+global.defenseDamage = RangeClamp(atk - global.defense, 1, 10000);
+event_inherited();
+
+#event other_outside
+instance_destroy();

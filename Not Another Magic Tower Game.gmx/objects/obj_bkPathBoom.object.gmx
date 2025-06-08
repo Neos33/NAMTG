@@ -47,6 +47,8 @@ sound_fix(sndFire1);
 alarm[3] = 1;
 alarm[4] = 20;
 isStable = true;
+
+over = false;
 </string>
           </argument>
         </arguments>

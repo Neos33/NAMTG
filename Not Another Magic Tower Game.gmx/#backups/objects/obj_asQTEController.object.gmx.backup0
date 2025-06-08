@@ -1,0 +1,89 @@
+// 2025-06-08 11:52:27
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+qteQueue = ds_queue_create();
+corrent = true;
+alarm[0] = 50;
+sound_play(sndgras);
+
+
+start = false;
+
+#event destroy
+ds_queue_destroy(qteQueue);
+
+#event alarm0
+sound_play(sndFire1);
+for(var i = 0; i < 7; i += 1)
+{
+    var qte = instance_create(400 + 40 * (i - 3), 352, obj_asQTEElement);
+    ds_queue_enqueue(qteQueue, qte);
+}
+instance_create(0,0,obj_asQTECountDown);
+alarm[1] = 1;
+
+#event alarm1
+start = true;
+keyboard_lastkey = 0;
+
+#event alarm10
+with(obj_armoredSoldier_combat)
+{
+    instance_create(x,y,bullet);
+    alarm[3] = 50;
+}
+player.visible = true;
+player.x = obj_asQTEPlayer.x;
+player.y = obj_asQTEPlayer.y;
+player.frozen = false;
+with(obj_asQTEPlayer)
+{
+    instance_destroy();
+}
+obj_asBGChanger.alarm[1] = 1;
+event_user(0);
+
+#event alarm11
+instance_create(0,0,obj_asComboController);
+event_user(0);
+
+#event step
+if(start)
+{
+    if(keyboard_lastkey != 0)
+    {
+        var currentQTE = ds_queue_dequeue(qteQueue);
+        if(keyboard_lastkey == currentQTE.keycode)
+        {
+            currentQTE.alarm[0] = 1;
+            keyboard_lastkey = 0;
+            if(ds_queue_size(qteQueue) == 0)
+            {
+                start = false;
+                alarm[10] = 1;
+            }
+        }
+        else
+        {
+            currentQTE.alarm[1] = 1;
+            keyboard_lastkey = 0;
+            start = false;
+            alarm[11] = 1;
+        }
+    }
+}
+
+#event other_room_end
+ds_queue_destroy(qteQueue);
+
+#event other_user0
+with(obj_asQTEElement)
+{
+    alarm[10] = 1;
+}
+obj_asQTECountDown.stop = true;
+obj_asQTECountDown.alarm[1] = 1;
+instance_destroy();

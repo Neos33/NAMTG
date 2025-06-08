@@ -1,0 +1,89 @@
+// 2025-06-08 11:15:02
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+q = ds_list_create();
+
+msgGap = 0;
+msgInterval = 32;
+
+msgTop = 432;
+msgBottom = 560;
+
+msg = 0;
+msgAlpha = 0;
+qLen = 0;
+top = 0;
+
+#event destroy
+ds_list_destroy(q);
+
+#event other_room_start
+global.isAddMsg = true;
+global.msgController = obj_pokemonBattleDialog;
+player.depth = -1005
+
+#event other_room_end
+global.isAddMsg = false;
+global.msgController = noone;
+player.depth = -15;
+
+#event other_user0
+//enqueue
+ds_list_add(q, msg);
+msgAlpha = 0;
+msgGap += 32;
+
+qLen = ds_list_size(q);
+if(qLen > 5)
+{
+    ds_list_delete(q,0);
+}
+
+#event draw
+draw_set_color(c_white);
+draw_rectangle(view_xview[1], view_yview[1], view_xview[1] + view_wview[1], view_yview[1] + view_hview[1], false);
+draw_set_color(c_black);
+draw_set_alpha(1);
+for(i = 0; i < 3; i += 1)
+{
+    draw_rectangle(view_xview[1] + i, view_yview[1] + i, view_xview[1] + view_wview[1] - i, view_yview[1] + view_hview[1] - i, true);
+}
+
+qLen = ds_list_size(q);
+if(qLen > 0)
+{
+    top = 464 + msgInterval * (4 - qLen);
+    if(msgGap > 0)
+    {
+        top += msgGap;
+        msgGap -= 2;
+    }
+    draw_set_color(c_black);
+    draw_set_font(fontPokemonDialog);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    
+    for(var i = 0; i < qLen; i += 1)
+    {
+        var fy = top + i * msgInterval;
+        var fx = 48;
+        if(fy < msgTop)
+        {
+            draw_set_alpha(RangeClamp((msgTop - fy) / msgInterval, 0, 1));
+        }
+        else if(fy > msgBottom)
+        {
+            draw_set_alpha(RangeClamp((fy - msgBottom) / msgInterval, 0, 1));
+        }
+        else
+        {
+            draw_set_alpha(1);
+        }
+        draw_text(fx,fy,ds_list_find_value(q, i));
+    }
+}
+
+draw_reset_color();

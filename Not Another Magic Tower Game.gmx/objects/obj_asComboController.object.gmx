@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_asQTEPlayer.x &gt; 400)
+            <string>
+targetX = 0;
+comboXScale = 0;
+
+if(obj_asQTEPlayer.x &gt; 400)
 {
     targetX = RangeClamp(obj_asQTEPlayer.x  + 128, 0, 800);
     comboXScale = 1;
@@ -140,7 +144,7 @@ alarm[3] = 25;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>combo = instance_create(obj_armoredSoldier_combat.x, obj_armoredSoldier_combat.y - 16, obj_asCombo);
+            <string>var combo = instance_create(obj_armoredSoldier_combat.x, obj_armoredSoldier_combat.y - 16, obj_asCombo);
 combo.hspeed = -comboXScale * 0.5;
 combo.vspeed = -0.1;
 obj_asQTEPlayer.hspeed = -comboXScale * 0.5;
@@ -169,7 +173,9 @@ alarm[4] = 100;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(comboXScale &gt; 0)
+            <string>var flash;
+
+if(comboXScale &gt; 0)
 {
     flash = instance_create(obj_armoredSoldier_combat.x - 16, obj_armoredSoldier_combat.y, obj_levelupFlash);
 }

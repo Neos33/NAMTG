@@ -36,6 +36,22 @@ spr[0] = spr_darkWarrior_bomb_fire_1;
 spr[1] = spr_darkWarrior_bomb_fire_2;
 spr[2] = spr_darkWarrior_bomb_fire_3;
 sprCount = 3;
+
+
+
+start = false;
+leftBombWall = false;
+rightBombWall = false;
+upBombWall = false;
+downBombWall = false;
+
+
+p = 0;
+
+leftP = 0;
+rightP = 0;
+upP = 0;
+downP = 0;
 </string>
           </argument>
         </arguments>
@@ -137,7 +153,7 @@ else
     sound_fix(sndFire1);
     if(leftBombWall)
     {
-        bombWall = instance_position(x-48-leftP * 32,y-16,obj_dwBombWall);
+        var bombWall = instance_position(x-48-leftP * 32,y-16,obj_dwBombWall);
         if(bombWall)
         {
             bombWall.alarm[0] = 1;
@@ -146,7 +162,7 @@ else
     }
     if(rightBombWall)
     {
-        bombWall = instance_position(x+16+rightP * 32,y-16,obj_dwBombWall);
+        var bombWall = instance_position(x+16+rightP * 32,y-16,obj_dwBombWall);
         if(bombWall)
         {
             bombWall.alarm[0] = 1;
@@ -155,7 +171,7 @@ else
     }
     if(upBombWall)
     {
-        bombWall = instance_position(x-16,y-48-upP * 32,obj_dwBombWall);
+        var bombWall = instance_position(x-16,y-48-upP * 32,obj_dwBombWall);
         if(bombWall)
         {
             bombWall.alarm[0] = 1;
@@ -164,16 +180,16 @@ else
     }
     if(downBombWall)
     {
-        bombWall = instance_position(x-16,y+16+downP * 32,obj_dwBombWall);
+        var bombWall = instance_position(x-16,y+16+downP * 32,obj_dwBombWall);
         if(bombWall)
         {
             bombWall.alarm[0] = 1;
         }
         downBombWall = false;
     }
-    h = instance_create(x-16-leftP * 32, y-16, obj_dwBombDmg);
+    var h = instance_create(x-16-leftP * 32, y-16, obj_dwBombDmg);
     h.image_xscale = leftP + rightP + 1;
-    v = instance_create(x-16, y-16-upP * 32, obj_dwBombDmg);
+    var v = instance_create(x-16, y-16-upP * 32, obj_dwBombDmg);
     v.image_yscale = upP + downP + 1;
     alarm[1] = 30;
     alarm[2] = 30;
@@ -200,10 +216,10 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>left = x - p * 32 - 16;
-right = x + p * 32 + 16;
-up = y - p * 32 - 16;
-down = y + p * 32 + 16;
+            <string>var left = x - p * 32 - 16;
+var right = x + p * 32 + 16;
+var up = y - p * 32 - 16;
+var down = y + p * 32 + 16;
 
 if(collision_line(x,y,left+16,y,block,true,true) || collision_line(x,y,left+16,y,obj_dwBombWall,true,true))
 {
@@ -320,7 +336,7 @@ else
             <kind>1</kind>
             <string>draw_current();
 //if(!start) exit;
-for(i = 1; i &lt;= leftP; i += 1)
+for(var i = 1; i &lt;= leftP; i += 1)
 {
     if(i &lt; p)
     {
@@ -332,7 +348,7 @@ for(i = 1; i &lt;= leftP; i += 1)
     }
 }
 
-for(i = 1; i &lt;= rightP; i += 1)
+for(var i = 1; i &lt;= rightP; i += 1)
 {
     if(i &lt; p)
     {
@@ -344,7 +360,7 @@ for(i = 1; i &lt;= rightP; i += 1)
     }
 }
 
-for(i = 1; i &lt;= upP; i += 1)
+for(var i = 1; i &lt;= upP; i += 1)
 {
     if(i &lt; p)
     {
@@ -356,7 +372,7 @@ for(i = 1; i &lt;= upP; i += 1)
     }
 }
 
-for(i = 1; i &lt;= downP; i += 1)
+for(var i = 1; i &lt;= downP; i += 1)
 {
     if(i &lt; p)
     {

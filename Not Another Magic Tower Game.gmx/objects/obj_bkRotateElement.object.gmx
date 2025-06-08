@@ -48,6 +48,9 @@ ox = obj_burningKnight_combat.x;
 oy = obj_burningKnight_combat.y;
 sound_fix(sndFire1);
 isStable = true;
+
+
+rDir = 0;
 </string>
           </argument>
         </arguments>

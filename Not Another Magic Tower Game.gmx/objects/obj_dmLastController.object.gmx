@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>alarm[0] = 50;
+
+
+dis = 0;
 </string>
           </argument>
         </arguments>

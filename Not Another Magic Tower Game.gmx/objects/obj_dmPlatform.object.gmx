@@ -51,9 +51,9 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>sound_fix(sndbrake);
-part1 = instance_create(x+8,y+8,obj_dmPlatformPart);
+var part1 = instance_create(x+8,y+8,obj_dmPlatformPart);
 part1.hspeed = -1;
-part2 = instance_create(x+8,y+8,obj_dmPlatformPart);
+var part2 = instance_create(x+8,y+8,obj_dmPlatformPart);
 part2.hspeed = 1;
 part2.image_index = 1;
 </string>

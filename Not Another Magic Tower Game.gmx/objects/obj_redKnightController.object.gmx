@@ -38,6 +38,11 @@ normalSpd = -20;
 
 coinGet = 0;
 straightCount = 0;
+
+
+dashStep = 0;
+partWidth = 0;
+meter = 0;
 </string>
           </argument>
         </arguments>
@@ -417,9 +422,9 @@ instance_create(400,createY - 304 + 32,obj_redKnightCoin);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; 400 - 190; i += tileWidth)
+            <string>for(var i = 0; i &lt; 400 - 190; i += tileWidth)
 {
-    for(j = -tileWidth; j &lt; 608; j += tileWidth)
+    for(var j = -tileWidth; j &lt; 608; j += tileWidth)
     {
         if((i + tileWidth) &lt; (400 - 190))
         {
@@ -434,9 +439,9 @@ instance_create(400,createY - 304 + 32,obj_redKnightCoin);
 }
 
 
-for(i = 800; i &gt; 400 + 190; i -= tileWidth)
+for(var i = 800; i &gt; 400 + 190; i -= tileWidth)
 {
-    for(j = -tileWidth; j &lt; 608; j += tileWidth)
+    for(var j = -tileWidth; j &lt; 608; j += tileWidth)
     {
         if(i &gt; 400 + 190 + tileWidth)
         {

@@ -1,0 +1,112 @@
+// 2025-06-08 12:43:43
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+image_speed = 0.5;
+image_alpha = 0;
+hp = 50;
+
+
+over = false;
+dark = false;
+
+#event destroy
+with(bullet)
+{
+    trace = false;
+}
+
+#event alarm9
+if(image_xscale > 0)
+{
+    image_xscale -= 0.05;
+    image_yscale -= 0.05;
+    alarm[9] = 1;
+}
+else
+{
+    event_user(1);
+}
+
+#event alarm10
+r = random_range(20,50);
+ang = random_range(0,360);
+instance_create(x + lengthdir_x(r,ang), y + lengthdir_y(r,ang),obj_dsCrystallExplodeEffect);
+alarm[10] = 1;
+
+#event alarm11
+alarm[10] = 0;
+alarm[9] = 15;
+
+#event step
+if(!over)
+{
+    if(image_alpha < 0.8)
+    {
+        image_alpha += 0.02;
+    }
+    else
+    {
+        over = true;
+        alarm[0] = 50;
+    }
+}
+/*else
+{
+    if(destroy)
+    {
+        if(image_alpha > 0)
+        {
+            image_alpha -= 0.02;
+        }
+        else
+        {
+            instance_destroy();
+        }
+    }
+}*/
+if(!instance_exists(obj_darkSummoner_combat))
+{
+    if(!dark)
+    {
+        instance_destroy();
+    }
+}
+else
+{
+    x = obj_darkSummoner_combat.x;
+    y = obj_darkSummoner_combat.y;
+}
+
+
+
+
+#event collision:bullet
+/*with(other)
+{
+    instance_destroy();
+}
+
+if(hp > 0)
+{
+    hp -= RangeClamp(other.energy,1,2.25);
+}
+else
+{
+    hp = 0;
+    instance_destroy();
+}
+sound_fix(sndBossHit);
+
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);
+/*draw_set_alpha(1);
+draw_set_color(c_black);
+draw_rectangle(x-16,y-3,x+16,y+3,false);
+draw_set_color(merge_color(c_red,c_green,hp/50));
+draw_rectangle(x-15,y-2,x-15 + 30*hp/50,y+2,false);

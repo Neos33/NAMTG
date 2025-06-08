@@ -1,0 +1,28 @@
+// 2025-06-08 11:20:32
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+sound_fix(sndfasfhappen);
+alarm[0] = 40;
+alarm[2] = 10;
+
+c1 = 0;
+c2 = 0;
+y1 = 0;
+y2 = 0;
+
+#event alarm0
+c1 = instance_create(370, y1, obj_goldEvilSlimeCannon);
+c2 = instance_create(370, y2, obj_goldEvilSlimeCannon);
+alarm[1] = 10;
+
+#event alarm1
+instance_destroy();
+
+#event alarm2
+y1 = random_range(140, 196);
+y2 = random_range(284, 340);
+instance_create(370, y1, obj_pikachu); 
+instance_create(370, y2, obj_pikachu); 

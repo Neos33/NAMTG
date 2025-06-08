@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>image_speed = 1/8;
 image_alpha = 0;
+
+startAngle = 0;
 </string>
           </argument>
         </arguments>
@@ -49,10 +51,10 @@ image_alpha = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>r = obj_dsWhiteController.r;
-angle = obj_dsWhiteController.angle;
-scale = r/200 *2 + 1;
-alpha = 1-r/200;
+            <string>var r = obj_dsWhiteController.r;
+var angle = obj_dsWhiteController.angle;
+var scale = r/200 *2 + 1;
+var alpha = 1-r/200;
 image_xscale = scale;
 image_yscale = scale;
 image_alpha = alpha*0.8;

@@ -1,0 +1,68 @@
+// 2025-06-08 12:52:38
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_diaSpike;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 0;
+isStable = true;
+target = obj_darkSummoner_combat;
+instance_create(x,y,obj_dsSpikeMask);
+
+speed = -8;
+image_index = 8;
+
+redIndex = 0;
+blueIndex = 5;
+greenIndex = 3;
+yellowIndex = 1;
+purpleIndex = 7;
+
+
+stop = false;
+
+#event collision:player
+if(image_alpha > 0.8)
+{
+    event_inherited();
+}
+
+#event collision:bullet
+/*if(stop)
+    exit;
+other.x = x;
+if(instance_exists(target))
+{
+    other.trace = true;
+    other.target = target;
+    with(other)
+    {
+        alarm[0] = 100;
+    }
+    //other.color = color;
+}
+else
+{
+    other.direction = 90;
+    other.image_angle = 90;
+}
+
+#event other_outside
+if(!instance_exists(obj_darkSummoner_combat))
+{
+    instance_destroy();
+}
+if(x <= -16)
+{
+    x = 816;
+}
+
+
+#event other_user0
+stop = true;
+
+#event draw
+draw_sprite_part_ext(sprite_index,image_index,0,0,sprite_width,sprite_height/2,x-22,y-32,image_xscale,image_yscale,c_white,image_alpha);

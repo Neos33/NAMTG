@@ -79,7 +79,7 @@ instance_destroy();
 var angle,length,xfrom,yfrom, angle2,length2; 
 xfrom=400; //Set the X position to start the branch from
 yfrom=y //Set the Y position to start the branch from
-    for(i1=0;i1&lt;primary_branches;i1+=1){ //Do this again and again, for each primary branch there is
+    for(var i1=0;i1&lt;primary_branches;i1+=1){ //Do this again and again, for each primary branch there is
         length=random((room_height/primary_branches)/2)+(room_height/primary_branches)/2 //Pick a random length for this branch
         angle=270-spikiness+random(spikiness*2); //Pick a random angle for this branch
         draw_line(xfrom,yfrom,xfrom+lengthdir_x(length,angle),yfrom+lengthdir_y(length,angle)); //Draw the branch from the end of the previous branch to the chosen new position (according to length/angle)

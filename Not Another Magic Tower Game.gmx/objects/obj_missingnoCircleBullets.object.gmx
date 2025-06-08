@@ -43,6 +43,9 @@
 isStable = true;
 image_xscale = 0.8;
 image_yscale = 0.8;
+
+cx = 0;
+cy = 0;
 </string>
           </argument>
         </arguments>

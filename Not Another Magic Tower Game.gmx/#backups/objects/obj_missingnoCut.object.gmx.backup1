@@ -1,0 +1,71 @@
+// 2025-06-08 11:25:01
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_missingnoCut;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+isStable = true;
+image_speed = 0.8;
+px = x;
+py = y;
+alarm[3] = 1;
+
+isLead = false;
+parent = 0;
+
+#event destroy
+if(!isLead)
+{
+    with(parent)
+    {
+        instance_destroy();
+    }
+}
+
+#event alarm3
+if(direction > 180)
+{
+    type = 1;
+}
+
+#event step
+if(isLead)
+{
+    if(x > 300)
+    {
+        if(type == 0)
+        {
+            motion_add(point_direction(x,y,player.x + 32,player.y + 32), 1);
+        }
+        else
+        {
+            motion_add(point_direction(x,y,player.x - 32,player.y - 32), 1);
+        }        
+    }
+}
+else
+{
+    direction = point_direction(x,y,parent.px,parent.py);
+    x = parent.px;
+    y = parent.py;
+}
+image_angle = direction - 90;
+
+#event step_end
+px = x;
+py = y;
+
+#event collision:player
+if(image_xscale > 1.6)
+{
+    event_inherited();
+}
+
+#event other_outside
+if(!hasChild)
+{
+    instance_destroy();
+}

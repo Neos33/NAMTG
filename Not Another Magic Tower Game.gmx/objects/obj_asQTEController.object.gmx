@@ -29,6 +29,9 @@
 corrent = true;
 alarm[0] = 50;
 sound_play(sndgras);
+
+
+start = false;
 </string>
           </argument>
         </arguments>
@@ -160,9 +163,9 @@ keyboard_lastkey = 0;
           <argument>
             <kind>1</kind>
             <string>sound_play(sndFire1);
-for(i = 0; i &lt; 7; i += 1)
+for(var i = 0; i &lt; 7; i += 1)
 {
-    qte = instance_create(400 + 40 * (i - 3), 352, obj_asQTEElement);
+    var qte = instance_create(400 + 40 * (i - 3), 352, obj_asQTEElement);
     ds_queue_enqueue(qteQueue, qte);
 }
 instance_create(0,0,obj_asQTECountDown);
@@ -193,7 +196,7 @@ alarm[1] = 1;
 {
     if(keyboard_lastkey != 0)
     {
-        currentQTE = ds_queue_dequeue(qteQueue);
+        var currentQTE = ds_queue_dequeue(qteQueue);
         if(keyboard_lastkey == currentQTE.keycode)
         {
             currentQTE.alarm[0] = 1;

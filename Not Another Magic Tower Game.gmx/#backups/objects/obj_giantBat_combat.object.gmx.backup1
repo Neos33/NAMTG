@@ -1,0 +1,214 @@
+// 2025-06-08 10:55:27
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_variationBat_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Giant Bat";
+image_speed = 1/8;
+x = 400; 
+y = 200;
+alarm[3] = 50;
+alarm[4] = 50;
+
+transformCount = 0;
+transformInterval = 0;
+transformed = false;
+
+juhua = false;
+targetScale = 0;
+fireballCount = 0;
+energyBallCount = 0;
+coolDownTime = 0;
+summon = false;
+summonStatus = 0;
+
+hasAchievement = false;
+summonedCount = 0;
+
+
+
+#event destroy
+with(obj_giantBatSummoned1)
+{
+    instance_destroy();
+}
+with(obj_giantBatSummoned2)
+{
+    instance_destroy();
+}
+ebCount = instance_number(obj_giantBat_childBulletCreator);
+if(ebCount >= 3 && summonKilled >= 3)
+{
+    hasAchievement = true;
+}
+event_inherited();
+
+#event alarm3
+var c1 = instance_create(random_range(32, 128), random_range(160, 304), obj_giantBat_childAppearEffect);
+c1.targetX = 64 + 16;
+c1.targetY = 416 + 16;
+
+#event alarm4
+var c2 = instance_create(800 - random_range(32, 128), random_range(160, 304), obj_giantBat_childAppearEffect);
+c2.targetX = 736 - 16;
+c2.targetY = 416 + 16;
+
+#event alarm5
+sound_fix(sndIce1);
+image_xscale = 1;
+image_yscale = 1;
+sprite_index = spr_giantBatTransformed;
+if(transformCount < 4)
+{    
+    alarm[6] = 5;
+    alarm[5] = transformInterval;
+    transformInterval -= 10;
+    transformCount += 1;
+}
+else
+{
+    juhua = true;
+}
+
+#event alarm6
+image_xscale = targetScale;
+image_yscale = targetScale;
+sprite_index = spr_variationBat_combat;
+alarm[7] = 30;
+
+#event alarm7
+sound_fix(sndMonster);
+obj_giantBatDashCreator.alarm[1] = 0;
+instance_create(x,y,obj_giantBatShaker);
+instance_create(x,y,obj_giantBatBulletCreator);
+fireballCount = 10;
+alarm[10] = 70;
+
+#event alarm10
+if(fireballCount > 0)
+{
+    fireballCount -= 1;
+    instance_create(x,y,obj_giantBatFireCore);
+    alarm[10] = 15;
+}
+else
+{
+    energyBallCount = 3;
+    alarm[11] = 80;
+}
+
+#event alarm11
+if(energyBallCount > 0)
+{
+    if(!sound_isplaying(sndQuake))
+    {
+        sound_fix(sndQuake);
+    }
+    energyBallCount -= 1;
+    var ball = instance_create(x,y,obj_giantBatEnergyBall);
+    ball.speed = 1.5;
+    ball.direction = point_direction(x,y,player.x, player.y);
+    alarm[11] = 150;
+}
+else
+{
+    coolDownTime = 50;
+    summon = true;
+    summonStatus = 1;
+}
+
+#event step
+if(!transformed)
+{
+    if(targetScale > 3)
+    {
+        if(global.combatTime mod (13 - targetScale) == 0)
+        {              
+            var scale = random_range(1,2);
+            var b = instance_create(x,y,obj_giantBatBullet1);
+            b.speed = random_range(3,5);
+            b.direction = random_range(0,360);
+            b.image_xscale = scale;
+            b.image_yscale = scale;
+        }
+    }
+    if(image_xscale < targetScale)
+    {
+        image_xscale += 0.01;
+        image_yscale += 0.01;
+    }
+    else
+    {
+        if(targetScale == 10)
+        {
+            transformed = true;
+            transformInterval = 50;
+            transformCount = 0;
+            alarm[5] = 1;
+        }
+    }
+}
+else
+{
+    if(summon)
+    {
+        if(coolDownTime > 0)
+        {
+            coolDownTime -= 1;
+        }
+        else
+        {
+            summonedCount += 1;
+            var summonX = random_range(150,650);
+            var summonY = random_range(100, 200);
+            var summonEffect = instance_create(summonX, summonY, obj_giantBatSummonEffect);
+            sound_fix(snd_touhou_twinkle3);
+            if(summonedCount < 3)
+            {
+                summonEffect.summonObj = obj_giantBatSummoned1;
+            }
+            else
+            {
+                summonEffect.summonObj = choose(obj_giantBatSummoned1, obj_giantBatSummoned2);
+            }
+            coolDownTime = RangeClamp(150 - summonedCount * 5, 100, 150);
+        }
+    }
+}
+
+#event collision:player
+if(transformed && juhua)
+{
+    event_inherited();
+}
+
+#event collision:bullet
+if(transformed && juhua)
+{
+    if(point_distance(x,y,other.x,other.y) < 120)
+    {
+        event_inherited();
+    }
+}
+else
+{
+    sound_fix(sndIce1);
+    with(other)
+    {
+        instance_destroy();
+    }
+    b = instance_create(x,y,obj_monsterHPBlock);
+    b.image_xscale = image_xscale / 2 + 0.3;
+    b.image_yscale = image_yscale / 2 + 0.3;
+}
+
+#event other_user15
+if(hasAchievement && !global.achievements[68])
+{
+    var ch = instance_create(0,608,obj_achievements);
+    ch.index = 68;
+    global.achievements[68] = 1;
+}

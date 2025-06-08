@@ -1,0 +1,26 @@
+// 2025-06-08 11:32:24
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+alarm[3] = 20;
+
+#event alarm3
+var randomX = view_xview[0] + random_range(64, view_wview[0] - 64);
+var randomY = view_yview[0] + random_range(64, view_hview[0] - 64);
+//instance_create(randomX, randomY + 40,obj_bdmDeathClawAppearEffect);
+if(point_distance(randomX, randomY, player.x, player.y) < 96)
+{
+    var dir = point_direction(player.x, player.y, randomX, randomY);
+    randomX = player.x + lengthdir_x(96, dir);
+    randomY = player.y + lengthdir_y(96, dir);
+}
+instance_create(randomX, randomY,obj_bdmDeathClaw);
+alarm[3] = 40;
+
+#event step
+if(!instance_exists(obj_blackDevilMagician_combat))
+{
+    instance_destroy();
+}

@@ -1,0 +1,49 @@
+// 2025-06-08 11:46:21
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_bkGradient;
+uses_physics = false;
+
+#event create
+alarm[3] = 1;
+image_yscale = 16 / sprite_height;
+image_alpha = 0.5;
+ox = x;
+oy = y;
+sound_fix(sndLaser1);
+
+
+pSpd = 0;
+path = 0;
+interval = 0;
+
+#event alarm3
+if(instance_exists(obj_burningKnight_combat))
+{
+    pSpd = 25 + 10 * obj_burningKnight_combat.oHP / obj_burningKnight_combat.hp;
+}
+else
+{
+    pSpd = 125;
+}
+path_start(path,pSpd,0,1);
+
+#event alarm4
+boom = instance_create(x,y,obj_bkPathBoom);
+boom.image_xscale = image_xscale / 200;
+boom.image_angle = image_angle; 
+instance_destroy();
+
+#event step
+image_xscale = point_distance(x,y,ox,oy);
+
+#event other_end_of_path
+if(instance_exists(obj_burningKnight_combat))
+{
+    interval = 15 + 15 * obj_burningKnight_combat.hp / obj_burningKnight_combat.oHP;
+}
+else
+{
+    interval = 15;
+}
+alarm[4] = interval;

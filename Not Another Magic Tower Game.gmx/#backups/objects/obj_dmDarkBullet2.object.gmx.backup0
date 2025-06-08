@@ -1,0 +1,61 @@
+// 2025-06-08 12:19:44
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_dmDarkBullet;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+xList = ds_list_create();
+yList = ds_list_create();
+direction = 90;
+//direction = choose(random_range(-45,0),random_range(180,225));
+speed = random_range(0,1);
+fullSize = 10;
+gap = 1;
+alarm[3] = gap;
+alarm[4] = 75;
+image_xscale = 0.7;
+image_yscale = 0.7;
+ds_list_add(xList,x);
+ds_list_add(yList,y);
+
+
+size = 0;
+
+#event alarm3
+size = ds_list_size(xList);
+if(size == fullSize)
+{
+    ds_list_delete(xList,0);
+    ds_list_delete(yList,0);
+}
+ds_list_add(xList,x);
+ds_list_add(yList,y);
+alarm[3] = gap;
+
+#event step
+speed += 0.2;
+/*
+    dir = point_direction(x,y,player.x,player.y);
+    if(dir < 180)
+    {
+        motion_add(dir,0.25);
+    }
+
+#event other_outside
+if(y < 0)
+{
+    instance_destroy();
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+for(var i = 0; i < size; i+=1)
+{
+    alpha = 1/(size+1)*(i+1);
+    draw_sprite_ext(sprite_index,image_index,ds_list_find_value(xList,i),ds_list_find_value(yList,i),image_xscale,image_yscale,image_angle,image_blend,alpha * image_alpha);
+}
+//draw_current();
+draw_set_blend_mode(bm_normal);

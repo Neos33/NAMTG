@@ -96,7 +96,7 @@ isStable = true;
 {
     repeat(amount)
     {
-        b = instance_create(x,607,obj_dsCGBulletCommon);
+        var b = instance_create(x,607,obj_dsCGBulletCommon);
         b.speed = random_range(minSpd, maxSpd);
     }
     instance_destroy();

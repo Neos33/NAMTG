@@ -61,6 +61,23 @@ else
 }
 
 alarm[3] = 50;
+
+
+
+drawGrid = false;
+
+pathCrossWall = false;
+wallCrossChange = false;
+toTarget = false;
+crazy = false;
+superCrazy = false;
+
+toItem = false;
+
+path = 0;
+cellX = 0;
+cellY = 0;
+
 </string>
           </argument>
         </arguments>
@@ -113,23 +130,23 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>fixX = round((x - 16) / 32);
-fixY = round((y - 16) / 32);
-px = 32 * fixX + 16;
-py = 32 * fixY + 16;
+            <string>var fixX = round((x - 16) / 32);
+var fixY = round((y - 16) / 32);
+var px = 32 * fixX + 16;
+var py = 32 * fixY + 16;
 if(superCrazy)
 {
-    for(i = 0; i &lt; 8; i += 1)
+    for(var i = 0; i &lt; 8; i += 1)
     {
-          b = instance_create(px,py,obj_dwFireBall);
+          var b = instance_create(px,py,obj_dwFireBall);
           b.direction = i * 45;
     }
 }
 else
 {
-    for(i = 0; i &lt; 4; i += 1)
+    for(var i = 0; i &lt; 4; i += 1)
     {
-          b = instance_create(px,py,obj_dwFireBall);
+          var b = instance_create(px,py,obj_dwFireBall);
           b.direction = i * 90;
     }
 }
@@ -158,13 +175,13 @@ alarm[4] = 50;
             <kind>1</kind>
             <string>if(instance_number(obj_darkWarrior_bomb) &lt; bombCount)
 {
-    factX = round((x - 16) / 32);
-    factY = round((y - 16) / 32);
-    bx = 32 * factX + 16;
-    by = 32 * factY + 16;
+    var factX = round((x - 16) / 32);
+    var factY = round((y - 16) / 32);
+    var bx = 32 * factX + 16;
+    var by = 32 * factY + 16;
     if(!instance_position(bx,by,block) &amp;&amp; !instance_position(bx,by,obj_dwBombWall))
     {
-        bomb = instance_create(bx, by, obj_darkWarrior_bomb);
+        var bomb = instance_create(bx, by, obj_darkWarrior_bomb);
         bomb.p = powerCount;
         alarm[3] = 30;
     }
@@ -383,8 +400,8 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gridIndX = (cellX - 192)/32;
-gridIndY = (cellY - 0)/32; 
+            <string>var gridIndX = (cellX - 192)/32;
+var gridIndY = (cellY - 0)/32; 
 mp_grid_clear_cell(gridAll,gridIndX,gridIndY);
 /*fix = instance_create(0,0,obj_dwGridFix);
 fix.fx = gridIndX;
@@ -426,7 +443,7 @@ else
 path_set_closed(path,false);
 path_set_kind(path,0);
 path_start(path,spd,0,1);
-tt = instance_create(targetX, targetY, obj_dwTarget);
+var tt = instance_create(targetX, targetY, obj_dwTarget);
 tt.first = true;
 </string>
           </argument>
@@ -450,7 +467,7 @@ tt.first = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>item = instance_find(obj_darkWarrior_item,0);
+            <string>var item = instance_find(obj_darkWarrior_item,0);
 targetX = item.x;
 targetY = item.y;
 event_user(2);
@@ -484,8 +501,8 @@ toItem = true;
 targetY = 16;
 while(instance_position(targetX - 16, targetY - 16, block) || instance_position(targetX - 16, targetY - 16, obj_dwBombWall) || (targetX == x &amp;&amp; targetY == y))
 {
-    txIndex = irandom_range(0,16);
-    tyIndex = irandom_range(0,16);
+    var txIndex = irandom_range(0,16);
+    var tyIndex = irandom_range(0,16);
     targetX = 240 + 32 * txIndex;
     targetY = 48 + 32 * tyIndex;
 }

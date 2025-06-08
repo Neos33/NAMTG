@@ -29,6 +29,11 @@
 cooldown = false;
 damage = 1;
 //hp = 10;
+
+mixedAlpha = 0;
+name = 0;
+spIndex = 0;
+tdPath = false;
 </string>
           </argument>
         </arguments>

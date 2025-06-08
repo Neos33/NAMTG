@@ -41,6 +41,7 @@ else
     speed = random_range(1,3) * cos(direction - 270); 
 }*/
 isStable = true;
+water = false;
 </string>
           </argument>
         </arguments>
@@ -106,18 +107,18 @@ else
     {
         if(other.x &lt; 400)
         {
-            fEffect = instance_create(other.x + 32, y, obj_giantBatFire);
+            var fEffect = instance_create(other.x + 32, y, obj_giantBatFire);
             fEffect.image_angle = -90;
         }
         else
         {
-            fEffect = instance_create(other.x, y, obj_giantBatFire);
+            var fEffect = instance_create(other.x, y, obj_giantBatFire);
             fEffect.image_angle = 90;
         }
     }
     else
     {
-        fEffect = instance_create(x, other.y, obj_giantBatFire);
+        var fEffect = instance_create(x, other.y, obj_giantBatFire);
     }
     water = true;
     alarm[11] = 1;

@@ -1,0 +1,222 @@
+// 2025-06-08 11:27:52
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_swordMaster_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Sword Master";
+image_speed = 1/8;
+x = 608;
+y = 368;
+alarm[3] = 30;
+ach = true;
+
+
+sx = 0;
+sy = 0;
+tx = 0;
+ty = 0;
+ind = 0;
+bounce = false;
+bounceCount = 0;
+p = 0;
+len = 0;
+countdown = 0;
+evtInd = 0;
+#event alarm3
+if(player_is_alive())
+{
+    instance_create(x + sign(player.x - x) + 16, y, obj_swordMasterThrowingSword);
+    sx = x;
+    sy = y;
+}
+
+#event alarm4
+event_user(5);
+
+#event alarm5
+tx = player.x - 64 * sign(400 - player.x);
+ty = player.y - 64;
+x = tx;
+y = ty;
+ind = 6;
+event_user(1);
+
+
+#event alarm6
+ind = 7;
+event_user(3);
+if(!bounce)
+{
+    bounce = true;
+    bounceCount = 5;
+}
+
+#event alarm7
+if(point_distance(x,y, tx, ty) > spd)
+{
+    move_towards_point(tx,ty,spd);
+    alarm[7] = 1;
+}
+else
+{
+    hspeed = 0;
+    vspeed = 0;
+    x = tx; 
+    y = ty;
+    alarm[10] = 1;
+}
+
+#event alarm10
+p = path_add();
+path_set_kind(p,1);
+path_set_precision(p,4);
+len = RangeClamp(player.x + random_range(-96, 96), 160, 640) - x;
+path_set_closed(p, false);
+path_add_point(p, x,y,100);
+path_add_point(p, x + len / 2,y - 32,100);
+path_add_point(p, x + len,y ,100);
+
+path_start(p, 8, 0, true);
+bounceCount -= 1;
+
+#event alarm11
+bounce = false;
+move_towards_point(400,80,15);
+status = 1;
+
+#event step
+if(keyboard_check_pressed(global.jumpbutton))
+{
+    ach = false;
+}
+if(status == 1)
+{
+    if(point_distance(x,y,400,80) < 15)
+    {
+        hspeed = 0;
+        vspeed = 0;
+        x = 400;
+        y = 80;
+        status = 0;
+        instance_create(x,y, obj_swordMasterThrower);
+        sound_fix(sndBurst1);
+    }
+}
+else if(status == 2)
+{
+    if(point_distance(x,y,tx, ty) < 15)
+    {
+        hspeed = 0;
+        vspeed = 0;
+        x = tx;
+        y = ty;
+        alarm[3] = 70;
+        status = 0;
+    }
+}
+else if(status == 3)
+{
+    if(countdown > 0)
+    {
+        countdown -= 1;
+    }
+    else
+    {
+        status = 0;
+        event_user(evtInd);
+    }
+}
+
+#event other_end_of_path
+dis = point_distance(player.x, player.y, x, y);
+if(dis < 128)
+{
+    if(bounceCount > 0)
+    {
+        ind = 10;
+    }
+    else
+    {
+        ind = 11;
+    }
+    //aDir = 90 - point_direction(x,y,player.x, player.y);
+    audio_playsound(sndExpMax);
+    if(player.y < 328)
+    {
+        evtInd = choose(3,4,5);
+        //event_user(choose(3,5));
+    }
+    else
+    {
+        evtInd = choose(4,6,7);
+        //event_user(irandom_range(4,7));
+    }
+    countdown = 15;
+    status = 3;
+}
+else
+{
+    if(bounceCount > 0)
+    {
+        alarm[10] = 1;;
+    }
+    else
+    {
+        alarm[11] = 1;
+    }
+}
+
+#event other_user0
+var ds = instance_create(x,y,obj_swordMasterDashStart);
+ds.tx = x;
+ds.ty = y;
+ds.dir = point_direction(sx,sy,tx,ty);;
+x = -32; 
+y = -32;
+
+
+#event other_user1
+var de = instance_create(x,y,obj_swordMasterDashEnd);
+de.tx = tx;
+de.ty = ty;
+de.dir = point_direction(tx,ty,sx,sy);
+de.ind = ind;
+x = tx; 
+y = ty;
+
+#event other_user2
+instance_create(x,y,obj_swordMasterDashEffect);
+
+#event other_user3
+hit = instance_create(x, y, obj_swordMasterHit3);
+hit.ind = ind;
+
+#event other_user4
+hit = instance_create(x + 10 * sign(x - player.x), y - 8, obj_swordMasterHit1);
+hit.ind = ind;
+
+#event other_user5
+dashHit = instance_create(x,y,obj_swordMasterDashHit);
+dashHit.ind = ind;
+
+#event other_user6
+hit = instance_create(x, y - 16, obj_swordMasterHit4);
+hit.ind = ind;
+
+#event other_user7
+hit = instance_create(x, y + 16, obj_swordMasterHit2);
+hit.ind = ind;
+
+#event other_user15
+if(ach)
+{
+    if(!global.achievements[72])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 72;
+        global.achievements[72] = 1;
+    }
+}

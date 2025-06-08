@@ -131,7 +131,7 @@ else
           <argument>
             <kind>1</kind>
             <string>draw_set_alpha(alpha);
-per = current/total;
+var per = current/total;
 draw_set_color(merge_color(c_red,c_green,per));
 draw_rectangle(player.x - width/2, player.y - 32, player.x - width/2 + width * per, player.y - 28, false);
 

@@ -1,0 +1,48 @@
+// 2025-06-08 11:31:04
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_swordMasterBoomEffect;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_xscale = 5;
+image_yscale = 5;
+image_alpha = 0.8;
+alarm[11] = 20;
+isStable = true;
+sound_fix(sndfasfboom);
+image_speed = 0.6;
+player.gravity = 0.4;
+if(abs(player.x - x) < 120)
+{
+    alarm[3] = 1;
+    alarm[4] = 10;
+}
+
+ind = 0;
+
+#event destroy
+obj_swordMaster_combat.alarm[ind] = 1;
+
+#event alarm3
+player.vspeed = -30;
+alarm[3] = 1;
+
+#event alarm4
+alarm[3] = 0;
+
+#event alarm11
+player.frozen = false;
+
+#event collision:player
+if(!global.cooldown && !global.godmod)
+{
+    global.monsterSuperCritical = true;
+    event_inherited();
+}
+
+
+#event other_animation_end
+instance_destroy();

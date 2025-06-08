@@ -1,0 +1,66 @@
+// 2025-06-08 11:57:01
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_birning_circle;
+uses_physics = false;
+
+#event create
+image_alpha=0.3;
+image_speed=0.3;
+alarm[0]=50;
+alarm[1]=50;
+image_xscale = 2;
+image_yscale = 2;
+
+
+smallcircle = 0;
+alpha = 0;
+
+#event alarm0
+if(smallcircle<100)
+{
+    smallcircle+=1;
+    instance_create(x+16,y+16,obj_minifirecircle);
+    alarm[0]=3;
+}
+else
+{
+    smallcircle=0;
+
+}
+
+
+#event alarm1
+with(obj_burningFasf_combat)path_start(path_burning_fasf,5,0,0);
+//alarm[2]=150;
+
+#event alarm2
+if(image_alpha>=0)
+{
+    image_alpha-=0.04;
+    alarm[2]=1;
+}
+else
+{
+    with(obj_burningFasf_combat)alarm[choose(4,6)]=70;
+    instance_destroy();
+}
+
+
+#event step
+if(image_alpha<1&& alpha=0)
+{image_alpha+=0.05;
+}
+else
+{alpha=1;
+}
+
+x=obj_burningFasf_combat.x+16;
+y=obj_burningFasf_combat.y+16;
+
+
+#event collision:bullet
+with(other)instance_destroy();
+
+#event other_end_of_path
+alarm[2]=5;

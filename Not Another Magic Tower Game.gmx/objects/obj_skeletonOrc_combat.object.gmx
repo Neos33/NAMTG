@@ -37,6 +37,11 @@ path[2] = pathSkeletonOrc3;
 path[3] = pathSkeletonOrc4;
 path[4] = pathSkeletonOrc5;
 alarm[11] = 15;
+
+circleCount = 0;
+viewSplitReady = false;
+viewSplit = false;
+endPath = false;
 </string>
           </argument>
         </arguments>
@@ -145,7 +150,7 @@ alarm[11] = 50;
     {
         sound_fix(snd_touhou_attack3);
     }
-    b = instance_create(x - 4 + 80 *cos(degtorad((15 - circleCount) * 13 + 70)), y - 80 * sin(degtorad((15 - circleCount) * 13 + 70)), obj_skeletonOrcSwordBullet1);
+    var b = instance_create(x - 4 + 80 *cos(degtorad((15 - circleCount) * 13 + 70)), y - 80 * sin(degtorad((15 - circleCount) * 13 + 70)), obj_skeletonOrcSwordBullet1);
     b.image_angle = point_direction(x - 4, y, b.x, b.y) - 90;
     b.dir = point_direction(x - 4, y, b.x, b.y);
     circleCount -= 1;

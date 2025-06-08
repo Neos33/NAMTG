@@ -1,0 +1,30 @@
+// 2025-06-08 11:30:10
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_swordMasterSwordHit2;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_xscale = 1.5 * sign(x-player.x);
+image_yscale = 1.5;
+hspeed = sign(player.x - x);
+if(hspeed == 0)
+{
+    hspeed = 1;
+}
+image_speed = 0.4;
+sx = x;
+sy = y;
+isStable = true;
+alarm[3] = 1;
+
+#event destroy
+obj_swordMaster_combat.alarm[ind] = 1;
+
+#event alarm3
+sound_fix(sndClaw1);
+
+#event other_animation_end
+instance_destroy();

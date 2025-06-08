@@ -52,6 +52,9 @@ blueIndex = 5;
 greenIndex = 3;
 yellowIndex = 1;
 purpleIndex = 7;
+
+
+stop = false;
 </string>
           </argument>
         </arguments>

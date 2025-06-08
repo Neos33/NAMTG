@@ -33,6 +33,10 @@ fireBallCount = 25;
 alarm[3] = 30;
 alarm[11] = 10;
 oy = y;
+
+
+
+multiShotRound = 0;
 </string>
           </argument>
         </arguments>
@@ -141,18 +145,18 @@ else
     if(multiShotRound mod 2== 0)
     {
         //sound_fix(snd_touhou_twinkle2);
-        for(i = 0; i &lt; 8; i+=1)
+        for(var i = 0; i &lt; 8; i+=1)
         {
-            f = instance_create(x + (i - 3.5) * 80, y, obj_bkFireBall1);
+            var f = instance_create(x + (i - 3.5) * 80, y, obj_bkFireBall1);
             f.direction = 90;
             f.speed = 5;
         }
     }
     else
     {
-        for(i = 0; i &lt; 7; i+=1)
+        for(var i = 0; i &lt; 7; i+=1)
         {
-            f = instance_create(x + (i - 3) * 80, y - 32, obj_bkFireBall1);
+            var f = instance_create(x + (i - 3) * 80, y - 32, obj_bkFireBall1);
             f.direction = 90;
             f.speed = 5;
         }

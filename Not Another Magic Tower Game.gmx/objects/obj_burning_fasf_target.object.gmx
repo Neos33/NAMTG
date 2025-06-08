@@ -29,6 +29,9 @@
 
 image_speed=0;
 alarm[0]=10;
+
+
+asdf = 0;
 </string>
           </argument>
         </arguments>

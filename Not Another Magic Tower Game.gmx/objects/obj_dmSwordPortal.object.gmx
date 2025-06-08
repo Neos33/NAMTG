@@ -86,7 +86,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sword = instance_create(x,y-60,obj_dmSword1);
+            <string>var sword = instance_create(x,y-60,obj_dmSword1);
 sound_fix(sndDark2)
 sword.top = y;
 alarm[2] = 50;

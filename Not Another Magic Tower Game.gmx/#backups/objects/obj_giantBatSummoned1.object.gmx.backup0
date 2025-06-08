@@ -1,0 +1,28 @@
+// 2025-06-08 10:59:15
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_variationBat_childBat2;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_speed = 1/8;
+
+#event destroy
+instance_create(x,y,obj_giantBatSummonedDestroyEffect);
+
+#event step
+if(player_is_alive() && (instance_exists(obj_giantBat_combat) || instance_exists(obj_tl_giantBat)))
+{
+    move_towards_point(player.x,player.y,1.5);
+}
+
+#event collision:bullet
+with(other)
+{
+    instance_destroy();
+}
+audio_playsound(sndDeath);
+obj_giantBat_combat.summonKilled += 1;
+instance_destroy();

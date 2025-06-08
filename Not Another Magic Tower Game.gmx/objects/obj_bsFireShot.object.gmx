@@ -41,6 +41,7 @@
             <kind>1</kind>
             <string>image_speed = 0.3;
 isStable = true;
+param = 0;
 if(x &lt; 400)
 {
     param = -1;

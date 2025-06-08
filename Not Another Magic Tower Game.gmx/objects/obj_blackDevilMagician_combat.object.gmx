@@ -40,6 +40,8 @@ instance_create(0,0,obj_bdmBlackBlink);
 instance_create(x,y,obj_bdmBlocker);
 
 
+
+tCount = 0;
 </string>
           </argument>
         </arguments>
@@ -87,7 +89,7 @@ instance_create(x,y,obj_bdmBlocker);
             <kind>1</kind>
             <string>if(tCount &gt; 0)
 {
-    pp = instance_create(x,y,obj_bdmEnergyBall3);
+    var pp = instance_create(x,y,obj_bdmEnergyBall3);
     pp.targetX = x + choose(-1,1) * random_range(50, 200);
     pp.targetY = y + choose(-1,1) * random_range(50, 200);
     tCount -= 1;

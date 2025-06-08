@@ -1,0 +1,199 @@
+// 2025-06-08 12:44:14
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_darkSummoner_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Dark Summoner";
+image_speed = 1/8;
+x = 400;
+y = 128;
+alarm[3] = 30;
+alarm[4] = 15;
+
+
+count = 0;
+move = false;
+colorful = false;
+hdir = 0;
+vdir = 0;
+hdis = 0;
+vdis = 0;
+
+
+crazy = false;
+
+#event destroy
+
+#event alarm3
+if(!player_is_alive())
+{
+    exit;
+}
+count += 1;
+
+switch(count)
+{
+    case 0: instance_create(x,y,obj_dsBlueCrystall);break;
+    case 1: instance_create(x,y,obj_dsRedCrystall);break;
+    case 2: instance_create(x,y,obj_dsGreenCrystall);break;
+    case 3: instance_create(x,y,obj_dsPurpleCrystal);break;
+    case 4: instance_create(x,y,obj_dsYellowCrystall);break;
+    case 5: alarm[5] = 1; break;
+    case 6: alarm[7] = 15; break;
+    default: break;
+}
+//instance_create(x,y, obj_dsPurpleCrystal); //choose(obj_dsRedCrystall, obj_dsBlueCrystall, obj_dsYellowCrystall, obj_dsGreenCrystall));
+
+if(count < 5)
+{
+ sound_fix(snd_touhou_1UP);
+}
+else if(count == 6)
+{
+ sound_fix(sndDark2);
+}
+/*e1 = instance_create(200,200,obj_dsLaserEmitter);
+e1.startAngle = 0;
+e1.stepAngle = 16;
+e2 = instance_create(600,200,obj_dsLaserEmitter);
+e2.startAngle = 180;
+e2.stepAngle = -16;
+
+#event alarm4
+instance_create(816,472,obj_dsSpike);
+
+#event alarm5
+instance_create(0,0,obj_dsWhiteController);
+
+#event alarm6
+targetX = RangeClamp(player.x, 96, 704);
+if(y > 80 && y <160)
+{
+    targetY = y + choose(random_range(20,30), random_range(-30,-20));
+}
+else
+{
+    if(y <= 80)
+    {
+        targetY = y + random_range(20,30);
+    }
+    else if(y >= 160)
+    {
+        targetY = y + random_range(-30,-20);
+    }
+}
+move = true;
+colorful = true;
+
+for(var i = -2; i <= 2; i+=1)
+{
+    instance_create(x +96*i, y - abs(i * 64), obj_dsWhiteBullet2);
+}
+
+alarm[6] = 50;
+
+#event alarm7
+instance_create(0,0,obj_dsBlack);
+alarm[11] = 50;
+
+#event alarm11
+instance_create(x,y,obj_dsDarkCrystal);
+with(obj_dsSpike)
+{
+    image_speed = 0;
+    image_blend = c_black;
+}
+
+#event step
+if(move)
+{
+    dis = point_distance(targetX, targetY, x, y);
+    if(dis < 2)
+    {
+        x = targetX;
+        y = targetY;
+        hspeed = 0;
+        vspeed = 0;
+        speed = 0;
+        move = false;
+        if(!colorful)
+        {
+            if(instance_exists(obj_dsCrystall))
+            {
+                with(obj_dsCrystall)
+                {
+                    alarm[0] = 30;
+                }
+            }
+            else
+            {
+                if(!crazy)
+                {
+                    alarm[3] = 30;
+                }
+            }
+        }
+    }
+    else
+    {
+        spd = sqrt(dis) / 2.5;
+        if(spd < 2)
+        {
+            spd = 2;
+        }
+        move_towards_point(targetX,targetY,spd);
+    }
+}
+
+#event other_user0
+if(x > 250 && x < 550)
+{
+    if(player.x < 200)
+    {
+        hdir = choose(choose(-1, 1), -1);
+    }
+    else if(player.x > 600)
+    {
+        hdir = choose(1, choose(-1, 1));
+    }
+    else
+    {
+        hdir = choose(-1, 1);
+    }
+}
+else
+{
+    if(x <= 250)
+    {
+        hdir = 1;
+    }
+    else if(x >= 550)
+    {
+        hdir = -1;
+    }
+}
+
+if(y > 80 && y <160)
+{
+    vdir = choose(-1, 1);
+}
+else
+{
+    if(y <= 80)
+    {
+        vdir = 1;
+    }
+    else if(y >= 160)
+    {
+        vdir = -1;
+    }
+}
+
+hdis =  random_range(70, 90);
+vdis = random_range(40,60);
+targetX = x + hdir * hdis;
+targetY = y + vdir * vdis;
+move = true;

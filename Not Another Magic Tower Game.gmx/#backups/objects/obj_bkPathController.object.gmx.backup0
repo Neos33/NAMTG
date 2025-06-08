@@ -1,0 +1,39 @@
+// 2025-06-08 11:46:01
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+currentPathIndex = 0;
+pathCount = 6;
+path[0] = pathBk1;
+path[1] = pathBk2;
+path[2] = pathBk3;
+path[3] = pathBk4;
+path[4] = pathBk5;
+path[5] = pathBk6;
+alarm[0] = 1;
+
+#event alarm0
+if(currentPathIndex < pathCount)
+{
+    //execute_string('currentPath = pathBk +' + string(currentPathIndex) );
+    var currentPath = path[currentPathIndex];
+    var startX = path_get_x(currentPath,0);
+    var startY = path_get_y(currentPath,0);
+    var endX = path_get_x(currentPath,1);
+    var endY = path_get_y(currentPath,1);
+    var pathEle = instance_create(startX, startY, obj_bkPathElement);
+    pathEle.image_angle = point_direction(startX, startY, endX, endY);
+    pathEle.path = path[currentPathIndex];
+    currentPathIndex += 1;
+    alarm[0] = 15 + 10 * obj_burningKnight_combat.hp / obj_burningKnight_combat.oHP;
+}
+else
+{
+    alarm[1] = 1;
+}
+
+#event alarm1
+obj_burningKnight_combat.alarm[10] = 20 + (30 * obj_burningKnight_combat.hp / obj_burningKnight_combat.oHP);
+instance_destroy();

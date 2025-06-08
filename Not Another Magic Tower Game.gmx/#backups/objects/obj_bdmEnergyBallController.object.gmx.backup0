@@ -1,0 +1,47 @@
+// 2025-06-08 11:33:42
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+alarm[3] = 20;
+alarm[11] = 200;
+
+
+ballCount = 0;
+
+#event alarm3
+instance_create(obj_blackDevilMagician_combat.x, obj_blackDevilMagician_combat.y, obj_bdmEnergyBall);
+alarm[3] = 100;
+
+#event alarm4
+if(ballCount > 0)
+{
+    ballCount -= 1;
+    instance_create(obj_blackDevilMagician_combat.x, obj_blackDevilMagician_combat.y, obj_bdmEnergyBall);
+    alarm[4] = 20;
+}
+else
+{
+    alarm[5] = 250;
+}
+
+#event alarm5
+instance_create(obj_blackDevilMagician_combat.x, obj_blackDevilMagician_combat.y, obj_bdmBoomBubble);
+
+#event alarm11
+event_user(0);
+if(instance_number(obj_bdmAncientBook) > 3)
+{
+    alarm[11] = 700;
+}
+
+#event step
+if(!instance_exists(obj_blackDevilMagician_combat))
+{
+    instance_destroy();
+}
+
+#event other_user0
+ballCount = 5;
+alarm[4] = 1;

@@ -35,6 +35,12 @@ yl = ds_list_create();
 spd = 0;
 hMove = true;
 vMove = false;
+
+
+minAngle = 0;
+
+maxAngle = 0;
+
 if(x &gt; 400)
 {
     minAngle = 115;
@@ -52,6 +58,11 @@ hinit = false;
 toMin = true;
 time = 0;
 isStable = true;
+
+
+ind = 0;
+size = 0;
+sound = false;
 </string>
           </argument>
         </arguments>
@@ -220,7 +231,7 @@ alarm[7] = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>b = instance_create(x,y,obj_dmJuniorMageBullet2);
+            <string>var b = instance_create(x,y,obj_dmJuniorMageBullet2);
 b.image_angle = angle - 90;
 b.direction = angle;
 b.image_index = ind;
@@ -460,7 +471,7 @@ ds_list_add(yl, yprevious);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; size; i+=1)
+            <string>for(var i = 0; i &lt; size; i+=1)
 {
     alpha = 1/(size+1)*(i+1);
     draw_sprite_ext(sprite_index,image_index,ds_list_find_value(xl,i),ds_list_find_value(yl,i),image_xscale,image_yscale,image_angle,image_blend,alpha);

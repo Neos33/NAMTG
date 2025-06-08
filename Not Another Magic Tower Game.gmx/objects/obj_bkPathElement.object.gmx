@@ -32,6 +32,10 @@ ox = x;
 oy = y;
 sound_fix(sndLaser1);
 
+
+pSpd = 0;
+path = 0;
+interval = 0;
 </string>
           </argument>
         </arguments>
@@ -54,7 +58,7 @@ sound_fix(sndLaser1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>boom = instance_create(x,y,obj_bkPathBoom);
+            <string>var boom = instance_create(x,y,obj_bkPathBoom);
 boom.image_xscale = image_xscale / 200;
 boom.image_angle = image_angle; 
 instance_destroy();

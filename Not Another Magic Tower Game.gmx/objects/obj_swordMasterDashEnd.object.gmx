@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>gap = 15;
-
+destroy = false;
+dir = 0;
 </string>
           </argument>
         </arguments>

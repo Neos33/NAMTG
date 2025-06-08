@@ -65,7 +65,7 @@ isStable = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a = instance_create(x, y, obj_darkWarrior_bomb_fire);
+            <string>var a = instance_create(x, y, obj_darkWarrior_bomb_fire);
 a.p = p;
 with(a)
 {

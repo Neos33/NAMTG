@@ -67,7 +67,7 @@ alarm[3] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>b = instance_create(x,y,obj_giantBatBullet1);
+            <string>var b = instance_create(x,y,obj_giantBatBullet1);
 b.speed = random_range(5,7);
 b.direction = random_range(0,360);
 alarm[3] = 20;

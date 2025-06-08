@@ -32,6 +32,19 @@ x = 608;
 y = 368;
 alarm[3] = 30;
 ach = true;
+
+
+sx = 0;
+sy = 0;
+tx = 0;
+ty = 0;
+ind = 0;
+bounce = false;
+bounceCount = 0;
+p = 0;
+len = 0;
+countdown = 0;
+evtInd = 0;
 </string>
           </argument>
         </arguments>
@@ -493,7 +506,7 @@ hit.ind = ind;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>de = instance_create(x,y,obj_swordMasterDashEnd);
+            <string>var de = instance_create(x,y,obj_swordMasterDashEnd);
 de.tx = tx;
 de.ty = ty;
 de.dir = point_direction(tx,ty,sx,sy);
@@ -522,7 +535,7 @@ y = ty;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds = instance_create(x,y,obj_swordMasterDashStart);
+            <string>var ds = instance_create(x,y,obj_swordMasterDashStart);
 ds.tx = x;
 ds.ty = y;
 ds.dir = point_direction(sx,sy,tx,ty);;

@@ -64,6 +64,14 @@ emit = part_emitter_create(sys);
 part_emitter_region(sys,emit,x-64,x+64,y-64,y+64,ps_shape_ellipse,ps_distr_gaussian);
 
 
+
+
+inSkill = false;
+crazy = false;
+partStart = false;
+
+fullHp = 0;
+hpPer = 0;
 </string>
           </argument>
         </arguments>
@@ -274,7 +282,7 @@ alarm[6] = 15;
             <kind>1</kind>
             <string>if(!crazy)
 {
-    skill = choose(1,2,3);
+    var skill = choose(1,2,3);
 }
 else
 {
@@ -440,7 +448,7 @@ alarm[4] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>shadow = instance_create(x,y,obj_tdMonsterIn);
+            <string>var shadow = instance_create(x,y,obj_tdMonsterIn);
 shadow.sprite_index = sprite_index;
 shadow.image_index = image_index;
 shadow.image_speed = image_speed;

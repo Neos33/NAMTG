@@ -1,0 +1,251 @@
+// 2025-06-08 11:49:47
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_armoredSoldier_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Armored Soldier";
+image_speed = 1/8;
+asShadowX = ds_list_create();
+asShadowY = ds_list_create();
+//dashQueueX = ds_queue_create();
+//dashQueueY = ds_queue_create();
+dashLine = ds_queue_create();
+x = 400;
+y = 96;
+alarm[3] = 50;
+
+
+
+dirMin = 0;
+dirMax = 0;
+
+dashCount = 0;
+dashGap = 0;
+
+
+left = false;
+sndroar = false;
+forAch = false;
+
+sx = 0;
+sy = 0;
+
+#event destroy
+ds_list_destroy(asShadowX);
+ds_list_destroy(asShadowY);
+ds_queue_destroy(dashLine);
+event_inherited();
+
+#event alarm3
+if(point_distance(x,y,400,459) < 20)
+{
+    x = 400;
+    y = 459;
+    hspeed = 0;
+    vspeed = 0;
+    instance_create(0,0,view_shaker1);
+    instance_create(0,0,obj_asLaserController);
+}
+else
+{
+    move_towards_point(400,459,20);
+    alarm[3] = 1;
+}
+
+#event alarm4
+if(abs(x - targetX) < 8)
+{
+    dir = sign(targetX - x);
+    x += 8 * dir;
+    alarm[4] = 1;
+}
+else
+{
+    x = targetX;
+    if(x < 400)
+    {
+        dirMin = -30;
+        dirMax = 30;
+        left = false;
+    }
+    else
+    {
+        dirMin = 150;
+        dirMax = 210;
+        left = true;
+    }
+    sndroar = false;
+    alarm[5] = 30;
+    alarm[6] = 150;
+}
+
+#event alarm5
+if(!sndroar)
+{
+    sndroar = true;
+    sound_fix(sndRoar);
+}
+view_xview[0] = random_range(-3,3);
+view_yview[0] = random_range(-3,3);
+s = instance_create(x,y,obj_asSpike);
+s.direction = random_range(dirMin, dirMax);
+s.speed = random_range(8, 12);
+alarm[5] = 4;
+
+#event alarm6
+alarm[5] = 0;
+view_xview[0] = 0;
+view_yview[0] = 0;
+if(left)
+{
+    direction = 180;
+}
+else
+{
+    direction = 0;
+}
+speed += 0.4;
+if(x > 832 || x < -16)
+{
+    speed = 0;
+    if(player_is_alive())
+    {
+        forAch = true;
+        dashCount = 10;
+        dashGap = 40;
+        alarm[7] = 70;
+    }
+}
+else
+{
+    alarm[6] = 1;
+}
+
+#event alarm7
+if(dashCount > 0)
+{
+    type = irandom_range(0,3);
+    if(type == 0)
+    {
+        sx = 0; sy = random_range(0,608);
+    }
+    else if(type == 1)
+    {
+        sx = random_range(0,800); sy = 0;
+    }
+    else if(type == 2)
+    {
+        sx = 800; sy = random_range(0,608);
+    }
+    else if(type == 3)
+    {
+        sx = random_range(0,800); sy = 608;
+    }
+    line = instance_create(sx,sy,obj_asAttackLine);
+    ds_queue_enqueue(dashLine,line);
+    dashCount -= 1;
+    alarm[7] = dashGap;
+    dashGap -= 3;
+}
+else
+{
+    if(player_is_alive())
+    {
+        forAch = false;
+        x = 400;
+        y = -32;
+        alarm[10] = 50;
+    }
+}
+
+#event alarm10
+if(y < 128)
+{
+    y += 5;
+    alarm[10] = 1;
+}
+else
+{
+    instance_create(0,0, obj_asShockController);
+}
+
+#event alarm11
+instance_create(0,0,obj_asBGChanger);
+instance_create(x,y,obj_asHaki);
+instance_create(0,0,obj_asQTEController);
+qtePlayer = instance_create(player.x,player.y, obj_asQTEPlayer);
+qtePlayer.sprite_index = player.sprite_index;
+qtePlayer.image_index = player.image_index;
+qtePlayer.image_xscale = player.image_xscale;
+qtePlayer.image_speed = 1/8;
+player.frozen = true;
+player.visible = false;
+bow.visible = false;
+
+#event step
+if(ds_list_size(asShadowX) == 7)
+{
+    ds_list_delete(asShadowX, 0);
+    ds_list_delete(asShadowY, 0);
+}
+ds_list_add(asShadowX, xprevious);
+ds_list_add(asShadowY, yprevious);
+#section
+/*if(dash)
+{
+    if(dashCountDown > 0)
+    {
+        dashCountDown -= 1;
+    }
+    else
+    {
+        if(!dashStart)
+        {
+            if(ds_queue_size(dashLine) > 0)
+            {
+                cLine = ds_queue_dequeue(dashLine);
+                x = cLine.x;
+                y = cLine.y;
+                direction = cLine.direction;
+                image_angle = direction - 90;
+                speed = 35;
+                cLine.finished = true;
+                dashStart = true;
+            }
+        }
+        else
+        {
+            if(x > 850 || x < -50 || y > 650 || y < -50)
+            {
+                dashStart = false;
+                dashCountDown = dashGap2;
+                dashGap2 -= 2;
+            }
+        }
+    }
+}
+
+#event other_user15
+if(forAch)
+{
+    if(!global.achievements[83])
+    {
+        var ch = instance_create(0,608,obj_achievements);
+        ch.index = 83;
+        global.achievements[83] = true;
+    }
+}
+
+#event draw
+listSize = ds_list_size(asShadowX);
+for(var i = 0; i < listSize; i += 1)
+{
+    draw_sprite_ext(sprite_index, image_index, 
+                      ds_list_find_value(asShadowX, listSize - i - 1), 
+                      ds_list_find_value(asShadowY, listSize - i - 1), 
+                      1,1,0,c_white, (0.9 - i * 0.1)*image_alpha);
+}
+draw_current();

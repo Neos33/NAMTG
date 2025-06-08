@@ -51,6 +51,8 @@ sx = x;
 sy = y;
 isStable = true;
 alarm[3] = 1;
+
+ind = 0;
 </string>
           </argument>
         </arguments>

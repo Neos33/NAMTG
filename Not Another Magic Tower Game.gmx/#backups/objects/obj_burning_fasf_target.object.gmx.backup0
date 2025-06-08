@@ -1,0 +1,31 @@
+// 2025-06-08 11:56:36
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_fasfTarget;
+uses_physics = false;
+
+#event create
+image_alpha=0.7;
+
+image_speed=0;
+alarm[0]=10;
+
+
+asdf = 0;
+
+#event alarm0
+if(asdf<4)
+{
+    image_index=1;
+    alarm[1]=2;
+    sound_fix(snd_dididi)
+}
+else
+{
+    instance_change(obj_burning_fasf_dragon,1);
+}
+
+#event alarm1
+image_index=0;
+asdf+=1;
+alarm[0]=ceil(30/asdf);

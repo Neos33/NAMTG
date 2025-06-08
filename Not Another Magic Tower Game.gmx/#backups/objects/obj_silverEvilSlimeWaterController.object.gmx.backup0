@@ -1,0 +1,55 @@
+// 2025-06-08 11:18:28
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+angle = 0;
+ox = obj_silverEvilSlime_combat.x;
+oy = obj_silverEvilSlime_combat.y;
+alarm[0] = 30;
+alarm[11] = 300;
+
+
+stop = false;
+modAngle = 0;
+
+#event destroy
+obj_silverEvilSlime_combat.x = ox;
+obj_silverEvilSlime_combat.y = oy;
+obj_silverEvilSlime_combat.alarm[10] = 1;
+with(obj_pokemonBattleDialog)
+{
+    msg = obj_silverEvilSlime_combat.name + " loses the power of 'Water'";
+    event_user(0);
+}
+
+#event alarm0
+if(!stop)
+{
+    instance_create(obj_silverEvilSlime_combat.x, obj_silverEvilSlime_combat.y, obj_silverEvilSlimeWaterOrb);
+    alarm[0] = 30;
+}
+
+#event alarm11
+stop = true;
+
+#event step
+if(!stop)
+{
+    angle += 2;
+}
+else 
+{
+    modAngle = angle mod 180;
+    if(modAngle != 0)
+    {
+        angle += 2;
+    }
+    else
+    {
+        instance_destroy();
+    }
+}
+//obj_silverEvilSlime_combat.x = ox + 32 * cos(degtorad(angle));
+obj_silverEvilSlime_combat.y = oy - 32 * sin(degtorad(angle));

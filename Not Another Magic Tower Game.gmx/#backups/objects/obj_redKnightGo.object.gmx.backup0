@@ -1,0 +1,16 @@
+// 2025-06-08 11:12:40
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_redKnightGo;
+uses_physics = false;
+
+#event create
+ox = x;
+oy = y;
+
+angle = 0;
+
+#event step
+angle += 3;
+y = oy - 5*sin(degtorad(angle));
+

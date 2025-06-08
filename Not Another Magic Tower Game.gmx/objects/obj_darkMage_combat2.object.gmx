@@ -38,6 +38,23 @@ emit = part_emitter_create(obj_dmParticleController.sys);
 xl = ds_list_create();
 yl = ds_list_create();
 
+
+pCount = 0;
+p = 0;
+shotGunCount = 0;
+time1 = 0;
+waterBulletCount = 0;
+size = 0;
+
+waterBulletSound = false;
+partStart = false;
+hasAch = false;
+
+px[0] = 0;
+px[1] = 0;
+px[2] = 0;
+px[3] = 0;
+
 /*attract1 = part_attractor_create(obj_dmParticleController.sys);
 part_attractor_position(obj_dmParticleController.sys,attract1,x,y-64);
 part_attractor_force(obj_dmParticleController.sys,attract1,0.5,128,1,1);
@@ -311,7 +328,7 @@ instance_create(x,y,obj_dmWaterController);
 
     pCount = 4;
     p = ds_list_create();
-    for(i=0;i&lt;4;i+=1)
+    for(var i=0;i&lt;4;i+=1)
     {
         ds_list_add(p,i);
     }
@@ -487,7 +504,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; size; i+=1)
+            <string>for(var i = 0; i &lt; size; i+=1)
 {
     alpha = 1/(size+1)*(i+1);
     draw_sprite_ext(sprite_index,image_index,ds_list_find_value(xl,i),ds_list_find_value(yl,i),image_xscale,image_yscale,image_angle,image_blend,alpha * image_alpha);

@@ -50,6 +50,9 @@ py = y + 16;
 maxScale = 5.7;
 canBoom = true;
 isStable = true;
+
+
+boomInterval = 0;
 </string>
           </argument>
         </arguments>
@@ -74,7 +77,7 @@ isStable = true;
             <kind>1</kind>
             <string>if(boomInterval &gt; 3)
 {
-    be = instance_create(x,y,obj_bsEnergyLeak);
+    var be = instance_create(x,y,obj_bsEnergyLeak);
     be.dir = random_range(0,360);
     alarm[4] = boomInterval;
     boomInterval -= 1;
@@ -164,9 +167,9 @@ else if(targetScale == maxScale &amp;&amp; !start)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomR = random_range(32,48);
-randomDir = random_range(30,150);
-energy = instance_create(px + lengthdir_x(randomR,randomDir), py + lengthdir_y(randomR, randomDir), obj_bsEnergyEffect);
+            <string>var randomR = random_range(32,48);
+var randomDir = random_range(30,150);
+var energy = instance_create(px + lengthdir_x(randomR,randomDir), py + lengthdir_y(randomR, randomDir), obj_bsEnergyEffect);
 energy.parentX = px;
 energy.parentY = py;
 </string>
