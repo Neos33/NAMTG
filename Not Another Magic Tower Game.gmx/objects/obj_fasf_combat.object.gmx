@@ -161,7 +161,7 @@ else
             <kind>1</kind>
             <string>if spddd=1
 {
-    var aa=instance_create(x,y,fasf_ball)
+    var aa=instance_create(x,y,fasf_ball);
     aa.direction=random_range(1,359);
     aa.speed=random_range(4,8)
     sound_fix(sndShoot);

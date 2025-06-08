@@ -112,8 +112,8 @@ event_inherited();
             <kind>1</kind>
             <string>if(a==0 or a==1 or a==2)
 {
-    var aa=instance_create(x,y,obj_guardlv3_block)
-    var ab=instance_create(x-32,y,obj_guardlv3_block)
+    var aa=instance_create(x,y,obj_guardlv3_block);
+    var ab=instance_create(x-32,y,obj_guardlv3_block);
     aa.sss=1;
     ab.sss=1;
 }
@@ -238,7 +238,7 @@ if(!cooldown)
 sound_fix(sndDeath)
 repeat(12)
 {
-    var aa=instance_create(x,y,obj_cherry)
+    var aa=instance_create(x,y,obj_cherry);
     aa.sprite_index=spr_colorful_cherry;
     aa.image_index=irandom(5);
     aa.speed=4+irandom(3);

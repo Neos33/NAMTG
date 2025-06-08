@@ -142,8 +142,7 @@ if(image_alpha==0 &amp;&amp; flag==1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
