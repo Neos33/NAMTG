@@ -176,7 +176,7 @@ cooldown = false;
             damage = round(damage * 1.5);
         }
     }
-    damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
+    var damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
     damageInfo.damage = damage;
     if(other.energy &lt; 1.5)
     {

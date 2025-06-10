@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>atk = global.mAtk;
+            <string>event_inherited();
+
+atk = global.mAtk;
 def = global.mDef;
 ex = global.mEx;
 name = "MissingNo";
@@ -38,6 +40,10 @@ viewShift = 0;
 alarm[11] = 30;
 instance_create(0,0,obj_missingnoBlack);
 instance_create(0,0,obj_missingnoCreator);
+
+
+
+
 </string>
           </argument>
         </arguments>

@@ -1,13 +1,13 @@
-// 2025-06-10 16:28:23
+// 2025-06-10 16:40:07
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatController;
 uses_physics = false;
 
 #event create
-event_inherited();
+//event_inherited();
 
-if(initialized)
-    exit;
+//if(initialized)
+  //  exit;
 sound_stop_all();
 if(room == battlefasfroom || room == Roomavoidence)
 {
@@ -119,6 +119,10 @@ else if(room == rDracula)
 
 global.playerHP = global.hp;
 global.combatTime = 0;
+
+
+
+dontDrawMonster = false;
 
 #event alarm0
 global.inCombat = false;

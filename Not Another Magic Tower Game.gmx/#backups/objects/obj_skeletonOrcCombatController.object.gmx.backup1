@@ -1,11 +1,13 @@
-// 2025-06-08 13:28:44
+// 2025-06-10 16:28:23
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatController;
 uses_physics = false;
 
 #event create
-//if(initialized)
-  //  exit;
+event_inherited();
+
+if(initialized)
+    exit;
 sound_stop_all();
 if(room == battlefasfroom || room == Roomavoidence)
 {
@@ -127,7 +129,7 @@ with(obj_combatPlayerKiller)
 global.monsters[global.combatIndex] = 1;
 if(room != battleroom12)
 {
-sound_stop(battleBGM);
+    sound_stop(battleBGM);
 }
 //SS_ResumeSound(global.stageMusic);
 if(player_is_alive() && player.x > 0)

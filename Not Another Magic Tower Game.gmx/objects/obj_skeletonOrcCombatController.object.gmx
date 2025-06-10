@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>//event_inherited();
 
-if(initialized)
-    exit;
+//if(initialized)
+  //  exit;
 sound_stop_all();
 if(room == battlefasfroom || room == Roomavoidence)
 {
@@ -140,6 +140,10 @@ else if(room == rDracula)
 
 global.playerHP = global.hp;
 global.combatTime = 0;
+
+
+
+dontDrawMonster = false;
 </string>
           </argument>
         </arguments>

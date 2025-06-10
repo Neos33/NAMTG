@@ -1,4 +1,4 @@
-// 2025-06-08 12:24:49
+// 2025-06-08 12:24:58
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatPlayerKiller;
 uses_physics = false;
@@ -12,7 +12,7 @@ damage = 1;
 mixedAlpha = 0;
 name = 0;
 spIndex = 0;
-tdPath = 0;
+tdPath = false;
 
 #event destroy
 event_user(15);

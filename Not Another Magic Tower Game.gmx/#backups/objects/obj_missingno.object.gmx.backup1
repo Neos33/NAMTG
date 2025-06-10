@@ -1,12 +1,10 @@
-// 2025-06-10 16:45:01
+// 2025-06-08 11:21:46
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_missingno;
 uses_physics = false;
 
 #event create
-event_inherited();
-
 atk = global.mAtk;
 def = global.mDef;
 ex = global.mEx;
@@ -20,10 +18,6 @@ viewShift = 0;
 alarm[11] = 30;
 instance_create(0,0,obj_missingnoBlack);
 instance_create(0,0,obj_missingnoCreator);
-
-
-
-
 
 #event alarm3
 if(viewShift < 2)
