@@ -1,0 +1,22 @@
+// 2025-06-10 16:08:20
+#event properties (no comments/etc. here are saved)
+parent_index = obj_4b6Prototype;
+sprite_index = spr_npc3;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Fairy";
+
+
+
+#event alarm2
+var ammount = 3 + (fhp - hp) / 5;
+repeat(ammount)
+{
+    instance_create(x + sprite_width / 2, y + sprite_height / 2, obj_4B6YellowApple);
+}
+if(hp == 0)
+{
+    alarm[2] = 350;
+}

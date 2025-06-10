@@ -1,4 +1,4 @@
-// 2025-06-10 16:00:55
+// 2025-06-08 11:43:37
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatPlayerKiller;
 sprite_index = spr_bkPiranha;
@@ -17,7 +17,6 @@ ready = true;
 
 
 pDir = 0;
-angle = 0;
 
 #event step
 //vspeed = obj_bkSpdController.waterSpd;

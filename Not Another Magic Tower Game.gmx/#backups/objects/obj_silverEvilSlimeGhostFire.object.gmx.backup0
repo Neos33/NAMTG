@@ -1,0 +1,88 @@
+// 2025-06-10 16:12:22
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_silverEvilSlimeGhostFire;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+mixedAlpha = 0;
+image_xscale = 0.4;
+image_yscale = 0.4;
+targetScale = 0.4;
+spd = 2;
+start = false;
+image_alpha = 0;
+alarm[5] = 1;
+isStable = true;
+image_speed = 1/8;
+
+
+explode = false;
+
+#event alarm3
+if(mixedAlpha < 1)
+{
+    mixedAlpha += 0.01;
+    alarm[3] = 1;
+}
+else
+{
+    instance_create(x,y,obj_supfasfboom);
+    instance_destroy();
+}
+
+#event alarm4
+alarm[4] = ceil(sqrt((1-mixedAlpha) * 100)) * 3;
+sound_fix(snd_dididi);
+
+#event alarm5
+if(image_alpha < 1)
+{
+    image_alpha += 0.04;
+    alarm[5] = 1;
+}
+else
+{
+    start = true;
+}
+
+#event step
+if(start)
+{
+    move_towards_point(player.x, player.y, spd);
+    if(image_xscale < targetScale)
+    {
+        image_xscale += 0.02;
+        image_yscale += 0.02;
+    }
+}
+
+#event collision:bullet
+if(start)
+{
+    if(targetScale < 2)
+    {
+        targetScale += 0.4;
+        spd -= 0.5;
+    }
+    else
+    {
+        if(!explode && image_xscale == 2)
+        {
+            explode = true;
+            alarm[3] = 1;
+            alarm[4] = 1;
+        }
+    }
+    with(other)
+    {
+        hitEffect();
+        instance_destroy();
+    }
+}
+
+#event draw
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,(1-mixedAlpha) * image_alpha);
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,c_red,mixedAlpha * image_alpha);

@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>event_inherited();
 name = "Thief";
+
+
+
 </string>
           </argument>
         </arguments>
@@ -49,9 +52,9 @@ name = "Thief";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>startAngle = random_range(0,359);
-lines = floor(3 + (fhp - hp) / 6);
-num = floor(4 + (fhp - hp) / 4);
+            <string>var startAngle = random_range(0,359);
+var lines = floor(3 + (fhp - hp) / 6);
+var num = floor(4 + (fhp - hp) / 4);
 if(lines &lt; 5)
 {
     explodePolygon(x + sprite_width / 2,y + sprite_height / 2, 

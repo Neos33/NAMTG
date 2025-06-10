@@ -146,7 +146,7 @@ event_inherited();
 found = false;
 for(var i = 0; i &lt; ds_list_size(movingList); i+=1)
 {
-    targetId = ds_list_find_value(movingList,i);
+    var targetId = ds_list_find_value(movingList,i);
     with(targetId)
     {
         if(y &lt; 304 &amp;&amp; y &gt;= 32)

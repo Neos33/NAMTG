@@ -28,6 +28,9 @@
             <string>rangeS = view_xview[0];
 rangeE = view_xview[0] + 800;
 alarm[0] = 1;
+
+scale = 0;
+fScale = 0;
 </string>
           </argument>
         </arguments>
@@ -54,7 +57,7 @@ alarm[0] = 1;
 fScale = random_range(0.8 * scale, 1.2 * scale);
 if(scale &gt; 0)
 {
-    s = instance_create(random_range(rangeS,rangeE), 0, obj_4B6Snow);
+    var s = instance_create(random_range(rangeS,rangeE), 0, obj_4B6Snow);
     //s.depth = -998;
     //s.image_alpha = 0.8;
     s.image_xscale = fScale;

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.GalleryBossFight)
+            <string>recoveryCountDown = 0;
+if(global.GalleryBossFight)
 {
     recoveryCountDown = 100;
 }
@@ -54,6 +55,8 @@ else
 alarm[10] = 1;
 
 enemyCount = 4;
+battleEnd = false;
+usedHp = 0;
 
 alarm[1] = 150;
 
@@ -74,7 +77,7 @@ type = 0;
     execute_string("npc = instance_create(px[i], py[i], obj_npcBattleNPC" + string(i + 1) + ");npc.ind = i;");
 }*/
 
-for(i = 100; i &lt;= 800; i += 128)
+for(var i = 100; i &lt;= 800; i += 128)
 {
     instance_create(i, 288, obj_4b6Platform);
 }
@@ -110,7 +113,7 @@ with(obj_combatPlayerKiller)
 }
 if(!global.achievements[84])
 {
-    ch = instance_create(0,608,obj_achievements);
+    var ch = instance_create(0,608,obj_achievements);
     ch.index = 84;
     global.achievements[84] = true;
 }
@@ -201,9 +204,9 @@ instance_create(0,0,obj_4b6FLEffect);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;800;i+=32)
+            <string>for(var i=0;i&lt;800;i+=32)
 {
-    sp = instance_create(i,512,obj_darkSpikeUp);
+    var sp = instance_create(i,512,obj_darkSpikeUp);
     sp.sprite_index = spr_4b6Spike;
 }
 </string>
@@ -228,7 +231,7 @@ instance_create(0,0,obj_4b6FLEffect);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>_platform = instance_create(800, 288, obj_4b6Platform);
+            <string>var _platform = instance_create(800, 288, obj_4b6Platform);
 _platform.image_xscale = obj_4b6HREffect.scale;
 _platform.image_yscale = obj_4b6HREffect.scale;
 if(obj_4b6DTEffect.spd == 0)
@@ -314,7 +317,7 @@ if(player_is_alive() &amp;&amp; player.x &gt; 0)
             global.GalleryBossFightInd = 0;
             global.BR_Status = 1;
         }
-        transition_kind = 21;
+        //transition_kind = 21;
         room_goto(global.stageRoom);
         
         player.x = global.roomX;

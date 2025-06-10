@@ -25,8 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//if(initialized)
-  //  exit;
+            <string>event_inherited();
+
+if(initialized)
+    exit;
 sound_stop_all();
 if(room == battlefasfroom || room == Roomavoidence)
 {
@@ -168,7 +170,7 @@ with(obj_combatPlayerKiller)
 global.monsters[global.combatIndex] = 1;
 if(room != battleroom12)
 {
-sound_stop(battleBGM);
+    sound_stop(battleBGM);
 }
 //SS_ResumeSound(global.stageMusic);
 if(player_is_alive() &amp;&amp; player.x &gt; 0)

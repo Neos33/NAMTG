@@ -63,7 +63,7 @@ alarm[11] = 1;
             <string>if(!global.clearItem[10] &amp;&amp; global.monsters[ind])
 {
     global.clearItem[10] = true;
-    itemController = instance_create(0,0,obj_msgItemController);
+    var itemController = instance_create(0,0,obj_msgItemController);
     itemController.itemInd = spr_diamondKey;
     itemController.msg = "You've got the diamond key. You can open the specific diamond door now.";
 }

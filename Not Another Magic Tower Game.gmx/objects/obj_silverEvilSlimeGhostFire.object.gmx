@@ -49,6 +49,9 @@ image_alpha = 0;
 alarm[5] = 1;
 isStable = true;
 image_speed = 1/8;
+
+
+explode = false;
 </string>
           </argument>
         </arguments>

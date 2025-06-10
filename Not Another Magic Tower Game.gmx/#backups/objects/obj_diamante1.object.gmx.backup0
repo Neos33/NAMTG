@@ -1,0 +1,31 @@
+// 2025-06-10 16:09:24
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterPrototype;
+sprite_index = spr_diamante1;
+uses_physics = false;
+
+#event create
+event_inherited();
+atk=233;
+def=120;
+hp=100;
+ex=120;
+name = "Mr.Diamante";
+combatObj = obj_diamante_combat;
+//mybattleroom = getBattleRoom();
+mybattleroom = rDiamante;
+
+alarm[11] = 1;
+
+
+
+#event alarm11
+if(!global.clearItem[10] && global.monsters[ind])
+{
+    global.clearItem[10] = true;
+    var itemController = instance_create(0,0,obj_msgItemController);
+    itemController.itemInd = spr_diamondKey;
+    itemController.msg = "You've got the diamond key. You can open the specific diamond door now.";
+}
+
+event_inherited();

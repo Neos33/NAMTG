@@ -49,6 +49,7 @@ ready = true;
 
 
 pDir = 0;
+angle = 0;
 </string>
           </argument>
         </arguments>

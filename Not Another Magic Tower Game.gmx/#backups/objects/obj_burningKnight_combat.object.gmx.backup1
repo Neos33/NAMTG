@@ -1,4 +1,4 @@
-// 2025-06-08 11:43:08
+// 2025-06-08 13:45:34
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_burningKnight_combat;
@@ -15,6 +15,9 @@ isAch = true;
 movingList = ds_list_create();
 alarm[11] = 1;
 alarm[10] = 30;
+
+
+found = false;
 
 #event destroy
 ds_list_destroy(movingList);

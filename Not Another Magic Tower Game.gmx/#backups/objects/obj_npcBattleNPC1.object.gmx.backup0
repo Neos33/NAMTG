@@ -1,0 +1,19 @@
+// 2025-06-10 16:08:56
+#event properties (no comments/etc. here are saved)
+parent_index = obj_4b6Prototype;
+sprite_index = spr_npc1;
+uses_physics = false;
+
+#event create
+event_inherited();
+name = "Blue Gay";
+
+#event alarm2
+repeat(floor(3 + (fhp - hp) * 0.4))
+{
+  instance_create(random_range(32,768),32,obj_4B6BlueApple);
+}
+if(hp == 0)
+{
+    alarm[2] = 150;
+}
