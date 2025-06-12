@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="50" name="datafiles">
-    <datafiles number="50" name="BGM">
+  <datafiles number="57" name="datafiles">
+    <datafiles number="57" name="BGM">
       <datafile>
         <name>BGM_battle1.ogg</name>
         <exists>-1</exists>
@@ -314,7 +314,7 @@
       <datafile>
         <name>BGM_Finals.ogg</name>
         <exists>-1</exists>
-        <size>1856978</size>
+        <size>5015813</size>
         <exportAction>2</exportAction>
         <exportDir></exportDir>
         <overwrite>0</overwrite>
@@ -786,6 +786,108 @@
           </Config>
         </ConfigOptions>
         <filename>Title.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BattleB_1.ogg</name>
+        <exists>-1</exists>
+        <size>821301</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BattleB_1.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BattleB_2.ogg</name>
+        <exists>-1</exists>
+        <size>1329661</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BattleB_2.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BattleB_3.ogg</name>
+        <exists>-1</exists>
+        <size>1061954</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BattleB_3.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BattleB_4.ogg</name>
+        <exists>-1</exists>
+        <size>2279004</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BattleB_4.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BattleB_Pokemon.ogg</name>
+        <exists>-1</exists>
+        <size>1503384</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BattleB_Pokemon.ogg</filename>
+      </datafile>
+      <datafile>
+        <name>BattleC.ogg</name>
+        <exists>-1</exists>
+        <size>2381032</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>BattleC.ogg</filename>
       </datafile>
     </datafiles>
     <datafile>
@@ -3058,6 +3160,8 @@
       <script>scripts\audio_setvolume.gml</script>
       <script>scripts\scrInitAudio.gml</script>
       <script>scripts\scrAudioGetID.gml</script>
+      <script>scripts\music_play.gml</script>
+      <script>scripts\music_play_battle.gml</script>
     </scripts>
     <scripts name="controls">
       <script>scripts\controls_init.gml</script>

@@ -54,7 +54,8 @@ battleBGM = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.GalleryBossFight)
+            <string>recoveryCountDown = 0;
+if(global.GalleryBossFight)
 {
     recoveryCountDown = 100;
 }
@@ -63,7 +64,7 @@ else
     recoveryCountDown = 10;
 }
 if(initialized) exit;
-
+/*
 // Super FASF
 if(room == battlefasfroom || room == Roomavoidence)
 {
@@ -113,6 +114,8 @@ if(global.mDef &lt; 75)
     {
     //    battleBGM=happymusic;
     }*/
+    
+    /*
     else
     {
         battleBGM = choose(sndBattle1, sndBattle2);
@@ -127,14 +130,28 @@ else if(global.mDef &lt;= 135)
     }
     else
     {
-        battleBGM = choose(sndBattle5, sndBattle6, sndBattle7, sndBattle8);
+        //battleBGM = choose(sndBattle5, sndBattle6, sndBattle7, sndBattle8);
+        var _pick_music = choose("BattleB_1", "BattleB_2", "BattleB_3", "BattleB_4");
+        global.currentBGM = scrAudioGetID(_pick_music);
+        if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
+        {
+            audio_resumemusic_volume(scrAudioGetID(_pick_music));
+        }
     }
 }
 // Last list of battle songs
 else
 {
-    battleBGM = sndBattle9;
-}
+    //battleBGM = sndBattle9;
+    var _pick_music = "BattleC"
+    global.currentBGM = scrAudioGetID(_pick_music);
+    if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
+    {
+        audio_resumemusic_volume(scrAudioGetID(_pick_music));
+    }
+}*/
+
+/*
 if(room != battlefasfroom &amp;&amp; 
     room != Roomavoidence &amp;&amp; 
     room != battleroom12 &amp;&amp; 
@@ -166,6 +183,7 @@ else if(room == battlefasfroom)
     {
         audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));
     }*/
+    /*
 }
 else if(room == battleroom12)
 {
@@ -182,6 +200,35 @@ else if(room == battleroom12)
     {
         audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));
     }*/
+    /*
+}
+else if(global.mDef &lt;= 135)
+{
+    if(room == rSilverEvilSlime || room == rGoldEvilSlime)
+    {
+        battleBGM = sndPokemonBattle1;
+    }
+    else
+    {
+        //battleBGM = choose(sndBattle5, sndBattle6, sndBattle7, sndBattle8);
+        var _pick_music = choose("BattleB_1", "BattleB_2", "BattleB_3", "BattleB_4");
+        global.currentBGM = scrAudioGetID(_pick_music);
+        if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
+        {
+            audio_resumemusic_volume(scrAudioGetID(_pick_music));
+        }
+    }
+}
+// Last list of battle songs
+else if(global.mDef &gt; 135) 
+{
+    //battleBGM = sndBattle9;
+    var _pick_music = "BattleC"
+    global.currentBGM = scrAudioGetID(_pick_music);
+    if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
+    {
+        audio_resumemusic_volume(scrAudioGetID(_pick_music));
+    }
 }
 else if(room == rDracula)
 {
@@ -198,6 +245,7 @@ else if(room == rDracula)
     {
         audio_loopmusic_volume(scrAudioGetID("BGMDracula"));
     }*/
+    /*
 }
 else if(room == battleroom_bf)
 {
@@ -214,6 +262,249 @@ else if(room == battleroom_bf)
     {
         audio_loopmusic_volume(scrAudioGetID("BGM_BurningFasf"));
     }*/
+    /*
+}
+else if(room == rDiamante)
+{
+    global.currentBGM = scrAudioGetID("BGM_Diamante");
+}
+else if(room == rPica)
+{
+    global.currentBGM = scrAudioGetID("BGM_Pica");
+}
+else if(room == rDragonStart)
+{
+    global.currentBGM = scrAudioGetID("BGM_Dragon");
+}
+else if(room == rTrebole)
+{
+    global.currentBGM = scrAudioGetID("BGM_Trebole");
+}
+else if(room == rCorazone)
+{
+    global.currentBGM = scrAudioGetID("BGM_Corazone");
+}
+else if(room == rTaisa)
+{
+    global.currentBGM = scrAudioGetID("BGM_Fapple");
+}
+*/
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Music
+
+battleBGM = noone;
+// Super FASF
+if(room == battlefasfroom || room == Roomavoidence)
+{
+    if(!instance_exists(obj_superFasf_combat) &amp;&amp; room != Roomavoidence)
+    {
+        m = instance_create(704, 544, global.combatObj);
+        m.hp = global.mHP;
+        m.atk = global.mAtk;
+        m.def = global.mDef;
+        m.ex = global.mEx;
+    }
+    else
+    {
+        obj_superFasf_combat.hspeed = 0;
+        obj_superFasf_combat.vspeed = 0;
+        obj_superFasf_combat.visible = 1;
+        obj_superFasf_combat.x=400;
+        obj_superFasf_combat.y=304;
+        obj_superFasf_combat.image_blend = c_red;
+        obj_superFasf_combat.image_speed = 1 / 6;
+        obj_superFasf_combat.image_index = 0;
+    }
+}
+else
+{
+    m = instance_create(704, 544, global.combatObj);
+    m.hp = global.mHP;
+    m.atk = global.mAtk;
+    m.def = global.mDef;
+    m.ex = global.mEx;
+}
+global.cooldown = false;
+
+// Pause BGM
+if(!FMODInstanceGetPaused(global.currentBGM))
+{
+    FMODInstanceSetPaused(global.currentBGM, true);
+    //global.pausedBGM = global.currentBGM;
+}
+
+// 1st list of battle songs
+if(global.mDef &lt; 75)
+{
+    if(room == battleroom4 || room == battleroom6)
+    {
+        battleBGM = choose(sndBattle3, sndBattle4);
+    }
+    
+    else
+    {
+        battleBGM = choose(sndBattle1, sndBattle2);
+    }
+}
+// 2nd list of battle songs
+else if(global.mDef &lt;= 135)
+{
+    if(room == rSilverEvilSlime || room == rGoldEvilSlime)
+    {
+        //battleBGM = sndPokemonBattle1;
+        //var _pick_music = "BattleB_Pokemon";
+        /*global.currentBGM = scrAudioGetID(_pick_music);
+        if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
+        {
+            audio_resumemusic_volume(scrAudioGetID(_pick_music));
+        }
+        else if(!FMODInstanceIsPlaying(scrAudioGetID(_pick_music)))
+        {
+            audio_loopmusic_volume(scrAudioGetID(_pick_music));   
+        }*/
+        music_play_battle("BattleB_Pokemon");
+    }
+    else
+    {
+        //battleBGM = choose(sndBattle5, sndBattle6, sndBattle7, sndBattle8);
+        var _pick_music = choose("BattleB_1", "BattleB_2", "BattleB_3", "BattleB_4");
+        /*global.currentBGM = scrAudioGetID(_pick_music);
+        if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
+        {
+            audio_resumemusic_volume(scrAudioGetID(_pick_music));
+        }
+        else if(!FMODInstanceIsPlaying(scrAudioGetID(_pick_music)))
+        {
+            audio_loopmusic_volume(scrAudioGetID(_pick_music));   
+        }*/
+        music_play_battle(_pick_music);
+    }
+}
+// Last list of battle songs
+else
+{
+    //battleBGM = sndBattle9;
+    var _pick_music = "BattleC"
+    /*global.currentBGM = scrAudioGetID(_pick_music);
+    if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
+    {
+        audio_resumemusic_volume(scrAudioGetID(_pick_music));
+    }
+    else if(!FMODInstanceIsPlaying(scrAudioGetID(_pick_music)))
+    {
+        audio_loopmusic_volume(scrAudioGetID(_pick_music));   
+    }*/
+    music_play_battle("BattleC");
+}
+
+
+if(room != battlefasfroom &amp;&amp; 
+    room != Roomavoidence &amp;&amp; 
+    room != battleroom12 &amp;&amp; 
+    room != rDracula &amp;&amp; 
+    room != battleroom_bf &amp;&amp; 
+    global.combatObj != obj_faro_combat &amp;&amp; 
+    room != rDiamante &amp;&amp; 
+    room != rPica &amp;&amp; 
+    room != rDragonStart &amp;&amp; 
+    room != rTrebole &amp;&amp; 
+    room != rCorazone &amp;&amp; 
+    room != rDemonLead &amp;&amp; 
+    room != rTaisa &amp;&amp;
+    battleBGM != noone)
+{
+    sound_loop(battleBGM);
+}
+else if(room == battlefasfroom)
+{
+    global.current_battle_bgm_id = "BGMsupfasf";
+    global.current_battle_bgm = FMODSoundLoop(scrAudioGetID("BGMsupfasf"), false);
+    //global.currentBGM = scrAudioGetID("BGMsupfasf");
+    if(FMODInstanceGetPaused(scrAudioGetID("BGMsupfasf")))
+    {
+        audio_resumemusic_volume(scrAudioGetID("BGMsupfasf"));
+    }
+    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGMsupfasf")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));   
+    }
+    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGMsupfasf")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));
+    }*/
+    music_play_battle("BGMsupfasf");
+}
+else if(room == battleroom12)
+{
+    /*global.currentBGM = scrAudioGetID("BGM_RedKey");
+    if(FMODInstanceGetPaused(scrAudioGetID("BGM_RedKey")))
+    {
+        audio_resumemusic_volume(scrAudioGetID("BGM_RedKey"));
+    }
+    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGM_RedKey")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));   
+    }
+    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGM_RedKey")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));
+    }*/
+    music_play_battle("BGM_RedKey");
+    
+}
+else if(room == rDracula)
+{
+    /*global.currentBGM = scrAudioGetID("BGMDracula");
+    if(FMODInstanceGetPaused(scrAudioGetID("BGMDracula")))
+    {
+        audio_resumemusic_volume(scrAudioGetID("BGMDracula"));
+    }
+    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGMDracula")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGMDracula"));   
+    }
+    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGMDracula")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGMDracula"));
+    }*/
+    music_play_battle("BGMDracula");
+}
+else if(room == battleroom_bf)
+{
+    /*global.currentBGM = scrAudioGetID("BGM_BurningFasf");
+    if(FMODInstanceGetPaused(scrAudioGetID("BGM_BurningFasf")))
+    {
+        audio_resumemusic_volume(scrAudioGetID("BGM_BurningFasf"));
+    }
+    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGM_BurningFasf")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGM_BurningFasf"));   
+    }
+    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGM_BurningFasf")))
+    {
+        audio_loopmusic_volume(scrAudioGetID("BGM_BurningFasf"));
+    }*/
+    music_play_battle("BGM_BurningFasf");
 }
 else if(room == rDiamante)
 {
@@ -240,7 +531,27 @@ else if(room == rTaisa)
     global.currentBGM = scrAudioGetID("BGM_Fapple");
 }
 
-global.playerHP = global.hp;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.playerHP = global.hp;
 global.combatTime = 0;
 </string>
           </argument>

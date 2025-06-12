@@ -1,4 +1,4 @@
-// 2025-06-08 11:08:06
+// 2025-06-12 12:42:37
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_redKnightCombat;
@@ -13,6 +13,7 @@ y = 32;
 
 
 move = false;
+
 spikeReady = false;
 
 #event alarm3

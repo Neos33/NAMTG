@@ -33,10 +33,10 @@ targetPer = 0;
 isLoading = false;
 
 musicIndex = 0;
-musicCount = 46;
+musicCount = 52;
 
 musicLoadEnd = false;
-type = array_create(46);
+type = array_create(musicCount);
 
 
 
@@ -114,6 +114,14 @@ song[42] = "BGM_SE.ogg";
 song[43] = "BGM_Fapple.ogg";
 song[44] = "BGM_Secret3.ogg";type[44]=1;
 song[45] = "BGM_Luka.ogg";
+
+
+song[46] = "BattleB_1.ogg";
+song[47] = "BattleB_2.ogg";
+song[48] = "BattleB_3.ogg";
+song[49] = "BattleB_4.ogg";
+song[50] = "BattleB_Pokemon.ogg";
+song[51] = "BattleC.ogg";
 </string>
           </argument>
         </arguments>
@@ -186,6 +194,13 @@ name[43] = "BGM_Fapple";
 name[44] = "BGM_Secret3";
 name[45] = "BGM_Luka";
 
+
+name[46] = "BattleB_1";
+name[47] = "BattleB_2";
+name[48] = "BattleB_3";
+name[49] = "BattleB_4";
+name[50] = "BattleB_Pokemon";
+name[51] = "BattleC";
 </string>
           </argument>
         </arguments>

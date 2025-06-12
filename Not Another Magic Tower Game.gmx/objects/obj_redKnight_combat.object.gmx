@@ -33,6 +33,8 @@ y = 32;
 
 
 move = false;
+
+spikeReady = false;
 </string>
           </argument>
         </arguments>

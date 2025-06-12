@@ -3,6 +3,13 @@
 LoadFMOD();
 FMODinit(100,0);
 
+
+global.current_bgm_id = noone;
+global.current_bgm = noone;
+
+global.current_battle_bgm_id = noone;
+global.current_battle_bgm = noone;
+
 //indicates that no music will be playing in the room
 //DO NOT DELETE THIS ONE
 /*globalvar BGM_Null;
