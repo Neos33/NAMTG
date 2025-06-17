@@ -45,6 +45,45 @@ rni8 = irandom(24);
 r2_9 = 0;
 r1_9 = 200;
 n9 = 36;
+
+
+xx = 0;
+dir = 0;
+yy = 0;
+xx2 = 0;
+yy2 = 0;
+
+c0 = 0;
+c1 = 0;
+i = 0;
+
+v = 0;
+ddd = 0;
+k = 0;
+vv = 0;
+dir2 = 0;
+
+xx4 = 0;
+dir4 = 0;
+yy4 = 0;
+
+rnd5 = 0;
+count5 = 0;
+
+
+count7 = 0;
+c8 = 0;
+
+num9 = 0;
+dir9 = 0;
+xx9 = 0;
+d9 = 0;
+yy9 = 0;
+
+rnd10 = 0;
+count10 = 0;
+rnd11 = 0;
+count11 = 0;
 </string>
           </argument>
         </arguments>
@@ -68,36 +107,40 @@ n9 = 36;
           <argument>
             <kind>1</kind>
             <string>rnd11=0//irandom(360);
-for(i=0;i&lt;2;i+=1){
-    for(j=-10;j&lt;=10;j+=1){
-        a=instance_create(x,y,obj_tre_bullet3);
-        a.active=1;
-        a.speed = j*1.5;
-        a.direction = i*90+45;
-        a.image_index = 8*i+rnd11;
-        a.dirspd = -1.8;
-        a.no = 1;
-        count11 += 1;
-        a.num = count11;
-        a.xx = 400+lengthdir_x(100,9*a.num+rnd11);
-        a.yy = 304+lengthdir_y(100,9*a.num+rnd11);
-        a.len = 100;
+for(i=0;i&lt;2;i+=1)
+{
+    for(j=-10;j&lt;=10;j+=1)
+    {
+        var a=instance_create(x,y,obj_tre_bullet3);
+            a.active=1;
+            a.speed = j*1.5;
+            a.direction = i*90+45;
+            a.image_index = 8*i+rnd11;
+            a.dirspd = -1.8;
+            a.no = 1;
+            count11 += 1;
+            a.num = count11;
+            a.xx = 400+lengthdir_x(100,9*a.num+rnd11);
+            a.yy = 304+lengthdir_y(100,9*a.num+rnd11);
+            a.len = 100;
     }
 }
-for(i=0;i&lt;2;i+=1){
-    for(j=-10;j&lt;=10;j+=1){
-        a=instance_create(x,y,obj_tre_bullet3);
-        a.speed = j*1.5;
-        a.active=1;
-        a.direction = i*90+45;
-        a.image_index = 8*i+rnd11+4;
-        a.dirspd = 1.8;
-        a.no = 1;
-        count11 += 1;
-        a.num = count11;
-        a.xx = 400+lengthdir_x(108,9*a.num+rnd11+4.5);
-        a.yy = 304+lengthdir_y(108,9*a.num+rnd11+4.5);
-        a.len = 108;
+for(i=0;i&lt;2;i+=1)
+{
+    for(var j=-10;j&lt;=10;j+=1)
+    {
+        var a=instance_create(x,y,obj_tre_bullet3);
+            a.speed = j*1.5;
+            a.active=1;
+            a.direction = i*90+45;
+            a.image_index = 8*i+rnd11+4;
+            a.dirspd = 1.8;
+            a.no = 1;
+            count11 += 1;
+            a.num = count11;
+            a.xx = 400+lengthdir_x(108,9*a.num+rnd11+4.5);
+            a.yy = 304+lengthdir_y(108,9*a.num+rnd11+4.5);
+            a.len = 108;
     }
 }
 </string>
@@ -123,22 +166,24 @@ for(i=0;i&lt;2;i+=1){
           <argument>
             <kind>1</kind>
             <string>rnd10=irandom(24);
-for(i=0;i&lt;3;i+=1){
-    for(j=-15;j&lt;=15;j+=1){
-        a=instance_create(x,y,obj_tre_bullet3);
-        a.speed = j;
-        a.direction = i*120+30;
-        a.image_index = 8*i+rnd10;
-        a.dirspd = 1.5;
-        a.no = 1;
-        a.i = i;
-        a.j = j+15;
-        a.tdir = j*36 + i*120;
-        a.num = count10;
-        count10 += 1;
-        a.dir = 2*pi/93*a.num;
-        a.xx = 400 + 120*(16*power(sin(a.dir),3))/17;
-        a.yy = 304 + 120*(13*cos(a.dir)-5*cos(2*a.dir)-2*cos(3*a.dir)-cos(4*a.dir))/17;
+for(i=0;i&lt;3;i+=1)
+{
+    for(var j=-15;j&lt;=15;j+=1)
+    {
+        var a=instance_create(x,y,obj_tre_bullet3);
+            a.speed = j;
+            a.direction = i*120+30;
+            a.image_index = 8*i+rnd10;
+            a.dirspd = 1.5;
+            a.no = 1;
+            a.i = i;
+            a.j = j+15;
+            a.tdir = j*36 + i*120;
+            a.num = count10;
+            count10 += 1;
+            a.dir = 2*pi/93*a.num;
+            a.xx = 400 + 120*(16*power(sin(a.dir),3))/17;
+            a.yy = 304 + 120*(13*cos(a.dir)-5*cos(2*a.dir)-2*cos(3*a.dir)-cos(4*a.dir))/17;
     }
 }
 </string>
@@ -171,20 +216,21 @@ a.r2=r2_9;
 a.dir=dir9;
 }*/
 num9 = 45;
-for(i=0;i&lt;num9;i+=1;){
+for(i=0;i&lt;num9;i+=1;)
+{
     dir9 = 360/num9*i;
     xx9 = 400+lengthdir_y(r2_9,dir9+d9)+lengthdir_x(lengthdir_x(r1_9,num9*2*(dir9+d9)),dir9+d9);
     yy9 = 304+lengthdir_x(r2_9,dir9+d9)+lengthdir_x(lengthdir_y(r1_9,num9*2*(dir9+d9)),dir9+d9);
-    a = instance_create(x,y,obj_tre_bullet3);
-    a.r1=r1_9;
-    a.r2=r2_9;
-    a.n=num9*2;
-    a.no = 1;
-    a.dir=dir9+d9;
-    a.speed = point_distance(x,y,xx9,yy9)/10;
-    a.direction = point_direction(x,y,xx9,yy9);
-    a.image_index = d9*2;
-    a.alarm[0] = 10;
+    var a = instance_create(x,y,obj_tre_bullet3);
+        a.r1=r1_9;
+        a.r2=r2_9;
+        a.n=num9*2;
+        a.no = 1;
+        a.dir=dir9+d9;
+        a.speed = point_distance(x,y,xx9,yy9)/10;
+        a.direction = point_direction(x,y,xx9,yy9);
+        a.image_index = d9*2;
+        a.alarm[0] = 10;
 }
 d9 += 360/n9/4;
 if(d9&lt;360/n9)alarm[9] = 10;
@@ -211,13 +257,13 @@ if(d9&lt;360/n9)alarm[9] = 10;
           <argument>
             <kind>1</kind>
             <string>for(i=0;i&lt;n8;i+=1){
-    a = instance_create(x,y,obj_tre_bullet3);
-    a.speed = 10;
-    a.num = c8;
-    a.alarm[0] = 10;
-    a.direction = rn8+360/n8*i+360/n8/4*c8;
-    a.image_index = rni8+6*c8;
-    a.at=1;
+    var a = instance_create(x,y,obj_tre_bullet3);
+        a.speed = 10;
+        a.num = c8;
+        a.alarm[0] = 10;
+        a.direction = rn8+360/n8*i+360/n8/4*c8;
+        a.image_index = rni8+6*c8;
+        a.at=1;
 }
 c8+=1;
 if(c8&lt;4)alarm[8]=fpb/2;
@@ -246,18 +292,21 @@ if(c8&lt;4)alarm[8]=fpb/2;
             <string>xx = 192 - sqr(tt);
 tt += sqrt(192)/20;
 count7 += 1;
-a=instance_create(xx,620,obj_tre_bullet3);
-a.image_index=rn7;
-a.shadow = true;
-a.saspd = 0.1;
-a.stt = 4;
-a.vspeed = -12;
+
+var a=instance_create(xx,620,obj_tre_bullet3);
+    a.image_index=rn7;
+    a.shadow = true;
+    a.saspd = 0.1;
+    a.stt = 4;
+    a.vspeed = -12;
+
 a=instance_create(800-xx,-8,obj_tre_bullet3);
 a.image_index=rn7+12;
 a.shadow = true;
 a.saspd = 0.1;
 a.stt = 4;
 a.vspeed = 12;
+
 if count7&lt;42 alarm[7]=1;
 </string>
           </argument>
@@ -281,20 +330,21 @@ if count7&lt;42 alarm[7]=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;4;i+=1){
+            <string>for(i=0;i&lt;4;i+=1)
+{
     xx4 = 400+lengthdir_x(rad4,dir6+90*i);
     yy4 = 400+lengthdir_y(rad4,dir6+90*i);
-    a=instance_create(xx4,yy4,obj_tre_bullet);
-    a.sprite_index=spr_cboom;
-    a.image_index=6*i+rn4;
-    a.lenspd=-rad4/(3000/144*6)/2.5;
-    a.no=1;
-    a.angspd=2;
-    a.ang=dir4+90*i;
-    a.len=rad4;
-    a.spin=1;
-    a.cc=1;
-    a.alarm[2]=1;
+    var a=instance_create(xx4,yy4,obj_tre_bullet);
+        a.sprite_index=spr_cboom;
+        a.image_index=6*i+rn4;
+        a.lenspd=-rad4/(3000/144*6)/2.5;
+        a.no=1;
+        a.angspd=2;
+        a.ang=dir4+90*i;
+        a.len=rad4;
+        a.spin=1;
+        a.cc=1;
+        a.alarm[2]=1;
 }
 </string>
           </argument>
@@ -321,30 +371,34 @@ if count7&lt;42 alarm[7]=1;
             <string>x=400;
 y=304;
 rnd5=irandom(24);
-for(i=1;i&lt;10;i+=1){
-    for(j=0;j&lt;6;j+=1){
-        a=instance_create(x,y,obj_tre_bullet);
-        a.speed=i/0.4;
-        a.direction=60*j;
-        a.dirspd=1;
-        a.no=1;
-        a.num=count5;
-        count5+=1;
-        a.sprite_index=spr_cboom;
-        a.image_index=j*6+irandom(2)+rnd5;
+for(i=1;i&lt;10;i+=1)
+{
+    for(var j=0;j&lt;6;j+=1)
+    {
+        var a=instance_create(x,y,obj_tre_bullet);
+            a.speed=i/0.4;
+            a.direction=60*j;
+            a.dirspd=1;
+            a.no=1;
+            a.num=count5;
+            count5+=1;
+            a.sprite_index=spr_cboom;
+            a.image_index=j*6+irandom(2)+rnd5;
     }
 }
-for(i=1;i&lt;10;i+=1){
-    for(j=0;j&lt;6;j+=1){
-        a=instance_create(x,y,obj_tre_bullet);
-        a.speed=i/0.4;
-        a.direction=60*j;
-        a.dirspd=-1;
-        a.no=1;
-        a.num=count5;//instance_number(obj_tre_bullet);
-        count5+=1;
-        a.sprite_index=spr_cboom;
-        a.image_index=j*6+irandom(2)+rnd5;
+for(i=1;i&lt;10;i+=1)
+{
+    for(var j=0;j&lt;6;j+=1)
+    {
+        var a=instance_create(x,y,obj_tre_bullet);
+            a.speed=i/0.4;
+            a.direction=60*j;
+            a.dirspd=-1;
+            a.no=1;
+            a.num=count5;//instance_number(obj_tre_bullet);
+            count5+=1;
+            a.sprite_index=spr_cboom;
+            a.image_index=j*6+irandom(2)+rnd5;
     }
 }
 </string>
@@ -369,19 +423,20 @@ for(i=1;i&lt;10;i+=1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;4;i+=1){
+            <string>for(i=0;i&lt;4;i+=1)
+{
     xx4 = 400+lengthdir_x(rad4,dir4+90*i);
     yy4 = 400+lengthdir_y(rad4,dir4+90*i);
-    a=instance_create(xx4,yy4,obj_tre_bullet);
-    a.sprite_index=spr_cboom;
-    a.image_index=6*i+rn4;
-    a.lenspd=-rad4/(3000/144*6);
-    a.no=1;
-    a.angspd=2;
-    a.ang=dir4+90*i;
-    a.len=rad4;
-    a.spin=1;
-    a.alarm[2]=1;
+    var a=instance_create(xx4,yy4,obj_tre_bullet);
+        a.sprite_index=spr_cboom;
+        a.image_index=6*i+rn4;
+        a.lenspd=-rad4/(3000/144*6);
+        a.no=1;
+        a.angspd=2;
+        a.ang=dir4+90*i;
+        a.len=rad4;
+        a.spin=1;
+        a.alarm[2]=1;
 }
 </string>
           </argument>
@@ -405,51 +460,71 @@ for(i=1;i&lt;10;i+=1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(a3==0){
-with(obj_tre_bullet){
-if za=1{
-a=instance_create(x,y,obj_tre_bullet2);
-a.alarm[1]=14;
-a.image_index=image_index;
-a.speed = point_distance(x,y,400+other.ra,y)/7;
-a.x2=400+2*other.ra;
-a.y2=304;
-a.direction = 0;
-}}}
-if(a3==1){
-with(obj_tre_bullet){
-if za=1{
-a=instance_create(x,y,obj_tre_bullet2);
-a.alarm[1]=14;
-a.image_index=image_index;
-a.speed = point_distance(x,y,400-other.ra,y)/7;
-a.direction = 180;
-a.x2=400-2*other.ra;
-a.y2=304;
-}}}
-if(a3==2){
-with(obj_tre_bullet){
-if za=1{
-a=instance_create(x,y,obj_tre_bullet2);
-a.alarm[1]=14;
-a.image_index=image_index;
-a.speed = point_distance(x,y,x,304+other.ra)/7;
-a.x2=400;
-a.y2=304+2*other.ra;
-a.direction = 270;
-}}}
-if(a3==3){
-with(obj_tre_bullet){
-if za=1{
-a=instance_create(x,y,obj_tre_bullet2);
-a.alarm[1]=14;
-a.image_index=image_index;
-a.speed = point_distance(x,y,x,304-other.ra)/7;
-a.x2=400;
-a.y2=304-2*other.ra;
-a.direction = 90;
-}}
+            <string>if(a3==0)
+{
+    with(obj_tre_bullet)
+    {
+        if za=1
+        {
+            a=instance_create(x,y,obj_tre_bullet2);
+            a.alarm[1]=14;
+            a.image_index=image_index;
+            a.speed = point_distance(x,y,400+other.ra,y)/7;
+            a.x2=400+2*other.ra;
+            a.y2=304;
+            a.direction = 0;
+        }
+    }
 }
+if(a3==1)
+{
+    with(obj_tre_bullet)
+    {
+        if za=1
+        {
+            a=instance_create(x,y,obj_tre_bullet2);
+            a.alarm[1]=14;
+            a.image_index=image_index;
+            a.speed = point_distance(x,y,400-other.ra,y)/7;
+            a.direction = 180;
+            a.x2=400-2*other.ra;
+            a.y2=304;
+        }
+    }
+}
+if(a3==2)
+{
+    with(obj_tre_bullet)
+    {
+        if za=1
+        {
+            a=instance_create(x,y,obj_tre_bullet2);
+            a.alarm[1]=14;
+            a.image_index=image_index;
+            a.speed = point_distance(x,y,x,304+other.ra)/7;
+            a.x2=400;
+            a.y2=304+2*other.ra;
+            a.direction = 270;
+        }
+    }
+}
+if(a3==3)
+{
+    with(obj_tre_bullet)
+    {
+        if za=1
+        {
+            a=instance_create(x,y,obj_tre_bullet2);
+            a.alarm[1]=14;
+            a.image_index=image_index;
+            a.speed = point_distance(x,y,x,304-other.ra)/7;
+            a.x2=400;
+            a.y2=304-2*other.ra;
+            a.direction = 90;
+        }
+    }
+}
+
 a3+=1;
 if a3&lt;4
 alarm[3]=fpb/2;
@@ -479,15 +554,18 @@ alarm[3]=fpb/2;
 v=v2;
 ddd = degtorad((180-(360/4))/2)
 k=2*v*cos(ddd)
-for(i=1;i&lt;=n2;i+=1;){
-    a=instance_create(x,y,obj_tre_bullet);
-    a.speed=abs(sqrt(sqr(v)+sqr(k*i/n2)-2*v*(k*i/n2)*cos(ddd)))
-    a.image_index=choose(2,3);
-    a.alarm[0]=8;
-    a.za=1;
+
+for(i=1;i&lt;=n2;i+=1;)
+{
+    var a=instance_create(x,y,obj_tre_bullet);
+        a.speed=abs(sqrt(sqr(v)+sqr(k*i/n2)-2*v*(k*i/n2)*cos(ddd)))
+        a.image_index=choose(2,3);
+        a.alarm[0]=8;
+        a.za=1;
     vv=a.speed;
-    a.direction=dir2+radtodeg(arccos((sqr(v)+sqr(vv)-sqr(k*i/n2))/(2*v*(vv))));
-    if(i==n2){
+        a.direction=dir2+radtodeg(arccos((sqr(v)+sqr(vv)-sqr(k*i/n2))/(2*v*(vv))));
+    if(i==n2)
+    {
         dir2 += 360/4;
     }
 }
@@ -517,23 +595,26 @@ for(i=1;i&lt;=n2;i+=1;){
 yy = y + 250 + lengthdir_y(rr,dir1);
 xx2 = x + lengthdir_x(rr,dir1+177);
 yy2 = y - 250 + lengthdir_y(rr,dir1+177);
-a=instance_create(xx,yy,obj_tre_bullet);
+var a=instance_create(xx,yy,obj_tre_bullet);
 a.image_alpha=0;
 a.fade_i_change=1;
 a.num=2;
 a.count=c1;
 a.image_index=5;
 a.sp=i;
+
 a=instance_create(xx2,yy2,obj_tre_bullet);
 a.image_alpha=0;
 a.fade_i_change=1;
 a.num=2;
 a.count=c1;
 a.sp=i;
+
 c1+=1;
-if(dir1&gt;51){
-dir1-=6;
-alarm[1]=3000/144/15*2;
+if(dir1&gt;51)
+{
+    dir1-=6;
+    alarm[1]=3000/144/15*2;
 }
 </string>
           </argument>
@@ -561,38 +642,50 @@ alarm[1]=3000/144/15*2;
 yy = y+lengthdir_y(r,dir);
 xx2 = x+lengthdir_x(r,dir+180);
 yy2 = y+lengthdir_y(r,dir+180);
-for(i=-2;i&lt;=2;i+=1){
-    a=instance_create(xx,yy,obj_tre_bullet);
-    a.speed=6;
-    a.direction=point_direction(xx,yy,400,304)+90+45*i;
-    if(c0 div 3) mod 2 == 1{
+
+for(i=-2;i&lt;=2;i+=1)
+{
+    var a=instance_create(xx,yy,obj_tre_bullet);
+        a.speed=6;
+        a.direction=point_direction(xx,yy,400,304)+90+45*i;
+    if(c0 div 3) mod 2 == 1
+    {
         a.image_index = 5;
     }
 }
-for(i=-2;i&lt;=2;i+=1){
+
+for(i=-2;i&lt;=2;i+=1)
+{
     a=instance_create(xx2,yy2,obj_tre_bullet);
     a.speed=6;
     a.direction=point_direction(xx2,yy2,400,304)+90+45*i;
-    if(c0 div 3) mod 2 == 1{
+    if(c0 div 3) mod 2 == 1
+    {
         a.image_index = 5;
     }
 }
+
 a=instance_create(xx,yy,obj_tre_bullet);
 a.nn=c0;
 a.num=1;
-if(c0 div 6) mod 2 == 1{
-        a.image_index = 5;
-    }
+if(c0 div 6) mod 2 == 1
+{
+    a.image_index = 5;
+}
+
 a=instance_create(xx2,yy2,obj_tre_bullet);
 a.nn=c0;
 a.num=1;
-if(c0 div 6) mod 2 == 1{
-        a.image_index = 5;
-    }
+if(c0 div 6) mod 2 == 1
+{
+    a.image_index = 5;
+}
+
 c0+=1;
-if(dir&lt;177){
-dir+=3;
-alarm[0]=2.67/4;
+if(dir&lt;177)
+{
+    dir+=3;
+    alarm[0]=2.67/4;
 }
 </string>
           </argument>

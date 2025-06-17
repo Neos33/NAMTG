@@ -57,8 +57,8 @@ objIndex = obj_fireWater1;
 }
 else
 {
-    f = instance_create(x,y,objIndex);
-    f.image_alpha = 0.6;
+    var f = instance_create(x,y,objIndex);
+        f.image_alpha = 0.6;
     instance_destroy();
 }
 </string>

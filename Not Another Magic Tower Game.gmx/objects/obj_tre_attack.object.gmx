@@ -11,29 +11,22 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>201</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_create_object</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>10</kind>
-            <object>obj_tre_at1</object>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>400</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>304</string>
+            <kind>1</kind>
+            <string>instance_create(400, 304, obj_tre_at1);
+</string>
           </argument>
         </arguments>
       </action>
@@ -69,6 +62,44 @@ rn4=irandom(21);
 instance_create(x,y,obj_tre_cam);
 instance_create(x,y,obj_tre_bg);
 scr_trebole();
+
+
+
+
+dir4 = 0;
+
+rnd6 = 0;
+dir6 = 0;
+
+max_num = 0;
+n = 0;
+R = 0;
+r = 0;
+dir0 = 0;
+frame = 0;
+
+count = 0;
+
+count10 = 0;
+
+_objX = array_create(10);
+_objY = array_create(10);
+
+xx = 0;
+yy = 0;
+
+
+f = false;
+f2 = false;
+d = false;
+d2 = false;
+at1 = false;
+t1 = 0;
+
+obj_cora_ef = 0;
+
+at2 = false;
+t2 = 0;
 </string>
           </argument>
         </arguments>
@@ -91,7 +122,7 @@ scr_trebole();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,obj_tre_bullet);
+            <string>var a=instance_create(x,y,obj_tre_bullet);
 a.speed=random_range(5,8);
 a.direction=random(360);
 a.sprite_index=spr_cboom;
@@ -119,7 +150,8 @@ alarm[11]=1.5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>do{
+            <string>do
+{
     xx = random(800);
     yy = random(608);
 }
@@ -164,16 +196,18 @@ R=150;
 r=70;
 dir0=0;
 frame=30;
-for(k=0;k&lt;3;k+=1){
-for(i=0;i&lt;max_num;i+=1){
-  a=instance_create(x,y,obj_tre_bullet3);
-  a.direction=i*360/max_num+dir0;
-  a.speed=r/frame*0.8;
-  a.spd=(R-(R-r)/(180/n)*abs(((i*360/max_num) mod (360/n))-(180/n)))/frame*(1.25+0.25*k);
-  count+=1;
-  a.image_index=count;
-  //a.friction=a.speed/35;
-}
+for(var k=0;k&lt;3;k+=1)
+{
+    for(var i=0;i&lt;max_num;i+=1)
+    {
+      a=instance_create(x,y,obj_tre_bullet3);
+      a.direction=i*360/max_num+dir0;
+      a.speed=r/frame*0.8;
+      a.spd=(R-(R-r)/(180/n)*abs(((i*360/max_num) mod (360/n))-(180/n)))/frame*(1.25+0.25*k);
+      count+=1;
+      a.image_index=count;
+      //a.friction=a.speed/35;
+    }
 }
 </string>
           </argument>
@@ -197,17 +231,17 @@ for(i=0;i&lt;max_num;i+=1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a = instance_create(random(800),-4,obj_tre_bullet3);
-a.z = 200;
-a.vspeed = 15;
-a.hspeed = random_range(-1,1);
-a.gravity = -cal_friction(a.vspeed,random_range(500,570));
-a.ztime = abs(a.vspeed/a.gravity)*2;
-a.zspd = -a.z / a.ztime - 0.1;
-a.image_index = irandom(24);
-a.alarm[8]=1;
-a.alarm[9]=a.ztime/2;
-a.depth=1000010;
+            <string>var a = instance_create(random(800),-4,obj_tre_bullet3);
+    a.z = 200;
+    a.vspeed = 15;
+    a.hspeed = random_range(-1,1);
+    a.gravity = -cal_friction(a.vspeed,random_range(500,570));
+    a.ztime = abs(a.vspeed/a.gravity)*2;
+    a.zspd = -a.z / a.ztime - 0.1;
+    a.image_index = irandom(24);
+    a.alarm[8]=1;
+    a.alarm[9]=a.ztime/2;
+    a.depth=1000010;
 alarm[8] = 2;
 </string>
           </argument>
@@ -269,12 +303,12 @@ a.alarm[2]=1;
             <kind>1</kind>
             <string>rnd6 = irandom(24);
 dir6 = point_direction(x,y,player.x,player.y);
-for(i=0;i&lt;24;i+=1){
-    a=instance_create(x,y,obj_tre_bullet);
-    a.speed=9;
-    a.friction=-0.1;
-    a.direction=dir6+15*i;
-    a.image_index=7;
+for(var i=0;i&lt;24;i+=1){
+    var a=instance_create(x,y,obj_tre_bullet);
+        a.speed=9;
+        a.friction=-0.1;
+        a.direction=dir6+15*i;
+        a.image_index=7;
 }
 obj_tre_cam.pat = 2;
 obj_tre_cam.pat_t2 = 5;
@@ -300,11 +334,11 @@ obj_tre_cam.pat_t2 = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,obj_tre_bullet);
-a.speed=random_range(5,8);
-a.direction=random(360);
-a.sprite_index=spr_cboom;
-a.image_index=irandom(24);
+            <string>var a=instance_create(x,y,obj_tre_bullet);
+    a.speed=random_range(5,8);
+    a.direction=random(360);
+    a.sprite_index=spr_cboom;
+    a.image_index=irandom(24);
 alarm[5]=4;
 </string>
           </argument>
@@ -328,27 +362,27 @@ alarm[5]=4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;2;i+=1){
-    xx[i] = 400+lengthdir_x(350,dir4+180*i);
-    yy[i] = 80+lengthdir_y(20,dir4+180*i);
+            <string>for(var i=0;i&lt;2;i+=1){
+    xxx[i] = 400+lengthdir_x(350,dir4+180*i);
+    yyy[i] = 80+lengthdir_y(20,dir4+180*i);
 }
 dir4 += 12;
-for(i=0;i&lt;2;i+=1){
-    inst = instance_create(xx[i],yy[i],obj_tre_shadow);
-    inst.sprite_index = sprite_index;
-    inst.image_xscale = image_xscale;
-    inst.image_yscale = image_yscale;
-    inst.image_index = 14;
-    inst.image_speed = image_speed;
-    inst.image_angle = image_angle;
-    inst.image_blend = image_blend;
-    inst.depth = depth+1;
-    inst.alpha_speed=0.1;
-    for(j=0;j&lt;n4;j+=1){
-        a=instance_create(xx[i],yy[i],obj_tre_bullet3);
-        a.speed=6;
-        a.direction=dir4+360/n4*j+60;
-        a.image_index=14+irandom(4);
+for(var i=0;i&lt;2;i+=1){
+    var inst = instance_create(xxx[i],yyy[i],obj_tre_shadow);
+        inst.sprite_index = sprite_index;
+        inst.image_xscale = image_xscale;
+        inst.image_yscale = image_yscale;
+        inst.image_index = 14;
+        inst.image_speed = image_speed;
+        inst.image_angle = image_angle;
+        inst.image_blend = image_blend;
+        inst.depth = depth+1;
+        inst.alpha_speed=0.1;
+    for(var j=0;j&lt;n4;j+=1){
+        var a=instance_create(xxx[i],yyy[i],obj_tre_bullet3);
+            a.speed=6;
+            a.direction=dir4+360/n4*j+60;
+            a.image_index=14+irandom(4);
     }
 }
 alarm[4]=5;
@@ -374,14 +408,16 @@ alarm[4]=5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(-4,-4,obj_tre_bullet3);
-a.speed=random_range(5,7);
-a.direction=random_range(-90,0);
-a.image_index=irandom(24);
+            <string>var a=instance_create(-4,-4,obj_tre_bullet3);
+    a.speed=random_range(5,7);
+    a.direction=random_range(-90,0);
+    a.image_index=irandom(24);
+    
 a=instance_create(804,-4,obj_tre_bullet3);
 a.speed=random_range(5,7);
 a.direction=random_range(-180,-90);
 a.image_index=irandom(24);
+
 alarm[3]=3;
 </string>
           </argument>
@@ -405,29 +441,31 @@ alarm[3]=3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(irandom(1)=0){
-a=instance_create(-8,random_range(480,608),obj_tre_bullet3);
-a.image_index=2+2*irandom(2);
-a.speed=sp2;
-a.direction=random_range(-45,45);
-a.bounce=1;
-a=instance_create(random_range(0,128),616,obj_tre_bullet3);
-a.image_index=2+2*irandom(2);
-a.speed=sp2;
-a.direction=random_range(45,135);
-a.bounce=1;
+            <string>if(irandom(1)=0)
+{
+    a=instance_create(-8,random_range(480,608),obj_tre_bullet3);
+    a.image_index=2+2*irandom(2);
+    a.speed=sp2;
+    a.direction=random_range(-45,45);
+    a.bounce=1;
+    a=instance_create(random_range(0,128),616,obj_tre_bullet3);
+    a.image_index=2+2*irandom(2);
+    a.speed=sp2;
+    a.direction=random_range(45,135);
+    a.bounce=1;
 }
-else{
-a=instance_create(808,random_range(480,608),obj_tre_bullet3);
-a.image_index=2+2*irandom(2);
-a.speed=sp2;
-a.direction=random_range(135,225);
-a.bounce=1;
-a=instance_create(random_range(672,800),616,obj_tre_bullet3);
-a.image_index=2+2*irandom(2);
-a.speed=sp2;
-a.direction=random_range(45,135);
-a.bounce=1;
+else
+{
+    a=instance_create(808,random_range(480,608),obj_tre_bullet3);
+    a.image_index=2+2*irandom(2);
+    a.speed=sp2;
+    a.direction=random_range(135,225);
+    a.bounce=1;
+    a=instance_create(random_range(672,800),616,obj_tre_bullet3);
+    a.image_index=2+2*irandom(2);
+    a.speed=sp2;
+    a.direction=random_range(45,135);
+    a.bounce=1;
 }
 a=instance_create(random_range(328,432),616,obj_tre_bullet3);
 a.image_index=2+2*irandom(2);
@@ -645,7 +683,7 @@ alarm[2]=2;
           <argument>
             <kind>1</kind>
             <string>if(!debug_mode)
-audio_playmusic_volume(BGM_Trebole);
+audio_playmusic_volume(scrAudioGetID("BGM_Trebole"));
 timeline_speed=bpf*4;
 </string>
           </argument>
@@ -688,7 +726,7 @@ timeline_speed=bpf*4;
         t1+=1;
         if(t1=2)
         {
-            a=instance_create(random(800),-12,obj_tre_bullet);
+            var a=instance_create(random(800),-12,obj_tre_bullet);
             a.vspeed=random_range(4,9);
             a.sprite_index=spr_gboom;
             a.image_index=choose(0,1,2);

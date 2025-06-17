@@ -25,12 +25,61 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+image_speed = 0;
 bpm = 144;
 fpb = 3000/bpm;
 bpf = bpm/3000;
 image_xscale = 0.25;
 image_yscale = 0.25;
+
+
+
+ang = 0;
+count2 = 0;
+done = false;
+
+xx = 0;
+yy = 0;
+len5 = 0;
+dir5 = 0;
+r1 = 0;
+dir6 = 0;
+r2 = 0;
+r1spd = 0;
+r2spd = 0;
+dirspd6 = 0;
+dmax = 0;
+ddirspd6 = 0;
+dirspd = 0;
+frspd = 0;
+sclspd = 0;
+len = 0;
+lenspd = 0;
+angspd = 0;
+
+
+spin = false;
+pat1 = false;
+p1 = false;
+pat2 = false;
+p2 = false;
+fade_i_change = false;
+shadow = false;
+no = false;
+normal = false;
+
+
+ry = 0;
+ay = 0;
+ty = 0;
+rr = 0;
+aa = 0;
+t2 = 0;
+st = 0;
+stt = 0;
+saspd = 0;
+ssspd = 0;
 </string>
           </argument>
         </arguments>
@@ -58,7 +107,8 @@ y = 304+lengthdir_y(r1,dir6)-lengthdir_y(r2,n*dir6);
 r1 += r1spd;
 r2 += r2spd;
 dir6 += dirspd6;
-if dirspd6&lt;dmax{
+if dirspd6&lt;dmax
+{
     dirspd6 += ddirspd6;
 }
 alarm[6] = 1;
@@ -135,13 +185,16 @@ alarm[4] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(image_alpha&lt;1){
+            <string>if(image_alpha&lt;1)
+{
     image_xscale += 0.25/50;
     image_yscale += 0.25/50;
     image_alpha += 1/50;
 }
-else{
-    if(!done){
+else
+{
+    if(!done)
+    {
         speed = 2.5;
         direction = random(360);
         done = 1;
@@ -172,15 +225,15 @@ alarm[3]=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;4;i+=1){
-    a=instance_create(x,y,obj_tre_bullet2);
-    a.speed=5;
-    a.direction=ang+i*090;
-    a.friction=0.1;
-    a.sprite_index=sprite_index;
-    a.image_index=image_index;
-    a.no=1;
-    a.count=count2;
+            <string>for(var i=0;i&lt;4;i+=1){
+    var a=instance_create(x,y,obj_tre_bullet2);
+        a.speed=5;
+        a.direction=ang+i*090;
+        a.friction=0.1;
+        a.sprite_index=sprite_index;
+        a.image_index=image_index;
+        a.no=1;
+        a.count=count2;
 }
 count2+=1;
 alarm[2]=5;
@@ -257,33 +310,41 @@ direction = point_direction(400,304,x,y)
             <string>///pattern
 direction += dirspd;
 friction -= frspd;
-if(sclspd != 0){
+if(sclspd != 0)
+{
     image_xscale += sclspd;
     image_yscale += sclspd;
     if(image_xscale &lt;= 0){instance_destroy()}
 }
-if(spin){
+if(spin)
+{
     x=400+lengthdir_x(len,ang);
     y=304+lengthdir_y(len,ang);
     len+=lenspd;
     ang+=angspd;
 }
-if(pat1){
-    if(!p1){
+if(pat1)
+{
+    if(!p1)
+    {
         ry=point_distance(x,y,x,304);
         ay=point_direction(x,y,x,304)+180;
         p1=1;
     }
     y=304+lengthdir_y(ry,ay+radtodeg(ty));
-    if(ty&lt;3/2*pi){
+    if(ty&lt;3/2*pi)
+    {
         ty+=bpf*pi;
     }
-    else{
+    else
+    {
         ty=3/2*pi;
     }
 }
-if(pat2){
-    if(!p2){
+if(pat2)
+{
+    if(!p2)
+    {
         rr=point_distance(x,y,400,304);
         aa=point_direction(400,304,x,y);
         p2=1;
@@ -314,12 +375,15 @@ if(pat2){
             <kind>1</kind>
             <string>///effect
 var inst;
-if(fade_i_change){
+if(fade_i_change)
+{
     image_alpha+=0.1;
 }
-if(shadow){
+if(shadow)
+{
     st += 1;
-    if(st == stt){
+    if(st == stt)
+    {
         inst = instance_create(x,y,obj_tre_shadow);
         inst.sprite_index = sprite_index;
         inst.image_xscale = image_xscale;

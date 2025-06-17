@@ -1,0 +1,131 @@
+// 2025-06-17 11:10:41
+#event properties (no comments/etc. here are saved)
+parent_index = obj_diaKiller;
+sprite_index = spr_cboom;
+uses_physics = false;
+
+#event create
+event_inherited();
+
+image_speed = 0;
+bpm = 144;
+fpb = 3000/bpm;
+bpf = bpm/3000;
+image_xscale = 0.25;
+image_yscale = 0.25;
+
+
+des = false;
+spin = false;
+pat = false;
+fade_i_change = false;
+shadow = false;
+no = false;
+normal = false;
+
+
+dirspd = 0;
+frspd = 0;
+len = 0;
+ang = 0;
+lenspd = 0;
+rot = 0;
+angspd = 0;
+
+
+r = 0;
+xx = 0;
+dir0 = 0;
+yy = 0;
+st = 0;
+stt = 0;
+saspd = 0;
+ssspd = 0;
+
+#event alarm0
+speed = 0;
+image_alpha = 1;
+
+#event alarm1
+var a=instance_create(x,y,obj_tre_bullet3);
+    a.speed=10;
+    a.direction=180+point_direction(400,304,x,y);
+    a.alarm[1]=20;
+    a.image_index=image_index;
+if(des)instance_destroy()
+alarm[1]=8;
+
+#event alarm2
+var a=instance_create(x,y,obj_tre_bullet3);
+    a.speed=random_range(4,6);
+    a.gravity=-0.15;
+    a.direction=random_range(45,135)+180;
+    a.image_index=image_index;
+alarm[2]=3;
+
+#event alarm3
+for(var i=0;i<3;i+=1){
+    var a=instance_create(x,y,obj_tre_bullet3);
+        a.image_index=image_index+random_range(-2,2);
+        a.speed=random_range(4,6)//
+        a.direction=random(360)//;
+}
+/*for(i=0;i<2;i+=1){
+    a=instance_create(x,y,obj_tre_bullet3);
+    a.image_index=image_index+random_range(-2,2);
+    a.speed=3;//random_range(4,7)//
+    a.direction=ddir+i*180+90+random_range(-5,5);//random(360)//;
+}*/
+alarm[3]=30;
+
+#event step|pattern
+direction += dirspd;
+friction -= frspd;
+
+if(spin){
+    x = 400+lengthdir_x(len,ang);
+    y = 304+lengthdir_y(len,ang);
+    len += lenspd;
+    ang += rot*angspd;
+}
+
+if(pat){
+    r = 180 * sin(degtorad(6*dir));
+    xx = 400 + lengthdir_x(r,dir+dir0-dirspd);
+    yy = 304 + lengthdir_y(r,dir+dir0-dirspd);
+    x = 400 + lengthdir_x(r,dir+dir0);
+    y = 304 + lengthdir_y(r,dir+dir0);
+    dir += dirspd;
+}
+#section|effect
+var inst;
+if(fade_i_change){
+    image_alpha+=0.1;
+}
+if(shadow){
+    st += 1
+    if(st == stt){
+        inst = instance_create(x,y,obj_tre_shadow);
+        inst.sprite_index = sprite_index;
+        inst.image_xscale = image_xscale;
+        inst.image_yscale = image_yscale;
+        inst.image_index = image_index;
+        inst.image_speed = image_speed;
+        inst.image_angle = image_angle;
+        inst.image_blend = image_blend;
+        inst.depth = depth+1;
+        inst.alpha_speed=saspd;
+        inst.scale_speed=ssspd;
+        st = 0;
+    }
+}
+
+
+#event other_outside
+if(!no)instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+if(normal)draw_set_blend_mode(bm_normal);
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_set_blend_mode(bm_normal);

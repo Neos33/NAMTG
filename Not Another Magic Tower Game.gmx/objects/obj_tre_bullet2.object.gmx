@@ -25,12 +25,50 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+image_speed = 0;
 bpm = 144;
 fpb = 3000/bpm;
 bpf = bpm/3000;
 image_xscale = 0.25;
 image_yscale = 0.25;
+
+
+sp = 0;
+r1 = 0;
+dir6 = 0;
+r2 = 0;
+r1spd = 0;
+r2spd = 0;
+dirspd6 = 0;
+dmax = 0;
+asd = 0;
+
+
+pat1 = false;
+p1 = false;
+pat2 = false;
+p2 = false;
+fade_i_change = false;
+fade_o_change = false;
+shadow = false;
+no = false;
+normal = false;
+blur = false;
+
+
+dirspd = 0;
+frspd = 0;
+ry = 0;
+ay = 0;
+ty = 0;
+rr = 0;
+aa = 0;
+t2 = 0;
+st = 0;
+stt = 0;
+saspd = 0;
+ssspd = 0;
 </string>
           </argument>
         </arguments>
@@ -81,7 +119,8 @@ y = 304+lengthdir_y(r1,dir6)-lengthdir_y(r2,n*dir6);
 r1 += r1spd;
 r2 += r2spd;
 dir6 += dirspd6;
-if dirspd6&lt;dmax{
+if dirspd6&lt;dmax
+{
     dirspd6 += asd;
 }
 alarm[6] = 1;
@@ -107,7 +146,8 @@ alarm[6] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(image_xscale)&lt;0.25{
+            <string>if(image_xscale)&lt;0.25
+{
     image_xscale+=0.01;
 }
 alarm[5]=1;
@@ -229,9 +269,9 @@ alarm[2]=fpb*4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,obj_tre_bullet);
-a.image_index=image_index;
-a.alarm[1]=fpb*4;
+            <string>var a=instance_create(x,y,obj_tre_bullet);
+    a.image_index=image_index;
+    a.alarm[1]=fpb*4;
 alarm[0]=10;
 </string>
           </argument>
@@ -258,22 +298,28 @@ alarm[0]=10;
             <string>///pattern
 direction += dirspd;
 friction -= frspd;
-if(pat1){
-    if(!p1){
+if(pat1)
+{
+    if(!p1)
+    {
         ry=point_distance(x,y,x,304);
         ay=point_direction(x,y,x,304)+180;
         p1=1;
     }
     y=304+lengthdir_y(ry,ay+radtodeg(ty));
-    if(ty&lt;3/2*pi){
+    if(ty&lt;3/2*pi)
+    {
         ty+=bpf*pi;
     }
-    else{
+    else
+    {
         ty=3/2*pi;
     }
 }
-if(pat2){
-    if(!p2){
+if(pat2)
+{
+    if(!p2)
+    {
         rr=point_distance(x,y,400,304);
         aa=point_direction(400,304,x,y);
         p2=1;
@@ -304,16 +350,20 @@ if(pat2){
             <kind>1</kind>
             <string>///effect
 var inst;
-if(fade_i_change){
+if(fade_i_change)
+{
     image_alpha+=0.1;
 }
-if(fade_o_change){
+if(fade_o_change)
+{
     image_alpha-=0.1;
     if image_alpha&lt;=0 instance_destroy()
 }
-if(shadow){
+if(shadow)
+{
     st += 1
-    if(st == stt){
+    if(st == stt)
+    {
         inst = instance_create(x,y,obj_tre_shadow);
         inst.sprite_index = sprite_index;
         inst.image_xscale = image_xscale;

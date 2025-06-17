@@ -1,0 +1,44 @@
+// 2025-06-17 11:22:52
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+fpb=3000/144;
+rnd0=irandom(6);
+
+#event alarm0
+for(var m=0;m<2;m+=1)
+{
+    for(var i=0;i<3;i+=1)
+    {
+        for(var j=-14.5;j<15.5;j+=3)
+        {
+            var a=instance_create(x,y,obj_tre_bullet);
+                a.speed=j+0.5*i+0.5;
+                a.direction=+90*m;
+                a.image_index=rnd0;
+                a.no=1;
+                a.dirspd=1.45;
+                a.n = count;
+            count+=1;
+        }
+    }
+}
+for(var m=0;m<2;m+=1)
+{
+    for(var i=0;i<3;i+=1)
+    {
+        for(var j=-16.5;j<14.5;j+=3)
+        {
+            var a=instance_create(x,y,obj_tre_bullet);
+                a.speed=j+0.5*i+1;
+                a.direction=90+90*m;
+                a.image_index=rnd0+2;
+                a.no=1;
+                a.dirspd=-1.45;
+                a.n = count;
+            count+=1;
+        }
+    }
+}

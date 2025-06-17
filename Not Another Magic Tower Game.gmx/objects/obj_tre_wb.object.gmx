@@ -25,12 +25,42 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+
+image_speed = 0;
 bpm = 144;
 fpb = 3000/bpm;
 bpf = bpm/3000;
 image_xscale = 0.25;
 image_yscale = 0.25;
+
+
+des = false;
+spin = false;
+pat = false;
+fade_i_change = false;
+shadow = false;
+no = false;
+normal = false;
+
+
+dirspd = 0;
+frspd = 0;
+len = 0;
+ang = 0;
+lenspd = 0;
+rot = 0;
+angspd = 0;
+
+
+r = 0;
+xx = 0;
+dir0 = 0;
+yy = 0;
+st = 0;
+stt = 0;
+saspd = 0;
+ssspd = 0;
 </string>
           </argument>
         </arguments>
@@ -53,11 +83,11 @@ image_yscale = 0.25;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;3;i+=1){
-    a=instance_create(x,y,obj_tre_bullet3);
-    a.image_index=image_index+random_range(-2,2);
-    a.speed=random_range(4,6)//
-    a.direction=random(360)//;
+            <string>for(var i=0;i&lt;3;i+=1){
+    var a=instance_create(x,y,obj_tre_bullet3);
+        a.image_index=image_index+random_range(-2,2);
+        a.speed=random_range(4,6)//
+        a.direction=random(360)//;
 }
 /*for(i=0;i&lt;2;i+=1){
     a=instance_create(x,y,obj_tre_bullet3);
@@ -88,11 +118,11 @@ alarm[3]=30;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,obj_tre_bullet3);
-a.speed=random_range(4,6);
-a.gravity=-0.15;
-a.direction=random_range(45,135)+180;
-a.image_index=image_index;
+            <string>var a=instance_create(x,y,obj_tre_bullet3);
+    a.speed=random_range(4,6);
+    a.gravity=-0.15;
+    a.direction=random_range(45,135)+180;
+    a.image_index=image_index;
 alarm[2]=3;
 </string>
           </argument>
@@ -116,11 +146,11 @@ alarm[2]=3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,obj_tre_bullet3);
-a.speed=10;
-a.direction=180+point_direction(400,304,x,y);
-a.alarm[1]=20;
-a.image_index=image_index;
+            <string>var a=instance_create(x,y,obj_tre_bullet3);
+    a.speed=10;
+    a.direction=180+point_direction(400,304,x,y);
+    a.alarm[1]=20;
+    a.image_index=image_index;
 if(des)instance_destroy()
 alarm[1]=8;
 </string>
@@ -173,14 +203,16 @@ image_alpha = 1;
 direction += dirspd;
 friction -= frspd;
 
-if(spin){
+if(spin)
+{
     x = 400+lengthdir_x(len,ang);
     y = 304+lengthdir_y(len,ang);
     len += lenspd;
     ang += rot*angspd;
 }
 
-if(pat){
+if(pat)
+{
     r = 180 * sin(degtorad(6*dir));
     xx = 400 + lengthdir_x(r,dir+dir0-dirspd);
     yy = 304 + lengthdir_y(r,dir+dir0-dirspd);
@@ -210,12 +242,15 @@ if(pat){
             <kind>1</kind>
             <string>///effect
 var inst;
-if(fade_i_change){
+if(fade_i_change)
+{
     image_alpha+=0.1;
 }
-if(shadow){
+if(shadow)
+{
     st += 1
-    if(st == stt){
+    if(st == stt)
+    {
         inst = instance_create(x,y,obj_tre_shadow);
         inst.sprite_index = sprite_index;
         inst.image_xscale = image_xscale;

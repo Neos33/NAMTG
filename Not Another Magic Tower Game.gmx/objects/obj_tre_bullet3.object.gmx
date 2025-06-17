@@ -25,12 +25,54 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+
+image_speed = 0;
 bpm = 144;
 fpb = 3000/bpm;
 bpf = bpm/3000;
 image_xscale = 0.25;
 image_yscale = 0.25;
+
+
+r1 = 0;
+n = 0;
+dspd = 0;
+r2 = 0;
+r2spd = 0;
+
+len = 0;
+ang = 0;
+lenspd = 0;
+angspd = 0;
+aangspd = 0;
+
+xx = 0;
+yy = 0;
+xxx = 0;
+yyy = 0;
+tdir = 0;
+z = 0;
+zspd = 0;
+r = 0;
+
+spin = false;
+bounce = false;
+fade_i_change = false;
+fade_o_change = false;
+shadow = false;
+no = false;
+normal = false;
+
+flag = 0;
+
+dirspd = 0;
+frspd = 0;
+sp = 0;
+st = 0;
+stt = 0;
+saspd = 0;
+ssspd = 0;
 </string>
           </argument>
         </arguments>
@@ -82,14 +124,19 @@ image_xscale = 0.25*r;
 image_yscale = image_xscale;
 image_alpha =power(r*7/6,3);
 
-if(z&lt;0){
-    inst = instance_place(x,y+vspeed,block);
-    if(flag==0 &amp;&amp; inst.image_yscale == 1){
-        vspeed = -vspeed/3;
-        flag=1;
-        zspd*=-2;
-        depth=1000010;
-        mask_index=maskNothing;
+if(z&lt;0)
+{
+    var inst = instance_place(x,y+vspeed,block);
+    if inst != noone
+    {
+        if(flag==0 &amp;&amp; inst.image_yscale == 1)
+        {
+            vspeed = -vspeed/3;
+            flag=1;
+            zspd*=-2;
+            depth=1000010;
+            mask_index=maskNothing;
+        }
     }
 }
 alarm[8]=1;
@@ -115,11 +162,12 @@ alarm[8]=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;4;i+=1){
-    a=instance_create(x,y,obj_tre_bullet3);
-    a.speed = 6;
-    a.direction = tdir+i*90;
-    a.image_index=image_index;
+            <string>for(var i=0;i&lt;4;i+=1)
+{
+    var a=instance_create(x,y,obj_tre_bullet3);
+        a.speed = 6;
+        a.direction = tdir+i*90;
+        a.image_index=image_index;
 }
 instance_destroy()
 </string>
@@ -218,7 +266,8 @@ alarm[4] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(spin){
+            <string>if(spin)
+{
     x = 400+lengthdir_x(len,ang);
     y = 304+lengthdir_y(len,ang);
     len+=lenspd;
@@ -328,9 +377,12 @@ direction += dirspd;
 friction -= frspd;
 speed += sp;
 
-if bounce {
-if !place_free(x+hspeed,y) hspeed = -hspeed;
-if !place_free(x,y+vspeed) vspeed = -vspeed;}
+if bounce 
+{
+    if !place_free(x+hspeed,y) hspeed = -hspeed;
+    if !place_free(x,y+vspeed) vspeed = -vspeed;
+    
+}
 </string>
           </argument>
         </arguments>
@@ -353,16 +405,20 @@ if !place_free(x,y+vspeed) vspeed = -vspeed;}
             <kind>1</kind>
             <string>///effect
 var inst;
-if(fade_i_change){
+if(fade_i_change)
+{
     image_alpha+=0.1;
 }
-if(fade_o_change){
+if(fade_o_change)
+{
     image_alpha-=0.1;
     if image_alpha&lt;=0 instance_destroy()
 }
-if(shadow){
+if(shadow)
+{
     st += 1
-    if(st == stt){
+    if(st == stt)
+    {
         inst = instance_create(x,y,obj_tre_shadow);
         inst.sprite_index = sprite_index;
         inst.image_xscale = image_xscale;

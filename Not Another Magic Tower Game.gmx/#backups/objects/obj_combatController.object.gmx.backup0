@@ -1,4 +1,4 @@
-// 2025-06-12 13:27:11
+// 2025-06-17 10:44:27
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 uses_physics = false;
@@ -285,6 +285,8 @@ else
     m.ex = global.mEx;
 }
 global.cooldown = false;
+
+// Pause BGM
 if(!FMODInstanceGetPaused(global.currentBGM))
 {
     FMODInstanceSetPaused(global.currentBGM, true);
@@ -309,37 +311,21 @@ else if(global.mDef <= 135)
 {
     if(room == rSilverEvilSlime || room == rGoldEvilSlime)
     {
-        battleBGM = sndPokemonBattle1;
+        //battleBGM = sndPokemonBattle1;
+        music_play_battle("BattleB_Pokemon");
     }
     else
     {
         //battleBGM = choose(sndBattle5, sndBattle6, sndBattle7, sndBattle8);
         var _pick_music = choose("BattleB_1", "BattleB_2", "BattleB_3", "BattleB_4");
-        global.currentBGM = scrAudioGetID(_pick_music);
-        if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
-        {
-            audio_resumemusic_volume(scrAudioGetID(_pick_music));
-        }
-        else if(!FMODInstanceIsPlaying(scrAudioGetID(_pick_music)))
-        {
-            audio_loopmusic_volume(scrAudioGetID(_pick_music));   
-        }
+        music_play_battle(_pick_music);
     }
 }
 // Last list of battle songs
 else
 {
     //battleBGM = sndBattle9;
-    var _pick_music = "BattleC"
-    global.currentBGM = scrAudioGetID(_pick_music);
-    if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
-    {
-        audio_resumemusic_volume(scrAudioGetID(_pick_music));
-    }
-    else if(!FMODInstanceIsPlaying(scrAudioGetID(_pick_music)))
-    {
-        audio_loopmusic_volume(scrAudioGetID(_pick_music));   
-    }
+    music_play_battle("BattleC");
 }
 
 
@@ -362,7 +348,9 @@ if(room != battlefasfroom &&
 }
 else if(room == battlefasfroom)
 {
-    global.currentBGM = scrAudioGetID("BGMsupfasf");
+    global.current_battle_bgm_id = "BGMsupfasf";
+    global.current_battle_bgm = FMODSoundLoop(scrAudioGetID("BGMsupfasf"), false);
+    //global.currentBGM = scrAudioGetID("BGMsupfasf");
     if(FMODInstanceGetPaused(scrAudioGetID("BGMsupfasf")))
     {
         audio_resumemusic_volume(scrAudioGetID("BGMsupfasf"));
@@ -375,58 +363,19 @@ else if(room == battlefasfroom)
     {
         audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));
     }*/
-    
+    music_play_battle("BGMsupfasf");
 }
 else if(room == battleroom12)
 {
-    global.currentBGM = scrAudioGetID("BGM_RedKey");
-    if(FMODInstanceGetPaused(scrAudioGetID("BGM_RedKey")))
-    {
-        audio_resumemusic_volume(scrAudioGetID("BGM_RedKey"));
-    }
-    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGM_RedKey")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));   
-    }
-    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGM_RedKey")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));
-    }*/
-    
+    music_play_battle("BGM_RedKey");
 }
 else if(room == rDracula)
 {
-    global.currentBGM = scrAudioGetID("BGMDracula");
-    if(FMODInstanceGetPaused(scrAudioGetID("BGMDracula")))
-    {
-        audio_resumemusic_volume(scrAudioGetID("BGMDracula"));
-    }
-    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGMDracula")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGMDracula"));   
-    }
-    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGMDracula")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGMDracula"));
-    }*/
-    
+    music_play_battle("BGMDracula");
 }
 else if(room == battleroom_bf)
 {
-    global.currentBGM = scrAudioGetID("BGM_BurningFasf");
-    if(FMODInstanceGetPaused(scrAudioGetID("BGM_BurningFasf")))
-    {
-        audio_resumemusic_volume(scrAudioGetID("BGM_BurningFasf"));
-    }
-    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGM_BurningFasf")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGM_BurningFasf"));   
-    }
-    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGM_BurningFasf")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGM_BurningFasf"));
-    }*/
-    
+    music_play_battle("BGM_BurningFasf");
 }
 else if(room == rDiamante)
 {

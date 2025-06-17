@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>fpb=3000/144;
 rnd0=irandom(6);
+
+
+count = 0;
 </string>
           </argument>
         </arguments>
@@ -49,30 +52,36 @@ rnd0=irandom(6);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(m=0;m&lt;2;m+=1){
-    for(i=0;i&lt;3;i+=1){
-        for(j=-14.5;j&lt;15.5;j+=3){
-            a=instance_create(x,y,obj_tre_bullet);
-            a.speed=j+0.5*i+0.5;
-            a.direction=+90*m;
-            a.image_index=rnd0;
-            a.no=1;
-            a.dirspd=1.45;
-            a.n = count;
+            <string>for(var m=0;m&lt;2;m+=1)
+{
+    for(var i=0;i&lt;3;i+=1)
+    {
+        for(var j=-14.5;j&lt;15.5;j+=3)
+        {
+            var a=instance_create(x,y,obj_tre_bullet);
+                a.speed=j+0.5*i+0.5;
+                a.direction=+90*m;
+                a.image_index=rnd0;
+                a.no=1;
+                a.dirspd=1.45;
+                a.n = count;
             count+=1;
         }
     }
 }
-for(m=0;m&lt;2;m+=1){
-    for(i=0;i&lt;3;i+=1){
-        for(j=-16.5;j&lt;14.5;j+=3){
-            a=instance_create(x,y,obj_tre_bullet);
-            a.speed=j+0.5*i+1;
-            a.direction=90+90*m;
-            a.image_index=rnd0+2;
-            a.no=1;
-            a.dirspd=-1.45;
-            a.n = count;
+for(var m=0;m&lt;2;m+=1)
+{
+    for(var i=0;i&lt;3;i+=1)
+    {
+        for(var j=-16.5;j&lt;14.5;j+=3)
+        {
+            var a=instance_create(x,y,obj_tre_bullet);
+                a.speed=j+0.5*i+1;
+                a.direction=90+90*m;
+                a.image_index=rnd0+2;
+                a.no=1;
+                a.dirspd=-1.45;
+                a.n = count;
             count+=1;
         }
     }

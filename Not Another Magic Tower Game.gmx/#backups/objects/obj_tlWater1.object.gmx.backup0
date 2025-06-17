@@ -1,0 +1,27 @@
+// 2025-06-17 11:38:18
+#event properties (no comments/etc. here are saved)
+parent_index = objwater2;
+sprite_index = spr_commonWater1;
+uses_physics = false;
+
+#event create
+image_speed = 1/6;
+sprIndex = spr_tlFireWater1;
+objIndex = obj_fireWater1;
+
+#event alarm3
+if(image_alpha > 0)
+{
+    image_alpha -= 0.05;
+    alarm[3] = 1;
+}
+else
+{
+    var f = instance_create(x,y,objIndex);
+        f.image_alpha = 0.6;
+    instance_destroy();
+}
+
+#event draw
+draw_sprite_ext(sprIndex, image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,1-image_alpha);
+draw_current();

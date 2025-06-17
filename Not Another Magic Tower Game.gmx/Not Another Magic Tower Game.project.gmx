@@ -4158,6 +4158,7 @@
             <object>objects\obj_jirachiEffectStar</object>
             <object>objects\obj_jirachiEffectStarExplode</object>
             <object>objects\obj_goldEvilSlime_random</object>
+            <object>objects\obj_goldEvilSlimeBlack</object>
           </objects>
           <objects name="swordMaster">
             <object>objects\obj_swordMaster</object>

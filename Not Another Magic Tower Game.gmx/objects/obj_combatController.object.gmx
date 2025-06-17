@@ -372,31 +372,12 @@ else if(global.mDef &lt;= 135)
     if(room == rSilverEvilSlime || room == rGoldEvilSlime)
     {
         //battleBGM = sndPokemonBattle1;
-        //var _pick_music = "BattleB_Pokemon";
-        /*global.currentBGM = scrAudioGetID(_pick_music);
-        if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
-        {
-            audio_resumemusic_volume(scrAudioGetID(_pick_music));
-        }
-        else if(!FMODInstanceIsPlaying(scrAudioGetID(_pick_music)))
-        {
-            audio_loopmusic_volume(scrAudioGetID(_pick_music));   
-        }*/
         music_play_battle("BattleB_Pokemon");
     }
     else
     {
         //battleBGM = choose(sndBattle5, sndBattle6, sndBattle7, sndBattle8);
         var _pick_music = choose("BattleB_1", "BattleB_2", "BattleB_3", "BattleB_4");
-        /*global.currentBGM = scrAudioGetID(_pick_music);
-        if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
-        {
-            audio_resumemusic_volume(scrAudioGetID(_pick_music));
-        }
-        else if(!FMODInstanceIsPlaying(scrAudioGetID(_pick_music)))
-        {
-            audio_loopmusic_volume(scrAudioGetID(_pick_music));   
-        }*/
         music_play_battle(_pick_music);
     }
 }
@@ -404,16 +385,6 @@ else if(global.mDef &lt;= 135)
 else
 {
     //battleBGM = sndBattle9;
-    var _pick_music = "BattleC"
-    /*global.currentBGM = scrAudioGetID(_pick_music);
-    if(FMODInstanceGetPaused(scrAudioGetID(_pick_music)))
-    {
-        audio_resumemusic_volume(scrAudioGetID(_pick_music));
-    }
-    else if(!FMODInstanceIsPlaying(scrAudioGetID(_pick_music)))
-    {
-        audio_loopmusic_volume(scrAudioGetID(_pick_music));   
-    }*/
     music_play_battle("BattleC");
 }
 
@@ -456,54 +427,14 @@ else if(room == battlefasfroom)
 }
 else if(room == battleroom12)
 {
-    /*global.currentBGM = scrAudioGetID("BGM_RedKey");
-    if(FMODInstanceGetPaused(scrAudioGetID("BGM_RedKey")))
-    {
-        audio_resumemusic_volume(scrAudioGetID("BGM_RedKey"));
-    }
-    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGM_RedKey")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));   
-    }
-    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGM_RedKey")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));
-    }*/
     music_play_battle("BGM_RedKey");
-    
 }
 else if(room == rDracula)
 {
-    /*global.currentBGM = scrAudioGetID("BGMDracula");
-    if(FMODInstanceGetPaused(scrAudioGetID("BGMDracula")))
-    {
-        audio_resumemusic_volume(scrAudioGetID("BGMDracula"));
-    }
-    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGMDracula")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGMDracula"));   
-    }
-    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGMDracula")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGMDracula"));
-    }*/
     music_play_battle("BGMDracula");
 }
 else if(room == battleroom_bf)
 {
-    /*global.currentBGM = scrAudioGetID("BGM_BurningFasf");
-    if(FMODInstanceGetPaused(scrAudioGetID("BGM_BurningFasf")))
-    {
-        audio_resumemusic_volume(scrAudioGetID("BGM_BurningFasf"));
-    }
-    else if(!FMODInstanceIsPlaying(scrAudioGetID("BGM_BurningFasf")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGM_BurningFasf"));   
-    }
-    /*else if(!SS_IsSoundLooping(scrAudioGetID("BGM_BurningFasf")))
-    {
-        audio_loopmusic_volume(scrAudioGetID("BGM_BurningFasf"));
-    }*/
     music_play_battle("BGM_BurningFasf");
 }
 else if(room == rDiamante)
