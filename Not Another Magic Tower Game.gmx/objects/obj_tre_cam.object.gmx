@@ -38,6 +38,11 @@ if(!surface_exists(surfScreen)){
 }
 
 pat = 0;
+pat_t2 = 0;
+pat_t3 = 0;
+
+cAng = 0;
+av = 0;
 </string>
           </argument>
         </arguments>
@@ -110,7 +115,7 @@ pat = 0;
 
 if (surface_exists(surfScreen))
 {
-    surface_set_target(surfScreen);
+    surface_reset_target();
 }
 </string>
           </argument>
@@ -136,10 +141,12 @@ if (surface_exists(surfScreen))
             <kind>1</kind>
             <string>if deactivate exit;
 
-if (surface_exists(surfScreen)){
-    surface_reset_target();
+if (surface_exists(surfScreen))
+{
+    surface_set_target(surfScreen);
     draw_clear(c_black);
-    if(pat==1){
+    if(pat==1)
+    {
         global.frozen2=1;
         if(rt&lt;540){
             rt+=27;
@@ -150,7 +157,8 @@ if (surface_exists(surfScreen)){
             //reverse here
             global.frozen2=0;
             global.reverse = !global.reverse;
-            with(player){
+            with(player)
+            {
                 yflag = -yflag;
                 player.y += yflag * 8;
                 curJumps = 1;
@@ -159,7 +167,8 @@ if (surface_exists(surfScreen)){
         }
         draw_surface_ext_center(surfScreen,400,304,xs,xs,rt,c_white,alp);
     }
-    if(pat==2){
+    if(pat==2)
+    {
         pat_t2 -= 1;
         if(pat_t2&gt;0){
             for(var i=608;i&gt;0;i-=2){
@@ -170,21 +179,24 @@ if (surface_exists(surfScreen)){
            pat=0;
         }
     }
-    if(pat==3){
+    if(pat==3)
+    {
         pat_t3 += 1;
         if(pat_t3&lt;10){xs+=0.1;}
         else if(pat_t3&lt;19){xs-=0.1;}
         else{xs=1;pat=0;}
         draw_surface_ext_center(surfScreen,400,304,xs,xs,rt,c_white,alp);
     }
-    if(pat==4){
+    if(pat==4)
+    {
         cAng += 1.8;
         av = 15 * sin(degtorad(cAng));
         //if(a=1){rt=min(rt+0.33,550);}
         //else{rt=max(rt-0.66,530);}
         draw_surface_ext_center(surfScreen,400,304,xs,xs,rt+av,c_white,alp);
     }
-    if(pat==0){
+    if(pat==0)
+    {
         draw_surface_ext_center(surfScreen,400,304,xs,xs,rt,c_white,alp);
     }
     //screen_refresh();

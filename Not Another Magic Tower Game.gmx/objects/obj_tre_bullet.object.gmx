@@ -80,6 +80,8 @@ st = 0;
 stt = 0;
 saspd = 0;
 ssspd = 0;
+
+num = 0;
 </string>
           </argument>
         </arguments>

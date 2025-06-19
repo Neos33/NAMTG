@@ -3162,6 +3162,7 @@
       <script>scripts\scrAudioGetID.gml</script>
       <script>scripts\music_play.gml</script>
       <script>scripts\music_play_battle.gml</script>
+      <script>scripts\music_stop_battle.gml</script>
     </scripts>
     <scripts name="controls">
       <script>scripts\controls_init.gml</script>

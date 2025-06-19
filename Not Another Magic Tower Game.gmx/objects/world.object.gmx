@@ -429,7 +429,7 @@ if(pauseon == 0)
 {
     if(keyboard_check_pressed(global.restartbutton))
     {
-        //���j���[��ʂłȂ���΃Q�[������[�h�i���X�^�[�g�j
+        // Echo shift
         if(global.isJK &amp;&amp; room != ExtraJKBonus &amp;&amp; room != ExtraJKPortal)
         {
             if(!keyboard_check_direct(vk_control))
@@ -451,6 +451,7 @@ if(pauseon == 0)
             {
                 if(battleBGM) sound_stop(battleBGM);
             }
+            music_stop_battle();
         }
         global.inCombat = false;
         if instance_exists(objDeathSound){

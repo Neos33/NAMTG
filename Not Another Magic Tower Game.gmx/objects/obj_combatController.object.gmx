@@ -313,6 +313,7 @@ else if(room == rTaisa)
             <string>///Music
 
 battleBGM = noone;
+battleMusic = noone;
 // Super FASF
 if(room == battlefasfroom || room == Roomavoidence)
 {
@@ -372,43 +373,48 @@ else if(global.mDef &lt;= 135)
     if(room == rSilverEvilSlime || room == rGoldEvilSlime)
     {
         //battleBGM = sndPokemonBattle1;
-        music_play_battle("BattleB_Pokemon");
+        battleMusic = "BattleB_Pokemon"
     }
     else
     {
         //battleBGM = choose(sndBattle5, sndBattle6, sndBattle7, sndBattle8);
-        var _pick_music = choose("BattleB_1", "BattleB_2", "BattleB_3", "BattleB_4");
-        music_play_battle(_pick_music);
+        battleMusic = choose("BattleB_1", "BattleB_2", "BattleB_3", "BattleB_4");
     }
 }
 // Last list of battle songs
 else
 {
     //battleBGM = sndBattle9;
-    music_play_battle("BattleC");
+    battleMusic = "BattleC";
 }
 
+var _room_exception = room != battlefasfroom &amp;&amp; 
+                        room != Roomavoidence &amp;&amp; 
+                        room != battleroom12 &amp;&amp; 
+                        room != rDracula &amp;&amp; 
+                        room != battleroom_bf &amp;&amp; 
+                        global.combatObj != obj_faro_combat &amp;&amp; 
+                        room != rDiamante &amp;&amp; 
+                        room != rPica &amp;&amp; 
+                        room != rDragonStart &amp;&amp; 
+                        room != rTrebole &amp;&amp; 
+                        room != rCorazone &amp;&amp; 
+                        room != rDemonLead &amp;&amp; 
+                        room != rTaisa
 
-if(room != battlefasfroom &amp;&amp; 
-    room != Roomavoidence &amp;&amp; 
-    room != battleroom12 &amp;&amp; 
-    room != rDracula &amp;&amp; 
-    room != battleroom_bf &amp;&amp; 
-    global.combatObj != obj_faro_combat &amp;&amp; 
-    room != rDiamante &amp;&amp; 
-    room != rPica &amp;&amp; 
-    room != rDragonStart &amp;&amp; 
-    room != rTrebole &amp;&amp; 
-    room != rCorazone &amp;&amp; 
-    room != rDemonLead &amp;&amp; 
-    room != rTaisa &amp;&amp;
-    battleBGM != noone)
+if(_room_exception &amp;&amp; battleBGM != noone)
 {
     sound_loop(battleBGM);
 }
+
+
+if(_room_exception &amp;&amp; battleMusic != noone)
+{
+    music_play_battle(battleMusic);
+}
 else if(room == battlefasfroom)
 {
-    global.current_battle_bgm_id = "BGMsupfasf";
+    /*global.current_battle_bgm_id = "BGMsupfasf";
     global.current_battle_bgm = FMODSoundLoop(scrAudioGetID("BGMsupfasf"), false);
     //global.currentBGM = scrAudioGetID("BGMsupfasf");
     if(FMODInstanceGetPaused(scrAudioGetID("BGMsupfasf")))

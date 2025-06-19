@@ -55,6 +55,7 @@ shadow = false;
 no = false;
 normal = false;
 blur = false;
+swipe = false;
 
 
 dirspd = 0;
@@ -69,6 +70,8 @@ st = 0;
 stt = 0;
 saspd = 0;
 ssspd = 0;
+
+num = 0;
 </string>
           </argument>
         </arguments>

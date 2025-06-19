@@ -84,6 +84,9 @@ rnd10 = 0;
 count10 = 0;
 rnd11 = 0;
 count11 = 0;
+
+
+a3 = 0;
 </string>
           </argument>
         </arguments>

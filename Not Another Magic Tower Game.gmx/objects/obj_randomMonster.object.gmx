@@ -35,7 +35,6 @@ ex=0;
 name = "Unknown";
 combatObj = obj_randomMonster_combat;
 mybattleroom = battleroom3;
-
 </string>
           </argument>
         </arguments>

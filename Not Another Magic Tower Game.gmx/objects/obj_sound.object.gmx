@@ -107,6 +107,7 @@ if(sound_isplaying(sndBattle2))
 {
     sound_stop(sndBattle2);
 }
+music_stop_battle();
 //alarm[0] = 100;
 /*if(sound_isplaying(sndMiniBoss1))
 {

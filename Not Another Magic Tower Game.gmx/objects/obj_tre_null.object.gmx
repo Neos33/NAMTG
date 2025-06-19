@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>hspeed = -2;
+
+zzz = 0;
 </string>
           </argument>
         </arguments>
