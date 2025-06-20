@@ -1,4 +1,4 @@
-// 2025-06-19 19:55:59
+// 2025-06-20 10:31:53
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = spr_pokemonStatusBoxEnemy;
@@ -19,7 +19,10 @@ hpPer = 0;
 lv = 0;
 
 #event alarm0
-name = obj_monsterBattlePrototype.name;
+if instance_exists(obj_monsterBattlePrototype)
+{
+    name = obj_monsterBattlePrototype.name;
+}
 
 #event step
 if(instance_exists(obj_monsterBattlePrototype))

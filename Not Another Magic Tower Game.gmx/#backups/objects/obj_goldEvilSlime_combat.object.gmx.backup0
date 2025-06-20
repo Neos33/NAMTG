@@ -1,4 +1,4 @@
-// 2025-06-08 13:41:10
+// 2025-06-20 12:38:03
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_goldEvilSlime_combat;
@@ -24,6 +24,8 @@ ds_list_add(spList, "Ghost");
 ds_list_add(spList, "Psychic");
 ds_list_add(spList, "Unknown");
 
+ds_list_destroy(spList);
+
 blendColor = c_white;
 mixedAlpha = 0;
 spIndex = 0;
@@ -40,6 +42,8 @@ fade = false;
 
 evolve = false;
 playEnd = false;
+
+music_evolving = noone;
 
 #event alarm3
 
@@ -61,7 +65,9 @@ event_user(ind);
 
 #event alarm6
 sound_stop_all();
-sound_play(sndEvolve);
+music_stop_battle();
+music_evolving = FMODSoundPlay(scrAudioGetID("BGM_Battle2PokemonB"), false);
+//sound_play(sndEvolve);
 instance_create(0,0,obj_goldEvilSlimeWhite);
 with(obj_pokemonBattleDialog)
 {
@@ -171,14 +177,22 @@ else if(status == 3)
         missingNo = instance_create(x,y,obj_missingno);
         missingNo.hp = hp;
         //global.combatObj = obj_missingno;
-        sound_stop(sndEvolve);
+        //sound_stop(sndEvolve);
+        if music_evolving != noone
+        {
+            FMODInstanceStop(music_evolving);
+            music_evolving = noone;
+        }
+            
         with(obj_pokemonBattleDialog)
         {
             msg = "Holy shit! " + other.name + " has evolved into MissingNo.";
             event_user(0);
         }
         //sound_loop(sndPokemonBattle);
-        obj_combatController.battleBGM = sndPokemonBattle;
+        //obj_combatController.battleBGM = sndPokemonBattle;
+        music_play_battle("BGM_Battle2PokemonC");
+        obj_combatController.battleMusic = "BGM_Battle2PokemonC";
         player.frozen = false;
         instance_destroy();
     }
@@ -224,6 +238,13 @@ if(evolve)
     {
         evolve = false;
     }
+}
+
+#event other_room_end
+if music_evolving != noone
+{
+    FMODInstanceStop(music_evolving);
+    music_evolving = noone;
 }
 
 #event other_end_of_path

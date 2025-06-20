@@ -33,7 +33,7 @@ targetPer = 0;
 isLoading = false;
 
 musicIndex = 0;
-musicCount = 52;
+musicCount = 54;
 
 musicLoadEnd = false;
 type = array_create(musicCount);
@@ -120,12 +120,16 @@ song[44] = "BGM_Secret3.ogg";type[44]=1;
 song[45] = "BGM_Luka.ogg";
 
 
-song[46] = "BattleB_1.ogg";
-song[47] = "BattleB_2.ogg";
-song[48] = "BattleB_3.ogg";
-song[49] = "BattleB_4.ogg";
-song[50] = "BattleB_Pokemon.ogg";
-song[51] = "BattleC.ogg";
+song[46] = "BGM_Battle2A.ogg";
+song[47] = "BGM_Battle2B.ogg";
+song[48] = "BGM_Battle2C.ogg";
+song[49] = "BGM_Battle2D.ogg";
+
+song[50] = "BGM_Battle2PokemonA.ogg";
+song[51] = "BGM_Battle2PokemonB.ogg";
+song[52] = "BGM_Battle2PokemonC.ogg";
+
+song[53] = "BGM_Battle3.ogg";
 </string>
           </argument>
         </arguments>
@@ -199,12 +203,16 @@ name[44] = "BGM_Secret3";
 name[45] = "BGM_Luka";
 
 
-name[46] = "BattleB_1";
-name[47] = "BattleB_2";
-name[48] = "BattleB_3";
-name[49] = "BattleB_4";
-name[50] = "BattleB_Pokemon";
-name[51] = "BattleC";
+name[46] = "BGM_Battle2A";
+name[47] = "BGM_Battle2B";
+name[48] = "BGM_Battle2C";
+name[49] = "BGM_Battle2D";
+
+name[50] = "BGM_Battle2PokemonA";
+name[51] = "BGM_Battle2PokemonB";
+name[52] = "BGM_Battle2PokemonC";
+
+name[53] = "BGM_Battle3";
 </string>
           </argument>
         </arguments>

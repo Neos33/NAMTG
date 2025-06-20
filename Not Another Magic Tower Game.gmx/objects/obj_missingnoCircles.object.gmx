@@ -93,7 +93,8 @@ else
             <kind>1</kind>
             <string>for(var i = 0; i &lt; 12; i += 1)
 {
-    b[i].alarm[3] = 1;
+    if instance_exists(b[i])
+        b[i].alarm[3] = 1;
 }
 //sound_fix(snd_touhou_attack3);
 alarm[4] = 1;

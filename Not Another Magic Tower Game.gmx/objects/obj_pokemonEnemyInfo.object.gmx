@@ -29,7 +29,7 @@
 hp = fullHP;
 hpLen = 141;
 spIndex = 0;
-name = '';
+name = "";
 alarm[0] = 1;
 
 

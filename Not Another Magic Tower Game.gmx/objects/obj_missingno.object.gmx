@@ -251,9 +251,12 @@ else
     y = oy + 10 * sin(degtorad(angle));
 }
 
-if(!sound_isplaying(sndPokemonBattle) &amp;&amp; !sound_isplaying(sndEvolveEnd))
+// if (!sound_isplaying(sndPokemonBattle) &amp;&amp; !sound_isplaying(sndEvolveEnd))
+if(global.current_battle_bgm_id != "BGM_Battle2PokemonC" &amp;&amp; !sound_isplaying(sndEvolveEnd))
 {
-    sound_loop(sndPokemonBattle);
+    music_play_battle("BGM_Battle2PokemonC");
+    print("Did the music work?");
+    //sound_loop(sndPokemonBattle);
 }
 
 if(!player_is_alive())

@@ -1,4 +1,4 @@
-// 2025-06-08 11:23:41
+// 2025-06-08 11:23:49
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = spr_missingnoCircle;
@@ -16,7 +16,7 @@ sound_fix(snd_touhou_attack4);
 
 bulletCount = 0;
 startAng = 0;
-b = array_create(60);
+b = array_create(13);
 
 #event alarm0
 if(image_xscale < 2)

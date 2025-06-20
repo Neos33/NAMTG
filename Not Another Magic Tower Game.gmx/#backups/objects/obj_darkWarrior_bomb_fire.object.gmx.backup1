@@ -1,4 +1,4 @@
-// 2025-06-08 12:59:15
+// 2025-06-20 12:56:20
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = spr_darkWarrior_bomb_fire_1;
@@ -27,6 +27,14 @@ downBombWall = false;
 
 
 p = 0;
+
+leftP = 0;
+rightP = 0;
+upP = 0;
+downP = 0;
+
+h = noone;
+v = noone;
 
 #event alarm0
 if(sprInd < sprCount)
@@ -111,15 +119,15 @@ with(v)
 }
 
 #event other_user0
-left = x - p * 32 - 16;
-right = x + p * 32 + 16;
-up = y - p * 32 - 16;
-down = y + p * 32 + 16;
+var left = x - p * 32 - 16;
+var right = x + p * 32 + 16;
+var up = y - p * 32 - 16;
+var down = y + p * 32 + 16;
 
 if(collision_line(x,y,left+16,y,block,true,true) || collision_line(x,y,left+16,y,obj_dwBombWall,true,true))
 {
     leftP = 0;
-    for(i = x - 48; i >= left; i -= 32)
+    for(var i = x - 48; i >= left; i -= 32)
     {   
         if(instance_position(i,y - 16,block))
         {

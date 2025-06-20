@@ -1,4 +1,4 @@
-// 2025-06-08 11:23:49
+// 2025-06-20 12:31:19
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = spr_missingnoCircle;
@@ -65,7 +65,8 @@ else
 #event alarm3
 for(var i = 0; i < 12; i += 1)
 {
-    b[i].alarm[3] = 1;
+    if instance_exists(b[i])
+        b[i].alarm[3] = 1;
 }
 //sound_fix(snd_touhou_attack3);
 alarm[4] = 1;

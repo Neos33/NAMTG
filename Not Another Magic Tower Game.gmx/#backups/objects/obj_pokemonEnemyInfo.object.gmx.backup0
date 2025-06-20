@@ -1,4 +1,4 @@
-// 2025-06-20 10:31:53
+// 2025-06-20 12:28:01
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = spr_pokemonStatusBoxEnemy;
@@ -9,7 +9,7 @@ fullHP = global.mHP;
 hp = fullHP;
 hpLen = 141;
 spIndex = 0;
-name = '';
+name = "";
 alarm[0] = 1;
 
 

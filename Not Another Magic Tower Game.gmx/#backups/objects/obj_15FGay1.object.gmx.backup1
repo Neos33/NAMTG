@@ -1,0 +1,165 @@
+// 2025-06-20 13:10:15
+#event properties (no comments/etc. here are saved)
+parent_index = obj_npcPrototype;
+sprite_index = spr_npc1;
+solid = true;
+uses_physics = false;
+
+#event create
+event_inherited();
+ind = 1;
+depth = 100;
+
+b = noone;
+
+#event alarm3
+event_user(0);
+
+#event alarm4
+instance_create(0,0,obj_geStartBlack);
+/*
+transition_kind = 21;
+transition_steps = 100;
+global.koala = 25000;
+room_goto(rGayEnding);
+
+#event alarm5
+if(point_distance(b.x, b.y, b.targetX, b.targetY) < 1)
+{
+    b.hspeed = 0;
+    b.vspeed = 0;
+    b.targetX = player.x - 17;
+    b.targetY = player.y - 23;
+    alarm[6]= 50;
+}
+else
+{
+    with(b)
+    {
+        move_towards_point(targetX, targetY, 1);
+    }
+    alarm[5] = 1;
+}
+
+#event alarm6
+if(point_distance(b.x, b.y, b.targetX, b.targetY) < 3)
+{
+    b.hspeed = 0;
+    b.vspeed = 0;
+    b.x = b.targetX;
+    b.y = b.targetY;
+    alarm[7] = 1;
+}
+else
+{
+    with(b)
+    {
+        move_towards_point(targetX, targetY, 3);
+    }
+    alarm[6] = 1;
+}
+
+#event alarm7
+if(b.image_alpha > 0)
+{
+    b.image_alpha -= 0.02;
+    alarm[7] = 1;
+}
+else
+{
+    global.clearItem[ind + 6] = true;
+    message_add(b.msg);
+    global.gayEndingStep = 0;
+    player.frozen = false;
+    with(obj_15FGay1)
+    {
+        myMsg[0] = string(name) + ": You are really Cool.";    
+        with(b)
+        {
+            instance_destroy();
+        }
+    }
+    messageLength = 1;
+    alarm[0] = 20;
+}
+
+#event alarm11
+           with(obj_15FGay1)
+          {
+            if(ind == 0)
+            {
+                b = instance_create(x, y, obj_ultimateEnergy_red);
+                b.msg = "You've obtained the red energy crystal piece.";
+            }
+            else if(ind == 1)
+            {
+                b = instance_create(x, y, obj_ultimateEnergy_blue);
+                b.msg = "You've obtained the blue energy crystal piece.";
+            }
+            b.targetX = x;
+            b.targetY = y - 40;
+            alarm[5] = 1;           
+          }
+           global.gayEndingStep = 0;
+          onMesseging = true;
+
+#event step
+if(((player.x + 6 >= bbox_left) && player.x < x && keyboard_check_direct(global.rightbutton)) || 
+((player.x - 6 <= bbox_right) && (player.x > x + 16) && keyboard_check_direct(global.leftbutton)))
+{
+    if(!onMesseging && player.y < bbox_bottom && player.y > bbox_top)
+    {
+        if(!global.special[12])
+        {
+            event_inherited();
+        }
+        else if(!global.clearItem[6] && !global.clearItem[7])
+        {
+            for(i = 0; i < messageLength; i+= 1) {
+                message_add(myMsg[i]);
+            }
+            onMesseging = true;
+            player.frozen = true;
+            alarm[11] = 1;            
+        }
+        else if(global.gayEndingStep < 5)
+        {
+            global.gayEndingStep += 1;
+            alarm[3] = 1;
+            event_inherited();
+        }
+        else
+        {
+            event_user(1);
+            onMesseging = true;
+            alarm[0] = 30;
+            alarm[1] = 10;
+        }
+    }
+}
+
+#event other_user0
+with(obj_15FGay1)
+{
+    myMsg[0] = string(name) + ": You are really Cool";
+    for(i = 0; i < global.gayEndingStep; i += 1;)
+    {
+        myMsg[0] += "!";
+    }
+    messageLength = 1;
+}
+
+#event other_user1
+with(obj_15FGay1)
+{
+    myMsg[0] = string(name) + ": ...";
+    myMsg[1] = string(name) + ": No words needed. Welcome to the Grand Gay Family.";
+    messageLength = 2;
+}
+with(obj_15FGay2)
+{
+ alarm[4] = 2;
+}
+
+message_add(string(name) + ": ...");
+message_add(string(name) + ": No words needed. Welcome to the Grand Gay Family.");

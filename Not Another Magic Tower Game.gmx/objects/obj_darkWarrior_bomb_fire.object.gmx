@@ -52,6 +52,9 @@ leftP = 0;
 rightP = 0;
 upP = 0;
 downP = 0;
+
+h = noone;
+v = noone;
 </string>
           </argument>
         </arguments>
@@ -224,7 +227,7 @@ var down = y + p * 32 + 16;
 if(collision_line(x,y,left+16,y,block,true,true) || collision_line(x,y,left+16,y,obj_dwBombWall,true,true))
 {
     leftP = 0;
-    for(i = x - 48; i &gt;= left; i -= 32)
+    for(var i = x - 48; i &gt;= left; i -= 32)
     {   
         if(instance_position(i,y - 16,block))
         {

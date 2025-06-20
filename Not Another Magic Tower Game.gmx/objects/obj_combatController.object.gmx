@@ -399,19 +399,19 @@ else if(global.mDef &lt;= 135)
     if(room == rSilverEvilSlime || room == rGoldEvilSlime)
     {
         //battleBGM = sndPokemonBattle1;
-        battleMusic = "BattleB_Pokemon"
+        battleMusic = "BGM_Battle2PokemonA"
     }
     else
     {
         //battleBGM = choose(sndBattle5, sndBattle6, sndBattle7, sndBattle8);
-        battleMusic = choose("BattleB_1", "BattleB_2", "BattleB_3", "BattleB_4");
+        battleMusic = choose("BGM_Battle2A", "BGM_Battle2B", "BGM_Battle2C", "BGM_Battle2D");
     }
 }
 // Last list of battle songs
 else
 {
     //battleBGM = sndBattle9;
-    battleMusic = "BattleC";
+    battleMusic = "BGM_Battle3";
 }
 
 var _room_exception = room != battlefasfroom &amp;&amp; 

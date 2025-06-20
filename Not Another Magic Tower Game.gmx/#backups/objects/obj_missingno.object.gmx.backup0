@@ -1,4 +1,4 @@
-// 2025-06-19 20:29:51
+// 2025-06-20 13:09:30
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_missingno;
@@ -91,9 +91,12 @@ if(status == 0)
     y = oy + 10 * sin(degtorad(angle));
 }
 
-if(!sound_isplaying(sndPokemonBattle) && !sound_isplaying(sndEvolveEnd))
+// if (!sound_isplaying(sndPokemonBattle) && !sound_isplaying(sndEvolveEnd))
+if(global.current_battle_bgm_id != "BGM_Battle2PokemonC" && !sound_isplaying(sndEvolveEnd))
 {
-    sound_loop(sndPokemonBattle);
+    music_play_battle("BGM_Battle2PokemonC");
+    print("Did the music work?");
+    //sound_loop(sndPokemonBattle);
 }
 
 if(!player_is_alive())
