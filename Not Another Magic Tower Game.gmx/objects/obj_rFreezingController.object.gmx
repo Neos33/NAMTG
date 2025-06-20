@@ -81,7 +81,7 @@
 {
     player.x = 480 + 17;
     player.y = 544 + 23;
-    room_goto(r12F);
+    //room_goto(r12F);
 }
 </string>
           </argument>

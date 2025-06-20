@@ -1,4 +1,4 @@
-// 2025-06-08 12:56:17
+// 2025-06-08 12:56:31
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_darkWarrior_combat;
@@ -55,6 +55,8 @@ superCrazy = false;
 toItem = false;
 
 path = 0;
+cellX = 0;
+cellY = 0;
 
 
 #event alarm3

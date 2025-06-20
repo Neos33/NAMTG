@@ -1,13 +1,13 @@
-// 2025-06-10 16:28:23
+// 2025-06-20 14:12:06
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatController;
 uses_physics = false;
 
 #event create
 event_inherited();
-
+/*
 if(initialized)
-    exit;
+   exit;
 sound_stop_all();
 if(room == battlefasfroom || room == Roomavoidence)
 {
@@ -82,6 +82,7 @@ else if(room == battlefasfroom)
     {
         audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));
     }*/
+    /*
 }
 else if(room == battleroom12)
 {
@@ -98,6 +99,7 @@ else if(room == battleroom12)
     {
         audio_loopmusic_volume(scrAudioGetID("BGM_RedKey"));
     }*/
+    /*
 }
 else if(room == rDracula)
 {
@@ -114,11 +116,16 @@ else if(room == rDracula)
     {
         audio_loopmusic_volume(scrAudioGetID("BGMDracula"));
     }*/
+    /*
 }
 
 
 global.playerHP = global.hp;
 global.combatTime = 0;
+
+
+
+dontDrawMonster = false;
 
 #event alarm0
 global.inCombat = false;
@@ -152,6 +159,11 @@ if(player_is_alive() && player.x > 0)
     player.x = global.roomX;
     player.y = global.roomY;
 }
+
+#event alarm11
+event_inherited();
+
+dontDrawMonster = false;
 
 #event step
 global.combatTime += 1;

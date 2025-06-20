@@ -83,6 +83,7 @@ part_type_direction(prt3,50,130,0,0);
 attack1 = 0;
 bullet_time = 0;
 created = false;
+haveshoot = 0;
 
 </string>
           </argument>

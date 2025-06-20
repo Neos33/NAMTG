@@ -73,14 +73,16 @@ x=400;
 y=200;
 
 //sound_loop(fasf_battle_music);
-audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));
+//audio_loopmusic_volume(scrAudioGetID("BGMsupfasf"));
+music_play_battle("BGMsupfasf");
 //sound_stop_all();
 
 
 alarm[3]=100; //orginal 150;
 volume=10000;
 //SS_SetSoundVol(global.BGMsupfasf,volume);
-FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"),volume / 10000);
+//FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"),volume / 10000);
+FMODInstanceSetVolume(global.current_battle_bgm, volume / 10000);
 animation=1;
 </string>
           </argument>
@@ -138,7 +140,8 @@ alarm[10]=1;
             <kind>1</kind>
             <string>/// Back from avoidance room - Volume
 //SS_SetSoundVol(global.BGMsupfasf,volume)
-FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"), volume / 10000);
+//FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"), volume / 10000);
+FMODInstanceSetVolume(global.current_battle_bgm, volume / 10000);
 if(volume&lt;=10000)
 {
     volume+=1000;
@@ -170,7 +173,8 @@ if(volume&lt;=10000)
 if(volume&gt;200)
 {
     //SS_SetSoundVol(global.BGMsupfasf,volume);
-    FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"), volume / 10000);
+    //FMODInstanceSetVolume(scrAudioGetID("BGMsupfasf"), volume / 10000);
+    FMODInstanceSetVolume(global.current_battle_bgm, volume / 10000);
     volume-=150;
     alarm[7]=1;
 }
@@ -186,7 +190,8 @@ else if(player_is_alive())
     y=100;
     image_speed = 1/8;
     //SS_PauseSound(global.BGMsupfasf);
-    FMODInstanceSetPaused(scrAudioGetID("BGMsupfasf"), true);
+    //FMODInstanceSetPaused(scrAudioGetID("BGMsupfasf"), true);
+    FMODInstanceSetPaused(global.current_battle_bgm, true);
     room_goto(Roomavoidence);
     //transition_steps = 20;
     //transition_kind=21;

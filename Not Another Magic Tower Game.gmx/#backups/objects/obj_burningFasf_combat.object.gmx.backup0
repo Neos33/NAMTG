@@ -1,4 +1,4 @@
-// 2025-06-08 11:59:20
+// 2025-06-20 15:01:39
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_burningFasf;
@@ -63,6 +63,7 @@ part_type_direction(prt3,50,130,0,0);
 attack1 = 0;
 bullet_time = 0;
 created = false;
+haveshoot = 0;
 
 
 #event destroy
