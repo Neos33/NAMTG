@@ -1,4 +1,4 @@
-// 2025-06-08 12:12:54
+// 2025-06-08 12:13:05
 #event properties (no comments/etc. here are saved)
 parent_index = obj_dmSummonPrototype;
 sprite_index = spr_dmJuniorMage;
@@ -42,6 +42,7 @@ isStable = true;
 
 ind = 0;
 size = 0;
+sound = false;
 
 #event destroy
 ds_list_destroy(xl);

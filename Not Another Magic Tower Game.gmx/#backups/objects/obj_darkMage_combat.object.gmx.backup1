@@ -1,4 +1,4 @@
-// 2025-06-08 12:02:52
+// 2025-06-08 12:03:58
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_darkMage_combat;
@@ -29,28 +29,27 @@ with(blinker)
 darkCount2 = 0;
 transform = false;
 burst = false;
-
-/*emit = part_emitter_create(obj_dmParticleController.sys);
+emit = part_emitter_create(obj_dmParticleController.sys);
 part_emitter_region(obj_dmParticleController.sys,emit,x-20,x+20,y-8,y,ps_shape_ellipse,ps_distr_gaussian);
 
-
+/*
 attract1 = part_attractor_create(obj_dmParticleController.sys);
 part_attractor_position(obj_dmParticleController.sys,attract1,x,y-32);
 part_attractor_force(obj_dmParticleController.sys,attract1,0.5,96,1,1);
 
 destroy1 = part_destroyer_create(obj_dmParticleController.sys);
 part_destroyer_region(obj_dmParticleController.sys,destroyer1,x,x,y-32,y-32,ps_shape_line);
-
+*/
 
 
 
 
 #event destroy
-/*if(part_emitter_exists(obj_dmParticleController.sys,emit))
+if(part_emitter_exists(obj_dmParticleController.sys,emit))
 {
     part_emitter_destroy(obj_dmParticleController.sys,emit);
 }
-
+/*
 if(part_attractor_exists(obj_dmParticleController.sys, attract1))
 {
     part_attractor_destroy(obj_dmParticleController.sys, attract1);
@@ -59,7 +58,7 @@ if(part_attractor_exists(obj_dmParticleController.sys, attract1))
 if(part_destroyer_exists(obj_dmParticleController.sys, destroyer1))
 {
     part_destroyer_destroy(obj_dmParticleController.sys, destroyer1);
-}
+}*/
 //event_inherited();
 
 #event alarm3

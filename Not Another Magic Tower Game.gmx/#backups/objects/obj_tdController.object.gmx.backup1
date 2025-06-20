@@ -1,4 +1,4 @@
-// 2025-06-08 12:25:54
+// 2025-06-08 12:26:18
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 uses_physics = false;
@@ -169,7 +169,7 @@ if(currentIndex == 0 && !special)
 
 
 #event step_end
-px = RangeClamp(player.x, 672 + 5, 800);
+var px = RangeClamp(player.x, 672 + 5, 800);
 player.x = px;
 
 #event other_room_end

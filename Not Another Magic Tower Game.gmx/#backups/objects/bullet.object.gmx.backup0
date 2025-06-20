@@ -1,0 +1,113 @@
+// 2025-06-20 18:24:11
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = sprBullet;
+uses_physics = false;
+
+#event create
+cooldown = 0;
+hp = 0;
+
+grab = 0;
+reflected = false;
+#section
+//�v���C���[�̌����Ă�������ɔ��ł����A��莞�Ԃ��o�߂���Ə���
+if instance_exists(player)
+{
+if(global.grav=0){hspeed = player.image_xscale*16;}
+else{hspeed = player2.image_xscale*16;}
+}
+if(room == rRedKnight)
+{
+    vspeed = -16;
+    hspeed = 0;
+    image_angle = sign(image_xscale) * 90;
+    alarm[1] = 1;
+}
+alarm[0] = 40;
+
+if(room == rFinalCorridor)
+{
+    instance_change(obj_finalCorridorBullet,true);
+}
+#section
+energy = 0;
+trace = 0;
+
+#event alarm0
+instance_destroy();
+#event alarm1
+image_angle = sign(image_xscale) * 90;
+
+#event step
+if(energy >= MaxBulletEnergy)
+{
+    if(place_meeting(x + hspeed, y, obj_specialBlock6))
+    {
+        b = instance_nearest(x + hspeed, y, obj_specialBlock6);
+        with(b)
+        {
+            event_user(0);
+        }
+        instance_destroy();
+    }
+}
+
+
+#section
+if(place_meeting(x+hspeed,y,block)){
+a=instance_place(x+hspeed,y,block)
+if(a.object_index=block)instance_destroy()
+else if(a.visible=1)instance_destroy()
+}
+
+if(place_meeting(x+hspeed,y,obj_wall)){
+a=instance_place(x+hspeed,y,obj_wall)
+if(a.object_index=obj_wall)instance_destroy()
+else if(a.visible=1)instance_destroy()
+}
+
+if(place_meeting(x+hspeed,y,slipblock)){
+a=instance_place(x+hspeed,y,slipblock)
+if(a.object_index=slipblock)instance_destroy()
+else if(a.visible=1)instance_destroy()
+}
+#section
+/*if(global.isTrack && global.trackOn)
+{
+    trackDis = point_distance(x,y,global.trackX, global.trackY);
+    if(trackDis > 0)
+    {
+        if(trackDis > 8)
+        {
+            move_towards_point(global.trackX, global.trackY, 16);
+        }
+        else
+        {
+            x = global.trackX;
+            y = global.trackY;
+            hspeed = 0;
+            vspeed = 0;
+        }
+    }
+    else
+    {
+        instance_destroy();
+    }
+    
+}
+#section
+if(trace)
+{
+    move_towards_point(target.x,target.y,16);
+    image_angle = direction;
+}
+
+#event collision:solidblock
+#action action_kill_object
+
+#event collision:niseblock
+#action action_kill_object
+
+#event collision:obj_goldBounceMirror
+move_bounce_all(true);

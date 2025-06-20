@@ -1,4 +1,4 @@
-// 2025-06-08 12:26:18
+// 2025-06-20 19:26:22
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 uses_physics = false;
@@ -19,6 +19,7 @@ tdMonster[1] = obj_tdMonster_stone;
 tdMonster[2] = obj_tdMonster_skeletonLead;
 tdMonster[3] = obj_tdMonster_superFasf;
 tdMonster[4] = obj_tdMonster_redKnight;
+tdMonster[5] = noone;
 
 tdSpd[0] = 1;
 tdInterval[0] = 50;
@@ -69,6 +70,16 @@ tdMName[4] = "Red Knight";
 tdMAtk[4] = 180;
 tdMDef[4] = 130;
 tdMHP[4] = 120;
+
+tdSpd[5] = 0;
+tdInterval[5] = 0;
+tdAmmount[5] = 0;
+tdBreak[5] = 0;
+tdSpr[5] = sprEmpty;
+tdMName[5] = "";
+tdMAtk[5] = 0;
+tdMDef[5] = 0;
+tdMHP[5] = 0;
 
 hide = true;
 atDmg = global.attack - tdMDef[currentIndex];
@@ -135,6 +146,7 @@ else
 #event alarm1
 currentAmmount = 0;
 currentIndex += 1;
+
 with(obj_tdMShadow)
 {
     instance_destroy();

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Dark Mage";
+            <string>event_inherited();
+name = "Dark Mage";
 image_speed = 1/8;
 image_alpha = 0.1;
 image_xscale = 0.1;
@@ -49,6 +50,7 @@ size = 0;
 waterBulletSound = false;
 partStart = false;
 hasAch = false;
+time = 0;
 
 px[0] = 0;
 px[1] = 0;

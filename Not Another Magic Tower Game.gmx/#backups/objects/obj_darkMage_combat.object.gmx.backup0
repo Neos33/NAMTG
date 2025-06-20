@@ -1,4 +1,4 @@
-// 2025-06-08 12:03:58
+// 2025-06-20 18:14:22
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_darkMage_combat;
@@ -28,6 +28,7 @@ with(blinker)
 
 darkCount2 = 0;
 transform = false;
+transformed = false;
 burst = false;
 emit = part_emitter_create(obj_dmParticleController.sys);
 part_emitter_region(obj_dmParticleController.sys,emit,x-20,x+20,y-8,y,ps_shape_ellipse,ps_distr_gaussian);

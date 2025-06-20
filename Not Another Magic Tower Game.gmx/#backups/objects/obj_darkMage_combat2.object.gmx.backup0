@@ -1,10 +1,11 @@
-// 2025-06-08 12:17:05
+// 2025-06-20 18:19:02
 #event properties (no comments/etc. here are saved)
 parent_index = obj_monsterBattlePrototype;
 sprite_index = spr_dmTrueBody;
 uses_physics = false;
 
 #event create
+event_inherited();
 name = "Dark Mage";
 image_speed = 1/8;
 image_alpha = 0.1;
@@ -29,6 +30,7 @@ size = 0;
 waterBulletSound = false;
 partStart = false;
 hasAch = false;
+time = 0;
 
 px[0] = 0;
 px[1] = 0;

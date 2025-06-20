@@ -1,4 +1,4 @@
-// 2025-06-08 12:13:05
+// 2025-06-20 18:20:09
 #event properties (no comments/etc. here are saved)
 parent_index = obj_dmSummonPrototype;
 sprite_index = spr_dmJuniorMage;
@@ -18,7 +18,6 @@ vMove = false;
 
 
 minAngle = 0;
-
 maxAngle = 0;
 
 if(x > 400)

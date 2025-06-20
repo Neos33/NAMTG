@@ -1,0 +1,48 @@
+// 2025-06-20 19:15:22
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_tdSwodSwind;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+image_xscale = 0.7;
+image_yscale = 0.7;
+targetScale = 0.7;
+image_speed = 1/6;
+hspeed = 1.5;
+
+atk = 0;
+
+#event step
+hspeed += 0.1;
+//image_xscale += 0.01;
+//image_yscale += 0.01;
+if(image_xscale < targetScale)
+{
+    image_xscale += 0.01;
+    image_yscale += 0.01;
+}
+
+#event collision:player
+global.defenseDamage = RangeClamp(atk - global.defense, 1, 10000);
+event_inherited();
+
+#event collision:bullet
+if(!other.reflected)
+{
+    with(other)
+    {
+        reflected = true;
+        image_angle -= 135;
+        direction -= 135;
+    }
+    targetScale += 0.1;
+}
+
+#event other_outside
+if(x > 800 || y > 608)
+{
+    instance_destroy();
+}
