@@ -1,16 +1,17 @@
-// 2025-06-19 19:18:47
+// 2025-06-20 10:59:41
 #event properties (no comments/etc. here are saved)
 parent_index = obj_tlSummonedParent;
 sprite_index = spr_diaoSlime_combat;
 uses_physics = false;
 
 #event create
+event_inherited();
 alarm[3] = 35;
 alarm[4] = 65;
 baseY = y + 16;
 targetX = 800 - x + 16 * sign(x - 400);
 targetY = y - 23;
-event_inherited();
+
 alarm[7] = 1;
 
 

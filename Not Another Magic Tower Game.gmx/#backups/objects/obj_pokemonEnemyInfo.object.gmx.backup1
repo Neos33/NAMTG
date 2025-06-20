@@ -1,4 +1,4 @@
-// 2025-06-08 11:16:42
+// 2025-06-19 19:55:59
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = spr_pokemonStatusBoxEnemy;
@@ -68,6 +68,7 @@ else if(hpPer > 0)
 
 if(instance_exists(obj_monsterBattlePrototype))
 {
+    print(spIndex);
     draw_sprite_ext(spr_pokemonSpecies, 0, x + 56, y + 74, image_xscale,image_yscale,0,c_white, 1 - obj_monsterBattlePrototype.mixedAlpha);
     draw_sprite_ext(spr_pokemonSpecies, spIndex, x + 56, y + 74, image_xscale,image_yscale,0,c_white, obj_monsterBattlePrototype.mixedAlpha);
 }

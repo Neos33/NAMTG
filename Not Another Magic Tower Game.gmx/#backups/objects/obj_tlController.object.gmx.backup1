@@ -1,4 +1,4 @@
-// 2025-06-19 23:06:33
+// 2025-06-20 10:26:16
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 persistent = true;
@@ -46,7 +46,7 @@ ds_list_add(rngRoomList,r_tl_goldEvilSlime);
 ds_list_shuffle(rngRoomList);
 #section Steps
 
-step = array_create(500);
+//step = array_create(500);
 
 step[0] = 1;    //Start Bullet
 step[1] = 245;  //explode1
@@ -685,6 +685,7 @@ if(time >= step[currentStep])
             
     }
     currentStep += 1;
+    currentStep = min(currentStep, 55);
 }
 #section
 /*if(time == 5400)

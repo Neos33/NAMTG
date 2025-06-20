@@ -1,4 +1,4 @@
-// 2025-06-20 10:49:57
+// 2025-06-19 22:08:11
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 uses_physics = false;
@@ -17,7 +17,7 @@ flareSpdInc = 0.06;
 burstFlare = part_type_create();
 part_type_shape(burstFlare,pt_shape_flare);
 part_type_scale(burstFlare,2.29,2.67);
-part_type_color3(burstFlare,8421631,6439294,4227327);
+part_type_color3(particle1,8421631,6439294,4227327);
 part_type_alpha3(burstFlare,0.69,0.58,0.06);
 part_type_direction(burstFlare,0,359,-1,0);
 part_type_gravity(burstFlare,0,270);

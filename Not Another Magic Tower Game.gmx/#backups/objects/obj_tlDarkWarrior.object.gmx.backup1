@@ -1,4 +1,4 @@
-// 2025-06-19 21:16:15
+// 2025-06-20 10:51:31
 #event properties (no comments/etc. here are saved)
 parent_index = obj_tlPreFinalKillerParent;
 sprite_index = spr_darkWarrior_combat;
@@ -22,6 +22,7 @@ instance_create(x,y,obj_tlSummonEffect);
 
 tIndex = 0;
 p = 0;
+stop = false;
 
 #event destroy
 with(circle)
@@ -53,6 +54,7 @@ if(tIndex <= 3)
         x = targetX[tIndex];
         y = targetY[tIndex];
         tIndex += 1;
+        tIndex = min(tIndex, 3);
         with(instance_create(x,y,obj_tlDWBomb))
         {
             alarm[0] = 0;
@@ -60,9 +62,9 @@ if(tIndex <= 3)
             alarm[11] = 0;
             p = 9;
         }
-        for(i=0; i<8;i+=1)
+        for(var i=0; i<8;i+=1)
         {
-            pp = instance_create(x,y,obj_tlDWBullet)
+            var pp = instance_create(x,y,obj_tlDWBullet);
             pp.direction = i * 45;
         }
         if(count <= 3)

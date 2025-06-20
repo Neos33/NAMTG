@@ -33,6 +33,7 @@ targetX[0] = 672; targetY[0] = 304;
 targetX[1] = 400; targetY[1] = 64;
 targetX[2] = 128; targetY[2] = 304;
 targetX[3] = 400; targetY[3] = 544;
+targetX[4] = 400; targetY[4] = 800;
 
 circle = instance_create(x,y,obj_tlMagicCircle);
 circle.target = id;
@@ -174,6 +175,7 @@ y = -96;
         x = targetX[tIndex];
         y = targetY[tIndex];
         tIndex += 1;
+        //tIndex = min(tIndex, 3);
         with(instance_create(x,y,obj_tlDWBomb))
         {
             alarm[0] = 0;

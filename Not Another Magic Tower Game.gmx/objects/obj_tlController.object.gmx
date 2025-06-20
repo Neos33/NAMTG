@@ -106,7 +106,7 @@ ds_list_shuffle(rngRoomList);
             <kind>1</kind>
             <string>/// Steps
 
-step = array_create(500);
+//step = array_create(500);
 
 step[0] = 1;    //Start Bullet
 step[1] = 245;  //explode1

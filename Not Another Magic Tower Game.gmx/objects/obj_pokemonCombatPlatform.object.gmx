@@ -56,7 +56,10 @@ alarm[0] = 150;
 }
 else
 {
-    obj_monsterBattlePrototype.alarm[3] = 50;
+    with obj_monsterBattlePrototype
+    {
+        alarm[3] = 50;
+    }
     instance_destroy();
 }
 </string>

@@ -1,4 +1,4 @@
-// 2025-06-20 10:35:57
+// 2025-06-08 13:30:39
 #event properties (no comments/etc. here are saved)
 parent_index = movingPlatform;
 sprite_index = sprDynamicPlatform01;
@@ -16,9 +16,6 @@ if(image_alpha > 0.2)
 }
 else
 {
-    with obj_monsterBattlePrototype
-    {
-        alarm[3] = 50;
-    }
+    obj_monsterBattlePrototype.alarm[3] = 50;
     instance_destroy();
 }

@@ -1,0 +1,16 @@
+// 2025-06-20 10:46:32
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_finalTouhouBullet;
+uses_physics = false;
+
+#event create
+image_alpha = 0.6;
+hit = false;
+
+#event alarm0
+hitEffect();
+instance_destroy();
+
+#event other_outside
+instance_destroy();
