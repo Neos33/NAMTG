@@ -31,6 +31,14 @@ alarm[11] = 1;
 phase = "init";
 
 event_inherited();
+
+key = 0;
+
+
+djump = 0;
+
+start = false;
+type = 0;
 </string>
           </argument>
         </arguments>
@@ -125,7 +133,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>guard = instance_create(576, 368, obj_tlGuardLv1)
+            <string>var guard = instance_create(576, 368, obj_tlGuardLv1);
 guard.type = 1;
 </string>
           </argument>
@@ -185,7 +193,7 @@ else
 y = player.y - 200;
 instance_create(x, y, obj_teleport);
 sound_fix(sndTelAtk);
-dir = point_direction(x,y,player.x,player.y);
+var dir = point_direction(x,y,player.x,player.y);
 key.onSmash = true;
 key.smashEnd = false;
 key.onHold = false;
@@ -420,10 +428,10 @@ if (place_free(x+hspeed,y+vspeed) == false){
 {
     if(abs(hspeed) &gt; 5)
     {
-        for(i = 1; i &lt; 5; i+= 1)
+        for(var i = 1; i &lt; 5; i+= 1)
         {
-            xoffset = -10 * i * cos(degtorad(360 - direction));
-            yoffset = -10 * i * sin(degtorad(360 - direction));
+            var xoffset = -10 * i * cos(degtorad(360 - direction));
+            var yoffset = -10 * i * sin(degtorad(360 - direction));
             draw_sprite_ext(sprite_index, image_index, x + xoffset,y + yoffset,1,1,image_angle,c_white,1 - 0.15 * i);
         }
     }

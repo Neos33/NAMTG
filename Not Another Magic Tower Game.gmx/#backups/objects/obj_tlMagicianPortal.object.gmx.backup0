@@ -1,0 +1,76 @@
+// 2025-06-19 19:17:45
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_portal1;
+uses_physics = false;
+
+#event create
+image_speed = 1/8;
+image_xscale = 0.1;
+image_yscale = 0.1;
+alarm[0] = 30;
+alarm[1] = 180;
+alarm[2] = 180;
+alarm[3] = 1;
+
+
+minAngle = 0;
+maxAngle = 0;
+
+type = 0;
+
+#event alarm0
+var aa = instance_create(x,y, obj_tlMagicianBullet);
+aa.direction = random_range(minAngle,maxAngle);
+aa.image_speed = 0;
+aa.image_index = irandom_range(0,14);
+if(abs(aa.direction - 90) < 20)
+{
+    aa.speed = random_range(12,14);
+}
+else
+{
+    aa.speed = random_range(10,12);
+}
+aa.gravity = 0.15;
+if(type == 0)
+{
+    sound_fix(sndShoot);
+}
+alarm[0] = 3;
+
+
+#event alarm1
+alarm[0] = 0;
+if(image_xscale > 0)
+{
+    image_xscale -= 0.05;
+    image_yscale -= 0.05;
+    alarm[1] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event alarm2
+if(type == 0)
+{
+    instance_create(400,400,obj_tlVariationSkeleton);
+}
+
+#event alarm3
+if(image_xscale < 1)
+{
+    image_xscale += 0.1;
+    image_yscale += 0.1;
+    alarm[3] = 1;
+}
+
+#event collision:player
+with(other)
+{
+    x = 400;
+    y = 96;
+    instance_create(x,y,obj_tlSummonEffect);
+}

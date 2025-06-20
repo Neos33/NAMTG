@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>FMODInstanceStop(global.BGM_SE);
+            <string>FMODInstanceStop(scrAudioGetID("BGM_SE"));
 //transition_kind = 21;
 //transition_steps = 50;
 if(!global.achievements[98])
@@ -62,7 +62,7 @@ room_goto(rStatistics);
 {
     instance_destroy();
 }
-FMODInstanceStop(global.BGM_SE);
+FMODInstanceStop(scrAudioGetID("BGM_SE"));
 room_goto(rSleepingEnd2);
 </string>
           </argument>

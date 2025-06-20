@@ -1,0 +1,65 @@
+// 2025-06-19 21:01:01
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_finalPicaSpell;
+uses_physics = false;
+
+#event create
+sound_fix(snd_touhou_spellcard);
+with(obj_finalDiamanteE1)
+{
+    temp_dirspd = dirspd;
+    dirspd = 0;
+    alarm[1] = 0;
+}
+with(obj_finalDiamanteB1)
+{
+    temp_speed = speed;
+    temp_direction = direction;
+    temp_dirspd = dirspd;
+    speed = 0;
+    dirspd = 0;
+}
+
+x = 800;
+y = 576;
+
+vspeed = -10;
+alarm[0] = 40;
+alarm[1] = 80;
+
+
+timer = 0;
+
+#event alarm0
+friction = sqr(vspeed)/(abs(vspeed)+2*(y - (view_yview[0]+48)))
+
+#event alarm1
+with(obj_finalDiamanteE1)
+{
+    dirspd = temp_dirspd;
+    alarm[1] = 1;
+}
+with(obj_finalDiamanteB1)
+{
+    speed = temp_speed;
+    dirspd = temp_dirspd;
+    direction = temp_direction;
+}
+alarm[2] = 1;
+
+#event alarm2
+instance_create(400,304,obj_finalInverseEffect);
+alarm[3]=40;
+
+#event alarm3
+instance_create(random_range(150,650),random_range(150,450),obj_finalInverseEffect2);
+alarm[3]=50;
+
+#event draw
+timer+=1;
+if timer<20
+{
+    fade_in(20);
+}
+draw_me();

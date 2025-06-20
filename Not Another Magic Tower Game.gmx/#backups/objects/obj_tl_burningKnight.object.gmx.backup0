@@ -1,0 +1,108 @@
+// 2025-06-19 20:16:25
+#event properties (no comments/etc. here are saved)
+parent_index = obj_monsterBattlePrototype;
+sprite_index = spr_burningKnight_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+
+name = "Burning Knight";
+image_speed = 1/8;
+x = 400;
+y = 64;
+oHP = 120;
+hp = 60;
+isAch = true;
+movingList = ds_list_create();
+alarm[11] = 1;
+alarm[10] = 30;
+
+
+found = false;
+
+#event destroy
+ds_list_destroy(movingList);
+with(obj_tl_bkFireStormController)
+{
+    instance_destroy();
+}
+with(obj_tl_bkFireStormElement)
+{
+    instance_destroy();
+}
+with(obj_tl_bkExplosionController)
+{
+    instance_destroy();
+}
+with(obj_tl_bkExplosionElement)
+{
+    instance_destroy();
+}
+with(obj_tl_bkRotateController)
+{
+    instance_destroy();
+}
+with(obj_tl_bkRotateElement)
+{
+    instance_destroy();
+}
+with(obj_tl_bkRotateTail)
+{
+    instance_destroy();
+}
+event_inherited();
+
+#event alarm3
+instance_create(x,y,obj_tl_bkFireStormController);
+
+
+#event alarm4
+instance_create(x,y,obj_tl_bkExplosionController);
+
+
+#event alarm5
+instance_create(x,y,obj_tl_bkRotateController);
+
+#event alarm10
+ds_list_shuffle(movingList);
+found = false;
+
+var _total = ds_list_size(movingList);
+for(var i = 0; i < _total; i+=1)
+{
+    targetId = ds_list_find_value(movingList,i);
+    with(targetId)
+    {
+        if(y < 304 && y >= 32)
+        {
+            other.found = true;
+            instance_create(x,y - 32,obj_tl_bkMovingTarget);
+        }
+    }
+    if(found)
+    {
+        break;
+    }
+}
+
+#event alarm11
+with(obj_bkMovingPoint)
+{
+    ds_list_add(other.movingList,id);
+}
+
+#event step
+obj_bkSpdController.targetWaterLevel = (oHP - hp) * 0.8;
+obj_bkSpdController.targetSpd = 0.5 + (oHP- hp) / 80; 
+vspeed = obj_bkSpdController.blockSpd;
+
+#event collision:bullet
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}
+
+#event other_room_end
+ds_list_destroy(movingList);

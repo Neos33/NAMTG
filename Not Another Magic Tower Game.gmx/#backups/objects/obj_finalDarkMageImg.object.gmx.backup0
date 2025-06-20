@@ -1,0 +1,47 @@
+// 2025-06-19 20:39:25
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouDevas;
+sprite_index = spr_corazoneCombat_1;
+uses_physics = false;
+
+#event create
+alpha = 0;
+image_speed = 1/8;
+
+
+fade = false;
+
+#event destroy
+with(obj_tlMagicCircle)
+{
+    instance_destroy();
+}
+
+#event alarm0
+fade = true;
+
+#event step
+if(!fade)
+{
+    if(alpha < 1)
+    {
+        alpha += 0.02;
+    }
+}
+else
+{
+    if(alpha > 0)
+    {
+        alpha -= 0.02;
+    }
+    else
+    {
+        instance_destroy();
+    }
+}
+
+#event draw
+
+draw_set_blend_mode(bm_add);
+draw_sprite_ext(sprite_index,image_index,x,y,.8,.8,image_angle,c_gray,alpha*.8);
+draw_set_blend_mode(bm_normal);

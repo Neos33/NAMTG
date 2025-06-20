@@ -1,0 +1,16 @@
+// 2025-06-19 21:07:18
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+//
+xx = 0;
+
+#event step
+view_xview = xx;
+view_yview = xx/800*608;
+view_wview = 800-2*xx;
+view_hview = 608-2*xx/800*608;
+
+xx += 5;

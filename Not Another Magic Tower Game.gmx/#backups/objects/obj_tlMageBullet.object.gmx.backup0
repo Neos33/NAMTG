@@ -1,0 +1,46 @@
+// 2025-06-19 19:15:42
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlKiller;
+sprite_index = spr_touhouBullet2_1;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+phase = 0;
+
+#event step
+if(phase == 1)
+{
+    if(speed > 0)
+    {
+        speed -= 0.1;
+    }
+    else
+    {
+        speed = 0;
+        phase = 2;
+    }
+}
+#section
+if(phase == 2)
+{
+    if(speed < 4.5)
+    {
+        speed += 0.15;
+    }
+}
+
+#event other_outside
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+/*if(phase == 1)
+{
+    draw_sprite_ext(spr_danmaku12, choose(1,6),x,y,0.8,0.8,image_angle,image_blend,image_alpha)
+}
+else
+{*/
+    draw_current();
+//}
+draw_set_blend_mode(bm_normal);

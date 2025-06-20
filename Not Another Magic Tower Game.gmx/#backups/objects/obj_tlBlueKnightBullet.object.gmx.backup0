@@ -1,0 +1,48 @@
+// 2025-06-19 19:21:45
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlKiller;
+sprite_index = spr_tlBlueKnightBullet;
+uses_physics = false;
+
+#event create
+alarm[4]=60+irandom(40);
+
+turning = 0;
+cx = 0;
+cy = 0;
+dirspd = 0;
+len = 0;
+
+#event alarm3
+turning=1;
+alarm[3]=1;
+
+#event alarm4
+turning=1;
+speed=irandom(3)+4;
+direction=point_direction(x,y,random_range(player.x-20,player.x+20),random_range(player.y-20,player.y+20));
+
+#event step
+if(turning==0)
+{
+    x = cx + lengthdir_x(len,dir);
+    y = cy + lengthdir_y(len,dir);
+    dir += dirspd;
+    dirspd+=0.05;
+    if(!instance_exists(obj_tlBlueKnight))
+    {
+        instance_destroy();    
+    }
+}
+
+#event collision:bullet
+sound_fix(sndBossHit);
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}
+instance_destroy();
+
+#event other_outside
+instance_destroy();

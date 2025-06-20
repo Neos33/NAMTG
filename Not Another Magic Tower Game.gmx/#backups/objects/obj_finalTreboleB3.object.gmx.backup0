@@ -1,0 +1,12 @@
+// 2025-06-19 20:43:53
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_finalTrebole16;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 0;
+
+#event other_outside
+#action action_kill_object

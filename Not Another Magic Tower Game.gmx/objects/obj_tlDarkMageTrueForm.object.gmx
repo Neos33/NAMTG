@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1/8;
+            <string>event_inherited();
+
+image_speed = 1/8;
 image_alpha = 0.1;
 image_xscale = 0.1;
 image_yscale = 0.1;
@@ -36,6 +38,13 @@ emit = part_emitter_create(obj_tlPreFinalController.sys);
 
 xl = ds_list_create();
 yl = ds_list_create();
+
+
+weapon = noone;
+tx = 0;
+time = 0;
+size = 0;
+
 
 /*attract = part_attractor_create(obj_tlPreFinalController.sys);
 part_attractor_position(obj_tlPreFinalController.sys,attract,x,y-64);
@@ -345,9 +354,9 @@ ds_list_add(yl, yprevious);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = 0; i &lt; size; i+=1)
+            <string>for(var i = 0; i &lt; size; i+=1)
 {
-    alpha = 1/(size+1)*(i+1);
+    var alpha = 1/(size+1)*(i+1);
     draw_sprite_ext(sprite_index,image_index,ds_list_find_value(xl,i),ds_list_find_value(yl,i),image_xscale,image_yscale,image_angle,image_blend,alpha * image_alpha);
 }
 draw_current();

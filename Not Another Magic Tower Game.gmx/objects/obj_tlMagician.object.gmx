@@ -129,9 +129,9 @@ alarm[6] = 60;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;3;i+=1)
+            <string>for(var i=0;i&lt;3;i+=1)
 {
-    aa = instance_create(x,y,obj_tlMagicianBullet);
+    var aa = instance_create(x,y,obj_tlMagicianBullet);
     aa.speed = 7;
     aa.direction = angle1 + 120 * i;
 }

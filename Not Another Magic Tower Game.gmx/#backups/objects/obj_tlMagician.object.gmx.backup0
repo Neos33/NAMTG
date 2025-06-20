@@ -1,0 +1,46 @@
+// 2025-06-19 19:16:44
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_magicianlv1_combat;
+uses_physics = false;
+
+#event create
+alarm[3] = 30;
+alarm[4] = 120;
+alarm[5] = 90;
+event_inherited();
+angle1 = 30;
+alarm[6] = 60;
+
+type = 0;
+
+#event alarm3
+for(var i=0;i<3;i+=1)
+{
+    var aa = instance_create(x,y,obj_tlMagicianBullet);
+    aa.speed = 7;
+    aa.direction = angle1 + 120 * i;
+}
+angle1 += type * 13;
+if(type == 1)
+{
+    sound_fix(sndShoot);
+}
+
+alarm[3] = 8;
+
+#event alarm4
+instance_destroy();
+
+#event alarm5
+if(type == 1)
+{
+    instance_create(400,128,obj_tlSteel);
+}
+
+#event alarm6
+/*if(type == 1)
+{
+    instance_create(224,336,obj_tlDanger);
+    instance_create(576,336,obj_tlDanger);
+}

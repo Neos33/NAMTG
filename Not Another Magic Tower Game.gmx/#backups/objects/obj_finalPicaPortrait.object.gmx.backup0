@@ -1,0 +1,27 @@
+// 2025-06-19 21:01:12
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_trebole_1;
+uses_physics = false;
+
+#event create
+image_xscale = 400/32;
+image_yscale = 400/32;
+x = view_xview[0] + 500 - sprite_width/2;
+y = view_yview[0] + 400 - sprite_height/2;
+image_alpha = 0;
+image_speed = 0;
+vspeed = -2;
+depth = -1000000;
+
+timer = 0;
+
+#event step
+timer += 1;
+if timer<50{
+    image_alpha+=1/80;
+}
+else if timer>80{
+    image_alpha-=1/80;
+}
+if timer=130 instance_destroy()

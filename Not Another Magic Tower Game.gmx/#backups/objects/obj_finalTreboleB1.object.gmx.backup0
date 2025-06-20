@@ -1,0 +1,27 @@
+// 2025-06-19 20:40:40
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_finalTrebole16;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 0;
+
+timer = 0;
+ddir = 0;
+ddirspd = 0;
+
+#event step
+timer += 1;
+if timer<20{
+    direction -= ddir;
+}
+else if timer<60{
+    direction -= ddir;
+    ddir -= ddirspd;
+}
+fade_in(15);
+
+#event other_outside
+#action action_kill_object

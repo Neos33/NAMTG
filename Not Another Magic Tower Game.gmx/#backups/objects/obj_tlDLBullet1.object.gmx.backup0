@@ -1,0 +1,18 @@
+// 2025-06-19 21:14:26
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_tlTouhouBullet2;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/6;
+speed = random_range(6.5,7);
+direction = random_range(160,200);
+image_angle = direction - 90;
+
+#event other_outside
+if(x < 0)
+{
+    instance_destroy();
+}

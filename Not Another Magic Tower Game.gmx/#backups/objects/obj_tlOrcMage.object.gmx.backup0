@@ -1,0 +1,20 @@
+// 2025-06-19 19:20:44
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_orcMageCombat;
+uses_physics = false;
+
+#event create
+image_xscale = sign(x - 400);
+alarm[3] = 50;
+event_inherited();
+
+#event alarm3
+var claw = instance_create(800 - x, 347, obj_orcMageDeathClaw);
+claw.image_xscale = image_xscale * 2.5;
+claw.image_yscale = 2;
+claw.hspeed = 3 * sign(image_xscale);
+alarm[4] = 60;
+
+#event alarm4
+instance_destroy();

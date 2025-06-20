@@ -86,11 +86,11 @@ with(obj_startElement)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(FMODInstanceIsPlaying(global.BGM_GE))
+            <string>if(FMODInstanceIsPlaying(scrAudioGetID(".BGM_GE")))
 {
-    FMODInstanceStop(global.BGM_GE);
+    FMODInstanceStop(scrAudioGetID("BGM_GE"));
 }
-audio_playmusic_volume(global.BGM_GE);
+audio_playmusic_volume(scrAudioGetID("BGM_GE"));
 </string>
           </argument>
         </arguments>

@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>name = "Burning Knight";
+            <string>event_inherited();
+
+name = "Burning Knight";
 image_speed = 1/8;
 x = 400;
 y = 64;
@@ -35,6 +37,9 @@ isAch = true;
 movingList = ds_list_create();
 alarm[11] = 1;
 alarm[10] = 30;
+
+
+found = false;
 </string>
           </argument>
         </arguments>
@@ -137,7 +142,9 @@ event_inherited();
             <kind>1</kind>
             <string>ds_list_shuffle(movingList);
 found = false;
-for(i = 0; i &lt; ds_list_size(movingList); i+=1)
+
+var _total = ds_list_size(movingList);
+for(var i = 0; i &lt; _total; i+=1)
 {
     targetId = ds_list_find_value(movingList,i);
     with(targetId)

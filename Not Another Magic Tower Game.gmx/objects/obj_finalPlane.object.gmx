@@ -36,6 +36,11 @@ Dborder = 608;
 Lborder = 0;
 Rborder = 800;
 image_speed = 0;
+
+
+nowSpeed = 0;
+slow = 0;
+shootCoolDown = 0;
 </string>
           </argument>
         </arguments>
@@ -130,7 +135,7 @@ if (bbox_bottom &gt;= Dborder){y = yprevious;}
 if keyboard_check_direct(global.shotbutton){
     if(shootCoolDown == 0)
     {
-        a=instance_create(x+22,y+4,obj_finalTouhouBullet);
+        var a=instance_create(x+22,y+4,obj_finalTouhouBullet);
         a.hspeed=17;
         a.depth=depth-1;
         shootCoolDown = 3;
@@ -223,6 +228,7 @@ else
 
 if(obj_demonLead_combat.finalStart)
 {
+    var usedHp;
     if(global.GalleryBossFight)
     {
         usedHp = global.GalleryBossFightHp;

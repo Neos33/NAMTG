@@ -132,7 +132,8 @@ alarm[5] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_playmusic_volume(global.SE_KidScream);
+            <string>//audio_playmusic_volume(scrAudioGetID("SE_KidScream"));
+FMODSoundPlay(scrAudioGetID("SE_KidScream"), false);
 </string>
           </argument>
         </arguments>

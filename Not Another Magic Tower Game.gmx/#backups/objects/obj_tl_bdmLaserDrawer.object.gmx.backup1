@@ -1,0 +1,112 @@
+// 2025-06-19 22:55:26
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+laserCount = 3;
+width = 100;
+oWidth = 100;
+angle = 90;
+prec = 10;
+color[0] = c_red;
+color[1] = c_yellow;
+color[2] = c_blue;
+colorStep = 0;
+col = c_red;
+alpha = 0;
+len = 960;
+angleDir = choose(-1,1);
+rotateCount = 4;
+precision = 10;
+alarm[0] = 1;
+
+for(var i = 0; i < laserCount; i+=1)
+{
+    var b = instance_create(x,y,obj_tl_bdmLaserCollision);
+    b.ind = i;
+    b.image_xscale = len / 32;
+}
+
+sound_fix(snd_touhou_masterSpark);
+
+
+widthAngle = 0;
+targetAngle = 0;
+
+
+#event destroy
+with(obj_tl_bdmLaserCollision)
+{
+    instance_destroy();
+}
+
+#event alarm0
+if(alpha < 1)
+{
+    alpha += 0.02;
+    alarm[0] = 1;
+}
+else
+{
+    event_user(0);
+}
+
+#event alarm1
+if(alpha > 0)
+{
+    alpha -= 0.02;
+    alarm[1] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event step
+if(!instance_exists(obj_tl_blankDevilMagician))
+{
+    instance_destroy();
+}
+colorStep += 1;
+var startInd = floor((colorStep mod 150) / 50);
+var ammount = colorStep mod 50;
+if(startInd < 2)
+{
+    col = merge_color(color[startInd], color[startInd + 1], ammount * 0.02);
+}
+else
+{
+    col = merge_color(color[startInd], color[0], ammount * 0.02);
+}
+#section
+widthAngle += 5;
+width = oWidth + 10 * sin(degtorad(widthAngle));
+#section
+if(targetAngle > 0)
+{
+    targetAngle -= 0.5;
+    angle += 0.5 * angleDir;
+}
+else
+{
+    event_user(0);
+}
+
+#event other_user0
+if(rotateCount > 0)
+{
+    targetAngle = irandom_range(45, 150);
+    angleDir *= -1;
+    rotateCount -= 1;
+}
+else
+{
+    alarm[1] = 1;
+}
+
+#event draw
+for(var j=0;j<laserCount;j+=1)
+{
+    drawLaserExt(obj_tl_blankDevilMagician.x,obj_tl_blankDevilMagician.y,color,angle + 360/laserCount*j,len,width,precision,alpha);
+}

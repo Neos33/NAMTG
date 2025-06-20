@@ -1,0 +1,39 @@
+// 2025-06-19 19:07:55
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlKiller;
+sprite_index = spr_skeletonSword1;
+uses_physics = false;
+
+#event create
+image_speed = 1/8;
+
+start = false;
+
+#event step
+if(start)
+{
+    if(image_xscale > 0)
+    {
+        if(image_angle < 120)
+        {
+            image_angle += 10; 
+        }
+        else
+        {
+            image_angle = 120;
+            start = false;
+        }
+    }
+    else
+    {
+        if(image_angle > -120)
+        {
+            image_angle -= 10; 
+        }
+        else
+        {
+            image_angle = -120;
+            start = false;
+        }
+    }
+}

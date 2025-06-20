@@ -34,6 +34,26 @@ handGapX = 62;
 handGapY = 16;
 oy = y;
 
+right = 0;
+left = 0;
+
+clawType = 0;
+playerFlyDir = 0;
+
+claw = 0;
+
+tranAlpha = 0;
+thunderCount = 0;
+meteorCount = 0;
+dartsCount = 0;
+
+start = false;
+
+shakeCountdown = 0;
+
+angle = 0;
+clawHit = false;
+playerPreviousX = 0;
 </string>
           </argument>
         </arguments>
@@ -116,7 +136,7 @@ alarm[0] = 75;
             <string>if(dartsCount &gt; 0)
 {
     dartsCount -= 1;
-    darts = instance_create(x,y,obj_draculaDarts);
+    var darts = instance_create(x,y,obj_draculaDarts);
     darts.targetX = random_range(336,464);
     darts.targetY = 272;
     alarm[4] = 25;

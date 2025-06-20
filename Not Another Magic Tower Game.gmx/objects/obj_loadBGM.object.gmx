@@ -37,7 +37,11 @@ musicCount = 52;
 
 musicLoadEnd = false;
 type = array_create(musicCount);
-
+group = array_create(musicCount);
+for (var i=0; i&lt;musicCount; i+=1)
+{
+    group[i] = 3;
+}
 
 
 
@@ -106,8 +110,8 @@ song[34] = "BGM_Trebole.ogg";
 song[35] = "BGM_Corazone.ogg";type[35]=1;
 song[36] = "BGM_DemonLead.ogg";
 song[37] = "BGM_Secret2.ogg";type[37]=1;
-song[38] = "SE_KidScream.ogg";
-song[39] = "SE_HeedMyCall.ogg";
+song[38] = "SE_KidScream.ogg";group[38]=1;
+song[39] = "SE_HeedMyCall.ogg";group[39]=1;
 song[40] = "BGM_Corridor.ogg";
 song[41] = "BGM_Fear.ogg";
 song[42] = "BGM_SE.ogg";
@@ -265,6 +269,7 @@ if global.NAMTG_BGM[? name[musicIndex]] == 0
 else
 {
     print("*",name[musicIndex],"*", " loaded succesfully.");
+    FMODSoundSetGroup(global.NAMTG_BGM[? name[musicIndex]], group[musicIndex]);
 }
 event_user(0);
 </string>

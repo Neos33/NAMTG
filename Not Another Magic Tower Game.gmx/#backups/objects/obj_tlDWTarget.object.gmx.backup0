@@ -1,0 +1,42 @@
+// 2025-06-19 21:18:02
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_dwTarget_1;
+uses_physics = false;
+
+#event create
+image_xscale = 2;
+image_yscale = 2;
+alarm[0] = 20;
+
+
+inited = false;
+
+#event alarm0
+if(!inited)
+{
+    instance_create(x,y,obj_tlDWBomb);
+    instance_create(x,y,obj_tlDWShadow);
+    with(instance_create(x,y,obj_tlDWTarget))
+    {
+        inited = true;
+    }
+}
+
+#event alarm1
+with(instance_create(x,y,obj_tlDWTarget))
+{
+    alarm[0] = 0;
+}
+
+#event step
+if(image_xscale > 0)
+{
+    image_xscale -= 0.05;
+    image_yscale -= 0.05;
+}
+else
+{
+    instance_destroy();
+}
+image_angle -= 9;

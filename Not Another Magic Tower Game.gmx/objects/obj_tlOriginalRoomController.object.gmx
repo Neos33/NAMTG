@@ -245,7 +245,7 @@ with(instance_create(400, 272 + 64, obj_tlOriginalHintArrow))
 with(obj_tlPillar)
 {
     vspeed = 0.4;
-    b.vspeed = 0.4;
+    //b.vspeed = 0.4;
 }
 </string>
           </argument>

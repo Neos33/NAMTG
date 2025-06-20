@@ -1,0 +1,26 @@
+// 2025-06-19 22:44:16
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_tlPillar;
+uses_physics = false;
+
+#event create
+targetY = y - 144;
+//b = 0;
+
+#event alarm0
+if(abs(y-targetY) > 1)
+{
+    vspeed = -0.5;
+    alarm[0] = 1;
+}
+else
+{
+    speed = 0;
+    y = targetY;
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

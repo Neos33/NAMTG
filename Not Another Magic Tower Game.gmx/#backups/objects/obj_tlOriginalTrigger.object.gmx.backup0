@@ -1,0 +1,22 @@
+// 2025-06-19 20:31:32
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = maskTrigger;
+uses_physics = false;
+
+#event create
+image_xscale = 25;
+image_yscale = 0.5;
+
+
+triggered = false;
+
+#event collision:player
+if(!triggered)
+{
+    triggered = true;
+    with(other)
+    {
+        frozen = true;
+    }
+}

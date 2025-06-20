@@ -33,6 +33,17 @@ maxscl = 2;
 image_yscale = 0;
 image_xscale = 16;
 rr = sqrt(sqr(view_wview[view_current])+sqr(view_hview[view_current]));
+
+
+hit = false;
+sndMagic = false;
+msg = "";
+
+dirspd = 0;
+laser = false;
+timer = 0;
+
+par = noone;
 </string>
           </argument>
         </arguments>
@@ -133,6 +144,7 @@ hit = false;
     if(!global.cooldown &amp;&amp; !global.godmod)
     {   
         sndMagic = false;
+        var dmg, tempDmp;
         //hit = true;
         if(global.defenseDamage &lt; 1)
         {
@@ -258,7 +270,7 @@ hit = false;
             }  
             with(obj_playerTouhou)
             {
-                damageInfo = instance_create(x + (sprite_width / 2 - sprite_xoffset) * image_xscale,y + (sprite_height / 2 - sprite_yoffset) * image_yscale,obj_damageInfo);
+                var damageInfo = instance_create(x + (sprite_width / 2 - sprite_xoffset) * image_xscale,y + (sprite_height / 2 - sprite_yoffset) * image_yscale,obj_damageInfo);
                 damageInfo.damage = other.dmg;
                 
                 if(global.monsterSuperCritical)
@@ -379,7 +391,8 @@ hit = false;
           <argument>
             <kind>1</kind>
             <string>direction += dirspd;
-if !laser{
+if !laser
+{
     draw_set_color(c_white);
     draw_set_alpha(alpha);
     if alpha&lt;1 alpha+=0.05;
@@ -388,19 +401,23 @@ if !laser{
 else{
     draw_set_blend_mode(bm_add);
     timer += 1;
-    if timer&lt;20{
+    if timer&lt;20
+    {
         image_yscale+=sclspd;
         event_user(0);
     }
-    else if timer&lt;50{
+    else if timer&lt;50
+    {
         event_user(0);
     };
-    else if timer&lt;69{
+    else if timer&lt;69
+    {
         with(obj_finalTreboleE2){des=1;}
         event_user(0);
         image_yscale-=sclspd;
     }
-    else{
+    else
+    {
         instance_destroy();
     }
     image_angle=direction;

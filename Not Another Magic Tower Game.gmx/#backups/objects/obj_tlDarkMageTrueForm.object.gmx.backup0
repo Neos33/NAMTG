@@ -1,0 +1,142 @@
+// 2025-06-19 21:12:28
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_dmTrueBody;
+uses_physics = false;
+
+#event create
+event_inherited();
+
+image_speed = 1/8;
+image_alpha = 0.1;
+image_xscale = 0.1;
+image_yscale = 0.1;
+alarm[3] = 1;
+partStart = true;
+
+emit = part_emitter_create(obj_tlPreFinalController.sys);
+
+xl = ds_list_create();
+yl = ds_list_create();
+
+
+weapon = noone;
+tx = 0;
+time = 0;
+size = 0;
+
+
+/*attract = part_attractor_create(obj_tlPreFinalController.sys);
+part_attractor_position(obj_tlPreFinalController.sys,attract,x,y-64);
+part_attractor_force(obj_tlPreFinalController.sys,attract,0.5,128,1,1);
+
+#event destroy
+if(part_emitter_exists(obj_tlPreFinalController.sys,emit))
+{
+    part_emitter_destroy(obj_tlPreFinalController.sys,emit);
+}
+
+/*if(part_attractor_exists(obj_tlPreFinalController.sys, attract))
+{
+    part_attractor_destroy(obj_tlPreFinalController.sys, attract);
+}*/
+
+with(weapon)
+{
+    instance_destroy();
+}
+
+#event alarm3
+if(image_xscale < 1)
+{
+    image_xscale += 0.04;
+    image_yscale += 0.04;
+    image_alpha += 0.04;
+    alarm[3] = 1;
+}
+else
+{   
+    weapon = instance_create(x,y,obj_tlDarkMageSickleSword);
+    weapon.parent = id;
+    alarm[4] = 90;
+}
+
+#event alarm4
+weapon.image_angle = 30;
+weapon.stop = true;
+direction = point_direction(x,y,obj_finalPlane.x,obj_finalPlane.y);
+tx = obj_finalPlane.x;
+speed = 15;
+if(instance_exists(obj_finalPlane))
+    alarm[5]=1;
+
+#event alarm5
+if(abs(x-tx) <= 15)
+{
+    sound_fix(sndSwing1);
+    alarm[6] = 1;
+    alarm[7] = 1;
+}
+else
+{
+    alarm[5] = 1;
+}
+
+#event alarm6
+if(speed > 0)
+{
+    speed -= 0.8;
+    alarm[6] = 1;
+}
+else
+{
+    speed = 0;
+    alarm[11] = 30;
+}
+
+#event alarm7
+if(weapon.image_angle < 210)
+{
+    weapon.image_angle += 15;
+    alarm[7] = 1;
+}
+
+#event alarm11
+instance_destroy();
+
+#event step
+if(partStart)
+{
+    part_emitter_region(obj_tlPreFinalController.sys,emit,x-32,x+32,y+26,y+26,ps_shape_ellipse,ps_distr_gaussian);
+    part_emitter_burst(obj_tlPreFinalController.sys,emit,obj_tlPreFinalController.fire,5);
+}
+
+time += 1;
+if(time mod 3 != 0)
+    exit;
+size = ds_list_size(xl);
+if(size == 5)
+{
+    ds_list_delete(xl,0);
+    ds_list_delete(yl,0);
+}
+ds_list_add(xl, xprevious);
+ds_list_add(yl, yprevious);
+
+#event collision:obj_finalTouhouBullet
+with(other)
+{
+    if(!hit)
+    {
+        hit = true;
+        alarm[0] = 1;
+    }
+}
+
+#event draw
+for(var i = 0; i < size; i+=1)
+{
+    var alpha = 1/(size+1)*(i+1);
+    draw_sprite_ext(sprite_index,image_index,ds_list_find_value(xl,i),ds_list_find_value(yl,i),image_xscale,image_yscale,image_angle,image_blend,alpha * image_alpha);
+}
+draw_current();

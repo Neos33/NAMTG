@@ -30,6 +30,9 @@ y = 368;
 move_towards_point(400,368,4);
 alarm[5] = 10;
 event_inherited();
+
+
+start = false;
 </string>
           </argument>
         </arguments>
@@ -86,7 +89,7 @@ instance_create(400 + sign(400 - player.x)*192,352,obj_tlSkeletonSwordsman);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>p = instance_create(x,y,obj_tlSkeletonBone);
+            <string>var p = instance_create(x,y,obj_tlSkeletonBone);
 p.gravity = 0;
 p.speed = 10;
 p.direction = point_direction(x,y,player.x,player.y);
@@ -136,7 +139,7 @@ alarm[5] = 35;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>pp = instance_create(x,y,obj_tlSkeletonBone);
+            <string>var pp = instance_create(x,y,obj_tlSkeletonBone);
 pp.speed = random_range(8, 12);
 pp.direction = random_range(60,120);
 audio_playsound(snd_wallum);

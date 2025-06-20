@@ -1,0 +1,39 @@
+// 2025-06-19 20:06:28
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_redKnightCombat;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+name = "Red Knight";
+image_speed = 1/8;
+hspeed = 5;
+x = 400;
+y = 32;
+hp = 1;
+
+spikeReady = false;
+
+
+#event alarm3
+instance_create(x,y, obj_redKnightSpike);
+alarm[3] = 25;
+
+#event step
+y = view_yview[0] + 32;
+move_bounce_solid(false);
+if(hp < 40 && !spikeReady)
+{
+    spikeReady = true;
+    alarm[3] = 1;
+}
+
+
+#event collision:bullet
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}

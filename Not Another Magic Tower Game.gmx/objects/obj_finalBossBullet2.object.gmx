@@ -25,8 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited()
+image_speed = 0;
 
+lenspd = 0;
+active = false;
+parent = noone;
+len = 0;
+dir = 0;
+
+dirspd = 0;
 </string>
           </argument>
         </arguments>
@@ -72,7 +80,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(active){
+            <string>if(active)
+{
     x = parent.x + lengthdir_x(len,dir);
     y = parent.y + lengthdir_y(len,dir);
     len += lenspd;

@@ -1,4 +1,4 @@
-// 2025-06-08 12:24:58
+// 2025-06-10 16:42:53
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatPlayerKiller;
 uses_physics = false;
@@ -55,7 +55,7 @@ if(!cooldown)
             damage = round(damage * 1.5);
         }
     }
-    damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
+    var damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
     damageInfo.damage = damage;
     if(other.energy < 1.5)
     {

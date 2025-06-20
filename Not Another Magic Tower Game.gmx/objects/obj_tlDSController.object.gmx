@@ -28,7 +28,7 @@
             <string>r = 600;
 ind = 0;
 interval = 22;
-for(i=0;i&lt;5;i+=1)
+for(var i=0;i&lt;5;i+=1)
 {
     angle = 90+i*72;
     tx = 400 + lengthdir_x(r,angle);

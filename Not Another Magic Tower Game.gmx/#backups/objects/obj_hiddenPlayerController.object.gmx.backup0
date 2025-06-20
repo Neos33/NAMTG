@@ -1,0 +1,33 @@
+// 2025-06-19 21:07:44
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+hidden = true;
+targetX = 32;
+targetY = 32;
+instance_create(targetX,targetY+32,block);
+
+#event step
+if(hidden)
+{
+    with(player)
+    {
+        x = other.targetX + 17;
+        y = other.targetY + 23;
+        gravity = 0;
+        hspeed = 0;
+        vspeed = 0;
+        visible = 0;
+        frozen = true;
+    }
+}
+else
+{
+    with(player)
+    {
+        visible = 1;
+        frozen = false;
+    }
+}

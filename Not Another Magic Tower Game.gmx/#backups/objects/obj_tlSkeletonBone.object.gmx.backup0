@@ -1,0 +1,51 @@
+// 2025-06-19 19:06:40
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlKiller;
+sprite_index = spr_bone1;
+uses_physics = false;
+
+#event create
+rotateSpd = random_range(8,20);
+image_angle = random_range(0,355);
+gravity = 0.15;
+
+spd = 0;
+tx = 0;
+ty = 0;
+
+bounce = false;
+
+#event alarm3
+if(point_distance(x,y,tx,ty) > spd)
+{
+    move_towards_point(tx,ty,spd);  
+    alarm[3] = 1; 
+}
+else
+{
+    speed = 0;
+    alarm[4] = 1;
+}
+
+#event alarm4
+if(image_xscale > 0)
+{
+    image_xscale -= 0.05;
+    image_yscale -= 0.05;
+    image_alpha -= 0.05;
+    alarm[4] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event step
+image_angle += rotateSpd;
+if(bounce)
+{
+    move_bounce_solid(true);
+}
+
+#event other_outside
+instance_destroy();

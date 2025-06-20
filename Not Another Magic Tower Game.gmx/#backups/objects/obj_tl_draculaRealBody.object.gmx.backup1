@@ -1,0 +1,182 @@
+// 2025-06-19 20:01:32
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_draculaRealBody;
+uses_physics = false;
+
+#event create
+image_index = 0;
+image_speed = 0;
+image_xscale = 3;
+image_yscale = 3;
+targetScale = 3;
+handGapX = 62;
+handGapY = 16;
+oy = y;
+
+right = 0;
+left = 0;
+
+clawType = 0;
+playerFlyDir = 0;
+
+claw = 0;
+
+tranAlpha = 0;
+thunderCount = 0;
+meteorCount = 0;
+dartsCount = 0;
+
+start = false;
+
+shakeCountdown = 0;
+
+#event alarm0
+if(player.x > 400)
+{
+    right.image_alpha = 0;
+    claw = instance_create(right.x,right.y,obj_tl_draculaClaw);
+    claw.targetX1 = right.x + 20;
+    claw.targetX2 = right.x - 400;
+    if(player.y > 440)
+    {
+        claw.targetY = 496;
+    }
+    else
+    {
+        claw.targetY = 384;
+    }
+    clawType = 1;
+    playerFlyDir = -1;
+}
+else
+{
+    left.image_alpha = 0;
+    claw = instance_create(left.x,left.y,obj_tl_draculaClaw);
+    claw.targetX1 = left.x - 20;
+    claw.targetX2 = left.x + 400;
+    if(player.y > 440)
+    {
+        claw.targetY = 496;
+    }
+    else
+    {
+        claw.targetY = 384;
+    }
+    claw.image_xscale *= -1;
+    clawType = 0;
+    playerFlyDir = 1;
+}
+
+#event alarm1
+//claw disappear
+if(tranAlpha > 0)
+{
+    tranAlpha -= 0.02;
+    claw.image_alpha = tranAlpha;
+    if(clawType == 0)
+    {
+        left.image_alpha = 1 - tranAlpha;
+    }
+    else
+    {
+        right.image_alpha = 1 - tranAlpha;
+    }
+    alarm[1] = 1;
+}
+else
+{
+    alarm[10] = 50;
+}
+
+#event alarm2
+if(thunderCount > 0)
+{
+    thunderCount -= 1;
+    instance_create(RangeClamp(player.x, 128, 800-128), 272, obj_draculaThunderCreator);
+    alarm[2] = 100;
+}
+
+#event alarm3
+if(meteorCount > 0)
+{
+    if(meteorCount == 10)
+    {
+        audio_playsound(sndBurst1);
+    }
+    meteorCount -= 1;
+    instance_create(x,y,obj_draculaMeteor3);
+    alarm[3] = 15;
+}
+
+#event alarm4
+if(dartsCount > 0)
+{
+    dartsCount -= 1;
+    var darts = instance_create(x,y,obj_draculaDarts);
+    darts.targetX = random_range(336,464);
+    darts.targetY = 272;
+    alarm[4] = 25;
+}
+
+#event alarm10
+thunderCount = 1;
+meteorCount = 10;
+dartsCount = 10;
+alarm[2] = 40;
+alarm[4] = 15;
+alarm[0] = 75;
+
+#event alarm11
+if(shakeCountdown > 0)
+{
+    shakeCountdown -= 1;
+    view_xview[0] = random_range(-15,15);
+    view_yview[0] = random_range(-15,15);
+    alarm[11] = 1;
+}
+
+#event step
+if(!start)
+{
+    view_xview[0] = 0;
+    view_yview[0] = 0;
+    start = true;
+    image_index = 1;
+    left = instance_create(x - handGapX * targetScale, y + handGapY * targetScale, obj_tl_draculaHand);
+    left.image_xscale *= -1;
+    right = instance_create(x + handGapX * targetScale, y + handGapY * targetScale, obj_tl_draculaHand);
+    alarm[10] = 15;
+}
+if(start)
+{
+    angle += 2;
+    y = oy + 2 * sin(degtorad(angle));
+}
+
+if(clawHit)
+{
+    global.cooldown = true;
+    if(abs(playerPreviousX - player.x) > 5)
+    {
+        playerPreviousX = player.x;
+        player.hspeed = 25 * playerFlyDir;
+        player.image_index =  playerFlyDir;
+        player.sprite_index = sprPlayerSliding;
+        player.gravity = 0;
+    }
+    else
+    {
+        player.hspeed = -2 * playerFlyDir;
+        player.vspeed = 2;
+        player.sprite_index = sprPlayerJump;
+        player.gravity = 0.4;
+        instance_create(player.x,player.y,obj_invisibleBullet);
+        playerPreviousX = 0;
+        shakeCountdown = 30;
+        clawHit = false;
+        global.cooldown = false;
+        sound_fix(sndEarth1);
+        alarm[11] = 1;
+    }
+}

@@ -52,6 +52,9 @@ part_emitter_region(flareEmit,flareEmit,x,x,y,y,ps_shape_rectangle,0);
 alarm[0] = 100;
 alarm[1] = 50;
 obj_tlPreFinalController.alarm[10] = 1;
+
+
+stop = false;
 </string>
           </argument>
         </arguments>

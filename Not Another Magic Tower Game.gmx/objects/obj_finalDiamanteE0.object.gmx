@@ -31,6 +31,13 @@ n0=n;
 image_xscale=0.25;
 image_yscale=0.25;
 
+
+dir_x = 0;
+dir_y = 0;
+nn = 0;
+t = 0;
+dd = 0;
+ind = 0;
 </string>
           </argument>
         </arguments>
@@ -61,14 +68,18 @@ n += nn;
 nn += 0.005;
 t+=1;
 dd+=n;
-if t mod 12 == 0{
-    for(j=0;j&lt;4;j+=1)
-    for(i=0;i&lt;3;i+=1){
-        a=instance_create(x,y,obj_finalDiamanteF0);
-        a.dd=90*j+point_direction(400,-100,x,y);//dd+t*2;
-        a.image_index=ind;
-        a.spd=3+2*i
-        a.ind = j*3+i;
+if t mod 12 == 0
+{
+    for(var j=0;j&lt;4;j+=1)
+    {
+        for(var i=0;i&lt;3;i+=1)
+        {
+            var a=instance_create(x,y,obj_finalDiamanteF0);
+            a.dd=90*j+point_direction(400,-100,x,y);//dd+t*2;
+            a.image_index=ind;
+            a.spd=3+2*i
+            a.ind = j*3+i;
+        }
     }
 }
 </string>

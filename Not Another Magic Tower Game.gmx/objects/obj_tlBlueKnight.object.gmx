@@ -27,6 +27,10 @@
             <kind>1</kind>
             <string>alarm[3] = 5;
 event_inherited();
+
+j = 0;
+xx = 0;
+yy = 0;
 </string>
           </argument>
         </arguments>
@@ -80,7 +84,7 @@ event_inherited();
     }
     xx=x+lengthdir_x(100,180);
     yy=y+lengthdir_y(100,180);
-    a=instance_create(xx,yy,obj_tlBlueKnightBullet);
+    var a=instance_create(xx,yy,obj_tlBlueKnightBullet);
     a.cx=x;
     a.cy=y;
     a.len=64;

@@ -1,0 +1,27 @@
+// 2025-06-19 19:03:52
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_slime_black_combat;
+uses_physics = false;
+
+#event create
+alarm[3] = 25;
+alarm[4] = 160;
+event_inherited();
+
+
+sound = false;
+
+#event alarm3
+var app=instance_create(x,y,obj_cherry_black);
+with(app)
+{
+    direction=random_range(1,355);
+    speed=random_range(3,5);
+
+}
+if(sound){audio_playsound(sndShoot)};
+alarm[3] = 5;
+
+#event alarm4
+instance_destroy();

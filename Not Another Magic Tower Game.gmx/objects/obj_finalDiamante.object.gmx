@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>//the ability of diamond shaping
 
-for(i=0;i&lt;4;i+=1){
+for(var i=0;i&lt;4;i+=1)
+{
     a=instance_create(400,304,obj_finalDiamanteE1);
     a.dir=90*i+10;
     a.image_index=2*i+1;

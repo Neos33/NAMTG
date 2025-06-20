@@ -1,0 +1,30 @@
+// 2025-06-19 21:13:31
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_dmSwordAndSickle_1;
+uses_physics = false;
+
+#event create
+image_speed = 0;
+alarm[3] = 15;
+alarm[4] = 50;
+
+
+start = false;
+stop = false;
+parent = noone;
+
+#event alarm3
+start = true;
+
+#event alarm4
+instance_create(x,y,obj_tlDMRippleController);
+
+#event step
+x = parent.x;
+y = parent.y;
+
+if(start && !stop)
+{
+    image_angle += 30;
+}

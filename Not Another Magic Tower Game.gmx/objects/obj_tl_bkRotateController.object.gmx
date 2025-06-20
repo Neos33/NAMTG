@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>alarm[0] = 1;
 count = 8;
+
+
+tailCount = 0;
 </string>
           </argument>
         </arguments>
@@ -109,7 +112,9 @@ instance_destroy();
             <kind>1</kind>
             <string>if(count &gt; 0)
 {   
-    rotate = instance_create(obj_tl_burningKnight.x, obj_tl_burningKnight.y - 32, obj_tl_bkRotateElement);
+    var rotate = instance_create(obj_tl_burningKnight.x, obj_tl_burningKnight.y - 32, obj_tl_bkRotateElement);
+    
+    var rotateDir;
     if((count mod 2) == 0)
     {
         rotateDir = 1;
@@ -121,11 +126,11 @@ instance_destroy();
     rotate.angle = 90;
     rotate.rDir = rotateDir;
     tailCount = 8;
-    for(i = 0; i &lt; tailCount; i+=1)
+    for(var i = 0; i &lt; tailCount; i+=1)
     {
-        tAngle = 90 - rotateDir * (i + 1 * 2);
-        tail = instance_create(obj_tl_burningKnight.x + (31 - i) * cos(degtorad(tAngle)), obj_tl_burningKnight.y - (31 - i) * sin(degtorad(tAngle)), obj_tl_bkRotateTail);
-        tailScale = 0.22 - i * 0.02;
+        var tAngle = 90 - rotateDir * (i + 1 * 2);
+        var tail = instance_create(obj_tl_burningKnight.x + (31 - i) * cos(degtorad(tAngle)), obj_tl_burningKnight.y - (31 - i) * sin(degtorad(tAngle)), obj_tl_bkRotateTail);
+        var tailScale = 0.22 - i * 0.02;
         tail.image_xscale = tailScale;
         tail.image_yscale = tailScale;
         tail.image_alpha = 1 - i / 9;

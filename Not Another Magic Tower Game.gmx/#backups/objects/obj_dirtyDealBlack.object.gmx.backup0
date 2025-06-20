@@ -1,0 +1,64 @@
+// 2025-06-19 19:41:38
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+obj_messageController.alpha =  0;
+obj_messageController.drawingBlack = true;
+alarm[0] = 1;
+
+#event destroy
+player.frozen = false;
+obj_dirtyDealMenu.alarm[4] = 1;
+obj_messageController.drawingBlack = false;
+
+#event alarm0
+if(obj_messageController.alpha < 1)
+{
+    obj_messageController.alpha += 0.01;
+    alarm[0] = 1;
+}
+else
+{
+    alarm[1] = 1;
+}
+
+#event alarm1
+message_add("Kid: Wha..what the fuck are you doing!!!");
+message_add("Gay DW(Merchant): Don't~ Be~ Shy~");
+alarm[2] = 1;
+
+
+#event alarm2
+if(!is_message())
+{
+    message_add("Kid: Ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh!");
+    alarm[3] = 1;
+    alarm[4] = 100;
+}
+else
+{
+    alarm[2] = 1;
+}
+
+#event alarm3
+//audio_playmusic_volume(scrAudioGetID("SE_KidScream"));
+FMODSoundPlay(scrAudioGetID("SE_KidScream"), false);
+
+#event alarm4
+alarm[3] = 0;
+message_add("Gay DW(Merchant): Sweet~");
+obj_dirtyDealMenu.alarm[3] = 1;
+alarm[5] = 1;
+
+#event alarm5
+if(obj_messageController.alpha > 0)
+{
+    obj_messageController.alpha -= 0.01;
+    alarm[5] = 1;
+}
+else
+{
+    instance_destroy();   
+}

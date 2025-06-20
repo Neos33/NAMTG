@@ -39,6 +39,13 @@ alarm[0] = 1;
 
 hint = instance_create(x,y-24,obj_finalTouhouHint);
 hint.txt = "Hold 'SHIFT' to 'FOCUS'";
+
+
+
+nowSpeed = 0;
+slow = 0;
+frozen = false;
+shootCoolDown = 0;
 </string>
           </argument>
         </arguments>
@@ -89,7 +96,8 @@ hint.txt = "Hold 'SHIFT' to 'FOCUS'";
             <string>//with(player)instance_destroy()
 var U,D,L,R,h,v;
 //slow
-if keyboard_check(global.jumpbutton){
+if keyboard_check(global.jumpbutton)
+{
     nowSpeed=maxSpeed/3*factor;
     slow = 1;
 }
@@ -134,7 +142,7 @@ if frozen exit;
 if keyboard_check_direct(global.shotbutton){
     if(shootCoolDown == 0)
     {
-        a=instance_create(x,y-6,obj_finalTouhouBullet);
+        var a=instance_create(x,y-6,obj_finalTouhouBullet);
         a.vspeed=-17;
         a.hspeed = 0;
         a.depth=depth-1;

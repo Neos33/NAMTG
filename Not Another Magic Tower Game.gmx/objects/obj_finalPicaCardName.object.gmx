@@ -26,12 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>sound_fix(snd_touhou_spellcard);
-with(obj_finalDiamanteE1){
+with(obj_finalDiamanteE1)
+{
     temp_dirspd = dirspd;
     dirspd = 0;
     alarm[1] = 0;
 }
-with(obj_finalDiamanteB1){
+with(obj_finalDiamanteB1)
+{
     temp_speed = speed;
     temp_direction = direction;
     temp_dirspd = dirspd;
@@ -45,6 +47,9 @@ y = 576;
 vspeed = -10;
 alarm[0] = 40;
 alarm[1] = 80;
+
+
+timer = 0;
 </string>
           </argument>
         </arguments>
@@ -115,11 +120,13 @@ alarm[3]=40;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_finalDiamanteE1){
+            <string>with(obj_finalDiamanteE1)
+{
     dirspd = temp_dirspd;
     alarm[1] = 1;
 }
-with(obj_finalDiamanteB1){
+with(obj_finalDiamanteB1)
+{
     speed = temp_speed;
     dirspd = temp_dirspd;
     direction = temp_direction;
@@ -171,7 +178,8 @@ alarm[2] = 1;
           <argument>
             <kind>1</kind>
             <string>timer+=1;
-if timer&lt;20{
+if timer&lt;20
+{
     fade_in(20);
 }
 draw_me();

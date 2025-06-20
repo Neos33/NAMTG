@@ -1,0 +1,49 @@
+// 2025-06-19 20:11:06
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_blackDevilMagician_combat;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+name = "Evil Black Magician";
+image_speed = 1/8;
+x = room_width / 2;
+y = room_height / 2;
+//image_xscale = 1.5;
+//image_yscale = 1.5;
+instance_create(0,0,obj_tl_bdmDeathClawController);
+//instance_create(0,0,obj_bdmEnergyBallController);
+instance_create(0,0,obj_bdmViewController);
+instance_create(0,0,obj_bdmInfiniteJumpHint);
+instance_create(0,0,obj_bdmBlackBlink);
+tCount = 4;
+alarm[3] = 30;
+alarm[4] = 60;
+
+
+
+#event alarm3
+instance_create(x,y,obj_tl_bdmLaserDrawer);
+
+#event alarm4
+if(tCount > 0)
+{
+    var pp = instance_create(x,y,obj_bdmEnergyBall3);
+    pp.targetX = x + choose(-1,1) * random_range(50, 200);
+    pp.targetY = y + choose(-1,1) * random_range(50, 200);
+    tCount -= 1;
+    alarm[4] = 20;
+}
+else
+{
+    alarm[11] = 550;
+}
+
+#event collision:bullet
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}

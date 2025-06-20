@@ -662,7 +662,7 @@ if(global.testPhase &gt; 0)
         mode = 2;
     }
     //SS_SetSoundPosition(global.BGM_Faro,global.testPos[global.testPhase]);
-    FMODInstanceSetPosition(global.BGM_Faro,global.testPos[global.testPhase]);
+    FMODInstanceSetPosition(scrAudioGetID("BGM_Faro"), global.testPos[global.testPhase]);
     if(room != global.testRoom[global.testPhase])
     {
         room_goto(global.testRoom[global.testPhase]);

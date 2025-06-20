@@ -42,7 +42,7 @@ instance_create(0,0,obj_missingnoBlack);
 instance_create(0,0,obj_missingnoCreator);
 
 
-
+ind = 0;
 
 </string>
           </argument>

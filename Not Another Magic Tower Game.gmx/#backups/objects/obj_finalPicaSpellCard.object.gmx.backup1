@@ -1,0 +1,30 @@
+// 2025-06-19 21:00:09
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = sprite1664;
+uses_physics = false;
+
+#event create
+instance_create(x,y,obj_finalPicaPortrait);
+alarm[0]=1;
+
+
+xx = 0;
+yy = 0;
+
+#event alarm0
+instance_create(x,y,obj_finalPicaCardName)
+
+#event draw
+draw_sprite_tiled_area_ext(sprite_index,-1,xx,yy,
+view_xview[0],view_yview[0],view_xview[0]+800,view_yview[0]+640,c_white,0.5*image_alpha);
+draw_sprite_tiled_area_ext(sprite_index,-1,-(xx+32),-(yy+16*sqrt(3)),
+view_xview[0],view_yview[0],view_xview[0]+800,view_yview[0]+640,c_white,0.5*image_alpha);
+xx+=2;
+yy-=2/sqrt(3);
+
+timer+=1;
+if timer>50{
+    image_alpha-=0.05;
+}
+if image_alpha<0 instance_destroy()

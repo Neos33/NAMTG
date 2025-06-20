@@ -170,7 +170,7 @@ image_yscale = 0.6;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(part_emitter_exists(obj_tl_burningFasf.xplosion,emit2))
+            <string>if(part_emitter_exists(obj_tl_burningFasf.explosion,emit2))
 {
     part_emitter_destroy(obj_tl_burningFasf.explosion,emit2);
 }

@@ -29,7 +29,8 @@
 alarm[0] = 1;
 image_speed=0.2;
 global.finalElist = ds_list_create();
-for(i=0;i&lt;3;i+=1){
+for(var i=0;i&lt;3;i+=1)
+{
     a=instance_create(x,y,obj_finalTreboleE1);
     ds_list_add(global.finalElist,a);
     a.len=60;
@@ -37,7 +38,8 @@ for(i=0;i&lt;3;i+=1){
     a.dac=-0.1;
     a.image_index=1+i mod 2;
 }
-for(i=0;i&lt;3;i+=1){
+for(i=0;i&lt;3;i+=1)
+{
     a=instance_create(x,y,obj_finalTreboleE1_);
     ds_list_add(global.finalElist,a);
     a.len=60;
@@ -45,7 +47,8 @@ for(i=0;i&lt;3;i+=1){
     a.dac=0.1;
     a.image_index=4+i mod 2;
 }
-for(i=0;i&lt;8;i+=1){
+for(i=0;i&lt;8;i+=1)
+{
     a=instance_create(400,608-80*i,obj_finalTreboleE2);
     a.rng = 5*i-30;
 }

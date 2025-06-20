@@ -1,0 +1,63 @@
+// 2025-06-19 20:46:14
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_finalTrebole64;
+uses_physics = false;
+
+#event create
+image_xscale = 0.5;
+image_yscale = 0.5;
+image_speed = 0;
+image_index = 5;
+alarm[0] = 15;
+
+
+dir = 0;
+len = 0;
+ddir = 0;
+dac = 0;
+timer = 0;
+
+#event destroy
+dir = random(360);
+for(var i=0;i<4;i+=1)
+{
+    var a;
+    a=createDiaBullet(x,y,5,dir+90*i,spr_finalTrebole16,image_index,obj_finalTreboleB3);
+    a=createDiaBullet(x,y,7,dir+90*i,spr_finalTrebole16,image_index,obj_finalTreboleB3);
+    a=createDiaBullet(x,y,9,dir+90*i,spr_finalTrebole16,image_index,obj_finalTreboleB3);
+    a=createDiaBullet(x,y,7,dir+25+90*i,spr_finalTrebole16,image_index+1,obj_finalTreboleB3);
+    a=createDiaBullet(x,y,7,dir-25+90*i,spr_finalTrebole16,image_index+2,obj_finalTreboleB3);
+}
+
+#event alarm0
+var a=instance_create(x,y,obj_finalTreboleB1);
+a.speed=4;;
+a.direction=point_direction(800-obj_finalTrebole.x,obj_finalTrebole.y,x,y);
+a.friction=-0.05;
+//a.image_xscale=0.5;
+a.image_yscale=a.image_xscale;
+a.image_index=image_index;
+a.ddir=-2;
+a.ddirspd=-0.05;
+alarm[0]=4;
+
+#event step
+x = 800-obj_finalTrebole.x+lengthdir_x(len,dir);
+y = obj_finalTrebole.y+lengthdir_y(len,dir);
+dir += ddir;
+ddir += dac;
+
+timer += 1;
+if timer==2
+{
+    var a=instance_create(x,y,obj_finalShadow);
+    a.sprite_index=sprite_index;
+    a.image_index=image_index;
+    a.image_speed=0;
+    a.depth=depth+1;
+    a.image_xscale = 0.5;
+    a.image_yscale = 0.5;
+    a.sclspd=0.025;
+    timer=0;
+}

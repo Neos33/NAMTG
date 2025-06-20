@@ -1,0 +1,48 @@
+// 2025-06-19 20:53:37
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouDevas;
+sprite_index = spr_pica_combat_1;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/8;
+image_xscale = 0.8;
+image_yscale = 0.8;
+image_alpha = 0.2;
+ind = 0;
+alarm[11] = 1;
+
+parent = noone;
+
+#event destroy
+if(circle != noone)
+{
+    with(circle)
+    {
+        instance_destroy();
+    }
+}
+
+#event alarm11
+if(ind == 0)
+{
+    circle = instance_create(x,y,obj_tlMagicCircle);
+    circle.image_xscale = 0.8;
+    circle.image_yscale = 0.8;
+    circle.image_alpha = 0.6;
+    circle.target = id;
+}
+
+#event step
+if(image_alpha < 0.6)
+{
+    image_alpha += 0.02;
+}
+x = parent.x;
+y = parent.y;
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

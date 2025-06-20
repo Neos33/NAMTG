@@ -32,6 +32,10 @@ targetX = 800 - x + 16 * sign(x - 400);
 targetY = y - 23;
 event_inherited();
 alarm[7] = 1;
+
+
+ind = 0;
+diao = false;
 </string>
           </argument>
         </arguments>
@@ -105,7 +109,7 @@ alarm[7] = 1;
             <kind>1</kind>
             <string>if(abs(x-targetX) &gt; 3)
 {
-    dir = sign(x - targetX);
+    var dir = sign(x - targetX);
     x -= 3*dir;
     alarm[6] = 1;
 }
@@ -236,7 +240,7 @@ image_yscale = 4;
 }
 else
 {
-    height = baseY - (y-39);
+    var height = baseY - (y-39);
     if(height &gt; 0)
     {
         draw_sprite_part_ext(sprite_index,image_index,0,0,90,height,x-45*ind,y-39,image_xscale,image_yscale,image_blend,image_alpha);

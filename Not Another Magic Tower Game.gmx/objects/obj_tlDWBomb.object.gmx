@@ -25,11 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.1;
+            <string>event_inherited();
+image_speed = 0.1;
 time = 50;
 p = 3;
 alarm[0] = time;
 alarm[11] = 10;
+
+red = 0;
 </string>
           </argument>
         </arguments>
@@ -84,7 +87,7 @@ alarm[11] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a = instance_create(x, y, obj_tlDWBombFire);
+            <string>var a = instance_create(x, y, obj_tlDWBombFire);
 a.p = p;
 with(a)
 {

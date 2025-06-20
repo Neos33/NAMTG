@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1/8;
+            <string>event_inherited();
+image_speed = 1/8;
 count = 0;
 spd = 14;
 targetX[0] = 672; targetY[0] = 304;
@@ -38,6 +39,10 @@ circle.target = id;
 
 instance_create(x,y,obj_tlSummonEffect);
 
+
+tIndex = 0;
+p = 0;
+stop = false;
 </string>
           </argument>
         </arguments>
@@ -176,9 +181,9 @@ y = -96;
             alarm[11] = 0;
             p = 9;
         }
-        for(i=0; i&lt;8;i+=1)
+        for(var i=0; i&lt;8;i+=1)
         {
-            pp = instance_create(x,y,obj_tlDWBullet)
+            var pp = instance_create(x,y,obj_tlDWBullet);
             pp.direction = i * 45;
         }
         if(count &lt;= 3)

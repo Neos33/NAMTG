@@ -1,0 +1,55 @@
+// 2025-06-19 21:11:13
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_tlTouhouBullet1;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 0;
+image_xscale = 0.8;
+image_yscale = 0.8;
+image_index = irandom_range(0,15);
+direction = random_range(0,360);
+alarm[3] = 50;
+
+start = false;
+
+#event alarm3
+start = true;
+
+#event step
+if(!instance_exists(obj_tlDMRipple))
+{
+    if(speed < 5 && start) 
+        speed += 0.02;
+}
+else
+{
+    var mDis = point_distance(x,y,obj_tlDMRipple.x, obj_tlDMRipple.y);
+    if(mDis <= obj_tlDMRipple.radius)
+    {
+        var mDir = point_direction(obj_tlDMRipple.x, obj_tlDMRipple.y, x, y);
+        motion_add(mDir, 0.2);
+        if(speed > 7)
+        {
+            speed = 7;
+        }
+    }
+}
+image_angle = direction - 90;
+
+#event other_outside
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+if(!start)
+{
+    draw_sprite(spr_finalTrebole64,0,x,y);
+}
+else
+{
+    draw_current();
+}
+draw_set_blend_mode(bm_normal);

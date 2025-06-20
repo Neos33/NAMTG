@@ -1,0 +1,111 @@
+// 2025-06-19 20:04:42
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_giantBatTransformed;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+name = "Giant Bat";
+image_speed = 1/8;
+transformed = true;
+juhua = true;
+alarm[7] = 10;
+x = 400; 
+y = 200;
+
+fireballCount = 0;
+energyBallCount = 0;
+coolDownTime = 0;
+summon = false;
+summonStatus = 0;
+summonedCount = 0;
+
+#event destroy
+with(obj_giantBatSummoned1)
+{
+    instance_destroy();
+}
+with(obj_giantBatSummoned2)
+{
+    instance_destroy();
+}
+event_inherited();
+
+#event alarm7
+instance_create(x,y,obj_giantBatBulletCreator);
+fireballCount = 15;
+energyBallCount = 1;
+alarm[10] = 10;
+alarm[11] = 10;
+coolDownTime = 50;
+summon = true;
+summonStatus = 1;
+
+#event alarm10
+if(fireballCount > 0)
+{
+    fireballCount -= 1;
+    instance_create(x,y,obj_giantBatFireCore);
+    alarm[10] = 15;
+}
+
+#event alarm11
+if(energyBallCount > 0)
+{
+    if(!sound_isplaying(sndQuake))
+    {
+        sound_fix(sndQuake);
+    }
+    energyBallCount -= 1;
+    var ball = instance_create(x,y,obj_giantBatEnergyBall);
+    ball.speed = 1.5;
+    ball.direction = point_direction(x,y,player.x, player.y);
+    alarm[11] = 100;
+}
+
+
+#event step
+if(summon)
+    {
+        if(coolDownTime > 0)
+        {
+            coolDownTime -= 1;
+        }
+        else
+        {
+            summonedCount += 1;
+            summonX = random_range(150,650);
+            summonY = random_range(100, 200);
+            summonEffect = instance_create(summonX, summonY, obj_giantBatSummonEffect);
+            sound_fix(snd_touhou_twinkle3);
+            if(summonedCount < 3)
+            {
+                summonEffect.summonObj = obj_giantBatSummoned1;
+            }
+            else
+            {
+                summonEffect.summonObj = choose(obj_giantBatSummoned1, obj_giantBatSummoned2);
+            }
+            coolDownTime = RangeClamp(150 - summonedCount * 5, 100, 150);
+        }
+    }
+
+
+#event collision:player
+if(transformed && juhua)
+{
+    event_inherited();
+}
+
+#event collision:bullet
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}
+
+
+#event other_room_end
+sound_stop(sndQuake);

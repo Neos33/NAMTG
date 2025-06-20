@@ -51,6 +51,7 @@ image_alpha = 0;
           <argument>
             <kind>1</kind>
             <string>hspeed -= 0.2;
+if instance_exists(obj_goldEvilSlimeBlack)
 image_alpha = obj_goldEvilSlimeBlack.image_alpha;
 </string>
           </argument>

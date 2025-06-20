@@ -46,6 +46,8 @@ x = 400;
 y = 32;
 hp = 1;
 
+spikeReady = false;
+
 </string>
           </argument>
         </arguments>

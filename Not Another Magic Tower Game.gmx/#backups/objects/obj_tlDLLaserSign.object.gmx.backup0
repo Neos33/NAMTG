@@ -1,0 +1,26 @@
+// 2025-06-19 21:15:17
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_faroMidTimeBall;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_xscale = 0.4;
+image_yscale = 0.4;
+image_speed = 0.5;
+image_blend = c_red;
+
+target = noone;
+laser = noone;
+
+#event other_animation_end
+sound_fix(sndLaser1);
+laser = instance_create(x, y-32, obj_tlDLLaser);
+laser.target = target;
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

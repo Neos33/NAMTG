@@ -29,6 +29,10 @@
 image_xscale = sign(x - 400);
 phase = "";
 event_inherited();
+
+
+dCount = 0;
+
 </string>
           </argument>
         </arguments>

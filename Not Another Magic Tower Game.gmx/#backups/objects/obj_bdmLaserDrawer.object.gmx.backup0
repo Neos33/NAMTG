@@ -1,4 +1,4 @@
-// 2025-06-08 18:55:53
+// 2025-06-19 22:55:38
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 uses_physics = false;
@@ -35,7 +35,7 @@ startInd = 0;
 ammount = 0;
 widthAngle = 0;
 targetAngle = 0;
-col = array_create(5);
+//col = array_create(5);
 
 #event destroy
 with(obj_bdmLaserCollision)

@@ -1,0 +1,29 @@
+// 2025-06-19 22:07:52
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_finalTrebole16_1;
+uses_physics = false;
+
+#event create
+event_inherited()
+image_speed = 0;
+
+lenspd = 0;
+active = false;
+parent = noone;
+len = 0;
+dir = 0;
+
+dirspd = 0;
+
+#event alarm0
+lenspd = 0;
+
+#event step_end
+if(active)
+{
+    x = parent.x + lengthdir_x(len,dir);
+    y = parent.y + lengthdir_y(len,dir);
+    len += lenspd;
+    dir += dirspd;
+}

@@ -29,6 +29,8 @@
 image_yscale = 2;
 alarm[3] = 20;
 event_inherited();
+
+start = false;
 </string>
           </argument>
         </arguments>
@@ -105,9 +107,9 @@ vspeed = 20;
     y = other.y - 16*image_yscale;
     sound_fix(sndEarth1);
     instance_create(x,y,view_shaker1);
-    fa1=instance_create(x,y+32,obj_tlStoneRockShooter)
+    var fa1=instance_create(x,y+32,obj_tlStoneRockShooter);
     fa1.hspd=-5;
-    fa2=instance_create(x,y+32,obj_tlStoneRockShooter)
+    var fa2=instance_create(x,y+32,obj_tlStoneRockShooter);
     fa2.hspd=5;
     alarm[4] = 20;
 }

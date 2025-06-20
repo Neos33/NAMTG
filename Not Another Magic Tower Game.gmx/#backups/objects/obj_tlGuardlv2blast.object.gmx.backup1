@@ -1,0 +1,95 @@
+// 2025-06-19 19:10:44
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlKiller;
+sprite_index = spr_blast;
+uses_physics = false;
+
+#event create
+image_speed = 0.5;
+image_alpha = 0.1;
+alarm[3] = 1;
+isStable = true;
+image_xscale = 0.8;
+image_yscale = 0.8;
+
+
+fade = false;
+
+#event alarm3
+if(image_alpha < 0.5)
+{
+    image_alpha += 0.04;
+    alarm[3] = 1;
+}
+else
+{
+    alarm[4] = 1;
+}
+
+#event alarm4
+if(image_alpha > 0.2)
+{
+    image_alpha -= 0.008;
+    alarm[4] = 1;
+}
+else
+{
+    alarm[5] = 1;
+}
+
+#event alarm5
+if(image_alpha < 0.75)
+{
+    image_alpha += 0.03;
+    alarm[5] = 1;
+}
+else
+{
+    alarm[6] = 1;
+}
+
+#event alarm6
+if(image_alpha > 0.5)
+{
+    image_alpha -= 0.02;
+    alarm[6] = 1;
+}
+else
+{
+    alarm[7] = 1;
+}
+
+#event alarm7
+if(image_alpha < 1)
+{
+    image_alpha += 0.05;
+    alarm[7] = 1;
+}
+else
+{
+    image_alpha = 1;
+}
+
+
+#event alarm10
+fade = true;
+if(image_alpha > 0)
+{
+    image_alpha -= 0.05;
+    alarm[10] = 1;
+}
+else
+{
+    instance_destroy();
+}
+
+#event step
+if(fade) exit;
+x = parent.x;
+y = parent.y + 3;
+
+#event collision:player
+if(image_alpha >= 0.5)
+{
+    event_inherited();
+}

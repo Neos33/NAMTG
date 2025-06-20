@@ -48,6 +48,10 @@ image_yscale = 2;
 alarm[3] = 1;
 isStable = true;
 sound_play(sndClaw1);
+
+
+ind = 0;
+gap = 0;
 </string>
           </argument>
         </arguments>
@@ -72,7 +76,7 @@ sound_play(sndClaw1);
             <kind>1</kind>
             <string>if(instance_exists(obj_tl_swordMaster))
 {
-    boom = instance_create(obj_tl_swordMaster.x, y + 8, obj_tl_swordMasterBoomEffect);
+    var boom = instance_create(obj_tl_swordMaster.x, y + 8, obj_tl_swordMasterBoomEffect);
     boom.ind = ind; 
 }
 
@@ -180,7 +184,7 @@ else
 {
     instance_destroy();
 }
-mx = x + 5 * image_xscale - 4 * image_xscale * image_index;
+var mx = x + 5 * image_xscale - 4 * image_xscale * image_index;
 if(mx &lt; 160)
 {
     gap = 160 - mx;

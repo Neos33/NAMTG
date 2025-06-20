@@ -47,7 +47,7 @@ alarm[3] = 1;
 
 isLead = false;
 hasChild = false;
-parent = 0;
+parent = noone;
 </string>
           </argument>
         </arguments>
@@ -165,9 +165,12 @@ py = y;
 }
 else
 {
-    direction = point_direction(x,y,parent.px,parent.py);
-    x = parent.px;
-    y = parent.py;
+    if instance_exists(parent)
+    {
+        direction = point_direction(x,y,parent.px,parent.py);
+        x = parent.px;
+        y = parent.py;
+    }
 }
 image_angle = direction - 90;
 </string>

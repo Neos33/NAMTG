@@ -44,6 +44,20 @@ image_speed = 1/8;
 x = 608;
 y = 368;
 alarm[3] = 20;
+
+
+
+sx = 0;
+sy = 0;
+tx = 0;
+ty = 0;
+
+ind = 0;
+
+bounce = false;
+bounceCount = 0;
+countdown = 0;
+evtInd = 0;
 </string>
           </argument>
         </arguments>
@@ -69,7 +83,7 @@ alarm[3] = 20;
             <string>p = path_add();
 path_set_kind(p,1);
 path_set_precision(p,4);
-len = RangeClamp(player.x + random_range(-96, 96), 160, 640) - x;
+var len = RangeClamp(player.x + random_range(-96, 96), 160, 640) - x;
 path_set_closed(p, false);
 path_add_point(p, x,y,100);
 path_add_point(p, x + len / 2,y - 32,100);
@@ -329,7 +343,7 @@ else if(status == 3)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dashHit = instance_create(x,y,obj_tl_swordMasterDashHit);
+            <string>var dashHit = instance_create(x,y,obj_tl_swordMasterDashHit);
 dashHit.ind = ind;
 </string>
           </argument>
@@ -400,7 +414,7 @@ hit.ind = ind;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>de = instance_create(x,y,obj_tl_sworkMasterDashEnd);
+            <string>var de = instance_create(x,y,obj_tl_sworkMasterDashEnd);
 de.tx = tx;
 de.ty = ty;
 de.dir = point_direction(tx,ty,sx,sy);
@@ -429,7 +443,7 @@ y = ty;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ds = instance_create(x,y,obj_swordMasterDashStart);
+            <string>var ds = instance_create(x,y,obj_swordMasterDashStart);
 ds.tx = x;
 ds.ty = y;
 ds.dir = point_direction(sx,sy,tx,ty);;

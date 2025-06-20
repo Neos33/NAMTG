@@ -30,6 +30,13 @@ image_yscale = 0.5;
 image_speed = 0;
 image_index = 5;
 alarm[0] = 15;
+
+
+dir = 0;
+len = 0;
+ddir = 0;
+dac = 0;
+timer = 0;
 </string>
           </argument>
         </arguments>
@@ -53,7 +60,9 @@ alarm[0] = 15;
           <argument>
             <kind>1</kind>
             <string>dir = random(360);
-for(i=0;i&lt;4;i+=1){
+for(var i=0;i&lt;4;i+=1)
+{
+    var a;
     a=createDiaBullet(x,y,6,dir+90*i,spr_finalTrebole16,image_index,obj_finalTreboleB3);
     a=createDiaBullet(x,y,7,dir+90*i,spr_finalTrebole16,image_index,obj_finalTreboleB3);
     a=createDiaBullet(x,y,8,dir+90*i,spr_finalTrebole16,image_index,obj_finalTreboleB3);
@@ -82,7 +91,7 @@ for(i=0;i&lt;4;i+=1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,obj_finalTreboleB1);
+            <string>var a=instance_create(x,y,obj_finalTreboleB1);
 a.speed=4;
 a.direction=point_direction(obj_finalTrebole.x,obj_finalTrebole.y,x,y);
 a.friction=-0.05;
@@ -120,8 +129,9 @@ dir += ddir;
 ddir += dac;
 
 timer += 1;
-if timer==2{
-    a=instance_create(x,y,obj_finalShadow);
+if timer==2
+{
+    var a=instance_create(x,y,obj_finalShadow);
     a.sprite_index=sprite_index;
     a.image_index=image_index;
     a.image_speed=0;

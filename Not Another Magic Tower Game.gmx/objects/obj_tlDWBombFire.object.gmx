@@ -35,6 +35,22 @@ spr[0] = spr_darkWarrior_bomb_fire_1;
 spr[1] = spr_darkWarrior_bomb_fire_2;
 spr[2] = spr_darkWarrior_bomb_fire_3;
 sprCount = 3;
+
+
+start = false;
+h = noone;
+v = noone;
+p = noone;
+
+leftP = 0;
+rightP = 0;
+upP = 0;
+downP = 0;
+
+left = 0;
+right = 0;
+up = 0;
+down = 0;
 </string>
           </argument>
         </arguments>
@@ -195,7 +211,7 @@ downP = p;
             <string>draw_set_blend_mode(bm_add);
 draw_current();
 //if(!start) exit;
-for(i = 1; i &lt;= leftP; i += 1)
+for(var i = 1; i &lt;= leftP; i += 1)
 {
     if(i &lt; p)
     {
@@ -207,7 +223,7 @@ for(i = 1; i &lt;= leftP; i += 1)
     }
 }
 
-for(i = 1; i &lt;= rightP; i += 1)
+for(var i = 1; i &lt;= rightP; i += 1)
 {
     if(i &lt; p)
     {
@@ -219,7 +235,7 @@ for(i = 1; i &lt;= rightP; i += 1)
     }
 }
 
-for(i = 1; i &lt;= upP; i += 1)
+for(var i = 1; i &lt;= upP; i += 1)
 {
     if(i &lt; p)
     {
@@ -231,7 +247,7 @@ for(i = 1; i &lt;= upP; i += 1)
     }
 }
 
-for(i = 1; i &lt;= downP; i += 1)
+for(var i = 1; i &lt;= downP; i += 1)
 {
     if(i &lt; p)
     {

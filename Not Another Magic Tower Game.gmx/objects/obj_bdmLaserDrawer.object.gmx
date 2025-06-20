@@ -56,7 +56,7 @@ startInd = 0;
 ammount = 0;
 widthAngle = 0;
 targetAngle = 0;
-col = array_create(5);
+//col = array_create(5);
 </string>
           </argument>
         </arguments>

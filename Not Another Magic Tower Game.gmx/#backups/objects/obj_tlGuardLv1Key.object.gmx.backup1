@@ -1,0 +1,100 @@
+// 2025-06-19 19:29:59
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlKiller;
+sprite_index = spr_battleYellowKey;
+uses_physics = false;
+
+#event create
+//
+onBoom = false;
+onHold = false;
+parent = noone;
+
+#event step
+if(onBoom)
+{
+    image_angle += 10;
+    speed -= 0.5;
+    if(speed < 0)
+    {
+        if(abs(parent.y - y) < 2 || (x < 0 || x > 800 || y > parent.y))
+        {
+            y = parent.y - 2;
+        }
+        else
+        {
+            if(y > (parent.y - 2))
+            {
+                y -= 1;
+            }
+            else
+            {
+                y += 1;
+            }
+        }
+    }
+    if(speed <= -30)
+    {
+        onBoom = false;
+        onHold = true;
+        speed = 0;
+        if(parent.type == 1)
+        {
+            sound_stop(sndBoomerang);
+        }
+    }
+}
+#section
+if(onHold)
+{
+    if(player.x > parent.x)
+    {
+        image_angle = 180;
+        x = parent.x + 12;
+        y = parent.y - 2;
+    }
+    else
+    {
+        image_angle = -90;
+        x = parent.x - 12;
+        y = parent.y - 2;
+    }
+}
+#section
+if(onSmash)
+{
+    if(!smashEnd)
+    {
+        if(parent.hspeed > 0)
+        {
+            x = parent.x + 12;
+            y = parent.y - 2;
+            image_angle = 180;
+            smashType = 0;
+        }
+        else if(parent.hspeed < 0)
+        {
+            x = parent.x - 12;
+            y = parent.y - 2;
+            smashType = 1;
+        }
+    }
+    else
+    {
+        if(smashType == 0)
+        {
+            x = parent.x + 16;
+            y = parent.y + 4;
+            image_angle = 120;
+        }
+        else if(smashType == 1)
+        {
+            x = parent.x - 16;
+            y = parent.y + 4;
+            image_angle = -30;
+        }
+    }
+}
+
+#event other_room_end
+sound_stop(sndBoomerang);

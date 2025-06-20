@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 1/8;
+
+start = false;
 </string>
           </argument>
         </arguments>

@@ -1,0 +1,20 @@
+// 2025-06-19 21:14:45
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_faroCtbEffect;
+uses_physics = false;
+
+#event create
+event_inherited();
+sound_fix(snd_touhou_gun);
+image_xscale = 3;
+image_yscale = 10;
+image_blend = c_red;
+
+#event other_animation_end
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

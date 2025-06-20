@@ -1,0 +1,68 @@
+// 2025-06-19 19:14:15
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_magelv1_combat;
+uses_physics = false;
+
+#event create
+alarm[3] = 120;
+alarm[4] = 1;
+alarm[5] = 4;
+alarm[6] = 90;
+ind = 1;
+angle = 15;
+event_inherited();
+
+
+type = 0;
+dir = 0;
+
+#event alarm3
+instance_destroy();
+
+#event alarm4
+if(type == 0)
+{
+    dir = angle;
+}
+else
+{
+    dir = 180 - angle;
+}
+ 
+with(instance_create(x, y, obj_tlMageBullet))
+{
+    direction = other.dir;
+    speed = 1;
+    image_angle = other.dir - 90;
+    phase = 2;
+    image_index = other.ind;   
+}
+alarm[4] = 6;
+
+#event alarm5
+ind += 1;
+alarm[5] = 8;
+
+#event alarm6
+instance_create(400,128,obj_tlStone);
+
+#event step
+time += 1;
+if(type == 1)
+{
+    if(time mod 4 == 0)
+    {
+        sound_fix(sndShoot);
+    }
+}
+
+if(x > 400)
+{
+    hspeed -= 0.1;
+}
+else
+{
+    hspeed += 0.1;
+}
+angle += 2;

@@ -25,18 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1/8;
+            <string>event_inherited();
+image_speed = 1/8;
 image_xscale = 0.8;
 image_yscale = 0.8;
 image_alpha = 0.2;
-if(ind == 0)
-{
-circle = instance_create(x,y,obj_tlMagicCircle);
-circle.image_xscale = 0.8;
-circle.image_yscale = 0.8;
-circle.image_alpha = 0.6;
-circle.target = id;
-}
+ind = 0;
+alarm[11] = 1;
+
+parent = noone;
+circle = noone;
 </string>
           </argument>
         </arguments>
@@ -65,6 +63,36 @@ circle.target = id;
     {
         instance_destroy();
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(ind == 0)
+{
+    circle = instance_create(x,y,obj_tlMagicCircle);
+    circle.image_xscale = 0.8;
+    circle.image_yscale = 0.8;
+    circle.image_alpha = 0.6;
+    circle.target = id;
 }
 </string>
           </argument>

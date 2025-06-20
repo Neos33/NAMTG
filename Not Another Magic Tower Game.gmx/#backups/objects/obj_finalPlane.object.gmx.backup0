@@ -1,0 +1,135 @@
+// 2025-06-19 21:06:56
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_finalTouhouPlane;
+mask_index = spr_touhouMask;
+uses_physics = false;
+
+#event create
+//basic variable
+frozen = true;
+image_speed = 0.2;  
+maxSpeed = 8;
+factor = 1;
+//set the border region
+Uborder = 0;
+Dborder = 608;
+Lborder = 0;
+Rborder = 800;
+image_speed = 0;
+
+
+nowSpeed = 0;
+slow = 0;
+shootCoolDown = 0;
+
+#event alarm0
+if !instance_exists(obj_playerCheck){
+    instance_create(x,y,obj_playerCheck);
+}
+
+#event step
+if frozen exit;
+var U,D,L,R,h,v;
+//slow
+if keyboard_check(global.jumpbutton){
+    nowSpeed=maxSpeed/3*factor;
+    slow = 1;
+}
+else{
+    nowSpeed=maxSpeed*factor;
+    slow = 0;
+}
+//moving
+h = 0;
+v = 0;
+if frozen == false
+{
+    U = keyboard_check(global.upbutton);
+    D = keyboard_check(global.downbutton);
+    L = keyboard_check(global.leftbutton);
+    R = keyboard_check(global.rightbutton);
+    h = R;
+    v = -U;
+    if(h == 0){
+        h = -L;
+    }
+    if(v == 0){
+        v = D;
+    }
+    if h==0 and v!=0{
+        y += nowSpeed * v;
+    }
+    else if h!=0 and v==0{
+        x += nowSpeed * h;
+    }
+    else if h!=0 and v!=0{
+        x += 0.7*nowSpeed*h;
+        y += 0.7*nowSpeed*v;
+    }
+}
+if (bbox_top < Uborder){y = yprevious;}
+if (bbox_left < Lborder){x = xprevious;}
+if (bbox_right >= Rborder){x = xprevious;}
+if (bbox_bottom >= Dborder){y = yprevious;}
+
+if keyboard_check_direct(global.shotbutton){
+    if(shootCoolDown == 0)
+    {
+        var a=instance_create(x+22,y+4,obj_finalTouhouBullet);
+        a.hspeed=17;
+        a.depth=depth-1;
+        shootCoolDown = 3;
+    }
+}
+#section
+if(!player_is_alive())
+{
+    instance_destroy();
+}
+if(shootCoolDown > 0)
+{
+    shootCoolDown -= 1;
+}
+
+#event collision:obj_finalFakePlayer
+with other instance_destroy();
+frozen = false;
+image_index = 1;
+alarm[0] = 1;
+
+#event draw
+if(frozen)
+{
+    draw_current();
+}
+else
+{
+    draw_current();
+}
+
+if(obj_demonLead_combat.finalStart)
+{
+    var usedHp;
+    if(global.GalleryBossFight)
+    {
+        usedHp = global.GalleryBossFightHp;
+    }
+    else
+    {
+        usedHp = global.hp;
+    }
+    
+    draw_sprite(spr_smallHeart, 0, x - 24, y - 32);
+    draw_set_alpha(1);
+    draw_set_font(fontBasicInfoMini);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_text(x - 8, y - 40, "x " + string(usedHp));
+    
+    if(!global.GalleryBossFight && global.MagicCloak && global.MagicHP > 0)
+    {
+        draw_sprite(spr_magicShield,0,player.x-24,player.y-48);
+        draw_text(x - 8, y - 56, "x " + string(global.MagicHP));
+    }
+}

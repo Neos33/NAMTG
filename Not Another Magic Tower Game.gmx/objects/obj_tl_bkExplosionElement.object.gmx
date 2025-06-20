@@ -44,6 +44,11 @@ image_alpha = 0;
 blend = 1;
 alarm[3] = 1;
 isStable = true;
+
+
+blendStart = false;
+blendSpd = 0;
+blendLimit = 0;
 </string>
           </argument>
         </arguments>
@@ -184,7 +189,7 @@ else
           <argument>
             <kind>1</kind>
             <string>draw_set_blend_mode(bm_add);
-for(i=0;i&lt;floor(blend);i+=1)
+for(var i=0;i&lt;floor(blend);i+=1)
 {
     draw_sprite_ext(sprite_index, i, x,y,1,1,0,c_white,1);
 }

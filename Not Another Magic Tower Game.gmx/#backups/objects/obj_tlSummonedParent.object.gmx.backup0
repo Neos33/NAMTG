@@ -1,0 +1,27 @@
+// 2025-06-19 19:17:14
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlKiller;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/8;
+eff = instance_create(x,y,obj_tlSummonEffect);
+eff.image_xscale = image_xscale*0.7;
+eff.image_yscale = image_yscale*0.7;
+eff.image_alpha = 0.8;
+
+
+start = false;
+
+#event destroy
+eff = instance_create(x,y,obj_tlSummonEffect);
+eff.image_xscale = image_xscale*0.7;
+eff.image_yscale = image_yscale*0.7;
+
+#event collision:bullet
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}

@@ -1,0 +1,48 @@
+// 2025-06-19 21:14:08
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlPreFinalKillerParent;
+sprite_index = spr_darkLord_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/8;
+//alarm[3] = 15;
+alarm[4] = 235;
+
+circle = instance_create(x,y,obj_tlMagicCircle);
+circle.target = id;
+
+instance_create(x,y,obj_tlSummonEffect);
+
+
+start = false;
+
+#event destroy
+with(circle)
+{
+    instance_destroy();
+}
+
+#event alarm3
+instance_create(0,0,obj_tlDLSkillController);
+
+#event alarm4
+instance_destroy();
+
+#event step
+if(point_distance(x,y,672,304) < 3)
+{
+    speed = 0;
+    x = 672;
+    y = 304;
+    if(!start)
+    {
+        start = true;
+        alarm[3] = 1;
+    }
+}
+else
+{
+    move_towards_point(672,304,4);
+}

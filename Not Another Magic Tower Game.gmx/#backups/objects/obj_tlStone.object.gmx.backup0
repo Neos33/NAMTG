@@ -1,0 +1,35 @@
+// 2025-06-19 19:16:01
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_stone_combat;
+uses_physics = false;
+
+#event create
+image_xscale = 2;
+image_yscale = 2;
+alarm[3] = 20;
+event_inherited();
+
+start = false;
+
+#event alarm3
+start = true;
+vspeed = 20;
+
+#event alarm4
+instance_destroy();
+
+#event collision:block
+if(start)
+{
+    start = false;
+    vspeed = 0;
+    y = other.y - 16*image_yscale;
+    sound_fix(sndEarth1);
+    instance_create(x,y,view_shaker1);
+    var fa1=instance_create(x,y+32,obj_tlStoneRockShooter)
+    fa1.hspd=-5;
+    var fa2=instance_create(x,y+32,obj_tlStoneRockShooter)
+    fa2.hspd=5;
+    alarm[4] = 20;
+}

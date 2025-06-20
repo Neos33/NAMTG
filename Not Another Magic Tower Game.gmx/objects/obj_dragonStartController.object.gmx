@@ -50,7 +50,7 @@ time = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_playmusic_volume(global.BGM_Dragon);
+            <string>audio_playmusic_volume(scrAudioGetID("BGM_Dragon"));
 </string>
           </argument>
         </arguments>

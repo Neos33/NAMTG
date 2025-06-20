@@ -44,6 +44,9 @@ angle = 90;
 isStable = true;
 image_xscale = obj_tl_draculaRealBody.targetScale;
 image_yscale = obj_tl_draculaRealBody.targetScale;
+
+
+blockBullet = false;
 </string>
           </argument>
         </arguments>
@@ -119,8 +122,8 @@ image_yscale = obj_tl_draculaRealBody.targetScale;
 {
     if(instance_exists(bullet))
     {
-        bu = instance_nearest(x,y,bullet);
-        signal = sign(image_xscale);
+        var bu = instance_nearest(x,y,bullet);
+        var signal = sign(image_xscale);
         if(sign(bu.hspeed) != signal &amp;&amp; sign(bu.x - x) == sign(signal) &amp;&amp; bu.y &gt; (obj_tl_draculaRealBody.y - 50) &amp;&amp; bu.y &lt; (obj_tl_draculaRealBody.y + 50))
         {
             blockBullet = true;
@@ -158,7 +161,7 @@ image_yscale = obj_tl_draculaRealBody.targetScale;
 {
     if(sign(other.hspeed) != sign(image_xscale))
     {
-        b = instance_create(other.x, other.y, obj_reflectBullet);
+        var b = instance_create(other.x, other.y, obj_reflectBullet);
         b.sprite_index = other.sprite_index;
         b.image_index = other.image_index;
         b.image_xscale = other.image_xscale;

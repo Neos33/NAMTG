@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1/8;
+            <string>event_inherited();
+image_speed = 1/8;
 interval = 8;
 
 
@@ -40,6 +41,14 @@ instance_create(64,64,obj_tlDWTarget);
 
 alarm[3] = interval;
 alarm[4] = 235;
+
+
+factor = 0;
+proceed = false;
+p1 = false;
+p2 = false;
+count = 0;
+times = 0;
 </string>
           </argument>
         </arguments>
@@ -98,10 +107,10 @@ if(times mod 2 == 0 &amp;&amp; source &gt;= minW &amp;&amp; source &lt;= maxW &a
 }
 while(proceed)
 {
-    x1 = source - gap * (times mod 2) - gap * 2 * factor;
-    y1 = source + gap * (times mod 2) + gap * 2 * factor;
-    x2 = source + gap * (times mod 2) + gap * 2 * factor;
-    y2 = source - gap * (times mod 2) - gap * 2 * factor;
+    var x1 = source - gap * (times mod 2) - gap * 2 * factor;
+    var y1 = source + gap * (times mod 2) + gap * 2 * factor;
+    var x2 = source + gap * (times mod 2) + gap * 2 * factor;
+    var y2 = source - gap * (times mod 2) - gap * 2 * factor;
     if(x1 &gt;= minW &amp;&amp; x1 &lt;= maxW &amp;&amp; y1 &gt;= minH &amp;&amp; y1 &lt;= maxH)
     {
         instance_create(x1,y1,obj_tlDWTarget);

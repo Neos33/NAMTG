@@ -34,7 +34,7 @@ color[0] = c_red;
 color[1] = c_yellow;
 color[2] = c_blue;
 colorStep = 0;
-color = c_red;
+col = c_red;
 alpha = 0;
 len = 960;
 angleDir = choose(-1,1);
@@ -42,14 +42,19 @@ rotateCount = 4;
 precision = 10;
 alarm[0] = 1;
 
-for(i = 0; i &lt; laserCount; i+=1)
+for(var i = 0; i &lt; laserCount; i+=1)
 {
-    b = instance_create(x,y,obj_tl_bdmLaserCollision);
+    var b = instance_create(x,y,obj_tl_bdmLaserCollision);
     b.ind = i;
     b.image_xscale = len / 32;
 }
 
 sound_fix(snd_touhou_masterSpark);
+
+
+widthAngle = 0;
+targetAngle = 0;
+
 </string>
           </argument>
         </arguments>
@@ -165,15 +170,15 @@ else
     instance_destroy();
 }
 colorStep += 1;
-startInd = floor((colorStep mod 150) / 50);
-ammount = colorStep mod 50;
+var startInd = floor((colorStep mod 150) / 50);
+var ammount = colorStep mod 50;
 if(startInd &lt; 2)
 {
-    color = merge_color(color[startInd], color[startInd + 1], ammount * 0.02);
+    col = merge_color(color[startInd], color[startInd + 1], ammount * 0.02);
 }
 else
 {
-    color = merge_color(color[startInd], color[0], ammount * 0.02);
+    col = merge_color(color[startInd], color[0], ammount * 0.02);
 }
 </string>
           </argument>
@@ -280,9 +285,9 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(j=0;j&lt;laserCount;j+=1)
+            <string>for(var j=0;j&lt;laserCount;j+=1)
 {
-    drawLaserExt(obj_tl_blankDevilMagician.x,obj_tl_blankDevilMagician.y,color,angle + 360/laserCount*j,len,width,precision,alpha);
+    drawLaserExt(obj_tl_blankDevilMagician.x,obj_tl_blankDevilMagician.y,col,angle + 360/laserCount*j,len,width,precision,alpha);
 }
 </string>
           </argument>

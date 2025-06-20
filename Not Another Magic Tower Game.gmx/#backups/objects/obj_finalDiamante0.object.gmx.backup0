@@ -1,0 +1,46 @@
+// 2025-06-19 20:50:38
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+for(var i=0;i<2;i+=1)
+{
+    a=instance_create(400,150,obj_finalDiamanteE0);
+    a.dir_x=180*i;
+    a.dd=a.dir_x;
+    a.ind=1+3*i;
+    a.dir_y=a.dir_x;
+}
+yy = random_range(450,550);
+
+
+
+alarm[0]=25;
+alarm[1]=76;
+
+#event destroy
+with(obj_finalDiamanteE0Laser)instance_destroy();
+with(obj_finalDiamanteE0Laser2)instance_destroy();
+
+#event alarm0
+instance_create(400,yy,obj_finalDiamanteE0Laser);
+instance_create(300,yy,obj_finalDiamanteE0Laser2);
+instance_create(500,yy,obj_finalDiamanteE0Laser2);
+
+//instance_create(300,yy,obj_finalDarkWarrior);
+//instance_create(500,yy,obj_finalDarkWarrior);
+
+
+
+#event alarm1
+yy = random_range(450,550)
+with(obj_finalDiamanteE0Laser){
+    y=other.yy;
+}
+with(obj_finalDiamanteE0Laser2){
+    y=other.yy;
+}
+//instance_create(300,yy,obj_finalDarkWarrior);
+//instance_create(500,yy,obj_finalDarkWarrior);
+alarm[1]=151;

@@ -1,0 +1,57 @@
+// 2025-06-19 19:23:40
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_batChild_combat1;
+uses_physics = false;
+
+#event create
+friction = 0;
+alarm[5] = 1;
+alarm[6] = 200;
+maxSpd = 7;
+event_inherited();
+
+
+hspd = 0;
+vspd = 0;
+hgap = 0;
+vgap = 0;
+
+#event alarm5
+speed = maxSpd; 
+direction = point_direction(x,y,player.x,player.y);
+
+#event alarm6
+instance_destroy();
+
+#event step
+var dir = point_direction(x,y,player.x,player.y);
+
+hspd = maxSpd * cos(degtorad(dir));
+vspd = -maxSpd * sin(degtorad(dir));
+
+hgap = hspd - hspeed;
+vgap = vspd - vspeed;
+
+hspeed += sign(hgap) * min(0.25, abs(hgap));
+vspeed += sign(vgap) * min(0.25, abs(vgap));
+
+if(direction < 0)
+{
+    direction += 360;
+}
+if(abs(direction - dir) != 180)
+{
+    if(abs(direction - dir) > 180)
+    {
+        if(direction > dir)
+        {
+            dir += 360;
+        }
+        else
+        {
+            dir -= 360;
+        }
+    }
+    direction += sign(dir - direction) * min(2, abs(dir - direction));
+}

@@ -1,0 +1,83 @@
+// 2025-06-19 21:10:38
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlPreFinalKillerParent;
+sprite_index = spr_darkMage_combat;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/8;
+alarm[5] = 1;
+hspeed = 8;
+
+ind = 0;
+count = 0;
+move = false;
+
+#event alarm4
+sound_fix(sndFire1);
+instance_create(x,y-8,obj_tlDarkMageTrueForm);
+instance_destroy();
+
+#event alarm5
+if(x < 672)
+{
+    if(ind == 1 && count mod 3 == 0)
+    {
+        sound_fix(snd_touhou_attack3);
+    }
+    repeat(1)
+    {
+        instance_create(x + random_range(-2,2),y + random_range(-4,4),obj_tlDarkMageBullet);
+    }
+    count += 1;
+    alarm[5] = 1;
+}
+else
+{
+    hspeed = 0;
+    if(ind == 1) 
+        vspeed = -12;
+    else
+        vspeed = 12;
+    move = true;
+    alarm[6] = 1;
+}
+
+#event alarm6
+if(abs(y - 304) <= 8)
+{
+    y = 304;
+    speed = 0;
+    if(ind == 1)
+    {
+        move = false;
+        alarm[4] = 1;
+    }
+    else
+    {
+        instance_destroy();
+    }
+}
+else
+{
+    alarm[6] = 1;
+}
+
+#event draw
+draw_set_blend_mode(bm_add);
+if(!move)
+{
+    draw_current();
+}
+else
+{
+    for(var i=0;i<5;i+=1)
+    {
+        var alpha = (i+1)*0.2;
+        var tx = x;
+        var ty = y - (4-i)*8*sign(vspeed);
+        draw_sprite_ext(sprite_index,image_index,tx,ty,image_xscale,image_yscale,image_angle,image_blend,alpha);
+    }
+}
+draw_set_blend_mode(bm_normal);

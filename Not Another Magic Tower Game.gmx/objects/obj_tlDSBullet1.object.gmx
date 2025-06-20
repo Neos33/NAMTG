@@ -25,9 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+image_speed = 0;
 alarm[3] = 100;
 alarm[4] = 300;
+
+valid = false;
 </string>
           </argument>
         </arguments>

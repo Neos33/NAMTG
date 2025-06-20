@@ -25,7 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+image_speed = 0;
+
+
+st1 = false;
+par = noone;
+len = 0;
+dirspd = 0;
+dir = 0;
 </string>
           </argument>
         </arguments>

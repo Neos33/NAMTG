@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>targetY = y - 144;
+//b = 0;
 </string>
           </argument>
         </arguments>

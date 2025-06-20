@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;2;i+=1){
+            <string>for(var i=0;i&lt;2;i+=1)
+{
     a=instance_create(400,150,obj_finalDiamanteE0);
     a.dir_x=180*i;
     a.dd=a.dir_x;

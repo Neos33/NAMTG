@@ -467,7 +467,7 @@ if(player_is_alive() &amp;&amp; player.x &gt; 0)
           <argument>
             <kind>1</kind>
             <string>//SS_StopSound(global.BGM_DecisiveBattle);
-FMODInstanceStop(global.BGM_DecisiveBattle);
+FMODInstanceStop(scrAudioGetID("BGM_DecisiveBattle"));
 </string>
           </argument>
         </arguments>

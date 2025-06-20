@@ -1,4 +1,4 @@
-// 2025-06-08 18:55:40
+// 2025-06-08 18:55:53
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 uses_physics = false;
@@ -13,7 +13,7 @@ color[0] = c_red;
 color[1] = c_yellow;
 color[2] = c_blue;
 colorStep = 0;
-color = c_red;
+col = c_red;
 alpha = 0;
 len = 960;
 angleDir = choose(-1,1);

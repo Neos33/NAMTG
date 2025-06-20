@@ -32,6 +32,11 @@ alarm[6] = 90;
 ind = 1;
 angle = 15;
 event_inherited();
+
+
+type = 0;
+dir = 0;
+time = 0;
 </string>
           </argument>
         </arguments>

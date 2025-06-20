@@ -73,8 +73,8 @@ alarm[0]=100;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=-1;i&lt;=1;i+=1){
-    a=instance_create(x,y,obj_finalTreboleB2);
+            <string>for(var i=-1;i&lt;=1;i+=1){
+    var a=instance_create(x,y,obj_finalTreboleB2);
     a.direction=30*i;
     a.image_index=4;
     a.par=id;

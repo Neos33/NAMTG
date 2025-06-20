@@ -28,6 +28,9 @@
             <string>alarm[3] = 25;
 alarm[4] = 160;
 event_inherited();
+
+
+sound = false;
 </string>
           </argument>
         </arguments>
@@ -73,10 +76,11 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>app=instance_create(x,y,obj_cherry_black);
+            <string>var app=instance_create(x,y,obj_cherry_black);
 with(app)
-{direction=random_range(1,355);
-speed=random_range(3,5);
+{
+    direction=random_range(1,355);
+    speed=random_range(3,5);
 
 }
 if(sound){audio_playsound(sndShoot)};

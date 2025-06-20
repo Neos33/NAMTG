@@ -32,6 +32,12 @@ alarm[0] = 30;
 alarm[1] = 180;
 alarm[2] = 180;
 alarm[3] = 1;
+
+
+minAngle = 0;
+maxAngle = 0;
+
+type = 0;
 </string>
           </argument>
         </arguments>
@@ -141,7 +147,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>aa = instance_create(x,y, obj_tlMagicianBullet);
+            <string>var aa = instance_create(x,y, obj_tlMagicianBullet);
 aa.direction = random_range(minAngle,maxAngle);
 aa.image_speed = 0;
 aa.image_index = irandom_range(0,14);

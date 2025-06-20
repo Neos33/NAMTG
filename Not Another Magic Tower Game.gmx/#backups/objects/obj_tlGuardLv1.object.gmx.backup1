@@ -1,0 +1,184 @@
+// 2025-06-19 19:12:50
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_guardlv1_battle;
+uses_physics = false;
+
+#event create
+image_xscale = 0.1;
+image_yscale = 0.1;
+alarm[11] = 1;
+phase = "init";
+
+event_inherited();
+
+key = 0;
+
+
+djump = 0;
+
+start = false;
+type = 0;
+
+#event destroy
+with(key)
+{
+    instance_destroy();
+}
+event_inherited();
+
+#event alarm3
+key.onHold = false;
+key.onBoom = true;
+key.onSmash = false;
+key.onRun = false;
+key.direction = point_direction(key.x, key.y, player.x, player.y);
+key.speed = 25;
+sound_loop(sndBoomerang);
+alarm[4] = 80;
+
+#event alarm4
+vspeed = -15;
+phase = "jump";
+start = true;
+
+#event alarm5
+if(type == 1)
+{
+    x = player.x -200;
+    image_angle = -45;
+}
+else
+{
+    image_angle = 45;
+    x = player.x  + 200;
+}
+y = player.y - 200;
+instance_create(x, y, obj_teleport);
+sound_fix(sndTelAtk);
+dir = point_direction(x,y,player.x,player.y);
+key.onSmash = true;
+key.smashEnd = false;
+key.onHold = false;
+hspeed = 15 * cos(degtorad(dir));
+vspeed = -15 * sin(degtorad(dir));
+phase = "smash";
+
+#event alarm6
+instance_destroy();
+
+#event alarm7
+var guard = instance_create(576, 368, obj_tlGuardLv1)
+guard.type = 1;
+
+#event alarm11
+if(image_xscale < 1)
+{
+    image_xscale += 0.1;
+    image_yscale += 0.1;
+    alarm[11] = 1;
+}
+else
+{
+    alarm[3] = 20;
+    if(x > player.x)
+    {
+        key = instance_create(x - 12, y - 2, obj_tlGuardLv1Key);
+    }
+    else
+    {
+        key = instance_create(x + 12, y - 2, obj_tlGuardLv1Key);
+    }
+    
+    key.parent = instance_position(x,y,obj_tlGuardLv1);
+    key.onHold = true;
+    key.onBoom = false;
+    key.onSmash = false;
+}
+
+#event step
+if(phase == "jump")
+{
+    if(vspeed > 0)
+    {
+        gravity = 0;
+        instance_create(x,y, obj_teleport);
+        sound_fix(sndTeleport);
+        x = -64; 
+        y = -64;
+        speed = 0;
+        alarm[5] = 40;
+        phase = "init";
+    }
+    else
+    {
+        vspeed += 0.8;
+    }
+}
+#section
+if(phase == "smash")
+{
+    if(abs(vspeed) < 0.1)
+    {
+        vspeed = 0;
+        hspeed = 0;
+        instance_create(x,y, view_shaker1);
+        sound_fix(sndEarth1);
+        key.smashEnd = true;
+        alarm[6] = 30;
+        phase = "init";
+    }
+}
+
+#event collision:block
+if(place_free(x+hspeed,y) == false){
+  if(hspeed <= 0){//��
+    move_contact_solid(180,abs(hspeed));
+  }
+  if(hspeed > 0){//�E
+    move_contact_solid(0,abs(hspeed));
+  }
+  hspeed = 0;
+}
+
+if(place_free(x,y+vspeed) == false){
+  if(vspeed <= 0){//��
+    move_contact_solid(90,abs(vspeed));
+  }
+  if(vspeed > 0){//��
+    move_contact_solid(270,abs(vspeed));
+    djump=1;
+  }
+  vspeed = 0;
+  gravity=0
+}
+
+if (place_free(x+hspeed,y+vspeed) == false){
+  hspeed=0;
+}
+
+
+#event other_outside
+if(y > 608)
+{
+    instance_destroy();
+}
+
+#event draw
+if(phase == "smash")
+{
+    if(abs(hspeed) > 5)
+    {
+        for(var i = 1; i < 5; i+= 1)
+        {
+            var xoffset = -10 * i * cos(degtorad(360 - direction));
+            var yoffset = -10 * i * sin(degtorad(360 - direction));
+            draw_sprite_ext(sprite_index, image_index, x + xoffset,y + yoffset,1,1,image_angle,c_white,1 - 0.15 * i);
+        }
+    }
+    draw_sprite_ext(sprite_index, image_index, x,y,1,1,image_angle,c_white,image_alpha);
+}
+else
+{
+    draw_current();
+}

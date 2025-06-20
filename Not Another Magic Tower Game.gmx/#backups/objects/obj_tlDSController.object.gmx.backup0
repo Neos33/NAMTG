@@ -1,0 +1,39 @@
+// 2025-06-19 21:24:14
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+r = 600;
+ind = 0;
+interval = 22;
+for(var i=0;i<5;i+=1)
+{
+    angle = 90+i*72;
+    tx = 400 + lengthdir_x(r,angle);
+    ty = 304 + lengthdir_y(r,angle);
+    with(instance_create(tx,ty,obj_tlDSBulletLeader))
+    {
+        angle = other.angle;
+    }
+}
+alarm[0] = interval;
+
+#event alarm0
+ind += 1;
+alarm[0] = interval;
+
+#event step
+if(r > 0)
+{
+    r -= 4;
+}
+else
+{
+    instance_create(400,304,obj_tlDarkSummoner);
+    with(obj_tlDSBulletLeader)
+    {
+        instance_destroy();
+    }
+    instance_destroy();
+}

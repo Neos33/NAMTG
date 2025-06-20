@@ -1,0 +1,19 @@
+// 2025-06-19 22:09:24
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+sprite_index = spr_tlHPHitEffect;
+uses_physics = false;
+
+#event create
+//
+
+#event step
+if(image_xscale > 0)
+{
+    image_xscale -= 0.05;
+    image_yscale -= 0.05;
+}
+else
+{
+    instance_destroy();
+}

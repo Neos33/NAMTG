@@ -1,0 +1,17 @@
+// 2025-06-19 21:06:01
+#event properties (no comments/etc. here are saved)
+parent_index = -1;
+uses_physics = false;
+
+#event create
+//
+sclspd = 0;
+alpspd = 0;
+
+#event step
+image_xscale -= sclspd;
+image_yscale -= sclspd;
+image_alpha -= alpspd;
+if image_xscale<0 or image_yscale<0 or image_alpha<0{
+    instance_destroy();
+}

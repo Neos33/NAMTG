@@ -28,6 +28,8 @@
             <string>alarm[3] = 30;
 alarm[4] = 30;
 event_inherited();
+
+i = 0;
 </string>
           </argument>
         </arguments>
@@ -76,18 +78,18 @@ event_inherited();
             <string>aa=instance_create(x,y,obj_cherry_black)
 with(aa)
 {
-speed=random_range(4,6);
-direction= 90 + sign(x-400) * random_range(15,90);
-gravity=0.1;
+    speed=random_range(4,6);
+    direction= 90 + sign(x-400) * random_range(15,90);
+    gravity=0.1;
 }
 if(i&lt;15)
 {
-i+=1;
-alarm[3]=6;
+    i+=1;
+    alarm[3]=6;
 }
 else
 {
-instance_destroy();
+    instance_destroy();
 }
 </string>
           </argument>

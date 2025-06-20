@@ -65,7 +65,7 @@ targetX = 0;
 targetY = 0;
 spd = 0;
 type = 0;
-start = 0;
+start = false;
 
 angle = 0;
 alpha = 0;

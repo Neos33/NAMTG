@@ -32,6 +32,9 @@ image_xscale = sign(x - 400);
 height = 0;
 instance_create(x,y,obj_tlSkeletonSwordTrace);
 event_inherited();
+
+
+sword = false;
 </string>
           </argument>
         </arguments>
@@ -84,12 +87,12 @@ instance_destroy();
             <string>obj_tlSkeletonSword.start = true;
 if(image_xscale &gt; 0)
 {
-    wind = instance_create(x - 32, y - 32, obj_tlSkeletonWind);
+    var wind = instance_create(x - 32, y - 32, obj_tlSkeletonWind);
     wind.hspeed = -5;
 }
 else
 {
-    wind = instance_create(x + 32, y - 32, obj_tlSkeletonWind);
+    var wind = instance_create(x + 32, y - 32, obj_tlSkeletonWind);
     wind.hspeed = 5;
 }
 audio_playsound(sndwind1);
@@ -124,7 +127,7 @@ alarm[4] = 50;
     }
     else if(!sword)
     {
-        s = instance_create(x - 10 * image_xscale, y+ 18, obj_tlSkeletonSword);   
+        var s = instance_create(x - 10 * image_xscale, y+ 18, obj_tlSkeletonSword);   
         s.image_xscale = image_xscale;
         sword = true;
         alarm[3] = 10;

@@ -1,0 +1,16 @@
+// 2025-06-19 21:18:19
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_mageMeteor;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 1/6;
+
+#event step
+image_angle = direction - 238;
+speed = 5;
+
+#event other_outside
+instance_destroy();

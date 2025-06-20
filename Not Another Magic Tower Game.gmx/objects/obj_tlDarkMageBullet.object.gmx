@@ -25,12 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+image_speed = 0;
 image_xscale = 0.8;
 image_yscale = 0.8;
 image_index = irandom_range(0,15);
 direction = random_range(0,360);
 alarm[3] = 50;
+
+start = false;
 </string>
           </argument>
         </arguments>
@@ -83,10 +86,10 @@ alarm[3] = 50;
 }
 else
 {
-    mDis = point_distance(x,y,obj_tlDMRipple.x, obj_tlDMRipple.y);
+    var mDis = point_distance(x,y,obj_tlDMRipple.x, obj_tlDMRipple.y);
     if(mDis &lt;= obj_tlDMRipple.radius)
     {
-        mDir = point_direction(obj_tlDMRipple.x, obj_tlDMRipple.y, x, y);
+        var mDir = point_direction(obj_tlDMRipple.x, obj_tlDMRipple.y, x, y);
         motion_add(mDir, 0.2);
         if(speed &gt; 7)
         {

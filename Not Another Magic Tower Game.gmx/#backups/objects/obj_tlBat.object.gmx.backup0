@@ -1,0 +1,75 @@
+// 2025-06-19 19:23:08
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_batBattle;
+uses_physics = false;
+
+#event create
+alarm[3] = 30;
+left = global.leftbutton;
+right = global.rightbutton;
+event_inherited();
+
+
+isDrawWave = false;
+wave = 0;
+isDiverse = false;
+isDiverseInit = false;
+wcount = 0;
+
+#event destroy
+global.leftbutton = left;
+global.rightbutton = right;
+with(obj_dizzy)
+{
+    instance_destroy();
+}
+event_inherited();
+
+#event alarm3
+sound_fix(sndBatScream);
+isDrawWave = true;
+wave = 0;
+isDiverse = true;
+isDiverseInit = false;
+alarm[4] = 1;
+
+#event alarm4
+if(isDiverse && !isDiverseInit)
+{
+    global.leftbutton = right;
+    global.rightbutton = left;
+    instance_create(player.x,player.y - 36, obj_dizzy);
+    isDiverseInit = true;
+}
+
+#event alarm5
+instance_destroy();
+
+#event other_room_end
+global.leftbutton = left;
+global.rightbutton = right;
+
+#event draw
+if(isDrawWave)
+{
+    wave += 1;
+    wcount = ceil(wave / 15);
+    draw_set_circle_precision(64);
+    for(var i = 0; i < wcount; i+=1)
+    {
+        draw_set_alpha(0.8 - i * 0.15);
+        draw_set_color(c_silver);
+        
+        draw_circle(x,y, (wave - 15 * i) * 10, true);
+    }
+    if(wave == 100)
+    {
+        wave = 0;
+        isDrawWave = false;
+        alarm[5] = 120;
+    }
+}
+draw_current();
+draw_reset_color();
+draw_set_circle_precision(24);

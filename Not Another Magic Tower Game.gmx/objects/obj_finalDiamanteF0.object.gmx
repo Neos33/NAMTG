@@ -25,12 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0;
+            <string>
+event_inherited();
+image_speed=0;
 image_alpha=0;
 image_xscale=3;
 image_yscale=3;
 
 alarm[3] = 1;
+
+child = noone;
+spd = 0;
+dd = 0;
 </string>
           </argument>
         </arguments>
@@ -103,13 +109,15 @@ child.parent = id;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_alpha&lt;1{
+            <string>if image_alpha&lt;1
+{
     image_alpha+=0.1;
     image_xscale-=0.25;
     image_yscale-=0.25;
 }
-else{
-    a=instance_create(x,y,obj_finalDiamanteB0);
+else
+{
+    var a=instance_create(x,y,obj_finalDiamanteB0);
     a.depth=1;
     a.image_index=image_index;
     a.speed=spd;

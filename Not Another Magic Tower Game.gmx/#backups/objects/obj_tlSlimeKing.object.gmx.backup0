@@ -1,0 +1,46 @@
+// 2025-06-19 19:05:24
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_slime_king_combat;
+uses_physics = false;
+
+#event create
+image_alpha = 0.6;
+image_xscale = 1.2;
+image_yscale = 1.2;
+alarm[3] = 25;
+alarm[4] = 90;
+event_inherited();
+
+#event alarm3
+vspeed -= 0.12;
+alarm[3] = 1;
+
+#event alarm4
+alarm[3] = 0;
+vspeed = 16;
+x = 400;
+y = -64;
+image_alpha = 1;
+image_xscale = 4;
+image_yscale = 4;
+
+
+#event step
+if(y >= 328)
+{
+    repeat(10)
+    {
+        instance_create(x + random_range(-8,8),y+random_range(16,32),obj_tlSlimingSlime);
+    }
+    sound_fix(sndEarth1);
+    sound_fix(sndEvilSmile);
+    instance_create(x,y,view_shaker1);
+    instance_destroy();
+}
+
+#event draw
+for(var i=2;i>=0;i-=1)
+{
+    draw_sprite_ext(sprite_index,image_index,x,y-vspeed*2*i,image_xscale,image_yscale,0,c_white,1-i*0.4);
+}

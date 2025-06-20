@@ -48,12 +48,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>randomX = view_xview[0] + random_range(64, view_wview[0] - 64);
-randomY = view_yview[0] + random_range(64, view_hview[0] - 64);
+            <string>var randomX = view_xview[0] + random_range(64, view_wview[0] - 64);
+var randomY = view_yview[0] + random_range(64, view_hview[0] - 64);
 //instance_create(randomX, randomY + 40,obj_bdmDeathClawAppearEffect);
 if(point_distance(randomX, randomY, player.x, player.y) &lt; 96)
 {
-    dir = point_direction(player.x, player.y, randomX, randomY);
+    var dir = point_direction(player.x, player.y, randomX, randomY);
     randomX = player.x + lengthdir_x(96, dir);
     randomY = player.y + lengthdir_y(96, dir);
 }

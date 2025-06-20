@@ -1,0 +1,41 @@
+// 2025-06-19 19:21:08
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_blueKnight1;
+uses_physics = false;
+
+#event create
+alarm[3] = 5;
+event_inherited();
+
+j = 0;
+xx = 0;
+yy = 0;
+
+#event alarm3
+if(j<=10)
+{
+    if(j == 0)
+    {
+        audio_playsound(snd_touhou_bonus3);
+    }
+    xx=x+lengthdir_x(100,180);
+    yy=y+lengthdir_y(100,180);
+    var a=instance_create(xx,yy,obj_tlBlueKnightBullet);
+    a.cx=x;
+    a.cy=y;
+    a.len=64;
+    a.dir=180;
+    a.dirspd=4;
+    dir+=30;
+    j+=1;
+    alarm[3]=7;
+}
+else
+{
+    alarm[4]=100;
+    j=0;
+}
+
+#event alarm4
+instance_destroy();

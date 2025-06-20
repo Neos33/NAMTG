@@ -1,0 +1,56 @@
+// 2025-06-19 19:05:54
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_skeleton_combat;
+uses_physics = false;
+
+#event create
+x = 400 + sign(400 - player.x) * 192;
+y = 368;
+move_towards_point(400,368,4);
+alarm[5] = 10;
+event_inherited();
+
+#event destroy
+repeat(12)
+{
+    with(instance_create(x,y,obj_tlSkeletonBone))
+    {
+        speed = random_range(5,7);
+        direction = random_range(30,150);
+        gravity = 0;
+        bounce = true;
+    }
+}
+sound_fix(sndDeath);
+instance_create(400 + sign(400 - player.x)*192,352,obj_tlSkeletonSwordsman);
+
+#event alarm3
+var pp = instance_create(x,y,obj_tlSkeletonBone);
+pp.speed = random_range(8, 12);
+pp.direction = random_range(60,120);
+audio_playsound(snd_wallum);
+alarm[3] = 5;
+
+#event alarm4
+instance_create(x,y,obj_tlSkeletonHugeBone);
+
+#event alarm5
+var p = instance_create(x,y,obj_tlSkeletonBone);
+p.gravity = 0;
+p.speed = 10;
+p.direction = point_direction(x,y,player.x,player.y);
+alarm[5] = 35;
+
+#event step
+if(abs(x - 400) < 4 && !start)
+{
+    x = 400;
+    speed = 0;
+    start = true;
+    alarm[5] = 0;
+    alarm[3] = 25;   
+}
+
+#event other_user0
+instance_destroy();

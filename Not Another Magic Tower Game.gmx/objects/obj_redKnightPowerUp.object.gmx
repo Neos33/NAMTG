@@ -75,11 +75,15 @@
           <argument>
             <kind>1</kind>
             <string>player.redKnightDash = true;
-obj_redKnightController.alarm[0] = 1;
-obj_redKnightController.dashStep = 70;
+with obj_redKnightController
+{
+    alarm[0] = 1;
+    dashStep = 70;
+}
 player.djump = true;
 sound_fix(sndDash);
-obj_redKnight_combat.start = true;
+with obj_redKnight_combat
+    start = true;
 instance_create(player.x,player.y,obj_redKnightDashEffect);
 with(obj_redKnightGo)
 {

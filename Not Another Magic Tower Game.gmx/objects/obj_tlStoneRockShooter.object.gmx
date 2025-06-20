@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>alarm[1]=1;
 alarm[0]=5;
+
+hspd = 0;
 </string>
           </argument>
         </arguments>
@@ -72,7 +74,7 @@ alarm[0]=5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>cn=instance_create(x,y,obj_tlStoneRock)
+            <string>var cn=instance_create(x,y,obj_tlStoneRock);
 cn.vspeed=-3;
 cn.image_xscale = 0.6;
 cn.image_yscale = 0.6;

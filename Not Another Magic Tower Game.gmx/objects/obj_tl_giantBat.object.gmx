@@ -46,6 +46,13 @@ juhua = true;
 alarm[7] = 10;
 x = 400; 
 y = 200;
+
+fireballCount = 0;
+energyBallCount = 0;
+coolDownTime = 0;
+summon = false;
+summonStatus = 0;
+summonedCount = 0;
 </string>
           </argument>
         </arguments>
@@ -106,7 +113,7 @@ event_inherited();
         sound_fix(sndQuake);
     }
     energyBallCount -= 1;
-    ball = instance_create(x,y,obj_giantBatEnergyBall);
+    var ball = instance_create(x,y,obj_giantBatEnergyBall);
     ball.speed = 1.5;
     ball.direction = point_direction(x,y,player.x, player.y);
     alarm[11] = 100;
@@ -201,9 +208,9 @@ summonStatus = 1;
         else
         {
             summonedCount += 1;
-            summonX = random_range(150,650);
-            summonY = random_range(100, 200);
-            summonEffect = instance_create(summonX, summonY, obj_giantBatSummonEffect);
+            var summonX = random_range(150,650);
+            var summonY = random_range(100, 200);
+            var summonEffect = instance_create(summonX, summonY, obj_giantBatSummonEffect);
             sound_fix(snd_touhou_twinkle3);
             if(summonedCount &lt; 3)
             {

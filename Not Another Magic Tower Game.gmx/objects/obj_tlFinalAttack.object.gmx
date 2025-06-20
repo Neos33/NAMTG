@@ -29,6 +29,9 @@
 scale = 0.01;
 image_xscale = scale;
 image_yscale = scale;
+
+
+timer = 0;
 </string>
           </argument>
         </arguments>
@@ -72,7 +75,7 @@ else{
     if(timer mod 50 == 25){
         event_user(2);
     }
-    tempTimer = 6-floor((timer-2000)/250);
+    var tempTimer = 6-floor((timer-2000)/250);
     if(tempTimer &gt; 0)
     {
         if(timer mod tempTimer == 0){
@@ -136,17 +139,19 @@ timer+=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ang = random(360);
-rnd = choose(0,1);
-for(i=0;i&lt;4;i+=1){
-    a=instance_create(x,y,obj_finalBossBullet);
+            <string>var ang = random(360);
+var rnd = choose(0,1);
+for(var i=0;i&lt;4;i+=1)
+{
+    var a=instance_create(x,y,obj_finalBossBullet);
     a.speed=4;
     a.direction=ang+i*90;
     a.bounce=1;
     a.sprite_index=spr_finalTrebole16;
     a.image_single=rnd+2*i;
-    for(j=0;j&lt;4;j+=1){
-        b=instance_create(x,y,obj_finalBossBullet2);
+    for(var j=0;j&lt;4;j+=1)
+    {
+        var b=instance_create(x,y,obj_finalBossBullet2);
         b.parent=a;
         b.active=1;
         b.image_index=a.image_index;
@@ -178,7 +183,7 @@ for(i=0;i&lt;4;i+=1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,obj_finalBossBullet);
+            <string>var a=instance_create(x,y,obj_finalBossBullet);
 a.speed=10;
 a.friction=0.4;
 a.image_xscale=0.5;
@@ -208,10 +213,11 @@ a.dirspd=random_range(-2,2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;36;i+=1){
-    xx = x + lengthdir_x(128,360/36*i+dir1);
-    yy = y + lengthdir_y(128,360/36*i+dir1);
-    a = instance_create(xx,yy,obj_finalBossBullet);
+            <string>for(var i=0;i&lt;36;i+=1)
+{
+    var xx = x + lengthdir_x(128,360/36*i+dir1);
+    var yy = y + lengthdir_y(128,360/36*i+dir1);
+    var a = instance_create(xx,yy,obj_finalBossBullet);
     a.speed = 2 + abs((i mod 9)-4);
     a.direction = point_direction(a.x,a.y,x,y)-60;
     a.image_xscale = 0;
@@ -241,10 +247,11 @@ dir1 += 4.3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;36;i+=1){
-    xx = x + lengthdir_x(128,360/36*i+dir1);
-    yy = y + lengthdir_y(128,360/36*i+dir1);
-    a = instance_create(xx,yy,obj_finalBossBullet);
+            <string>for(var i=0;i&lt;36;i+=1)
+{
+    var xx = x + lengthdir_x(128,360/36*i+dir1);
+    var yy = y + lengthdir_y(128,360/36*i+dir1);
+    var a = instance_create(xx,yy,obj_finalBossBullet);
     a.speed = 2 + abs((i mod 9)-4);
     a.direction = point_direction(a.x,a.y,x,y)+60;
     a.image_xscale = 0;
@@ -274,7 +281,7 @@ dir1 += 4.3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,obj_finalBossBullet);
+            <string>var a=instance_create(x,y,obj_finalBossBullet);
 a.speed=10;
 a.friction=0.4;
 a.image_xscale=0.5;

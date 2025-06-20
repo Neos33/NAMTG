@@ -1,0 +1,29 @@
+// 2025-06-19 21:25:03
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_tlDWBullet;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 0;
+alarm[3] = 100;
+alarm[4] = 300;
+
+valid = false;
+
+#event alarm3
+speed = 5;
+direction = point_direction(400,304,x,y) - 30;
+
+#event alarm4
+valid = true;
+
+#event other_outside
+//if(valid)
+    instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

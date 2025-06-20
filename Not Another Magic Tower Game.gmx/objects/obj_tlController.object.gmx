@@ -105,6 +105,9 @@ ds_list_shuffle(rngRoomList);
           <argument>
             <kind>1</kind>
             <string>/// Steps
+
+step = array_create(500);
+
 step[0] = 1;    //Start Bullet
 step[1] = 245;  //explode1
 step[2] = 340; //explode2_1
@@ -161,6 +164,8 @@ step[52] = 6250;  //random monster4
 step[53] = 6500;  //change to original room
 step[54] = 7000;  //change to touhou ready room
 step[55] = 7500;  //touhou start
+
+//step[56] = 8000;  //test
 
 if(global.part == 1)
 {
@@ -407,9 +412,13 @@ alarm[0] = 5;
 time += 1;
 if(currentStep == 54)
 {
-    if(!obj_tlOriginalTrigger.triggered)
+    if instance_exists(obj_tlOriginalTrigger)
     {
-        exit;
+        var _is_triggered = obj_tlOriginalTrigger.triggered;
+        if(!_is_triggered)
+        {
+            exit;
+        }
     }
 }
 if(time &gt;= step[currentStep])
@@ -642,7 +651,8 @@ if(time &gt;= step[currentStep])
         case 21: 
             obj_demonLead_combat.alarm[3] = 1;
             instance_create(400,240,obj_tlStartDarkHole);
-            audio_playmusic_volume(global.SE_HeedMyCall);
+            //audio_playmusic_volume(scrAudioGetID("SE_HeedMyCall"));
+            FMODSoundPlay(scrAudioGetID("SE_HeedMyCall"), false);
             break;
         case 22:
             instance_create(0,0,obj_tlWhiteBlink);
@@ -835,6 +845,7 @@ if(time &gt;= step[currentStep])
             
     }
     currentStep += 1;
+    currentStep = min(currentStep, 55);
 }
 </string>
           </argument>
@@ -861,7 +872,7 @@ if(time &gt;= step[currentStep])
     pos = SS_GetSoundPosition(global.BGM_DemonLead);
     SS_PauseSound(global.BGM_DemonLead);
     show_message(pos);
-    audio_resumemusic_volume(global.BGM_DemonLead);
+    audio_resumemusic_volume(scrAudioGetID("BGM_DemonLead"));
 }
 </string>
           </argument>

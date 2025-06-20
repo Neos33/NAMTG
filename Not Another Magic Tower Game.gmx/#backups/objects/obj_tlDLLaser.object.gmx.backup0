@@ -1,0 +1,26 @@
+// 2025-06-19 21:15:39
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_tlDLLaser;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_xscale = 0.1;
+image_yscale = -19;
+image_speed = 0.5;
+//image_blend = c_red;
+
+#event step
+if(image_xscale < 2)
+{
+    image_xscale += 0.04;
+}
+
+#event other_animation_end
+instance_destroy();
+
+#event draw
+draw_set_blend_mode(bm_add);
+draw_current();
+draw_set_blend_mode(bm_normal);

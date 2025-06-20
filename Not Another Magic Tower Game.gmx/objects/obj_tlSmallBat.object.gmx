@@ -31,6 +31,11 @@ alarm[6] = 200;
 maxSpd = 7;
 event_inherited();
 
+
+hspd = 0;
+vspd = 0;
+hgap = 0;
+vgap = 0;
 </string>
           </argument>
         </arguments>
@@ -100,7 +105,7 @@ direction = point_direction(x,y,player.x,player.y);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir = point_direction(x,y,player.x,player.y);
+            <string>var dir = point_direction(x,y,player.x,player.y);
 
 hspd = maxSpd * cos(degtorad(dir));
 vspd = -maxSpd * sin(degtorad(dir));

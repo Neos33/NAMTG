@@ -28,6 +28,7 @@
             <string>
 with(instance_create(obj_finalPlane.x,obj_finalPlane.y-24,obj_hiddenPlayerController)) { txt = "Hold 'Z' to 'SHOOT'" }
 
+pOffsetX = 0;
 
 alarm[0] = 10;
 alarm[1] = 250;

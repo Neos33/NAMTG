@@ -1,0 +1,51 @@
+// 2025-06-19 19:20:30
+#event properties (no comments/etc. here are saved)
+parent_index = obj_tlSummonedParent;
+sprite_index = spr_yellowKnight1;
+uses_physics = false;
+
+#event create
+alarm[3] = 20;
+image_xscale = sign(x - 400);
+phase = "";
+event_inherited();
+
+
+dCount = 0;
+
+
+#event alarm3
+phase = "dash";
+dCount += 1;
+targetX = x - image_xscale * 128;
+targetY = y;
+spd = 8;
+
+#event alarm4
+instance_destroy();
+
+#event step
+if(phase == "dash")
+{
+    if(point_distance(x,y,targetX,targetY) < spd)
+    {
+        hspeed = 0;
+        vspeed = 0;
+        //sprite_index = spr_yellowKnight;
+        hit = instance_create(x - image_xscale * 14, y, obj_swordhit);
+        hit.image_xscale = -1 * image_xscale;
+        phase = "init";
+        if(dCount < 3)
+        {
+            alarm[3] = 20;
+        }
+        else
+        {
+            alarm[4] = 20;
+        }
+    }
+    else
+    {
+        move_towards_point(targetX, targetY, spd);
+    }
+}

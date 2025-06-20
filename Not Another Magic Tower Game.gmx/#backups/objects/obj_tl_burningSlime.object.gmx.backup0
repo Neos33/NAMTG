@@ -1,0 +1,113 @@
+// 2025-06-19 20:14:14
+#event properties (no comments/etc. here are saved)
+parent_index = obj_combatPlayerKiller;
+sprite_index = spr_burningSlime_combat;
+uses_physics = false;
+
+#event create
+#action action_inherited
+#section
+name = "Burning Slime";
+image_speed = 1/8;
+image_xscale = 3;
+image_yscale = 3;
+x = 400;
+y = 80;
+alarm[4] = 30;
+alarm[5] = 150;
+
+
+pType = 0;
+trace = false;
+statusCountDown = 0;
+energyCount = 0;
+
+#event alarm4
+instance_create(random_range(48, 752), -16, obj_bsFireRockStorm);
+alarm[4] = 25;
+
+#event alarm5
+alarm[4] = 0;
+path_start(path_bs1, 15,0,1);
+pType = 1;
+
+#event step
+if(trace)
+{
+    y = player.y;
+}
+#section
+if(statusCountDown > 0)
+{
+    statusCountDown -= 1;
+}
+else
+{
+    if(status == 1)
+    {
+        if(energyCount > 0)
+        {
+            energyCount -= 1;
+            instance_create(random_range(64, 736),0,obj_bsEnergyElement);
+            statusCountDown = 3;
+        }
+    }
+    else if(status == 2)
+    {
+        if(point_distance(x,y,400,448) < 2)
+        {
+            x = 400;
+            y = 448;
+            hspeed = 0;
+            vspeed = 0;
+            with(obj_bsEnergyBall)
+            {
+                event_user(1);
+            }
+            status = 0;
+        }
+        else
+        {
+            move_towards_point(400,448,2);
+        }
+    }
+    else if(status == 3)
+    {
+        if(point_distance(x,y,400,80) < 2)
+        {
+            x = 400;
+            y = 80;
+            hspeed = 0;
+            vspeed = 0;
+            status = 0;
+            if(player_is_alive())
+            {
+                alarm[3] = 50;
+            }
+        }
+        else
+        {
+            move_towards_point(400,80,2);
+        }
+    }
+}
+
+#event collision:bullet
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}
+
+#event other_end_of_path
+if(pType == 1)
+{
+    sound_fix(sndEarth1);
+    instance_create(0,0,view_shaker1);
+    var p1 = instance_create(x, y + 48, obj_bsShark);
+    p1.image_xscale = 2;
+    p1.hspeed = -2;
+    var p2 = instance_create(x, y + 48, obj_bsShark);
+    p2.hspeed = 2;
+    p2.image_xscale = -2;
+}

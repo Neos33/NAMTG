@@ -1,0 +1,36 @@
+// 2025-06-19 21:18:39
+#event properties (no comments/etc. here are saved)
+parent_index = obj_finalTouhouKiller;
+sprite_index = spr_darkWarrior_bomb;
+uses_physics = false;
+
+#event create
+event_inherited();
+image_speed = 0.1;
+time = 50;
+p = 3;
+alarm[0] = time;
+alarm[11] = 10;
+
+red = 0;
+
+#event alarm0
+var a = instance_create(x, y, obj_tlDWBombFire);
+a.p = p;
+with(a)
+{
+    event_user(0);
+}
+instance_destroy();
+
+#event alarm11
+if(red < 255)
+{
+    red += 10;
+}
+else
+{
+    red = 255;
+}
+image_blend = make_color_rgb(red,0,0);
+alarm[11] = 1;
