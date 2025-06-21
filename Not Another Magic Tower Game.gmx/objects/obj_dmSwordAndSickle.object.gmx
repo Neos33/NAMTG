@@ -48,6 +48,8 @@ isStable = true;
 
 startX = 0;
 startY = 0;
+
+startAngle = 0;
 </string>
           </argument>
         </arguments>
@@ -70,8 +72,15 @@ startY = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_dmLastController.alarm[3] = 50;
-obj_darkMage_combat2.hasAch = true;
+            <string>with obj_dmLastController
+{
+    alarm[3] = 50;
+}
+
+with obj_darkMage_combat2
+{
+    hasAch = true;
+}
 </string>
           </argument>
         </arguments>
@@ -234,28 +243,31 @@ image_angle = angle;
 {
     status = 1;
 }
-if(obj_darkMage_combat2.hspeed &lt; 0)
+if instance_exists(obj_darkMage_combat2)
 {
-    if(angle &gt; -225)
+    if(obj_darkMage_combat2.hspeed &lt; 0)
     {
-        angle -= 15;
-        alarm[3] = 1;
+        if(angle &gt; -225)
+        {
+            angle -= 15;
+            alarm[3] = 1;
+        }
+        else
+        {
+            alarm[4] = 5;
+        }
     }
-    else
+    else if(obj_darkMage_combat2.hspeed &gt; 0)
     {
-        alarm[4] = 5;
-    }
-}
-else if(obj_darkMage_combat2.hspeed &gt; 0)
-{
-    if(angle &lt; 225)
-    {
-        angle -= 15;
-        alarm[3] = 1;
-    }
-    else
-    {
-        alarm[4] = 5;
+        if(angle &lt; 225)
+        {
+            angle -= 15;
+            alarm[3] = 1;
+        }
+        else
+        {
+            alarm[4] = 5;
+        }
     }
 }
 image_angle = angle;
@@ -359,8 +371,11 @@ if(instance_exists(obj_levelupFlash))
 }
 if(status != 2)
 {
-    x = obj_darkMage_combat2.x;
-    y = obj_darkMage_combat2.y;
+    if instance_exists(obj_darkMage_combat2)
+    {
+        x = obj_darkMage_combat2.x;
+        y = obj_darkMage_combat2.y;
+    }
 }
 </string>
           </argument>
@@ -383,20 +398,24 @@ if(status != 2)
           <argument>
             <kind>1</kind>
             <string>if(status != 0) exit;
-if(obj_darkMage_combat2.hspeed &gt; 0)
+
+if instance_exists(obj_darkMage_combat2)
 {
-    image_index = 1;
-    if(angle &gt; - 45)
+    if(obj_darkMage_combat2.hspeed &gt; 0)
     {
-        angle -= 9;
+        image_index = 1;
+        if(angle &gt; - 45)
+        {
+            angle -= 9;
+        }
     }
-}
-else if(obj_darkMage_combat2.hspeed &lt; 0)
-{
-    image_index = 0;
-    if(angle &lt; 45)
+    else if(obj_darkMage_combat2.hspeed &lt; 0)
     {
-        angle += 9;
+        image_index = 0;
+        if(angle &lt; 45)
+        {
+            angle += 9;
+        }
     }
 }
 image_angle = angle;

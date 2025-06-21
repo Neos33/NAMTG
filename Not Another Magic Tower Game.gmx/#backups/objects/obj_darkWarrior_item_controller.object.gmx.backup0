@@ -1,4 +1,4 @@
-// 2025-06-08 12:57:18
+// 2025-06-21 09:50:45
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 uses_physics = false;
@@ -39,7 +39,10 @@ draw_text(lIndent + 80, vIndent + vGap, string(global.mAtk));
 draw_text(lIndent,vIndent + vGap * 2, "Def:");
 draw_text(lIndent + 80, vIndent + vGap * 2, string(global.mDef));
 draw_text(lIndent,vIndent + vGap * 3, "Hp:");
-draw_text(lIndent + 80, vIndent + vGap * 3, string(obj_darkWarrior_combat.hp));
+if instance_exists(obj_darkWarrior_combat)
+{
+    draw_text(lIndent + 80, vIndent + vGap * 3, string(obj_darkWarrior_combat.hp));
+}
 
 vGap += 32;
 draw_text(lIndent,vInfo, "Bomb:");draw_sprite(spr_darkWarrior_item,0,144,vInfo);
@@ -49,19 +52,22 @@ draw_text(lIndent,vInfo + vGap * 3, "Wall:");draw_sprite(spr_darkWarrior_item,3,
 draw_text(lIndent,vInfo + vGap * 4, "Invincible:");draw_sprite(spr_darkWarrior_item,4,144,vInfo + vGap * 4);
 
 draw_set_halign(fa_center);
-draw_text(96, vInfo + 32, string(obj_darkWarrior_combat.bombCount));
-draw_text(96, vInfo + vGap * 1 + 32, string(obj_darkWarrior_combat.powerCount));
-draw_text(96, vInfo + vGap * 2 + 32, string(obj_darkWarrior_combat.spd));
-if(obj_darkWarrior_combat.crossWall)
+if instance_exists(obj_darkWarrior_combat)
 {
-    draw_text(96, vInfo + vGap * 3 + 32, "Ignore");
+    draw_text(96, vInfo + 32, string(obj_darkWarrior_combat.bombCount));
+    draw_text(96, vInfo + vGap * 1 + 32, string(obj_darkWarrior_combat.powerCount));
+    draw_text(96, vInfo + vGap * 2 + 32, string(obj_darkWarrior_combat.spd));
+    if(obj_darkWarrior_combat.crossWall)
+    {
+        draw_text(96, vInfo + vGap * 3 + 32, "Ignore");
+    }
+    else
+    {
+        draw_text(96, vInfo + vGap * 3 + 32, "Blocked");
+    }
+    
+    draw_text(96, vInfo + vGap * 4 + 32, string(obj_darkWarrior_combat.godtime / 50) + " secs");
 }
-else
-{
-    draw_text(96, vInfo + vGap * 3 + 32, "Blocked");
-}
-draw_text(96, vInfo + vGap * 4 + 32, string(obj_darkWarrior_combat.godtime / 50) + " secs");
-
 if(player_is_alive())
 {
     draw_sprite_ext(spr_smallHeart, 0, player.x - 16, player.y - 32, .75, .75, 0, c_white, 1);
