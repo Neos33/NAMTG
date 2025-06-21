@@ -82,6 +82,7 @@ saspd = 0;
 ssspd = 0;
 
 num = 0;
+za = 0;
 </string>
           </argument>
         </arguments>

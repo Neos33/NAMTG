@@ -68,7 +68,7 @@ n4=4;
 rn4=irandom(21);
 instance_create(x,y,obj_tre_cam);
 instance_create(x,y,obj_tre_bg);
-scr_trebole();
+
 
 
 
@@ -89,8 +89,8 @@ count = 0;
 
 count10 = 0;
 
-_objX = array_create(10);
-_objY = array_create(10);
+_objX = array_create(136);
+_objY = array_create(136);
 
 xx = 0;
 yy = 0;
@@ -107,6 +107,9 @@ obj_cora_ef = 0;
 
 at2 = false;
 t2 = 0;
+
+
+scr_trebole();
 </string>
           </argument>
         </arguments>

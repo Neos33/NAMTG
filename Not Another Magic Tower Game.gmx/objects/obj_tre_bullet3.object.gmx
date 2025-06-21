@@ -75,6 +75,11 @@ saspd = 0;
 ssspd = 0;
 
 num = 0;
+active = false;
+at = 0;
+unactive = false;
+i = 0;
+j = 0;
 </string>
           </argument>
         </arguments>
@@ -164,7 +169,7 @@ alarm[8]=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(var i=0;i&lt;4;i+=1)
+            <string>for(i=0;i&lt;4;i+=1)
 {
     var a=instance_create(x,y,obj_tre_bullet3);
         a.speed = 6;

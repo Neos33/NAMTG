@@ -2924,6 +2924,7 @@
     </sprites>
     <sprite>sprites\sprEmpty</sprite>
     <sprite>sprites\sprBasementUnknownMonster</sprite>
+    <sprite>sprites\spr_cora_flash</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bacJumpThrough</background>

@@ -1,4 +1,4 @@
-// 2025-06-20 14:12:26
+// 2025-06-21 10:58:14
 #event properties (no comments/etc. here are saved)
 parent_index = obj_combatController;
 uses_physics = false;
@@ -16,7 +16,8 @@ with(obj_combatPlayerKiller)
 global.monsters[global.combatIndex] = 1;
 if(room != battleroom12)
 {
-    sound_stop(battleBGM);
+    if battleBGM != noone
+        sound_stop(battleBGM);
 }
 //SS_ResumeSound(global.stageMusic);
 if(player_is_alive() && player.x > 0)
@@ -78,7 +79,8 @@ if(!instance_exists(obj_monsterBattlePrototype))
 }
 else
 {
-    draw_text(view_xview[1] + view_wview[1] - 64, view_yview[1] + 64, obj_monsterBattlePrototype.name);
+    var _name = obj_monsterBattlePrototype.name;
+    draw_text(view_xview[1] + view_wview[1] - 64, view_yview[1] + 64, _name);
 }
 
 
@@ -126,32 +128,35 @@ if(player_is_alive())
 }
 
 if(dontDrawMonster) exit;
-if(obj_monsterBattlePrototype.hp < 233)
+if instance_exists(obj_monsterBattlePrototype)
 {
-    for(var k = 0; k < floor(obj_monsterBattlePrototype.hp / 100); k+=1)
+    if(obj_monsterBattlePrototype.hp < 233)
     {
-        draw_sprite_ext(spr_hp, 0, view_xview[1] + view_wview[1] - 64 - 24 * (k + 1), view_yview[0] + 80, .75, .75, 0, c_white, 1);
+        for(var k = 0; k < floor(obj_monsterBattlePrototype.hp / 100); k+=1)
+        {
+            draw_sprite_ext(spr_hp, 0, view_xview[1] + view_wview[1] - 64 - 24 * (k + 1), view_yview[0] + 80, .75, .75, 0, c_white, 1);
+        }
+        
+        for(var j = 0; j < floor((obj_monsterBattlePrototype.hp mod 100) / 10); j+=1)
+        {
+            draw_sprite(spr_heart10, 0, view_xview[1] + view_wview[1] - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * (j + 1), view_yview[1] + 92);
+        }
+        
+        for(var i = 0; i < (obj_monsterBattlePrototype.hp mod 10); i+= 1)
+        {
+            draw_sprite(spr_smallHeart, 0, view_xview[1] + view_wview[1] - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * floor((obj_monsterBattlePrototype.hp mod 100) / 10) - 14 * (i + 1), view_yview[1] + 98);
+        }
     }
-    
-    for(var j = 0; j < floor((obj_monsterBattlePrototype.hp mod 100) / 10); j+=1)
+    else
     {
-        draw_sprite(spr_heart10, 0, view_xview[1] + view_wview[1] - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * (j + 1), view_yview[1] + 92);
+        draw_set_font(fontBasicInfoMini);
+        draw_set_color(c_silver);
+        draw_set_halign(fa_right);
+        draw_set_valign(fa_middle);
+        var strWidth = string_width("x " + string(obj_monsterBattlePrototype.hp));
+        draw_text(view_xview[1] + view_wview[1] - 64, view_yview[1] + 92, "x " + string(obj_monsterBattlePrototype.hp));
+        draw_sprite_ext(spr_smallHeart, 0, view_xview[1] + view_wview[0] - 64 - strWidth - 14, view_yview[1] + 92, .75, .75, 0, c_white, 1);
     }
-    
-    for(var i = 0; i < (obj_monsterBattlePrototype.hp mod 10); i+= 1)
-    {
-        draw_sprite(spr_smallHeart, 0, view_xview[1] + view_wview[1] - 64 - floor(obj_monsterBattlePrototype.hp / 100) * 24 - 20 * floor((obj_monsterBattlePrototype.hp mod 100) / 10) - 14 * (i + 1), view_yview[1] + 98);
-    }
-}
-else
-{
-    draw_set_font(fontBasicInfoMini);
-    draw_set_color(c_silver);
-    draw_set_halign(fa_right);
-    draw_set_valign(fa_middle);
-    var strWidth = string_width("x " + string(obj_monsterBattlePrototype.hp));
-    draw_text(view_xview[1] + view_wview[1] - 64, view_yview[1] + 92, "x " + string(obj_monsterBattlePrototype.hp));
-    draw_sprite_ext(spr_smallHeart, 0, view_xview[1] + view_wview[0] - 64 - strWidth - 14, view_yview[1] + 92, .75, .75, 0, c_white, 1);
 }
 
 draw_reset();

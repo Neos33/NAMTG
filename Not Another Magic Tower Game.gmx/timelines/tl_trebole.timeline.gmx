@@ -45,28 +45,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>at1 = true;
+            <string>///#action // both side
+at1 = true;
+
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>both side</string>
           </argument>
         </arguments>
       </action>
@@ -191,28 +173,10 @@ with(obj_tre_bullet){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>at2 = true;
+            <string>///#action // up down
+at2 = true;
+
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>up down</string>
           </argument>
         </arguments>
       </action>
@@ -410,23 +374,29 @@ with(obj_tre_bullet){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet){
-    if(num==1){
-        if(image_index == 0){
+            <string>with(obj_tre_bullet)
+{
+    if(num==1)
+    {
+        if(image_index == 0)
+        {
             move_towards_point(400,304,8);
         }
-        else{
+        else
+        {
             move_towards_point(400,304,-8);
         }
     }
-    if(num==2){
-        repeat(2){
-        a=instance_create(x,y,obj_tre_bullet);
-        a.speed=random_range(1,2);
-        a.friction=-0.01;
-        a.frspd=0.001;
-        a.image_index=irandom(6);
-        a.direction=random(360);
+    if(num==2)
+    {
+        repeat(2)
+        {
+            a=instance_create(x,y,obj_tre_bullet);
+            a.speed=random_range(1,2);
+            a.friction=-0.01;
+            a.frspd=0.001;
+            a.image_index=irandom(6);
+            a.direction=random(360);
         }
         instance_destroy()
     }
@@ -456,33 +426,16 @@ with(obj_tre_bullet){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(400,304,obj_tre_null);
-with(a){
+            <string>///#action // star
+a=instance_create(400,304,obj_tre_null);
+with(a)
+{
     scr_star(1,13,8,obj_tre_bullet2,270,4,5);
     with(obj_tre_bullet2){dirspd=2.5;no=1;}
     instance_destroy()
 }
+
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>star</string>
           </argument>
         </arguments>
       </action>
@@ -507,7 +460,8 @@ with(a){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with obj_tre_bullet2{
+            <string>with obj_tre_bullet2
+{
     speed=0;
     /*inst = instance_create(x,y,obj_tre_shadow);
     inst.sprite_index = sprite_index;
@@ -522,7 +476,6 @@ with(a){
     inst.alpha_speed=0.1;
     inst.scale_speed=-0.05;*/
 }
-
 </string>
           </argument>
         </arguments>
@@ -577,28 +530,10 @@ a.hspeed=10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_tre_at1.alarm[2]=1;
+            <string>///#action // square middle
+obj_tre_at1.alarm[2]=1;
+
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>square middle</string>
           </argument>
         </arguments>
       </action>
@@ -702,17 +637,18 @@ a.hspeed=10;
           <argument>
             <kind>1</kind>
             <string>obj_tre_cam.pat=3;
-with(obj_tre_bullet){
-    if(image_index==2 or image_index==3){      
-    a=instance_create(x,y,obj_tre_bullet2);
-    a.image_index=image_index;
-    a.speed=point_distance(x,y,400,304)/10*4/3;
-    a.direction=point_direction(x,y,400,304);
-    a.dirspd=0.5;
-    a.alarm[0]=18;
+with(obj_tre_bullet)
+{
+    if(image_index==2 or image_index==3)
+    {      
+        a=instance_create(x,y,obj_tre_bullet2);
+        a.image_index=image_index;
+        a.speed=point_distance(x,y,400,304)/10*4/3;
+        a.direction=point_direction(x,y,400,304);
+        a.dirspd=0.5;
+        a.alarm[0]=18;
     }
 }
-
 </string>
           </argument>
         </arguments>
@@ -764,11 +700,13 @@ with(obj_tre_bullet){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet){
+            <string>with(obj_tre_bullet)
+{
     speed=point_distance(400,304,x,y)/20;
     direction=point_direction(400,304,x,y)+180;
 }
-with(obj_tre_bullet2){
+with(obj_tre_bullet2)
+{
     speed=point_distance(x2,y2,x,y)/20;
     direction=point_direction(x2,y2,x,y)+180;
 }
@@ -797,10 +735,12 @@ with(obj_tre_bullet2){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet){
+            <string>with(obj_tre_bullet)
+{
     speed*=2.5;
 }
-with(obj_tre_bullet2){
+with(obj_tre_bullet2)
+{
     speed*=2.5;
 }
 </string>
@@ -828,28 +768,10 @@ with(obj_tre_bullet2){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_tre_at1.alarm[4]=1;
+            <string>///#action // toiki
+obj_tre_at1.alarm[4]=1;
+
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>toiki</string>
           </argument>
         </arguments>
       </action>
@@ -875,7 +797,8 @@ with(obj_tre_bullet2){
           <argument>
             <kind>1</kind>
             <string>with(obj_tre_bullet)instance_destroy()
-with(obj_tre_bullet2){
+with(obj_tre_bullet2)
+{
     mask_index=maskNothing;
     image_alpha=0.4;
     speed=random_range(8,18);
@@ -887,8 +810,10 @@ rnd=random(360);
 rnd2=irandom(24);
 ni=9;
 nj=14;
-for(i=0;i&lt;ni;i+=1){
-    for(j=0;j&lt;nj;j+=1){
+for(i=0;i&lt;ni;i+=1)
+{
+    for(j=0;j&lt;nj;j+=1)
+    {
         a=instance_create(400,304,obj_tre_bullet);
         a.speed=3+i/2;
         a.direction=rnd+360/nj*j+i*2;
@@ -947,7 +872,8 @@ for(i=0;i&lt;ni;i+=1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet){
+            <string>with(obj_tre_bullet)
+{
     speed*=0.5;
     friction=0;
     image_xscale*=2;
@@ -979,7 +905,8 @@ view_angle=10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet){
+            <string>with(obj_tre_bullet)
+{
     speed*=0.5;
     image_xscale*=2;
     image_yscale=image_xscale;
@@ -1010,7 +937,8 @@ view_angle=-10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet){
+            <string>with(obj_tre_bullet)
+{
     speed*=0.5;
     image_xscale*=2;
     image_yscale=image_xscale;
@@ -1041,7 +969,8 @@ view_angle=10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet){
+            <string>with(obj_tre_bullet)
+{
     speed*=2;
     sprite_index=spr_bboom;
     image_xscale=2;
@@ -1049,7 +978,6 @@ view_angle=10;
 }
 view_angle=0;
 //global.frozen2=1;
-
 </string>
           </argument>
         </arguments>
@@ -1101,28 +1029,10 @@ view_angle=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_tre_at1.alarm[5]=1;
+            <string>///#action // arifureta
+obj_tre_at1.alarm[5]=1;
+
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>arifureta</string>
           </argument>
         </arguments>
       </action>
@@ -1176,7 +1086,8 @@ view_angle=0;
             <string>rnd[1]=random(360);
 rnd[2]=random(360);
 rnd[3]=random(360);
-with(obj_tre_bullet){
+with(obj_tre_bullet)
+{
     m = num mod 3;
     d = num div 3;
     xxx = 400+lengthdir_x(50+100*m,10*d+other.rnd[m]);
@@ -1220,7 +1131,8 @@ with(obj_tre_bullet){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet2){
+            <string>with(obj_tre_bullet2)
+{
     speed=1;
     direction=point_direction(x,y,400,304);
     no=0;
@@ -1250,7 +1162,8 @@ with(obj_tre_bullet){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet2){
+            <string>with(obj_tre_bullet2)
+{
     if(m == 2){
         speed*=-8;
         shadow = true;
@@ -1284,7 +1197,8 @@ with(obj_tre_bullet){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet2){
+            <string>with(obj_tre_bullet2)
+{
     if(m == 1){
         speed*=-8;
         shadow = true;
@@ -1317,8 +1231,10 @@ with(obj_tre_bullet){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet2){
-    if(m == 0){
+            <string>with(obj_tre_bullet2)
+{
+    if(m == 0)
+    {
         speed*=-7;
         shadow = true;
         saspd = 0.1;
@@ -1403,7 +1319,8 @@ with(obj_tre_bullet){
           <argument>
             <kind>1</kind>
             <string>instance_create(400,360,obj_tre_null);
-with(obj_tre_bullet2){
+with(obj_tre_bullet2)
+{
     alarm[4]=1;
 }
 </string>
@@ -1457,7 +1374,8 @@ with(obj_tre_bullet2){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet2){
+            <string>with(obj_tre_bullet2)
+{
     direction = point_direction(player.x,player.y,x,y);
     speed = 15;
     alarm[4] = 0;
@@ -1488,28 +1406,10 @@ with(obj_tre_bullet2){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[2] = 1;
+            <string>///#action // 间奏
+alarm[2] = 1;
+
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>间奏</string>
           </argument>
         </arguments>
       </action>
@@ -1535,8 +1435,10 @@ with(obj_tre_bullet2){
           <argument>
             <kind>1</kind>
             <string>alarm[2] = 0;
-with(obj_tre_bullet3){
-    if image_index == 2{
+with(obj_tre_bullet3)
+{
+    if image_index == 2
+    {
         move_towards_point(player.x,player.y,-15);
         shadow = true;
         saspd = 0.1;
@@ -1569,8 +1471,10 @@ with(obj_tre_bullet3){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet3){
-    if image_index == 4{
+            <string>with(obj_tre_bullet3)
+{
+    if image_index == 4
+    {
         move_towards_point(player.x,player.y,-15);
         shadow = true;
         saspd = 0.1;
@@ -1603,8 +1507,10 @@ with(obj_tre_bullet3){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_tre_bullet3){
-    if image_index == 6{
+            <string>with(obj_tre_bullet3)
+{
+    if image_index == 6
+    {
         move_towards_point(player.x,player.y,-15);
         shadow = true;
         saspd = 0.1;
@@ -1664,7 +1570,8 @@ with(obj_tre_bullet3){
           <argument>
             <kind>1</kind>
             <string>alarm[3]=0;
-with(obj_tre_bullet3){
+with(obj_tre_bullet3)
+{
     move_towards_point(player.x,player.y,-6);
     friction = 0.1;
 }
@@ -1725,7 +1632,6 @@ with(obj_tre_cam){pat=1;}
     speed = 4;
     direction = 270;
 }
-
 </string>
           </argument>
         </arguments>
@@ -2324,29 +2230,11 @@ with(obj_tre_bullet3){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_tre_at1.alarm[10]=1;
+            <string>///#action // 例えば
+obj_tre_at1.alarm[10]=1;
 alarm[5]=1;
+
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>例えば</string>
           </argument>
         </arguments>
       </action>
@@ -2675,7 +2563,6 @@ alarm[5]=0;
         dirspd = -0.2;
     }
 }
-
 </string>
           </argument>
         </arguments>
@@ -3277,7 +3164,6 @@ with(player){
     curJumps = 1;
     vspeed = 0;
 }
-
 </string>
           </argument>
         </arguments>
@@ -3728,7 +3614,6 @@ alarm[11] = 1;
     r2spd = -4;
     blur = 0;
 }
-
 </string>
           </argument>
         </arguments>

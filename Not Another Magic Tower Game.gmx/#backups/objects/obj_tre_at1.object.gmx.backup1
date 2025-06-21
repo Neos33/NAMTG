@@ -1,4 +1,4 @@
-// 2025-06-17 11:21:48
+// 2025-06-17 11:22:08
 #event properties (no comments/etc. here are saved)
 parent_index = -1;
 sprite_index = spr_trebole_combat;
@@ -410,8 +410,10 @@ for(i=0;i<2;i+=1)
             a.len = 100;
     }
 }
-for(i=0;i<2;i+=1){
-    for(var j=-10;j<=10;j+=1){
+for(i=0;i<2;i+=1)
+{
+    for(var j=-10;j<=10;j+=1)
+    {
         var a=instance_create(x,y,obj_tre_bullet3);
             a.speed = j*1.5;
             a.active=1;

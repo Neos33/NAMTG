@@ -1,4 +1,4 @@
-// 2025-06-17 11:07:51
+// 2025-06-21 10:34:05
 #event properties (no comments/etc. here are saved)
 parent_index = obj_diaKiller;
 sprite_index = spr_cboom;
@@ -54,6 +54,13 @@ stt = 0;
 saspd = 0;
 ssspd = 0;
 
+num = 0;
+active = false;
+at = 0;
+unactive = false;
+i = 0;
+j = 0;
+
 #event alarm0
 speed = 0;
 image_alpha = 1;
@@ -95,7 +102,7 @@ direction = point_direction(x,y,xxx,yyy);
 alarm[6] = 1;
 
 #event alarm7
-for(var i=0;i<4;i+=1)
+for(i=0;i<4;i+=1)
 {
     var a=instance_create(x,y,obj_tre_bullet3);
         a.speed = 6;
@@ -111,7 +118,8 @@ image_xscale = 0.25*r;
 image_yscale = image_xscale;
 image_alpha =power(r*7/6,3);
 
-if(z<0){
+if(z<0)
+{
     var inst = instance_place(x,y+vspeed,block);
     if inst != noone
     {
@@ -135,21 +143,28 @@ direction += dirspd;
 friction -= frspd;
 speed += sp;
 
-if bounce {
-if !place_free(x+hspeed,y) hspeed = -hspeed;
-if !place_free(x,y+vspeed) vspeed = -vspeed;}
+if bounce 
+{
+    if !place_free(x+hspeed,y) hspeed = -hspeed;
+    if !place_free(x,y+vspeed) vspeed = -vspeed;
+    
+}
 #section|effect
 var inst;
-if(fade_i_change){
+if(fade_i_change)
+{
     image_alpha+=0.1;
 }
-if(fade_o_change){
+if(fade_o_change)
+{
     image_alpha-=0.1;
     if image_alpha<=0 instance_destroy()
 }
-if(shadow){
+if(shadow)
+{
     st += 1
-    if(st == stt){
+    if(st == stt)
+    {
         inst = instance_create(x,y,obj_tre_shadow);
         inst.sprite_index = sprite_index;
         inst.image_xscale = image_xscale;

@@ -1,4 +1,4 @@
-// 2025-06-17 11:08:21
+// 2025-06-21 10:40:08
 #event properties (no comments/etc. here are saved)
 parent_index = obj_diaKiller;
 sprite_index = spr_cboom;
@@ -54,6 +54,13 @@ stt = 0;
 saspd = 0;
 ssspd = 0;
 
+num = 0;
+active = false;
+at = 0;
+unactive = false;
+i = 0;
+j = 0;
+
 #event alarm0
 speed = 0;
 image_alpha = 1;
@@ -95,7 +102,7 @@ direction = point_direction(x,y,xxx,yyy);
 alarm[6] = 1;
 
 #event alarm7
-for(var i=0;i<4;i+=1)
+for(i=0;i<4;i+=1)
 {
     var a=instance_create(x,y,obj_tre_bullet3);
         a.speed = 6;

@@ -1,4 +1,4 @@
-// 2025-06-17 11:00:03
+// 2025-06-21 10:40:04
 #event properties (no comments/etc. here are saved)
 parent_index = obj_diaKiller;
 sprite_index = spr_boom;
@@ -60,6 +60,9 @@ st = 0;
 stt = 0;
 saspd = 0;
 ssspd = 0;
+
+num = 0;
+za = 0;
 
 #event alarm0
 speed = 0;
