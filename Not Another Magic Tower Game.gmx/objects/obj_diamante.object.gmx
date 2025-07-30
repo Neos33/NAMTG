@@ -55,7 +55,7 @@ alarm[3] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_playmusic_volume(BGM_Diamante)
+            <string>audio_playmusic_volume(scrAudioGetID("BGM_Diamante"));
 </string>
           </argument>
         </arguments>

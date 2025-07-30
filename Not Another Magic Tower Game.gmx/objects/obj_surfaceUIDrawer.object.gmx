@@ -1693,7 +1693,7 @@ if(!deactivated)
             <kind>1</kind>
             <string>var monsterPercentage, specialPercentage, totalMonsterCount, specialCount, specialComplete, spaceItems, clearItemCount, clearItemComplete, storyCount, storyComplete, floorCount, floorComplete,
     mKilled, achCount, extraBubbleStar, extraJKStar, spaceItems, challengeCount, cChallenge;
-
+    
 monsterPercentage = 0.4;
 achievementPercentage = 0.25;
 specialPercentage = 0.15;

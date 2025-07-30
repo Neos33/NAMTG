@@ -31,6 +31,10 @@ xx=x
 yy=y
 s=2
 pose=true
+
+shake = false;
+
+dirspd = 0;
 </string>
           </argument>
         </arguments>
@@ -53,10 +57,14 @@ pose=true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if pose {
+            <string>if pose 
+{
 x+=(xx-x)/s
-y+=(yy-y)/s}
-if shake{
+y+=(yy-y)/s
+    
+}
+if shake
+{
     shake -= 1;
     x = random_range(-8,8);
     y = random_range(-6,6);

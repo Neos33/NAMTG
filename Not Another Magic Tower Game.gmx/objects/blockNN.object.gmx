@@ -26,7 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>//see the blocks in debug mode
-if(debug_mode){
+if(debug_mode)
+{
     visible = true;
 }
 </string>

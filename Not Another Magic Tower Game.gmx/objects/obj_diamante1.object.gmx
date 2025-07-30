@@ -43,7 +43,7 @@ alarm[11] = 1;
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="11">
+    <event eventtype="1" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -67,8 +67,6 @@ alarm[11] = 1;
     itemController.itemInd = spr_diamondKey;
     itemController.msg = "You've got the diamond key. You can open the specific diamond door now.";
 }
-
-event_inherited();
 </string>
           </argument>
         </arguments>

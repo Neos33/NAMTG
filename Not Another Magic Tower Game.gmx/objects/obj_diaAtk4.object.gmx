@@ -31,6 +31,40 @@ dddir3 = 0.89;
 x4=choose(-1,1);
 alpha=1;
 name = "Mr.Diamante";
+
+
+change = 0;
+blur = 0;
+
+dir3 = 0;
+ddir3 = 0;
+
+tt4 = 0;
+spd4 = 0;
+
+c2 = 0;
+dir5 = 0;
+n5 = 0;
+
+pose = false;
+shadow = false;
+die = false;
+ttt = 0;
+at1 = 0;
+at2 = 0;
+at3 = 0;
+at2b = 0;
+go = false;
+
+wrap = false;
+des = false;
+hasAch = false;
+
+dir1 = 0;
+p3 = 0;
+color = false;
+tc = 0;
+curve = false;
 </string>
           </argument>
         </arguments>
@@ -53,15 +87,16 @@ name = "Mr.Diamante";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x-hspeed,y-vspeed,obj_diaShadowB);    
+            <string>var a=instance_create(x-hspeed,y-vspeed,obj_diaShadowB);    
 a.hspeed=hspeed;
 a.vspeed=vspeed;
 a.go=1;
 a.image_alpha=0.5;
 a.wrap=1;
 a.depth=depth+1;
-if(instance_number(obj_diaShadowB)&lt;5){
-alarm[7]=50;
+if(instance_number(obj_diaShadowB)&lt;5)
+{
+    alarm[7]=50;
 }
 </string>
           </argument>
@@ -112,8 +147,9 @@ alarm[7]=50;
 dir5=random(360);
 n5=18;
 obj_diaCam.x=sign((c2 mod 2)-0.5)*40;
-for(i=0;i&lt;n5;i+=1){
-    a=createDiaBullet(x,y,7,dir5+360/n5*i,spr_sdiamond,irandom(7));
+for(var i=0;i&lt;n5;i+=1)
+{
+    var a=createDiaBullet(x,y,7,dir5+360/n5*i,spr_sdiamond,irandom(7));
     a.image_angle+=90;
 }
 </string>
@@ -164,8 +200,9 @@ alarm[4] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;2;i+=1){
-    a=createDiaBullet(x,y,3,180*i+dir3,spr_danmaku11,5+i+2*change);
+            <string>for(var i=0;i&lt;2;i+=1)
+{
+    var a=createDiaBullet(x,y,3,180*i+dir3,spr_danmaku11,5+i+2*change);
     a.friction = -0.05;
     dir3 += ddir3;
     ddir3 += dddir3;
@@ -207,12 +244,15 @@ alarm[3] = 2;
     }
 }*/
 if(die) exit;
-if pose {
-speed = (point_distance(x,y,xx,yy))/15;
-direction = point_direction(x,y,xx,yy);
+if pose 
+{
+    speed = (point_distance(x,y,xx,yy))/15;
+    direction = point_direction(x,y,xx,yy);
 }
-if shadow{
-    if(ttt == 2 - blur){
+if shadow
+{
+    if(ttt == 2 - blur)
+    {
         a=instance_create(x,y,obj_diaShadow);
         a.sprite_index=spr_diaShadow;
         a.depth = depth + 1;
@@ -242,60 +282,78 @@ if shadow{
           <argument>
             <kind>1</kind>
             <string>if(die) exit;
-if(at1){
-    if(random(1)&lt;0.75){
+if(at1)
+{
+    if(random(1)&lt;0.75)
+    {
         dir1=75*sin(random(2*pi))+point_direction(x,y,player.x,player.y);
-        a=createDiaBullet(x,y,random_range(3,7),dir1,spr_danmaku9,irandom(7),obj_diaDanmaku2);
+        var a=createDiaBullet(x,y,random_range(3,7),dir1,spr_danmaku9,irandom(7),obj_diaDanmaku2);
         if(curve){a.dirspd=random_range(-0.4,0.4);}
         a.friction=-0.05;
     }
 }
-if(at2){
-    repeat(1){
+if(at2)
+{
+    repeat(1)
+    {
         a=createDiaBullet(x,y,10,random(360),spr_sdiamond,0,obj_diaDanmaku2);
         a.dirspd=0.8+(alpha-1)*1.6;
         a.add=1;
     }
-    if(at2b){
+    if(at2b)
+    {
         if(alpha&gt;0){alpha-=1/100;}
         with(obj_diaDanmaku2){fade=1;image_alpha=other.alpha}
     }
 }
-if(at3){
-    spr=choose(spr_danmaku2,spr_danmaku3,spr_danmaku4,
+if(at3)
+{
+    var spr=choose(spr_danmaku2,spr_danmaku3,spr_danmaku4,
     spr_danmaku9,spr_danmaku10,spr_danmaku11,spr_sdiamond);
     p3+=0.0004;
-    repeat(1+3*p3){
+    repeat(1+3*p3)
+    {
         createDiaBullet(x,y,random_range(3,7),random(360),spr,irandom(7),obj_diaDanmaku2);
     }
 }
-if go{
+if go
+{
     hspeed+=sign(hspeed)*0.23;
     vspeed+=sign(vspeed)*0.017;
-    if(abs(hspeed)&gt;30 &amp;&amp; blur=0){
+    if(abs(hspeed)&gt;30 &amp;&amp; blur=0)
+    {
         blur=1;
     }
     t2+=1;
-    if(t2=2){
-        if(abs(hspeed)&gt;80){
-        createDiaBullet(random_range(0,800),y,random_range(5,7),random_range(87,93),spr_danmaku11,irandom(7));
+    if(t2=2)
+    {
+        if(abs(hspeed)&gt;80)
+        {
+            createDiaBullet(random_range(0,800),y,random_range(5,7),random_range(87,93),spr_danmaku11,irandom(7));
         }
-        else{
-        createDiaBullet(x+(blur)*random_range(-100,100),y,random_range(5,7),random_range(87,93),spr_danmaku11,irandom(7));
-        }t2=0;
+        else
+        {
+            createDiaBullet(x+(blur)*random_range(-100,100),y,random_range(5,7),random_range(87,93),spr_danmaku11,irandom(7));
+        }
+        t2=0;
     }
 }
-if(color){
+if(color)
+{
     tc+=1;
-    with(obj_diaDanmaku){
+    with(obj_diaDanmaku)
+    {
         image_index = tc div 20 + 3;
     }
-    if tc==20{
+    if tc==20
+    {
         obj_diaDanmaku.sprite_index=spr_danmaku10;
     }
-    if tc==40{
+    if tc==40
+    {
         go = 0;
-        with(obj_diaDanmaku){
+        with(obj_diaDanmaku)
+        {
             direction=point_direction(x,y,player.x,player.y);
             sprite_index=spr_danmaku4;
             image_angle = direction;
@@ -303,8 +361,10 @@ if(color){
             speed = 1;
         }
     }
-    if tc==60{
-        with(obj_diaDanmaku){
+    if tc==60
+    {
+        with(obj_diaDanmaku)
+        {
             direction=point_direction(x,y,player.x,player.y)+180;
             image_angle = direction;
             speed = 25;
@@ -422,7 +482,8 @@ if(wrap){
         x=800;vspeed*=-1;
     }
 }
-else{
+else
+{
     if(des)die = true;//instance_destroy();
 }   
 </string>
