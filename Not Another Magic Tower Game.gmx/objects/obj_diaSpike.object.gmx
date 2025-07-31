@@ -51,12 +51,15 @@ image_index=5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(y+vspeed&gt;529){
+            <string>if(y+vspeed&gt;529)
+{
     gravity=0;
     y=529;
 }
-if(place_meeting(x,y,bullet)){
-    with(instance_place(x,y,bullet)){
+if(place_meeting(x,y,bullet))
+{
+    with(instance_place(x,y,bullet))
+    {
         alarm[0]=0;
         vspeed=-16;
         hspeed=0;

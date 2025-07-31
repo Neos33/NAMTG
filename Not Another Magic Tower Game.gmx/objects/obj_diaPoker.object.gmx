@@ -29,6 +29,13 @@
 image_speed = 0;
 alarm[3] = 1;
 event_inherited();
+
+
+yt = 0;
+ATK = 0;
+
+n5 = 0;
+img = 0;
 </string>
           </argument>
         </arguments>
@@ -52,8 +59,10 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>n5 = 5;
-for(i=0;i&lt;n5;i+=1){
-    for(j=0;j&lt;4;j+=1){
+for(var i=0;i&lt;n5;i+=1)
+{
+    for(var j=0;j&lt;4;j+=1)
+    {
         a = createDiaBullet(x,y,2.5+j/2,360/n5*i+j*5+dir,spr_danmaku4,img+j div 2);
     }
 }
@@ -80,7 +89,8 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(yt&gt;0){
+            <string>if(yt&gt;0)
+{
     image_yscale = sin(yt);
     yt -= pi/40;
     alarm[4] = 1;
@@ -110,7 +120,8 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(yt&lt;pi/2){
+            <string>if(yt&lt;pi/2)
+{
     image_yscale = sin(yt);
     yt += pi/40;
     alarm[3] = 1;

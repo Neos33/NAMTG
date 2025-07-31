@@ -25,9 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.4;
+            <string>event_inherited();
+
+image_speed = 0.4;
 //alarm[4] = 15;
 name = "Mr.Diamante";
+
+die = false;
 </string>
           </argument>
         </arguments>
@@ -50,8 +54,9 @@ name = "Mr.Diamante";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;5;i+=1){
-    a=instance_create(x,y,obj_diaBomb);
+            <string>for(var i=0;i&lt;5;i+=1)
+{
+    var a=instance_create(x,y,obj_diaBomb);
     a.gravity = 0.15;
     a.speed = random_range(4,6);
     a.direction = 30+30*i;

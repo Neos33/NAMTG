@@ -40,7 +40,7 @@
           <argument>
             <kind>1</kind>
             <string>isStable = true;
-event_inherited();
+//event_inherited();
 </string>
           </argument>
         </arguments>

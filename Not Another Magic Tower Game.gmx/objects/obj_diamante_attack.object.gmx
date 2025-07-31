@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>BPM = 135.75;
 x1 = 800;
-global.currentBGM = scrAudioGetID("BGM_Diamante");
+//global.currentBGM = scrAudioGetID("BGM_Diamante");
+music_play_battle("BGM_Diamante");
 
 
 at1 = false;
@@ -218,7 +219,7 @@ if(at4)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>FMODInstanceStop(global.BGM_Diamante);
+            <string>//FMODInstanceStop(global.BGM_Diamante);
 </string>
           </argument>
         </arguments>

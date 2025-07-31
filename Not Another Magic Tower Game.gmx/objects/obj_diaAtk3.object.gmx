@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>maxHP = 10;
+            <string>event_inherited();
+maxHP = 10;
 nowHP = maxHP;
 image_speed = 0.2;
 a=instance_create(x+24,y,obj_diaWings);
@@ -39,6 +40,10 @@ gravity = 0.45;
 //gravity_direction = point_direction(x,y,player.x,player.y);
 alarm[5] = 30;
 name = "Mr.Diamante";
+
+
+stop = false;
+ttt = 0;
 </string>
           </argument>
         </arguments>
@@ -62,7 +67,7 @@ name = "Mr.Diamante";
           <argument>
             <kind>1</kind>
             <string>image_angle += 8;
-a=createDiaBullet(x,y,10,point_direction(x,y,player.x,player.y),spr_sdiamond,0,obj_diaDanmaku2);
+var a=createDiaBullet(x,y,10,point_direction(x,y,player.x,player.y),spr_sdiamond,0,obj_diaDanmaku2);
 a.add=1;
 a.image_angle=a.direction+90;
 alarm[7]=1;
@@ -112,12 +117,13 @@ alarm[7]=1;
           <argument>
             <kind>1</kind>
             <string>dir = point_direction(x,y,player.x,player.y);
-for(i=0;i&lt;4;i+=1){
-a=createDiaBullet(x,y,3,dir+90*i,spr_danmaku2,1,obj_diaDanmaku2);a.life=50;
-a=createDiaBullet(x,y,4,dir+90*i,spr_danmaku2,1,obj_diaDanmaku2);a.life=50;
-a=createDiaBullet(x,y,5,dir+90*i,spr_danmaku2,1,obj_diaDanmaku2);a.life=50;
-a=createDiaBullet(x,y,4,dir+25+90*i,spr_danmaku2,2,obj_diaDanmaku2);a.life=50;
-a=createDiaBullet(x,y,4,dir-25+90*i,spr_danmaku2,3,obj_diaDanmaku2);a.life=50;
+for(var i=0;i&lt;4;i+=1)
+{
+    a=createDiaBullet(x,y,3,dir+90*i,spr_danmaku2,1,obj_diaDanmaku2);a.life=50;
+    a=createDiaBullet(x,y,4,dir+90*i,spr_danmaku2,1,obj_diaDanmaku2);a.life=50;
+    a=createDiaBullet(x,y,5,dir+90*i,spr_danmaku2,1,obj_diaDanmaku2);a.life=50;
+    a=createDiaBullet(x,y,4,dir+25+90*i,spr_danmaku2,2,obj_diaDanmaku2);a.life=50;
+    a=createDiaBullet(x,y,4,dir-25+90*i,spr_danmaku2,3,obj_diaDanmaku2);a.life=50;
 }
 alarm[5] = 44;
 </string>
@@ -142,7 +148,7 @@ alarm[5] = 44;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>targetDirection = point_direction(x,y,400,304);//player.x,player.y);
+            <string>var targetDirection = point_direction(x,y,400,304);//player.x,player.y);
 if(direction != targetDirection){
     turn_towards_direction(targetDirection,angle_difference(direction,targetDirection)/80);
 }

@@ -74,7 +74,8 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_xscale&lt;1{
+            <string>if image_xscale&lt;1
+{
     image_xscale += 0.1;
     image_yscale += 0.1;
     alarm[3] = 1;
@@ -102,7 +103,8 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>image_angle += 12;
-if(place_meeting(x,y,obj_diaBlock)){
+if(place_meeting(x,y,obj_diaBlock))
+{
     instance_create(x,y+12,obj_diaExplosion);
     instance_destroy();
 }

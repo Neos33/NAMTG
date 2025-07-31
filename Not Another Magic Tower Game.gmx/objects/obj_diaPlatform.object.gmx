@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+
+image_speed = 0;
+
+yspeed = 0;
 </string>
           </argument>
         </arguments>
@@ -48,16 +52,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (place_meeting(x,y-player.vspeed-1,player)) {
+            <string>if (place_meeting(x,y-player.vspeed-1,player)) 
+{
     player.y+=yspeed;
 }
 y+=yspeed;
 
-if(yspeed&lt;0){
+if(yspeed&lt;0)
+{
     yspeed += cal_friction(6,208);
 }
-else{
-    instance_change(obj_diaBlock,1)
+else
+{
+    instance_change(obj_diaBlock,1);
 }
 </string>
           </argument>
