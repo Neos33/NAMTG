@@ -30,7 +30,15 @@ fpb=3000/bpm
 bpf=bpm/3000
 image_speed=0
 spd=6
-go=true
+go=true;
+
+
+len_x = 0;
+dir = 0;
+len_y = 0;
+t = 0;
+maxsh = 0;
+sh = false;
 </string>
           </argument>
         </arguments>
@@ -55,26 +63,32 @@ go=true
             <kind>1</kind>
             <string>
 
-if go {
-x = 400 + lengthdir_x(len_x,dir);
-y = 304 + lengthdir_y(len_y,dir);
-dir += 3;
-t+=1
-if t=8 {
-a=instance_create(x,y,obj_pica_cherry)
-a.direction=dir
-a.speed=spd
-a.sprite_index=sprite_index
-b=instance_create(x,y,obj_pica_cherry)
-b.direction=dir+180
-b.speed=spd
-b.sprite_index=sprite_index
-dir+=13
-t=0}}
+if go 
+{
+    x = 400 + lengthdir_x(len_x,dir);
+    y = 304 + lengthdir_y(len_y,dir);
+    dir += 3;
+    t+=1
+    if t=8
+    {
+        var a=instance_create(x,y,obj_pica_cherry);
+        a.direction=dir
+        a.speed=spd
+        a.sprite_index=sprite_index
+        var b=instance_create(x,y,obj_pica_cherry);
+        b.direction=dir+180
+        b.speed=spd
+        b.sprite_index=sprite_index
+        dir+=13
+        t=0
+    }
+}
 
-if sh {
-x+=random_range(-maxsh,maxsh)
-y+=random_range(-maxsh,maxsh)}
+if sh 
+{
+    x+=random_range(-maxsh,maxsh)
+    y+=random_range(-maxsh,maxsh)
+}
 
 </string>
           </argument>
@@ -95,6 +109,26 @@ y+=random_range(-maxsh,maxsh)}
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

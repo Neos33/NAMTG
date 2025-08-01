@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with obj_pica_cam instance_destroy()
+            <string>with obj_pica_cam { instance_destroy() }
 scl=1
 xx=400
 yy=300
@@ -33,6 +33,12 @@ spd=-0.015
 px=player.x
 py=player.y-24
 aux=1
+
+xxspd = 0;
+yyspd = 0;
+
+x0 = 0;
+y0 = 0;
 </string>
           </argument>
         </arguments>
@@ -85,7 +91,11 @@ instance_create(0,0,obj_pica_cam)
             <kind>1</kind>
             <string>scl+=spd
 if scl&lt;=0.02 scl=0.02
-if scl&gt;1 {scl=1;instance_destroy()}
+if scl&gt;1 
+{
+    scl=1;
+    instance_destroy()
+}
 xxspd=(px-xx)/5
 yyspd=(py-yy)/5
 if abs(yyspd)&gt;=1 yyspd=sign(yyspd)*4.5*aux

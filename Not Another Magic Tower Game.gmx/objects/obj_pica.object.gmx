@@ -28,6 +28,19 @@
             <string>image_speed = 0.2;
 spd = 1.5;
 almspd = 1.5;
+
+
+back = false;
+tt = 0;
+agl = 0;
+
+xp = 0;
+yp = 0;
+len = 0;
+dir = 0;
+
+t = 0;
+t4 = 0;
 </string>
           </argument>
         </arguments>
@@ -51,14 +64,16 @@ almspd = 1.5;
           <argument>
             <kind>1</kind>
             <string>t4+=1
-repeat (4) {
-a=instance_create(x,y,obj_pica_cherry3)
-a.direction=random(360)
-a.speed=random_range(1,9)
-a.friction=0.3
-a.sprite_index=spr_pica_cRainbow;
-a.image_index=t4 div 15;
-a.image_speed=0}
+repeat (4) 
+{
+    var a=instance_create(x,y,obj_pica_cherry3);
+    a.direction=random(360)
+    a.speed=random_range(1,9)
+    a.friction=0.3
+    a.sprite_index=spr_pica_cRainbow;
+    a.image_index=t4 div 15;
+    a.image_speed=0
+}
 alarm[4]=1;
 </string>
           </argument>
@@ -107,12 +122,15 @@ alarm[3] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>repeat (4) {
-a=instance_create(x,y,obj_pica_cherry)
-a.direction=random(360)
-a.speed=8+3*sin(degtorad(random(360)))
-a.sprite_index=spr_pica_cRainbow;
-a.image_index=irandom(15)}
+            <string>repeat (4) 
+{
+    var a=instance_create(x,y,obj_pica_cherry);
+    a.direction=random(360)
+    a.speed=8+3*sin(degtorad(random(360)))
+    a.sprite_index=spr_pica_cRainbow;
+    a.image_index=irandom(15)
+    
+}
 
 alarm[2] = 1;
 </string>
@@ -146,10 +164,12 @@ len = 350*sin(t*pi/480);
 dir += 7;
 alarm[1]=1;
 t+=1;
-if t=240{
+if t=240
+{
     spd*=-1;
 }
-if t=480{
+if t=480
+{
     image_angle = 0;
     if(instance_number(obj_pica)&gt;1)instance_destroy();
     x=400;
@@ -179,11 +199,11 @@ if t=480{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,obj_pica_cherry)
+            <string>var a=instance_create(x,y,obj_pica_cherry);
 a.direction=-90+sin(degtorad(random(360)))*180//random(360)
 a.speed=7+3*sin(degtorad(random(360)))
 a.dirspd=random_range(-0.5,0.5)
-rng=random_range(0.5,1)
+var rng=random_range(0.5,1);
 a.image_xscale=rng
 a.image_yscale=rng
 a.sprite_index=choose(spr_pica_cCyan,spr_pica_cGreen,spr_pica_cWhite);
@@ -211,11 +231,12 @@ alarm[0] = almspd;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if back{
-scl=image_xscale+0.1*sin(tt);
-tt+=0.07;
-draw_sprite_ext(spr_pica_back,image_index,x,y,scl,scl,agl,image_blend,image_alpha);
-agl+=5.5;
+            <string>if back
+{
+    var scl=image_xscale+0.1*sin(tt);
+    tt+=0.07;
+    draw_sprite_ext(spr_pica_back,image_index,x,y,scl,scl,agl,image_blend,image_alpha);
+    agl+=5.5;
 }
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>

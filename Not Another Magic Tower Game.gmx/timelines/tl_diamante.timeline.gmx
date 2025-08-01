@@ -619,8 +619,10 @@ obj_diaAtk4.blur=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>rng=choose(0,1);
-m_hp = obj_diaAtk4.hp;
+            <string>var rng = choose(0,1);
+var m_hp = 100;
+if instance_exists(obj_diaAtk4)
+    m_hp = obj_diaAtk4.hp;
 with(obj_diaAtk4)
 {
     instance_destroy();
@@ -997,7 +999,14 @@ at1=true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>at3=true;
+            <string>print("obj_diaDanmaku: ", instance_number(obj_diaDanmaku));
+print("obj_diaDanmaku2: ", instance_number(obj_diaDanmaku2));
+with obj_diaDanmaku
+    instance_destroy();
+with obj_diaDanmaku2
+    instance_destroy();
+
+at3 = true;
 </string>
           </argument>
         </arguments>

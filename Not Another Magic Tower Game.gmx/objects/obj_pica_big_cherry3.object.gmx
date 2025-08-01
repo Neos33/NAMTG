@@ -33,6 +33,9 @@ image_xscale=8
 image_yscale=8
 image_alpha=0;
 event_inherited();
+
+dirspd = 0;
+spam = false;
 </string>
           </argument>
         </arguments>
@@ -78,7 +81,7 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,obj_pica_cherry)
+            <string>var a=instance_create(x,y,obj_pica_cherry);
 a.direction=random(360)
 a.sprite_index=sprite_index
 a.image_index=image_index
@@ -113,7 +116,7 @@ alarm[3]=20
 }
 direction+=dirspd
 if spam {
-a=instance_create(x,y,obj_pica_cherry2)
+var a=instance_create(x,y,obj_pica_cherry2);
 a.sprite_index=sprite_index
 a.image_index=image_index
 a.direction=point_direction(x,y,player.x,player.y)+random_range(15,345)
@@ -137,6 +140,26 @@ a.speed=random_range(15,25)}
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

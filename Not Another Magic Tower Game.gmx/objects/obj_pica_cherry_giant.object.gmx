@@ -34,6 +34,31 @@ image_yscale=5
 maxspd=35
 t=1;
 event_inherited();
+
+dirspd = 0;
+alpspd = 0;
+iaglspd = 0;
+xsclspd = 0;
+ysclspd = 0;
+
+control = false;
+pose = false;
+go = false;
+go4 = false;
+go2 = false;
+go3 = false;
+NO = false;
+
+xx = 0;
+distance = 0;
+yy = 0;
+disspd = 0;
+aglspd = 0;
+
+xxx = 0;
+yyy = 0;
+
+t2 = 0;
 </string>
           </argument>
         </arguments>
@@ -62,53 +87,68 @@ image_angle+=iaglspd
 image_xscale+=xsclspd
 image_yscale+=ysclspd
 
-if control {
-x=xx+cos(degtorad(angle))*distance
-y=yy-sin(degtorad(angle))*distance
-distance+=disspd
-angle+=aglspd}
-
-if pose {
-speed = (point_distance(x,y,xxx,yyy))/2;
-direction = point_direction(x,y,xxx,yyy);
-if (speed &gt; maxspd)speed = maxspd;}
-
-if go {t2+=1
-if t2=3 {
-a=instance_create(x,y,obj_pica_cherry)
-a.sprite_index=sprite_index
-a.image_speed=0
-a.direction=random(360)
-a.speed=3
-t2=0}
+if control 
+{
+    x=xx+cos(degtorad(angle))*distance
+    y=yy-sin(degtorad(angle))*distance
+    distance+=disspd
+    angle+=aglspd
 }
 
-if go4 {t2+=1
-a=instance_create(x,y,obj_pica_cherry)
-a.sprite_index=sprite_index
-a.image_speed=0
-a.direction=random(360)
-a.speed=3
+if pose 
+{
+    speed = (point_distance(x,y,xxx,yyy))/2;
+    direction = point_direction(x,y,xxx,yyy);
+    if (speed &gt; maxspd)speed = maxspd;
 }
 
-if go2 {
-dir+=30//139.5
-a=instance_create(x,y,obj_pica_cherry)
-a.sprite_index=sprite_index
-a.image_speed=0
-a.direction=dir
-a.speed=3
+if go
+{
+    t2+=1
+    if t2=3 
+    {
+        var a=instance_create(x,y,obj_pica_cherry);
+        a.sprite_index=sprite_index
+        a.image_speed=0
+        a.direction=random(360)
+        a.speed=3
+        t2=0
+    }
 }
 
-if go3 {t+=1
-if t=2 {
-dir+=139.5
-a=instance_create(x,y,obj_pica_cherry)
-a.sprite_index=sprite_index
-a.image_speed=0
-a.direction=dir
-a.speed=1.5
-t=0}
+if go4 
+{
+    t2+=1
+    var a=instance_create(x,y,obj_pica_cherry);
+    a.sprite_index=sprite_index
+    a.image_speed=0
+    a.direction=random(360)
+    a.speed=3
+}
+
+if go2 
+{
+    dir+=30//139.5
+    var a=instance_create(x,y,obj_pica_cherry);
+    a.sprite_index=sprite_index
+    a.image_speed=0
+    a.direction=dir
+    a.speed=3
+}
+
+if go3
+{
+    t+=1
+    if t=2 
+    {
+        dir+=139.5
+        var a=instance_create(x,y,obj_pica_cherry);
+        a.sprite_index=sprite_index
+        a.image_speed=0
+        a.direction=dir
+        a.speed=1.5
+        t=0
+    }
 }
 </string>
           </argument>

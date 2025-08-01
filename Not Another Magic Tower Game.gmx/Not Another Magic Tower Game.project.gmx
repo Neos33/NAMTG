@@ -3487,6 +3487,7 @@
     <script>scripts\draw_reset_align.gml</script>
     <script>scripts\clamp_wrap.gml</script>
     <script>scripts\modwrap.gml</script>
+    <script>scripts\in_range.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font24</font>
@@ -6050,6 +6051,7 @@
       </objects>
     </objects>
     <object>objects\objTouhouDeathEffect</object>
+    <object>objects\objDebugTimelineTracker</object>
   </objects>
   <timelines name="timelines">
     <timelines name="miku">

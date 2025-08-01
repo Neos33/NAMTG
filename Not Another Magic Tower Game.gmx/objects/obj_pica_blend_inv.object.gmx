@@ -28,6 +28,8 @@
             <string>image_xscale=800
 image_yscale=608
 background_color=c_white
+
+spd = 0;
 </string>
           </argument>
         </arguments>

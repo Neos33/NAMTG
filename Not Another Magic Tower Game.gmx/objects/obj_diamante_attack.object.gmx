@@ -69,6 +69,13 @@ yy = 0;
 timeline_index = tl_diamante;
 timeline_running = true;
 timeline_position = 0;
+// timeline_position = 3515; Debug
+
+
+// var _timeline = instance_create(0, 0, objDebugTimelineTracker);
+//     _timeline . timeline = id;
+
+
 </string>
           </argument>
         </arguments>

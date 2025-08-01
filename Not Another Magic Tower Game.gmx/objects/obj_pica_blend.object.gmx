@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>image_xscale=800
 image_yscale=608
+
+spd = 0;
 </string>
           </argument>
         </arguments>

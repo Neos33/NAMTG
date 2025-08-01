@@ -31,6 +31,8 @@ xx=x
 yy=y
 s=2
 pose=true
+
+dirspd = 0;
 </string>
           </argument>
         </arguments>
@@ -53,9 +55,12 @@ pose=true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if pose {
-x+=(xx-x)/s
-y+=(yy-y)/s}
+            <string>if pose 
+{
+    x+=(xx-x)/s
+    y+=(yy-y)/s
+    
+}
 
 direction+=dirspd
 

@@ -430,7 +430,7 @@ with obj_pica_cherry2 {
 x=400+random_range(20,-20);
 y=100+random_range(20,-20)}
 
-for(i=0;i&lt;2;i+=1){
+for(var i=0;i&lt;2;i+=1){
     a=instance_create(400,100,obj_pica);
     a.dir=i*180;
 }
@@ -586,7 +586,6 @@ direction=0
 vspeed=-4
 gravity=0.5
 friction=0}
-
 </string>
           </argument>
         </arguments>
@@ -1294,7 +1293,7 @@ x-=40}
           <argument>
             <kind>1</kind>
             <string>obj_pica_cam.s=2
-obj_pica_cam.x=15 
+obj_pica_cam.x=15
 </string>
           </argument>
         </arguments>
@@ -1345,7 +1344,7 @@ x-=40}
           <argument>
             <kind>1</kind>
             <string>obj_pica_cam.s=2
-obj_pica_cam.x=15 
+obj_pica_cam.x=15
 </string>
           </argument>
         </arguments>
@@ -1396,7 +1395,7 @@ x-=40}
           <argument>
             <kind>1</kind>
             <string>obj_pica_cam.s=2
-obj_pica_cam.x=15 
+obj_pica_cam.x=15
 </string>
           </argument>
         </arguments>
@@ -1447,7 +1446,7 @@ x-=40}
           <argument>
             <kind>1</kind>
             <string>obj_pica_cam.s=2
-obj_pica_cam.x=15 
+obj_pica_cam.x=15
 </string>
           </argument>
         </arguments>
@@ -1498,7 +1497,7 @@ x-=40}
           <argument>
             <kind>1</kind>
             <string>obj_pica_cam.s=2
-obj_pica_cam.x=15 
+obj_pica_cam.x=15
 </string>
           </argument>
         </arguments>
@@ -1645,27 +1644,8 @@ a=instance_create(400,-64,obj_pica);
 a.vspeed=6;
 a.friction=cal_friction(a.vspeed,368);
 a.back=true;
+//#action // at9
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>at9</string>
           </argument>
         </arguments>
       </action>
@@ -1946,7 +1926,6 @@ spdspd11=0.03
 with obj_pica_cherry {
 direction=point_direction(player.x,player.y,x,y)
 }
-
 </string>
           </argument>
         </arguments>
@@ -2294,27 +2273,8 @@ direction=point_direction(x,y,player.x,player.y)+180;}
           <argument>
             <kind>1</kind>
             <string>at13=true
+//#action // at13
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>at13</string>
           </argument>
         </arguments>
       </action>
@@ -2345,7 +2305,6 @@ with obj_pica_cherry3 {
 speed=0;
 x+=lengthdir_x(40,dir);
 y+=lengthdir_y(40,dir);}
-
 </string>
           </argument>
         </arguments>
@@ -2375,7 +2334,6 @@ y+=lengthdir_y(40,dir);}
 with obj_pica_cherry3 {
 x+=lengthdir_x(40,dir);
 y+=lengthdir_y(40,dir);}
-
 </string>
           </argument>
         </arguments>
@@ -2405,7 +2363,6 @@ y+=lengthdir_y(40,dir);}
 with obj_pica_cherry3 {
 x+=lengthdir_x(40,dir);
 y+=lengthdir_y(40,dir);}
-
 </string>
           </argument>
         </arguments>
@@ -2808,27 +2765,8 @@ speed=random_range(1,3)}
           <argument>
             <kind>1</kind>
             <string>at15=true
+//#action // at15
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>605</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>at15</string>
           </argument>
         </arguments>
       </action>
@@ -2984,7 +2922,6 @@ with obj_pica_cherry {
 direction=point_direction(player.x,player.y,x,y)
 speed=3}
 f2=1
-
 </string>
           </argument>
         </arguments>
