@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir=random(360)
+            <string>dir=random(360);
+count = 0;
+fadeOut = false;
+flag = 0;
 </string>
           </argument>
         </arguments>
@@ -49,8 +52,10 @@
           <argument>
             <kind>1</kind>
             <string>objBoss1Parent.tid=id;
-with objBoss1Bullet2{
-    if par = objBoss1Parent.tid{
+with objBoss1Bullet2
+{
+    if par = objBoss1Parent.tid
+    {
         speed = 6;
         friction = -0.1;
     }
@@ -79,17 +84,19 @@ fadeOut=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>repeat(2){
-    a=instance_create(x,y,objBoss1Bullet2);
-    a.speed=8;
-    a.direction=dir;
-    a.friction=cal_friction(8,30)
-    a.par=id;
+            <string>repeat(2)
+{
+    var a=instance_create(x,y,objBoss1Bullet2);
+        a.speed=8;
+        a.direction=dir;
+        a.friction=cal_friction(8,30)
+        a.par=id;
     dir+=180;
 }
 dir+=10;
 count+=1;
-if count&lt;18{
+if count&lt;18
+{
     alarm[0]=1;
 }
 else{
@@ -117,7 +124,8 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !fadeOut{
+            <string>if !fadeOut
+{
     fade_in();
 }
 else{
@@ -126,7 +134,8 @@ else{
     image_yscale-=0.03;
 }
 
-if speed=0 and flag=0{
+if speed=0 and flag=0
+{
     alarm[0]=1;
     alarm[1]=40;
     flag=1;

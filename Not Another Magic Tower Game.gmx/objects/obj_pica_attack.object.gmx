@@ -127,7 +127,7 @@ d2 = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var a=instance_create(400+lengthdir_x(240,ddddir),304+lengthdir_y(240,ddddir),obj_pica_big_cherry3)
+            <string>var a=instance_create(400+lengthdir_x(240,ddddir),304+lengthdir_y(240,ddddir),obj_pica_big_cherry3);
 //a.alarm[4]=7
 a.direction=ddddir;
 ddddir-=45;
@@ -272,10 +272,10 @@ if at3
 
 if at4 
 {
-    var rng4=dir4+random_range(-80,80)
-    var xx4=cos(degtorad(rng4))*(view_wview[0]+200)
-    var yy4=-sin(degtorad(rng4))*(view_hview[0]+150)
-    a=instance_create(400+xx4,300+yy4,obj_pica_cherry2)
+    var rng4=dir4+random_range(-80,80);
+    var xx4=cos(degtorad(rng4))*(view_wview[0]+200);
+    var yy4=-sin(degtorad(rng4))*(view_hview[0]+150);
+    a=instance_create(400+xx4,300+yy4,obj_pica_cherry2);
     a.direction=dir4+180
     a.speed=9
     var sclrng=random_range(0.5,1)
@@ -563,8 +563,8 @@ if at16
         var xx=choose(0,800)
         var yy=choose(0,600)
         a=instance_create(xx,yy,obj_pica_cherry);
-        var dir=point_direction(xx,yy,player.x,player.y)
-        a.direction=dir+choose(random_range(5,80),-random_range(5,80))
+        var dir=point_direction(xx,yy,player.x,player.y);
+        a.direction=dir+choose(random_range(5,80),-random_range(5,80));
         a.speed=random_range(15,25)
         a.sprite_index=spr_pica_cRainbow
         a.image_index=irandom(10)

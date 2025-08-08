@@ -46,31 +46,31 @@ emitter2 = part_emitter_create(part);
 //part_emitter_region(part,emitter2,0,room_width+400,-10,-5,ps_shape_rectangle,ps_distr_linear);
 
 
+timer = 0;
+
+
 </string>
           </argument>
         </arguments>
       </action>
       <action>
         <libid>1</libid>
-        <id>301</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_set_alarm</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>0</kind>
-            <string>1</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
+            <kind>1</kind>
+            <string>alarm[0] = 1;
+</string>
           </argument>
         </arguments>
       </action>
@@ -142,7 +142,8 @@ part_emitter_destroy(part,emitter2)
           <argument>
             <kind>1</kind>
             <string>timer+=1;
-if timer=3{
+if timer=3
+{
     part_emitter_region(part,emitter,view_xview[0],view_xview[0]+1200,view_yview[0]-10,view_yview[0]-10-5,ps_shape_rectangle,ps_distr_linear);
     part_emitter_burst(part,emitter,snow,1);
     timer=0;

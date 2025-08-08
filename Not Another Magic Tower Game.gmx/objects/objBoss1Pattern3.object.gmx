@@ -31,6 +31,27 @@ image_alpha=0.8;
 ddir1=random(360);
 ddir2=random(360);
 ddir3=random(360);
+
+
+dir = 0;
+count = 0;
+dir1 = 0;
+dir2 = 0;
+dir3 = 0;
+dir_ = 0;
+dir1_ = 0;
+dir2_ = 0;
+dir3_ = 0;
+
+dire = 0;
+dirspd = 0;
+dire0 = 0;
+
+decrease = false;
+
+timer= 0;
+spin = false;
+done = 0;
 </string>
           </argument>
         </arguments>
@@ -86,11 +107,13 @@ alarm[8]=28*SPB;
             <kind>1</kind>
             <string>//instance_create(0,0,flashWhite);
 //audio_playsound(sndgras);
-if !instance_exists(objBoss1Phase3){
+if !instance_exists(objBoss1Phase3)
+{
     instance_create(400,160,objBoss1Phase3);
 //    audio_playsound(sndAppear);
 }
-with objBossInHole{
+with objBossInHole
+{
     instance_create(x,y,objBoss1Disappear);
     visible=0;
 }
@@ -140,7 +163,7 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>a=instance_create(x,y,objBoss1Bullet3)
+            <string>var a=instance_create(x,y,objBoss1Bullet3)
 a.direction=ddir1;
 a.speed=5;
 ddir1+=15;
@@ -153,7 +176,8 @@ a.direction=random(360);
 a.speed=8;
 a.sprite_index=sprBulletRed;
 ddir2-=15;
-repeat(global.phase){
+repeat(global.phase)
+{
     a=instance_create(x,y,objBoss1Bullet3)
     a.direction=ddir3;
     a.speed=5;
@@ -212,8 +236,9 @@ alarm[6]=1;
           <argument>
             <kind>1</kind>
             <string>
-for(i=0;i&lt;360;i+=60){
-    a=instance_create(x,y,objBoss1Bullet4);
+for(var i=0;i&lt;360;i+=60)
+{
+    var a=instance_create(x,y,objBoss1Bullet4);
     a.direction=i+dir3+dir3_;
     a.speed = 8-3*(abs(sin(degtorad((i+dir3-90)*3))));
 //    a.speed = dir/15+ 6;
@@ -223,7 +248,8 @@ for(i=0;i&lt;360;i+=60){
 }
 dir3+=20/3;
 count+=1;
-if count&lt;10{
+if count&lt;10
+{
     alarm[4]=2;
 }
 else{
@@ -253,8 +279,9 @@ else{
           <argument>
             <kind>1</kind>
             <string>
-for(i=0;i&lt;360;i+=72){
-    a=instance_create(x,y,objBoss1Bullet4);
+for(var i=0; i&lt;360; i+=72)
+{
+    var a=instance_create(x,y,objBoss1Bullet4);
     a.direction=i+dir2+dir2_;
     a.speed = 8-1*(abs(sin(degtorad((i+dir2-90)*5/2))));
 //    a.speed = dir/15+ 6;
@@ -264,10 +291,12 @@ for(i=0;i&lt;360;i+=72){
 }
 dir2+=8;
 count+=1;
-if count&lt;9{
+if count&lt;9
+{
     alarm[3]=2;
 }
-else{
+else
+{
     alarm[3]=0;
     count=0;
 }
@@ -294,8 +323,9 @@ else{
           <argument>
             <kind>1</kind>
             <string>
-for(i=0;i&lt;360;i+=72){
-    a=instance_create(x,y,objBoss1Bullet4);
+for(var i=0;i&lt;360;i+=72)
+{
+    var a=instance_create(x,y,objBoss1Bullet4);
     a.direction=i+dir1+dir1_;
     a.speed = 8-3.6*(abs(sin(degtorad((i+dir1-90)*5/2))));
 //    a.speed = dir/15+ 6;
@@ -305,10 +335,12 @@ for(i=0;i&lt;360;i+=72){
 }
 dir1+=8;
 count+=1;
-if count&lt;9{
+if count&lt;9
+{
     alarm[2]=2;
 }
-else{
+else
+{
     alarm[2]=0;
     count=0;
 }
@@ -335,9 +367,12 @@ else{
           <argument>
             <kind>1</kind>
             <string>objBoss1Parent.tid=id;
-with objBoss1Bullet4{
-    if par = objBoss1Parent.tid{
-        if global.phase mod 2 == 0{
+with objBoss1Bullet4
+{
+    if par = objBoss1Parent.tid
+    {
+        if global.phase mod 2 == 0
+        {
             speed = 5;
         }
         else{
@@ -370,23 +405,26 @@ alarm[1]=4*SPB;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>R=150;
-r=70;
-frame=15;
+            <string>var R=150;
+var r=70;
+var frame=15;
 
-for(i=0;i&lt;5;i+=1){
-    a=instance_create(x,y,objBoss1Bullet4);
-    a.speed=(R-(R-r)/(180/5)*abs((dir mod (360/5))-(180/5)))/frame;
-    a.direction=dir_+dir+72*i;
-    a.friction=a.speed/20;
-    a.par=id;
+for(var i=0;i&lt;5;i+=1)
+{
+    var a=instance_create(x,y,objBoss1Bullet4);
+        a.speed=(R-(R-r)/(180/5)*abs((dir mod (360/5))-(180/5)))/frame;
+        a.direction=dir_+dir+72*i;
+        a.friction=a.speed/20;
+        a.par=id;
 }
 dir+=8;
 count+=1;
-if count&lt;9{
+if count&lt;9
+{
     alarm[0]=2;
 }
-else{
+else
+{
     alarm[0]=0;
     count=0;
 }
@@ -412,8 +450,10 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !player_is_alive(){
-    for(var i=0;i&lt;12;i+=1){
+            <string>if !player_is_alive()
+{
+    for(var i=0;i&lt;12;i+=1)
+    {
         alarm[i]=0;
     }
 }
@@ -421,21 +461,25 @@ timer+=1;
 image_angle += 3*sign(hspeed);
 image_xscale = 1+0.2*sin(timer/10);
 image_yscale = image_xscale;
-if spin{
+if spin
+{
     x = 400 + lengthdir_x(rr,dire);
     y = 160 + lengthdir_y(yy,dire);
     dire += dirspd;
-    if dire - dire0 &gt; 90 and done = 0{
+    if dire - dire0 &gt; 90 and done = 0
+    {
         rr = 240;
         done = 1;
     }
-    if decrease{
+    if decrease
+    {
         rr -= 60/22;
         yy -= 10/22;
     }
     dirspd += 0.02;
-    if timer mod 2 = 0{
-        a=instance_create(x,y,objBlend);
+    if timer mod 2 = 0
+    {
+        var a=instance_create(x,y,objBlend);
         a.sprite_index=sprite_index;
         a.image_index=image_index;
         a.image_xscale=image_xscale;

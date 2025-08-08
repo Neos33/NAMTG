@@ -30,6 +30,8 @@ friction = cal_friction(20,350);
 image_xscale = 0.7;
 image_yscale = 0.7;
 d=random(360);
+
+steps = 0;
 </string>
           </argument>
         </arguments>
@@ -52,14 +54,16 @@ d=random(360);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=1;i&lt;=(3+global.phase);i+=1){
-    dir=d+5-5*i;
-    for(j=1;j&lt;=20;j+=1;){
-    a=instance_create(x,y,objBoss1Bullet5)
-    a.speed=7-0.5*i
-    a.direction=dir;
-    dir+=360/20
-    a.image_index=(5+i) mod 7;
+            <string>for(var i=1; i&lt;=(3+global.phase); i+=1)
+{
+    var dir=d+5-5*i;
+    for(var j=1; j&lt;=20; j+=1)
+    {
+        var a=instance_create(x,y,objBoss1Bullet5)
+        a.speed=7-0.5*i
+        a.direction=dir;
+        dir+=360/20
+        a.image_index=(5+i) mod 7;
     }
 }
 instance_destroy();
@@ -85,115 +89,119 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dire1 = 270
-length1 = 144
-color1 = 0
+            <string>dire1 = 270;
+length1 = 144;
+color1 = 0;
 
-dire2 = 90
-length2 = 112
-color2 = 0
+dire2 = 90;
+length2 = 112;
+color2 = 0;
 
-dire3 = 105.71
-length3 = 132.97
-color3 = 0
+dire3 = 105.71;
+length3 = 132.97;
+color3 = 0;
 
-dire4 = 117.90
-length4 = 153.88
-color4 = 0
+dire4 = 117.90;
+length4 = 153.88;
+color4 = 0;
 
-dire5 = 131.05
-length5 = 164.44
-color5 = 0
+dire5 = 131.05;
+length5 = 164.44;
+color5 = 0;
 
-dire6 = 144.78
-length6 = 166.47
-color6 = 0
+dire6 = 144.78;
+length6 = 166.47;
+color6 = 0;
 
-dire7 = 157.93
-length7 = 159.70
-color7 = 0
+dire7 = 157.93;
+length7 = 159.70;
+color7 = 0;
 
-dire8 = 170.54
-length8 = 145.99
-color8 = 0
+dire8 = 170.54;
+length8 = 145.99;
+color8 = 0;
 
-dire9 = 185.36
-length9 = 128.56
-color9 = 0
+dire9 = 185.36;
+length9 = 128.56;
+color9 = 0;
 
-dire10 = 202.17
-length10 = 116.62
-color10 = 0
+dire10 = 202.17;
+length10 = 116.62;
+color10 = 0;
 
-dire11 = 220.60
-length11 = 110.63
-color11 = 0
+dire11 = 220.60;
+length11 = 110.63;
+color11 = 0;
 
-dire12 = 239.74
-length12 = 111.14
-color12 = 0
+dire12 = 239.74;
+length12 = 111.14;
+color12 = 0;
 
-dire13 = 256.87
-length13 = 123.22
-color13 = 0
+dire13 = 256.87;
+length13 = 123.22;
+color13 = 0;
 
-dire14 = 283.13
-length14 = 123.22
-color14 = 0
+dire14 = 283.13;
+length14 = 123.22;
+color14 = 0;
 
-dire15 = 300.26
-length15 = 111.14
-color15 = 0
+dire15 = 300.26;
+length15 = 111.14;
+color15 = 0;
 
-dire16 = 319.40
-length16 = 110.63
-color16 = 0
+dire16 = 319.40;
+length16 = 110.63;
+color16 = 0;
 
-dire17 = 337.83
-length17 = 116.62
-color17 = 0
+dire17 = 337.83;
+length17 = 116.62;
+color17 = 0;
 
-dire18 = 354.64
-length18 = 128.56
-color18 = 0
+dire18 = 354.64;
+length18 = 128.56;
+color18 = 0;
 
-dire19 = 9.46
-length19 = 145.99
-color19 = 0
+dire19 = 9.46;
+length19 = 145.99;
+color19 = 0;
 
-dire20 = 22.07
-length20 = 159.70
-color20 = 0
+dire20 = 22.07;
+length20 = 159.70;
+color20 = 0;
 
-dire21 = 35.22
-length21 = 166.47
-color21 = 0
+dire21 = 35.22;
+length21 = 166.47;
+color21 = 0;
 
-dire22 = 48.95
-length22 = 164.44
-color22 = 0
+dire22 = 48.95;
+length22 = 164.44;
+color22 = 0;
 
-dire23 = 62.10
-length23 = 153.88
-color23 = 0
+dire23 = 62.10;
+length23 = 153.88;
+color23 = 0;
 
-dire24 = 74.29
-length24 = 132.97
-color24 = 0
+dire24 = 74.29;
+length24 = 132.97;
+color24 = 0;
+
 d=random_range(-20,20);
-for(j=1;j&lt;=2+global.phase;j+=1){
-steps=1;
-ii=irandom(6);
-repeat(24){
-    a=instance_create(x,y,objBoss1Bullet5);
-    //a.speed = (1.4-j*0.1)*variable_local_get("length"+string(steps))/30;
-    //a.direction = variable_local_get("dire"+string(steps))+d+j*4;
-    a.speed = (1.4-j*0.1)*variable_instance_get(id, "length"+string(steps)) / 30;
-    a.direction = variable_instance_get(id, "dire"+string(steps))+d+j*4;
-    a.image_index=ii;
-    steps+=1;
-    
-}
+
+for(var j=1; j&lt;=2+global.phase; j+=1)
+{
+    steps=1;
+    var ii=irandom(6);
+    repeat(24)
+    {
+        var a=instance_create(x,y,objBoss1Bullet5);
+        //a.speed = (1.4-j*0.1)*variable_local_get("length"+string(steps))/30;
+        //a.direction = variable_local_get("dire"+string(steps))+d+j*4;
+        a.speed = (1.4-j*0.1)*variable_instance_get(id, "length"+string(steps)) / 30;
+        a.direction = variable_instance_get(id, "dire"+string(steps))+d+j*4;
+        a.image_index=ii;
+        steps+=1;
+        
+    }
 }
 instance_destroy();
 </string>
@@ -218,24 +226,26 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir=random(360);
-ind=irandom(6);
-for(i=1;i&lt;=18+4*global.phase;i+=1;){
-a=instance_create(x,y,objBoss1Bullet5_)
-a.speed=9;
-a.direction=dir;
-dir+=360/(18+4*global.phase);
-a.image_index=ind;
-a.dirspd=2;
+            <string>var dir=random(360);
+var ind=irandom(6);
+for(var i=1;i&lt;=18+4*global.phase;i+=1;)
+{
+    var a=instance_create(x,y,objBoss1Bullet5_);
+    a.speed=9;
+    a.direction=dir;
+    dir+=360/(18+4*global.phase);
+    a.image_index=ind;
+    a.dirspd=2;
 }
 ind=irandom(6);
-for(i=1;i&lt;=18+4*global.phase;i+=1;){
-a=instance_create(x,y,objBoss1Bullet5_)
-a.speed=9;
-a.direction=dir;
-dir+=360/(18+4*global.phase);
-a.image_index=ind;
-a.dirspd=-2;
+for(var i=1;i&lt;=18+4*global.phase;i+=1;)
+{
+    var a=instance_create(x,y,objBoss1Bullet5_);
+    a.speed=9;
+    a.direction=dir;
+    dir+=360/(18+4*global.phase);
+    a.image_index=ind;
+    a.dirspd=-2;
 }
 instance_destroy();
 </string>
@@ -261,18 +271,18 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>d=random(360);
-ind=irandom(6);
-arg0 = 6;   
-arg1 = 0;   
-arg2 = 0;   
-arg3 = x;   
-arg4 = y;   
-arg5 = d;
-arg6 = objBoss1Bullet5;   
-arg7 = 4;   
-arg8 = 8+global.phase;   
-arg9 = 1;   
-arg10 = 7;
+var ind=irandom(6);
+var arg0 = 6;   
+var arg1 = 0;   
+var arg2 = 0;   
+var arg3 = x;   
+var arg4 = y;   
+var arg5 = d;
+var arg6 = objBoss1Bullet5;   
+var arg7 = 4;   
+var arg8 = 8+global.phase;   
+var arg9 = 1;   
+var arg10 = 7;
 
 if(arg0==0)
     arg0 = 1;  
@@ -348,10 +358,12 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=1;i&lt;=(3+global.phase);i+=1){
-    dir = d+4*i-4;
-    for(j=1;j&lt;=20;j+=1;){
-        a=instance_create(x,y,objBoss1Bullet5)
+            <string>for(var i=1; i&lt;=(3+global.phase); i+=1)
+{
+    var dir = d+4*i-4;
+    for(var j=1; j&lt;=20; j+=1)
+    {
+        var a=instance_create(x,y,objBoss1Bullet5);
         a.speed=7-0.5*i;
         a.direction=dir;
         dir+=360/20

@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with other{
+            <string>with other
+{
     blend = 1;
 }
-a=instance_create(0,298,objBoss1Trigger2);
+var a=instance_create(0,298,objBoss1Trigger2);
 a.image_xscale=50;
 instance_destroy();
 </string>

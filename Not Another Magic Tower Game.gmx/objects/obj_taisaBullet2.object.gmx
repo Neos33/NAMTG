@@ -25,11 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>setScale(id,.5);
+            <string>event_inherited();
+setScale(id,.5);
 image_speed=0;
 alarm[0] = 203;
 alarm[2] = 203;
 alarm[1] = 1;
+
+zzz = 0;
+count4 = 0;
+done = false;
+t = 0;
+tt = 0;
 </string>
           </argument>
         </arguments>
@@ -102,7 +109,8 @@ alarm[1] = 1;
           <argument>
             <kind>1</kind>
             <string>direction+=zzz*0.5;
-if(count4 == -1 &amp;&amp; !done){
+if(count4 == -1 &amp;&amp; !done)
+{
     direction += random(7);
     done = 1;
 }

@@ -28,6 +28,9 @@
             <string>alarm[0]=1;
 alarm[1]=50;
 dir = choose(0,30,60);
+
+count = 0;
+fadeOut = false;
 </string>
           </argument>
         </arguments>
@@ -51,8 +54,10 @@ dir = choose(0,30,60);
           <argument>
             <kind>1</kind>
             <string>objBoss1Parent.tid=id;
-with objBoss1Bullet2{
-    if par = objBoss1Parent.tid{
+with objBoss1Bullet2
+{
+    if par = objBoss1Parent.tid
+    {
         speed = 6;
         friction = -0.1;
     }
@@ -80,17 +85,19 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>repeat(3){
-    a=instance_create(x,y,objBoss1Bullet2);
-    a.speed=8;
-    a.direction=dir;
-    a.friction=cal_friction(8,30)
-    a.par=id;
+            <string>repeat(3)
+{
+    var a=instance_create(x,y,objBoss1Bullet2);
+        a.speed=8;
+        a.direction=dir;
+        a.friction=cal_friction(8,30)
+        a.par=id;
     dir+=120;
 }
 dir+=21.8;
 count+=1;
-if count&lt;14{
+if count&lt;14
+{
     alarm[0]=2;
 }
 else{
@@ -120,7 +127,8 @@ else{
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !fadeOut{
+            <string>if !fadeOut
+{
     fade_in();
 }
 else{

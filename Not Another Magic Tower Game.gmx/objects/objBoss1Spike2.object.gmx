@@ -41,6 +41,8 @@
             <kind>1</kind>
             <string>depth=1000002;
 alarm[0]=4*SPB;
+
+hit = false;
 </string>
           </argument>
         </arguments>

@@ -26,6 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
+
+noDes = false;
+done = false;
+dirspd = 0;
 </string>
           </argument>
         </arguments>
@@ -72,7 +76,8 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!noDes){
+            <string>if(!noDes)
+{
     instance_destroy();
 }
 </string>
@@ -98,12 +103,15 @@ alarm[0] = 1;
           <argument>
             <kind>1</kind>
             <string>speed -= 0.15;
-if(speed&lt;0.15 &amp;&amp; !done){
+if(speed&lt;0.15 &amp;&amp; !done)
+{
     done = 1;
     alarm[0] = 1;
 }
-if(point_distance(x,y,obj_taisaPattern.x,obj_taisaPattern.y) &gt; 168){
-    repeat(3){
+if(point_distance(x,y,obj_taisaPattern.x,obj_taisaPattern.y) &gt; 168)
+{
+    repeat(3)
+    {
         createBullet(x,y,random_range(3,5),random(360),spr_danmaku9,image_index);
     }
     instance_destroy();

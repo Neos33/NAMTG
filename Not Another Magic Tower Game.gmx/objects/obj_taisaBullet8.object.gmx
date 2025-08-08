@@ -27,6 +27,12 @@
             <kind>1</kind>
             <string>image_speed = 0;
 alarm[0] = 6;
+
+dir = 0;
+noDes = false;
+add = false;
+maxspd = 0;
+dirspd = 0;
 </string>
           </argument>
         </arguments>
@@ -49,13 +55,14 @@ alarm[0] = 6;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>len = 9;
-num = 3;
-for(i=0;i&lt;num;i+=1){
-    ang = 360/num*i;
-    xx = x + lengthdir_x(len,dir+ang);
-    yy = y + lengthdir_y(len,dir+ang);
-    a = createBullet(xx,yy,0,dir+ang,spr_danmaku3,image_index+i);
+            <string>var len = 9;
+var num = 3;
+for(var i=0;i&lt;num;i+=1)
+{
+    var ang = 360/num*i;
+    var xx = x + lengthdir_x(len,dir+ang);
+    var yy = y + lengthdir_y(len,dir+ang);
+    var a = createBullet(xx,yy,0,dir+ang,spr_danmaku3,image_index+i);
     a.alarm[1] = 50;
     a.frc = -0.05;
     a.maxspd = 4;
@@ -85,7 +92,8 @@ alarm[0] = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!noDes){
+            <string>if(!noDes)
+{
     instance_destroy();
 }
 </string>
@@ -110,10 +118,12 @@ alarm[0] = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(add){
+            <string>if(add)
+{
     draw_set_blend_mode(bm_add);
 }
-if(speed &gt; maxspd &amp;&amp; maxspd != 0){
+if(speed &gt; maxspd &amp;&amp; maxspd != 0)
+{
     speed = maxspd;
     friction = 0;
 }

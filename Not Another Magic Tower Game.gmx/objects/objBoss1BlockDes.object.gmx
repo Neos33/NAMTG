@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0.4;
+
+row = 0;
 </string>
           </argument>
         </arguments>
@@ -52,8 +54,10 @@
 audio_playsound(sndbrake)
 row=8
 
-for(i=0;i&lt;row;i+=1){
-    for(j=0;j&lt;row;j+=1){
+for(i=0; i&lt;row; i+=1)
+{
+    for(j=0; j&lt;row; j+=1)
+    {
         a=instance_create(x+32/row*i,y+32/row*j,objBoss1BlockPart);
         a.speed=random(2)+point_distance(x+32/row*i,y+32/row*j,x+12,y+12)/25;
         a.direction=point_direction(x+12,y+12,x+32/row*i,y+32/row*j)+random_range(-30,30);
@@ -79,6 +83,26 @@ for(i=0;i&lt;row;i+=1){
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

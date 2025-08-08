@@ -25,8 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+image_speed = 0;
 alarm[0] = 40;
+
+len = 0;
 </string>
           </argument>
         </arguments>
@@ -98,16 +101,19 @@ alarm[0]=1;
           <argument>
             <kind>1</kind>
             <string>if image_alpha&lt;1 image_alpha+=0.05;
-if(point_distance(x,y,obj_taisaPattern.x,obj_taisaPattern.y)&gt;len+60){
-    if(spd != 0){
-        a = createBullet(x,y,0.8*spd,direction,sprite_index,BLUE);
+if(point_distance(x,y,obj_taisaPattern.x,obj_taisaPattern.y)&gt;len+60)
+{
+    if(spd != 0)
+    {
+        var a = createBullet(x,y,0.8*spd,direction,sprite_index,BLUE);
         a.friction = -0.05;
         a = createBullet(x,y,spd,direction,sprite_index,RED);
         a.friction = -0.05;
         instance_destroy();
     }
-    else{
-        a=createBullet(x,y,0.8*speed,direction,sprite_index,BLUE);
+    else
+    {
+        var a=createBullet(x,y,0.8*speed,direction,sprite_index,BLUE);
         a.friction = -0.05;
         a=createBullet(x,y,speed,direction,sprite_index,RED);
         a.friction = -0.05;

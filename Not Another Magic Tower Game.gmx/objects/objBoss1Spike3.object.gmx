@@ -41,6 +41,8 @@
             <kind>1</kind>
             <string>depth=1000002;
 alarm[0]=1;
+
+hit = false;
 </string>
           </argument>
         </arguments>
@@ -136,7 +138,8 @@ hit = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with other{
+            <string>with other
+{
     speed = 16;
     direction = 90;
     image_angle = sign(image_xscale) * 90;

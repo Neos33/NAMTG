@@ -44,6 +44,13 @@ image_speed = 0.16;
 //gravity = 0.4;
 
 alarm[0]=4*SPB;
+
+
+count = 0;
+flash = 0;
+blend = 0;
+timer = 0;
+t = 0;
 </string>
           </argument>
         </arguments>
@@ -95,7 +102,7 @@ audio_playsound(sndBossJump);
 vspeed = -17;
 hspeed = (400-x)/60;
 //352
-a=instance_create(0,224,objBoss1Trigger1);
+var a=instance_create(0,224,objBoss1Trigger1);
 a.image_xscale=50;
 t=1;
 </string>
@@ -120,12 +127,14 @@ t=1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if count&lt;7{
+            <string>if count&lt;7
+{
     instance_create(x,y,objBoss1Pattern4);
     count+=1;
     alarm[0]=4*SPB;
 }
-else{
+else
+{
     alarm[0]=0;
     alarm[1]=SPB;
 }

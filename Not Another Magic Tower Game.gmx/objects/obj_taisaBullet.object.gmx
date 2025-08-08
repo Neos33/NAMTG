@@ -40,6 +40,12 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
+
+dirspd= 0;
+frc = 0;
+noDes = false;
+add = false;
+maxspd = 0;
 </string>
           </argument>
         </arguments>
@@ -109,7 +115,8 @@ speed = -frc;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!noDes){
+            <string>if(!noDes)
+{
     instance_destroy();
 }
 </string>
@@ -134,10 +141,12 @@ speed = -frc;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(add){
+            <string>if(add)
+{
     draw_set_blend_mode(bm_add);
 }
-if(speed &gt; maxspd &amp;&amp; maxspd != 0){
+if(speed &gt; maxspd &amp;&amp; maxspd != 0)
+{
     speed = maxspd;
     friction = 0;
 }

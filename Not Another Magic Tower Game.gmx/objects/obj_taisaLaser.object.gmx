@@ -32,6 +32,10 @@ maxscl = 2;
 lifetime = 20;
 image_yscale = 0;
 image_xscale = 64;
+
+laser = false;
+alpha = 0;
+timer = 0;
 </string>
           </argument>
         </arguments>
@@ -77,7 +81,8 @@ image_xscale = 64;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if place_meeting(x,y,obj_playerDotMask){
+            <string>if place_meeting(x,y,obj_playerDotMask)
+{
     audio_playsound(sndDeath);
 }
 </string>
@@ -102,7 +107,8 @@ image_xscale = 64;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !laser{
+            <string>if !laser
+{
     draw_set_color(c_white);
     draw_set_alpha(alpha);
     if alpha&lt;1 alpha+=0.05;
@@ -111,21 +117,26 @@ image_xscale = 64;
     
     draw_set_alpha(1);
 }
-else{
+else
+{
     draw_set_blend_mode(bm_add);
     timer += 1;
-    if timer&lt;20{
+    if timer&lt;20
+    {
         image_yscale+=sclspd;
         event_user(0);
     }
-    else if timer&lt;20+lifetime{
+    else if timer&lt;20+lifetime
+    {
         event_user(0);
     };
-    else if timer&lt;39+lifetime{
+    else if timer&lt;39+lifetime
+    {
         event_user(0);
         image_yscale-=sclspd;
     }
-    else{
+    else
+    {
         instance_destroy()
     }
     draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha);

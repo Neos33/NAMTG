@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>event_inherited();
+image_speed = 0;
 </string>
           </argument>
         </arguments>
@@ -48,7 +49,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!noDes){
+            <string>if(!noDes)
+{
     instance_destroy();
 }
 </string>
@@ -73,11 +75,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(add){
+            <string>if(add)
+{
     draw_set_blend_mode(bm_add);
 }
-if(speed == 0){
-    a = createBullet(x,y,0.05,direction,sprite_index,RED);
+if(speed == 0)
+{
+    var a = createBullet(x,y,0.05,direction,sprite_index,RED);
     a.friction = -0.05;
     a.dirspd = 5;
     a.alarm[0] = 15;

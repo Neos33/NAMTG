@@ -41,7 +41,7 @@
             <kind>1</kind>
             <string>timeline_speed=BPM/750;
 image_speed=0.17;
-a=instance_create(x,y,objBoss1Magic);
+var a=instance_create(x,y,objBoss1Magic);
 a.par=id;
 instance_create(496,448,objBoss1Spike3);
 instance_create(272,448,objBoss1Spike2);
@@ -51,39 +51,15 @@ dir2=random(360);
 dir3=random(360);
 dir4=random(360);
 dir5=random(360);
+
+
+timeline_index = tl_boss1_2;
+timeline_position = 0;
+timeline_running = true;
+
+
+timer = 0;
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>305</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_timeline_set</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>14</kind>
-            <timeline>tl_boss1_2</timeline>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
-          </argument>
-          <argument>
-            <kind>4</kind>
-            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -105,28 +81,31 @@ dir5=random(360);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;2;i+=1){
-    a=instance_create(x,y,objBoss1Bullet3)
+            <string>for(var i = 0; i &lt; 2; i += 1)
+{
+    var a=instance_create(x,y,objBoss1Bullet3)
     a.direction=dir+180*i;
     a.speed=7;
     dir+=15;
 }
-for(i=0;i&lt;2;i+=1){
-    a=instance_create(x,y,objBoss1Bullet3)
+for(var i = 0; i &lt; 2; i += 1)
+{
+    var a=instance_create(x,y,objBoss1Bullet3)
     a.direction=dir2+180*i;
     a.speed=8;
     a.sprite_index=sprBulletGreen;
     dir2-=25;
 }
-for(i=0;i&lt;2;i+=1){
-a=instance_create(x,y,objBoss1Bullet3)
-a.direction=dir4+180*i;
-a.sprite_index=sprBulletRed;
-a.speed=6;
-dir4+=55;
+for(var i = 0; i &lt; 2; i += 1)
+{
+    var a=instance_create(x,y,objBoss1Bullet3)
+    a.direction=dir4+180*i;
+    a.sprite_index=sprBulletRed;
+    a.speed=6;
+    dir4+=55;
 }
 
-a=instance_create(x,y,objBoss1SaveBOOM);
+var a=instance_create(x,y,objBoss1SaveBOOM);
 a.direction=random(360);
 a.speed=5;
 alarm[1]=10;
@@ -156,16 +135,18 @@ alarm[1]=10;
 a.direction=dir;
 a.speed=5;
 dir+=15;*/
-for(i=0;i&lt;2;i+=1){
-a=instance_create(x,y,objBoss1Bullet3)
-a.direction=dir2+180*i;
-a.speed=5;
+for(var i = 0; i &lt; 2; i += 1)
+{
+    var a=instance_create(x,y,objBoss1Bullet3)
+    a.direction=dir2+180*i;
+    a.speed=5;
 }
 dir2+=25;
-for(i=0;i&lt;2;i+=1){
-a=instance_create(x,y,objBoss1Bullet3)
-a.direction=dir3+180*i;
-a.speed=5;
+for(var i = 0; i &lt; 2; i += 1)
+{
+    var a=instance_create(x,y,objBoss1Bullet3)
+    a.direction=dir3+180*i;
+    a.speed=5;
 }
 dir3+=35;
 alarm[0]=7;
@@ -195,7 +176,8 @@ alarm[0]=7;
 x=xstart+250*sin(timer/26);
 y=ystart-15+15*cos(timer/26);
 image_xscale=-sign(x-xprevious);
-if !player_is_alive(){
+if !player_is_alive()
+{
     timeline_running = 0;
     alarm[0] = 0;
     alarm[1] = 0;

@@ -26,10 +26,16 @@
           <argument>
             <kind>1</kind>
             <string>onCollide = 1; //�G���ƃ��[�v�ł���ꍇ��true�A�G��Ă���[�v�ł��Ȃ��Ȃ�false
+rS04 = 0;
 roomTo=rS04;
 image_alpha=0;
 image_xscale=0;
 image_yscale=0;
+
+objBoss1Player = objDummy;
+objFrontBlackCreate = objDummy;
+objShadow = objDummy;
+
 instance_create(player.x,player.y,objBoss1Player);
 with player instance_destroy();
 alarm[0]=50;
@@ -38,6 +44,14 @@ alarm[2]=150;
 alarm[3]=250;
 alarm[4]=380;
 alarm[5]=300;
+
+t = 0;
+done = false;
+
+warpX = 0;
+warpY = 0;
+
+timer = 0;
 //warpX=400;
 //warpY=183;
 /**
@@ -96,18 +110,24 @@ warpX,warpY�Ɉړ�������W������Ă�������
             <string>//���[����ړ�����i���[�v�j
 //onCollide�Ƃ�roomTo�͎qObject�i��arp�Ƃ��j�������Ă܂�
 
-if(onCollide == true){
+if(onCollide == true)
+{
     room_goto(roomTo);
-    if(warpX=0 &amp;&amp; warpY=0){
-    with(player){
-      instance_destroy();
+    if(warpX=0 &amp;&amp; warpY=0)
+    {
+        with(player)
+        {
+          instance_destroy();
+        }
+        with(bow)
+        {
+          instance_destroy();
+        }
     }
-    with(bow){
-      instance_destroy();
-    }
-    }else{
-    player.x=warpX
-    player.y=warpY
+    else
+    {
+        player.x = warpX;
+        player.y = warpY;
     }
 }
 /**
@@ -139,7 +159,7 @@ Ctrl�����Ȃ���E�N���b�N�����
           <argument>
             <kind>1</kind>
             <string>
-a=instance_create(0,0,objFrontBlackCreate);
+var a=instance_create(0,0,objFrontBlackCreate);
 a.time=50;
 </string>
           </argument>
@@ -163,14 +183,16 @@ a.time=50;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with objBoss1Player{
+            <string>with objBoss1Player
+{
     image_xscale-=0.003;
     image_yscale-=0.003;
     image_angle-=8;
     image_alpha-=0.01;
     move_towards_point(objBoss1Warp.x,objBoss1Warp.y,point_distance(objBoss1Warp.x,objBoss1Warp.y,x,y)/50);
 }
-if !done{
+if !done
+{
     audio_playsound(sndCherry);
     done=1;
 }
@@ -221,10 +243,11 @@ alarm[2]=1;
           <argument>
             <kind>1</kind>
             <string>t+=1;
-if t&lt;=40{
-fade_in(40);
-image_xscale+=0.05;
-image_yscale+=0.05;
+if t&lt;=40
+{
+    fade_in(40);
+    image_xscale+=0.05;
+    image_yscale+=0.05;
 }
 alarm[0]=1;
 </string>
@@ -251,8 +274,9 @@ alarm[0]=1;
             <kind>1</kind>
             <string>image_angle+=5;
 timer+=1;
-if timer=1{
-    a=instance_create(x,y,objShadow);
+if timer=1
+{
+    var a=instance_create(x,y,objShadow);
     a.sprite_index=sprite_index;
     a.speed=random_range(0.5,1.5);
     a.direction=random(360);
