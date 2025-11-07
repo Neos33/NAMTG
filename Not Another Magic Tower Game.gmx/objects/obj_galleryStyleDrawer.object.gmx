@@ -155,7 +155,7 @@ for(var i = 0; i &lt; 10; i += 1)
     var t = i * 20;
     var spd = v0 - acc * t;
     var dis = maxRadius - (v0 * t - 0.5 * acc * sqr(t));
-    sub = instance_create(0,0,obj_galleryStyleCircleDrawer);
+    var sub = instance_create(0,0,obj_galleryStyleCircleDrawer);
     sub.centerX = centerX;
     sub.centerY = centerY;
     sub.spd = spd;

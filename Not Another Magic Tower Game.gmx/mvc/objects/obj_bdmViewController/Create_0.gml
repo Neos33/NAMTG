@@ -1,0 +1,2 @@
+__background_set( e__BG.Blend, 0, c_gray );
+

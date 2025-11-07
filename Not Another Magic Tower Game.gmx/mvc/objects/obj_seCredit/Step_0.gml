@@ -1,0 +1,2 @@
+startY -= txtSpd;
+

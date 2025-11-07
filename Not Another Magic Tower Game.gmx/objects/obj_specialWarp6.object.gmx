@@ -52,7 +52,7 @@
 {
     instance_destroy();
 }
-for(i = 0; i &lt; 6; i += 1)
+for(var i = 0; i &lt; 6; i += 1)
 {
     global.floorTrigger[i] = 0;
 }

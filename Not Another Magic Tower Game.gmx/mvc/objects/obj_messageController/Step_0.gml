@@ -1,0 +1,22 @@
+if(keyboard_check_pressed(global.skipbutton))
+{
+    while(is_message())
+    {
+        message_remove();
+    }
+    if(instance_exists(obj_skipInfo))
+    {
+        with(obj_skipInfo)
+        {
+            instance_destroy();
+        }
+    }
+    if(instance_exists(obj_dialogEmotes))
+    {
+        with(obj_dialogEmotes)
+        {
+            instance_destroy();
+        }
+    }
+}
+

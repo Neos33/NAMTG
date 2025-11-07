@@ -1,0 +1,3 @@
+friction = frc;
+speed = -frc;
+

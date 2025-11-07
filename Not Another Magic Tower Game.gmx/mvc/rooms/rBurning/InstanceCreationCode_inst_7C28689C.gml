@@ -1,0 +1,12 @@
+myMsg[0] = "Hot Gay : It's sooooo hot here."
+myMsg[1] = "Kid : Exactly. I would like to be naked here, but the author didn't give me a naked sprite.";
+myMsg[2] = "Hot Gay : Hmmmm.. I see, you have the potential to be a good gay.";
+myMsg[3] = "Kid : You gay shut up!";
+myMsg[4] = "Hot Gay : Don't be shy. If you admit you are gay, I'll tell you a secret.";
+myMsg[5] = "Kid : I AM GAY! OK, you can tell the secret now.";
+myMsg[6] = "Hot Gay : WoW, you are really cool. And the secret is... I'm also a GAY!";
+myMsg[7] = "Kid : ....................";
+myMsg[8] = "Hot Gay : Just kidding. And here comes the author's warning: 'YOU CANNOT SAVE THE PRINCESS ALONE!'";
+myMsg[9] = "Kid : What does this mean.."
+myMsg[10] = "Press backspace to transfer to the entrance of the room."
+messageLength = 11;

@@ -1,0 +1,103 @@
+if(timeline_position >= 2008 && player_is_alive() && player.x > 0)
+{
+    global.inCombat = false;
+    with(obj_combatPlayerKiller)
+    {
+        instance_destroy();
+    }
+    global.monsters[global.combatIndex] = 1;
+    FMODInstanceStop(scrAudioGetID("BGMBoss1"));
+    if(player_is_alive() && player.x > 0)
+    {
+        if(!global.achievements[50])
+        {
+            ch = instance_create(0,608,obj_achievements);
+            ch.index = 50;
+            global.achievements[50] = 1;
+        }
+        if(global.GalleryBossFight && global.GalleryBossFightNum > 1 && global.GalleryBossFightInd < global.GalleryBossFightNum - 1)
+        {
+            //transition_kind = 21;
+            //transition_steps = 100;
+            global.GalleryBossFightInd += 1;
+            global.combatObj = global.brObj[global.GalleryBossFightInd];
+            global.mHP = global.brMHp[global.GalleryBossFightInd];
+            global.defenseDamage = global.brBossDmg[global.GalleryBossFightInd];
+            global.attackDamage = global.brHitDmg[global.GalleryBossFightInd];
+            room_goto(global.GalleryBossFightRoom[global.GalleryBossFightInd]);
+        }
+        else
+        {
+            if(global.GalleryBossFight && global.GalleryBossFightNum > 1)
+            {
+                global.GalleryBossFight = false;
+                global.GalleryBossFightNum = 0;
+                global.GalleryBossFightInd = 0;
+                global.BR_Status = 1;
+            }
+            if(!global.isRandom)
+            {
+                //transition_kind = 21;
+            }
+            room_goto(global.stageRoom);
+            if(global.special[2])
+            {
+                global.expBonus += floor(global.mEx * 1.5);
+            }
+            else
+            {
+                global.expBonus += global.mEx;
+            }
+            
+            player.x = global.roomX;
+            player.y = global.roomY;
+        }
+    }
+}
+else if(!player_is_alive())
+{
+    if(!instance_exists(obj_black))
+    {
+      black = instance_create(0,0,obj_black);
+      black.image_alpha = 0;
+      alarm[1]= 1;
+    }
+}
+
+if(!global.inGallery || (global.GalleryBossFight && global.GalleryBossFightNum > 1))
+{
+    if(global.special[18])
+    {
+        if(global.GalleryBossFight)
+        {
+            if(global.GalleryBossFightHp < global.FullHp)
+            {
+                if(recoveryCountDown == 0)
+                {
+                    global.GalleryBossFightHp += 1;
+                    recoveryCountDown = 100;
+                }
+                else
+                {
+                    recoveryCountDown -= 1;
+                }
+            }
+        }
+        else
+        {
+            if(global.hp < global.FullHp)
+            {
+                if(recoveryCountDown == 0)
+                {
+                    global.hp += 1;
+                    recoveryCountDown = 10;
+                }
+                else
+                {
+                    recoveryCountDown -= 1;
+                }
+            }
+        }
+    }
+}
+

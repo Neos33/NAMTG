@@ -1,0 +1,3 @@
+hitEffect();
+instance_destroy();
+

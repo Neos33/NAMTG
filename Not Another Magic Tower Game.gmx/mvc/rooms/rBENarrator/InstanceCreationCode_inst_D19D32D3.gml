@@ -1,0 +1,1 @@
+txt = "And Left The Magic Tower.";

@@ -1,0 +1,166 @@
+globalvar curMusic,filePlaying; 
+image_speed = 1/6;
+
+musicPer = 0;
+targetPer = 0;
+isLoading = false;
+
+musicIndex = 0;
+musicCount = 54;
+
+musicLoadEnd = false;
+type = array_create(musicCount);
+group = array_create(musicCount);
+for (var i=0; i<musicCount; i+=1)
+{
+    group[i] = 3;
+}
+
+
+
+
+/// Song file list
+
+song[0] = "Death.ogg";
+song[1] = "Null.ogg";
+
+song[2] = "BGM1.ogg";type[2]=1;
+song[3] = "BGM1-10F.ogg";type[3]=1;
+song[4] = "BGMB1F.ogg";type[4]=1;
+song[5] = "BGM_Secret1.ogg";type[5]=1;
+
+song[6] = "BGM_battle1.ogg";
+song[7] = "BGMBoss1.ogg";
+song[8] = "BGM_BE.ogg";
+song[9] = "BGM_BEBoss.ogg";
+song[10] = "BGM_RedKey.ogg";
+
+
+song[11] = "BGM_BubbleStageSelection.ogg";
+song[12] = "BGM_BubbleStage.ogg";
+song[13] = "BGM_JKStage.ogg";
+song[14] = "BGM_JKStageSelection.ogg";
+song[15] = "BGM_FloorStage.ogg";
+song[16] = "BGM_MMMFingers.ogg";
+song[17] = "BGM11-15F.ogg";type[17]=1;
+song[18] = "BGM_FAShiLiu.ogg";
+
+song[19] = "BGM_Dracula.ogg";
+song[20] = "BGM_Burning.ogg";type[20]=1;
+song[21] = "BGM_Freezing.ogg";type[21]=1;
+song[22] = "BGM_RenalTreasure.ogg";
+song[23] = "BGM_FairyTail.ogg";
+song[24] = "BGM_Finals.ogg";type[24]=1;
+song[25] = "BGM_Truth.ogg";type[25]=1;
+song[26] = "BGM_Faro.ogg";type[26]=1;
+song[27] = "BGM_DecisiveBattle.ogg";
+song[28] = "BGM_BurningFasf.ogg";
+song[29] = "BGM_Diamante.ogg";
+song[30] = "BGM_Pica.ogg";
+song[31] = "BGM_Dragon.ogg";
+song[32] = "BGM_GE.ogg";
+song[33] = "BGM_Gallery.ogg";type[33]=1;
+song[34] = "BGM_Trebole.ogg";
+song[35] = "BGM_Corazone.ogg";type[35]=1;
+song[36] = "BGM_DemonLead.ogg";
+song[37] = "BGM_Secret2.ogg";type[37]=1;
+song[38] = "SE_KidScream.ogg";group[38]=1;
+song[39] = "SE_HeedMyCall.ogg";group[39]=1;
+song[40] = "BGM_Corridor.ogg";
+song[41] = "BGM_Fear.ogg";
+song[42] = "BGM_SE.ogg";
+song[43] = "BGM_Fapple.ogg";
+song[44] = "BGM_Secret3.ogg";type[44]=1;
+song[45] = "BGM_Luka.ogg";
+
+
+song[46] = "BGM_Battle2A.ogg";
+song[47] = "BGM_Battle2B.ogg";
+song[48] = "BGM_Battle2C.ogg";
+song[49] = "BGM_Battle2D.ogg";
+
+song[50] = "BGM_Battle2PokemonA.ogg";
+song[51] = "BGM_Battle2PokemonB.ogg";
+song[52] = "BGM_Battle2PokemonC.ogg";
+
+song[53] = "BGM_Battle3.ogg";
+
+/// Song name list
+
+name[0] = "SE_Death";
+name[1] = "BGM_Null";
+
+name[2] = "BGM_1";
+name[3] = "BGM1To10F";
+name[4] = "BGMB1F";
+name[5] = "BGMSecret1";
+name[6] = "BGMsupfasf";
+name[7] = "BGMBoss1";
+name[8] = "BGM_BE";
+name[9] = "BGM_BEBoss";
+name[10] = "BGM_RedKey";
+
+
+name[11] = "BGM_BubbleStageSelection";
+name[12] = "BGM_BubbleStage";
+name[13] = "BGM_JKStage";
+name[14] = "BGM_JKStageSelection";
+name[15] = "BGM_FloorStage";
+name[16] = "BGM_MMMFingers";
+name[17] = "BGM11To15F";
+name[18] = "BGMFaShiLiu";
+name[19] = "BGMDracula";
+name[20] = "BGM_Burning";
+name[21] = "BGM_Freezing";
+name[22] = "BGM_RenalTreasure";
+name[23] = "BGM_FairyTail";
+name[24] = "BGM_Finals";
+name[25] = "BGM_Truth";
+name[26] = "BGM_Faro";
+name[27] = "BGM_DecisiveBattle";
+name[28] = "BGM_BurningFasf";
+name[29] = "BGM_Diamante";
+name[30] = "BGM_Pica";
+name[31] = "BGM_Dragon";
+name[32] = "BGM_GE";
+name[33] = "BGM_Gallery";
+name[34] = "BGM_Trebole";
+name[35] = "BGM_Corazone";
+name[36] = "BGM_DemonLead";
+name[37] = "BGM_Secret2";
+name[38] = "SE_KidScream";
+name[39] = "SE_HeedMyCall";
+name[40] = "BGM_Corridor";
+name[41] = "BGM_Fear";
+name[42] = "BGM_SE";
+name[43] = "BGM_Fapple";
+name[44] = "BGM_Secret3";
+name[45] = "BGM_Luka";
+
+
+name[46] = "BGM_Battle2A";
+name[47] = "BGM_Battle2B";
+name[48] = "BGM_Battle2C";
+name[49] = "BGM_Battle2D";
+
+name[50] = "BGM_Battle2PokemonA";
+name[51] = "BGM_Battle2PokemonB";
+name[52] = "BGM_Battle2PokemonC";
+
+name[53] = "BGM_Battle3";
+
+/// Trebole testing
+musicCount = 5;
+
+song[0] = "BGM1.ogg";type[0]=1;
+song[1] = "BGM11-15F.ogg";type[1]=1;
+song[2] = "BGM_Trebole.ogg";
+song[3] = "BGM_Diamante.ogg";
+song[4] = "BGM_Pica.ogg";
+
+name[0] = "BGM_1";
+name[1] = "BGM11To15F";
+name[2] = "BGM_Trebole";
+name[3] = "BGM_Diamante";
+name[4] = "BGM_Pica";
+

@@ -1,0 +1,1 @@
+txt = "So..Kid Defeat the 3B6";

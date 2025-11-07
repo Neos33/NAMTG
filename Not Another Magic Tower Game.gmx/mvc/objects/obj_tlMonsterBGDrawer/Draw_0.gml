@@ -1,0 +1,23 @@
+centerX = 400;
+certerY = 304;
+draw_set_alpha(1);
+draw_set_color(c_silver);
+draw_set_circle_precision(32);
+draw_circle(400,304,radius,true);
+
+for(var i=0;i<360;i+=360/amount)
+{
+    var tx = cx + lengthdir_x(1000,angle+i);
+    var ty = cy + lengthdir_y(1000,angle+i);
+    draw_line(cx,cy, tx,ty);
+}
+
+for(i=0;i<5;i+=1)
+{
+    var rc = 64 + 0.5 * acc * sqr(50 - time + interval * i);
+    draw_circle(400,304,rc,true);
+}
+
+draw_set_color(c_white);
+draw_set_circle_precision(24);
+

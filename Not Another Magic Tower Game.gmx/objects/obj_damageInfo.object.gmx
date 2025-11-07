@@ -36,6 +36,13 @@ else
 {
     direction = random_range(240,300);
 }
+
+damage = 0
+color = c_white;
+font = 0;
+str = "";
+
+
 </string>
           </argument>
         </arguments>

@@ -1,0 +1,21 @@
+repeat(rank)
+{
+    instance_create(x,y,obj_keyBluekiller);
+}
+audio_playsound(sndBurst1);
+rank+=5;
+if(rank<35)
+{
+    alarm[3]=50;
+}
+else
+{
+    alarm[7]=100;
+    rank=10;
+    with(obj_mirrorguardlv2)
+    {
+        instance_create(x,y,obj_teleport2);
+        instance_destroy();
+    }
+}
+

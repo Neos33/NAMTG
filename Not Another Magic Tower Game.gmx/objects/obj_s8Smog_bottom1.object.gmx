@@ -31,6 +31,9 @@ status = 1;
 targetX = 160;
 alarm[11] = 1;
 event_inherited();
+
+
+move = false;
 </string>
           </argument>
         </arguments>

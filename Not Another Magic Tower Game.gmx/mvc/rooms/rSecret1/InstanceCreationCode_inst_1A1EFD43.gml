@@ -1,0 +1,1 @@
+bgm = scrAudioGetID("BGMSecret1");

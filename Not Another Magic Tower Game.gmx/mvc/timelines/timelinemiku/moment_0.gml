@@ -1,0 +1,3 @@
+player.frozen=1
+
+

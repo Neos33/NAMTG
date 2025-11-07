@@ -1,0 +1,1 @@
+global.koala=10000;

@@ -1,0 +1,5 @@
+with(bullet)
+{
+    trace = false;
+}
+

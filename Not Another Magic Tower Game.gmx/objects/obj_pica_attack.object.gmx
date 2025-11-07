@@ -278,7 +278,7 @@ if at4
     a=instance_create(400+xx4,300+yy4,obj_pica_cherry2);
     a.direction=dir4+180
     a.speed=9
-    var sclrng=random_range(0.5,1)
+    var sclrng=random_range(0.5,1);
     a.image_xscale=sclrng
     a.image_yscale=sclrng
     a.sprite_index=spr_pica_cRainbow;

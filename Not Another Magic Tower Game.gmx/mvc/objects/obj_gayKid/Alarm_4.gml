@@ -1,0 +1,5 @@
+with(player)
+{
+    killPlayer();
+}
+

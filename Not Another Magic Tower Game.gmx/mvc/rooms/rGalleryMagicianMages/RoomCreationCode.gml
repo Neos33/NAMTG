@@ -1,0 +1,1 @@
+player.vspeed = 0;

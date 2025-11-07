@@ -32,6 +32,9 @@ alarm[1] = obj_s8SmogSettings.totalBlocks1 * 32/obj_s8SmogSettings.spd1;
 
 targetX = 480;
 event_inherited();
+
+move = false;
+status = 0;
 </string>
           </argument>
         </arguments>

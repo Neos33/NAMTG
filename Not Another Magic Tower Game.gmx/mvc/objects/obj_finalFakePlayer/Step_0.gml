@@ -1,0 +1,5 @@
+with(bow)
+{
+    visible = false;
+}
+

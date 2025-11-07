@@ -40,6 +40,9 @@
           <argument>
             <kind>1</kind>
             <string>toTE = false;
+
+maxfloor = 0;
+minfloor = 0;
 </string>
           </argument>
         </arguments>

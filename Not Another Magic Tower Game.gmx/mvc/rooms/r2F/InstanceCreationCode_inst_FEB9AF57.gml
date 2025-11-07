@@ -1,0 +1,1 @@
+global.currentFloor = 2;

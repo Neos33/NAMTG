@@ -36,9 +36,9 @@
 //surf = surface_create(800, 608);
 surf = noone;
 list = ds_list_create();
-for(var i=0; i &lt; 9; i += 1)
+for(var i = 0; i &lt; 9; i += 1)
 {
-    ds_list_add(list,i);
+    ds_list_add(list, i);
 }
 ds_list_shuffle(list);
 </string>
@@ -197,9 +197,9 @@ else{
 
 
 surface_set_target(surf);
-for(j = 0; j &lt; 9; j += 1)
+for(var j = 0; j &lt; 9; j += 1)
 {
-    var val = ds_list_find_value(list,j);
+    var val = ds_list_find_value(list, j);
     draw_surface_general(application_surface, 
                         195 + 202 * (val mod 3), 
                         1 + 202 * floor(val / 3), 

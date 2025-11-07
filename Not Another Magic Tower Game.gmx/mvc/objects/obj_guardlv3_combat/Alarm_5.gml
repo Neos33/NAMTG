@@ -1,0 +1,2 @@
+redColCount += 1;
+

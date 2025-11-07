@@ -1,0 +1,23 @@
+with(obj_tre_bullet){
+    speed=0;
+    spin=0;
+    dirspd=0;
+    image_xscale=1;
+    image_yscale=1;
+}
+with(obj_tre_bullet2){
+    speed=0;
+    dirspd=0;
+    image_xscale=1;
+    image_yscale=1;
+}
+with(obj_tre_bullet3){
+    speed=0;
+    dirspd=0;
+    image_xscale=1;
+    image_yscale=1;
+}
+instance_create(0,0,obj_tre_ef);
+obj_tre_ef.fi=1;
+alarm[11]=0;
+

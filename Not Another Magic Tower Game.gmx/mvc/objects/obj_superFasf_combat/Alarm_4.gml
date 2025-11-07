@@ -1,0 +1,20 @@
+image_speed=0.2;
+if(j<40)
+{
+    j+=1;
+    ab=instance_create(x,y,obj_supfasfbullet);
+    ab.speed=4+spdd;
+    ab.direction=270+dir;
+    ab.image_xscale=0.5;
+    ab.image_yscale=0.5;
+    spdd+=0.1;
+    dir+=65;
+    alarm[4]=60*1/j;
+}
+else
+{
+k=0;i=0;
+image_speed=0;image_index=0;
+alarm[5]=100;
+}
+

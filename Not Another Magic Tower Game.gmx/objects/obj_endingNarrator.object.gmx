@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>vspeed = -0.05;
+
+txt = "";
 </string>
           </argument>
         </arguments>

@@ -1,0 +1,89 @@
+if(!cooldown)
+{   
+    damage = global.attackDamage;
+    if(other.energy >= 1.5)
+    {
+        damage = round(global.attackDamage * other.energy);
+    }
+    if(!global.GalleryBossFight && !global.inGallery)
+    {
+        if(global.SaintSword)
+        {
+            damage = round(damage * 1.5);
+        }
+    }
+    var damageInfo = instance_create(x + sprite_width / 2 - sprite_xoffset,y + sprite_height / 2 - sprite_yoffset,obj_damageInfo);
+    damageInfo.damage = damage;
+    if(other.energy < 1.5)
+    {
+        damageInfo.font = fontDamageInfo1;
+        damageInfo.color = c_white;        
+        damageInfo.level = 1;
+    }
+    else if(other.energy <= 2)
+    {
+        damageInfo.font = fontDamageInfo2;
+        damageInfo.color = c_yellow;  
+        damageInfo.level = 2;      
+    }
+    else
+    {
+        damageInfo.font = fontDamageInfo3;
+        damageInfo.color = c_red;        
+        damageInfo.level = 3;
+    }
+    hp -= damage;
+    if(global.isAddMsg)
+    {
+        if(other.energy >= 1.5)
+        {
+            msg = "Kid did a critical hit, " + name + " got " + string(damage) + " damage. ";
+        }
+        else
+        {
+            msg = "Kid did a normal hit, " + name + " got " + string(damage) + " damage. ";
+        }
+    }
+    if(hp <= 0)
+    {
+        audio_playsound(sndDeath);
+        if(!global.GalleryBossFight && !global.inGallery)
+        {
+            global.TotalKills += 1;
+        }
+        if(global.isAddMsg)
+        {
+            msg += name + " was defeated."
+        }
+        alarm[2] = 1;
+    }
+    else
+    {
+        audio_playsound(sndBossHit);
+        cooldown = true;
+        alarm[0] = 1;
+        if(global.special[8])
+        {
+            alarm[1] = 25;
+        }
+        else
+        {
+            alarm[1] = 50;
+        }
+    }
+    
+    if(global.isAddMsg)
+    {
+        with(global.msgController)
+        {
+             msg = other.msg;
+             event_user(0);   
+        }
+    }
+}
+with(other)
+{
+    hitEffect();
+    instance_destroy();
+}
+

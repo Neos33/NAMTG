@@ -1,0 +1,37 @@
+//the ability of crazy danmakus
+alarm[0] = 1;
+image_speed=0.2;
+global.finalElist = ds_list_create();
+for(var i=0;i<3;i+=1)
+{
+    a=instance_create(x,y,obj_finalTreboleE1);
+    ds_list_add(global.finalElist,a);
+    a.len=60;
+    a.dir=i*120-80;
+    a.dac=-0.1;
+    a.image_index=1+i mod 2;
+}
+for(i=0;i<3;i+=1)
+{
+    a=instance_create(x,y,obj_finalTreboleE1_);
+    ds_list_add(global.finalElist,a);
+    a.len=60;
+    a.dir=i*120+80;
+    a.dac=0.1;
+    a.image_index=4+i mod 2;
+}
+for(i=0;i<8;i+=1)
+{
+    a=instance_create(400,608-80*i,obj_finalTreboleE2);
+    a.rng = 5*i-30;
+}
+alarm[1]=100;
+
+m1 = instance_create(312,140,obj_finalDarkMageImg);
+c1 = instance_create(312,140,obj_tlMagicCircle);
+c1.target = m1;
+
+m2 = instance_create(488,140,obj_finalDarkMageImg);
+c2 = instance_create(488,140,obj_tlMagicCircle);
+c2.target = m2;
+

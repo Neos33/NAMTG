@@ -1,0 +1,2 @@
+straightCount = 0;
+

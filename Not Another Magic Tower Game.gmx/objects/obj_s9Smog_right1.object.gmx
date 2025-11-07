@@ -25,23 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!inited)
-{
-    image_xscale = 32;
-    image_yscale = 0;
-    alarm[0] = 1;
-    alarm[1] = obj_s8SmogSettings.totalBlocks1 * 32/obj_s8SmogSettings.spd1;
-}
-else
-{
-    image_xscale = 64;
-    image_yscale = 64;
-    status = 1;
-    alarm[1] = 1;
-    alarm[11] = 1;
-}
-targetX = 672;
+            <string>
 event_inherited();
+inited = false;
+status = 0;
+move = false;
+
+targetX = 672;
+alarm[5] = 1;
 </string>
           </argument>
         </arguments>
@@ -65,6 +56,45 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>alarm[1] = (obj_s8SmogSettings.totalBlocks-1)*32/obj_s8SmogSettings.spd;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!inited)
+{
+    image_xscale = 32;
+    image_yscale = 0;
+    alarm[0] = 1;
+    alarm[1] = obj_s8SmogSettings.totalBlocks1 * 32/obj_s8SmogSettings.spd1;
+}
+else
+{
+    image_xscale = 64;
+    image_yscale = 64;
+    status = 1;
+    alarm[1] = 1;
+    alarm[11] = 1;
+}
+
+
 </string>
           </argument>
         </arguments>

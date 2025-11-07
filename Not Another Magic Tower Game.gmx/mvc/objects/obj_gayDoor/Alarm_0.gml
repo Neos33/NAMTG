@@ -1,0 +1,28 @@
+global.specialBlock[11] = true;
+audio_playsound(sndbrake);
+a1 = instance_create(x,y, obj_specialBlockFragment);
+a1.spr = sprite_index;
+a1.indx = 0;
+a1.indy = 0;
+a1.hspeed = -0.5;
+a1.vspeed = -1;
+a2 = instance_create(x + 16,y, obj_specialBlockFragment);
+a2.spr = sprite_index;
+a2.indx = 1;
+a2.indy = 0;
+a2.hspeed = 0.5;
+a2.vspeed = -1;
+a3 = instance_create(x,y + 16, obj_specialBlockFragment);
+a3.spr = sprite_index;
+a3.indx = 0;
+a3.indy = 1;
+a3.hspeed = -1;
+a3.vspeed = 0;
+a4 = instance_create(x + 16,y + 16, obj_specialBlockFragment);
+a4.spr = sprite_index;
+a4.indx = 1;
+a4.indy = 1;
+a4.hspeed = 1;
+a4.vspeed = 0;
+instance_destroy();
+

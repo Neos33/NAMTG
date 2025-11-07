@@ -1,0 +1,26 @@
+with(obj_tre_bullet)instance_destroy()
+with(obj_tre_bullet2)
+{
+    mask_index=maskNothing;
+    image_alpha=0.4;
+    speed=random_range(8,18);
+    direction=random(360);
+    friction=0;
+    no=0;
+}
+rnd=random(360);
+rnd2=irandom(24);
+ni=9;
+nj=14;
+for(i=0;i<ni;i+=1)
+{
+    for(j=0;j<nj;j+=1)
+    {
+        a=instance_create(400,304,obj_tre_bullet);
+        a.speed=3+i/2;
+        a.direction=rnd+360/nj*j+i*2;
+        a.sprite_index=spr_cboom;
+        a.image_index=rnd2+i*5;
+    }
+}
+

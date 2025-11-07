@@ -163,7 +163,7 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var a=instance_create(x,y,objBoss1Bullet3)
+            <string>var a=instance_create(x,y,objBoss1Bullet3);
 a.direction=ddir1;
 a.speed=5;
 ddir1+=15;

@@ -1,0 +1,13 @@
+if(status == 0)
+{
+if(image_alpha <= 1)
+{
+    image_alpha += 0.02;
+    alarm[1] = 1;
+}
+else
+{
+    alarm[0] = 1;
+}
+}
+

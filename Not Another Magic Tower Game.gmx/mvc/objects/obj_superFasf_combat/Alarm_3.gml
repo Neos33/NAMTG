@@ -1,0 +1,37 @@
+if(i<4)
+{
+    i+=1;
+    aa=instance_create(x,y,obj_supfasfbullet);
+    aa.direction=point_direction(x,y,player.x,player.y);
+    aa.speed=8;
+    aa.twist=0;
+    aa.image_xscale=0.5;aa.image_yscale=0.5;
+    alarm[3]=50;
+    sound_fix(snd_ha);
+    image_blend=c_white;
+}
+else
+{
+    if(i==4)
+    {
+        i+=1;
+        aa=instance_create(x,y,obj_supfasfbullet);
+        aa.direction=point_direction(x,y,player.x,player.y);
+        aa.speed=12;
+        aa.twist=1;
+        alarm[3]=50;
+        sound_fix(snd_oowa);
+    }
+    else
+    {
+        if(i>4)
+        {
+            j=0;k=0;
+            image_speed=0;
+            image_index=0;
+            alarm[4]=100;
+        }
+    }
+}
+
+

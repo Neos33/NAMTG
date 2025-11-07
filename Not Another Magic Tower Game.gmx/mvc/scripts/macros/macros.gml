@@ -1,0 +1,10 @@
+#macro MaxBulletEnergy 2.25
+#macro WHITE 7
+#macro YELLOW 6
+#macro GREEN 5
+#macro CYAN 4
+#macro BLUE 3
+#macro PURPLE 2
+#macro RED 1
+#macro GRAY 0
+#macro HellBulletEnergy 3.5

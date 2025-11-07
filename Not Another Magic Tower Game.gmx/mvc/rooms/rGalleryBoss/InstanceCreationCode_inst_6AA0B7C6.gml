@@ -1,0 +1,10 @@
+spr = spr_Octopus_combat;
+combatObj = obj_faro_combat;
+gHp = 1;
+mHp = 1;
+bossDmg = 9999; // boss hit you
+hitDmg = 1; // you hit boss
+roomTo = rFaro1;
+txt = "Faro!!!"
+xscale = 0.8;
+yscale = 0.8;

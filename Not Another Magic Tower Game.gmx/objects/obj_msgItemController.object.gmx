@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>alarm[0] = 1;
+
+itemInd = 0;
+msg = "";
 </string>
           </argument>
         </arguments>

@@ -30,6 +30,8 @@ vspeed = -1;
 image_xscale = 0.8;
 image_yscale = 0.8;
 alpha = 1;
+
+ammount = 0;
 </string>
           </argument>
         </arguments>

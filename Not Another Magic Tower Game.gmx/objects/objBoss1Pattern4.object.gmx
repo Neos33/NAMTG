@@ -59,7 +59,7 @@ steps = 0;
     var dir=d+5-5*i;
     for(var j=1; j&lt;=20; j+=1)
     {
-        var a=instance_create(x,y,objBoss1Bullet5)
+        var a=instance_create(x,y,objBoss1Bullet5);
         a.speed=7-0.5*i
         a.direction=dir;
         dir+=360/20

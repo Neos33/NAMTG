@@ -1,0 +1,4 @@
+var p = instance_create(-16,100,obj_phase5BulletLead1);
+p.hspeed = 8;
+alarm[1] = 80;
+

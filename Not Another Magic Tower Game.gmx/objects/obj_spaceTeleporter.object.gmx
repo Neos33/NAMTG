@@ -27,13 +27,16 @@
             <kind>1</kind>
             <string>radius = 6;
 thickness = 5;
+
 startAngle = 90;
 totalAngle = 360;
 gapAngle = 5;
+
 color = c_green;
 
 stepAngle = 360/150;
 totalSteps = 150;
+steps = 0;
 
 size = 0.6;
 alpha = 0.5;
@@ -41,6 +44,7 @@ alpha = 0.5;
 image_speed = 1/8;
 
 ds_queue_enqueue(obj_spaceController.queue, id);
+
 </string>
           </argument>
         </arguments>
@@ -101,7 +105,7 @@ if(totalAngle &gt; 0)
     startAngle -= stepAngle;
     totalAngle -= stepAngle;
     steps += 1;
-    color = merge_color(c_green,c_red, steps/totalSteps);
+    color = merge_color(c_green, c_red, steps / totalSteps);
 }
 else
 {
@@ -135,13 +139,13 @@ repeat(6)
 {
     hitEffect();
 }
-dir1 = point_direction(player.x,player.y,x,y);
-dir2 = dir1 + 180;
-dis = point_distance(player.x,player.y,x,y);
-sx1 = player.x + lengthdir_x(8,dir1);
-sy1 = player.y + lengthdir_y(8,dir1);
-sx2 = x + lengthdir_x(8,dir2);
-sy2 = y + lengthdir_y(8,dir2);
+var dir1 = point_direction(player.x,player.y,x,y);
+var dir2 = dir1 + 180;
+var dis = point_distance(player.x,player.y,x,y);
+var sx1 = player.x + lengthdir_x(8,dir1);
+var sy1 = player.y + lengthdir_y(8,dir1);
+var sx2 = x + lengthdir_x(8,dir2);
+var sy2 = y + lengthdir_y(8,dir2);
 repeat(ceil(dis/16/2))
 {
     with(instance_create(sx1,sy1,obj_spaceTeleportEffect))

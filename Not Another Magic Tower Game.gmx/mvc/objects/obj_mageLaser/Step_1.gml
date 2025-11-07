@@ -1,0 +1,2 @@
+pAngle = image_angle;
+

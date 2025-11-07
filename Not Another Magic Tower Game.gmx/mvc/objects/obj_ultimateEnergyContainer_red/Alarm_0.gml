@@ -1,0 +1,2 @@
+global.gemPlaced[ind] = true;
+

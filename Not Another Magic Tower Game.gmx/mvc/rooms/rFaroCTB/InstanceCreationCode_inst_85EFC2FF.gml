@@ -1,0 +1,2 @@
+initialized = true;
+dontDraw = true;

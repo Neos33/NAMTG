@@ -29,6 +29,11 @@
 spr2 = spr_jkTouch_Green;
 timeLimit = 150;
 image_speed = 0;
+
+countdown = 0;;
+ind = 0;
+status = 0;
+inited = false;
 </string>
           </argument>
         </arguments>

@@ -1,0 +1,2 @@
+blockBullet = false;
+

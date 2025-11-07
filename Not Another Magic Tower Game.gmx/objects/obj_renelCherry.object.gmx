@@ -52,7 +52,7 @@ blendColor = 0;
     instance_destroy();
 }
 blendColor = 255;
-image_blend = make_color_rgb(blendColor,blendColor,blendColor);
+image_blend = make_color_rgb(blendColor, blendColor, blendColor);
 image_speed = 1/15;
 </string>
           </argument>
@@ -81,7 +81,7 @@ image_speed = 1/15;
     if(blendColor &gt; 0)
     {
         blendColor -= 5;
-        image_blend = make_color_rgb(blendColor,blendColor,blendColor);
+        image_blend = make_color_rgb(blendColor, blendColor, blendColor);
     }
     else
     {

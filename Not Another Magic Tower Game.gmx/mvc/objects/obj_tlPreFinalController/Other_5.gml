@@ -1,0 +1,21 @@
+if(part_type_exists(fire))
+{
+    part_type_destroy(fire);
+}
+if(part_type_exists(finalFire1))
+{
+    part_type_destroy(finalFire1);
+}
+if(part_type_exists(finalFire2))
+{
+    part_type_destroy(finalFire2);
+}
+if(part_emitter_exists(sys,emitter1))
+{
+    part_emitter_destroy(sys,emitter1);
+}
+if(part_system_exists(sys))
+{
+    part_system_destroy(sys);
+}
+

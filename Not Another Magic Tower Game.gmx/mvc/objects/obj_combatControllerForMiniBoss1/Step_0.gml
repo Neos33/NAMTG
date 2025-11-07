@@ -1,0 +1,2 @@
+global.combatTime += 1;
+

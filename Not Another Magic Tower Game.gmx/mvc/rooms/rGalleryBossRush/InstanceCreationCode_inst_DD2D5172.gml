@@ -1,0 +1,13 @@
+myMsg[0] = "Gay64 : Welcome to boss rush challenge. Here you can challenge fighting 3 or 4 bosses in a row.";
+myMsg[1] = "Gay64 : You can either challenge a boss combination that already exists in this room, or make a custom challenge. "
+myMsg[2] = "Gay64 : For existing boss combinations, each will provide a specific reward when you survive it.";
+myMsg[3] = "Gay64 : You may notice that there's a signboard for each combination. It will tell you the combination members, the total hits you can accept, and what the reward is.";
+myMsg[4] = "Gay64 : Note that the total hit you can accept is for boss attack only. You may still get an instant kill when colliding with a traditional spike.";
+myMsg[5] = "Gay64 : Get close to the signboard, and then click 'UP' to read it.";
+myMsg[6] = "Gay64 : Once you decided to challenge the set, Go to portals and press 'Up'.";
+myMsg[7] = "Gay64 : You may then need to adjust the boss fighting sequence as you like.";
+myMsg[8] = "Gay64 : When the fight order is ok, click 'Start'(hotkey 'SHIFT') to challenge. If you change your mind, then click 'Cancel'(hotkey 'Z') to move back to selection.";
+myMsg[9] = "Gay64 : Note that the challenge does not use your real hp, so any damage received in battle will not be a penalty to your real hp status.";
+myMsg[10] = "Gay64 : For custom combinations, just ask the gay below.";
+myMsg[11] = "Gay64 : Good Luck!";
+messageLength = 12;

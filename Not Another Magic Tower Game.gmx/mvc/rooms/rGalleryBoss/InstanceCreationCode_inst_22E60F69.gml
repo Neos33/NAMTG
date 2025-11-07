@@ -1,0 +1,10 @@
+spr = spr_lightCombat;
+combatObj = obj_light_combat;
+gHp = 444;
+mHp = 1;
+bossDmg = 100; // boss hit you
+hitDmg = 1; // you hit boss
+roomTo = battleMiniboss1;
+txt = "Yaranaika";
+xscale = 1;
+yscale = 1;

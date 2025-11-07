@@ -31,6 +31,9 @@ drawingBlack = 0;
 dialogBlack = 0;
 
 pauseImg = noone;
+
+itemInd = 0;
+viewshake = false;
 </string>
           </argument>
         </arguments>
@@ -83,7 +86,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>itemObj = instance_create(400,208, obj_msgItemInfo);
+            <string>var itemObj = instance_create(400,208, obj_msgItemInfo);
 itemObj.item = itemInd;
 </string>
           </argument>

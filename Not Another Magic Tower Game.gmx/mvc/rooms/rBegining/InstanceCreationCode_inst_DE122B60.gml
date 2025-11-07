@@ -1,0 +1,11 @@
+if(!global.story[16])
+{
+    instance_destroy();
+}
+else
+{
+    if(global.story[19])
+    {
+        instance_destroy();
+    }
+}

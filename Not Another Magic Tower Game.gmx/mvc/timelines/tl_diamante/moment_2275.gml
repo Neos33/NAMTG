@@ -1,0 +1,14 @@
+obj_diaCam.x = 32;
+for(var i=0;i<=13;i+=1)
+{
+    a=createDiaBullet(i*64,-8,6,270,spr_danmaku12,1,obj_diaDanmaku2);
+    a.image_xscale = 0.5;
+    a.image_yscale = 0.5;
+    a=createDiaBullet(i*64,-32,6,270,spr_danmaku12,1,obj_diaDanmaku2);
+    a.image_xscale = 0.25;
+    a.image_yscale = 0.25;
+    a.life = 10;
+}
+obj_diaAtk4.change = 1;
+obj_diaAtk4.alarm[4] = 1;
+

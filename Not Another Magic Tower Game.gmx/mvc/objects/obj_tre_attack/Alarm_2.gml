@@ -1,0 +1,33 @@
+if(irandom(1)=0)
+{
+    a=instance_create(-8,random_range(480,608),obj_tre_bullet3);
+    a.image_index=2+2*irandom(2);
+    a.speed=sp2;
+    a.direction=random_range(-45,45);
+    a.bounce=1;
+    a=instance_create(random_range(0,128),616,obj_tre_bullet3);
+    a.image_index=2+2*irandom(2);
+    a.speed=sp2;
+    a.direction=random_range(45,135);
+    a.bounce=1;
+}
+else
+{
+    a=instance_create(808,random_range(480,608),obj_tre_bullet3);
+    a.image_index=2+2*irandom(2);
+    a.speed=sp2;
+    a.direction=random_range(135,225);
+    a.bounce=1;
+    a=instance_create(random_range(672,800),616,obj_tre_bullet3);
+    a.image_index=2+2*irandom(2);
+    a.speed=sp2;
+    a.direction=random_range(45,135);
+    a.bounce=1;
+}
+a=instance_create(random_range(328,432),616,obj_tre_bullet3);
+a.image_index=2+2*irandom(2);
+a.speed=sp2;
+a.direction=random_range(45,135);
+a.bounce=1;
+alarm[2]=2;
+

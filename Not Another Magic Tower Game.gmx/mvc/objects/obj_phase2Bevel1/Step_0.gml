@@ -1,0 +1,5 @@
+if(x < __view_get( e__VW.XView, 0 ) - 32)
+{
+    instance_destroy();
+}
+

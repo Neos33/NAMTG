@@ -1,0 +1,5 @@
+action_inherited();
+image_speed=0.15;
+speed=0;
+isStable = true;
+

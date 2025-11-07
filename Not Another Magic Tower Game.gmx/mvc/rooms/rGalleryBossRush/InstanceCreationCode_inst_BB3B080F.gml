@@ -1,0 +1,12 @@
+myMsg[0] = "Gayri : Dang! Dang! Dang! Time for custom challenge!";
+myMsg[1] = "Gayri : What? You don't know the rules? Then let me explain the details.";
+myMsg[2] = "Gayri : First, as other challenges, press 'Up' when you are in front of the portal to start boss selection.";
+myMsg[3] = "Gayri : You can either click the arrows or use keyboard LEFT and RIGHT to check all available bosses. Click 'Select' or press space to select the current boss.";
+myMsg[4] = "Gayri : Of course, you can still drag the card at right pane to change the order of fight. And this time you can also click 'Unselect' or right click the card under challenge info to remove a boss you don't want.";
+myMsg[5] = "Gayri : You cannot start the challenge until you have selected at least 3 bosses. Still using 'SHIFT' for a quick start, and 'z' for cancel.";
+myMsg[6] = "Gayri : The rewards are points based. Each boss has a beating point. You may notice there are four numbers on each card. These numbers stand for the beating points you can get with beating him in a different order.";
+myMsg[7] = "Gayri : You can also change the acceptable hit times. The default values is 6 for 3 bosses and 8 for 4 bosses.";
+myMsg[8] = "Gayri : Increase the acceptable hit times by 1 may decrease the difficulty of the battle, but at the cost of losing 3 points. Decrease 1 will make the battle harder but you will gain additional 3 if you survive.";
+myMsg[9] = "Gayri : There will be rewards when you get 25/35/45 points in a single challenge. For what it will be, I will keep you in suspense. To be worthy anyway!";
+myMsg[10] = "Gayri : Good Luck!";
+messageLength = 11;

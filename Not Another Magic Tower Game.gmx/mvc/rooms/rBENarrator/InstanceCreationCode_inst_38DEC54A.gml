@@ -1,0 +1,1 @@
+txt = "Everything Seems To Be";

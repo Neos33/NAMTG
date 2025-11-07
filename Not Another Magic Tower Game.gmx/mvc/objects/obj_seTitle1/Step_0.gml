@@ -1,0 +1,21 @@
+x = __view_get( e__VW.XView, 0 ) + __view_get( e__VW.WView, 0 ) / 2;// - offsetWidth;
+y = __view_get( e__VW.YView, 0 ) + __view_get( e__VW.HView, 0 ) / 2;// - offsetHeight;
+
+if(offsetX < offsetWidth)
+{
+    offsetX += offsetHspd;
+}
+else
+{
+    alarm[2] = 0;
+}
+if(offsetY < offsetHeight)
+{
+    offsetY += offsetVspd;
+    
+}
+else
+{
+    alarm[2] = 0;
+}
+

@@ -49,15 +49,17 @@ flag = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(scale==1){
-image_alpha-=1/25
-image_xscale-=1/25
-image_yscale-=1/25
-flag=1
+            <string>if(scale == 1)
+{
+    image_alpha -= 1 / 25;
+    image_xscale -= 1 / 25;
+    image_yscale -= 1 / 25;
+    flag = 1;
 }
 
-if(image_xscale==0 &amp;&amp; flag==1){
-instance_destroy()
+if(image_xscale == 0 &amp;&amp; flag == 1)
+{
+    instance_destroy()
 }
 </string>
           </argument>

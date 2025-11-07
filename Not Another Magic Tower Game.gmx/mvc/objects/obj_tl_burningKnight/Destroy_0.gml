@@ -1,0 +1,31 @@
+ds_list_destroy(movingList);
+with(obj_tl_bkFireStormController)
+{
+    instance_destroy();
+}
+with(obj_tl_bkFireStormElement)
+{
+    instance_destroy();
+}
+with(obj_tl_bkExplosionController)
+{
+    instance_destroy();
+}
+with(obj_tl_bkExplosionElement)
+{
+    instance_destroy();
+}
+with(obj_tl_bkRotateController)
+{
+    instance_destroy();
+}
+with(obj_tl_bkRotateElement)
+{
+    instance_destroy();
+}
+with(obj_tl_bkRotateTail)
+{
+    instance_destroy();
+}
+event_inherited();
+

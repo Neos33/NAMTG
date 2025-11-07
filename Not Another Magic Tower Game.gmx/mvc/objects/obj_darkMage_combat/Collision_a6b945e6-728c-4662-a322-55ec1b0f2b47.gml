@@ -1,0 +1,39 @@
+if(instance_exists(obj_dmSummonPrototype))
+{
+    if(!instance_exists(obj_monsterHPBlock))
+    {
+        instance_create(x,y,obj_monsterHPBlock);
+        sound_fix(sndIce1);
+    }      
+    with(other)
+    {
+        instance_destroy();
+    }
+}
+else
+{
+    if(hp >= 80)
+    {
+        event_inherited();
+    }   
+    else
+    {
+        if(transformed)
+        {
+            event_inherited();
+        }
+        else
+        {
+            if(!instance_exists(obj_monsterHPBlock))
+            {
+                instance_create(x,y,obj_monsterHPBlock);
+                sound_fix(sndIce1);
+            }      
+            with(other)
+            {
+                instance_destroy();
+            }
+        }
+    }
+}
+

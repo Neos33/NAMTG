@@ -1,0 +1,437 @@
+if !player_is_alive() 
+{
+    timeline_running=false
+    obj_pica_ef.timeline_running=false
+    timeline_position=-1
+    obj_pica_ef.timeline_position=-1
+    //set_automatic_draw(true)}
+    
+    
+    if f { obj_pica_ef.f=true; f=false }
+    if f2 { obj_pica_ef.f2=true; f2=false }
+    if d { obj_pica_ef.d=true; d=false }
+    if d2 { obj_pica_ef.d2=true; d2=false }
+    
+    if(view_kill)
+    {
+        with(player)
+        {
+            if(outsideView(0))
+            {
+                audio_playsound(sndDeath)
+            }
+        }
+    }
+}
+
+var a;
+if at1 
+{
+    repeat (1) 
+    {
+        a=instance_create(400,300,obj_pica_cherry);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10)
+        a.direction=random(360)
+        a.speed=random_range(10,25)
+        a.dirspd=random_range(10,25)
+    }
+    
+}
+
+if at2 
+{
+    t2+=1
+    if t2=7 
+    {
+        a=instance_create(random_range(50,750),-15,obj_pica_big_cherry)
+        a.vspeed=14
+        a.NO=true
+        t2=0
+    }
+}
+
+if at3 
+{
+    t3+=1
+    if t3=7 
+    {
+        a=instance_create(800,random_range(50,550),obj_pica_big_cherry2)
+        a.hspeed=-14
+        a.NO=true
+        t3=0
+    }
+}
+
+if at4 
+{
+    var rng4=dir4+random_range(-80,80);
+    var xx4=cos(degtorad(rng4))*(__view_get( e__VW.WView, 0 )+200);
+    var yy4=-sin(degtorad(rng4))*(__view_get( e__VW.HView, 0 )+150);
+    a=instance_create(400+xx4,300+yy4,obj_pica_cherry2);
+    a.direction=dir4+180
+    a.speed=9
+    var sclrng=random_range(0.5,1);
+    a.image_xscale=sclrng
+    a.image_yscale=sclrng
+    a.sprite_index=spr_pica_cRainbow;
+    a.image_index=irandom(10)
+    a.NO=true
+    dir4+=0.9
+}
+
+if at5 
+{
+    repeat (6) 
+    {
+        a=instance_create(random_range(350,450),608,obj_pica_cherry);
+        a.direction=90
+        a.speed=random_range(10,25);
+        a.dirspd=choose(-1,1)*(a.speed*180/pi/random_range(160,200));
+        a.sprite_index=spr_pica_cRainbow
+        a.image_index=irandom(15)
+    }
+}
+
+if at6 
+{
+    t6+=1
+    if t6=10 
+    {
+        i=0
+        repeat (3) 
+        {
+            a=instance_create(400,300,obj_pica_cherry);
+            a.direction=i+dir6
+            a.speed=5
+            a.friction=-0.05
+            a.sprite_index=spr_pica_cGray
+            i+=120
+            
+        }
+        i=0
+        repeat (3) 
+        {
+            a=instance_create(400,300,obj_pica_cherry)
+            a.direction=-i-dir6
+            a.speed=5
+            a.friction=-0.05
+            a.sprite_index=spr_pica_cGray
+            i+=120
+        }
+        dir6+=8.547
+        t6=0
+    }
+}
+
+if at7
+{
+    t7+=1
+    if t7=15 
+    {
+        repeat (60) 
+        {
+            a=instance_create(400,0,obj_pica_cherry);
+            a.direction=random_range(-150,-30)
+            a.speed=random_range(4,16);
+            a.friction=0.1;
+            a.sprite_index=spr_pica_cRainbow
+            a.image_index=irandom(10)
+            
+        }
+        t7 = 0;
+        
+    }
+    
+}
+
+if at8 
+{
+    t8+=1
+    if(t8=15)
+    {
+        repeat (90) 
+        {
+            a=instance_create(400,608,obj_pica_cherry2);
+            a.direction=random_range(168,12)
+            a.speed=random_range(6,16);
+            a.sprite_index=spr_pica_cRainbow
+            a.image_index=irandom(10)
+                
+        }
+        t8=0;
+    }
+    
+}
+
+if at9 
+{
+    t9+=1
+    if t9=2 
+    {
+        a=instance_create(random(800),-9,obj_pica_cherry2);
+        a.direction=random_range(269,271)
+        a.speed=random_range(5,6)
+        a.sprite_index=spr_pica_cRainbow
+        a.image_index=irandom(10)
+        t9=0
+    }
+    
+}
+
+if at10 
+{
+    a=instance_create(400,300,obj_pica_cherry);
+    a.direction=random(360)
+    a.speed=spd
+    if at10b 
+    {
+        a.mask_index=maskNothing;
+        obj_pica_cherry.mask_index=maskNothing
+        
+    }
+    a.sprite_index=choose(spr_pica_cAzure,spr_pica_cBlue)
+    ispd10+=ispdspd10
+    obj_pica_cherry.image_xscale=1+ispd10
+    obj_pica_cherry.image_yscale=1+ispd10
+    spd+=0.2
+}
+
+var a, b;
+
+if at11 
+{
+    t11+=1
+    if t11>=15 
+    {
+        a=instance_create(400,300,obj_pica_cherry)
+        a.direction=random(360)
+        a.depth=50;
+        a.speed=spd11;
+        a.sprite_index=spr_pica_cBlack
+        a.coll=1;
+        t11=0;
+    }
+    var _spd11 = spd11;
+    with obj_pica_cherry { speed = _spd11 }
+    with obj_pica_cherry2 { speed = _spd11 }
+    spd11+=spdspd11;
+}
+
+if at12 
+{
+    asd12+=(bpf/4)*180
+    dir12=cos(degtorad(asd12))*90
+    d12=(270+dir12)+random_range(-30,30)
+    t12+=1;
+    a12+=1;
+    if t12=(2+2*at12b)
+    {
+        if(at12b)
+        {
+            a=instance_create(0,random(152)+152*a12 mod 4,obj_pica_cherry);
+            a.fos=1;
+            a.blur=1;
+            a.alarm[4]=random_range(10,40);
+            a.hspeed=random_range(2,4);
+            a.hsp=random_range(8,10);
+            a.vspeed=random_range(25,50)*choose(-1,1);
+            a.sprite_index=choose(spr_pica_cChartreuse,spr_pica_cAzure,spr_pica_cOrange);
+        }
+        a=instance_create(800,random(152)+152*a12 mod 4,obj_pica_cherry);
+        a.fos=1;
+        a.blur=1;
+        a.alarm[4]=random_range(10,40);
+        a.hspeed=-random_range(2,4);
+        a.hsp=random_range(8,10);
+        a.vspeed=random_range(25,50)*choose(-1,1);
+        a.sprite_index=choose(spr_pica_cChartreuse,spr_pica_cAzure,spr_pica_cOrange)
+        t12=0
+    }
+}
+
+if at13 
+{
+    t13+=1
+    if t13=5 
+    {
+        a=instance_create(-8,random(608),obj_pica_cherry3)
+        a.direction=random_range(-1,1);
+        a.dir=a.direction;
+        a.speed=random_range(5,10);
+        a.sprite_index=spr_pica_cRainbow
+        a.image_index=irandom(10);
+        a=instance_create(808,random(608),obj_pica_cherry3)
+        a.direction=random_range(179,181);
+        a.dir=a.direction;
+        a.speed=random_range(5,10);
+        a.sprite_index=spr_pica_cRainbow
+        a.image_index=irandom(10);
+        t13=0
+    }
+}
+
+if at14
+{
+    t14+=1
+    if t14=3 
+    {
+        a=instance_create(400+choose(-1,1)*random_range(100,400),616,obj_pica_cherry2)
+        a.direction=random_range(89,91)
+        a.speed=random_range(5,10)
+        a.sprite_index=spr_pica_cRainbow
+        a.image_index=irandom(10)
+        if at14b 
+        {
+            a.visible=0;a.mask_index=maskNothing
+        }
+        t14=0
+    }
+}
+
+if at15 
+{
+    t15+=1;agll+=pi/120;
+    if t15=5 
+    {
+        if at15b
+        {
+            repeat (4) 
+            {
+                var agl = random(180);
+                var rng = random(360);
+                var i = 0;
+                repeat (4) 
+                {
+                    a=instance_create(400+cos(degtorad(agl))*380,600-32-sin(degtorad(agl))*500,obj_pica_cherry);
+                    a.sprite_index=spr_pica_cViolet
+                    a.direction=i+random_range(10,80)+point_direction(400+cos(degtorad(agl))*380,600-32-sin(degtorad(agl))*500,player.x,player.y)
+                    a.speed=spd15
+                    i+=360/4
+                }
+            }
+        } 
+        else 
+        {
+            agl=180*abs(sin(agll))+random_range(-20,20);
+            rng=random(360)
+            i=0
+            repeat (4) 
+            {
+                a=instance_create(400+cos(degtorad(agl))*380,600-32-sin(degtorad(agl))*500,obj_pica_cherry);
+                a.sprite_index=spr_pica_cViolet
+                if !at15no a.direction=i+rng else a.direction=i+random_range(10,80)+point_direction(400+cos(degtorad(agl))*380,600-32-sin(degtorad(agl))*500,player.x,player.y)
+                a.speed=spd15
+                i+=360/4
+            }
+        }
+        t15=0
+    }
+    spd15+=spdspd15;
+}
+
+if at16 
+{
+    repeat(6) 
+    {
+        var xx=choose(0,800)
+        var yy=choose(0,600)
+        a=instance_create(xx,yy,obj_pica_cherry);
+        var dir=point_direction(xx,yy,player.x,player.y);
+        a.direction=dir+choose(random_range(5,80),-random_range(5,80));
+        a.speed=random_range(15,25)
+        a.sprite_index=spr_pica_cRainbow
+        a.image_index=irandom(10)
+        a.mask_index=maskNothing
+    }
+}
+
+if at17 
+{
+    t17+=1
+    if t17=15 
+    {
+        a=instance_create(player.x,-10,obj_pica_big_cherry4);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10);
+        a.alarm[3]=15;
+        a.vspeed=8
+        a=instance_create(-10,player.y,obj_pica_big_cherry4);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10);
+        a.alarm[4]=15;
+        a.hspeed=8
+        a=instance_create(810,player.y,obj_pica_big_cherry4);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10);
+        a.alarm[4]=15;
+        a.hspeed=-8
+    }
+    if t17=30 
+    {
+        b=instance_create(player.x,610,obj_pica_big_cherry4);
+        b.sprite_index=spr_pica_cRainbow;
+        b.alarm[3]=15;
+        b.image_index=irandom(10);
+        b.vspeed=-8
+        a=instance_create(-10,player.y,obj_pica_big_cherry4);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10);
+        a.alarm[4]=15;
+        a.hspeed=8
+        a=instance_create(810,player.y,obj_pica_big_cherry4);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10);
+        a.alarm[4]=15;
+        a.hspeed=-8
+        t17=0
+    }
+}
+
+if at18 
+{
+    t18+=1
+    if t18=4 
+    {
+        a=instance_create(player.x,-10,obj_pica_big_cherry4);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10);
+        a.alarm[3]=15;
+        a.vspeed=8
+        a=instance_create(-10,player.y,obj_pica_big_cherry4);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10);
+        a.alarm[4]=15;
+        a.hspeed=8
+        a=instance_create(810,player.y,obj_pica_big_cherry4);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10);
+        a.alarm[4]=15;
+        a.hspeed=-8
+    }
+    if t18=8 
+    {
+        b=instance_create(player.x,610,obj_pica_big_cherry4);
+        b.sprite_index=spr_pica_cRainbow;
+        b.alarm[3]=15;
+        b.image_index=irandom(10);
+        b.vspeed=-8
+        a=instance_create(-10,player.y,obj_pica_big_cherry4);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10);
+        a.alarm[4]=15;
+        a.hspeed=8
+        a=instance_create(810,player.y,obj_pica_big_cherry4);
+        a.sprite_index=spr_pica_cRainbow;
+        a.image_index=irandom(10);
+        a.alarm[4]=15;
+        a.hspeed=-8
+        t18=0
+    }
+}
+
+if(!player_is_alive())
+{
+    timeline_running = false;
+}
+

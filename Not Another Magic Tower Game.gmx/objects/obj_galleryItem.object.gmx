@@ -86,7 +86,7 @@ image_speed = 0.5;
    sprWidth = sprite_get_width(spr);
    sprHeight = sprite_get_height(spr);
    
-   battleMonster = instance_create(player.x - sprWidth/2,player.y - sprHeight/2,obj);
+   var battleMonster = instance_create(player.x - sprWidth/2,player.y - sprHeight/2,obj);
    battleMonster.ind = 350;
    battleMonster.visible = false;
    global.combatIndex = 350;

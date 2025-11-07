@@ -1,0 +1,3 @@
+hspd = hspeed;
+vspd = vspeed;
+

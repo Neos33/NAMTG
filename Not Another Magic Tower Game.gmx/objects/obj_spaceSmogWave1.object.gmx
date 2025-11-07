@@ -29,6 +29,11 @@
 image_yscale = 19;
 oy = y;
 event_inherited();
+
+
+waveScale = 0;
+angle = 0;
+spd = 0;
 </string>
           </argument>
         </arguments>

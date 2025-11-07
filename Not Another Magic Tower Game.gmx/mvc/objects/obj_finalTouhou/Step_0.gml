@@ -1,0 +1,82 @@
+if instance_exists(obj_playerTouhou) or player_is_alive() or instance_exists(obj_finalPlane){
+    timer += 1;
+}
+
+if timer == 246{
+    with(obj_finalTreboleB2){
+        laser = true;
+    }
+}
+if timer == 500{
+    with(obj_finalTreboleE1){alarm[0]=0;}
+    with(obj_finalTreboleE1_){alarm[0]=0;}
+    with(obj_finalTouhouCover){alarm[0]=1;alarm[1]=1;}
+    with(obj_finalDarkMageImg)
+    {
+        alarm[0] = 1;
+    }
+    ds_list_shuffle(global.finalElist);
+}
+for(var i=0;i<=5;i+=1){
+    if(timer == 500+10*i){
+        with(ds_list_find_value(global.finalElist,i)){
+            instance_destroy();
+        }
+        instance_create(0,0,obj_finalShake);
+    }
+}
+if timer == 560{
+    instance_create(400,304,obj_finalCorazone);
+}
+if timer == 1000{
+    with(obj_finalCorazone){instance_destroy();}
+    instance_create(400,140,obj_finalDiamante0);
+}
+if timer == 1500{
+    instance_create(400,304,obj_finalForeWhite);
+}
+if timer == 1560{
+    __background_set( e__BG.Index, 0, -1 );
+    with(obj_finalTouhouCover){
+        instance_destroy();
+    }
+    with(obj_finalForeWhite){
+        alarm[1] = 1;
+    }
+    with(obj_playerTouhou){
+        instance_destroy();
+    }
+    with(obj_playerCheck){
+        instance_destroy();
+    }
+    with(obj_finalDiamanteE0){
+        instance_destroy();
+    }
+    with(obj_finalDiamanteF0){
+        instance_destroy();
+    }
+    with(obj_finalTreboleB2){
+        instance_destroy();
+    }
+    with(obj_finalDiamanteB0){
+        instance_destroy();
+    }
+    with(obj_finalDiamante0){
+        instance_destroy();
+    }
+    instance_create(80,80,obj_finalFakePlayer);
+    instance_create(80,304,obj_finalPlane);
+    instance_create(400,304,obj_finalDiamante);
+}
+if timer == 2200{
+    with(obj_finalDiamanteE1){alarm[6]=1;}
+}
+if timer == 2490{
+    instance_create(0,0,obj_finalZoomer);
+}
+
+if(timer == 2568)
+{
+    room_goto(rDemonLeadFinalPhase);   
+}
+

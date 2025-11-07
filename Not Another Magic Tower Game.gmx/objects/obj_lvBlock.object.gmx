@@ -25,16 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.lvBlocks[ind])
-{
-    instance_destroy();
-}
+            <string>
+ind = 0;
+level = 0;
+alarm[0] = 1;
+
 image_index = level - 3;
 if(image_index &gt; 6)
 {
     image_index = 6;
 }
 image_speed = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+if(global.lvBlocks[ind])
+{
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -88,7 +116,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index,image_index,x,y);
+            <string>draw_sprite(sprite_index, image_index, x, y);
 draw_set_font(font12);
 draw_set_color(c_black);
 draw_set_halign(fa_center);

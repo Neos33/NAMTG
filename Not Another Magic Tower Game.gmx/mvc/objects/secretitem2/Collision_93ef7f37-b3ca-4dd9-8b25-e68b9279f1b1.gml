@@ -1,0 +1,6 @@
+//���̃A�C�e����Ƃ�Ǝ�������Ƃ��L�^����܂�
+global.item[2]=1;
+sound_play(snditem);
+instance_destroy();
+
+

@@ -83,14 +83,14 @@ timer = 0;
             <kind>1</kind>
             <string>for(var i = 0; i &lt; 2; i += 1)
 {
-    var a=instance_create(x,y,objBoss1Bullet3)
+    var a=instance_create(x,y,objBoss1Bullet3);
     a.direction=dir+180*i;
     a.speed=7;
     dir+=15;
 }
 for(var i = 0; i &lt; 2; i += 1)
 {
-    var a=instance_create(x,y,objBoss1Bullet3)
+    var a=instance_create(x,y,objBoss1Bullet3);
     a.direction=dir2+180*i;
     a.speed=8;
     a.sprite_index=sprBulletGreen;
@@ -98,7 +98,7 @@ for(var i = 0; i &lt; 2; i += 1)
 }
 for(var i = 0; i &lt; 2; i += 1)
 {
-    var a=instance_create(x,y,objBoss1Bullet3)
+    var a=instance_create(x,y,objBoss1Bullet3);
     a.direction=dir4+180*i;
     a.sprite_index=sprBulletRed;
     a.speed=6;
@@ -137,14 +137,14 @@ a.speed=5;
 dir+=15;*/
 for(var i = 0; i &lt; 2; i += 1)
 {
-    var a=instance_create(x,y,objBoss1Bullet3)
+    var a=instance_create(x,y,objBoss1Bullet3);
     a.direction=dir2+180*i;
     a.speed=5;
 }
 dir2+=25;
 for(var i = 0; i &lt; 2; i += 1)
 {
-    var a=instance_create(x,y,objBoss1Bullet3)
+    var a=instance_create(x,y,objBoss1Bullet3);
     a.direction=dir3+180*i;
     a.speed=5;
 }

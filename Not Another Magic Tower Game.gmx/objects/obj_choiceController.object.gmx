@@ -32,7 +32,11 @@ pauseImg = sprite_create_from_surface(application_surface, view_xview[0], view_y
 instance_deactivate_all(true);
 instance_activate_object(world);
 
-
+ind = 0;
+choiceCount = 0;
+choiceMade = false;
+choice = array_create(50);
+question = "";
 </string>
           </argument>
         </arguments>
@@ -147,7 +151,7 @@ if(keyboard_check_pressed(global.downbutton))
     draw_sprite(pauseImg, 0, view_xview[0], view_yview[0]);
     
     //dHeight = RangeClamp(view_yview[0] + view_hview[0] - sprite_get_height(spr_dialogbox), view_yview[0] + window_get_region_height() - sprite_get_height(spr_dialogbox),1000000);
-    dHeight = RangeClamp(view_yview[0] + view_hview[0] - sprite_get_height(spr_dialogbox), view_yview[0] - sprite_get_height(spr_dialogbox),1000000);
+    var dHeight = RangeClamp(view_yview[0] + view_hview[0] - sprite_get_height(spr_dialogbox), view_yview[0] - sprite_get_height(spr_dialogbox),1000000);
     
     draw_set_color(c_silver); 
     draw_set_alpha(1);
@@ -157,12 +161,12 @@ if(keyboard_check_pressed(global.downbutton))
     draw_sprite(spr_dialogbox, floor(round(global.msec[global.savenum]) / 50), view_xview[0], dHeight);
     draw_set_font(fontBasicInfo);
     
-    xx = 32;
-    yy = dHeight + 32;
+    var xx = 32;
+    var yy = dHeight + 32;
     draw_text(xx, yy, question);
     yy += 32;
     draw_arrow(xx, yy + ind * 32 , xx + 16, yy + ind * 32, 20);
-    for(i=0;i&lt;choiceCount;i+=1)
+    for(var i = 0; i &lt; choiceCount; i += 1)
     {
         draw_text(32 + 32, yy, choice[i]);
         yy += 32;

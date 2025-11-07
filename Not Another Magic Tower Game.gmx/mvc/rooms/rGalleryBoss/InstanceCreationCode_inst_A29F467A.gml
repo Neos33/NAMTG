@@ -1,0 +1,10 @@
+spr = spr_3b6_combat;
+combatObj = obj_3b6_combat;
+gHp = 333;
+mHp = 1;
+bossDmg = 33; // boss hit you
+hitDmg = 1; // you hit boss
+roomTo = battleroomBE;
+txt = "3B6";
+xscale = 1;
+yscale = 1;

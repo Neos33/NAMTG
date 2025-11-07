@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>oy = y;
 image_speed = 1/6;
+
+angle = 0;
 </string>
           </argument>
         </arguments>
@@ -149,8 +151,11 @@ event_user(0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>player.x = x;
-player.y = y;
+            <string>if player_is_alive()
+{
+    player.x = x;
+    player.y = y;
+}
 instance_destroy();
 </string>
           </argument>
