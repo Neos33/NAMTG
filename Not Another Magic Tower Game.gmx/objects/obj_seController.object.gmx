@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>SS_StopAll();
-background_blend = make_color_rgb(168,168,168);
+background_blend = make_color_rgb(168, 168, 168);
 audio_playmusic_volume(scrAudioGetID("BGM_SE"));
 global.currentBGM = scrAudioGetID("global.BGM_SE");
 black = instance_create(0,0,obj_seBlack);
@@ -51,6 +51,14 @@ with(instance_create(view_xview[0] + view_wview[0] - sprite_width / 2 - 24,view_
     image_xscale = 1.5;
     image_yscale = 1.5;
 }
+
+with obj_fatPrincess
+{
+    instance_destroy();
+}
+
+with bow 
+    x = -100;
 
 
 vvspd = 0;

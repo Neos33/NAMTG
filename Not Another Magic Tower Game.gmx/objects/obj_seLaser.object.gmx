@@ -59,12 +59,9 @@ target = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(target))
+            <string>with(target)
 {
-    with(target)
-    {
-        event_user(0);
-    }
+    event_user(0);
 }
 </string>
           </argument>
@@ -91,11 +88,21 @@ target = noone;
             <string>angle += 10;
 if(instance_exists(target) &amp;&amp; !destroy)
 {
-    if(y &gt; other.y)
+    if(y &gt; target.y)
     {
         destroy = true;
         alarm[0] = 1;
     }
+}
+
+if(y &gt; 640)
+{
+    speed = 0;
+    alpha2 -= 0.05;
+}
+if(alpha2 &lt;= 0)
+{
+    instance_destroy();
 }
 </string>
           </argument>
