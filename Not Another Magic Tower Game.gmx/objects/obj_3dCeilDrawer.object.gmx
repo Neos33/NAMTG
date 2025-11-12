@@ -25,18 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>myDepth = obj_3dController.rDepth;
-gap = 0;
-for(j = obj_3dController.rSprWidth / 2; j &lt; obj_3dController.rHeight; j += obj_3dController.rSprWidth)
+            <string>myDepth = 0;
+
+if instance_exists(obj_3dController)
 {
-    gap += 6;
-    shift = floor(gap / obj_3dController.rSprWidth) * obj_3dController.rSprWidth;
-    for(i = obj_3dController.rSprWidth / 2 + shift; i &lt; obj_3dController.rWidth - shift; i += obj_3dController.rSprWidth)
+    myDepth = obj_3dController.rDepth;
+    var gap = 0;
+    for(var j = obj_3dController.rSprWidth / 2; j &lt; obj_3dController.rHeight; j += obj_3dController.rSprWidth)
     {
-        ce = instance_create(i,j, obj_3dCircleElement);
-        ce.dep = myDepth;
+        gap += 6;
+        var shift = floor(gap / obj_3dController.rSprWidth) * obj_3dController.rSprWidth;
+        for(var i = obj_3dController.rSprWidth / 2 + shift; i &lt; obj_3dController.rWidth - shift; i += obj_3dController.rSprWidth)
+        {
+            var ce = instance_create(i,j, obj_3dCircleElement);
+            ce.dep = myDepth;
+        }
     }
 }
+
+startDepth = 0;
 </string>
           </argument>
         </arguments>

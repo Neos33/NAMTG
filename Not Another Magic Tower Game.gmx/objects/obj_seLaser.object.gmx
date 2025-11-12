@@ -32,6 +32,11 @@ oy = y;
 speed = 30;
 color = c_red;
 sound_fix(sndLaser1);
+
+
+angle = 0;
+destroy = false;
+target = noone;
 </string>
           </argument>
         </arguments>
@@ -54,7 +59,7 @@ sound_fix(sndLaser1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(target)
+            <string>if(instance_exists(target))
 {
     with(target)
     {
@@ -84,7 +89,7 @@ sound_fix(sndLaser1);
           <argument>
             <kind>1</kind>
             <string>angle += 10;
-if(target &amp;&amp; !destroy)
+if(instance_exists(target) &amp;&amp; !destroy)
 {
     if(y &gt; other.y)
     {

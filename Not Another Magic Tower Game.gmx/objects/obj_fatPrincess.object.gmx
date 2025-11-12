@@ -72,7 +72,8 @@
           <argument>
             <kind>1</kind>
             <string>message_add("Kid cannot perform a double jump anymore due to the weight of the princess.");
-player.frozen = false;
+with player
+    frozen = false;
 </string>
           </argument>
         </arguments>
@@ -143,17 +144,21 @@ player.frozen = false;
             <kind>1</kind>
             <string>if(room != rFinalCorridor)
 {
-    if(!player_is_alive()) instance_destroy();
-    x = player.x;
+    if instance_exists(player)
+        x = player.x;
     depth = -20;
 }
 else
 {
-    x = obj_draw_player.tx;
+    if instance_exists(obj_draw_player)
+        x = obj_draw_player.tx;
     depth = -1000;
 }
-y = player.y;
-image_xscale = -player.image_xscale;
+if instance_exists(player)
+{
+    y = player.y;
+    image_xscale = -player.image_xscale;
+}
 </string>
           </argument>
         </arguments>

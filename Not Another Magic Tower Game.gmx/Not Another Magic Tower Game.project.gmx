@@ -3489,6 +3489,7 @@
     <script>scripts\modwrap.gml</script>
     <script>scripts\in_range.gml</script>
   </scripts>
+  <shaders name="shaders"/>
   <fonts name="fonts">
     <font>fonts\font24</font>
     <font>fonts\font24bold</font>
@@ -6108,32 +6109,36 @@
       <room>rooms\rSecret2</room>
       <room>rooms\r5F</room>
       <room>rooms\rGayKid</room>
-      <room>rooms\rGallery</room>
-      <room>rooms\rGallerySlime</room>
-      <room>rooms\rGalleryBatsFasf</room>
-      <room>rooms\rGalleryMagicianMages</room>
-      <room>rooms\rGalleryOrcSkeleton</room>
-      <room>rooms\rGalleryGuardians</room>
-      <room>rooms\rGalleryWarriors</room>
-      <room>rooms\rGalleryBoss</room>
-      <room>rooms\rGalleryBossRush</room>
+      <rooms name="Gallery">
+        <room>rooms\rGallery</room>
+        <room>rooms\rGallerySlime</room>
+        <room>rooms\rGalleryBatsFasf</room>
+        <room>rooms\rGalleryMagicianMages</room>
+        <room>rooms\rGalleryOrcSkeleton</room>
+        <room>rooms\rGalleryGuardians</room>
+        <room>rooms\rGalleryWarriors</room>
+        <room>rooms\rGalleryBoss</room>
+        <room>rooms\rGalleryBossRush</room>
+      </rooms>
       <room>rooms\r6F</room>
       <room>rooms\r7F</room>
       <room>rooms\rRenalTreasure</room>
       <room>rooms\r8F</room>
       <room>rooms\rFairySecret</room>
-      <room>rooms\rSpacePortal</room>
-      <room>rooms\rSpace01</room>
-      <room>rooms\rSpace02</room>
-      <room>rooms\rSpace03</room>
-      <room>rooms\rSpace04</room>
-      <room>rooms\rSpace05</room>
-      <room>rooms\rSpace06</room>
-      <room>rooms\rSpace07</room>
-      <room>rooms\rSpace08</room>
-      <room>rooms\rSpace09</room>
-      <room>rooms\rSpace10</room>
-      <room>rooms\rFapple</room>
+      <rooms name="Space">
+        <room>rooms\rSpacePortal</room>
+        <room>rooms\rSpace01</room>
+        <room>rooms\rSpace02</room>
+        <room>rooms\rSpace03</room>
+        <room>rooms\rSpace04</room>
+        <room>rooms\rSpace05</room>
+        <room>rooms\rSpace06</room>
+        <room>rooms\rSpace07</room>
+        <room>rooms\rSpace08</room>
+        <room>rooms\rSpace09</room>
+        <room>rooms\rSpace10</room>
+        <room>rooms\rFapple</room>
+      </rooms>
       <room>rooms\r9F</room>
       <room>rooms\r10F</room>
       <room>rooms\r10F_TE</room>

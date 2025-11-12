@@ -41,20 +41,23 @@
 //}
 
 
-
-instance_create(obj_3dController.rWidth / 2 - 96, 458 - 150, obj_3dCeilLightElement);
-instance_create(obj_3dController.rWidth / 2 + 96, 458 - 150, obj_3dCeilLightElement);
-instance_create(obj_3dController.rWidth / 2, 458, obj_3dCeilLightElement);
-instance_create(obj_3dController.rWidth / 2, 458 - 2 * 150, obj_3dCeilLightElement);
-instance_create(obj_3dController.rWidth / 2 - 2 * 96, 458 - 2 * 150, obj_3dCeilLightElement);
-instance_create(obj_3dController.rWidth / 2 + 2 * 96, 458 - 2 * 150, obj_3dCeilLightElement);
-
-instance_create(obj_3dController.rWidth / 2 - 96, 458 - 150, obj_3dFloorLightElement);
-instance_create(obj_3dController.rWidth / 2 + 96, 458 - 150, obj_3dFloorLightElement);
-instance_create(obj_3dController.rWidth / 2, 458, obj_3dFloorLightElement);
-instance_create(obj_3dController.rWidth / 2, 458 - 2 * 150, obj_3dFloorLightElement);
-instance_create(obj_3dController.rWidth / 2 - 2 * 96, 458 - 2 * 150, obj_3dFloorLightElement);
-instance_create(obj_3dController.rWidth / 2 + 2 * 96, 458 - 2 * 150, obj_3dFloorLightElement);
+if instance_exists(obj_3dController)
+{
+    var _spawnX = obj_3dController.rWidth / 2;
+    instance_create(_spawnX - 96, 458 - 150, obj_3dCeilLightElement);
+    instance_create(_spawnX + 96, 458 - 150, obj_3dCeilLightElement);
+    instance_create(_spawnX, 458, obj_3dCeilLightElement);
+    instance_create(_spawnX, 458 - 2 * 150, obj_3dCeilLightElement);
+    instance_create(_spawnX - 2 * 96, 458 - 2 * 150, obj_3dCeilLightElement);
+    instance_create(_spawnX + 2 * 96, 458 - 2 * 150, obj_3dCeilLightElement);
+    
+    instance_create(_spawnX - 96, 458 - 150, obj_3dFloorLightElement);
+    instance_create(_spawnX + 96, 458 - 150, obj_3dFloorLightElement);
+    instance_create(_spawnX, 458, obj_3dFloorLightElement);
+    instance_create(_spawnX, 458 - 2 * 150, obj_3dFloorLightElement);
+    instance_create(_spawnX - 2 * 96, 458 - 2 * 150, obj_3dFloorLightElement);
+    instance_create(_spawnX + 2 * 96, 458 - 2 * 150, obj_3dFloorLightElement);
+}
 
 
 </string>

@@ -136,6 +136,8 @@ detailGap = 40;
 
 
 sectionCount = 12;
+
+creditEnd = false;
 </string>
           </argument>
         </arguments>
@@ -221,7 +223,7 @@ sectionCount = 12;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;sectionCount;i+=1)
+            <string>for(var i = 0; i &lt; sectionCount; i+= 1)
 {
     ds_list_destroy(list[i]);
 }
@@ -247,12 +249,12 @@ sectionCount = 12;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>baseY = startY;
+            <string>var baseY = startY;
 draw_set_color(c_silver);
 draw_set_alpha(1);
 draw_set_halign(fa_center);
 draw_set_valign(fa_top);
-for(var i=0;i&lt;sectionCount;i+=1)
+for(var i = 0; i &lt; sectionCount; i += 1)
 {
     if(baseY &gt; 608)
     {
@@ -263,8 +265,8 @@ for(var i=0;i&lt;sectionCount;i+=1)
     baseY += titleGap;
     
     draw_set_font(fontGECredit);
-    listSize = ds_list_size(list[i]);
-    for(j=0;j&lt;listSize;j+=1)
+    var listSize = ds_list_size(list[i]);
+    for(var j = 0; j &lt; listSize; j += 1)
     {
          draw_text(400, baseY, ds_list_find_value(list[i],j));
          baseY += detailGap;

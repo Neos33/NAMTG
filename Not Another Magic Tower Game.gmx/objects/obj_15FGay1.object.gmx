@@ -52,24 +52,24 @@ b = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>           with(obj_15FGay1)
-          {
-            if(ind == 0)
-            {
-                b = instance_create(x, y, obj_ultimateEnergy_red);
-                b.msg = "You've obtained the red energy crystal piece.";
-            }
-            else if(ind == 1)
-            {
-                b = instance_create(x, y, obj_ultimateEnergy_blue);
-                b.msg = "You've obtained the blue energy crystal piece.";
-            }
-            b.targetX = x;
-            b.targetY = y - 40;
-            alarm[5] = 1;           
-          }
-           global.gayEndingStep = 0;
-          onMesseging = true;
+            <string>with(obj_15FGay1)
+{
+    if(ind == 0)
+    {
+        b = instance_create(x, y, obj_ultimateEnergy_red);
+        b.msg = "You've obtained the red energy crystal piece.";
+    }
+    else if(ind == 1)
+    {
+        b = instance_create(x, y, obj_ultimateEnergy_blue);
+        b.msg = "You've obtained the blue energy crystal piece.";
+    }
+    b.targetX = x;
+    b.targetY = y - 40;
+    alarm[5] = 1;           
+}
+global.gayEndingStep = 0;
+onMesseging = true;
 </string>
           </argument>
         </arguments>
@@ -92,27 +92,30 @@ b = noone;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(b.image_alpha &gt; 0)
+            <string>if instance_exists(b)
 {
-    b.image_alpha -= 0.02;
-    alarm[7] = 1;
-}
-else
-{
-    global.clearItem[ind + 6] = true;
-    message_add(b.msg);
-    global.gayEndingStep = 0;
-    player.frozen = false;
-    with(obj_15FGay1)
+    if(b.image_alpha &gt; 0)
     {
-        myMsg[0] = string(name) + ": You are really Cool.";    
-        with(b)
-        {
-            instance_destroy();
-        }
+        b.image_alpha -= 0.02;
+        alarm[7] = 1;
     }
-    messageLength = 1;
-    alarm[0] = 20;
+    else
+    {
+        global.clearItem[ind + 6] = true;
+        message_add(b.msg);
+        global.gayEndingStep = 0;
+        player.frozen = false;
+        with(obj_15FGay1)
+        {
+            myMsg[0] = string(name) + ": You are really Cool.";    
+            with(b)
+            {
+                instance_destroy();
+            }
+        }
+        messageLength = 1;
+        alarm[0] = 20;
+    }
 }
 </string>
           </argument>
@@ -174,21 +177,24 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(point_distance(b.x, b.y, b.targetX, b.targetY) &lt; 1)
+            <string>if instance_exists(b)
 {
-    b.hspeed = 0;
-    b.vspeed = 0;
-    b.targetX = player.x - 17;
-    b.targetY = player.y - 23;
-    alarm[6]= 50;
-}
-else
-{
-    with(b)
+    if(point_distance(b.x, b.y, b.targetX, b.targetY) &lt; 1)
     {
-        move_towards_point(targetX, targetY, 1);
+        b.hspeed = 0;
+        b.vspeed = 0;
+        b.targetX = player.x - 17;
+        b.targetY = player.y - 23;
+        alarm[6]= 50;
     }
-    alarm[5] = 1;
+    else
+    {
+        with(b)
+        {
+            move_towards_point(targetX, targetY, 1);
+        }
+        alarm[5] = 1;
+    }
 }
 </string>
           </argument>
@@ -263,8 +269,8 @@ room_goto(rGayEnding);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(((player.x + 6 &gt;= bbox_left) &amp;&amp; player.x &lt; x &amp;&amp; keyboard_check_direct(global.rightbutton)) || 
-((player.x - 6 &lt;= bbox_right) &amp;&amp; (player.x &gt; x + 16) &amp;&amp; keyboard_check_direct(global.leftbutton)))
+            <string>if(((player.x + 9 &gt;= bbox_left) &amp;&amp; player.x &lt; x &amp;&amp; keyboard_check_direct(global.rightbutton)) || 
+((player.x - 9 &lt;= bbox_right) &amp;&amp; (player.x &gt; x + 16) &amp;&amp; keyboard_check_direct(global.leftbutton)))
 {
     if(!onMesseging &amp;&amp; player.y &lt; bbox_bottom &amp;&amp; player.y &gt; bbox_top)
     {
@@ -356,7 +362,7 @@ message_add(string(name) + ": No words needed. Welcome to the Grand Gay Family."
             <string>with(obj_15FGay1)
 {
     myMsg[0] = string(name) + ": You are really Cool";
-    for(i = 0; i &lt; global.gayEndingStep; i += 1;)
+    for(var i = 0; i &lt; global.gayEndingStep; i += 1;)
     {
         myMsg[0] += "!";
     }

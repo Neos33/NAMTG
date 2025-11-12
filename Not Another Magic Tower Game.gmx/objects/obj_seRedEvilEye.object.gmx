@@ -57,7 +57,8 @@ alarm[0] = 1;
     alarm[0] = 50;
     alarm[1] = 200;
 }
-obj_towerDrawer.alarm[1] = 150;
+with obj_towerDrawer
+    alarm[1] = 150;
 </string>
           </argument>
         </arguments>
@@ -145,7 +146,8 @@ else
           <argument>
             <kind>1</kind>
             <string>image_angle += 29;
-vspeed = obj_towerDrawer.vspd;
+if instance_exists(obj_towerDrawer)
+    vspeed = obj_towerDrawer.vspd;
 </string>
           </argument>
         </arguments>

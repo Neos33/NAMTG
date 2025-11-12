@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>alpha = 0;
+
+transfer = false;
 </string>
           </argument>
         </arguments>
@@ -50,7 +52,7 @@
             <kind>1</kind>
             <string>if(!global.achievements[97])
 {
-    ch = instance_create(0,608,obj_achievements);
+    var ch = instance_create(0,608,obj_achievements);
     ch.index = 97;
     global.achievements[97] = true;
 }

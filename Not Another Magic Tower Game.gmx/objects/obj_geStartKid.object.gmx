@@ -31,6 +31,8 @@ image_angle = 10;
 image_alpha = 0;
 alarm[11] = 10;
 alarm[0] = 1;
+
+alpha = 0;
 </string>
           </argument>
         </arguments>
@@ -159,8 +161,8 @@ x += 1.5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>px = x + 50 * cos(degtorad(image_angle));
-py = y - 50 * sin(degtorad(image_angle));
+            <string>var px = x + 50 * cos(degtorad(image_angle));
+var py = y - 50 * sin(degtorad(image_angle));
 draw_sprite_ext(sprite_index,0,px,py,image_xscale,image_yscale,image_angle,c_gray,0.5 * image_alpha);
 draw_current();
 </string>

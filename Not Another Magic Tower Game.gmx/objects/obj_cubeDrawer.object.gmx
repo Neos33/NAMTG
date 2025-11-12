@@ -30,6 +30,8 @@ maxNum = 5;
 alarm[0] = 1;
 alarm[1] = 1;
 alarm[2] = 1;
+
+rngAngle = 0;
 </string>
           </argument>
         </arguments>
@@ -53,11 +55,11 @@ alarm[2] = 1;
           <argument>
             <kind>1</kind>
             <string>
-r1 = random_range(64,128);
-rngAngle1 = random_range(0,359);
-dx = 400 + r1 * cos(degtorad(rngAngle1));
-dy = 304 - r1 * sin(degtorad(rngAngle1));
-m = instance_create(dx,dy,obj_geSnowStar);
+var r1 = random_range(64,128);
+var rngAngle1 = random_range(0,359);
+var dx = 400 + r1 * cos(degtorad(rngAngle1));
+var dy = 304 - r1 * sin(degtorad(rngAngle1));
+var m = instance_create(dx,dy,obj_geSnowStar);
 m.direction = rngAngle1;
 alarm[2] = 18;
 </string>
@@ -83,11 +85,11 @@ alarm[2] = 18;
           <argument>
             <kind>1</kind>
             <string>
-r = random_range(64,128);
+var r = random_range(64,128);
 rngAngle += 23;
-sx = 400 + r * cos(degtorad(rngAngle));
-sy = 304 - r * sin(degtorad(rngAngle));
-m = instance_create(sx,sy,obj_geMeteor);
+var sx = 400 + r * cos(degtorad(rngAngle));
+var sy = 304 - r * sin(degtorad(rngAngle));
+var m = instance_create(sx,sy,obj_geMeteor);
 m.direction = rngAngle;
 m.image_angle = rngAngle;
 alarm[1] = 6;
@@ -151,10 +153,10 @@ draw_set_alpha(0.5);
 repeat(2)
 {
     //scale = (12+offset)/12;
-    num = irandom_range(-2,maxNum);
-    for(i = 0; i &lt; room_width; i+=cubeWidth)
+    var num = irandom_range(-2, maxNum);
+    for(var i = 0; i &lt; room_width; i += cubeWidth)
     {
-        tempNum = RangeClamp(num + irandom_range(-1,1),0,maxNum - irandom_range(0,4));
+        var tempNum = RangeClamp(num + irandom_range(-1,1),0,maxNum - irandom_range(0,4));
         num = tempNum;
         for(j = RangeClamp(-num,-num,0); j &lt; RangeClamp(num,0,num); j += 1)
         {
@@ -163,7 +165,7 @@ repeat(2)
             //draw_sprite_ext(spr_startCube,0,i - offset,76+j*cubeWidth - offset,scale,scale,0,c_white,1);
         }
     }
-    num = irandom_range(0,maxNum);
+    num = irandom_range(0, maxNum);
     for(i = 0; i &lt; room_width; i+=cubeWidth)
     {
         tempNum = RangeClamp(num + irandom_range(-1,1),0,maxNum - irandom_range(0,4));

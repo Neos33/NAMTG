@@ -52,6 +52,7 @@
   </views>
   <instances>
     <instance objName="obj_npc1" x="96" y="512" name="inst_8AC256D7" locked="0" code="myMsg[0] = &quot;FA64 : I don't like this place.&quot;;&#xA;myMsg[1] = &quot;Kid : Neither do I, but I have to destroy the energy source somewhere in this room to weaken the monster outside.&quot;;&#xA;myMsg[2] = &quot;FA64 : It's not a easy task. Press 'A'(button to open the door) to analyze. Press to 'Backspace' to escape this room.&quot;;&#xA;messageLength = 3;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="block" x="96" y="544" name="inst_832ACB18" locked="0" code="" scaleX="19" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bgTile" x="64" y="544" w="32" h="32" xo="128" yo="64" id="10072354" name="tile_4F92BDA1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

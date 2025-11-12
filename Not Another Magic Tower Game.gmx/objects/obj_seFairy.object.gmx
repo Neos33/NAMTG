@@ -32,6 +32,10 @@ ox = x;
 oy = y;
 angle = random_range(0,360);
 
+target = noone;
+offsetX = 0;
+offsetY = 0;
+laserX = 0;
 </string>
           </argument>
         </arguments>
@@ -82,7 +86,7 @@ angle = random_range(0,360);
           <argument>
             <kind>1</kind>
             <string>angle += 3;
-if(target)
+if(instance_exists(target))
 {
     ox = target.x + offsetX;
 }
@@ -168,7 +172,7 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>draw_current();
-if(target)
+if(instance_exists(target))
 {
     draw_set_color(c_silver);
     draw_set_alpha(0.5);

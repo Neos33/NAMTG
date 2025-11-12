@@ -34,8 +34,14 @@ detailGap = 24;
 totalSections = 12;
 alarm[0] = 7;
 
+imageInd = 0;
+section = 0;
+currentHeight = 0;
+data_collector = ds_list_create();
+
 ind = 0;
 list[ind] = ds_list_create();  // 0 - producer
+ds_list_add(data_collector, list[ind]);
 title[ind] = 'PRODUCER';
 subList[ind] = false;
 evtInd[ind] = 0;
@@ -47,6 +53,7 @@ ds_list_add(list[ind], "Igzicorus");
 ind += 1;
 
 list[ind] = ds_list_create(); //1 - System
+ds_list_add(data_collector, list[ind]);
 title[ind] = 'SYSTEM DESIGN';
 subList[ind] = false;
 evtInd[ind] = 0;
@@ -56,6 +63,7 @@ ind += 1;
 
 
 list[ind] = ds_list_create(); //2 - story
+ds_list_add(data_collector, list[ind]);
 title[ind] = 'STORY DESIGN';
 subList[ind] = false;
 evtInd[ind] = 0;
@@ -64,6 +72,7 @@ ds_list_add(list[ind], "Koala");
 ind += 1;
 
 list[ind] = ds_list_create(); //3 - Level
+ds_list_add(data_collector, list[ind]);
 title[ind] = 'LEVEL DESIGN'; 
 subList[ind] = false;
 subListCount[ind] = 2;
@@ -81,6 +90,8 @@ central[ind] = true;
 
 subCategory[ind,0] = ds_list_create();
 subCategory[ind,1] = ds_list_create();
+ds_list_add(data_collector, subCategory[ind,0], subCategory[ind,1]);
+
 ds_list_add(subCategory[ind,0], 'Secret 1');        ds_list_add(subCategory[ind,1], 'Light');
 ds_list_add(subCategory[ind,0], 'Secret 2');        ds_list_add(subCategory[ind,1], 'Light');
 ds_list_add(subCategory[ind,0], 'MMM Fingers');     ds_list_add(subCategory[ind,1], 'Light');
@@ -112,6 +123,9 @@ evtInd[ind] = 2;
 subCategory[ind,0] = ds_list_create();
 subCategory[ind,1] = ds_list_create();
 subCategory[ind,2] = ds_list_create();
+
+ds_list_add(data_collector, subCategory[ind,0], subCategory[ind,1], subCategory[ind,2]);
+
 ds_list_add(subCategory[ind,0], spr_slime_s_combat);      ds_list_add(subCategory[ind,1], 'Small Slime');            ds_list_add(subCategory[ind,2], 'Light');
 ds_list_add(subCategory[ind,0], spr_slime_red_combat);      ds_list_add(subCategory[ind,1], 'Red Slime');              ds_list_add(subCategory[ind,2], 'Light');
 ds_list_add(subCategory[ind,0], spr_slime_black_combat);      ds_list_add(subCategory[ind,1], 'Black Slime');            ds_list_add(subCategory[ind,2], 'Koala');
@@ -180,6 +194,7 @@ ds_list_add(subCategory[ind,0], -1);      ds_list_add(subCategory[ind,1], '???')
 ind += 1;
 
 list[ind] = ds_list_create();  // 6 - Credit
+ds_list_add(data_collector, list[ind]);
 title[ind] = 'CREDITS';
 subList[ind] = false;
 evtInd[ind] = 0;
@@ -194,6 +209,7 @@ ds_list_add(list[ind], "PP");
 ind += 1;
 
 list[ind] = ds_list_create();  // 7 - Testers
+ds_list_add(data_collector, list[ind]);
 title[ind] = 'TESTERS';
 subList[ind] = false;
 evtInd[ind] = 0;
@@ -212,6 +228,7 @@ ds_list_add(list[ind], "Ka Zhu");
 ind += 1;
 
 list[ind] = ds_list_create();  // 8 - Special Thanks
+ds_list_add(data_collector, list[ind]);
 title[ind] = 'SPECIAL THANKS';
 subList[ind] = false;
 evtInd[ind] = 0;
@@ -225,6 +242,7 @@ ds_list_add(list[ind], "(and you)");
 ind += 1;
 
 list[ind] = ds_list_create();  // 9 - Sprite Resources
+ds_list_add(data_collector, list[ind]);
 title[ind] = 'SPRITE RESOURCES';
 subList[ind] = false;
 evtInd[ind] = 0;
@@ -246,6 +264,8 @@ evtInd[ind] = 3;
 
 subCategory[ind,0] = ds_list_create();
 subCategory[ind,1] = ds_list_create();
+ds_list_add(data_collector, subCategory[ind,0], subCategory[ind,1]);
+
 ds_list_add(subCategory[ind,0], 'Title Screen');         ds_list_add(subCategory[ind,1], 'S.S.H - The One Who Cannot Forget Remix');
 ds_list_add(subCategory[ind,0], 'Floor 1 to 10');        ds_list_add(subCategory[ind,1], 'S.S.H - Big Blue Rock-Metal Remix');
 ds_list_add(subCategory[ind,0], 'Secret 1');             ds_list_add(subCategory[ind,1], 'Bloody Tears Awesome Version');
@@ -304,6 +324,7 @@ ds_list_add(subCategory[ind,0], '');                     ds_list_add(subCategory
 ind += 1;
 
 list[ind] = ds_list_create();  // 11 - engine
+ds_list_add(data_collector, list[ind]);
 title[ind] = 'ENGINE';
 subList[ind] = false;
 evtInd[ind] = 0;
@@ -391,16 +412,16 @@ alarm[0] = 7;
 if(currentHeight &gt; -32 &amp;&amp; currentHeight &lt; 640)
 {
     draw_set_font(fontSETitle);
-    captionName = title[section];
-    spacePos = string_pos(' ', captionName);
-    if(spacePos &amp;&amp; !central[section])
+    var captionName = title[section];
+    var spacePos = string_pos(' ', captionName);
+    if(spacePos != 0 &amp;&amp; !central[section])
     {
-        captionLen = string_length(captionName);
-        spaceWidth = string_width('_');
-        leftContent = string_copy(captionName,0, spacePos - 1);
+        var captionLen = string_length(captionName);
+        var spaceWidth = string_width('_');
+        var leftContent = string_copy(captionName,0, spacePos - 1);
         draw_set_halign(fa_right);
         draw_text(centerX-spaceWidth/2, currentHeight, leftContent);
-        rightContent = string_copy(captionName,spacePos + 1, captionLen - spacePos);
+        var rightContent = string_copy(captionName,spacePos + 1, captionLen - spacePos);
         draw_set_halign(fa_left);
         draw_text(centerX+spaceWidth/2, currentHeight, rightContent);
     }
@@ -436,19 +457,19 @@ draw_set_halign(fa_center);
             <kind>1</kind>
             <string>event_user(15);
 
-listCount = ds_list_size(subCategory[section,0]);
+var listCount = ds_list_size(subCategory[section,0]);
 draw_set_font(fontSECredit);
-for(detailInd = 0; detailInd &lt; listCount; detailInd += 1)
+for(var detailInd = 0; detailInd &lt; listCount; detailInd += 1)
 {
     if(currentHeight &gt; -32 &amp;&amp; currentHeight &lt; 640)
     {
         draw_set_halign(fa_right);
-        leftContent = ds_list_find_value(subCategory[section,0], detailInd);
+        var leftContent = ds_list_find_value(subCategory[section,0], detailInd);
         draw_text(centerX - 80, currentHeight, leftContent);
         draw_set_halign(fa_center);
         draw_text(centerX - 64, currentHeight, '-');
         draw_set_halign(fa_left);
-        rightContent = ds_list_find_value(subCategory[section,1], detailInd);
+        var rightContent = ds_list_find_value(subCategory[section,1], detailInd);
         draw_text(centerX - 48, currentHeight, rightContent);
     }
     currentHeight += detailGap;
@@ -479,11 +500,12 @@ currentHeight += sectionGap;
             <kind>1</kind>
             <string>event_user(15);
 
-listCount = ds_list_size(subCategory[section,0]);
+var listCount = ds_list_size(subCategory[section,0]);
+var imgHeight = 0;
 draw_set_font(fontSECredit);
-for(detailInd = 0; detailInd &lt; listCount; detailInd += 1)
+for(var detailInd = 0; detailInd &lt; listCount; detailInd += 1)
 {
-    sprInd = ds_list_find_value(subCategory[section,0], detailInd);
+    var sprInd = ds_list_find_value(subCategory[section,0], detailInd);
     if(sprInd &lt; 0)
     {
         if(sprInd == -1 || sprInd == -101)
@@ -528,7 +550,7 @@ for(detailInd = 0; detailInd &lt; listCount; detailInd += 1)
             draw_sprite(sprInd, imageInd, centerX, currentHeight);
         }
         draw_set_halign(fa_right);
-        leftContent = ds_list_find_value(subCategory[section,1], detailInd);
+        var leftContent = ds_list_find_value(subCategory[section,1], detailInd);
         draw_text(centerX - 16, currentHeight + imgHeight, leftContent);
         if(leftContent != "")
         {
@@ -536,7 +558,7 @@ for(detailInd = 0; detailInd &lt; listCount; detailInd += 1)
             draw_text(centerX, currentHeight + imgHeight, '-');
         }
         draw_set_halign(fa_left);
-        rightContent = ds_list_find_value(subCategory[section,2], detailInd);
+        var rightContent = ds_list_find_value(subCategory[section,2], detailInd);
         draw_text(centerX + 16, currentHeight + imgHeight, rightContent);
     }
     currentHeight += detailGap + imgHeight + 20;
@@ -567,19 +589,19 @@ currentHeight += sectionGap;
             <kind>1</kind>
             <string>event_user(15);
 
-listCount = ds_list_size(subCategory[section,0]);
+var listCount = ds_list_size(subCategory[section,0]);
 draw_set_font(fontSECredit);
-for(detailInd = 0; detailInd &lt; listCount; detailInd += 1)
+for(var detailInd = 0; detailInd &lt; listCount; detailInd += 1)
 {
     if(currentHeight &gt; -32 &amp;&amp; currentHeight &lt; 640)
     {
         draw_set_halign(fa_right);
-        leftContent = ds_list_find_value(subCategory[section,0], detailInd);
+        var leftContent = ds_list_find_value(subCategory[section,0], detailInd);
         draw_text(centerX - 16, currentHeight, leftContent);
         draw_set_halign(fa_center);
         draw_text(centerX, currentHeight, '-');
         draw_set_halign(fa_left);
-        rightContent = ds_list_find_value(subCategory[section,1], detailInd);
+        var rightContent = ds_list_find_value(subCategory[section,1], detailInd);
         draw_text(centerX + 16, currentHeight, rightContent);
     }
     currentHeight += detailGap;
@@ -610,13 +632,13 @@ currentHeight += sectionGap;
             <kind>1</kind>
             <string>event_user(15);
 
-listCount = ds_list_size(list[section]);
+var listCount = ds_list_size(list[section]);
 draw_set_font(fontSECredit);
-for(detailInd = 0; detailInd &lt; listCount; detailInd += 1)
+for(var detailInd = 0; detailInd &lt; listCount; detailInd += 1)
 {
     if(currentHeight &gt; -32 &amp;&amp; currentHeight &lt; 640)
     {
-        detailContent = ds_list_find_value(list[section], detailInd);
+        var detailContent = ds_list_find_value(list[section], detailInd);
         draw_text(centerX, currentHeight, detailContent);
     }
     currentHeight += detailGap;
@@ -645,20 +667,29 @@ currentHeight += sectionGap;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i=0;i&lt;totalSections;i+=1)
+            <string>
+var _total_data_collected = ds_list_size(data_collector);
+for (var i = 0; i &lt; _total_data_collected; i++)
 {
-    if(subList[i])
-    {
-        for(j=0;j&lt;subListCount[i];j+=1)
-        {
-            ds_list_destroy(subCategory[i,j]);
-        }
-    }
-    else
-    {
-        ds_list_destroy(list[i]);
-    }
+    ds_list_destroy(data_collector[| i]);
 }
+
+ds_list_destroy(data_collector);
+
+// for(var i = 0; i &lt; totalSections; i += 1)
+// {
+//     if(subList[i])
+//     {
+//         for(var j = 0; j &lt; subListCount[i]; j += 1)
+//         {
+//             ds_list_destroy(subCategory[i,j]);
+//         }
+//     }
+//     else
+//     {
+//         ds_list_destroy(list[i]);
+//     }
+// }
 </string>
           </argument>
         </arguments>

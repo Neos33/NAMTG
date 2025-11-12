@@ -121,8 +121,10 @@ x = ox + 12 * cos(degtorad(angle));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_towerDrawer.vspd -= 7.5;
-obj_sePrincess.vspeed -= 7.5;
+            <string>with obj_towerDrawer
+    vspd -= 7.5;
+with obj_sePrincess
+    vspeed -= 7.5;
 </string>
           </argument>
         </arguments>

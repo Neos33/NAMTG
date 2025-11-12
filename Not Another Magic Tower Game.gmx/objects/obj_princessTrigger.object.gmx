@@ -8,6 +8,33 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+triggered = false;
+count = 0;
+princess = noone;
+princess2 = noone;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="11">
       <action>
         <libid>1</libid>
@@ -49,20 +76,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(princess2.image_alpha &gt; 0)
+            <string>if instance_exists(princess2)
 {
-    princess2.image_alpha -= 0.02;
-    alarm[4] = 1;
-}
-else
-{
-    with(princess2)
+    if(princess2.image_alpha &gt; 0)
     {
+        princess2.image_alpha -= 0.02;
+        alarm[4] = 1;
+    }
+    else
+    {
+        with(princess2)
+        {
+            instance_destroy();
+        }
+        global.story[39] = true;
+        player.frozen = false;
         instance_destroy();
     }
-    global.story[39] = true;
-    player.frozen = false;
-    instance_destroy();
 }
 </string>
           </argument>
@@ -112,19 +142,22 @@ alarm[4] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(princess.image_alpha &gt; 0)
+            <string>if instance_exists(princess)
 {
-    princess.image_alpha -= 0.01;
-    princess2.image_alpha += 0.01;
-    alarm[2] = 1;
-}
-else
-{
-    with(princess)
+    if(princess.image_alpha &gt; 0)
     {
-        instance_destroy();
+        princess.image_alpha -= 0.01;
+        princess2.image_alpha += 0.01;
+        alarm[2] = 1;
     }
-    alarm[3] = 50;
+    else
+    {
+        with(princess)
+        {
+            instance_destroy();
+        }
+        alarm[3] = 50;
+    }
 }
 </string>
           </argument>
@@ -151,7 +184,10 @@ else
             <string>if(count &gt; 0)
 {
     count -= 1;
-    princess.y -= 1;
+    if instance_exists(princess)
+    {
+        princess.y -= 1;
+    }
     alarm[1] = 10;
 }
 else

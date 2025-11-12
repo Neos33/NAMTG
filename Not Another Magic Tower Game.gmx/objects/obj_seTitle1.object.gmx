@@ -64,7 +64,7 @@ alarm[2] = 1;
             <kind>1</kind>
             <string>repeat(8)
 {
-instance_create(x+offsetX, y+random_range(-offsetHeight, offsetHeight), obj_seEffectStar);
+    instance_create(x+offsetX, y+random_range(-offsetHeight, offsetHeight), obj_seEffectStar);
 }
 alarm[2] = 1;
 </string>

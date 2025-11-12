@@ -95,7 +95,7 @@
     <instance objName="obj_finalPuzzleBlock" x="160" y="480" name="inst_D95901E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_finalPuzzleBlock" x="160" y="512" name="inst_3BA85D28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_finalPuzzleBlock" x="64" y="384" name="inst_C5556FF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_npc1" x="32" y="544" name="inst_BAF200B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_npc1" x="-48" y="544" name="inst_BAF200B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="savePoint" x="128" y="512" name="inst_07CC8EC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_finalPuzzleBlock" x="96" y="384" name="inst_B0721002" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_finalPuzzleBlock" x="192" y="384" name="inst_120CF58E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -243,6 +243,8 @@
     <instance objName="obj_basicInfoDrawer" x="32" y="40" name="inst_5158AD88" locked="0" code="special = true;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_surfaceUIDrawer" x="32" y="56" name="inst_3FE11292" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageController" x="32" y="72" name="inst_FABA0293" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="block" x="112" y="624" name="inst_6A1E4A56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_npc1" x="32" y="544" name="inst_14C0740C" locked="0" code="myMsg[0] = &quot;Unused NPC : This is an unused puzzle room that it was supposed to be a final thing before Fabla.&quot;;&#xA;myMsg[1] = &quot;Unused NPC : Author wanted to bring back secret 2 ice and echoshift gimmicks.&quot;;&#xA;myMsg[2] = &quot;Unused NPC : But the echoshift gimmicks isn't working. So there's nothing we can do here.&quot;;&#xA;messageLength = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

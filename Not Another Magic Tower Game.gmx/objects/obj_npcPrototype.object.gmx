@@ -105,6 +105,7 @@ myMsg = array_create(20);
 {
     if(((player.x + 9 &gt;= bbox_left) &amp;&amp; player.x &lt; x &amp;&amp; keyboard_check_direct(global.rightbutton)) || 
     ((player.x - 9 &lt;= bbox_right) &amp;&amp; (player.x &gt; x + 16) &amp;&amp; keyboard_check_direct(global.leftbutton)))
+    //((player.x - 9 &lt;= bbox_right) &amp;&amp; (player.x &gt; x + 16) &amp;&amp; keyboard_check_direct(global.leftbutton)))
     {
         if(!onMesseging &amp;&amp; player.y &lt; bbox_bottom  &amp;&amp; player.y &gt; bbox_top)
         {

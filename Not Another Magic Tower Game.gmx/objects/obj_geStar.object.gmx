@@ -138,9 +138,12 @@ image_angle += stepAngle;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_startWhite.image_alpha == 1)
+            <string>if instance_exists(obj_startWhite)
 {
-    draw_current();
+    if(obj_startWhite.image_alpha == 1)
+    {
+        draw_current();
+    }
 }
 else
 {

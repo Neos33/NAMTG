@@ -25,11 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>question = "Carry the princess anyway?";
+            <string>event_inherited();
+
+question = "Carry the princess anyway?";
 choice[0] = "Yes, no point to stay here any more.";
 choice[1] = "No, I need to find the way to wake her up.";
 choiceCount = 2;
-event_inherited();
+
 </string>
           </argument>
         </arguments>

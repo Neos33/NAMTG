@@ -43,6 +43,11 @@ alpha = 1;
 
 speed = 2.5;
 direction = 15;
+
+
+scale = 0;
+start = 0;
+key = 0;
 </string>
           </argument>
         </arguments>
@@ -67,7 +72,7 @@ direction = 15;
             <kind>1</kind>
             <string>if(surface_exists(surf))
 {
- surface_free(surf);
+    surface_free(surf);
 }
 </string>
           </argument>
@@ -134,8 +139,9 @@ surface_set_target(surf);
     for(var r = start; r &lt; 304; r+=2)
     {
         key = floor((r - start) / 16);
+        key = clamp(key, 0, 6);
         draw_set_color(color[key]);
-        draw_circle(400,304,r,true);
+        draw_circle(400, 304, r, true);
     }
 surface_reset_target();
 
@@ -189,7 +195,7 @@ radius += 2;
             <kind>1</kind>
             <string>if(surface_exists(surf))
 {
- surface_free(surf);
+    surface_free(surf);
 }
 </string>
           </argument>
@@ -214,7 +220,7 @@ radius += 2;
           <argument>
             <kind>1</kind>
             <string>draw_set_blend_mode(bm_add);
-for(i = -0.1; i &lt;= 0.1; i+=0.005)
+for(var i = -0.1; i &lt;= 0.1; i+=0.005)
 {
     draw_surface_ext(surf,x-400*(scale+i),y-304*(scale+i),(scale+i),(scale+i),0,c_white,0.1 * alpha);
 }

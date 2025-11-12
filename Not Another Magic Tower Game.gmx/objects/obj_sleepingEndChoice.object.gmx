@@ -25,11 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>question = "Jump out anyway?";
+            <string>
+event_inherited();
+
+question = "Jump out anyway?";
 choice[0] = "Yes, I have no choice.";
 choice[1] = "No, there must be other way out.";
 choiceCount = 2;
-event_inherited();
+
 </string>
           </argument>
         </arguments>
@@ -100,9 +103,13 @@ alarm[1] = 10;
           <argument>
             <kind>1</kind>
             <string>instance_activate_all();
-player.frozen = false;
-obj_endWarp.triggered = true;
-obj_endWarp.alarm[2] = 50;
+with player
+    frozen = false;
+with obj_endWarp
+{
+    triggered = true;
+    alarm[2] = 50;
+}
 instance_destroy();
 
 </string>

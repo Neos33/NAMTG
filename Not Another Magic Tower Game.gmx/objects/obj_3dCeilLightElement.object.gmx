@@ -25,8 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dep = obj_3dCeilDrawer.myDepth;
-event_inherited();
+            <string>event_inherited();
+
+if instance_exists(obj_3dCeilDrawer)
+{
+    dep = obj_3dCeilDrawer.myDepth;
+}
 </string>
           </argument>
         </arguments>

@@ -35,6 +35,12 @@ flatEdge = 6;
 sideEdge = 7;
 centerEdge = 8;
 instance_create(0,0,obj_seCloudDrawer);
+
+
+vspd = 0;
+xOffset = 0;
+offset = 0;
+tileOffset = 0;
 </string>
           </argument>
         </arguments>
@@ -263,14 +269,14 @@ tileOffset = offset mod 32;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for(i = -32 + tileOffset; i &lt;= 640; i += 32)
+            <string>for(var i = -32 + tileOffset; i &lt;= 640; i += 32)
 {
-    for(j = 0; j &lt;= 128; j += 32)
+    for(var j = 0; j &lt;= 128; j += 32)
     {
         if(xOffset + j &gt; -32)
             draw_sprite(spr_seTile, flat, xOffset + j, i);
     }
-    for(j = 160; j &lt;= 224; j += 32)
+    for(var j = 160; j &lt;= 224; j += 32)
     {
         if(xOffset + j &gt; -32)
             draw_sprite(spr_seTile, side1, xOffset + j, i);
@@ -278,14 +284,14 @@ tileOffset = offset mod 32;
     draw_sprite(spr_seTile, side2, xOffset + 256, i);
 }
 
-for(i = -96 + offset; i &lt;= 800; i += 192)
+for(var i = -96 + offset; i &lt;= 800; i += 192)
 {
-    for(j = 152; j &lt;= 256; j += 24)
+    for(var j = 152; j &lt;= 256; j += 24)
     {
         if(xOffset + j &gt; -32)
             draw_sprite(spr_seTile, sideEdge, xOffset + j, i + 32 - (j-160));
     }
-    for(j = 0; j &lt;= 128; j += 32)
+    for(var j = 0; j &lt;= 128; j += 32)
     {
         if(xOffset + j &gt; -32)
             draw_sprite(spr_seTile, flatEdge, xOffset + j, i + 48);
@@ -294,13 +300,13 @@ for(i = -96 + offset; i &lt;= 800; i += 192)
     draw_sprite(spr_seTile, cage, xOffset + 64, i);
 }
 
-for(i = -32 + offset - 96; i &lt;= 736; i += 192)
+for(var i = -32 + offset - 96; i &lt;= 736; i += 192)
 {
     draw_sprite(spr_seTile, windowTop, xOffset + 216, i - 80 - 32);
     draw_sprite(spr_seTile, windowBottom, xOffset + 216, i - 80);
 }
 
-for(i = -32 + tileOffset; i &lt;= 640; i += 32)
+for(var i = -32 + tileOffset; i &lt;= 640; i += 32)
 {
     draw_sprite(spr_seTile, centerEdge, xOffset + 144, i);
 }

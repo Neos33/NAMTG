@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>alphaFact = 0.6;
+
+alpha = 0;
 </string>
           </argument>
         </arguments>

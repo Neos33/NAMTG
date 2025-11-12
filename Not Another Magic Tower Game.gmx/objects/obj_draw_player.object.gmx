@@ -78,7 +78,8 @@ jump = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(player_is_alive()){
+            <string>if(player_is_alive())
+{
 x=player.x
 y=player.y
 }

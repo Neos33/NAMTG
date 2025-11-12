@@ -37,6 +37,9 @@ oty = 0;
 otw = 0;
 otd = 0;
 image_speed = 0;
+
+
+trigger = false;
 </string>
           </argument>
         </arguments>
@@ -199,8 +202,10 @@ bow.visible = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>player.visible = false;
-bow.visible = false;
+            <string>with player
+    visible = false;
+with bow
+    visible = false;
 </string>
           </argument>
         </arguments>

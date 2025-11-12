@@ -85,18 +85,18 @@ global.currentBGM = scrAudioGetID("BGM_GE");
           <argument>
             <kind>1</kind>
             <string>//instance_create(0,0,obj_geFinalCircleDrawer);
-for(i = 0; i &lt;= 800; i += 80)
+for(var i = 0; i &lt;= 800; i += 80)
 {
-    for(j = 100; j &lt;= 500; j += 80)
+    for(var j = 100; j &lt;= 500; j += 80)
     {
-        ranAlpha = choose(0,0.2,0.4,0.6,0.8);
-        rndNum = random_range(0,10);
-        change = false;
+        var ranAlpha = choose(0,0.2,0.4,0.6,0.8);
+        var rndNum = random_range(0,10);
+        var change = false;
         if(rndNum &gt; 9)
         {
             change = true;
         }
-        circle = instance_create(i,j,obj_geFinalCircle);
+        var circle = instance_create(i,j,obj_geFinalCircle);
         circle.alpha = ranAlpha;
         if(change)
         {

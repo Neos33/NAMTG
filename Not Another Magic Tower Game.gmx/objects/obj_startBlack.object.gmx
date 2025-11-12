@@ -55,7 +55,7 @@ alarm[0] = 80;
             <kind>1</kind>
             <string>if(surface_exists(surf))
 {
- surface_free(surf);
+    surface_free(surf);
 }
 </string>
           </argument>

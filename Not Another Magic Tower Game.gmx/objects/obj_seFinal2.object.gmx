@@ -30,6 +30,9 @@ SS_StopAll();
 alarm[0] = 1;
 alarm[11] = 600;
 view_xview[0] = 96;
+
+
+step = 0;
 </string>
           </argument>
         </arguments>
@@ -112,7 +115,7 @@ else
 global.koala = 40000;
 if(!global.achievements[98])
 {
-    ch = instance_create(0,608,obj_achievements);
+    var ch = instance_create(0,608,obj_achievements);
     ch.index = 98;
     global.achievements[98] = 1;
 }

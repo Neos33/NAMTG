@@ -25,15 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ind=334;
+            <string>event_inherited();
+ind=334;
 atk=9999;
 def=9999;
 hp=9999;
 ex=0;
 name = "The Tower Lead";
 image_alpha = 0;
-event_inherited();
+
 alarm[0] = 1;
+
+start = false;
 </string>
           </argument>
         </arguments>
@@ -96,7 +99,7 @@ alarm[0] = 1;
         {
             if(!instance_exists(obj_achievements))
             {
-                ch = instance_create(0,608,obj_achievements);
+                var ch = instance_create(0,608,obj_achievements);
                 ch.index = 96;
                 global.achievements[96] = 1;
             }

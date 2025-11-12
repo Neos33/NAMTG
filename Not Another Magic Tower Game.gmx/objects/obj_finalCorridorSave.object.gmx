@@ -84,7 +84,8 @@ if(global.difficulty &gt; 1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>saveTimer -= 1;</string>
+            <string>saveTimer -= 1;
+</string>
           </argument>
         </arguments>
       </action>
@@ -138,7 +139,8 @@ if(saveTimer &lt; 0 &amp;&amp; player_is_alive() == true){
           <argument>
             <kind>1</kind>
             <string>image_speed=0;
-image_index=0;</string>
+image_index=0;
+</string>
           </argument>
         </arguments>
       </action>
@@ -167,13 +169,19 @@ var sw, sh, osw;
 sw  = (sprite_width*tw)/2
 sh  = (sprite_height)/2
 osw = (sprite_width*otw)/2
-if(1=1)
-  {
+//if(1=1)
+{
     if(tx&lt;room_width/2)
-    {draw_sprite_ext(sprite_index,image_index,otx,y,otw,1,0,c_white,1)}
-  else
-    {draw_sprite_ext(sprite_index,image_index,otx,y,otw,1,0,c_white,1)}
-  }
+    {
+        draw_sprite_ext(sprite_index,image_index,otx,y,otw,1,0,c_white,1);
+        
+    }
+    else
+    {
+        draw_sprite_ext(sprite_index,image_index,otx,y,otw,1,0,c_white,1);
+        
+    }
+}
 </string>
           </argument>
         </arguments>

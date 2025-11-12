@@ -26,6 +26,17 @@
           <argument>
             <kind>1</kind>
             <string>alarm[0] = 1;
+
+yShift = 0;
+start = false;
+
+var _total = 900 / 32;
+tx = array_create(_total);
+ty = array_create(_total);
+tw = array_create(_total);
+otx = array_create(_total);
+oty = array_create(_total);
+otw = array_create(_total);
 </string>
           </argument>
         </arguments>

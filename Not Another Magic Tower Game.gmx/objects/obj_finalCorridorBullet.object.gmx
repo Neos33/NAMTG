@@ -113,16 +113,22 @@ alarm[0] = 40;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_meeting(x+hspeed,y,block)){
-a=instance_place(x+hspeed,y,block)
-if(a.object_index=block)instance_destroy()
-else if(a.visible=1)instance_destroy()
+            <string>if(place_meeting(x+hspeed,y,block))
+{
+    var a = instance_place(x+hspeed, y, block);
+    if(a.object_index = block)
+        instance_destroy()
+    else if(a.visible = 1)
+        instance_destroy()
 }
 
-if(place_meeting(x+hspeed,y,obj_wall)){
-a=instance_place(x+hspeed,y,obj_wall)
-if(a.object_index=obj_wall)instance_destroy()
-else if(a.visible=1)instance_destroy()
+if(place_meeting(x+hspeed,y,obj_wall))
+{
+    a = instance_place(x+hspeed, y, obj_wall);
+    if(a.object_index=obj_wall)
+        instance_destroy()
+    else if(a.visible=1)
+        instance_destroy()
 }
 </string>
           </argument>
@@ -153,13 +159,17 @@ var sw, sh, osw;
 sw  = (sprite_width*tw)/2
 sh  = (sprite_height)/2
 osw = (sprite_width*otw)/2
-if(1=1)
-  {
+//if(1=1)
+{
     if(tx&lt;room_width/2)
-    {draw_sprite_ext(sprite_index,image_index,otx,y,otw,1,0,c_white,1)}
-  else
-    {draw_sprite_ext(sprite_index,image_index,otx,y,otw,1,0,c_white,1)}
-  }
+    {
+        draw_sprite_ext(sprite_index,image_index,otx,y,otw,1,0,c_white,1);
+    }
+    else
+    {
+        draw_sprite_ext(sprite_index,image_index,otx,y,otw,1,0,c_white,1);
+    }
+}
 </string>
           </argument>
         </arguments>

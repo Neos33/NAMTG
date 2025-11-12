@@ -69,15 +69,15 @@ hLine[3] = -20;
 hLine[4] = -26;
 hLine[5] = -24;
 
-for(i = 0; i &lt;= 5; i += 1)
+for(var i = 0; i &lt;= 5; i += 1)
 {
     star = instance_create(xLine[i],dLine[i],obj_3dJumpingStar);
     with(star)
     {
-        myDepth = other.dLine[other.i];
-        myRotateX = other.xLine[other.i];
-        myRotateY = other.hLine[other.i];
-        scale = 0.15 - other.i * 0.01;
+        myDepth = other.dLine[i];
+        myRotateX = other.xLine[i];
+        myRotateY = other.hLine[i];
+        scale = 0.15 - i * 0.01;
         image_xscale = scale;
         image_yscale = scale;
         baseY = myRotateY;
@@ -100,6 +100,9 @@ cType[4] = 4;
 cType[5] = 2;
 cType[6] = 0;
 cType[7] = 3;
+
+
+cNum = 0;
 
 </string>
           </argument>
@@ -221,14 +224,14 @@ else
 {
     cNum += 1;
 }
-type = cType[cNum];
+var type = cType[cNum];
 with(obj_3dFloorLightElement)
 {
-    image_index = other.type;
+    image_index = type;
 }
 with(obj_3dCeilLightElement)
 {
-    image_index = other.type;
+    image_index = type;
 }
 
 steps += 1;
