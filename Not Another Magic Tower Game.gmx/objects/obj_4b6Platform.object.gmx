@@ -25,13 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_4b6DTEffect.spd == 0)
+            <string>
+if instance_exists(obj_4b6DTEffect)
 {
-    hspeed = -1;
-}
-else
-{
-    hspeed = -obj_4b6DTEffect.spd;
+    if(obj_4b6DTEffect.spd == 0)
+    {
+        hspeed = -1;
+    }
+    else
+    {
+        hspeed = -obj_4b6DTEffect.spd;
+    }
 }
 </string>
           </argument>
@@ -55,13 +59,16 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(obj_4b6DTEffect.spd == 0)
+            <string>if instance_exists(obj_4b6DTEffect)
 {
-    hspeed = -1;
-}
-else
-{
-    hspeed = -obj_4b6DTEffect.spd;
+    if(obj_4b6DTEffect.spd == 0)
+    {
+        hspeed = -1;
+    }
+    else
+    {
+        hspeed = -obj_4b6DTEffect.spd;
+    }
 }
 </string>
           </argument>

@@ -234,19 +234,23 @@ name[53] = "BGM_Battle3";
           <argument>
             <kind>1</kind>
             <string>/// Trebole testing
-musicCount = 5;
+musicCount = 7;
 
 song[0] = "BGM1.ogg";type[0]=1;
 song[1] = "BGM11-15F.ogg";type[1]=1;
 song[2] = "BGM_Trebole.ogg";
 song[3] = "BGM_Diamante.ogg";
 song[4] = "BGM_Pica.ogg";
+song[5] = "BGM_Finals.ogg";type[5]=1;
+song[6] = "BGM_DecisiveBattle.ogg";
 
 name[0] = "BGM_1";
 name[1] = "BGM11To15F";
 name[2] = "BGM_Trebole";
 name[3] = "BGM_Diamante";
 name[4] = "BGM_Pica";
+name[5] = "BGM_Finals";
+name[6] = "BGM_DecisiveBattle";
 </string>
           </argument>
         </arguments>

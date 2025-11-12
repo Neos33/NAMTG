@@ -31,6 +31,10 @@
 }
 image_alpha = 0;
 image_speed = 1/8;
+
+
+path = 0;
+color = c_white;
 </string>
           </argument>
         </arguments>
@@ -53,12 +57,12 @@ image_speed = 1/8;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>laser = instance_create(x + 16, y + 16, obj_ultimateEnergyLaser);
-laser.startX = x + 16;
-laser.startY = y + 16;
-laser.color = color;
-laser.targetX = 496;
-laser.targetY = 16;
+            <string>var laser = instance_create(x + 16, y + 16, obj_ultimateEnergyLaser);
+    laser.startX = x + 16;
+    laser.startY = y + 16;
+    laser.color = color;
+    laser.targetX = 496;
+    laser.targetY = 16;
 </string>
           </argument>
         </arguments>

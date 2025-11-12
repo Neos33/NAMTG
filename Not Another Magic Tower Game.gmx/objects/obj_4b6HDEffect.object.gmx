@@ -87,7 +87,10 @@ draw_set_blend_mode(bm_normal);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>targetAlpha = 1 - obj_npcBattleNPC2.hp / 15;
+            <string>if instance_exists(obj_npcBattleNPC2)
+{
+    targetAlpha = 1 - obj_npcBattleNPC2.hp / 15;
+}
 if(alpha &lt; targetAlpha)
 {
     alpha += 0.01;

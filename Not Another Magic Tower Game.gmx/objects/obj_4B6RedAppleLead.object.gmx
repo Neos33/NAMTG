@@ -39,9 +39,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = point_direction(x, y, player.x, player.y);
+            <string>
+var npc_hp = 0;
+if instance_exists(obj_npcBattleNPC2)
+{
+    npc_hp = obj_npcBattleNPC2.hp;
+}
+
+direction = point_direction(x, y, player.x, player.y);
 speed = 5;
-interval = 20 + obj_npcBattleNPC2.hp;
+interval = 20 + npc_hp;
 image_xscale = 2;
 image_yscale = 2;
 alarm[3] = interval;

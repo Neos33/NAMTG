@@ -39,8 +39,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1/15;
-alarm[0] = 30 + obj_npcBattleNPC2.hp;
+            <string>
+npc_hp = 0;
+if instance_exists(obj_npcBattleNPC2)
+{
+    npc_hp = obj_npcBattleNPC2.hp;
+}
+
+image_speed = 1/15;
+alarm[0] = 30 + npc_hp;
 isStable = true;
 </string>
           </argument>
@@ -64,7 +71,8 @@ isStable = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 6 - obj_npcBattleNPC2.hp * 0.1;
+            <string>
+speed = 6 - npc_hp * 0.1;
 direction = random_range(0,359);
 </string>
           </argument>

@@ -85,7 +85,7 @@ with(obj_16FControlledNPC1)
     image_alpha = 1;
 }
 open = true;
-for(var i=0;i&lt;4;i+=1)
+for(var i=0; i&lt;4; i+=1)
 {
     if(!global.gemPlaced[i])
     {
