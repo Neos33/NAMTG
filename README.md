@@ -18,3 +18,7 @@ ___
 - Music is quite a mess to work.
 - *move_wrap* function seems to not be working as it should be.
 - UI depth order.
+
+___
+
+The game works, I won't spend my time on this, if you want to fix the issues that still remaining then feel free to fork this project, good luck.
