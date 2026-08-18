@@ -28,3 +28,4 @@ if !global.audio_music_muted{
         SS_PlaySound(music);
     }
 }
+*/

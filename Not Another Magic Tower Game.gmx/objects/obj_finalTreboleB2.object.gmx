@@ -37,7 +37,7 @@ rr = sqrt(sqr(view_wview[view_current])+sqr(view_hview[view_current]));
 
 hit = false;
 sndMagic = false;
-msg = "";
+msg = &quot;&quot;;
 
 dirspd = 0;
 laser = false;
@@ -187,7 +187,7 @@ hit = false;
                 }
                 if(global.isAddMsg)
                 {
-                    msg = "The monster did a critical hit! Kid got " + string(dmg) + " damage.";
+                    msg = &quot;The monster did a critical hit! Kid got &quot; + string(dmg) + &quot; damage.&quot;;
                 }
                 global.monsterSuperCritical = false;
             }
@@ -226,7 +226,7 @@ hit = false;
                 }
                 if(global.isAddMsg)
                 {
-                    msg = "The monster did a critical hit! Kid got " + string(dmg) + " damage.";
+                    msg = &quot;The monster did a critical hit! Kid got &quot; + string(dmg) + &quot; damage.&quot;;
                 }
                 global.monsterCritical = false;
             }
@@ -265,7 +265,7 @@ hit = false;
                 }
                 if(global.isAddMsg)
                 {
-                    msg = "Kid got " + string(dmg) + " damage.";
+                    msg = &quot;Kid got &quot; + string(dmg) + &quot; damage.&quot;;
                 }
             }  
             with(obj_playerTouhou)
@@ -300,7 +300,7 @@ hit = false;
         {
             if(global.isAddMsg)
             {
-                msg += " Kid died.";
+                msg += &quot; Kid died.&quot;;
             }
             with(obj_playerTouhou)
             {
@@ -312,7 +312,7 @@ hit = false;
         {
             if(global.isAddMsg)
             {
-                msg += " Kid died.";
+                msg += &quot; Kid died.&quot;;
             }
             with(obj_playerTouhou)
             {
@@ -327,7 +327,7 @@ hit = false;
             {
                 if(global.isAddMsg)
                 {
-                    msg = "Kid block the damage.";
+                    msg = &quot;Kid block the damage.&quot;;
                 }
                 global.Blockable = false;
                 sound_fix(sndgras);
@@ -409,7 +409,7 @@ else{
     else if timer&lt;50
     {
         event_user(0);
-    };
+    }
     else if timer&lt;69
     {
         with(obj_finalTreboleE2){des=1;}

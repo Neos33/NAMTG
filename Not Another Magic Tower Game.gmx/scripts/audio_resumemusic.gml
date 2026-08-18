@@ -24,3 +24,4 @@ if !global.audio_music_muted{
         SS_ResumeSound(music);
     }
 }
+*/

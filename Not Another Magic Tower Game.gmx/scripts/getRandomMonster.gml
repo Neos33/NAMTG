@@ -17,3 +17,4 @@ else
     choose(obj_giantBat_random,obj_skeletonOrc_random, obj_dracula_random, obj_redKnight_random, obj_silverEvilSlime_random),
     choose(obj_goldEvilSlime_random, obj_swordMaster_random, obj_bdm_random,obj_burningSlime_random));
 }
+*/

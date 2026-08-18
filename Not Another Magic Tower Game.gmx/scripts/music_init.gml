@@ -134,4 +134,4 @@ BGM_DemonLead = music_load("BGM_DemonLead.ogg");
 
 globalvar currentBGM;
 currentBGM = BGM_1;
-
+*/

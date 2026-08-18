@@ -30,7 +30,7 @@
     <xoffset>0</xoffset>
     <yoffset>0</yoffset>
   </makerSettings>
-  <backgrounds>
+    <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -40,7 +40,7 @@
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
-  <views>
+    <views>
     <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="800" hview="608" xport="0" yport="0" wport="800" hport="608" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="-1" objName="&lt;undefined&gt;" xview="192" yview="0" wview="608" hview="608" xport="192" yport="0" wport="608" hport="608" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -50,9 +50,9 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
-  <instances>
+    <instances>
     <instance objName="obj_princess" x="640" y="164" name="inst_F8A7BF1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_specialWarp12" x="480" y="0" name="inst_18848B11" locked="0" code="warpX = 32 + 17;&#xA;warpY = 1168 + 23;&#xA;roomTo = rFinalCorridor;&#xA;&#xA;/*warpX = 480 + 17;&#xA;warpY = 32 + 23;&#xA;roomTo = rFinalRoom;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_specialWarp12" x="480" y="0" name="inst_18848B11" locked="0" code="warpX = 32 + 17;&#xA;warpY = 1168 + 23;&#xA;roomTo = rFinalCorridor;&#xA;&#xA;/*warpX = 480 + 17;&#xA;warpY = 32 + 23;&#xA;roomTo = rFinalRoom;&#xA;*/" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeRight" x="384" y="448" name="inst_706156DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeLeft" x="576" y="448" name="inst_3526EAA4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="spikeUp" x="384" y="544" name="inst_1006E25E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -213,7 +213,7 @@
     <instance objName="obj_surfaceUIDrawer" x="0" y="48" name="inst_D6A3E673" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_messageController" x="0" y="80" name="inst_76336329" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
-  <tiles>
+    <tiles>
     <tile bgName="bgTile" x="224" y="384" w="32" h="32" xo="0" yo="32" id="10061283" name="tile_D9E23FC8" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgTile" x="224" y="352" w="32" h="32" xo="0" yo="32" id="10061284" name="tile_7030444F" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="bgTile" x="256" y="384" w="32" h="32" xo="0" yo="32" id="10061286" name="tile_C1B787A7" depth="1000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

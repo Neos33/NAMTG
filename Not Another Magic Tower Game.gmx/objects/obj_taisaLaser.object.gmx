@@ -129,7 +129,7 @@ else
     else if timer&lt;20+lifetime
     {
         event_user(0);
-    };
+    }
     else if timer&lt;39+lifetime
     {
         event_user(0);

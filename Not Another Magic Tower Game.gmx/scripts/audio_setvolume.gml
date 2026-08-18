@@ -55,3 +55,4 @@ FMODInstanceSetVolume(_music, global.audio_music_volume/100*_VolPer);
 //FMODInstanceSetVolume(argument0,1);
 /*show_debug_message(global.audio_music_volume/100*_VolPer);
 show_debug_message("Que onda?");
+*/

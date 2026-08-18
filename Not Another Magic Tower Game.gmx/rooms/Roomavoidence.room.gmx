@@ -31,7 +31,7 @@ player.y = 544 + 20;</code>
     <xoffset>0</xoffset>
     <yoffset>0</yoffset>
   </makerSettings>
-  <backgrounds>
+    <backgrounds>
     <background visible="-1" foreground="0" name="background88" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -41,7 +41,7 @@ player.y = 544 + 20;</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
-  <views>
+    <views>
     <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="800" hview="608" xport="0" yport="0" wport="800" hport="608" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -51,8 +51,8 @@ player.y = 544 + 20;</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
-  <instances>
-    <instance objName="fasf_timelinestart" x="64" y="64" name="inst_BF443A7A" locked="0" code="/*transition_define(101, &quot;scr_tr_squeeze_right&quot;);&#xA;transition_define(102, &quot;scr_tr_bars_both&quot;);&#xA;transition_define(103, &quot;scr_tr_diagonal1_in&quot;);&#xA;transition_define(104, &quot;scr_tr_blocks&quot;);" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instances>
+    <instance objName="fasf_timelinestart" x="64" y="64" name="inst_BF443A7A" locked="0" code="/*transition_define(101, &quot;scr_tr_squeeze_right&quot;);&#xA;transition_define(102, &quot;scr_tr_bars_both&quot;);&#xA;transition_define(103, &quot;scr_tr_diagonal1_in&quot;);&#xA;transition_define(104, &quot;scr_tr_blocks&quot;);&#xA;*/" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_playerHitController" x="128" y="64" name="inst_12978128" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="block" x="32" y="0" name="inst_CCFC308F" locked="0" code="" scaleX="23" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="block" x="768" y="0" name="inst_A294B1F8" locked="0" code="" scaleX="1" scaleY="19" colour="4294967295" rotation="0"/>
@@ -62,7 +62,8 @@ player.y = 544 + 20;</code>
     <instance objName="object1089" x="0" y="0" name="inst_923E3642" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_combatController" x="96" y="64" name="inst_5A73B149" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
-  <tiles/>
+    <tiles>
+  </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
   <PhysicsWorldLeft>0</PhysicsWorldLeft>
